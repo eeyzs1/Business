@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Financial Ratios: A Company Checkup · Accounting</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  #roe-sim .presets{display:flex;flex-wrap:wrap;gap:.6rem;padding:.8rem 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin:.6rem 0;}
+  #roe-sim .presets button{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--accent);background:#fff;
+    border:1.5px solid color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:999px;padding:.4rem 1rem;cursor:pointer;transition:all .15s ease;}
+  #roe-sim .presets button:hover{background:var(--accent);color:var(--accent-ink);}
+  #roe-sim .presets button.warnp{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 40%,var(--line));}
+  #roe-formula{font-family:var(--serif);font-size:1.08rem;text-align:center;background:var(--paper-deep);border-radius:10px;padding:.65rem 1rem;margin:.7rem 0;font-variant-numeric:tabular-nums;}
+  #roe-formula b{color:var(--accent);}
+  #roe-big{text-align:center;font-family:var(--sans);font-size:2.5rem;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.2;margin:.2rem 0;}
+  #roe-big small{font-size:.9rem;color:var(--ink-soft);font-weight:700;display:block;letter-spacing:.15em;}
+  @keyframes roe-pop{0%{transform:scale(.94);}60%{transform:scale(1.05);}100%{transform:scale(1);}}
+  #roe-big.pop{animation:roe-pop .45s ease;}
+  #roe-flag{text-align:center;font-size:.9rem;color:var(--ink-soft);min-height:1.7rem;margin:.2rem 0 .4rem;}
+  #roe-flag .warn{color:var(--bad);font-weight:800;}
+  #roe-bars{margin-top:.3rem;}
+  .roe-cap{font-size:.85rem;color:var(--ink-faint);text-align:center;margin:.3rem 0 0;}
+</style>
+</head>
+<body class="branch-accounting">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Accounting</a><span class="crumb-sep">/</span>
+  <span>Financial Ratios: A Company Checkup</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../02-accounting/lessons/0004-financial-ratios.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Accounting · Lesson 4</p>
+  <h1>Financial Ratios: A Company Checkup</h1>
+  <p class="lead">Is “net income of ¥5 billion” good news? It depends — whether it sits on ¥20 billion or ¥500 billion of assets changes the answer completely. A ratio turns an absolute number into a comparable one, taking the company’s blood pressure and lipid panel the way a checkup does. And the finale is the DuPont analysis: one multiplication that splits shareholder return into three utterly different ways of making money.</p>
+
+  <h2><span class="secno">1</span>Why Ratios: Absolute Numbers Have No Context</h2>
+  <p>The idea behind financial ratios is simple: divide one statement number by another, and the effect of size cancels out. A company with ¥100 billion of revenue and one with ¥1 billion cannot be compared directly, but “how much net profit each ¥1 of assets squeezes out in a year” is comparable for anyone. The common ratios fall into three families, by checkup item:</p>
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>Checkup item</th><th>Ratio</th><th>Formula</th><th>What it asks</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2"><b>Solvency · blood pressure</b></td><td>Current Ratio</td><td>Current assets ÷ current liabilities</td><td>Can debts due within a year be paid?</td></tr>
+      <tr><td>Debt-to-Assets</td><td>Total liabilities ÷ total assets</td><td>What share of the asset base is borrowed?</td></tr>
+      <tr><td rowspan="3"><b>Profitability · blood lipids</b></td><td>Gross Margin</td><td>Gross profit ÷ revenue</td><td>Is the product itself worth money?</td></tr>
+      <tr><td>Net Profit Margin</td><td>Net income ÷ revenue</td><td>Of every ¥1 sold, how much stays in the pocket?</td></tr>
+      <tr><td>Return on Equity (ROE)</td><td>Net income ÷ shareholders’ equity</td><td>How much does each ¥1 shareholders invest earn back?</td></tr>
+      <tr><td rowspan="2"><b>Efficiency · heart rate</b></td><td>Inventory Turnover</td><td>Cost of goods sold ÷ average inventory</td><td>How many times a year does shelf capital turn?</td></tr>
+      <tr><td>Receivables Turnover</td><td>Revenue ÷ average receivables</td><td>How fast do credit sales come home as cash?</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout note"><span class="callout-label">The golden rule of ratios</span> A ratio only means something <b>within the same industry, the same period, and the same definitions</b>: a current ratio of 0.9 can be normal for a supermarket (cash comes back almost instantly) and an alarm bell for an asset-heavy property developer. Ask “compared with whom?” before judging any number high or low.</div>
+
+  <h2><span class="secno">2</span>The DuPont Analysis: A Multiplication Map</h2>
+  <p>The most celebrated synthesis of the three families is the DuPont analysis — it splits return on equity (ROE) into a product of three factors:</p>
+  <div class="formula">ROE = Net Profit Margin × Asset Turnover × Equity Multiplier</div>
+  <p>The three factors stand for three ways of making money: <b>what price you charge</b> (profit per ¥1 of revenue), <b>how fast you turn</b> (revenue per ¥1 of assets in a year), and <b>how much you borrow</b> (the inverse of equity’s share of assets). The elegance: three different roads all reach the same destination, so two companies with identical ROE can run entirely opposite business models — which is precisely the answer to the last lesson’s “90% vs. 20% gross margin” puzzle.</p>
+
+  <h2><span class="secno">3</span>Try It Yourself: The Ratio Checkup</h2>
+  <p>Drag the three sliders, or click a preset, and watch ROE assemble itself in real time. Try to answer this: is pumping ROE up with pure leverage the same risk as earning it through turnover?</p>
+  <div class="sim" id="roe-sim">
+    <div class="sim-title">The DuPont Checkup · ROE = Margin × Turnover × Leverage</div>
+    <div class="sim-controls" id="roe-controls"></div>
+    <div class="presets">
+      <button data-p="mall">Supermarket model (illustrative)</button>
+      <button data-p="liquor">Baijiu model (illustrative)</button>
+      <button data-p="balanced">Balanced manufacturer (illustrative)</button>
+      <button data-p="risk" class="warnp">High-leverage trap (illustrative)</button>
+    </div>
+    <div id="roe-formula">ROE = 8.0% × 1.20 × 2.0 = <b>19.2%</b></div>
+    <div id="roe-big"><small>ROE · RETURN ON EQUITY</small><span id="roe-num">19.2%</span></div>
+    <p id="roe-flag">Balanced type: no leg at an extreme — the shape of most manufacturers (illustrative).</p>
+    <div id="roe-bars"></div>
+    <p class="roe-cap">Bar lengths are normalized to each factor’s own range (illustrative); the fourth bar is the ROE compounded from the three.</p>
+  </div>
+
+  <h2><span class="secno">4</span>Case Study: Two Very Different Roads to a High ROE</h2>
+  <div class="case">
+    <div class="case-title">Walmart-style turnover vs. Moutai-style margin (orders of magnitude, illustrative)</div>
+    <p>Run the DuPont lens over two classic businesses (all numbers approximate and illustrative): the <b>budget grocer</b> (Walmart is the benchmark) earns a paper-thin net margin of roughly 2%–3%; but its shelves turn over about two to three times a year, and with modest leverage its ROE holds in the double digits for years on end. The <b>premium baijiu maker</b> (Kweichow Moutai is the benchmark) nets over 30%, while its inventory must rest in cellars for years — turnover is glacial — yet it barely needs to borrow, and its ROE is likewise respectably high year after year.</p>
+    <p>The contrast is vivid: one multiplies a 2% margin by lightning turnover, the other multiplies a 30% margin by leisurely turnover — <b>two entirely different roads, both leading to respectable shareholder returns</b>. The third road is leverage: raise the equity multiplier and ROE instantly “looks good,” but what the income statement amplifies at the same time is the interest burden — and when the tide goes out, the most leveraged company runs aground first.</p>
+    <p class="case-learn"><b>What this case teaches:</b> before applauding a high ROE, run a DuPont breakdown and ask whether it was earned by margin, turned out by efficiency, or borrowed out by leverage. The three sources carry entirely different risk — and different quality.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Financial Ratio</dt><dd>A comparable metric obtained by dividing two statement figures.</dd>
+      <dt>Current Ratio</dt><dd>Current assets ÷ current liabilities; a gauge of short-term solvency.</dd>
+      <dt>Debt-to-Assets</dt><dd>Total liabilities ÷ total assets; a gauge of long-run leverage.</dd>
+      <dt>Net Profit Margin</dt><dd>Net income ÷ revenue; what lands in the pocket per yuan of sales.</dd>
+      <dt>Asset Turnover</dt><dd>Revenue ÷ average total assets; how many times the assets turn in a year.</dd>
+      <dt>Equity Multiplier</dt><dd>Total assets ÷ shareholders’ equity; the yardstick of leverage.</dd>
+      <dt>DuPont Analysis</dt><dd>The framework that splits ROE into net margin × asset turnover × equity multiplier.</dd>
+      <dt>Return on Equity (ROE)</dt><dd>Net income ÷ shareholders’ equity; the annual return on each yuan shareholders invest.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    Ratios turn absolute numbers into comparable ones — read them in three families: solvency, profitability, efficiency. The DuPont analysis tells us ROE = net margin × turnover × leverage. Thin margin with high volume and fat margin with slow volume can both win; when you see a high ROE, ask where it came from — above all when the answer is leverage.
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "In the DuPont analysis, ROE equals the product of which three items?",
+      "options": ["Net profit margin × asset turnover × equity multiplier", "Gross margin × current ratio × debt-to-assets", "Net profit margin × inventory turnover × interest coverage", "Gross margin × receivables turnover × equity multiplier"],
+      "answer": 0,
+      "explain": "ROE = net profit margin × asset turnover × equity multiplier, mapping onto profitability, operating efficiency, and leverage — three factors, three ways of making money." },
+    { "q": "A supermarket’s “thin margin, high volume” model shows which typical pattern across the three DuPont factors?",
+      "options": ["Very high net margin, very low turnover, riding brand premium", "Ahead on all three factors, with no obvious weak leg", "Very low net margin, very high turnover, winning on volume through scale", "Low net margin and low turnover, relying mainly on added leverage"],
+      "answer": 2,
+      "explain": "Grocers earn thin margins but spin their shelves and inventory at high speed, amplifying a low net margin with high turnover; a low-margin × low-turnover × high-leverage combination looks more like the “high-leverage trap” (illustrative)." },
+    { "q": "A company’s current ratio is about 0.8 (current assets ÷ current liabilities). What does this most likely tell you?",
+      "options": ["Assets far exceed liabilities; the company’s solvency is very strong", "Current assets are below current liabilities; short-term solvency is under strain", "Cash is so abundant the company has nowhere to use it in the short run", "The company carries no debt at all and is financed entirely by equity"],
+      "answer": 1,
+      "explain": "A current ratio below 1 means debts due within a year exceed the assets that can be turned into cash within a year — short-term solvency is strained; but read it with the business model in mind: a retailer that collects cash at the register may run this way for years (recall the last lesson’s golden rule: ask compared with whom first)." },
+    { "q": "Two companies have nearly identical net margin and turnover. Where does their ROE difference mainly come from?",
+      "options": ["Different accounting standards and different audit firms", "How long they have existed and how many employees they have", "The industry cycle and policy environment they sit in", "Different equity multipliers — that is, different levels of leverage"],
+      "answer": 3,
+      "explain": "With the first two factors of the DuPont formula equal, ROE moves only with the third: the higher the equity multiplier, the higher the leverage, and the same operating result is magnified by a smaller equity base — higher return, and higher solvency risk too." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>Further Reading</h2>
+    <ul>
+      <li>Accounting: The Basis for Business Decisions by John J. Wild (Chinese edition, China Machine Press) — suggested: the financial statement analysis chapters, covering ratio analysis and the DuPont breakdown.</li>
+      <li>The Accounting Game: Basic Accounting Fresh from the Lemonade Stand by Darrell Mullis &amp; Judith Orloff, Chinese edition (China Machine Press) — suggested: the closing part, the bridge from a single stand to the ratio perspective.</li>
+      <li>Search keywords: DuPont analysis · DuPont identity · Investopedia (<a href="https://www.investopedia.com">investopedia.com</a>)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-reading-statements.html"><span class="pager-label">← Previous</span><span class="pager-title">Reading Financial Statements: Structure and Method</span></a>
+    <a class="next" href="../../03-finance/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Finance · Branch 03 — statements are the raw material of valuation</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Is an equity multiplier of 2 just two-times leverage?’ or ‘Why can a high ROE be dangerous?’ You can also ask it to walk you through a DuPont breakdown of a company you know well. Follow-up questions are part of learning.</div>
+    <p>Accounting · Lesson 4 · Financial Ratios: A Company Checkup | Interactive: simulator and quiz · all figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var ctl = document.getElementById("roe-controls");
+  var formula = document.getElementById("roe-formula");
+  var numEl = document.getElementById("roe-num");
+  var flag = document.getElementById("roe-flag");
+  var barsHost = document.getElementById("roe-bars");
+  var bigBox = document.getElementById("roe-big");
+  if (!ctl || !window.Viz) return;
+
+  var sM = Viz.slider(ctl, { label: "Net profit margin", min: 1, max: 40, step: 0.5, value: 8, format: function (v) { return v.toFixed(1) + "%"; } });
+  var sT = Viz.slider(ctl, { label: "Asset turnover", min: 0.1, max: 3, step: 0.05, value: 1.2, format: function (v) { return v.toFixed(2) + " turns"; } });
+  var sE = Viz.slider(ctl, { label: "Equity multiplier", min: 1, max: 4, step: 0.1, value: 2, format: function (v) { return v.toFixed(1) + " ×"; } });
+
+  var PRESETS = {
+    mall:     { m: 2.5, t: 2.6, e: 2.2 },
+    liquor:   { m: 32,  t: 0.45, e: 1.4 },
+    balanced: { m: 8,   t: 1.2, e: 2 },
+    risk:     { m: 2,   t: 0.4, e: 4 }
+  };
+
+  function judge(v) {
+    var notes = [];
+    if (v.m >= 25) notes.push("High-margin type: strong pricing power, like a premium brand (illustrative)");
+    if (v.t >= 1.8) notes.push("High-turnover type: thin margin, high volume, like grocery retail (illustrative)");
+    if (v.m < 5 && v.t < 1) notes.push('<span class="warn">⚠ Low margin, low turnover: losing on both ends — a worrying model (illustrative)</span>');
+    if (v.e >= 3) notes.push('<span class="warn">⚠ High leverage: gains and losses are amplified together, and solvency risk climbs</span>');
+    if (!notes.length) notes.push("Balanced type: no leg at an extreme — the shape of most manufacturers (illustrative)");
+    return notes.join(" · ");
+  }
+
+  function drawBars(v, roe) {
+    barsHost.innerHTML = "";
+    var rows = [
+      { label: "Net profit margin", val: v.m, max: 40, txt: v.m.toFixed(1) + "%", hero: false },
+      { label: "Asset turnover", val: v.t, max: 3, txt: v.t.toFixed(2) + " turns/yr", hero: false },
+      { label: "Equity multiplier", val: v.e, max: 4, txt: v.e.toFixed(1) + " ×", hero: false },
+      { label: "ROE (product of all three)", val: roe, max: 48, txt: roe.toFixed(1) + "%", hero: true }
+    ];
+    var svg = Viz.svgEl("svg", { viewBox: "0 0 640 216", role: "img" });
+    svg.style.cssText = "width:100%;height:auto;display:block";
+    rows.forEach(function (r, i) {
+      var y = 14 + i * 50;
+      var lb = Viz.svgEl("text", { x: 6, y: y + 17, "font-size": 13, "font-weight": 700, fill: "#57534e" });
+      lb.textContent = r.label;
+      svg.appendChild(lb);
+      svg.appendChild(Viz.svgEl("rect", { x: 158, y: y, width: 382, height: 16, rx: 8, fill: "#ece6da" }));
+      var w = Math.max(5, r.val / r.max * 382);
+      svg.appendChild(Viz.svgEl("rect", { x: 158, y: y, width: w, height: 16, rx: 8, fill: r.hero ? "#1d4ed8" : "#9db6f5" }));
+      var vt = Viz.svgEl("text", { x: 550, y: y + 13, "font-size": 12.5, "font-weight": 800, fill: r.hero ? "#1d4ed8" : "#1c1917" });
+      vt.textContent = r.txt;
+      svg.appendChild(vt);
+    });
+    barsHost.appendChild(svg);
+  }
+
+  function recompute(pop) {
+    var v = { m: sM.get(), t: sT.get(), e: sE.get() };
+    var roe = v.m / 100 * v.t * v.e * 100;
+    numEl.textContent = roe.toFixed(1) + "%";
+    if (pop) {
+      bigBox.classList.remove("pop");
+      void bigBox.offsetWidth;
+      bigBox.classList.add("pop");
+    }
+    formula.innerHTML = "ROE = " + v.m.toFixed(1) + "% × " + v.t.toFixed(2) + " × " + v.e.toFixed(1) + " = <b>" + roe.toFixed(1) + "%</b>";
+    flag.innerHTML = judge(v);
+    drawBars(v, roe);
+  }
+
+  [sM, sT, sE].forEach(function (s) { s.onChange(function () { recompute(false); }); });
+
+  document.querySelectorAll("#roe-sim [data-p]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var p = PRESETS[b.getAttribute("data-p")];
+      if (!p) return;
+      sM.set(p.m); sT.set(p.t); sE.set(p.e);
+      recompute(true);
+    });
+  });
+
+  recompute(false);
+})();
+</script>
+</body>
+</html>

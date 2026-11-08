@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Correlation Is Not Causation · Business Analytics</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .det-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: .9rem 1.05rem; margin: .7rem 0; }
+  .det-card h3 { margin: 0 0 .3rem; font-size: 1rem; }
+  .det-card p { font-size: .92rem; margin: .2rem 0 .4rem; color: var(--ink-soft); }
+  .det-card .det-q { font-weight: 700; color: var(--ink); }
+  .det-opts { display: flex; flex-wrap: wrap; gap: .5rem; margin: .5rem 0 .2rem; }
+  .det-opt {
+    font-family: var(--sans); font-size: .9rem; border: 1.5px solid var(--line); background: var(--paper);
+    color: var(--ink); border-radius: 999px; padding: .35rem 1rem; cursor: pointer; transition: all .15s ease;
+  }
+  .det-opt:hover { border-color: var(--accent); }
+  .det-opt.ok { border-color: var(--good); background: #f0fdf4; color: var(--good); font-weight: 700; }
+  .det-opt.bad { border-color: var(--bad); background: #fef2f2; color: var(--bad); }
+  .det-opt:disabled { cursor: default; opacity: .92; }
+  .det-reveal { font-size: .9rem; color: var(--ink-soft); background: var(--paper-deep); border-radius: 8px; padding: .6rem .85rem; margin-top: .55rem; line-height: 1.7; }
+  .det-reveal b { color: var(--accent); }
+  .btn-primary {
+    background: var(--accent); color: #fff; border: none; border-radius: 999px;
+    padding: .45rem 1.25rem; font-weight: 700; font-size: .92rem; cursor: pointer; font-family: var(--sans);
+  }
+  .btn-ghost {
+    background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); border-radius: 999px;
+    padding: .42rem 1.15rem; font-weight: 700; font-size: .92rem; cursor: pointer; font-family: var(--sans);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .ab-tag { display: inline-block; min-width: 4.2rem; text-align: center; color: #fff; font-weight: 800; font-size: .82rem; border-radius: 999px; padding: .22rem .6rem; }
+  .ab-row { display: flex; align-items: center; gap: .7rem; margin-top: .6rem; font-size: .95rem; font-variant-numeric: tabular-nums; }
+  .ab-num { color: var(--ink); font-weight: 700; }
+  .ab-bar { height: 10px; border-radius: 999px; background: var(--paper-deep); overflow: hidden; margin: .3rem 0 .5rem; }
+  .ab-bar > span { display: block; height: 100%; border-radius: 999px; transition: width .4s ease; }
+</style>
+</head>
+<body class="branch-analytics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Business Analytics</a><span class="crumb-sep">/</span>
+  <span>Correlation Is Not Causation</span>
+  <span class="progress">Lesson 3 of 4</span>
+<a class="lang-switch" href="../../../10-business-analytics/lessons/0003-correlation-vs-causation.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Business Analytics · Lesson 3</p>
+  <h1>Correlation Is Not Causation</h1>
+  <p class="lead">In the months when ice cream sells best, drowning accidents peak — should we ban ice cream? Correlation is the easiest relationship to observe in the data world, and the easiest to misuse: the marketing budget doubled and sales rose — who deserves the credit? This lesson bolts a three-stage filter onto “moving together” and upgrades it into the serious judgment of “who causes whom” — the most expensive checkpoint in data-driven decision-making.</p>
+
+  <h2><span class="secno">1</span>The Correlation Coefficient: The Attraction Between Numbers</h2>
+  <div class="concept">
+    <div class="concept-title">Concept Card · Correlation Coefficient</div>
+    <p>Usually the Pearson correlation coefficient r, which measures how strongly two variables <strong>move together in a straight line</strong>, ranging from −1 to 1: the closer to 1, the tighter the same-direction movement; the closer to −1, the tighter the opposite-direction movement; near 0, the weaker the linear relationship. It only describes “moving together” and never answers “who drives whom”. When two variables correlate, three explanations are common: A causes B; B causes A; or a third variable C causes both A and B — C is the <strong>Confounder</strong>. A false correlation manufactured by C is a <strong>Spurious Correlation</strong>.</p>
+  </div>
+
+  <h2><span class="secno">2</span>Spurious-Correlation Detective: Find the C Hiding Behind the Data</h2>
+  <p>The three “astonishing correlations” below are classic classroom examples (figures illustrative). For each case, pick the confounding variable you think most likely, and the answer is revealed instantly:</p>
+
+  <div class="sim">
+    <div class="sim-title">Spurious-Correlation Detective · Three Cases in a Row (teaching examples)</div>
+    <div id="detWrap"></div>
+    <p class="sim-readout" id="detScore">Solved 0 / 3 cases · hits: 0</p>
+  </div>
+
+  <h2><span class="secno">3</span>From Correlation to Causation: Three Steps Up</h2>
+  <p>To upgrade “correlation” to “causation”, you must clear at least three gates:</p>
+  <ol class="steps">
+    <li data-reveal><strong>Rule out confounding.</strong> After grouping, or statistically controlling for, the suspicious C, does the correlation still stand? Control for age, and the correlation between shoe size and reading scores vanishes.</li>
+    <li data-reveal><strong>Check the time order.</strong> Cause must precede effect: ads run first and sales rise after — only then does causation even qualify; a reversed order can only be coincidence or reverse causation.</li>
+    <li data-reveal><strong>Tell a plausible mechanism.</strong> There must be a transmission chain that makes sense — why exactly would an orange button be more credible? A strong correlation with no explainable mechanism is a lead, not a verdict.</li>
+  </ol>
+  <p>Even clearing all three gates can still leave you wrong, which is why the gold standard in business is the <strong>Randomized Controlled Trial (RCT)</strong>: randomly split people into two groups and change exactly one variable. Randomization flattens both the known and the unknown confounders at once. The internet turned the RCT into a daily operation — the <strong>A/B test</strong>: one group of users sees version A, another sees version B, and you compare the final metric.</p>
+
+  <div class="sim">
+    <div class="sim-title">A/B Test Simulator: Blue Button or Orange Button?</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">An e-commerce site wants to change its “Buy Now” button from blue (A) to orange (B). The simulator has two <b>true conversion rates hidden from you (with only a small gap between them)</b> built in; with every wave of traffic you send, the system generates orders at random according to those true probabilities. The more sample you accumulate, the clearer the verdict:</p>
+    <div class="sim-controls">
+      <div id="abSize"></div>
+      <button type="button" class="btn-primary" id="abGo">Send a wave →</button>
+      <button type="button" class="btn-ghost" id="abReset">Reset</button>
+    </div>
+    <div class="ab-row"><span class="ab-tag" style="background:#1d4ed8">A · Blue</span><span class="ab-num" id="rowA">Not started yet</span></div>
+    <div class="ab-bar"><span id="fillA" style="background:#1d4ed8;width:0%"></span></div>
+    <div class="ab-row"><span class="ab-tag" style="background:#ea580c">B · Orange</span><span class="ab-num" id="rowB">Not started yet</span></div>
+    <div class="ab-bar"><span id="fillB" style="background:#ea580c;width:0%"></span></div>
+    <p class="sim-readout" id="abDelta"></p>
+    <p class="sim-readout" id="abVerdict"></p>
+  </div>
+
+  <div class="callout warn"><span class="callout-label">Experiment discipline</span><br>Change only one variable at a time (the single-variable principle); fix the sample size before the test starts, and do not “peek every day and stop the moment it looks significant” — repeated peeking sharply inflates false positives; evaluate on the final business metric, not on click rate alone.</div>
+
+  <h2><span class="secno">4</span>Survivorship Bias: The Planes That Did Not Come Back</h2>
+  <p>In World War II, the statistician Abraham Wald studied the distribution of bullet holes on bombers that returned — and recommended reinforcing the areas that had <strong>no holes</strong>, because the planes hit in those places never made it back. That is <strong>Survivorship Bias</strong>: counting only the sample that “survived” guarantees an overly rosy conclusion. Business versions are everywhere: survey only long-time users and you will never learn why the churned left; study only the “common traits” of successful companies and you may just be listening to survivors speak on luck’s behalf.</p>
+
+  <div class="case">
+    <div class="case-title">Case · Bing’s Blue Links: A Textbook A/B Test</div>
+    <p>The most tempting experiment in e-commerce is “change the button color, lift conversion”. Microsoft Bing once publicly shared one: A/B tests on many shades of blue for its search-result links, and the winning “bluer blue” reportedly added about US$80 million a year in incremental advertising revenue (a public-talk figure, illustrative). The point is not color mysticism but process discipline: a <strong>single variable</strong> (only the shade changed), <strong>random traffic splits</strong> (the system assigns users at random), <strong>enough sample</strong> (run the full pre-planned period), and a <strong>final metric</strong> (overall revenue, not momentary clicks). The cautionary tale looks like this: “We shipped the orange button on Friday, weekend sales rose 10%, so orange works” — with no control group, promotions, weather, and payday can all sneak into the result; that is exactly the missing “decompose hypotheses” step from Lesson 1.</p>
+    <div class="case-learn"><b>The lesson:</b> put every redesign proposal through four questions first: Can we split traffic randomly? Did we change only one variable? Is the sample big enough? What is the final metric? If an experiment is impossible, fall back to observational methods — grouped comparison, ruling out confounders, hunting for a mechanism — and say out loud how much confidence the conclusion carries.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Correlation Coefficient</dt><dd>The statistic r measuring how strongly two variables move together linearly, from −1 to 1; describes co-movement only, never direction.</dd>
+      <dt>Spurious Correlation</dt><dd>An apparent correlation created by a third factor or by coincidence; remove the confounder and it vanishes.</dd>
+      <dt>Confounder</dt><dd>A third factor that influences both variables — suspect number one on the road from correlation to causation.</dd>
+      <dt>Randomized Controlled Trial (RCT)</dt><dd>An experimental design with random group assignment and a single-variable contrast; the gold standard of causal inference.</dd>
+      <dt>A/B Testing</dt><dd>The internet’s RCT: randomly split users between two versions and compare the final metric.</dd>
+      <dt>Statistical Significance</dt><dd>A difference larger than noise can explain; business judgments often use the simplified 2σ rule.</dd>
+      <dt>Survivorship Bias</dt><dd>Systematic over-optimism from counting only the surviving samples, e.g. surveying only retained users.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Correlation is a lead, not a verdict: causation must clear three gates — <b>confounding, time order, mechanism</b>; run an experiment whenever you can, because the A/B test is the business world’s gold standard; before you judge, ask about the planes that did not come back.</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "Comparing cities, you find the number of churches and the number of bars are highly correlated. The most likely confounding variable is:",
+      "options": ["Residents’ average alcohol consumption", "Churches set the bars’ opening hours", "The city’s total population", "How cold the local climate is"],
+      "answer": 2,
+      "explain": "Big cities have more people, so the <b>absolute counts</b> of both churches and bars are naturally larger — scale drives both. Recompute per capita and the correlation most likely vanishes. Scale-type confounders are everywhere in business data." },
+    { "q": "Which piece of evidence is most likely to support the causal claim “A causes B”?",
+      "options": ["An experiment with random assignment and only one changed variable", "A correlation coefficient of 0.9 between the two", "The two have risen in lockstep for the past decade", "Several industry experts endorse the explanation"],
+      "answer": 0,
+      "explain": "However high, a correlation coefficient only says “moving together”; synchronized growth and expert endorsement cannot rule out confounding or time order. Randomized controlled experiments flatten known and unknown confounders alike — the gold standard." },
+    { "q": "A team changes “button color, copy, and page layout all at once” in an A/B test. This violates:",
+      "options": ["The adequate-sample principle", "The observable-metric principle", "The random-assignment principle", "The single-variable principle"],
+      "answer": 3,
+      "explain": "Changing three variables at once makes attribution impossible even if the metric rises. A/B testing must hold to the <b>single-variable principle</b>: test one change at a time, everything else fixed." },
+    { "q": "A product team evaluates the product experience using data from “users retained for over a year” only. The biggest risk is:",
+      "options": ["Too small a sample, inflating the variance", "Survivorship bias: churned users are never counted", "The mean distorted by outliers", "The correlation squeezed toward zero"],
+      "answer": 1,
+      "explain": "Long-tenured users are “the sample that survived” — they are inherently more satisfied, while the churned users’ complaints sit outside the data. It is the same bias as Wald reading bullet holes on the planes that returned." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>How to Lie with Statistics by Darrell Huff (recommended: the chapters on misused correlation and causation)</li>
+      <li>Naked Statistics by Charles Wheelan (recommended: the chapters on correlation and causal inference)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-descriptive-stats.html"><span class="pager-label">← Previous</span><span class="pager-title">Descriptive Statistics: Don’t Be Fooled by Averages</span></a>
+    <a class="next" href="0004-kpi-dashboard.html"><span class="pager-label">Next →</span><span class="pager-title">Business Intelligence and Dashboards</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “Help me design an A/B test plan” or “What confounders could explain this correlation I found?” — practice the three causal gates on a real change you are considering. Follow-up questions are part of learning.</div>
+    <p>Business Analytics · Lesson 3 of 4 · case studies and figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- Simulation 1: spurious-correlation detective ---- */
+  var CASES = [
+    { title: "Case 1 · Ice Cream Sales ↑↑ Drowning Accidents",
+      desc: "Month-by-month data: in the months when ice cream sells better, drowning accidents are also more frequent — the two rise and fall together (a classic classroom case, illustrative).",
+      q: "The most likely confounding variable is:",
+      opts: ["Local temperature and season", "The number of pool lifeguards", "Residents’ average age"],
+      ans: 0,
+      explain: "Hot weather → more people buy ice cream, and at the same time more people go swimming → more drownings. Temperature drives both; control for season and the correlation between sales and accidents disappears." },
+    { title: "Case 2 · Children’s Shoe Sizes ↑↑ Reading Scores",
+      desc: "Survey a group of children aged 4–12: the bigger the shoe size, the higher the reading-test score (a classic classroom case, illustrative).",
+      q: "The most likely confounding variable is:",
+      opts: ["The number of books at home", "The child’s age", "How far school is from home"],
+      ans: 1,
+      explain: "Older age → bigger feet, and at the same time → stronger reading skills. Control for age and the correlation between shoe size and scores vanishes instantly. A textbook confounder." },
+    { title: "Case 3 · Number of Churches ↑↑ Number of Bars",
+      desc: "Compare cities side by side: the places with more churches also have more bars (a classic classroom case, illustrative).",
+      q: "The most likely confounding variable is:",
+      opts: ["The city’s total population", "Residents’ average income", "How warm or cold the local climate is"],
+      ans: 0,
+      explain: "Big cities have more people, so the absolute counts of both churches and bars are higher; switch to per-capita figures and the correlation disappears. Scale confounders are everywhere in business: a big store is “more” of everything." }
+  ];
+  var detWrap = document.getElementById("detWrap");
+  var detScore = document.getElementById("detScore");
+  var score = 0, doneCount = 0;
+  CASES.forEach(function (c) {
+    var card = document.createElement("div");
+    card.className = "det-card";
+    var h = document.createElement("h3"); h.textContent = c.title; card.appendChild(h);
+    var d = document.createElement("p"); d.textContent = c.desc; card.appendChild(d);
+    var q = document.createElement("p"); q.className = "det-q"; q.textContent = c.q; card.appendChild(q);
+    var opts = document.createElement("div"); opts.className = "det-opts";
+    c.opts.forEach(function (o, oi) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "det-opt"; b.textContent = o;
+      b.addEventListener("click", function () {
+        if (card.getAttribute("data-done")) return;
+        card.setAttribute("data-done", "1"); doneCount++;
+        var correct = oi === c.ans;
+        if (correct) score++;
+        Array.prototype.forEach.call(opts.children, function (bb, i) {
+          bb.disabled = true;
+          if (i === c.ans) bb.classList.add("ok");
+        });
+        if (!correct) b.classList.add("bad");
+        var r = document.createElement("div");
+        r.className = "det-reveal";
+        r.innerHTML = (correct ? "<b>✓ Caught it.</b> " : "<b>✗ Not this one.</b> ") + c.explain;
+        card.appendChild(r);
+        var tail = doneCount === 3 ? " — Detective’s note: whenever a correlation looks astonishing, hunt first for the third variable C that drives both." : "";
+        detScore.innerHTML = "Solved " + doneCount + " / 3 cases · hits: <b>" + score + "</b>" + tail;
+      });
+      opts.appendChild(b);
+    });
+    card.appendChild(opts);
+    detWrap.appendChild(card);
+  });
+
+  /* ---- Simulation 2: A/B test simulator ---- */
+  var PA = 0.040, PB = 0.050; // built-in true conversion rates (illustrative, hidden from the user)
+  var nA = 0, cA = 0, nB = 0, cB = 0;
+  var slider = Viz.slider(document.getElementById("abSize"),
+    { label: "Group size per wave", min: 200, max: 5000, step: 100, value: 1000, format: function (v) { return v + " visitors"; } });
+  function binom(n, p) { var c = 0; for (var i = 0; i < n; i++) if (Math.random() < p) c++; return c; }
+  function pct(x) { return (x * 100).toFixed(2) + "%"; }
+  function barW(r) { return Math.max(2, Math.min(100, r / 0.08 * 100)); }
+  function render() {
+    var pA = nA ? cA / nA : 0, pB = nB ? cB / nB : 0;
+    document.getElementById("rowA").textContent = nA ? "Visitors " + nA.toLocaleString() + " · orders " + cA + " · conversion " + pct(pA) : "Not started yet";
+    document.getElementById("rowB").textContent = nB ? "Visitors " + nB.toLocaleString() + " · orders " + cB + " · conversion " + pct(pB) : "Not started yet";
+    document.getElementById("fillA").style.width = barW(pA) + "%";
+    document.getElementById("fillB").style.width = barW(pB) + "%";
+    var d = pB - pA, z = 0;
+    if (nA > 0 && nB > 0) {
+      var se = Math.sqrt(pA * (1 - pA) / nA + pB * (1 - pB) / nB);
+      z = d / se;
+    }
+    document.getElementById("abDelta").innerHTML = nA
+      ? "Δ(B − A) = <b>" + (d >= 0 ? "+" : "") + (d * 100).toFixed(2) + " percentage points</b> · simplified significance z ≈ <b>" + z.toFixed(2) + "</b>"
+      : "";
+    var v;
+    if (nA === 0) v = "No data yet — click “Send a wave” and let the sample speak.";
+    else if (nA < 800) v = "Sample still thin: the current gap is <b>most likely noise</b> — hold off on conclusions and keep adding traffic.";
+    else if (z >= 2) v = "✅ <b>The gap crosses the simplified significance line (≥2σ)</b>: version B currently leads. Note: the true difference is actually tiny — small differences need big samples to see clearly.";
+    else if (z <= -2) v = "⚠️ <b>Version A pulls ahead</b>? Such “reversals” across repeated waves are mostly the work of noise and repeated peeking — send a few more waves and watch.";
+    else v = "The gap is still <b>within noise</b>: keep accumulating sample, or accept “no meaningful difference between the two”.";
+    document.getElementById("abVerdict").innerHTML = v;
+  }
+  document.getElementById("abGo").addEventListener("click", function () {
+    var n = slider.get();
+    nA += n; nB += n;
+    cA += binom(n, PA); cB += binom(n, PB);
+    render();
+  });
+  document.getElementById("abReset").addEventListener("click", function () {
+    nA = cA = nB = cB = 0; render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Competitive Advantage: Cost Leadership and Differentiation · Strategy</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .sim-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 700; cursor: pointer;
+    border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+    color: var(--accent); background: #fff; border-radius: 999px; padding: .35rem 1.05rem;
+    transition: all .15s ease;
+  }
+  .sim-btn:hover { background: color-mix(in srgb, var(--accent) 10%, #fff); }
+  /* ---- Moat flip cards ---- */
+  .moat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .9rem; margin: 1.2rem 0; }
+  .moat-card { background: none; border: none; padding: 0; margin: 0; cursor: pointer; perspective: 900px; font-family: inherit; text-align: left; }
+  .moat-inner { position: relative; width: 100%; height: 232px; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2, .7, .3, 1); }
+  .moat-card.flipped .moat-inner { transform: rotateY(180deg); }
+  .moat-face {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow);
+    padding: .85rem .95rem; background: #fff; overflow: hidden;
+  }
+  .moat-front { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; }
+  .moat-front .mi { font-size: 1.9rem; line-height: 1; }
+  .moat-front .mn { font-family: var(--serif); font-weight: 700; font-size: 1.06rem; }
+  .moat-front .me { font-size: .72rem; color: var(--ink-faint); letter-spacing: .04em; text-align: center; }
+  .moat-front .hint {
+    font-size: .74rem; color: var(--accent); margin-top: .55rem;
+    border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--line)); border-radius: 999px; padding: .08rem .7rem;
+  }
+  .moat-back {
+    transform: rotateY(180deg); font-size: .8rem; line-height: 1.62;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, #fff), #fff);
+    overflow: auto;
+  }
+  .moat-back p { margin: 0 0 .5em; }
+  .moat-back b { color: var(--accent); }
+  .moat-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 12px; }
+  @media print {
+    .moat-inner { position: static; height: auto; transform: none !important; }
+    .moat-face { position: static; backface-visibility: visible; -webkit-backface-visibility: visible; }
+    .moat-back { transform: none; margin-top: .5rem; }
+  }
+  /* ---- Two-path animation ---- */
+  .path-caption {
+    font-size: .93rem; line-height: 1.75; background: var(--paper-deep);
+    border-radius: 10px; padding: .7rem .95rem; margin: .8rem 0 0; min-height: 3.2em;
+  }
+  .path-meta { display: flex; align-items: center; gap: .9rem; margin-top: .8rem; flex-wrap: wrap; }
+  .path-step { font-size: .9rem; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="branch-strategy">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Strategy</a><span class="crumb-sep">/</span>
+  <span>Competitive Advantage</span>
+  <span class="progress">Lesson 3 of 4</span>
+<a class="lang-switch" href="../../../08-strategy/lessons/0003-competitive-advantage.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Strategy · Lesson 3</p>
+  <h1>Competitive Advantage: Cost Leadership and Differentiation</h1>
+  <p class="lead">Last lesson we sized up the industry’s table; this one returns to the cards in your own hand. Within an industry, <em>what lets you keep winning?</em> Once can be luck, twice a tailwind; a decade of uninterrupted profit must rest on some structural advantage that rivals cannot learn and cannot route around. This lesson gives you two tools: Porter’s <strong>generic strategies</strong> to help you choose a route, and <strong>VRIO</strong> plus the <strong>economic moat</strong> to check whether that route can be held.</p>
+
+  <h2><span class="secno">1</span>Three Generic Strategies — and the “Stuck in the Middle” Trap</h2>
+  <p>In Porter’s view, there are essentially only three offensive routes at the business level — the difference lies in whether you build your advantage on <b>cost</b> or on <b>uniqueness</b>, and whether you aim at the <b>whole industry</b> or a <b>niche</b>:</p>
+  <figure class="figure">
+    <div class="figure-body">
+      <svg viewBox="0 0 640 340" role="img" style="width:100%;height:auto;display:block" aria-label="Generic strategies matrix">
+        <g>
+          <rect x="130" y="40" width="240" height="120" rx="10" fill="#efff9f2" stroke="#15803d" stroke-width="1.5"></rect>
+          <text x="250" y="86" text-anchor="middle" font-size="15.5" font-weight="800" fill="#15803d">Cost Leadership</text>
+          <text x="250" y="108" text-anchor="middle" font-size="11.5" fill="#57534e">Cost Leadership · Industry-wide</text>
+          <text x="250" y="130" text-anchor="middle" font-size="10.5" fill="#a8a29e">Scale, process, discipline → lowest unit cost</text>
+          <rect x="390" y="40" width="240" height="120" rx="10" fill="#fdf2f4" stroke="#9f1239" stroke-width="1.5"></rect>
+          <text x="510" y="86" text-anchor="middle" font-size="15.5" font-weight="800" fill="#9f1239">Differentiation</text>
+          <text x="510" y="108" text-anchor="middle" font-size="11.5" fill="#57534e">Differentiation · Industry-wide</text>
+          <text x="510" y="130" text-anchor="middle" font-size="10.5" fill="#a8a29e">Brand, experience, technology → pricing power</text>
+          <rect x="130" y="180" width="240" height="120" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="250" y="226" text-anchor="middle" font-size="15.5" font-weight="800" fill="#57534e">Cost Focus</text>
+          <text x="250" y="248" text-anchor="middle" font-size="11.5" fill="#57534e">Focus · Niche market</text>
+          <text x="250" y="270" text-anchor="middle" font-size="10.5" fill="#a8a29e">Serve one niche and drive cost to the floor</text>
+          <rect x="390" y="180" width="240" height="120" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="510" y="226" text-anchor="middle" font-size="15.5" font-weight="800" fill="#57534e">Differentiation Focus</text>
+          <text x="510" y="248" text-anchor="middle" font-size="11.5" fill="#57534e">Focus · Niche market</text>
+          <text x="510" y="270" text-anchor="middle" font-size="10.5" fill="#a8a29e">Become irreplaceable for one niche</text>
+          <text x="118" y="104" text-anchor="end" font-size="12.5" font-weight="700" fill="#1c1917">Cost advantage</text>
+          <text x="118" y="244" text-anchor="end" font-size="12.5" font-weight="700" fill="#1c1917">Uniqueness edge</text>
+          <text x="250" y="322" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c1917">Target market: industry-wide</text>
+          <text x="510" y="322" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c1917">Target market: niche (focus)</text>
+          <text x="118" y="64" text-anchor="end" font-size="10.5" fill="#a8a29e">Source of advantage</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The generic strategies matrix (illustrative): two axes — source of advantage × target market. Porter’s warning: the most dangerous position is not inside any of the boxes, but in the gray zone between them.</figcaption>
+  </figure>
+  <div class="callout warn"><span class="callout-label">Warning sign</span><strong>Stuck in the middle</strong>: costs not lowest, value not highest, leaning on neither side. It is the same disease as Lesson 1’s “wanting it both ways” — the trough of that lesson’s U-shaped curve is a portrait of it.</div>
+
+  <h2><span class="secno">2</span>VRIO: A Checkup for Your Advantage</h2>
+  <p>Claiming an advantage is easy; inspecting the goods takes a framework. The four <strong>VRIO</strong> questions escalate one by one — fail one, and none of the later ones matter:</p>
+  <ol class="steps">
+    <li><strong>Value</strong>: Does it help customers create value, or help the firm capture it? Fall short here, and it is merely a burden.</li>
+    <li><strong>Rarity</strong>: Do rivals all have one too? If everyone has it, it is merely the price of admission — parity, not advantage.</li>
+    <li><strong>Inimitability</strong>: How much would it cost rivals, and how long would it take, to copy? History, causal ambiguity, and social complexity all make imitation expensive.</li>
+    <li><strong>Organization</strong>: Do the company’s structure, processes, and incentives actually put the resource to work? A great resource inside a bad organization still goes to waste.</li>
+  </ol>
+  <p>Pass all four and you have a <strong>sustained competitive advantage</strong>; pass only the first two, and the advantage is temporary — the bonus period equals the rivals’ learning period.</p>
+
+  <h2><span class="secno">3</span>Five Sources of the Moat</h2>
+  <p>Warren Buffett likened a sustained advantage to a <strong>moat</strong> around a castle: the wider the water, the better the castle holds. Pat Dorsey, an analyst at Morningstar, divided that water into several streams — in the puzzle below, click a card to flip it and see what each moat is, who uses it, and how it erodes. Remember: moats run dry; nothing is settled once and for all.</p>
+
+  <div class="sim">
+    <div class="sim-title">Moat Puzzle: Click a Card to Flip It</div>
+    <div class="moat-grid">
+      <div class="moat-card" tabindex="0" role="button" aria-label="Economies of scale moat, click to flip">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">🏭</span><span class="mn">Economies of Scale</span><span class="me">Bigger output, lower unit cost</span><span class="hint">Click to flip</span></div>
+          <div class="moat-face moat-back">
+            <p><b>What it is:</b> The larger the output, the thinner fixed costs spread, and unit cost slides down with it.</p>
+            <p><b>Classic examples:</b> Large retail and logistics networks use enormous order volumes to crush purchasing and fulfillment costs (illustrative).</p>
+            <p><b>How it erodes:</b> Market saturation, technology shifts that reset capacity, or rivals whose “local scale” in a smaller market overtakes yours.</p>
+          </div>
+        </div>
+      </div>
+      <div class="moat-card" tabindex="0" role="button" aria-label="Network effects moat, click to flip">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">🕸️</span><span class="mn">Network Effects</span><span class="me">More users, more value</span><span class="hint">Click to flip</span></div>
+          <div class="moat-face moat-back">
+            <p><b>What it is:</b> Every additional user makes the product more valuable to all the others — winner takes all.</p>
+            <p><b>Classic examples:</b> Social messaging and two-sided marketplaces — more buyers bring more sellers, and the snowball rolls (illustrative).</p>
+            <p><b>How it erodes:</b> Multi-homing (users installing several apps at once), niches picked off one by one, generational migration.</p>
+          </div>
+        </div>
+      </div>
+      <div class="moat-card" tabindex="0" role="button" aria-label="Switching costs moat, click to flip">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">🔗</span><span class="mn">Switching Costs</span><span class="me">Costly to leave</span><span class="hint">Click to flip</span></div>
+          <div class="moat-face moat-back">
+            <p><b>What it is:</b> Switching to a rival costs money, time, data, and relearning — so customers stay.</p>
+            <p><b>Classic examples:</b> Once enterprise software is embedded in the workflow, migration drags company-wide training and data along with it (illustrative).</p>
+            <p><b>How it erodes:</b> Portable data, standardized interfaces, and a new generation of users with no legacy baggage.</p>
+          </div>
+        </div>
+      </div>
+      <div class="moat-card" tabindex="0" role="button" aria-label="Intangible assets moat, click to flip">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">👑</span><span class="mn">Intangible Assets</span><span class="me">Brands, patents, licenses</span><span class="hint">Click to flip</span></div>
+          <div class="moat-face moat-back">
+            <p><b>What it is:</b> Brand mindshare, patents, and licenses — exclusive rights at the legal or perceptual level.</p>
+            <p><b>Classic examples:</b> Century-old consumer brands, chip-design patents, banking and telecom licenses (illustrative).</p>
+            <p><b>How it erodes:</b> Brands aging out of favor, patents expiring, regulators opening up licenses.</p>
+          </div>
+        </div>
+      </div>
+      <div class="moat-card" tabindex="0" role="button" aria-label="Cost advantages moat, click to flip">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">⚙️</span><span class="mn">Cost Advantages</span><span class="me">The cheapest way to produce</span><span class="hint">Click to flip</span></div>
+          <div class="moat-face moat-back">
+            <p><b>What it is:</b> Better processes, locations, or learning curves that drive unit cost down to the industry’s floor.</p>
+            <p><b>Classic examples:</b> The low-cost carrier’s fast point-to-point turnaround process; continuous improvement on the factory floor (illustrative).</p>
+            <p><b>How it erodes:</b> Processes copied, input prices rising, or rivals entering from lower-cost locations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sim">
+    <div class="sim-title">Two Strategy Paths, Animated: The Cost Line vs the Value Line</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">On one chart, teal is the <strong>cost leader’s</strong> unit cost, rose is the <strong>differentiator’s</strong> customers’ willingness to pay, and the gray dashed line is the industry average price (all illustrative indexes). Click “Next” and watch the two routes cross the break-even line one after the other — different paths, same destination.</p>
+    <div class="figure-body" id="path-chart" style="padding:.2rem 0 0"></div>
+    <div class="path-meta">
+      <button type="button" class="sim-btn" id="path-btn">Next ▸</button>
+      <span class="path-step">Progress <span id="path-step">1 / 6</span></span>
+    </div>
+    <p class="path-caption" id="path-caption"></p>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case · IKEA and Apple: Two Textbook Moats</p>
+    <p><strong>IKEA</strong> plays cost leadership: it designs its own furniture, flat-packs it to shrink shipping costs, has customers pick up and assemble it themselves, builds stores on cheaper suburban land, and amplifies purchasing scale with a single global product line. Every link answers the same question — “can we squeeze out a little more cost?” Every krona saved becomes the value proposition of “good design that most people can afford” (illustrative description).</p>
+    <p><strong>Apple</strong> plays differentiation: brand and design make customers willing to pay a premium; an ecosystem where hardware, software, and services interlock makes the hidden cost of leaving extremely high; and in-house silicon widens the experience gap even further. It never fights the war of “who is cheaper” — only the war of “who is better” (illustrative description).</p>
+    <p class="case-learn"><b>The lesson of this case:</b> neither route ranks above the other; what kills is wavering between them. Run VRIO on the asset you are proudest of — is it rare? Is it hard to copy? Is the organization actually making money with it? If any of the three answers is fuzzy, what you are seeing may be only the moat’s reflection.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Cost Leadership</dt><dd>The generic strategy that wins through the industry’s lowest unit cost, supported by scale, process, and discipline.</dd>
+      <dt>Differentiation</dt><dd>The generic strategy that wins a price premium with unique value, supported by brand, experience, technology, or ecosystem.</dd>
+      <dt>Focus</dt><dd>The generic strategy of serving one niche only — with cost leadership or differentiation within it.</dd>
+      <dt>Stuck in the Middle</dt><dd>The awkward state of neither lowest cost nor highest value; Porter holds that it must lose over the long run.</dd>
+      <dt>VRIO Framework</dt><dd>Four questions — value, rarity, inimitability, organization — that test whether a resource yields sustained competitive advantage.</dd>
+      <dt>Economic Moat</dt><dd>A structural advantage that protects profit from competitive erosion; it commonly has five sources.</dd>
+      <dt>Switching Costs</dt><dd>The money, time, data, and learning a customer must give up to move to a rival product.</dd>
+      <dt>Network Effects</dt><dd>Positive feedback in which user growth itself raises the product’s value; often ends in winner-take-all.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>There are only three routes to winning: cost leadership, differentiation, and focus — the most dangerous place is stuck in the middle. An advantage counts only after passing all four VRIO gates; moats have five sources, every one of them can run dry, and all of them need constant deepening.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      {
+        "q": "An enterprise software firm’s annual churn is extremely low, mainly because switching systems would drag along data migration and company-wide retraining. Which moat is this?",
+        "options": ["Network effects", "Switching costs", "Economies of scale", "Intangible assets"],
+        "answer": 1,
+        "explain": "The money, time, and learning that a system change would cost keep customers in place — these are <b>switching costs</b>. Distinguish them from network effects: the product does not get better as users multiply."
+      },
+      {
+        "q": "In Porter’s theory, a firm that simultaneously pursues lower cost and more luxurious service while achieving neither is in what state?",
+        "options": ["Cost leadership", "Differentiation", "Focus on a niche", "Stuck in the middle"],
+        "answer": 3,
+        "explain": "<b>Stuck in the middle</b>: costs not lowest, value not highest. It shares the same root as Lesson 1’s “wanting it both ways” and the trough of the U-shaped curve."
+      },
+      {
+        "q": "When testing a resource with the VRIO framework, the first question to ask is:",
+        "options": ["Whether it creates value for customers", "Whether it is sufficiently rare", "Whether it is hard to imitate", "Whether the organization can put it to use"],
+        "answer": 0,
+        "explain": "V is the gate: ask <b>value</b> first — a resource that creates no value for customers or the firm does not even qualify for discussion. Rarity and inimitability come after, raising the durability of the advantage in turn."
+      },
+      {
+        "q": "The more people use a certain messaging tool, the harder new users find it to leave. This moat is:",
+        "options": ["Switching costs", "Cost advantage", "Network effects", "Brand equity"],
+        "answer": 2,
+        "explain": "User growth itself raises the product’s value — the signature of <b>network effects</b>, common in social messaging and two-sided platforms, and prone to snowball into winner-take-all (illustrative)."
+      },
+      {
+        "q": "IKEA has customers pick up and assemble furniture themselves, builds stores in the suburbs, and flat-packs boxes to shrink shipping costs. The core intent of this set of arrangements is:",
+        "options": ["To systematically push costs down and support a low-price position", "To raise the professionalism and responsiveness of service", "To strengthen a premium brand image and pricing power", "To lengthen store dwell time and deepen the experience"],
+        "answer": 0,
+        "explain": "The whole set of activities answers one question — “can we squeeze out a little more cost?” Every cent saved goes back into low prices: this is precisely the activity system of the <b>cost leadership</b> route (illustrative)."
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Competitive Advantage by Michael E. Porter (start with: Chapters 1–2)</li>
+      <li>Competitive Strategy by Michael E. Porter (start with: Chapter 2, “Generic Competitive Strategies”)</li>
+      <li>The Little Book That Builds Wealth by Pat Dorsey (start with: Chapters 1–3 — an investor’s checklist of moat sources)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-five-forces.html"><span class="pager-label">← Previous</span><span class="pager-title">Five Forces: How Attractive Is the Industry?</span></a>
+    <a class="next" href="0004-business-model-canvas.html"><span class="pager-label">Next →</span><span class="pager-title">The Business Model Canvas</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Run a VRIO checkup on the resource our company is proudest of’ or ‘Are we stuck in the middle?’ Aim the frameworks at your own company; the answers often sting, but they help. Follow-up questions are part of learning.</div>
+    <p>Strategy · Lesson 3 · Competitive Advantage: Cost Leadership and Differentiation | Interactive: moat flip cards + two-path animation · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---- Moat flip cards ---- */
+  document.querySelectorAll(".moat-card").forEach(function (card) {
+    function flip() { card.classList.toggle("flipped"); }
+    card.addEventListener("click", flip);
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault(); flip();
+      }
+    });
+  });
+
+  /* ---- Two-path strategy animation ---- */
+  var box = document.getElementById("path-chart");
+  var btn = document.getElementById("path-btn");
+  var capEl = document.getElementById("path-caption");
+  var stepEl = document.getElementById("path-step");
+  if (!box || !btn || !window.Viz) return;
+
+  function costCurve(x) { return 70 * Math.exp(-0.18 * x) + 22; }
+  function valueCurve(x) { return 38 + 34 * (1 - Math.exp(-0.2 * x)); }
+  var PRICE = 55;
+
+  var axes = Viz.axes(box, {
+    w: 640, h: 360, margin: { t: 26, r: 138, b: 52, l: 56 },
+    xDomain: [0, 10], yDomain: [0, 100],
+    xLabel: "Cumulative scale / time →", yLabel: "Unit cost / willingness to pay (index)",
+    xTicks: 5, yTicks: 4
+  });
+
+  function curvePts(fn) {
+    var a = [];
+    for (var i = 0; i <= 40; i++) {
+      var x = i / 4;
+      a.push([axes.x(x), axes.y(fn(x))]);
+    }
+    return a;
+  }
+  var costGuide = Viz.line(axes.svg, curvePts(costCurve), { color: "#0e7490", width: 2, dash: "5 5" });
+  costGuide.setAttribute("opacity", "0.35");
+  var valueGuide = Viz.line(axes.svg, curvePts(valueCurve), { color: "#9f1239", width: 2, dash: "5 5" });
+  valueGuide.setAttribute("opacity", "0.35");
+
+  axes.svg.appendChild(Viz.svgEl("line", {
+    x1: axes.x(0), x2: axes.x(10), y1: axes.y(PRICE), y2: axes.y(PRICE),
+    stroke: "#a8a29e", "stroke-width": 2, "stroke-dasharray": "8 6"
+  }));
+  Viz.label(axes.svg, axes.x(0) + 4, axes.y(PRICE) - 7, "Industry average price (illustrative)", { size: 11.5, color: "#a8a29e" });
+  Viz.label(axes.svg, axes.x(10) + 8, axes.y(costCurve(10)) + 4, "Cost leader · unit cost", { size: 11.5, color: "#0e7490" });
+  Viz.label(axes.svg, axes.x(10) + 8, axes.y(valueCurve(10)) + 4, "Differentiator · willingness to pay", { size: 11.5, color: "#9f1239" });
+
+  var STEPS = [
+    "Starting point: both lines are on the wrong side — the cost leader’s unit cost sits above the industry average price, and the differentiator’s willingness to pay sits below it (illustrative).",
+    "The cost leadership path: scale purchasing, standardization, and the learning curve drive unit cost rapidly down the curve.",
+    "The cost line drops below the industry average price: you can fight for price-sensitive customers with low fares while keeping the margin — the cost moat holds.",
+    "The differentiation path: brand, experience, and ecosystem lift customers’ willingness to pay all the way up.",
+    "The value line climbs above the industry average price: no need to join the price war — trade premium for profit, and the differentiation moat holds.",
+    "Different paths, same destination: profit = willingness to pay − unit cost. Both routes widen that gap; the danger is stopping in the middle — cost not low enough, value not high enough."
+  ];
+  var step = 0;
+  var dyn = Viz.svgEl("g");
+  axes.svg.appendChild(dyn);
+
+  function render() {
+    while (dyn.firstChild) dyn.removeChild(dyn.firstChild);
+    var xmax = step * 2;
+    if (xmax > 0) {
+      function seg(fn) {
+        var a = [];
+        for (var i = 0; i <= 20; i++) {
+          var x = xmax * i / 20;
+          a.push([axes.x(x), axes.y(fn(x))]);
+        }
+        return a;
+      }
+      Viz.line(dyn, seg(costCurve), { color: "#0e7490", width: 3.5 });
+      Viz.line(dyn, seg(valueCurve), { color: "#9f1239", width: 3.5 });
+      Viz.dot(dyn, axes.x(xmax), axes.y(costCurve(xmax)), { r: 6, fill: "#0e7490", pulse: step < STEPS.length - 1 });
+      Viz.dot(dyn, axes.x(xmax), axes.y(valueCurve(xmax)), { r: 6, fill: "#9f1239", pulse: step < STEPS.length - 1 });
+    }
+    capEl.textContent = STEPS[step];
+    stepEl.textContent = (step + 1) + " / " + STEPS.length;
+    btn.textContent = step >= STEPS.length - 1 ? "Reset ↻" : "Next ▸";
+  }
+
+  btn.addEventListener("click", function () {
+    step = step >= STEPS.length - 1 ? 0 : step + 1;
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

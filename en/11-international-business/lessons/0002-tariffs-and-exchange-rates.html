@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tariffs and Exchange Rates · International Business</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .legend-row { display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: .88rem; color: var(--ink-soft); margin: .6rem 0 .2rem; }
+  .legend-row .sw { display: inline-block; width: .95em; height: .95em; border-radius: 3px; margin-right: .35em; vertical-align: -1px; }
+</style>
+</head>
+<body class="branch-international">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">International Business</a><span class="crumb-sep">/</span>
+  <span>Tariffs &amp; Exchange Rates</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../11-international-business/lessons/0002-tariffs-and-exchange-rates.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">International Business · Lesson 2</p>
+  <h1>Tariffs and Exchange Rates</h1>
+  <p class="lead">Lesson 1 showed that trade makes both sides better off — but goods must pass through two “revolving doors”: customs adds a markup (the tariff), and money must be converted (the exchange rate). How far each door is cranked, and to which notch, directly rewrites the profit and loss of both the import business and the export business — and it is also where politics and economics argue loudest.</p>
+
+  <h2><span class="secno">1</span>How a Tariff Raises the Domestic Price</h2>
+  <p>A <em>tariff</em> is a tax on imported goods. The first step in analyzing it is accepting the “small-country assumption”: if a country’s imports are too small to move the world market, it is a price taker at the <em>world price</em> — whatever the world trades at is the price. Impose a tariff of ¥t on each unit, and the domestic price rises from P<sub>w</sub> to P<sub>w</sub> + t in a single step.</p>
+  <p>The moment the price rises, three things happen at once (in the language of supply and demand — see <a href="../../01-economics/lessons/0001-supply-and-demand.html">Lesson 1 of the Economics branch</a>): domestic producers, seeing a higher selling price, are willing to produce more, and output climbs along the supply curve; consumers, seeing a higher price, buy less, and quantity demanded slides down the demand curve; the <em>import volume</em> squeezed between the two shrinks accordingly. A tariff works like a sluice gate: it shields the producers inside the gate, squeezes the consumers inside the gate, and shuts foreign competitors outside.</p>
+  <div class="formula">
+    Domestic price with tariff P<sub>t</sub> = world price P<sub>w</sub> + tariff t
+  </div>
+
+  <h2><span class="secno">2</span>Who Wins, Who Loses: The Welfare Ledger of a Tariff</h2>
+  <p>A tariff creates no wealth out of thin air; what it does is <em>transfer</em>: it moves money from consumers to domestic producers and the government, “spilling” a portion along the way. Economists keep the books with three areas:</p>
+  <ul class="steps">
+    <li><b>Consumer loss</b>: as the price rises from P<sub>w</sub> to P<sub>t</sub>, consumer surplus shrinks by one whole trapezoid.</li>
+    <li><b>Producer gain and government revenue</b>: the part of the trapezoid transferred to domestic firms (the green area left of the supply curve), plus the “tariff × import volume” rectangle the government collects.</li>
+    <li><b>Deadweight loss</b>: the two red triangles inside the trapezoid that nobody receives — inefficient domestic production forcibly replaces cheaper imports, a slice of consumption is “priced out,” and total social welfare falls on net.</li>
+  </ul>
+  <div class="formula">
+    Deadweight loss = ½ × t × rise in domestic output (production-side triangle)&nbsp;+&nbsp;½ × t × fall in domestic consumption (consumption-side triangle)
+  </div>
+
+  <div class="sim">
+    <div class="sim-title">Tariff Welfare Simulator · Drag the tariff and follow every cent</div>
+    <div class="sim-controls" id="tariff-controls"></div>
+    <div id="tariff-chart"></div>
+    <div class="legend-row">
+      <span><span class="sw" style="background:#15803d"></span>Producer gain (transfer)</span>
+      <span><span class="sw" style="background:#b45309"></span>Government tariff revenue (transfer)</span>
+      <span><span class="sw" style="background:#b91c1c"></span>Deadweight loss (net loss)</span>
+      <span style="color:var(--ink-faint)">Consumer loss = sum of the three above</span>
+    </div>
+    <p class="sim-readout" id="tariff-readout">Loading simulator…</p>
+    <p style="font-size:.87rem;color:var(--ink-faint);margin:.4rem 0 0">Model: a small open economy with linear supply and demand — demand Q = 120 − 8P, supply Q = 20 + 6P, world price ¥4 per unit; quantities and amounts are illustrative units.</p>
+  </div>
+
+  <div class="callout warn" data-reveal>
+    <span class="callout-label">Why tax imports despite the known losses</span>
+    <p style="margin:.3rem 0 0">Because the gains and the losses have different <b>political visibility</b>: producer gains are concentrated, well organized, and easy to see (factories and jobs saved), while consumer losses are scattered across everyone’s countless shopping trips and hardly anyone takes to the streets over them. Add the infant-industry, national-security, and anti-dumping arguments — each can hold under specific conditions — but on the accounting line that <b>consumers ultimately pay the bill</b>, most empirical studies agree (order-of-magnitude, illustrative).</p>
+  </div>
+
+  <h2><span class="secno">3</span>Exchange Rates: One Line of Digits Rewrites Two Businesses</h2>
+  <p>Goods crossing a border need money to change hands, and the rate of that change is the <em>exchange rate</em>. Most countries use <em>direct quotation</em>: the domestic-currency price of one unit of foreign currency, as in “US$1 ≈ RMB 7.1” (approximate, illustrative). When the number rises (7.1 → 7.4), more domestic currency is needed to buy US$1 — the domestic currency <em>depreciates</em>; when it falls (7.1 → 6.9), the currency <em>appreciates</em>.</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 640 250" role="img" style="width:100%;height:auto;display:block">
+        <rect x="18" y="22" width="292" height="200" rx="12" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5"/>
+        <text x="164" y="56" text-anchor="middle" font-size="16" font-weight="800" fill="#075985">RMB appreciates (e.g., 7.2 → 6.9)</text>
+        <text x="164" y="96" text-anchor="middle" font-size="13.5" fill="#0c4a6e">Exports cost more in US dollars</text>
+        <text x="164" y="122" text-anchor="middle" font-size="13.5" font-weight="700" fill="#b91c1c">Exports under pressure ↓ · exporter margins thin</text>
+        <text x="164" y="160" text-anchor="middle" font-size="13.5" fill="#0c4a6e">Imported inputs and goods get cheaper</text>
+        <text x="164" y="186" text-anchor="middle" font-size="13.5" font-weight="700" fill="#15803d">Consumers gain ↑ · going abroad costs less</text>
+        <rect x="330" y="22" width="292" height="200" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+        <text x="476" y="56" text-anchor="middle" font-size="16" font-weight="800" fill="#92400e">RMB depreciates (e.g., 6.9 → 7.2)</text>
+        <text x="476" y="96" text-anchor="middle" font-size="13.5" fill="#78350f">Exports cost less in US dollars</text>
+        <text x="476" y="122" text-anchor="middle" font-size="13.5" font-weight="700" fill="#15803d">Export competitiveness ↑ · orders easier to win</text>
+        <text x="476" y="160" text-anchor="middle" font-size="13.5" fill="#78350f">Imported inputs and goods get pricier</text>
+        <text x="476" y="186" text-anchor="middle" font-size="13.5" font-weight="700" fill="#b91c1c">Import costs ↑ · imported-inflation pressure</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The appreciation–depreciation seesaw (illustrative): the same line of exchange-rate digits is a headwind for exports and a tailwind for imports. Multinational firms therefore face currency risk and commonly hedge it with forward contracts and similar tools (an advanced topic).</figcaption>
+  </figure>
+  <p>Link Lesson 1 with this one: <em>comparative advantage decides whether to trade; tariffs and exchange rates decide at what price to trade</em>. A 5% currency swing can swallow a 3% net margin on an export business in one bite — which is why income statements so often carry a line for “exchange gains and losses.”</p>
+
+  <h2><span class="secno">4</span>The Economic Logic of Trade Friction</h2>
+  <p>When one country raises tariffs, the other usually retaliates; with both sides escalating, you have <em>trade friction</em>. The script is almost fixed. Round one: domestic producers gain and consumers lose. Round two: the partner retaliates and the home export industry takes the hit. Round three: supply chains on both sides start detouring — transshipment, factories in third countries, nearshoring — as firms pay a permanent restructuring cost for “policy risk.” In game-theory terms this is a classic prisoner’s dilemma: each side’s individually dominant choice (tax to protect) adds up to a worse result for both.</p>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case · US–China Trade Friction Since 2018 (illustrative, neutral view)</p>
+    <p>From 2018, acting on the findings of its domestic Section 301 investigation, the United States imposed tariffs on goods imported from China in successive batches, covering volumes in the hundreds of billions of US dollars (approximate, illustrative); China responded with retaliatory measures on goods imported from the US, tariff levels swung back and forth across multiple lists, and the process — punctuated by rounds of negotiation and phase agreements — dragged on for years with repeated reversals.</p>
+    <p>The general finding of public research (order-of-magnitude, illustrative): most of the tariff cost has been borne by US importers and consumers; some Chinese exporters saw margins squeezed as orders and capacity shifted toward Vietnam, Mexico, and elsewhere; and firms in both countries paid extra costs for compliance and supply-chain reconfiguration. Each government’s position stands on its own — one says it is correcting unfair trade and protecting its own industries and jobs, the other that it is defending free-trade rules and its own right to develop.</p>
+    <p class="case-learn"><b>The lesson:</b> political logic sees the “jobs saved,” while the economic ledger keeps recording “scattered consumer losses + deadweight loss + retaliation costs.” The other lesson globalized firms have learned: <b>tariffs and geopolitics, like exchange rates, are first-class variables that must be written into supply-chain design.</b></p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Tariff</dt><dd>A tax on imported goods; it directly raises the domestic price and shrinks imports.</dd>
+      <dt>World Price</dt><dd>The price of a good on the international market; under the small-country assumption it sets the domestic price.</dd>
+      <dt>Consumer Surplus</dt><dd>The sum of the gaps between what consumers are willing to pay and what they actually pay; a tariff shrinks it.</dd>
+      <dt>Producer Surplus</dt><dd>The sum of the gaps between the price firms receive and the lowest price they would accept; a tariff expands it.</dd>
+      <dt>Deadweight Loss</dt><dd>The net welfare loss that nobody receives under a tariff — the two triangles on the supply-and-demand diagram.</dd>
+      <dt>Direct Quotation</dt><dd>Quoting the exchange rate as the domestic-currency price of one unit of foreign currency; a rising number means the domestic currency is depreciating.</dd>
+      <dt>Appreciation &amp; Depreciation</dt><dd>A currency’s purchasing power strengthening or weakening relative to another; the direction decides who gains, the exporting side or the importing side.</dd>
+      <dt>Trade Friction</dt><dd>A tit-for-tat cycle of tariffs and non-tariff barriers that usually lowers both sides’ welfare.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>A tariff transfers wealth from scattered consumers to producers and the government, evaporating a slice of deadweight loss along the way; the exchange rate is the price face of the same coin — the headwind on exports is the tailwind on imports. Policies will change, but the arithmetic of these two ledgers does not.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "A small country imposes a tariff on an imported good. Holding everything else constant, what happens to the domestic price and import volume in the short run?",
+        "options": ["Price falls and imports rise in step", "Price stays unchanged while imports fall sharply", "Price rises and imports fall accordingly", "Price rises and imports rise in step"],
+        "answer": 2,
+        "explain": "A small country is a price taker at the world price: the domestic price is pushed up to Pw + t; the higher price raises domestic supply and lowers demand, and the squeeze from both ends contracts imports." },
+      { "q": "What does the “deadweight loss” caused by a tariff refer to?",
+        "options": ["A net welfare loss that no one is compensated for", "The total revenue the government collects from the tariff", "The slice of profit foreign exporters lose", "The new profit accrued to domestic firms"],
+        "answer": 0,
+        "explain": "Consumer loss splits three ways: producer gain, government revenue, and <b>the two triangles nobody receives</b> — inefficient domestic production replacing cheaper imports, and consumption priced out by the higher price. The first two are transfers; only the last is a net loss." },
+      { "q": "If the RMB appreciates against the US dollar (say 7.2 → 6.9), the most likely result is?",
+        "options": ["Chinese exports become cheaper in US dollars", "Chips and iron ore imported by China become more expensive", "The cost of studying in the US rises sharply for Chinese students", "Chinese exports become more expensive in US dollars"],
+        "answer": 3,
+        "explain": "Appreciation means each US dollar converts into fewer RMB: exporters’ dollar revenue shrinks in local-currency terms, their goods become pricier in dollars, and exports come under pressure; conversely, imported goods and overseas study get cheaper — the importing side gains." },
+      { "q": "Two countries impose tariffs on each other and keep escalating (trade friction). What is the most typical overall outcome in economic terms?",
+        "options": ["Both governments collect more revenue and total welfare rises", "Total welfare in both countries usually falls", "Only the taxing country loses; the other one gains", "Consumers in both countries buy more cheap goods"],
+        "answer": 1,
+        "explain": "This is a classic prisoner’s dilemma: each side’s individually “dominant” protective choice pushes both into a worse ending — deadweight loss, retaliation damage, and the long-run cost of supply-chain detours usually far exceed the tariff revenue (illustrative, on aggregate)." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>Further Reading</h2>
+    <ul>
+      <li>International Economics: Theory and Policy by Paul R. Krugman and Maurice Obstfeld (recommended: the chapters on trade-policy instruments and the welfare analysis of tariffs)</li>
+      <li>International Business: Competing in the Global Marketplace by Charles W. L. Hill (recommended: the chapters on international trade and government policy)</li>
+      <li>Search keywords: deadweight loss of a tariff, direct quotation exchange rate, trade friction Section 301</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-comparative-advantage.html"><span class="pager-label">← Previous</span><span class="pager-title">Comparative Advantage: Why Nations Trade</span></a>
+    <a class="next" href="0003-market-entry-modes.html"><span class="pager-label">Next →</span><span class="pager-title">Market Entry Modes: The Ladder of International Expansion</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “My company imports raw materials and exports finished goods — is an RMB depreciation a net plus or a net minus for me overall?” Follow-up questions are part of learning.</div>
+    <p>International Business · Lesson 2 · Tariffs and Exchange Rates | Interactive: tariff welfare simulator + appreciation/depreciation map · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  if (!window.Viz) return;
+  var controls = document.getElementById("tariff-controls");
+  var chartBox = document.getElementById("tariff-chart");
+  var readout = document.getElementById("tariff-readout");
+  if (!controls || !chartBox || !readout) return;
+
+  var ax = Viz.axes(chartBox, {
+    w: 640, h: 410, margin: { t: 24, r: 24, b: 50, l: 60 },
+    xDomain: [0, 140], yDomain: [0, 12],
+    xLabel: "Quantity Q (×10,000 units, illustrative)", yLabel: "Price P (¥ per unit)",
+    xTicks: 7, yTicks: 6
+  });
+  var g = ax.svg, X = ax.x, Y = ax.y;
+
+  function Qd(p) { return 120 - 8 * p; }
+  function Qs(p) { return 20 + 6 * p; }
+  var PW = 4;
+
+  /* Static elements: supply, demand, no-trade equilibrium, world price line */
+  Viz.line(g, [[X(Qs(0.6)), Y(0.6)], [X(Qs(11)), Y(11)]], { color: "#15803d", width: 3 });
+  Viz.line(g, [[X(Qd(2.2)), Y(2.2)], [X(Qd(11)), Y(11)]], { color: "#1d4ed8", width: 3 });
+  Viz.label(g, X(Qs(11)) + 6, Y(11) + 2, "S domestic supply", { size: 11.5, color: "#15803d" });
+  Viz.label(g, X(Qd(11)) - 4, Y(11) + 16, "D domestic demand", { size: 11.5, color: "#1d4ed8", anchor: "end" });
+  var pA = 100 / 14, qA = Qd(pA);
+  Viz.dot(g, X(qA), Y(pA), { fill: "#1c1917", r: 5 });
+  Viz.label(g, X(qA) + 8, Y(pA) - 10, "No-trade equilibrium", { size: 11.5 });
+  var pwLine = Viz.svgEl("line", {
+    x1: X(0), x2: X(140), y1: Y(PW), y2: Y(PW),
+    stroke: "#78716c", "stroke-width": 2, "stroke-dasharray": "6 6"
+  });
+  g.appendChild(pwLine);
+  Viz.label(g, X(1.5), Y(PW) + 18, "World price Pw = ¥4", { size: 12, color: "#78716c" });
+
+  /* Dynamic elements: price-with-tariff line, the four welfare areas, labels */
+  var ptLine = Viz.svgEl("line", { x1: X(0), x2: X(140), y1: Y(PW), y2: Y(PW), stroke: "#b91c1c", "stroke-width": 2.2 });
+  g.appendChild(ptLine);
+  var ptLab = Viz.label(g, X(1.5), Y(PW) - 10, "", { size: 12, color: "#b91c1c" });
+  var psArea = Viz.svgEl("path", { fill: "#15803d", opacity: 0.22 });
+  var revArea = Viz.svgEl("path", { fill: "#b45309", opacity: 0.30 });
+  var dwl1 = Viz.svgEl("path", { fill: "#b91c1c", opacity: 0.38 });
+  var dwl2 = Viz.svgEl("path", { fill: "#b91c1c", opacity: 0.38 });
+  g.appendChild(psArea); g.appendChild(revArea); g.appendChild(dwl1); g.appendChild(dwl2);
+  var revLab = Viz.label(g, 0, 0, "", { size: 11, anchor: "middle", fill: "#7c2d12" });
+  var dwlLab1 = Viz.label(g, 0, 0, "", { size: 10.5, anchor: "middle", fill: "#b91c1c" });
+  var dwlLab2 = Viz.label(g, 0, 0, "", { size: 10.5, anchor: "middle", fill: "#b91c1c" });
+  var impLab = Viz.label(g, 0, 0, "Imports M", { size: 11, anchor: "middle", color: "#57534e" });
+
+  function poly(pts) {
+    return pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ") + " Z";
+  }
+  function show(el, on) { el.style.display = on ? "" : "none"; }
+
+  function render(t) {
+    var pt = PW + t;
+    var qs0 = Qs(PW), qs1 = Qs(pt), qd0 = Qd(PW), qd1 = Qd(pt);
+    show(ptLine, t > 0.01); show(ptLab, t > 0.01);
+    ptLine.setAttribute("y1", Y(pt)); ptLine.setAttribute("y2", Y(pt));
+    ptLab.setAttribute("y", Y(pt) - 8);
+    ptLab.textContent = "Price with tariff Pt = ¥" + pt.toFixed(1);
+
+    var on = t > 0.01;
+    [psArea, revArea, dwl1, dwl2].forEach(function (e) { show(e, on); });
+    if (on) {
+      psArea.setAttribute("d", poly([[X(0), Y(PW)], [X(qs0), Y(PW)], [X(qs1), Y(pt)], [X(0), Y(pt)]]));
+      revArea.setAttribute("d", poly([[X(qs1), Y(PW)], [X(qd1), Y(PW)], [X(qd1), Y(pt)], [X(qs1), Y(pt)]]));
+      dwl1.setAttribute("d", poly([[X(qs0), Y(PW)], [X(qs1), Y(PW)], [X(qs1), Y(pt)]]));
+      dwl2.setAttribute("d", poly([[X(qd1), Y(PW)], [X(qd0), Y(PW)], [X(qd1), Y(pt)]]));
+    }
+    show(impLab, true);
+    impLab.setAttribute("x", X((qs1 + qd1) / 2));
+    impLab.setAttribute("y", Y(pt) - 8);
+    impLab.textContent = "Imports M = " + Math.max(0, Math.round(qd1 - qs1)) + "0,000";
+
+    var rectW = X(qd1) - X(qs1);
+    show(revLab, on && rectW > 52);
+    revLab.setAttribute("x", X((qs1 + qd1) / 2));
+    revLab.setAttribute("y", (Y(PW) + Y(pt)) / 2 + 4);
+    revLab.textContent = "Tariff revenue t×M";
+    show(dwlLab1, t >= 0.3); show(dwlLab2, t >= 0.3);
+    dwlLab1.setAttribute("x", X((qs0 + qs1) / 2));
+    dwlLab1.setAttribute("y", (Y(PW) + Y(pt)) / 2 + 3);
+    dwlLab1.textContent = "Deadweight loss";
+    dwlLab2.setAttribute("x", X((qd0 + qd1) / 2));
+    dwlLab2.setAttribute("y", (Y(PW) + Y(pt)) / 2 + 3);
+    dwlLab2.textContent = "Deadweight loss";
+
+    var cs = 88 * t - 4 * t * t;      // consumer loss
+    var ps = 44 * t + 3 * t * t;      // producer gain
+    var rev = t * (44 - 14 * t);      // government tariff revenue
+    var dwl = 7 * t * t;              // deadweight loss
+    if (t <= 0.01) {
+      readout.innerHTML = "Tariff t = <b>0</b> (free trade): the domestic price equals the world price of <b>¥4.0</b> and imports run <b>440,000</b> units. Consumer surplus is at its maximum with no tax and no distortion, while domestic producers face international competition head-on — maximum pressure. Drag the slider right to levy a tariff.";
+    } else {
+      readout.innerHTML =
+        "Tariff t = <b>¥" + t.toFixed(1) + "</b> per unit → domestic price = <b>¥" + pt.toFixed(1) + "</b>, imports = <b>" + Math.max(0, Math.round(qd1 - qs1)) + "0,000</b> units (440,000 under free trade).<br>" +
+        "Consumer loss <b style='color:#b91c1c'>" + Math.round(cs) + "</b> = producer gain <b style='color:#15803d'>" + Math.round(ps) + "</b> + tariff revenue <b style='color:#b45309'>" + Math.round(rev) + "</b> + deadweight loss <b style='color:#b91c1c'>" + Math.round(dwl) + "</b> (welfare units, illustrative)<br>" +
+        "The identity always holds: wealth is merely transferred, yet one slice of it <b>evaporates into thin air</b> — and that slice belongs to no one.";
+    }
+  }
+
+  var sl = Viz.slider(controls, {
+    label: "Tariff t (¥ per unit)", min: 0, max: 2.5, step: 0.1, value: 0,
+    format: function (v) { return "¥" + v.toFixed(1); }
+  });
+  sl.onChange(render);
+  render(0);
+})();
+</script>
+</body>
+</html>

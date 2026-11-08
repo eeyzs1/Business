@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corporate Governance: The Agency Problem · Business Law &amp; Ethics</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .gov-node { cursor: pointer; }
+  .gov-node rect { fill: #fff; stroke: #c9c1b2; stroke-width: 1.6; transition: all .15s ease; }
+  .gov-node:hover rect { stroke: var(--accent); }
+  .gov-node.active rect { stroke: var(--accent); stroke-width: 3; fill: #f4f4f5; }
+  .gov-node text { pointer-events: none; }
+  .gov-node .gn-title { font-size: 16px; font-weight: 800; fill: #1c1917; }
+  .gov-node .gn-sub { font-size: 10.5px; fill: #78716c; }
+  .gov-line { stroke: #c9c1b2; stroke-width: 1.8; fill: none; transition: all .15s ease; }
+  .gov-line.dash { stroke-dasharray: 6 5; }
+  .gov-line.hl { stroke: var(--accent); stroke-width: 3.2; }
+  .gov-lbl { font-size: 11.5px; font-weight: 700; fill: #78716c; }
+  .gov-hint { font-size: 12px; fill: #a8a29e; font-weight: 700; }
+  .gov-info {
+    margin-top: 1rem; background: var(--paper-deep); border-radius: 10px;
+    padding: 1rem 1.15rem; font-size: .93rem; color: var(--ink-soft); line-height: 1.85;
+  }
+  .gov-info h4 { margin: 0 0 .4rem; font-size: 1rem; font-family: var(--serif); }
+  .gov-info p { margin: 0 0 .5rem; }
+  .gov-info p:last-child { margin-bottom: 0; }
+  .gov-info b { color: var(--ink); }
+  .gov-info .gi-k { color: var(--accent); font-weight: 800; }
+  .alert-card { border: 1.5px solid var(--line); border-radius: 10px; background: #fff; padding: .95rem 1.1rem; margin-bottom: .9rem; }
+  .alert-card .al-title { font-weight: 800; color: var(--ink); margin-bottom: .3rem; }
+  .alert-card .al-title::before { content: "🚨 "; }
+  .alert-card p { font-size: .93rem; color: var(--ink-soft); margin: 0 0 .7rem; line-height: 1.8; }
+  .al-opts { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .al-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 600; cursor: pointer;
+    border: 1.5px solid var(--line); background: var(--paper); color: var(--ink);
+    border-radius: 999px; padding: .4rem .95rem; transition: all .15s ease;
+  }
+  .al-btn:hover:not(:disabled) { border-color: var(--accent); }
+  .al-btn.picked { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); background: #fafafa; }
+  .al-btn:disabled { cursor: default; opacity: .75; }
+  .al-fb { margin-top: .75rem; font-size: .9rem; color: var(--ink-soft); background: var(--paper-deep); border-radius: 8px; padding: .75rem .95rem; line-height: 1.8; }
+  .al-fb b { color: var(--ink); }
+</style>
+</head>
+<body class="branch-law-ethics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Business Law &amp; Ethics</a><span class="crumb-sep">/</span>
+  <span>Corporate Governance: The Agency Problem</span>
+  <span class="progress">Lesson 3 of 4</span>
+<a class="lang-switch" href="../../../12-business-law-ethics/lessons/0003-corporate-governance.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Business Law &amp; Ethics · Lesson 3</p>
+  <h1>Corporate Governance: The Agency Problem</h1>
+  <p class="lead">The modern company is born with a crack in it: the people who supply the money do not run the business, and the people who run the business did not supply the money. <em>Corporate governance</em> is the institutional design built around that crack — making the people who manage your money afraid to stray, and willing to do the job well. Once you understand it, you understand what the news buzzwords — boards of directors, independent directors, information disclosure — are actually guarding against.</p>
+
+  <div class="callout warn">
+    <span class="callout-label">Read this first</span>
+    The governance organs described in this lesson are a <b>teaching illustration, not legal advice</b>: statutory organs and their powers differ across countries, regions, and corporate forms — the applicable company law and the company’s own articles of association prevail.
+  </div>
+
+  <h2><span class="secno">1</span>Separation breeds the problem: principal and agent</h2>
+  <p>In a small noodle shop the owner cooks personally — nobody worries on anyone else’s behalf. But as a company grows and goes public, with shareholders scattered into the thousands, the <em>separation of ownership and control</em> sets in: shareholders put up the money and keep the residual returns, while <em>management</em> runs daily operations. Economics calls this the <em>principal–agent relationship</em>: shareholders are the principals, managers are their agents.</p>
+  <p>The crack opens in two places. First, <em>information asymmetry</em>: managers know the company’s true condition better than anyone — whether inventory is piling up, whether collections are strained, where the money is going. Second, <em>moral hazard</em>: in the corners no one watches, agents may slack, splurge, or chase personal glory — palatial offices, dubious acquisitions, a final sprint of short-term numbers before retirement. Note: most managers are not out to do harm, but when institutions leave the door unguarded, <em>even good people drift into the gray zone</em>.</p>
+  <div class="concept">
+    <div class="concept-title">Definition · Agency cost</div>
+    <p style="margin:.2rem 0 .5rem">In their classic paper, Jensen and Meckling called the principal’s full cost of “taming” the agent the agency cost. It comes roughly in three parts:</p>
+    <p style="margin:0">① <b>Monitoring costs</b> — building and running audits, boards, and disclosure systems; ② <b>bonding costs</b> — the agent’s cost of proving its good faith, such as layer after layer of approvals and compliance procedures; ③ <b>residual loss</b> — the value still destroyed by misaligned interests despite all that. The whole point of corporate governance is to keep the sum of these three costs <b>below</b> the agency benefits received in exchange (the value of professional management).</p>
+  </div>
+
+  <h2><span class="secno">2</span>The governance toolbox: caging power with process</h2>
+  <p>Since self-discipline cannot be assumed for everyone, “hard to do wrong” gets designed into the structure itself. The mainstream governance tools, sorted by who checks whom:</p>
+  <div class="table-wrap" data-reveal>
+    <table>
+      <thead><tr><th>Governance tool</th><th>How it works</th><th>What it checks</th></tr></thead>
+      <tbody>
+        <tr><td><b>Shareholders’ meeting</b></td><td>Elects directors and supervisors, votes on major matters</td><td>Keeps the ultimate say with ownership: vote with your voice, or vote with your feet</td></tr>
+        <tr><td><b>Board of directors</b></td><td>Answerable to the shareholders; hires and evaluates management, decides major business matters</td><td>Adds a layer of accountability between shareholders and managers</td></tr>
+        <tr><td><b>Independent directors</b></td><td>Outside directors with no company post and no material tie to management</td><td>Review related-party deals and gate-keep key decisions as “outsiders”</td></tr>
+        <tr><td><b>Supervisory board</b></td><td>A dedicated oversight organ: inspects the finances, monitors how directors and executives perform</td><td>Watches the decision-makers and the executors from the side</td></tr>
+        <tr><td><b>Information disclosure</b></td><td>Periodic reports and major-event announcements, with liability for violations</td><td>Shrinks information asymmetry so markets and regulators can see</td></tr>
+        <tr><td><b>Equity incentives</b></td><td>Options and restricted stock turn managers into shareholders</td><td>Turns “working for you” into “working for myself” — aligning interests</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Do not forget the second front: protecting minority shareholders. Between controlling and minority shareholders runs the same kind of agency conflict — cases of “tunneling” value out of listed companies through related-party transactions and fund appropriation surface in enforcement disclosures constantly (illustrative). Institutional responses include cumulative voting, recusal of interested shareholders from votes, independent directors’ opinions, regulatory inquiries, and litigation remedies (illustrative). In one sentence: governance must guard not only against “lazy managers” but also against “the controlling shareholder’s reaching hand.”</p>
+
+  <h2><span class="secno">3</span>Hands-on: the governance structure and three agency conflicts</h2>
+  <div class="sim" data-reveal>
+    <div class="sim-title">Simulator · Governance Map — click a node to see whom it checks, and who checks it</div>
+    <div class="figure-body" style="padding:.4rem 0 0">
+      <svg viewBox="0 0 660 430" role="img" aria-label="Corporate governance map: the shareholders’ meeting elects the board, the board hires management; the supervisory board and the audit committee each supervise">
+        <defs>
+          <marker id="garr" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a8a29e"/></marker>
+        </defs>
+        <!-- Connecting lines -->
+        <g id="gov-lines">
+          <line class="gov-line" data-nodes="shm board" x1="360" y1="70" x2="360" y2="156" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="shm board" x="368" y="112">Elects · empowers</text>
+          <line class="gov-line" data-nodes="shm board" x1="310" y1="158" x2="310" y2="74" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="shm board" x="302" y="130" text-anchor="end">Reports</text>
+          <line class="gov-line" data-nodes="board mgmt" x1="360" y1="212" x2="360" y2="298" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="board mgmt" x="368" y="254">Hires · evaluates</text>
+          <line class="gov-line" data-nodes="board mgmt" x1="310" y1="300" x2="310" y2="216" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="board mgmt" x="302" y="272" text-anchor="end">Reports up</text>
+          <line class="gov-line dash" data-nodes="sup board" x1="505" y1="185" x2="421" y2="185" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="sup board" x="463" y="172" text-anchor="middle">Oversees</text>
+          <path class="gov-line dash" data-nodes="sup mgmt" d="M575,212 L575,327 L421,327" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="sup mgmt" x="560" y="272" text-anchor="end">Oversees execs</text>
+          <line class="gov-line" data-nodes="audit board" x1="165" y1="185" x2="249" y2="185" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="audit board" x="207" y="172" text-anchor="middle">Under the board</text>
+          <path class="gov-line dash" data-nodes="audit mgmt" d="M90,212 L90,327 L249,327" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="audit mgmt" x="100" y="272">Audits reports</text>
+        </g>
+        <!-- Nodes -->
+        <g class="gov-node" data-key="shm">
+          <rect x="255" y="16" width="160" height="54" rx="10"/>
+          <text class="gn-title" x="335" y="40" text-anchor="middle">Shareholders’ Meeting</text>
+          <text class="gn-sub" x="335" y="58" text-anchor="middle">Supreme organ of power</text>
+        </g>
+        <g class="gov-node" data-key="board">
+          <rect x="255" y="158" width="160" height="54" rx="10"/>
+          <text class="gn-title" x="335" y="182" text-anchor="middle">Board of Directors</text>
+          <text class="gn-sub" x="335" y="200" text-anchor="middle">Answers to shareholders</text>
+        </g>
+        <g class="gov-node" data-key="mgmt">
+          <rect x="255" y="300" width="160" height="54" rx="10"/>
+          <text class="gn-title" x="335" y="324" text-anchor="middle">Management</text>
+          <text class="gn-sub" x="335" y="342" text-anchor="middle">Day-to-day operations</text>
+        </g>
+        <g class="gov-node" data-key="sup">
+          <rect x="505" y="158" width="140" height="54" rx="10"/>
+          <text class="gn-title" x="575" y="182" text-anchor="middle">Supervisory Board</text>
+          <text class="gn-sub" x="575" y="200" text-anchor="middle">Dedicated oversight organ</text>
+        </g>
+        <g class="gov-node" data-key="audit">
+          <rect x="15" y="158" width="150" height="54" rx="10"/>
+          <text class="gn-title" x="90" y="182" text-anchor="middle">Audit Committee</text>
+          <text class="gn-sub" x="90" y="200" text-anchor="middle">Board committee · independents</text>
+        </g>
+        <text class="gov-hint" x="335" y="405" text-anchor="middle">👆 Click any node: solid lines are power and authorization; dashed lines are oversight and verification</text>
+      </svg>
+    </div>
+    <div class="gov-info" id="gov-info">
+      <h4>Start here</h4>
+      <p>This is a typical “three organs plus one management layer” governance map (corporate forms and jurisdictions differ). Click any node in the diagram to see its role, <b>whom it checks</b>, and <b>who checks it</b>.</p>
+    </div>
+  </div>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">Simulator · Agency Problem Alerts — three scenario cards, diagnose the conflict type</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .9rem">Three classic agency conflicts: ① shareholders vs managers; ② controlling vs minority shareholders; ③ shareholders vs creditors. For each alert card below, judge which type it is.</p>
+    <div id="alert-list"></div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case: Berkshire Hathaway’s boardroom culture — hedging process with trust (illustrative)</p>
+    <p>Berkshire Hathaway offers an unconventional governance specimen. Public records show that the holding company’s headquarters has long employed only about two dozen people (approximate) while overseeing dozens of subsidiaries; Warren Buffett himself stresses, in letter after letter to shareholders, that headquarters sets almost no operating procedures for the subsidiaries and hands business decisions back to their managers.</p>
+    <p>How does it keep agency costs down? First, <b>deeply bound interests</b>: the bulk of the Buffett family’s wealth is Berkshire stock — the helmsman is himself the largest “principal,” eating his own cooking and bearing his own risk. Second, <b>the board has long consisted of people who know the businesses and have skin in the game</b>, and its meetings deal in substance rather than ceremony (illustrative). Third, <b>pick the right people, then let go</b>: subsidiary managers are mostly industry veterans, trust and delegation replace thick approval manuals, and tenure runs long.</p>
+    <p>But note the precondition: “light on process, heavy on trust” works only because the ultimate accountable party (Buffett) is himself trustworthy, expert, and interest-aligned — the vast majority of listed companies with dispersed ownership cannot replicate that kind of personal trust, and must return to “institutional safeguards first”: a board, independent directors, audit and disclosure — none of them optional.</p>
+    <p class="case-learn"><b>What to notice in this case:</b> the goal of governance is not the thickest possible rulebook but <b>aligned incentives and trust</b> — what alignment can solve, do not try to plug with process; process exists to guard against the part of human nature that alignment cannot reach.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Principal–agent problem</dt><dd>When the principal’s (shareholders’) goals diverge from the agent’s (managers’) and information is asymmetric, the agent may act against the principal’s interests.</dd>
+      <dt>Information asymmetry</dt><dd>One party to a transaction or agency relationship holds more of the key information than the other.</dd>
+      <dt>Moral hazard</dt><dd>In unwatched corners, the agent behaves in ways that hurt the principal — shirking, extravagance, excessive risk-taking.</dd>
+      <dt>Agency cost</dt><dd>The sum of monitoring costs, bonding costs, and residual loss, all born of misaligned interests (Jensen and Meckling).</dd>
+      <dt>Independent director</dt><dd>A director with no company post and no material interest in management, giving independent opinions on matters such as related-party transactions.</dd>
+      <dt>Supervisory board</dt><dd>A dedicated oversight organ: inspects the company’s finances and monitors how directors and senior managers perform.</dd>
+      <dt>Information disclosure</dt><dd>The system of periodic reports and major-event announcements that uses transparency to shrink information asymmetry.</dd>
+      <dt>Related-party transaction</dt><dd>Transactions between the company and its related parties — the classic channel for value transfer and “tunneling.”</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>The separation of ownership and control inevitably breeds agency problems: information asymmetry supplies the opportunity, misaligned goals the motive. Every design of governance — the organs, disclosure, incentives — exists for one purpose: that the people who manage your money dare not stray, and want to do the job well.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "In the modern large company, ownership and control are separated. The most characteristic problem this produces is:",
+        "options": ["Managers may use their information advantage to hurt shareholders’ interests", "The shareholders’ meeting loses its right to amend the articles of association", "The company must retain the same general manager forever", "Creditors automatically gain voting seats on the board"],
+        "answer": 0,
+        "explain": "Separation = a principal–agent relationship: managers (the agents) hold the information advantage, and if their goals diverge from shareholders’ while checks are weak, they may shirk, splurge, or overreach — precisely the core problem corporate governance exists to solve. The power to amend the articles stays with the shareholders’ meeting, and creditors do not thereby join the board." },
+      { "q": "A listed company appoints independent directors to its board and an audit committee beneath it. The main purpose is:",
+        "options": ["Lowering the unit manufacturing cost of its product lines", "Increasing registered capital to meet a regulatory minimum", "Using relatively independent oversight to check management and the quality of financial reports", "Guaranteeing the controlling shareholder a permanent majority in votes"],
+        "answer": 2,
+        "explain": "The value of independent directors and the audit committee lies in “independence”: outsiders review related-party transactions and gate-keep the financial statements and the external audit, checking the information advantage of managers (and of the controlling shareholder). It does not directly cut costs, nor does it “save seats” for anyone." },
+      { "q": "A controlling shareholder pushes the listed company to buy raw materials long term, at prices clearly above market, from another company the shareholder personally controls. In this arrangement, the most direct victim is:",
+        "options": ["The controlling shareholder’s own bank credit line", "The minority shareholders and the listed company itself", "Tax revenue in the supplier’s locality", "The independent directors’ personal reputations"],
+        "answer": 1,
+        "explain": "Overpriced related-party purchasing transfers the listed company’s profit into the controlling shareholder’s private pocket — the “controlling vs minority shareholders” agency conflict, commonly called “tunneling”: what is tunneled out is company value that belongs to all shareholders." },
+      { "q": "Under Jensen and Meckling’s concept of “agency cost,” which of the following expenditures counts as an agency cost?",
+        "options": ["Equipment purchases to expand production capacity", "Payments for raw materials bought at market prices", "Sales rebates paid to long-standing customers", "Audit and board costs borne by shareholders to monitor management"],
+        "answer": 3,
+        "explain": "Agency cost = monitoring costs (audit, the board) + bonding costs + residual loss, all born of misaligned interests. Equipment purchases, raw-material buying, and sales rebates are ordinary operating expenses; only money spent “to keep the agent in line” is agency cost." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Corporate Finance (11th ed.), Ross, Westerfield &amp; Jaffe (Chinese edition, China Machine Press) — recommended: Chapter 1 on agency problems and corporate control</li>
+      <li>The Essays of Warren Buffett: Lessons for Corporate America, selected and arranged by Lawrence A. Cunningham (Chinese edition, China Machine Press) — recommended: the letters on corporate governance and trust in managers, first-hand material on governance culture</li>
+      <li>Search keywords: principal–agent theory / Jensen and Meckling 1976 / cumulative voting (dig into any keyword from this lesson)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-contracts-101.html"><span class="pager-label">← Previous</span><span class="pager-title">Contracts: The Glue of Business</span></a>
+    <a class="next" href="0004-ethics-and-esg.html"><span class="pager-label">Next →</span><span class="pager-title">Business Ethics &amp; ESG</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Analyze a company I know using the agency-problem framework.’ or ‘Give me more agency alert cards to practice on.’ Follow-up questions are part of learning.</div>
+    <p>Business Law &amp; Ethics · Lesson 3 · The governance structure is a teaching illustration, not legal advice; the case is compiled from public records and illustrative description.</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Governance map: click a node to expand ---------- */
+  var NODES = {
+    shm: {
+      name: "Shareholders’ meeting",
+      role: "The company’s organ of power: elects and replaces directors and supervisors, and deliberates and approves major matters — profit distribution, capital increases, mergers and divisions, amendments to the articles.",
+      checks: "Whom it checks — both the board and the supervisory board are created by it: if they perform badly it can “vote with its voice” at the next election, or sell the shares and “vote with its feet,” grading governance through the share price.",
+      checked: "Who checks it — its procedures are bounded by law, regulation, and the articles of association; controlling shareholders may not abuse voting rights to harm the company or minority shareholders, and major related-party matters carry recusal and protection mechanisms (illustrative)."
+    },
+    board: {
+      name: "Board of directors",
+      role: "Answerable to the shareholders’ meeting: hires and evaluates management, sets business plans and investment programs; its special committees — audit, compensation, and the like — are anchored by independent directors.",
+      checks: "Whom it checks — management, directly: hiring, firing, evaluation, and pay; major business matters must come back to the board, so management cannot write its own rules.",
+      checked: "Who checks it — elected and replaceable by the shareholders’ meeting; supervised by the supervisory board; listed companies must also disclose information and face the scrutiny of markets and regulators."
+    },
+    mgmt: {
+      name: "Management",
+      role: "Runs daily operations and executes board resolutions — the flesh-and-blood “agent”: hands directly on the money, the people, and the business, with the greatest information advantage.",
+      checks: "Whom it checks — holding execution detail and true information, an unchecked management is where perks, empire-building, and window-dressed statements most easily breed.",
+      checked: "Who checks it — hired, fired, and evaluated by the board; supervised by the supervisory board; audited by the audit committee; exposed by disclosure so outsiders can see; bound by equity incentives so its interests ride in the same boat."
+    },
+    sup: {
+      name: "Supervisory board",
+      role: "A dedicated oversight organ: inspects the company’s finances, monitors how directors and senior executives perform, and may question violators and propose their removal (illustrative).",
+      checks: "Whom it checks — directors and executives: attends board meetings, inspects the books, and demands correction of conduct harmful to the company.",
+      checked: "Who checks it — its members are elected by and answerable to the shareholders’ meeting; supervision must follow statutory procedure and may not overreach into business decisions."
+    },
+    audit: {
+      name: "Audit committee",
+      role: "A committee established under the board, staffed mostly by independent directors: gate-keeps the financial reports, leads the selection of the external auditor, and oversees internal controls (illustrative).",
+      checks: "Whom it checks — management’s financial reporting: statements must pass this gate first, and auditor communications run through it, so the “numbers” cannot be written casually.",
+      checked: "Who checks it — established by and reporting to the board, ultimately answerable to the shareholders’ meeting; independent directors’ qualifications and independence are policed by regulatory rules."
+    }
+  };
+
+  var infoEl = document.getElementById("gov-info");
+  var svgNodes = document.querySelectorAll(".gov-node");
+  var svgLines = document.querySelectorAll("#gov-lines [data-nodes]");
+
+  if (svgNodes.length && infoEl) {
+    svgNodes.forEach(function (n) {
+      n.addEventListener("click", function () {
+        var key = n.getAttribute("data-key");
+        var d = NODES[key];
+        if (!d) return;
+        svgNodes.forEach(function (x) { x.classList.toggle("active", x === n); });
+        svgLines.forEach(function (l) {
+          var keys = (l.getAttribute("data-nodes") || "").split(" ");
+          l.classList.toggle("hl", keys.indexOf(key) >= 0);
+        });
+        infoEl.innerHTML =
+          "<h4>" + d.name + "</h4>" +
+          "<p><span class='gi-k'>Role:</span> " + d.role + "</p>" +
+          "<p><span class='gi-k'>Whom it checks:</span> " + d.checks + "</p>" +
+          "<p><span class='gi-k'>Who checks it:</span> " + d.checked + "</p>";
+      });
+    });
+  }
+
+  /* ---------- Agency problem alerts ---------- */
+  var ALERTS = [
+    {
+      title: "Alert 1 · Palatial HQ and serial acquisitions",
+      body: "The CEO pushes through a headquarters far bigger than needed, then launches three acquisitions unrelated to the core business: each one grows the company, the CEO’s budget, and the CEO’s titles — but projected returns are all thin (illustrative).",
+      opts: ["Shareholders vs managers", "Controlling vs minority shareholders", "Shareholders vs creditors"],
+      answer: 0,
+      why: "The beneficiary is the manager who holds operating control — empire building and perks on the job; the bill goes to the shareholders who bear the results. This is the classic principal–agent conflict: under information asymmetry, the manager is busy making the company bigger for himself, not better for the owners."
+    },
+    {
+      title: "Alert 2 · Overpriced related-party purchasing",
+      body: "The controlling shareholder proposes that the listed company buy its core raw material, long term, at prices clearly above market — from another, unlisted company the shareholder personally controls (illustrative).",
+      opts: ["Shareholders vs managers", "Controlling vs minority shareholders", "Shareholders vs creditors"],
+      answer: 1,
+      why: "Value flows from the listed company — and thus from all its minority shareholders — into the controlling shareholder’s private pocket: the conflict of controlling vs minority shareholders, usually executed through related-party transactions, fund appropriation, and unauthorized guarantees, commonly called “tunneling.” The governance fixes: recusal of the interested shareholder from the vote, independent directors’ opinions, information disclosure, and regulatory inquiry."
+    },
+    {
+      title: "Alert 3 · Borrowing big for a moonshot",
+      body: "With shareholders calling the shots, the company borrows heavily to fund a high-risk project: if it succeeds, most of the upside belongs to the shareholders; if it fails, most of the losses land on the lending banks (illustrative).",
+      opts: ["Shareholders vs managers", "Controlling vs minority shareholders", "Shareholders vs creditors"],
+      answer: 2,
+      why: "Keep the upside, shift the downside — limited liability gives shareholders a natural taste for “gambling with other people’s money”: this is the agency conflict between shareholders and creditors. Creditors respond with restrictive covenants, higher interest rates, and demands for collateral (illustrative)."
+    }
+  ];
+
+  var alertList = document.getElementById("alert-list");
+
+  if (alertList) {
+    ALERTS.forEach(function (a) {
+      var card = document.createElement("div");
+      card.className = "alert-card";
+      var t = document.createElement("div");
+      t.className = "al-title";
+      t.textContent = a.title;
+      var p = document.createElement("p");
+      p.textContent = a.body;
+      var opts = document.createElement("div");
+      opts.className = "al-opts";
+      var fb = document.createElement("div");
+      fb.className = "al-fb";
+      fb.hidden = true;
+      a.opts.forEach(function (label, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "al-btn";
+        b.textContent = label;
+        b.addEventListener("click", function () {
+          opts.querySelectorAll(".al-btn").forEach(function (x) { x.disabled = true; });
+          b.classList.add("picked");
+          fb.innerHTML = (i === a.answer ? "<b>✓ Correct.</b> " : "<b>✗ Think again.</b> The correct type is “" + a.opts[a.answer] + ".” ") + a.why;
+          fb.hidden = false;
+        });
+        opts.appendChild(b);
+      });
+      card.appendChild(t);
+      card.appendChild(p);
+      card.appendChild(opts);
+      card.appendChild(fb);
+      alertList.appendChild(card);
+    });
+  }
+})();
+</script>
+</body>
+</html>

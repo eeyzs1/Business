@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Three Financial Statements: A Company’s Report Card · Accounting</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  #tri-sim .tri-btns{display:flex;flex-wrap:wrap;gap:.6rem;padding:.8rem 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin:.6rem 0;}
+  #tri-sim .tri-btns button{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--accent);background:#fff;
+    border:1.5px solid color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:999px;padding:.42rem 1.05rem;cursor:pointer;transition:all .15s ease;}
+  #tri-sim .tri-btns button:hover{background:var(--accent);color:var(--accent-ink);}
+  #tri-sim .tri-btns button.ghost{color:var(--ink-soft);border-color:var(--line);}
+  .tri-wrap{position:relative;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:1.1rem;align-items:start;}
+  @media (max-width:760px){ .tri-wrap{grid-template-columns:1fr;} }
+  #tri-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;}
+  .stmt{position:relative;z-index:2;background:rgba(255,255,255,.9);border:1.5px solid var(--line);border-radius:10px;padding:.7rem .8rem;}
+  .stmt .stmt-title{font-weight:800;color:var(--accent);font-size:.98rem;margin-bottom:.1rem;}
+  .stmt .stmt-sub{font-size:.76rem;color:var(--ink-faint);margin-bottom:.45rem;}
+  .stmt .stmt-h{font-size:.76rem;font-weight:800;letter-spacing:.1em;color:var(--ink-faint);margin:.4rem 0 .15rem;}
+  .stmt-line{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;padding:.22rem .45rem;border-radius:6px;font-size:.92rem;transition:opacity .3s ease,background .3s ease;}
+  .stmt-line .delta{color:var(--accent);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .stmt-line.hit{background:color-mix(in srgb,var(--accent) 12%,#fff);box-shadow:inset 3px 0 0 var(--accent);}
+  .stmt-line.dim{opacity:.35;}
+  .stmt-line.mute{color:var(--ink-faint);font-style:italic;}
+  .stmt-line.mute.hit{color:var(--accent);}
+  #tri-note{font-size:.93rem;color:var(--ink);background:var(--paper-deep);border-radius:8px;padding:.75rem .95rem;margin-top:.9rem;line-height:1.75;}
+</style>
+</head>
+<body class="branch-accounting">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Accounting</a><span class="crumb-sep">/</span>
+  <span>The Three Financial Statements: A Company’s Report Card</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../02-accounting/lessons/0002-three-statements.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Accounting · Lesson 2</p>
+  <h1>The Three Financial Statements: A Company’s Report Card</h1>
+  <p class="lead">Every year a company hands in a “report card” — but the card is really three statements, each answering a different question: Did we earn anything over this stretch of time? How solid is the family fortune at this moment? How much cash actually came in and went out? The heart of this lesson is seeing how the three statements interlock — and why “made money” does not equal “received money.”</p>
+
+  <h2><span class="secno">1</span>Three Statements, Three Views of Time</h2>
+  <p>Think of the three statements as three camera lenses, and the confusion clears:</p>
+  <div class="concept">
+    <div class="concept-title">One metaphor to remember all three statements</div>
+    <p style="margin:.2rem 0 .4rem"><b>The income statement is a video</b> — it records the performance of receipts and payments over a period (a month, a quarter, a year); <b>the balance sheet is a photograph</b> — it freezes the family fortune at one instant (December 31, say); <b>the statement of cash flows is a water flow</b> — it tracks every drop of real money that passes through the pipe.</p>
+    <p style="margin:0;font-size:.95rem;color:var(--ink-soft)">The video tells you whether operations performed well, the photograph tells you how substantial the base is, and the water flow tells you whether the company might die of thirst. Together, the three make one complete report card.</p>
+  </div>
+  <p>Inside the statement of cash flows are three sections: operating activities (the core business’s receipts and payments), investing activities (buying and building assets), and financing activities (borrowing and repaying). A healthy, growing company usually wants its operating section to be net-positive on its own — able to live without a transfusion.</p>
+
+  <h2><span class="secno">2</span>Articulation: How the Three Statements Interlock</h2>
+  <p>The three statements are not three isolated islands; fixed corridors run between them, and accounting calls these articulation links. The most important one:</p>
+  <div class="formula">Ending Retained Earnings = Beginning Retained Earnings + Net Income − Dividends to Shareholders</div>
+  <p>In other words, the net income computed on the income statement flows, at period-end, through the retained earnings account <b>into</b> owners’ equity on the balance sheet — that is exactly how the lemonade stand’s ¥90 profit rolled into equity in the last lesson. The other corridor sits in the statement of cash flows: its ending cash balance must equal the cash reported on the balance sheet. The two statements act like a pair of clasps, holding the income statement between them.</p>
+  <div class="callout warn"><span class="callout-label">Profit ≠ Cash</span> The income statement is kept on the accrual basis: revenue is recognized when earned, not when the money arrives. A credit sale lifts profit while cash stands still; depreciation works the other way, cutting profit while not a single coin leaves. The crack runs in both directions, and the statement of cash flows is what patches it.</div>
+
+  <h2><span class="secno">3</span>Try It Yourself: Three Linked Statements</h2>
+  <p>Click a transaction button on the left and trace the entry’s journey through the three statements: the lines it touches light up with the direction of the change, and animated connectors draw the articulation corridors. Pay close attention to the statements that stay dark — they matter as much as the ones that glow.</p>
+  <div class="sim" id="tri-sim">
+    <div class="sim-title">Three Linked Statements · One Entry’s Route Through All Three</div>
+    <div class="tri-btns">
+      <button data-flow="credit">Credit sale ¥500,000</button>
+      <button data-flow="dep">Record depreciation ¥100,000</button>
+      <button data-flow="repay">Repay loan principal ¥200,000</button>
+      <button id="tri-reset" class="ghost">✕ Clear highlights</button>
+    </div>
+    <div class="tri-wrap" id="tri-wrap">
+      <svg id="tri-links" aria-hidden="true"></svg>
+      <div class="stmt">
+        <div class="stmt-title">Income Statement</div>
+        <div class="stmt-sub">Video · a period</div>
+        <div class="stmt-line" data-id="is-rev"><span>Revenue</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="is-cogs"><span>Cost of goods sold</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="is-dep"><span>Depreciation expense</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="is-ni"><span>Net income</span><i class="delta"></i></div>
+        <div class="stmt-line mute" data-id="is-none"><span>This entry does not touch the income statement</span><i class="delta"></i></div>
+      </div>
+      <div class="stmt">
+        <div class="stmt-title">Balance Sheet</div>
+        <div class="stmt-sub">Photograph · one point in time</div>
+        <div class="stmt-h">ASSETS</div>
+        <div class="stmt-line" data-id="bs-cash"><span>Cash</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="bs-ar"><span>Accounts receivable</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="bs-fa"><span>Fixed assets (net)</span><i class="delta"></i></div>
+        <div class="stmt-h">LIABILITIES</div>
+        <div class="stmt-line" data-id="bs-loan"><span>Bank loan</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="bs-ap"><span>Accounts payable</span><i class="delta"></i></div>
+        <div class="stmt-h">OWNERS’ EQUITY</div>
+        <div class="stmt-line" data-id="bs-cap"><span>Paid-in capital</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="bs-re"><span>Retained earnings</span><i class="delta"></i></div>
+      </div>
+      <div class="stmt">
+        <div class="stmt-title">Statement of Cash Flows</div>
+        <div class="stmt-sub">Water flow · a period</div>
+        <div class="stmt-h">OPERATING</div>
+        <div class="stmt-line" data-id="cf-op"><span>Cash collected from sales</span><i class="delta"></i></div>
+        <div class="stmt-h">INVESTING</div>
+        <div class="stmt-line" data-id="cf-inv"><span>Purchases of long-term assets</span><i class="delta"></i></div>
+        <div class="stmt-h">FINANCING</div>
+        <div class="stmt-line" data-id="cf-fin"><span>Repayment of loan principal</span><i class="delta"></i></div>
+        <div class="stmt-line mute" data-id="cf-none"><span>No cash moves in this entry</span><i class="delta"></i></div>
+      </div>
+    </div>
+    <div id="tri-note">Click any transaction button above to watch the entry travel through the three statements.</div>
+  </div>
+  <p>What the three routes share: <b>no transaction touches only one statement.</b> A credit sale rewrites the income statement and the balance sheet at once; depreciation rewrites the income statement and the net book value of fixed assets; a repayment rewrites the statement of cash flows and both sides of the balance sheet. The three statements are one linked system, not three independent files.</p>
+
+  <h2><span class="secno">4</span>Case Study: A Milk-Tea Shop’s Monthly Three Statements</h2>
+  <div class="case">
+    <div class="case-title">Simplified three statements for “First Snow Tea,” month four after opening (figures are illustrative)</div>
+    <p>This little shop lost a cumulative ¥16,000 over its first three months (weighed down by fit-out and opening promotions); this month it turns its first profit. The three statements record the month together like this:</p>
+    <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>Income statement (this month)</th><th>Amount</th><th>Statement of cash flows (this month)</th><th>Amount</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue (incl. ¥10,000 of credit sales to a business client)</td><td>¥120,000</td><td>Operating: cash collected from sales (¥120,000 − ¥10,000 credit)</td><td>+¥110,000</td></tr>
+        <tr><td>Cost of materials</td><td>¥48,000</td><td>Operating: payments for materials, labor, and rent</td><td>−¥84,000</td></tr>
+        <tr><td>Labor and rent</td><td>¥36,000</td><td>Net cash from operations</td><td><b>+¥26,000</b></td></tr>
+        <tr><td>Depreciation (ice machine, etc.)</td><td>¥6,000</td><td>Financing: repayment of opening-loan principal</td><td>−¥10,000</td></tr>
+        <tr><td><b>Net income</b> (25% net margin)</td><td><b>¥30,000</b></td><td><b>Net increase in cash</b> (¥20,000 at start → ¥36,000 at end)</td><td><b>+¥16,000</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><b>Month-end balance sheet:</b> cash ¥36,000 + accounts receivable ¥10,000 + materials inventory ¥8,000 + equipment, net ¥54,000 (cost ¥60,000 − accumulated depreciation ¥6,000) = assets ¥108,000; liabilities = bank loan ¥50,000 (¥60,000 − ¥10,000 repaid this month) + accounts payable ¥4,000 = ¥54,000; equity = paid-in capital ¥40,000 + retained earnings ¥14,000 (last month −¥16,000 + this month’s net income ¥30,000) = ¥54,000. <b>¥108,000 = ¥54,000 + ¥54,000</b> — the photograph and the video interlock perfectly.</p>
+    <p class="case-learn"><b>What this case teaches:</b> this month’s net income is ¥30,000, yet net operating cash inflow is only ¥26,000 — the ¥4,000 gap = the ¥10,000 tied up in credit sales − the ¥6,000 of depreciation that required no cash. Profit and cash are two different rulers: use only one of them, and the other will ambush the founder.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Income Statement</dt><dd>The “video” that records revenue, expenses, and profit over a period.</dd>
+      <dt>Balance Sheet</dt><dd>The “photograph” that freezes assets, liabilities, and equity at one point in time.</dd>
+      <dt>Statement of Cash Flows</dt><dd>The “water flow” that tracks cash in and out across operating, investing, and financing.</dd>
+      <dt>Articulation</dt><dd>The fixed, checkable quantity corridors between statements, such as net income flowing into retained earnings.</dd>
+      <dt>Net Income</dt><dd>The final profit after all expenses and taxes are deducted from revenue.</dd>
+      <dt>Retained Earnings</dt><dd>Profits accumulated over the years and not distributed to shareholders; a component of equity.</dd>
+      <dt>Accrual Basis</dt><dd>The bookkeeping basis that recognizes revenue and expenses when they occur, not when cash changes hands.</dd>
+      <dt>Depreciation</dt><dd>The expense that spreads the cost of long-lived assets such as equipment over their useful lives.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    The income statement is a video, the balance sheet a photograph, the statement of cash flows a water flow; net income flows into the balance sheet through retained earnings, and ending cash must agree with the balance sheet. The three move as one — and <b>profit ≠ cash</b>.
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "A company makes ¥1,000,000 of credit sales during the month and collects none of it. How does this show up in the month’s statement of cash flows?",
+      "options": ["Operating cash inflows increase by ¥1,000,000", "No cash inflow at all, while profit rises", "Financing cash inflows increase by ¥1,000,000", "Investing cash inflows increase by ¥1,000,000"],
+      "answer": 1,
+      "explain": "Under the accrual basis a credit sale is recognized as revenue at once and lifts profit; but no cash has entered the company’s account, so the statement of cash flows does not stir — the first crack between profit and cash." },
+    { "q": "“The income statement is a video; the balance sheet is a photograph.” What does this saying mean?",
+      "options": ["The income statement covers a period; the balance sheet covers a point in time", "Income statement figures are exact; balance sheet figures rely on estimates", "The income statement can only be prepared annually; the balance sheet only daily", "The two rest on entirely different bases, with no articulation between them"],
+      "answer": 0,
+      "explain": "The video covers a period (a quarter, say), while the photograph freezes an instant (the last day of that quarter). Different views of time answer different questions." },
+    { "q": "Net income of ¥800,000 at period-end is not yet distributed to shareholders. Through which corridor does it enter the balance sheet?",
+      "options": ["It increases accounts payable among liabilities", "It directly increases inventory among assets", "It increases retained earnings among equity", "It reduces paid-in capital among equity"],
+      "answer": 2,
+      "explain": "Undistributed net income rolls into retained earnings: ending retained earnings = beginning + net income − dividends. This is the principal articulation corridor between the income statement and the balance sheet." },
+    { "q": "Depreciation of ¥200,000 is recorded. What is the correct effect across the three statements?",
+      "options": ["Cash falls at once and all three statements shrink", "Only the statement of cash flows changes", "The income statement is unaffected and liabilities rise by ¥200,000", "Expenses rise and profit falls, yet no cash flows out"],
+      "answer": 3,
+      "explain": "Depreciation is the classic non-cash expense: expenses rise and net income falls on the income statement; net fixed assets and retained earnings both decline; the statement of cash flows does not move. That is also why depreciation is later “added back.”" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>Further Reading</h2>
+    <ul>
+      <li>The Accounting Game: Basic Accounting Fresh from the Lemonade Stand by Darrell Mullis &amp; Judith Orloff, Chinese edition (China Machine Press) — suggested: the middle chapters, where the income statement and the balance sheet run as parallel storylines.</li>
+      <li>Accounting: The Basis for Business Decisions by John J. Wild (Chinese edition, China Machine Press) — suggested: chapter 1’s tour of the statements and the chapters on completing the accounting cycle and the statement of cash flows.</li>
+      <li>Going deeper: <a href="https://en.wikipedia.org/wiki/Financial_statement">Financial statement — Wikipedia</a></li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-accounting-equation.html"><span class="pager-label">← Previous</span><span class="pager-title">The Accounting Equation: The Language of Business</span></a>
+    <a class="next" href="0003-reading-statements.html"><span class="pager-label">Next →</span><span class="pager-title">Reading Financial Statements: Structure and Method</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Why doesn’t repaying a loan hit the income statement?’ or ‘How do I keep the three sections of the cash flow statement apart?’ You can also ask it to invent another transaction for you to trace through all three. Follow-up questions are part of learning.</div>
+    <p>Accounting · Lesson 2 · The Three Financial Statements: A Company’s Report Card | Interactive: simulator and quiz · all figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var wrap = document.getElementById("tri-wrap");
+  var svg = document.getElementById("tri-links");
+  var note = document.getElementById("tri-note");
+  if (!wrap || !svg) return;
+  var noteDefault = "Click any transaction button above to watch the entry travel through the three statements.";
+  var current = null;
+
+  var FLOWS = {
+    credit: {
+      hits: ["is-rev", "is-ni", "bs-ar", "bs-re", "cf-none"],
+      deltas: { "is-rev": "+¥500,000", "is-ni": "+¥500,000", "bs-ar": "+¥500,000", "bs-re": "+¥500,000" },
+      links: [["is-rev", "bs-ar"], ["is-ni", "bs-re"]],
+      note: "<b>Credit sale of ¥500,000 (payment not yet collected):</b> on the income statement, revenue and net income each rise by ¥500,000; on the balance sheet, accounts receivable +¥500,000 (an asset) and retained earnings +¥500,000 (equity) — net income flows into the balance sheet through retained earnings; the statement of cash flows does not move an inch. The books show ¥500,000 earned while not one coin enters the pocket: <b>profit ≠ cash</b>."
+    },
+    dep: {
+      hits: ["is-dep", "is-ni", "bs-fa", "bs-re", "cf-none"],
+      deltas: { "is-dep": "+¥100,000", "is-ni": "−¥100,000", "bs-fa": "−¥100,000", "bs-re": "−¥100,000" },
+      links: [["is-dep", "bs-fa"], ["is-ni", "bs-re"]],
+      note: "<b>Depreciation of ¥100,000 recorded:</b> depreciation is a non-cash expense — the income statement gains an expense and net income shrinks; on the balance sheet, fixed assets net of depreciation and retained earnings each fall by ¥100,000; the statement of cash flows does not move at all, because not one cent leaves the company. That is why depreciation is “added back” to net income when cash flow is analyzed."
+    },
+    repay: {
+      hits: ["cf-fin", "bs-cash", "bs-loan", "is-none"],
+      deltas: { "cf-fin": "−¥200,000", "bs-cash": "−¥200,000", "bs-loan": "−¥200,000" },
+      links: [["cf-fin", "bs-cash"], ["bs-cash", "bs-loan"]],
+      note: "<b>Loan principal of ¥200,000 repaid:</b> the statement of cash flows shows a ¥200,000 outflow in financing activities; on the balance sheet, cash and bank loans each drop by ¥200,000 — both sides of the equation shrink together and stay balanced; the income statement is untouched, because <b>principal is not an expense — interest is</b>. Repayment makes the company thinner but leaves profit unharmed."
+    }
+  };
+
+  function lineEl(id) { return wrap.querySelector('[data-id="' + id + '"]'); }
+  function allLines() { return wrap.querySelectorAll(".stmt-line"); }
+
+  function clearFx() {
+    allLines().forEach(function (l) {
+      l.classList.remove("hit", "dim");
+      var d = l.querySelector(".delta");
+      if (d) d.textContent = "";
+    });
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+  }
+
+  function drawLink(aId, bId) {
+    var ea = lineEl(aId), eb = lineEl(bId);
+    if (!ea || !eb) return;
+    var rw = wrap.getBoundingClientRect();
+    var ra = ea.getBoundingClientRect(), rb = eb.getBoundingClientRect();
+    svg.setAttribute("viewBox", "0 0 " + rw.width + " " + rw.height);
+    svg.setAttribute("width", rw.width);
+    svg.setAttribute("height", rw.height);
+    var ca = { x: ra.left + ra.width / 2, y: ra.top + ra.height / 2 };
+    var cb = { x: rb.left + rb.width / 2, y: rb.top + rb.height / 2 };
+    var ax = ca.x, ay = ca.y, bx = cb.x, by = cb.y;
+    if (Math.abs(cb.x - ca.x) >= Math.abs(cb.y - ca.y)) {
+      ax = cb.x > ca.x ? ra.right : ra.left;
+      bx = cb.x > ca.x ? rb.left : rb.right;
+    } else {
+      ay = cb.y > ca.y ? ra.bottom : ra.top;
+      by = cb.y > ca.y ? rb.top : rb.bottom;
+    }
+    ax -= rw.left; ay -= rw.top; bx -= rw.left; by -= rw.top;
+    var mx = (ax + bx) / 2;
+    var p = Viz.svgEl("path", { d: "M " + ax + " " + ay + " C " + mx + " " + ay + ", " + bx + " " + by + ", " + bx + " " + by, fill: "none" });
+    p.style.stroke = "var(--accent)";
+    p.style.strokeWidth = "2.5";
+    p.style.strokeLinecap = "round";
+    p.style.opacity = ".85";
+    svg.appendChild(p);
+    var len = p.getTotalLength();
+    p.style.strokeDasharray = String(len);
+    p.style.strokeDashoffset = String(len);
+    p.style.transition = "stroke-dashoffset .7s ease";
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { p.style.strokeDashoffset = "0"; });
+    });
+    [[ax, ay], [bx, by]].forEach(function (pt) {
+      var c = Viz.svgEl("circle", { cx: pt[0], cy: pt[1], r: 4 });
+      c.style.fill = "var(--accent)";
+      svg.appendChild(c);
+    });
+  }
+
+  function run(key) {
+    var f = FLOWS[key];
+    if (!f) return;
+    current = key;
+    clearFx();
+    var hits = {};
+    f.hits.forEach(function (h) { hits[h] = true; });
+    allLines().forEach(function (l) {
+      var id = l.getAttribute("data-id");
+      if (hits[id]) {
+        l.classList.add("hit");
+        var d = l.querySelector(".delta");
+        if (d && f.deltas[id]) d.textContent = f.deltas[id];
+      } else {
+        l.classList.add("dim");
+      }
+    });
+    f.links.forEach(function (pr) { drawLink(pr[0], pr[1]); });
+    note.innerHTML = f.note;
+  }
+
+  document.querySelectorAll("#tri-sim [data-flow]").forEach(function (b) {
+    b.addEventListener("click", function () { run(b.getAttribute("data-flow")); });
+  });
+  var rb = document.getElementById("tri-reset");
+  if (rb) rb.addEventListener("click", function () {
+    current = null;
+    clearFx();
+    note.innerHTML = noteDefault;
+  });
+  window.addEventListener("resize", function () { if (current) run(current); });
+})();
+</script>
+</body>
+</html>

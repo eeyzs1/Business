@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision-Making: Rationality and Biases · Management</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .btn-primary{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:.5rem 1.15rem;font-weight:700;cursor:pointer;font-family:var(--sans);font-size:.9rem}
+  .btn-primary:disabled{opacity:.4;cursor:default}
+  .lab-p{font-size:.93rem;color:var(--ink-soft);margin-bottom:.8rem}
+  .lab-q{font-size:.98rem;margin:.7rem 0}
+  .lab-plan{background:var(--paper-deep);border-radius:8px;padding:.55rem .85rem;margin:.45rem 0;font-size:.93rem}
+  .lab-opts{display:flex;flex-wrap:wrap;gap:.6rem;margin:.9rem 0}
+  .opt-btn{text-align:left;font-family:var(--sans);font-size:.94rem;line-height:1.6;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:.5rem .95rem;cursor:pointer;transition:all .15s ease}
+  .opt-btn:hover{border-color:var(--accent)}
+  .opt-btn.picked{border-color:var(--accent);background:#f5f0ff;font-weight:700;box-shadow:inset 4px 0 0 var(--accent)}
+  .opt-btn:disabled{cursor:default}
+  .lab-fb{margin-top:.9rem;font-size:.92rem;background:var(--paper-deep);border-radius:8px;padding:.85rem 1rem;color:var(--ink-soft);line-height:1.8}
+  .lab-fb b{color:var(--accent)}
+  .anchor-box{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin:.6rem 0}
+  .anchor-num{font-family:var(--serif);font-size:3rem;font-weight:800;color:var(--accent);min-width:3.2em;text-align:center;background:#fff;border:2px dashed var(--accent);border-radius:12px;padding:.2rem .8rem;font-variant-numeric:tabular-nums}
+  .anchor-cap{font-size:.85rem;color:var(--ink-faint)}
+</style>
+</head>
+<body class="branch-management">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Management</a><span class="crumb-sep">/</span>
+  <span>Decision-Making: Rationality and Biases</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../05-management/lessons/0002-decision-biases.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Management · Lesson 2</p>
+  <h1>Decision-Making: Rationality and Biases</h1>
+  <p class="lead">Every move a manager makes is a decision: whom to hire, how much to invest, whether to kill a project. The “rational actor” of the economics textbooks does not exist in the real world — in this lesson you will watch biases take shape inside your own judgment, then learn how to fit your decisions with guardrails.</p>
+
+  <h2><span class="secno">1</span>Perfect Rationality Is a Myth</h2>
+  <p>The textbook “economic man” lists every alternative, computes every consequence, and picks the optimum. But the Nobel laureate Herbert Simon pointed out that human cognitive capacity and information are both limited, so what real decision makers do is this: <strong>set a “good enough” standard in advance, and stop at the first option that clears it</strong>. He called this <em>satisficing</em>, as opposed to optimizing, and named the underlying condition <em>bounded rationality</em>.</p>
+  <div class="concept">
+    <div class="concept-title">Definition · Bounded Rationality and Satisficing</div>
+    <p style="margin:0">Constrained by information, time, and cognitive resources, decision makers do not exhaust every option in search of the optimum; they look within a limited set for a “good enough” satisficing solution. This is not laziness but a sensible strategy under real constraints — the true danger is not failing to optimize, but drifting systematically away from rationality without noticing.</p>
+  </div>
+  <p>That unnoticed drift is what we call <em>decision biases</em>: not occasional carelessness, but systematic tendencies that everyone shares and whose direction can be predicted. These four appear most often on business ground:</p>
+
+  <h2><span class="secno">2</span>Four Classic Biases at a Glance</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Bias</th><th>The mechanism in one line</th><th>What it looks like in business</th></tr></thead>
+      <tbody>
+        <tr><td><b>Anchoring Bias</b></td><td>The first number shown drags later judgments along with it</td><td>Quoting high, then discounting; the first offer sets the tone for the whole negotiation</td></tr>
+        <tr><td><b>Confirmation Bias</b></td><td>Gathering only evidence that supports what you already believe</td><td>Once you favor a project, you only hear good news</td></tr>
+        <tr><td><b>Sunk-Cost Fallacy</b></td><td>Doubling down on costs already paid and unrecoverable</td><td>“We have invested this much — stopping now would be a waste”</td></tr>
+        <tr><td><b>Loss Aversion</b></td><td>The pain of a loss far outweighs the sweetness of an equal gain</td><td>“Miss out and you lose ¥50” closes more orders than “order and gain ¥50”</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>Reading the table only makes you “know”; experimenting makes you “see.” Here are the bias lab’s three mini-experiments — play through them in order, and each will show you your own judgment on the spot.</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">The Bias Lab · Experiment 1: The Wheel of Fortune</div>
+    <p class="lab-p">First, take a spin on the “wheel of fortune” — the number it lands on has <b>nothing</b> to do with the question that follows. It is pure chance.</p>
+    <div class="anchor-box">
+      <div class="anchor-num" id="anc-num">?</div>
+      <div>
+        <button type="button" class="btn-primary" id="anc-spin">🎰 Spin the wheel</button>
+        <div class="anchor-cap" id="anc-cap">The number is generated at random</div>
+      </div>
+    </div>
+    <div id="anc-q" hidden>
+      <p class="lab-q">The number you just spun is <b id="anc-val"></b>. Now answer from judgment: roughly what share of the member states of the United Nations are African countries?</p>
+      <div class="lab-opts" id="anc-opts"></div>
+    </div>
+    <div class="lab-fb" id="anc-fb" hidden></div>
+    <div id="anc-chart"></div>
+  </div>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">The Bias Lab · Experiment 2: The Loss Frame</div>
+    <div id="fr-a">
+      <p class="lab-q">Scenario: an unusual disease is expected to kill 600 people. Only two response programs are available, and rigorous statistical projections show:</p>
+      <div class="lab-plan"><b>Program A</b>: 200 people will be saved, guaranteed.</div>
+      <div class="lab-plan"><b>Program B</b>: a 1/3 chance that all 600 will be saved, and a 2/3 chance that no one will be saved.</div>
+      <div class="lab-opts" id="fr-opts-a"></div>
+    </div>
+    <div id="fr-b" hidden>
+      <p class="lab-q">The same experts report back with different wording — the same disease, the same two programs, but this time stated in terms of “dying”:</p>
+      <div class="lab-plan"><b>Program C</b>: 400 people will die, guaranteed.</div>
+      <div class="lab-plan"><b>Program D</b>: a 1/3 chance that no one will die, and a 2/3 chance that all 600 will die.</div>
+      <div class="lab-opts" id="fr-opts-b"></div>
+    </div>
+    <div class="lab-fb" id="fr-fb" hidden></div>
+  </div>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">The Bias Lab · Experiment 3: Sunk Costs</div>
+    <p class="lab-q">Scenario: your company has already sunk about ¥8,000,000 into building an in-house system, and finishing it will take roughly ¥4,000,000 more. A mature replacement has now appeared on the market: total cost about ¥2,500,000, available in three months, covering about 90% of the features planned for the in-house build. As the person in charge, you lean toward:</p>
+    <div class="lab-opts" id="sc-opts"></div>
+    <div class="lab-fb" id="sc-fb" hidden></div>
+  </div>
+
+  <h2><span class="secno">3</span>Fitting Decisions with Guardrails</h2>
+  <p>Biases cannot be willed away — people who know all about anchoring still get anchored. What works is <strong>changing the process and the environment in which decisions are made</strong>:</p>
+  <ul class="steps">
+    <li><b>Write the anchor down, then question it</b>: before a negotiation, write down your own target figure and its rationale on your own; flag “where did this number come from.”</li>
+    <li><b>Assign a devil’s advocate</b>: before every decision, one person is permanently tasked with gathering the counter-evidence — the antidote to confirmation bias.</li>
+    <li><b>Ask the “zero-based question”</b>: if I were starting from scratch today, carrying no historical investment, would I still choose it? The antidote to sunk costs.</li>
+    <li><b>Run a premortem</b>: assume the project has failed one year from now, and have the team write down the causes today — an imagined loss forces out the risks that optimism has papered over.</li>
+  </ul>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case: Kodak’s Film Filter, and “Pouring Money into the Hole”</p>
+    <p><b>A specimen of confirmation bias: Kodak.</b> In 1975, a Kodak engineer built one of the world’s earliest digital camera prototypes (public record). But for a company whose profits then rested on film, “digital will replace film” was an unwelcome signal. In the years that followed, the company kept its attention on evidence supporting the film business — volumes still growing, the channel still strong — while reading the threat from the substitute technology as “no threat to the core.” By the time the digital wave broke in full, Kodak had filed for bankruptcy protection, in 2012 (public fact). People who saw the threat were not lacking; the bad news was simply filtered out as it climbed the reporting chain — confirmation bias as it looks at the organizational level.</p>
+    <p><b>A specimen of sunk costs: “pouring money into the hole.”</b> Business reporting keeps replaying this plot (illustrative): a project that has absorbed a large investment starts to falter, and the review meeting no longer asks “how much more is needed, and what will it return” — instead it argues, over and over, that “one more injection will get us to break-even.” The project fills deeper and deeper, like a hole. It is the same logic by which Britain and France kept funding the Concorde supersonic jet — which is why the sunk-cost fallacy is also called the “Concorde effect.”</p>
+    <p class="case-learn"><b>What to notice in this case:</b> biases never act alone — confirmation bias supplies “only good news gets through,” sunk costs supply “can’t bear to stop,” and loss aversion supplies “dare not book the loss.” Organizations need counter-evidence forced into the process, rather than counting on the people involved to “stay rational.”</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Bounded Rationality</dt><dd>Proposed by Simon: constrained by information and cognition, people make decisions under incomplete conditions.</dd>
+      <dt>Satisficing</dt><dd>Stopping the search at the first “good enough” option rather than exhausting all options for the optimum.</dd>
+      <dt>Anchoring Bias</dt><dd>An initial number or piece of information disproportionately drags subsequent judgments.</dd>
+      <dt>Confirmation Bias</dt><dd>The tendency to seek and weight evidence supporting existing views while ignoring contrary evidence.</dd>
+      <dt>Sunk-Cost Fallacy</dt><dd>Letting costs already paid and unrecoverable influence the decision, and escalating the commitment as a result.</dd>
+      <dt>Loss Aversion</dt><dd>The psychological pain of a loss is stronger than the satisfaction brought by an equal gain.</dd>
+      <dt>Framing Effect</dt><dd>Different wordings of the same information (gain frame vs loss frame) produce opposite choices.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>It is fine that people seek a satisficing answer rather than the optimum; the problem is being anchored, hearing only good news, and filling holes for sunk costs. Biases cannot be blocked by willpower, but they can be blocked by process: write the anchor down, assign the opposition, ask the zero-based question, run the premortem.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "A real-estate agent first shows you a luxury home clearly beyond your budget, then takes you to the listing she actually wants to sell you. This tactic exploits:",
+        "options": ["Loss aversion", "Confirmation bias", "Anchoring bias", "Sunk-cost fallacy"],
+        "answer": 2,
+        "explain": "The luxury home’s high price is an “anchor”: the first number inflates your valuation of every price that follows, so the target house feels “not that expensive.” All four options distort judgment, but “propping up the reference point with a number first” is the signature move of anchoring bias." },
+      { "q": "In Simon’s view, facing 40 candidate suppliers, a realistically rational manager will most likely:",
+        "options": ["Commit once a good-enough option appears", "Exhaust every option before deciding", "Leave it entirely to intuition and luck", "Wait until the information is 100% complete"],
+        "answer": 0,
+        "explain": "Simon’s “administrative man” seeks a satisficing solution: set an acceptable standard and stop searching at the first option that clears it. Exhausting every option is the “economic man’s” assumption of perfect rationality, and information that is 100% complete never arrives in real life." },
+      { "q": "On an e-commerce page, “order now or the deal is gone — you would be losing ¥50” converts better than “order now and save ¥50.” This exploits:",
+        "options": ["Anchoring bias", "Confirmation bias", "Overconfidence", "Loss aversion"],
+        "answer": 3,
+        "explain": "The two sentences are mathematically identical, but recasting the gain as a “loss” sharply amplifies the psychological sting — loss aversion. It is put to wide use in marketing, negotiation, and policy design." },
+      { "q": "In its day, Kodak tended to weight the evidence that “film is still profitable” and to discount the signals of digital substitution. The bias displayed by management as a whole was mainly:",
+        "options": ["Anchoring bias", "Confirmation bias", "Sunk costs", "Loss aversion"],
+        "answer": 1,
+        "explain": "First came the judgment “film is the core business,” then the selective gathering of evidence for it and the filtering out of contrary signals — that is confirmation bias. The sunk-cost fallacy (pouring more into production lines already paid for) often follows, but what the stem describes at the core is the distortion of evidence selection." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Thinking, Fast and Slow by Daniel Kahneman — the source work of bias research; read the chapters on anchoring and framing.</li>
+      <li>Management by Stephen P. Robbins &amp; Mary Coulter (13th edition) — read the decision-making chapter for the textbook treatment of the rational model and bounded rationality.</li>
+      <li>The Art of Thinking Clearly by Rolf Dobelli — a pocket guide to thinking traps; read the pieces on sunk costs and confirmation bias.</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-four-functions.html"><span class="pager-label">← Previous</span><span class="pager-title">What Is Management? The Four Functions</span></a>
+    <a class="next" href="0003-motivation-theories.html"><span class="pager-label">Next →</span><span class="pager-title">Motivation: Why People Are Willing to Work Hard</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Review a recent decision of mine and tell me which bias it stepped on’ or ‘Give me a few more variations on the framing effect.’ Practicing on your own decisions is what makes it stick. Follow-up questions are part of learning.</div>
+    <p>Management · Lesson 2 · Decision-Making: Rationality and Biases | Interactive: a bias lab of three mini-experiments · case figures are illustrative magnitudes</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Experiment 1: the wheel of fortune ---------- */
+  var spinBtn = document.getElementById("anc-spin"),
+      numEl = document.getElementById("anc-num"),
+      capEl = document.getElementById("anc-cap"),
+      qEl = document.getElementById("anc-q"),
+      valEl = document.getElementById("anc-val"),
+      optsEl = document.getElementById("anc-opts"),
+      fbEl = document.getElementById("anc-fb"),
+      chartEl = document.getElementById("anc-chart");
+  if (spinBtn) {
+    var anchorVal = 0, ancAnswered = false;
+    var ANS = ["About 10%", "About 20%", "About 28%", "About 45%"];
+    ANS.forEach(function (txt, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt-btn"; b.textContent = txt;
+      b.addEventListener("click", function () {
+        if (ancAnswered) return;
+        ancAnswered = true;
+        optsEl.querySelectorAll(".opt-btn").forEach(function (x) { x.disabled = true; });
+        b.classList.add("picked");
+        var fb = "The random number you saw was <b>" + anchorVal + "</b>, and your estimate was <b>" + txt + "</b>. The actual share is about <b>28%</b> (the UN currently has about 193 member states, of which about 54 are African countries — public data, approximate).<br>";
+        if ((anchorVal === 65 && i >= 2) || (anchorVal === 10 && i <= 1)) {
+          fb += "Notice the direction of your choice — it was dragged <b>" + (anchorVal === 65 ? "up" : "down") + "</b> by that irrelevant random number.<br>";
+        }
+        fb += "In the classic wheel experiment (Tversky &amp; Kahneman, 1974; values are medians, approximate), the group that saw 10 estimated about 25%, and the group that saw 65 estimated about 45% — one purely random number dragged the group’s judgment away from the truth. The “first number” in negotiations, pricing, and budget reviews quietly does the same thing.";
+        fbEl.innerHTML = fb;
+        fbEl.hidden = false;
+        if (window.Viz) {
+          Viz.bars(chartEl, [
+            { label: "Saw 10 · median estimate", value: 25, color: "#c4b5fd" },
+            { label: "Actual share", value: 28, color: "#15803d" },
+            { label: "Saw 65 · median estimate", value: 45, color: "#7c3aed" }
+          ], { h: 230, max: 55, valueFormat: function (v) { return Math.round(v) + "%"; } });
+        }
+      });
+      optsEl.appendChild(b);
+    });
+
+    spinBtn.addEventListener("click", function () {
+      spinBtn.disabled = true;
+      capEl.textContent = "Spinning… (the result is fully random)";
+      var ticks = 0;
+      var t = setInterval(function () {
+        numEl.textContent = Math.floor(1 + Math.random() * 99);
+        ticks++;
+        if (ticks > 18) {
+          clearInterval(t);
+          anchorVal = Math.random() < 0.5 ? 10 : 65;
+          numEl.textContent = anchorVal;
+          capEl.textContent = "This number has nothing to do with the question — but remember it";
+          valEl.textContent = anchorVal;
+          qEl.hidden = false;
+        }
+      }, 65);
+    });
+  }
+
+  /* ---------- Experiment 2: the loss frame ---------- */
+  var oa = document.getElementById("fr-opts-a"),
+      ob = document.getElementById("fr-opts-b"),
+      fb2 = document.getElementById("fr-fb"),
+      boxA = document.getElementById("fr-a"),
+      boxB = document.getElementById("fr-b");
+  if (oa) {
+    var pickA = -1, pickB = -1;
+    [["Program A: 200 saved for sure", 0], ["Program B: gamble on a 1/3 chance of saving 600", 1]].forEach(function (pair) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt-btn"; b.textContent = pair[0];
+      b.addEventListener("click", function () {
+        if (pickA >= 0) return;
+        pickA = pair[1];
+        b.classList.add("picked");
+        oa.querySelectorAll(".opt-btn").forEach(function (x) { x.disabled = true; });
+        boxB.hidden = false;
+        boxB.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+      oa.appendChild(b);
+    });
+    [["Program C: 400 die for sure", 0], ["Program D: gamble on a 1/3 chance that no one dies", 1]].forEach(function (pair) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt-btn"; b.textContent = pair[0];
+      b.addEventListener("click", function () {
+        if (pickB >= 0) return;
+        pickB = pair[1];
+        b.classList.add("picked");
+        ob.querySelectorAll(".opt-btn").forEach(function (x) { x.disabled = true; });
+        var first = pickA === 0 ? "the sure thing — 200 saved (A)" : "the gamble (B)";
+        var second = pickB === 0 ? "the sure thing — 400 die (C)" : "the gamble (D)";
+        var msg = "Your choices are recorded: under the positive frame you chose <b>" + first + "</b>; under the negative frame you chose <b>" + second + "</b>.<br>";
+        if (pickA !== pickB) {
+          msg += "<b>You switched!</b> A and C, and B and D, are mathematically identical (the same “sure outcome” and the same “gamble”) — yet merely recasting the wording from “saved” to “die” flipped your risk preference. This is the <em>framing effect</em>, and its engine is <b>loss aversion</b>: facing gains you want to lock them in; facing losses you become willing to gamble.<br>";
+        } else {
+          msg += "<b>The frame did not switch you!</b> You kept the same choice under both wordings — a sign that you were actively converting both sentences onto the same ruler. That is harder than it sounds: in the classic experiment (Kahneman &amp; Tversky, 1981; approximate), about 72% chose “save 200 for sure” under the positive frame, while about 78% chose the gamble under the negative frame — the same problem, with the distribution of answers completely flipped.<br>";
+        }
+        msg += "The management lesson: how you report is itself influence. Whoever controls “how this is described” is steering the team’s decision.";
+        fb2.innerHTML = msg;
+        fb2.hidden = false;
+      });
+      ob.appendChild(b);
+    });
+  }
+
+  /* ---------- Experiment 3: sunk costs ---------- */
+  var scOpts = document.getElementById("sc-opts"),
+      scFb = document.getElementById("sc-fb");
+  if (scOpts) {
+    var SC = [
+      ["Spend the extra ¥4,000,000 and finish the in-house build — we have already put in ¥8,000,000, stopping now would be a waste",
+        "This is the textbook <b>sunk-cost fallacy</b>: the “waste” points at the ¥8,000,000 — but that money is already spent and unrecoverable no matter what you choose. It has no place in the comparison."],
+      ["Stop the in-house build and switch to the replacement — only about ¥2,500,000 more, available in three months",
+        "This choice uses the right ruler: compare only <b>future costs and benefits</b>. About ¥2,500,000 versus about ¥4,000,000, with a shorter timeline — the rational direction, absent other constraints."],
+      ["Hedge both ways: keep building in-house while piloting the replacement",
+        "“Hedging both ways” is often the fallacy in a gentler form: to avoid admitting a mistake psychologically, you double the future money you put at risk. Unless the informational value of running both tracks is truly large, it merely postpones the write-down decision by another quarter."]
+    ];
+    SC.forEach(function (item) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt-btn"; b.textContent = item[0];
+      b.addEventListener("click", function () {
+        scOpts.querySelectorAll(".opt-btn").forEach(function (x) { x.disabled = true; });
+        b.classList.add("picked");
+        scFb.innerHTML = "<b>Your choice:</b> " + item[0] + "<br>" + item[1] +
+          "<br><b>Take it apart:</b> the ¥8,000,000 already spent is a sunk cost, and a rational decision looks only at “what more must I put in, and what will I get back.” The in-house build’s future cost is about ¥4,000,000; the replacement is about ¥2,500,000 plus switching costs such as data migration and team learning — note that these are future costs and <b>should</b> enter the comparison, while “how much we have already spent” should not. Next time you are torn, ask the “zero-based question”: if I were starting from zero today, carrying no history at all, would I still choose it?";
+        scFb.hidden = false;
+      });
+      scOpts.appendChild(b);
+    });
+  }
+})();
+</script>
+</body>
+</html>

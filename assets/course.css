@@ -95,6 +95,11 @@ h2 .secno, h3 .secno { color: var(--accent); margin-right: .4em; font-family: va
   border-radius: 999px; padding: .05em .7em; font-weight: 700; font-size: .78rem;
 }
 .lesson-nav .progress { margin-left: auto; color: var(--ink-faint); white-space: nowrap; }
+.lesson-nav .lang-switch {
+  border: 1.5px solid var(--line); border-radius: 999px; padding: .05em .65em;
+  font-weight: 800; font-size: .78rem; color: var(--ink-soft); white-space: nowrap;
+}
+.lesson-nav a.lang-switch:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ---- 导语与首屏 ------------------------------------------- */
 .lead {

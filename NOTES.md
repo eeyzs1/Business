@@ -10,5 +10,6 @@
 ## 工作笔记(AI 教师用)
 
 - 2026-11-08:课程库初始化。12 分支 × 4 课。方法论采用 teach skill(mattpocock),已安装至 C:\Users\eeyzs1\.agents\skills\teach。
+- 2026-11-08(晚):新增英文镜像 `en/`(61 页)与 5 份 `*.en.md` 文档;全站导航栏增加 中/EN 切换按钮(`lang-switch`,样式在 course.css);修复中文版 3 处问题(04 分支 STP 测验答案索引、10 分支"橙点"与实际渲染色不符、09 分支投前/投后口径歧义);`tools/check.py` 跳过 en/,新增 `tools/check_en.py` 与 `tools/audit_en.py`。
 - 案例数字一律"约/示意"表述,避免编造精确财务数据。
 - 后续会话:可按学习者反馈增补 reference/ 速查表与 learning-records/。

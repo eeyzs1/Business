@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recruiting and Selection · Human Resources</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .star-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+  .star-grid .star-cell {
+    border-radius: 10px; padding: .8rem .95rem; color: #fff; line-height: 1.65;
+  }
+  .star-grid .star-cell b { font-family: var(--serif); font-size: 1.5rem; margin-right: .4rem; }
+  .star-grid .star-cell small { display: block; font-size: .78rem; opacity: .92; margin-top: .25rem; }
+  .star-grid .s1 { background: #881337; } .star-grid .s2 { background: #9d174d; }
+  .star-grid .s3 { background: #be185d; } .star-grid .s4 { background: #db2777; }
+  @media (max-width: 520px) { .star-grid { grid-template-columns: 1fr; } }
+  .star-progress { font-size: .85rem; font-weight: 700; color: var(--accent); margin-bottom: .5rem; font-variant-numeric: tabular-nums; }
+  .star-card {
+    background: var(--paper-deep); border-left: 4px solid var(--accent); border-radius: 10px;
+    padding: 1rem 1.15rem; font-size: 1.05rem; min-height: 4.2rem; display: flex; align-items: center;
+  }
+  .star-actions { display: flex; gap: .8rem; margin-top: .9rem; flex-wrap: wrap; }
+  .star-btn {
+    font-family: var(--sans); font-size: .97rem; font-weight: 700; cursor: pointer;
+    border-radius: 999px; padding: .55rem 1.35rem; border: 2px solid var(--line); background: #fff; color: var(--ink);
+    transition: all .15s ease;
+  }
+  .star-btn.yes { border-color: #bbf7d0; }
+  .star-btn.yes:hover:not(:disabled) { border-color: var(--good); background: #f0fdf4; }
+  .star-btn.no { border-color: #fecaca; }
+  .star-btn.no:hover:not(:disabled) { border-color: var(--bad); background: #fef2f2; }
+  .star-btn:disabled { opacity: .4; cursor: default; }
+  .star-feedback {
+    margin-top: .9rem; font-size: .93rem; color: var(--ink-soft); line-height: 1.75;
+    background: var(--paper-deep); border-radius: 8px; padding: .75rem .95rem;
+  }
+  .star-feedback b { color: var(--accent); }
+  .star-meta { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+  .star-score { font-size: .95rem; font-weight: 700; color: var(--accent); }
+  .star-next {
+    margin-left: auto; background: var(--accent); color: var(--accent-ink); border: none; border-radius: 999px;
+    padding: .45rem 1.3rem; font-weight: 700; font-size: .92rem; cursor: pointer; font-family: var(--sans);
+  }
+  .star-next:disabled { opacity: .35; cursor: default; }
+</style>
+</head>
+<body class="branch-hr">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Human Resources</a><span class="crumb-sep">/</span>
+  <span>Recruiting and Selection</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../06-human-resources/lessons/0002-recruiting-and-selection.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Human Resources · Lesson 2</p>
+  <h1>Recruiting and Selection</h1>
+  <p class="lead">Hiring is probably the highest-return decision a manager makes — and the one most easily corrupted by gut feel: forty-five minutes of conversation to judge someone you may work with for years. This lesson turns “reading people” from mysticism into engineering: draw the talent profile accurately first, then use a structured interview with STAR probes to obtain comparable behavioral evidence.</p>
+
+  <h2><span class="secno">1</span>Hiring Wrong Is the Most Expensive Mistake</h2>
+  <p>In the interview room the candidate has every incentive to “present their best self,” while the interviewer holds only a few hundred seconds of information — the information asymmetry is structural. Worse, the brain ships with several systematic biases: the <em>halo effect</em> (one shining trait beautifies the whole impression — a prestigious degree, so “surely they can grind, too”); the <em>primacy effect</em> (the first five minutes set the tone, and everything after is evidence-gathering); and similar-to-me bias (unconsciously favoring candidates who resemble you). These biases are not attitude problems — they are factory settings. That is why you counter them with <b>process design</b>, not by reminding yourself to “be objective.”</p>
+  <div class="callout warn">
+    <span class="callout-label">By the way · Résumé screening bias</span>
+    <p style="margin:.3rem 0 0">Name, gender, age, photo, and school can all trigger unconscious associations that tag a résumé before you ever meet its owner. The standard countermeasure is <b>blind screening</b>: mask everything unrelated to competency first, and score only the evidence of ability.</p>
+  </div>
+  <p>How large is the cost? The visible parts (headhunter fees, probation-period salary) are the small end. The hidden costs of a mismatch — missed opportunities, the drain of repeated team reshaping, the time to hire all over again — are usually far larger (a common rule of thumb puts them at several times the seat’s annual salary; indicative).</p>
+
+  <h2><span class="secno">2</span>The Talent Profile: From Job Description to Competencies</h2>
+  <div class="concept">
+    <div class="concept-title">Concept: Talent Profile and Competencies</div>
+    <p style="margin:.2rem 0 0">Translate the <em>job description</em> (duties and requirements) into a list of <em>competencies</em>: professional knowledge and skills, experience thresholds, and general attributes (structured communication or resilience under pressure, for example). With a vague profile, the widest recruiting funnel just leaks; with a clear profile, interview questions and scoring rubrics finally have a target.</p>
+  </div>
+  <p>Channels are a trade-off among quality, speed, and cost. <b>Employee referrals</b> deliver high quality at low cost, but guard against an inbred team; <b>job boards</b> deliver volume along with a heavy screening burden; <b>executive search</b> fits scarce, senior roles; <b>campus recruiting</b> buys potential and plasticity. There is no best channel — only a portfolio matched to the role profile.</p>
+
+  <h2><span class="secno">3</span>The Structured Interview: The Validity Watershed</h2>
+  <div class="concept">
+    <div class="concept-title">Concept: Structured Interview</div>
+    <p style="margin:.2rem 0 0">All candidates answer <b>the same set</b> of competency-linked questions and are scored on a <b>shared rating scale</b> (often with behaviorally anchored level descriptions). The opposite — an improvised, ask-whatever-comes-to-mind “chat” — is an unstructured interview.</p>
+  </div>
+  <p>Why does structure matter so much? Decades of meta-analytic selection research consistently find that structured interviews have significantly higher <em>predictive validity</em> for job performance than unstructured ones (on the order of 0.5 versus 0.4; indicative). The reason is not mysterious — with the same questions and the same standards, scores become comparable, and each interviewer’s personal taste and bias get squeezed out. A side benefit is fairness: every candidate faces the same questions, and should a hiring dispute ever arise, the written scoring record is important procedural evidence.</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>Dimension</th><th>Structured interview</th><th>Unstructured interview</th></tr></thead>
+      <tbody>
+        <tr><td>Questions</td><td>Fixed question bank aimed at competencies</td><td>Interviewer improvises</td></tr>
+        <tr><td>Scoring</td><td>Shared rating scale, behaviorally anchored</td><td>Graded on overall impression</td></tr>
+        <tr><td>Comparability</td><td>Candidates can be compared side by side</td><td>Nearly impossible to compare</td></tr>
+        <tr><td>Predictive validity</td><td>Higher and stable (about 0.5, indicative)</td><td>Lower and volatile (about 0.4, indicative)</td></tr>
+        <tr><td>Candidate experience</td><td>Consistent, professional, reusable</td><td>Varies by interviewer</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="secno">4</span>Behavioral Interviews and STAR Probing</h2>
+  <p>The most powerful form of structured interviewing is the <em>behavioral interview</em>, and its underlying assumption is a single sentence: <b>past behavior is the best predictor of future performance.</b> So you do not ask “can you” — you ask “have you”; you leave the candidate no room for oratory, and instead drill down layer by layer through one real experience. The map for that drilling is STAR.</p>
+
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <div class="star-grid">
+        <div class="star-cell s1"><b>S</b> Situation<small>“What was the context at the time? What constraints and difficulties were in play?”</small></div>
+        <div class="star-cell s2"><b>T</b> Task<small>“What goal did you personally have to deliver?”</small></div>
+        <div class="star-cell s3"><b>A</b> Action<small>“What exactly did you do? Note: ‘you,’ not ‘we.’”</small></div>
+        <div class="star-cell s4"><b>R</b> Result<small>“How did it turn out? What measurable impact was there?”</small></div>
+      </div>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The STAR probing map: work through one experience along the four cells. The decisive one is A — “our team succeeded in the end” is not evidence; “which three things did you do at the time” is.</figcaption>
+  </figure>
+
+  <p>Now the interviewer’s seat is yours: eight cards, each carrying an interview question or a style of asking. Judge whether it is an <b>effective behavioral question</b> or an <b>ineffective one</b> (one that cannot surface behavioral evidence). The reasoning follows each verdict.</p>
+
+  <div class="sim" data-reveal id="star-sim">
+    <div class="sim-title">Interactive · STAR Interview Drill: Is This Question Valid?</div>
+    <div class="star-progress" id="starProg">Card 1 of 8</div>
+    <div class="star-card" id="starCard">Loading drill…</div>
+    <div class="star-actions">
+      <button type="button" class="star-btn yes" id="starYes">✓ Valid behavioral question</button>
+      <button type="button" class="star-btn no" id="starNo">✗ Invalid question</button>
+    </div>
+    <div class="star-feedback" id="starFb" hidden></div>
+    <div class="star-meta">
+      <span class="star-score" id="starScore">Correct so far: 0</span>
+      <button type="button" class="star-next" id="starNext" disabled>Next card →</button>
+    </div>
+  </div>
+
+  <h2><span class="secno">5</span>Case Study: Amazon’s Bar Raiser</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">The Bar Raiser: an interviewer whose job is to push back</p>
+    <p>Amazon’s hiring process includes a special role: the <em>Bar Raiser</em> (literally, “the one who raises the bar”). This is a specially trained senior interviewer from a department <b>unrelated</b> to the opening, who joins the interviews and the debrief. Their job is not to help the hiring manager “get someone in the seat quickly,” but to hold the company’s long-term bar on people quality — with a voice that can veto unqualified candidates (an illustrative description of the mechanism). When a business unit is desperate for hands, the “hire first, worry later” compromise is most likely to appear; a Bar Raiser who feels none of the delivery pressure is the designed counterweight to that short-termism.</p>
+    <p class="case-learn"><b>The lesson:</b> systems are more reliable than good intentions. If hiring standards are not to be diluted by “we need someone now,” you cannot count on everyone’s self-discipline — you need a veto designed to sit outside the stakeholders. It is the same idea as “same questions, same scoring sheet” in the structured interview: constrain human nature with process, rather than appeal to it with morality.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Talent Profile</dt><dd>The competency list translated from the job description; the target for question-writing and scoring.</dd>
+      <dt>Competency</dt><dd>The observable combination of knowledge, skills, experience, and attributes needed to perform a role.</dd>
+      <dt>Structured Interview</dt><dd>An interview with a fixed question set and a shared scoring rubric; comparable scores, higher validity.</dd>
+      <dt>Behavioral Interview</dt><dd>A questioning method resting on the assumption that real past behavior predicts future performance.</dd>
+      <dt>STAR Method</dt><dd>The probing framework of Situation, Task, Action, and Result.</dd>
+      <dt>Validity</dt><dd>How well a selection tool’s scores predict later job performance; expressed as a correlation coefficient (indicative).</dd>
+      <dt>Leading Question</dt><dd>A question with almost only one possible answer that yields no real information, such as “are you a detail-oriented person?”</dd>
+      <dt>Bar Raiser</dt><dd>Amazon’s interviewer role, independent of the hiring team, charged with holding the bar (illustrative).</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Accuracy in hiring comes from process, not from an eye for talent: the profile sets the target, structure makes scores comparable, and behavioral interviewing collects the evidence. The soul of STAR is the A — what <b>you</b> did, not how “we” did. An interviewer’s intuition is a hypothesis; behavioral evidence is the test.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">Quiz · Retrieval Practice</div>
+    <script type="application/json">
+    [
+      { "q": "Compared with a free-flowing unstructured interview, what is the main advantage of a structured interview?",
+        "options": ["Interviews take less time, so more candidates can be scheduled in a single day", "The atmosphere is more relaxed, and candidates enjoy the experience more", "Same questions plus a shared scoring rubric — comparable scores and significantly higher predictive validity", "No interviewer involvement is needed; the system can grade everything automatically"],
+        "answer": 2,
+        "explain": "The essence of structure is <b>same questions + same scoring standards</b>: candidates become comparable side by side, interviewer bias is squeezed out, and decades of meta-analysis show significantly higher predictive validity than unstructured interviews (on the order of 0.5 versus 0.4; indicative). Speed, comfort, and full automation are not its core advantage." },
+      { "q": "An interviewer asks “Are you a detail-oriented person?” and nearly every candidate answers yes. Which principle of interview design does this mainly violate?",
+        "options": ["Behavioral interviewing wants real past behavior, not a leading self-assessment", "Interviews must be held in the morning; candidates lie more in the afternoon", "The interviewer should announce the hiring decision on the spot, before honesty decays by evening", "The candidate’s résumé must be read aloud word for word, to show the company’s respect for people"],
+        "answer": 0,
+        "explain": "“Are you an X kind of person” is a classic <b>leading question</b>: the answer is handed over in advance, leaving only yes or no — it tests test-taking, not behavior. The behavioral version: “Tell me about a time your attention to detail actually prevented an accident.”" },
+      { "q": "When probing one experience with STAR, what does the R (Result) layer mainly establish?",
+        "options": ["The headcount of the candidate’s team at the time and the reporting levels above them", "Which former employer the candidate liked best, and why", "The candidate’s expected salary range and earliest possible start date", "The outcome and impact the actions finally produced, ideally quantifiable"],
+        "answer": 3,
+        "explain": "All four layers of STAR are necessary, and R is <b>where the evidence lands</b>: what was delivered, what changed, whether the impact can be quantified. Without R, the actions before it amount only to “having been busy”; team size, preferences, and salary have nothing to do with behavioral evidence." },
+      { "q": "Which understanding of Amazon’s Bar Raiser mechanism is most accurate?",
+        "options": ["The Bar Raiser’s goal is to reject every candidate, to prove how strict hiring is", "The Bar Raiser stands apart from the hiring team and uses a veto to help hold the hiring bar", "The Bar Raiser is designated by the candidate and negotiates a higher salary on their behalf", "The Bar Raiser appears only in campus recruiting; experienced-hire roles skip the process"],
+        "answer": 1,
+        "explain": "The Bar Raiser comes from an unrelated department, feels none of the delivery pressure, and has a veto voice in the debrief against unqualified candidates — an <b>independent third party</b> that hedges the “hire fast, lower the bar” short-termism. Rejecting everyone, negotiating for candidates, or limiting the role to campus hiring all miss its design intent." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>Further Reading</h2>
+    <ul>
+      <li>Work Rules! by Laszlo Bock (recommended: the hiring chapters — “only hire people who are better than you”)</li>
+      <li>The Alliance: Managing Talent in the Networked Age by Reid Hoffman, Ben Casnocha &amp; Chris Yeh (recommended: the first half, on turning employment into a time-boxed alliance)</li>
+      <li>Organizational Behavior by Stephen P. Robbins &amp; Timothy A. Judge (recommended: the chapters on personnel selection and interview validity)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-employee-lifecycle.html"><span class="pager-label">← Previous</span><span class="pager-title">The Employee Lifecycle: An HR Overview</span></a>
+    <a class="next" href="0003-performance-management.html"><span class="pager-label">Next →</span><span class="pager-title">Performance Management: KPIs and OKRs</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Help me turn my five usual interview questions into behavioral ones’ or ‘I am an engineering manager — which competencies should I draw up for a backend role?’ — follow-up questions are part of learning.</div>
+    <p>Human Resources · Lesson 2 · Recruiting and Selection | Interactive: STAR interview-question drill · validity figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var cards = [
+    { t: "“Tell me about a time you had a conflict with a colleague: what was the situation? What exactly did you do? How did it turn out?”",
+      v: true,
+      why: "A classic behavioral question: it locks onto one real experience, covers S, A, and R in a single ask, and leaves room to probe T (what was your task). It tests a <b>track record</b> of handling conflict, not a self-assessment of “I communicate well.”" },
+    { t: "“Are you a team player?”",
+      v: false,
+      why: "Leading plus self-assessment: the answer is nearly forced — everyone says yes. Behavioral rewrite: “Tell me about a time you gave up a personal preference for a team goal.”" },
+    { t: "“What is your greatest weakness?”",
+      v: false,
+      why: "A self-assessment item: most candidates arrive with a rehearsed “I am too much of a perfectionist,” which surfaces no behavioral evidence. Behavioral rewrite: “Tell me about a time a real shortcoming of yours actually hurt a result — and what you did about it afterward.”" },
+    { t: "“Describe a time you missed a deadline: what was the background? Which actions did you take? What was the final outcome?”",
+      v: true,
+      why: "Valid, and it does not shy away from failure: STAR in a failure setting exposes genuine ownership and how someone reviews their mistakes. It covers S-A-R cleanly; probe for T." },
+    { t: "“If someone on your team keeps putting things off, how would you handle it?”",
+      v: false,
+      why: "A situational-hypothetical question asks what you would do, not what you have done — intention is not a track record. Situational questions have some predictive power, but a strict behavioral interview asks: “Tell me about a similar situation you actually handled.”" },
+    { t: "“Tell me about the most recent time you volunteered for work outside your job description: what was the situation, and what was the result?”",
+      v: true,
+      why: "Valid: it points at a <b>recent, real, self-initiated</b> behavioral event, and the two asks map onto S and R; you can follow up with “what exactly did you do” (A) and “where your task boundary lay” (T)." },
+    { t: "“Give me a specific example of persuading someone to change an agreed plan: what task did you face? What did you do? How did it turn out?”",
+      v: true,
+      why: "Valid: the four asks cover S-T-A-R almost completely, and they test competencies like persuasion and influence — the kind no certificate can prove and only behavioral events can show." },
+    { t: "“What do you think of our industry’s trends over the next three years?”",
+      v: false,
+      why: "An opinion-and-knowledge question: it tests information and articulateness, but sits far from behavioral evidence of job competencies — fine as warm-up conversation, not as a core scoring basis." }
+  ];
+  var order = [0, 1, 3, 5, 2, 4, 6, 7];
+  var i = 0, score = 0, answered = false;
+  var cardEl = document.getElementById("starCard");
+  var progEl = document.getElementById("starProg");
+  var fbEl = document.getElementById("starFb");
+  var scoreEl = document.getElementById("starScore");
+  var nextEl = document.getElementById("starNext");
+  var yesBtn = document.getElementById("starYes");
+  var noBtn = document.getElementById("starNo");
+  if (!cardEl || !yesBtn || !noBtn) return;
+
+  function render() {
+    answered = false;
+    var item = cards[order[i]];
+    cardEl.textContent = item.t;
+    progEl.textContent = "Card " + (i + 1) + " of " + cards.length;
+    fbEl.hidden = true;
+    yesBtn.disabled = false;
+    noBtn.disabled = false;
+    nextEl.disabled = true;
+    nextEl.textContent = i === cards.length - 1 ? "See results →" : "Next card →";
+  }
+  function choose(saidValid) {
+    if (answered) return;
+    answered = true;
+    var item = cards[order[i]];
+    var right = saidValid === item.v;
+    if (right) score++;
+    var truth = item.v ? "this is an <b>effective behavioral question</b>" : "this one is <b>ineffective</b>";
+    fbEl.innerHTML = (right ? "<b>✓ Correct.</b>" : "<b>✗ Think again.</b>") + truth +
+      ". Why: " + item.why;
+    fbEl.hidden = false;
+    scoreEl.textContent = "Correct so far: " + score;
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
+    nextEl.disabled = false;
+  }
+  function finish() {
+    progEl.textContent = "Drill complete";
+    cardEl.textContent = "All eight cards judged: " + score + " / " + cards.length +
+      (score >= 6 ? ". You already have an interviewer’s basic instincts: any question that cannot surface “what did you do at the time” deserves a rewrite."
+                  : ". Keep one quick test in mind: good questions ask “tell me about a time…,” bad questions ask “are you….”");
+    fbEl.hidden = true;
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
+    nextEl.disabled = false;
+    nextEl.textContent = "↻ Start over";
+  }
+  yesBtn.addEventListener("click", function () { choose(true); });
+  noBtn.addEventListener("click", function () { choose(false); });
+  nextEl.addEventListener("click", function () {
+    if (nextEl.textContent.indexOf("Start over") >= 0) { i = 0; score = 0; scoreEl.textContent = "Correct so far: 0"; render(); return; }
+    if (i < cards.length - 1) { i++; render(); } else { finish(); }
+  });
+  render();
+})();
+</script>
+</body>
+</html>

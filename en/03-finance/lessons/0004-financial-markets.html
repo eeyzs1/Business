@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Financial Markets: Mapping the Flow of Money · Finance</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  #finmap { background: #fff; border-radius: 10px; }
+  #finmap .edge { stroke: #d6d3d1; stroke-width: 2.5; fill: none; transition: opacity .25s, stroke-width .25s; }
+  #finmap .edge.hl { stroke: #047857; stroke-width: 4; stroke-dasharray: 10 8; animation: finflow .7s linear infinite; }
+  #finmap .edge.dim { opacity: .18; }
+  #finmap .node { transition: opacity .25s; }
+  #finmap .node.dim { opacity: .22; }
+  #finmap .node rect { fill: #fff; stroke: #e7e0d3; stroke-width: 1.5; transition: all .25s; }
+  #finmap .node.hl rect { stroke: #047857; stroke-width: 2.5; fill: #e8f6f0; }
+  #finmap .ntitle { font-size: 14px; font-weight: 800; fill: #1c1917; text-anchor: middle; }
+  #finmap .nsub { font-size: 10.5px; fill: #78716c; text-anchor: middle; }
+  #finmap .elabel { font-size: 11px; fill: #78716c; font-weight: 700; }
+  @keyframes finflow { to { stroke-dashoffset: -36; } }
+  #finmap-btns { display: flex; flex-wrap: wrap; gap: .55rem; margin: .5rem 0 .9rem; }
+  .path-btn {
+    border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 999px; padding: .38rem .9rem; font-size: .9rem; font-weight: 600;
+    cursor: pointer; font-family: var(--sans); transition: all .15s;
+  }
+  .path-btn:hover { border-color: var(--accent); }
+  .path-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  #finmap-caption {
+    background: var(--paper-deep); border-radius: 10px; padding: .85rem 1.05rem;
+    font-size: .95rem; line-height: 1.8; margin: .9rem 0 0; min-height: 3.4em;
+  }
+</style>
+</head>
+<body class="branch-finance">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Finance</a><span class="crumb-sep">/</span>
+  <span>Financial Markets: Mapping the Flow of Money</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../03-finance/lessons/0004-financial-markets.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Finance · Lesson 4</p>
+  <h1>Financial Markets: Mapping the Flow of Money</h1>
+  <p class="lead">Money does not move itself: at one end stand savers with money and no projects; at the other, firms with projects and no money. The financial system is the network of pipes joining the two ends. Read this map and you understand why interest rates move everyone — and you can follow one company’s journey from bank loan to IPO.</p>
+
+  <h2><span class="secno">1</span>What Problem Does the Financial System Solve?</h2>
+  <p>Without a financial system, savers would not know whom to lend to, and firms could never assemble countless small deposits. The system does two jobs: transport — pooling scattered savings into large blocks of capital; and processing information asymmetry — banks screen borrowers for you, while the stock market compresses millions of judgments into a price. The fee: intermediaries collect a “toll” — the interest spread, commissions, management fees.</p>
+
+  <h2><span class="secno">2</span>Direct vs. Indirect Finance</h2>
+  <div class="concept">
+    <div class="concept-title">Two main highways</div>
+    <p><em>Indirect finance</em>: savers hand their money to banks, and banks lend it to firms; the two sides never meet. The bank earns the spread, bears the risk, and watches the borrower on the saver’s behalf.</p>
+    <p><em>Direct finance</em>: firms issue stocks or bonds and investors put up the money directly (investment banks usually underwrite); investors bear the risk themselves — and save most of the spread.</p>
+  </div>
+  <p>Banks are good at evaluating opaque small and mid-sized firms; markets are good at pricing transparent large ones. A country’s system is usually a blend of the two.</p>
+
+  <h2><span class="secno">3</span>Classifying the Markets: A Few Quick Cards</h2>
+  <p>By maturity: instruments of one year or less, solving short-term cash needs, trade in the <em>money market</em> (interbank lending, short-term government bonds, commercial paper); stocks and medium-to-long-term bonds belong to the <em>capital market</em>. By nature, stocks versus bonds is “ownership” versus “creditor’s claim”:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Dimension</th><th>Stock</th><th>Bond</th></tr></thead>
+    <tbody>
+      <tr><td>Your role</td><td>Shareholder: one of the company’s owners</td><td>Bondholder: the company’s creditor</td></tr>
+      <tr><td>How you earn</td><td>Dividends and price gains, with no ceiling</td><td>Contracted interest, paid on time and first</td></tr>
+      <tr><td>Risk</td><td>Higher, with large swings</td><td>Relatively lower, but with default risk</td></tr>
+      <tr><td>Maturity</td><td>Perpetual (unless bought back or delisted)</td><td>A definite maturity date</td></tr>
+      <tr><td>Priority in bankruptcy</td><td>Paid last</td><td>Ahead of shareholders</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>By vintage</strong>: when a security is <strong>issued for the first time</strong> and the money truly enters the firm, that is the <em>primary market</em>; when securities later change hands among investors, that is the <em>secondary market</em>. The secondary market does not feed the firm directly, but it supplies <em>liquidity</em> — you are only willing to buy because you can always sell.</p>
+
+  <h2><span class="secno">4</span>Interactive: The Financial System Map</h2>
+  <div class="sim" id="finmap-sim">
+    <div class="sim-title">The financial system map: light up one funding path</div>
+    <div id="finmap-btns"></div>
+    <div id="finmap"></div>
+    <p id="finmap-caption">Tap any button above: the matching funding path lights up and flows, while everything else fades to gray.</p>
+  </div>
+
+  <h2><span class="secno">5</span>Interest Rates: The Price of Money</h2>
+  <p>The “water price” across this pipe network is the interest rate: it balances the totals of saving and investment, and it allocates money among competing uses. Transmission runs both ways — the central bank moves its policy rate, banks’ funding costs and lending rates follow, and firms’ willingness to invest responds in turn (see path ⑤); an overheating economy can also push market rates up. Lesson 1’s discount rate and Lesson 2’s risk-free rate both draw their numbers from this chain — <strong>the interest rate is where the formulas of the first two lessons plug in</strong>.</p>
+
+  <h2><span class="secno">6</span>Case: One Company’s Funding Journey, from Loans to IPO</h2>
+  <div class="case">
+    <p class="case-title">CATL: across the whole map, one node at a time</p>
+    <p>Take the battery giant CATL as an example (rounded figures from public reporting, illustrative):</p>
+    <ul class="timeline">
+      <li><b>2011 · Founding and equity financing</b> The founding team set out on their own with early capital — a startup has no collateral and can only raise money with equity.</li>
+      <li><b>Growth stage · Bank loans and bonds</b> Expanding orders meant building plants; equipment and order books became the “credit,” and bank loans and bond issues arrived in turn.</li>
+      <li><b>June 2018 · ChiNext IPO</b> Listed on the Shenzhen Stock Exchange, raising more than ¥5,000,000,000 (primary market); the money entered the company, and early shareholders gained an exit.</li>
+      <li><b>After listing · A full toolkit</b> Follow-on offerings, bonds, and credit lines on tap — the more mature the company, the larger the share and the lower the cost of direct finance.</li>
+    </ul>
+    <p class="case-learn"><b>The lesson:</b> corporate fundraising climbs a ladder: equity first, then debt, and finally the door of the public markets — it walked every node on this map.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Indirect finance</dt><dd>Funds reach firms through intermediaries such as banks.</dd>
+      <dt>Direct finance</dt><dd>Funds reach firms straight through the securities markets.</dd>
+      <dt>Money market</dt><dd>The market for short-term funds of one year or less.</dd>
+      <dt>Capital market</dt><dd>The market for stocks and medium-to-long-term bonds.</dd>
+      <dt>Primary market</dt><dd>Securities’ first issuance; the money enters the firm.</dd>
+      <dt>Secondary market</dt><dd>Issued securities change hands among investors.</dd>
+      <dt>Initial public offering (IPO)</dt><dd>A company’s first public issuance of stock and listing.</dd>
+      <dt>Liquidity</dt><dd>The ability to turn an asset into cash quickly at a fair price.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>The financial system turns saving into investment: banks run indirect finance, markets run direct finance; the primary market feeds the firm, the secondary market feeds liquidity. <strong>The interest rate is the price of money</strong>, linking central bank, banks, firms, and households into one chain.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">Self-Check Quiz</div>
+    <script type="application/json">
+    [
+      {
+        "q": "A company issues bonds to the public to raise funds. Is that direct or indirect finance?",
+        "options": [
+          "Indirect: the money is first deposited with a bank, which then lends it on",
+          "Direct: investors buy the bonds, and the money reaches the company",
+          "Indirect: bonds must be underwritten by a commercial bank",
+          "Direct: the company hands equity over to the bondholders"
+        ],
+        "answer": 1,
+        "explain": "Issuing bonds is textbook direct finance: investors hold the company’s debt directly, and the money reaches it through the market with no bank in between; bondholders acquire no ownership."
+      },
+      {
+        "q": "The market for instruments of one year or less, mainly serving short-term cash needs, is called:",
+        "options": ["The money market", "The capital market", "The primary market", "The secondary market"],
+        "answer": 0,
+        "explain": "One year or less is the money market (interbank lending, short-term government bonds, commercial paper); beyond one year is the capital market (stocks, medium- and long-term bonds). Primary and secondary distinguish issuance vintage, not maturity."
+      },
+      {
+        "q": "After a company’s IPO, its shares trade heavily on the secondary market and the price soars. Does new money arrive in the company’s account during this time?",
+        "options": [
+          "Yes: a share of every trade’s value is wired into the company’s account",
+          "Yes: the exchange rebates part of the commissions to the company",
+          "Yes: the underwriter must split the subscription proceeds with the company",
+          "No: the money only changes hands between investors"
+        ],
+        "answer": 3,
+        "explain": "The secondary market is investors trading among themselves: buyers pay sellers, and the company receives nothing. It collects money only at the moment of primary-market issuance; the secondary market’s contribution is liquidity and pricing."
+      },
+      {
+        "q": "After the central bank cuts its policy rate, the most likely chain of transmission is:",
+        "options": [
+          "Savers’ interest income rises, banks attract more deposits, and lending expands",
+          "The reserve requirement rises, loanable funds shrink, and credit contracts",
+          "Banks’ funding costs fall, lending rates come down, and investment picks up",
+          "Stock-trading stamp duty is cut, turnover rises, and profits increase"
+        ],
+        "answer": 2,
+        "explain": "A policy-rate cut lowers banks’ funding costs; banks lower their lending rates in turn, borrowing becomes cheaper for firms, and the appetite to invest rises. The other three run the wrong direction or mix in other tools."
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Investments by Bodie, Kane &amp; Marcus (recommended: the opening chapters on the investment environment and on asset classes and financial instruments)</li>
+      <li>The Economics of Money, Banking, and Financial Markets by Frederic Mishkin (recommended: the chapter surveying the financial system)</li>
+      <li>Search keywords: direct vs. indirect finance · interest rate transmission mechanism</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-npv-and-irr.html"><span class="pager-label">← Previous</span><span class="pager-title">NPV: Deciding Whether a Project Is Worth It</span></a>
+    <a class="next" href="../../04-marketing/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Marketing · Branch 04</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Rates just got cut — what happens to my mortgage and my funds?’ or ‘Where does my own money sit on this map?’ — follow-up questions are part of learning.</div>
+    <p>Finance · Lesson 4 · Financial Markets: Mapping the Flow of Money | Interactive: financial-system map · case figures are illustrative · end of this branch · next stop: 04 Marketing — once the product is priced, you still have to sell it</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- Financial system map: nodes + path highlighting ---- */
+  var box = document.getElementById("finmap");
+  var cap = document.getElementById("finmap-caption");
+  var btns = document.getElementById("finmap-btns");
+
+  var svg = Viz.svgEl("svg", { viewBox: "0 0 760 430", role: "img", "aria-label": "Map of funds flowing through the financial system", style: "width:100%;height:auto;display:block" });
+  var defs = Viz.svgEl("defs");
+  [["arr", "#c9c1b2"], ["arrhl", "#047857"]].forEach(function (p) {
+    var mk = Viz.svgEl("marker", { id: p[0], viewBox: "0 0 10 10", refX: "8.5", refY: "5", markerWidth: "6.5", markerHeight: "6.5", orient: "auto" });
+    mk.appendChild(Viz.svgEl("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: p[1] }));
+    defs.appendChild(mk);
+  });
+  svg.appendChild(defs);
+
+  var NODES = {
+    sav:   { x: 20,  y: 176, w: 150, h: 60, t: "Savers & investors", s: "hold money to spare" },
+    bank:  { x: 245, y: 176, w: 130, h: 60, t: "Commercial banks", s: "the indirect channel" },
+    cb:    { x: 245, y: 36,  w: 130, h: 52, t: "Central bank", s: "sets the policy rate" },
+    stock: { x: 470, y: 66,  w: 140, h: 58, t: "Stock market", s: "issuance + trading" },
+    bond:  { x: 470, y: 288, w: 140, h: 58, t: "Bond market", s: "issuance + trading" },
+    firm:  { x: 655, y: 176, w: 85,  h: 60, t: "Firms", s: "need money" }
+  };
+
+  var EDGES = [
+    { id: "dep",  d: "M 172 196 L 241 196", label: ["Deposits", 206, 186, "middle"] },
+    { id: "loan", d: "M 377 196 L 651 196", label: ["Loans", 510, 186, "middle"] },
+    { id: "ret",  d: "M 697 238 C 697 404, 95 404, 95 240", label: ["Repayment & dividends", 396, 398, "middle"] },
+    { id: "pol",  d: "M 310 90 L 310 174", label: ["Policy rate", 320, 140, "start"] },
+    { id: "bs",   d: "M 158 172 C 250 92, 390 82, 466 92", label: ["Buy stocks", 296, 92, "middle"] },
+    { id: "bb",   d: "M 158 240 C 250 320, 390 330, 466 320", label: ["Buy bonds", 296, 332, "middle"] },
+    { id: "ipo",  d: "M 610 104 C 660 118, 682 148, 696 174", label: ["IPO proceeds", 636, 130, "start"] },
+    { id: "bd",   d: "M 610 308 C 660 294, 682 264, 696 238", label: ["Bond proceeds", 636, 296, "start"] },
+    { id: "sec",  d: "M 55 174 C 18 116, 152 104, 126 170", label: ["Secondary trading", 88, 96, "middle"] }
+  ];
+
+  var edgeEls = {};
+  EDGES.forEach(function (e) {
+    var p = Viz.svgEl("path", { "class": "edge", d: e.d, "marker-end": "url(#arr)" });
+    svg.appendChild(p);
+    edgeEls[e.id] = p;
+  });
+  EDGES.forEach(function (e) {
+    var t = Viz.svgEl("text", { x: e.label[1], y: e.label[2], "text-anchor": e.label[3], "class": "elabel" });
+    t.textContent = e.label[0];
+    svg.appendChild(t);
+  });
+  var nodeEls = {};
+  Object.keys(NODES).forEach(function (id) {
+    var n = NODES[id];
+    var g = Viz.svgEl("g", { "class": "node" });
+    g.appendChild(Viz.svgEl("rect", { x: n.x, y: n.y, width: n.w, height: n.h, rx: 12 }));
+    var t1 = Viz.svgEl("text", { x: n.x + n.w / 2, y: n.y + n.h / 2 - 3, "class": "ntitle" });
+    t1.textContent = n.t;
+    var t2 = Viz.svgEl("text", { x: n.x + n.w / 2, y: n.y + n.h / 2 + 15, "class": "nsub" });
+    t2.textContent = n.s;
+    g.appendChild(t1); g.appendChild(t2);
+    svg.appendChild(g);
+    nodeEls[id] = g;
+  });
+  box.appendChild(svg);
+
+  var DEFAULT_CAP = "Tap any button above: the matching funding path lights up and flows, while everything else fades to gray.";
+  var PATHS = [
+    { key: "bank", name: "① Bank loan · indirect finance", edges: ["dep", "loan", "ret"], nodes: ["sav", "bank", "firm"],
+      cap: "<b>Savers</b> deposit money with a <b>bank</b> → the bank screens and lends to a <b>firm</b> → the firm repays principal and interest, the bank keeps the spread, and pays savers their interest. The two sides never meet; the bank bears the cost of “picking firms and watching firms” on the saver’s behalf — indirect finance." },
+    { key: "bond", name: "② Bond issue · direct finance", edges: ["bb", "bd", "ret"], nodes: ["sav", "bond", "firm"],
+      cap: "A <b>firm</b> issues bonds publicly on the <b>bond market</b> → <b>investors</b> subscribe directly, and the money reaches the firm through the underwriters → principal and interest are repaid at maturity. No bank takes a spread, but investors bear the default risk themselves — direct finance." },
+    { key: "ipo", name: "③ IPO stock · direct finance", edges: ["bs", "ipo", "ret"], nodes: ["sav", "stock", "firm"],
+      cap: "A <b>firm</b> makes its initial public offering (IPO) and issues new shares on the <b>stock market</b> → <b>investors</b> subscribe, and the money enters the firm net of underwriting fees (primary market) → the firm gives up equity and rewards shareholders with dividends later on." },
+    { key: "sec", name: "④ Secondary market · trading hands", edges: ["sec"], nodes: ["sav"],
+      cap: "After the new shares are issued, the stock keeps changing hands <b>among investors</b>: sellers take the money, buyers take the shares, and none of it enters the firm. But it is precisely this “you can always sell” liquidity that makes primary-market issuance possible in the first place." },
+    { key: "pol", name: "⑤ Central-bank cut · rate transmission", edges: ["pol", "loan"], nodes: ["cb", "bank", "firm"],
+      cap: "The <b>central bank</b> cuts its policy rate → banks’ funding costs fall → <b>lending</b> rates come down → borrowing gets cheaper for <b>firms</b> and the appetite to invest rises — the interest rate is the price line linking central bank, banks, and the real economy." }
+  ];
+
+  var btnEls = [];
+  PATHS.forEach(function (p) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "path-btn";
+    b.textContent = p.name;
+    b.addEventListener("click", function () { apply(p); setActive(p.key); });
+    btns.appendChild(b);
+    btnEls.push([b, p.key]);
+  });
+  var rb = document.createElement("button");
+  rb.type = "button";
+  rb.className = "path-btn";
+  rb.textContent = "∘ Reset";
+  rb.addEventListener("click", function () { apply(null); setActive(null); });
+  btns.appendChild(rb);
+
+  function setActive(key) {
+    btnEls.forEach(function (be) { be[0].classList.toggle("active", be[1] === key); });
+    rb.classList.toggle("active", key === null);
+  }
+  function apply(p) {
+    EDGES.forEach(function (e) {
+      var on = !!p && p.edges.indexOf(e.id) >= 0;
+      var el = edgeEls[e.id];
+      el.classList.toggle("hl", on);
+      el.classList.toggle("dim", !!p && !on);
+      el.setAttribute("marker-end", on ? "url(#arrhl)" : "url(#arr)");
+    });
+    Object.keys(nodeEls).forEach(function (id) {
+      var on = !!p && p.nodes.indexOf(id) >= 0;
+      nodeEls[id].classList.toggle("hl", on);
+      nodeEls[id].classList.toggle("dim", !!p && !on);
+    });
+    cap.innerHTML = p ? p.cap : DEFAULT_CAP;
+  }
+  apply(null);
+  setActive(null);
+})();
+</script>
+</body>
+</html>

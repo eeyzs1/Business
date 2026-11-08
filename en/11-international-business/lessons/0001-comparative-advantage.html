@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparative Advantage: Why Nations Trade · International Business</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+</head>
+<body class="branch-international">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">International Business</a><span class="crumb-sep">/</span>
+  <span>Comparative Advantage</span>
+  <span class="progress">Lesson 1 of 4</span>
+<a class="lang-switch" href="../../../11-international-business/lessons/0001-comparative-advantage.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">International Business · Lesson 1</p>
+  <h1>Comparative Advantage: Why Nations Trade</h1>
+  <p class="lead">Two countries, two goods, and one line of arithmetic form the foundation of all international business: trade is not a zero-sum game — both sides end up with more by “giving up less.” Without this lesson you cannot understand globalization, nor why the title of “world’s factory” has been passed from city to city like a relay baton.</p>
+
+  <h2><span class="secno">1</span>A Deal That Looks Like a Loss</h2>
+  <p>Intuitively, the reason to trade is that “everyone is good at something”: you grow wheat, I weave cloth, and swapping leaves us both happy. Adam Smith distilled this into <em>absolute advantage</em> — each country concentrates on the product it turns out most productively. But that explanation has a fatal hole: if one country is <em>more efficient at everything</em>, why would it still do business with a lagging partner? And what could the lagging country possibly offer in exchange?</p>
+  <p>In 1817, David Ricardo gave the counterintuitive answer: what decides the division of labor is not “who is stronger” but <em>who gives up less</em>. Even if one country lags at everything, as long as opportunity costs differ between countries, specialization and exchange can make every participant better off at the same time. The principle is called <em>comparative advantage</em>, and it is one of the most counterintuitive — and most robust — conclusions in all of economics.</p>
+
+  <h2><span class="secno">2</span>Opportunity Cost: One Line of Arithmetic Decides the Division of Labor</h2>
+  <div class="concept">
+    <div class="concept-title">Core Definition · Opportunity Cost</div>
+    <p style="margin:.2rem 0 0">The quantity of the other good you must give up to produce one more unit of a good. <em>Comparative advantage = lower opportunity cost</em>, with no direct connection to absolute productivity.</p>
+  </div>
+  <p>Here is a classic set of numbers (illustrative): with one hour of labor, each country can produce the following —</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Output per 1 hour of labor</th><th>Cloth (bolts)</th><th>Wine (bottles)</th></tr></thead>
+    <tbody>
+      <tr><td><b>Home</b></td><td>4</td><td>2</td></tr>
+      <tr><td><b>Foreign</b></td><td>5</td><td>5</td></tr>
+    </tbody>
+  </table></div>
+  <p>Foreign produces both cloth and wine faster than Home and enjoys a <em>double absolute advantage</em>. But compute opportunity costs, and the picture flips instantly:</p>
+  <div class="formula">
+    Home: 1 bolt of cloth = 0.5 bottle of wine&nbsp;&nbsp;·&nbsp;&nbsp;Foreign: 1 bolt of cloth = 1 bottle of wine<br>
+    Home: 1 bottle of wine = 2 bolts of cloth&nbsp;&nbsp;·&nbsp;&nbsp;Foreign: 1 bottle of wine = 1 bolt of cloth
+  </div>
+  <p>Foreign’s lead in wine (5÷2 = 2.5×) is far larger than its lead in cloth (5÷4 = 1.25×); Home lags across the board but “loses least” in cloth — an opportunity cost of 0.5 bottle of wine versus Foreign’s 1. So the conclusion is: <em>cloth goes to Home, wine to Foreign</em>, even though Foreign weaves cloth faster. Once each specializes, any trading ratio between 0.5 and 1 bottle of wine per bolt of cloth lets both countries obtain the other good more cheaply than by producing it themselves — and that is exactly where the gains from trade come from.</p>
+
+  <figure class="figure" data-reveal>
+    <div class="figure-body"><div id="ppf-fig"></div></div>
+    <figcaption class="figure-caption"><b>Figure 1</b> Home’s production possibilities frontier (PPF, illustrative): under self-sufficiency it can only consume on or inside the frontier; after specializing in wheat and trading at the international price, consumption point C lies <b>beyond the frontier</b> — that extra reach is the gain from trade.</figcaption>
+  </figure>
+
+  <h2><span class="secno">3</span>Simulator: Specialization Grows the Pie</h2>
+  <p>Try a second set of numbers (wheat and cloth) with your own hands. Each country has 100 hours of labor (illustrative): in one hour Home produces <b>6 units of wheat</b> or <b>3 units of cloth</b>, while Foreign produces <b>1 unit of wheat</b> or <b>5 units of cloth</b>. Compute the opportunity costs: Home 1 wheat = 0.5 cloth, Foreign 1 wheat = 5 cloth — Home takes wheat, Foreign takes cloth, each playing to its strength. Drag the “degree of specialization” slider and watch world output grow in real time as the two countries shift labor away from their weaker good:</p>
+
+  <div class="sim">
+    <div class="sim-title">Gains-from-Trade Calculator · From Self-Sufficiency to Full Specialization</div>
+    <div class="table-wrap"><table class="compact" style="margin:.4rem 0 1rem">
+      <thead><tr><th>Output per unit of labor (1 hour)</th><th>Wheat</th><th>Cloth</th><th>Opportunity-cost comparison</th></tr></thead>
+      <tbody>
+        <tr><td>Home</td><td>6</td><td>3</td><td>1 wheat = 0.5 cloth ✓ lower</td></tr>
+        <tr><td>Foreign</td><td>1</td><td>5</td><td>1 cloth = 0.2 wheat ✓ lower</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sim-controls" id="trade-controls"></div>
+    <div id="trade-bars"></div>
+    <p class="sim-readout" id="trade-readout">Loading simulator…</p>
+    <p style="font-size:.87rem;color:var(--ink-faint);margin:.4rem 0 0">Model: each country has 100 hours of labor; the degree of specialization s moves labor from a 50/50 split toward each country’s stronger good. All outputs are illustrative units.</p>
+  </div>
+
+  <div class="callout tip" data-reveal>
+    <span class="callout-label">The Trading Ratio Divides the Gains</span>
+    <p style="margin:.3rem 0 0">The extra output inside the simulator still has to be divided by the <b>terms of trade</b>. In the example above, both sides gain as long as 1 wheat buys between 0.5 and 5 cloth; the closer the ratio sits to Home’s opportunity cost (0.5), the more Foreign gains, and the closer to 5, the more Home gains. Suppose they settle at 1 wheat = 1.5 cloth (illustrative): Home exports 200 wheat for 300 cloth, and its consumption bundle rises from the self-sufficient “300 wheat + 150 cloth” to “400 wheat + 300 cloth”; Foreign consumes “200 wheat + 200 cloth,” a bundle worth far more at international prices than what it could make alone — <b>trade does not slice the pie differently; it bakes a bigger pie first</b>.</p>
+  </div>
+
+  <h2><span class="secno">4</span>Comparative Advantage Moves</h2>
+  <p>Textbook tables are static; reality flows. A country’s opportunity costs are set by its <em>factor endowment</em> — the relative abundance of labor, capital, land, and technology — and endowments change: rising wages erode labor-intensive advantages; investment in education and infrastructure breeds a dividend of engineers; once an industrial cluster forms, economies of scale create fresh advantages. Comparative advantage thus passes from country to country like a relay baton — yesterday’s “world’s factory” becomes today’s advanced-manufacturing nation, while the apparel orders it releases feed new emerging economies. For a firm, the lesson is <em>never treat today’s advantage as an eternal moat</em>; for you personally, it means treating your own comparative advantage as an asset that needs continuous reinvestment.</p>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case · The Changing Face of “Made in China”: From Apparel to EVs (illustrative)</p>
+    <p>From the 1990s through the early 2000s, China’s label in the international division of labor was apparel, toys, and footwear — a vast, low-cost labor force was its most visible factor endowment. Over the following two decades the endowment quietly changed contents: complete infrastructure, a steadily accumulating corps of engineers, and an ever-denser supply-chain network. The advantages migrated in step: first home appliances, then consumer electronics and precision manufacturing, then lithium batteries and solar, and then electric vehicles. Public reporting puts BYD’s 2023 sales at roughly 3 million vehicles (order-of-magnitude, illustrative), China’s total vehicle exports in the world’s top tier (approximate), and CATL’s share of global EV-battery installations long in the leading range (approximate, illustrative).</p>
+    <p>The other side of the coin: as domestic wages rose, some apparel and footwear capacity shifted to Southeast Asia. That is not advantage disappearing but advantage being <b>handed on and upgraded</b> — labor-intensive links go to countries with lower opportunity costs, while capital-, technology-, and network-intensive links are taken up in their place.</p>
+    <p class="case-learn"><b>The lesson:</b> comparative advantage is not a nationality; it is a set of opportunity costs on the move. The three decades of “made in China” are simply the opportunity-cost table from Section 2 being recomputed, over and over, in the real world.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Absolute Advantage</dt><dd>The ability to produce a good with fewer inputs; it looks at productivity alone.</dd>
+      <dt>Comparative Advantage</dt><dd>The ability to produce a good at a lower opportunity cost; the true basis for specialization and trade.</dd>
+      <dt>Opportunity Cost</dt><dd>The quantity of the other good given up to obtain one more unit of a good.</dd>
+      <dt>Specialization</dt><dd>Concentrating resources on the activity with the lowest opportunity cost and trading for everything else.</dd>
+      <dt>Terms of Trade</dt><dd>The international exchange ratio between two goods; it determines how the gains from trade are split.</dd>
+      <dt>Production Possibilities Frontier (PPF)</dt><dd>The maximum combinations of two goods a country can produce with all its resources; trade lets consumption move beyond it.</dd>
+      <dt>Factor Endowment</dt><dd>A country’s relative abundance of production factors such as labor, capital, land, and technology.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>The basis for the division of labor is not who is stronger but who gives up less: differences in opportunity cost let both trading partners gain at once. Comparative advantage moves as endowments change, so it is a ledger that must be recomputed forever — not a fate settled once and for all.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "Home can produce 6 wheat or 3 cloth per hour; Foreign can produce 1 wheat or 5 cloth per hour. Who has the comparative advantage in wheat?",
+        "options": ["Foreign, because Foreign is better at producing cloth", "Home, because Home’s opportunity cost of wheat is lower", "Both, because Home leads in total output", "Neither, because the output gap between them is too wide"],
+        "answer": 1,
+        "explain": "Comparative advantage is about <b>opportunity cost</b>: Home’s 1 wheat = 0.5 cloth versus Foreign’s 5, so wheat belongs to Home; Foreign has the lower opportunity cost in cloth (0.2 wheat against Home’s 2). Absolute output levels are not the test." },
+      { "q": "Country A produces 8 pairs of shoes or 4 phones per hour; Country B produces 2 pairs of shoes or 2 phones per hour. How should they divide the work according to comparative advantage?",
+        "options": ["A specializes in phones, B in shoes", "Both remain self-sufficient, with no specialization", "A specializes in shoes, B in phones", "A produces both goods, B produces phones only"],
+        "answer": 2,
+        "explain": "A’s 1 pair of shoes = 0.5 phone, B’s = 1 phone: A has the lower opportunity cost in shoes and specializes there; B lags at everything but “loses less” in phones, so it specializes in phones. Both sides gain from exchanging." },
+      { "q": "One country’s productivity is lower than another’s in every product (behind across the board). Can it still gain from international trade?",
+        "options": ["Yes — as long as it specializes by opportunity cost and trades", "No — lagging productivity leaves it nothing to export", "Yes — but only if government subsidies carry it", "No — the gains from trade flow only between strong nations"],
+        "answer": 0,
+        "explain": "This is exactly Ricardo’s insight: even when a country loses every absolute-advantage comparison, opportunity costs must differ somewhere — there is always some good it “loses least” on. Specializing there and trading beats producing everything itself." },
+      { "q": "A country’s wages keep rising and its low-cost apparel advantage is fading. Which response best fits the logic of shifting comparative advantage?",
+        "options": ["Exit manufacturing entirely at once and deal only in re-export trade", "Block imports with tariffs to keep the existing factories forever", "Push wages back down and lock the cost advantage in again", "Climb upstream into links where the advantage still holds"],
+        "answer": 3,
+        "explain": "When endowments change, the opportunity-cost table must be recomputed. The sustainable move is to take up the new comparative advantage (appliances, electronics, new energy) while handing on labor-intensive links — exactly the “made in China” path over three decades; blocking trade or forcing wages down fights the trend." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>Further Reading</h2>
+    <ul>
+      <li>International Business: Competing in the Global Marketplace by Charles W. L. Hill (recommended: the chapters on international trade theory and government policy)</li>
+      <li>Principles of Microeconomics (8th ed.) by N. Gregory Mankiw (recommended: Chapter 3, “Interdependence and the Gains from Trade”)</li>
+      <li>Search keywords: Ricardian model, comparative advantage opportunity cost, terms of trade</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← Previous</span><span class="pager-title">Branch Guide · International Business</span></a>
+    <a class="next" href="0002-tariffs-and-exchange-rates.html"><span class="pager-label">Next →</span><span class="pager-title">Tariffs and Exchange Rates</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “Can you help me build an opportunity-cost table for the industry I know best?” or “Doesn’t trade protectionism ever make sense?” Follow-up questions are part of learning.</div>
+    <p>International Business · Lesson 1 · Comparative Advantage | Interactive: gains-from-trade calculator + PPF chart · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  if (!window.Viz) return;
+
+  /* ---- Figure 1: Home PPF and the consumption expansion from trade (static) ---- */
+  var ppfBox = document.getElementById("ppf-fig");
+  if (ppfBox) {
+    var ax = Viz.axes(ppfBox, {
+      w: 640, h: 380, margin: { t: 26, r: 24, b: 48, l: 62 },
+      xDomain: [0, 350], yDomain: [0, 650],
+      xLabel: "Cloth (units, illustrative)", yLabel: "Wheat (units, illustrative)",
+      xTicks: 5, yTicks: 5
+    });
+    var s = ax.svg, X = ax.x, Y = ax.y;
+    // Consumption-expansion zone from trade: between the international price line and the PPF
+    Viz.area(s, [[X(0), Y(600)], [X(300), Y(400)], [X(300), Y(0)]], "#0369a1", 0.10);
+    // PPF: 100 hours → 600 wheat or 300 cloth, slope = 1 cloth : 2 wheat
+    Viz.line(s, [[X(0), Y(600)], [X(300), Y(0)]], { color: "#1c1917", width: 3 });
+    // International price line: 1 wheat = 1.5 cloth → 1 cloth = 2/3 wheat
+    Viz.line(s, [[X(0), Y(600)], [X(350), Y(366.7)]], { color: "#0369a1", width: 2.4, dash: "7 6" });
+    Viz.dot(s, X(150), Y(300), { fill: "#a8a29e" });                 // A self-sufficiency
+    Viz.dot(s, X(0), Y(600), { fill: "#1c1917" });                   // B full specialization
+    Viz.dot(s, X(300), Y(400), { fill: "#b91c1c", pulse: true });    // C consumption after trade
+    Viz.label(s, X(150) - 10, Y(300) - 12, "A self-sufficiency", { anchor: "end" });
+    Viz.label(s, X(14), Y(600) + 4, "B full specialization", {});
+    Viz.label(s, X(300) - 8, Y(400) + 22, "C consumption after trade", { anchor: "end", color: "#b91c1c" });
+    Viz.label(s, X(64), Y(505), "PPF (slope = opportunity cost)", { size: 11.5 });
+    Viz.label(s, X(150), Y(560), "International price line: 1 wheat = 1.5 cloth", { size: 11.5, color: "#0369a1" });
+  }
+
+  /* ---- Simulator: gains-from-trade calculator ---- */
+  var controls = document.getElementById("trade-controls");
+  var barsBox = document.getElementById("trade-bars");
+  var readout = document.getElementById("trade-readout");
+  if (!controls || !barsBox || !readout) return;
+
+  var L = 100; // labor hours per country (illustrative)
+  var HOME = { wheat: 6, cloth: 3 };
+  var FOREIGN = { wheat: 1, cloth: 5 };
+
+  function outputs(s) {
+    var hw = L * (0.5 + 0.5 * s), hc = L - hw;      // Home: labor shifts toward wheat
+    var fc = L * (0.5 + 0.5 * s), fw = L - fc;      // Foreign: labor shifts toward cloth
+    return {
+      wheat: HOME.wheat * hw + FOREIGN.wheat * fw,
+      cloth: HOME.cloth * hc + FOREIGN.cloth * fc,
+      homeWheat: HOME.wheat * hw, homeCloth: HOME.cloth * hc,
+      foreignCloth: FOREIGN.cloth * fc, foreignWheat: FOREIGN.wheat * fw
+    };
+  }
+  var W0 = outputs(0).wheat, C0 = outputs(0).cloth;
+
+  function render(s) {
+    var o = outputs(s);
+    barsBox.innerHTML = "";
+    Viz.bars(barsBox, [
+      { label: "Wheat · self-sufficient", value: Math.round(W0), color: "#d6cfc2" },
+      { label: "Wheat · current", value: Math.round(o.wheat), color: "#0369a1" },
+      { label: "Cloth · self-sufficient", value: Math.round(C0), color: "#d6cfc2" },
+      { label: "Cloth · current", value: Math.round(o.cloth), color: "#7c3aed" }
+    ], { max: 700, h: 300, animate: false });
+
+    var gw = (o.wheat / W0 - 1) * 100, gc = (o.cloth / C0 - 1) * 100;
+    var sign = function (x) { return (x >= 0 ? "+" : "") + x.toFixed(0) + "%"; };
+    var verdict;
+    if (s < 0.05) {
+      verdict = "Each country splits its labor half-and-half between the two goods, and neither exploits the difference in opportunity costs — this is the starting point.";
+    } else {
+      verdict = "The pie is growing: both countries shift labor toward the good with the <b>lower opportunity cost</b>, and the extra output is the gain trade has to divide. As long as 1 wheat trades for between 0.5 and 5 cloth, both sides get a slice.";
+    }
+    readout.innerHTML =
+      "Degree of specialization <b>" + Math.round(s * 100) + "%</b> → world output: wheat <b>" + Math.round(o.wheat) +
+      "</b> (" + sign(gw) + ") · cloth <b>" + Math.round(o.cloth) + "</b> (" + sign(gc) + ").<br>" +
+      "Division of labor: Home produces " + Math.round(o.homeWheat) + " wheat / " + Math.round(o.homeCloth) + " cloth" +
+      "; Foreign produces " + Math.round(o.foreignCloth) + " cloth / " + Math.round(o.foreignWheat) + " wheat.<br>" + verdict;
+  }
+
+  var sl = Viz.slider(controls, {
+    label: "Degree of specialization", min: 0, max: 100, step: 5, value: 0,
+    format: function (v) { return Math.round(v) + "%"; }
+  });
+  sl.onChange(render);
+  render(0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cross-Cultural Management: Hofstede’s Dimensions · International Business</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .cc-legend { display: flex; flex-wrap: wrap; gap: .6rem; margin: .3rem 0 1rem; }
+  .cc-chip {
+    display: inline-flex; align-items: center; gap: .45rem;
+    border: 2px solid var(--cc); border-radius: 999px;
+    padding: .25rem .9rem; cursor: pointer; font-size: .88rem; font-weight: 700;
+    color: var(--ink-soft); user-select: none; background: #fff;
+  }
+  .cc-chip input { accent-color: var(--cc); margin: 0; }
+  .cc-chip.on { background: color-mix(in srgb, var(--cc) 13%, #fff); color: var(--ink); }
+  .cc-tips p { margin: 0 0 .55rem; font-size: .92rem; color: var(--ink-soft); }
+  .cc-tips b { color: var(--accent); }
+</style>
+</head>
+<body class="branch-international">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">International Business</a><span class="crumb-sep">/</span>
+  <span>Cross-Cultural Management</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../11-international-business/lessons/0004-cross-culture.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">International Business · Lesson 4</p>
+  <h1>Cross-Cultural Management: Hofstede’s Dimensions</h1>
+  <p class="lead">When products fail overseas, most do not die of technology; they die of assumptions: the same “we’ll think it over” is a to-do item in one culture and a polite refusal in another. This lesson hands you an operational cultural lens — five dimensions and one radar chart that turn “something feels off” into differences you can diagnose.</p>
+
+  <h2><span class="secno">1</span>Why Cultural Difference Causes Business Conflict</h2>
+  <p>The Dutch social psychologist Geert Hofstede likened culture to “software of the mind”: values and habits install silently as we grow up, invisible in daily life until they meet another operating system and throw an error. Typical “error messages” inside multinational teams: silence in a meeting — agreement, or fear of contradicting the boss? A first-name email — warmth, or disrespect? A contract only five clauses long — professionalism, or carelessness? Every misreading burns trust and raises transaction costs.</p>
+  <p>The starting point of cross-cultural management is not memorizing each country’s customs; it is first admitting that <em>your way is only one of many reasonable ways</em>. Only on that premise can diagnosis and adaptation begin.</p>
+
+  <h2><span class="secno">2</span>Hofstede’s Five Dimensions</h2>
+  <p>Drawing on massive surveys of workplace values around the world, Hofstede distilled national cultural differences into five dimensions. Each is a 0–100 scale describing <em>average tendencies at the country level</em>, and none can be used to predict any specific individual:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Dimension</th><th>Core question</th><th>High-score tendency</th><th>Low-score tendency</th></tr></thead>
+    <tbody>
+      <tr><td>Power Distance<br><span style="color:var(--ink-faint);font-size:.8rem">PDI</span></td><td>How much inequality of power people accept</td><td>Hierarchy is order; the boss sets the tone</td><td>Egalitarian dialogue; go straight to the decision-maker</td></tr>
+      <tr><td>Individualism vs Collectivism<br><span style="color:var(--ink-faint);font-size:.8rem">IDV</span></td><td>Is “I” first, or “we”?</td><td>Individual achievement and accountability</td><td>Team harmony, face, and relationships</td></tr>
+      <tr><td>Masculinity vs Femininity<br><span style="color:var(--ink-faint);font-size:.8rem">MAS</span></td><td>Competition and achievement, or quality of life first</td><td>Reveres performance, decisiveness, and competition</td><td>Prizes consensus, welfare, and balance</td></tr>
+      <tr><td>Uncertainty Avoidance<br><span style="color:var(--ink-faint);font-size:.8rem">UAI</span></td><td>How much ambiguity and the unknown provoke anxiety</td><td>Detailed rules, processes, and credentials first</td><td>Start doing; revise as you go</td></tr>
+      <tr><td>Long-Term vs Short-Term Orientation<br><span style="color:var(--ink-faint);font-size:.8rem">LTO</span></td><td>Investing for the future, or for today</td><td>Saving, relationships, and multi-year cultivation</td><td>This quarter’s results and tradition first</td></tr>
+    </tbody>
+  </table></div>
+  <div class="concept">
+    <div class="concept-title">Side Note · High-Context vs Low-Context</div>
+    <p style="margin:.2rem 0 0">Anthropologist Edward Hall’s pair of concepts complements the five dimensions: high-context communication (common in East Asia and the Middle East) packs much of the message into relationships, setting, and what is left unsaid — “use your judgment” may be a tactful warning; low-context communication (common in the US and Germany) writes everything into the literal words — “yes means yes, no means no.” The principle for cross-border writing follows directly: give high-context readers full background and a graceful way out; put conclusions and numbers in the first line for low-context readers.</p>
+  </div>
+
+  <h2><span class="secno">3</span>Simulator: Culture-Comparison Radar</h2>
+  <div class="sim">
+    <div class="sim-title">Culture-Comparison Radar · Check 2–3 countries to overlay them</div>
+    <div class="cc-legend" id="radar-legend"></div>
+    <div id="radar-fig"></div>
+    <p class="sim-readout" id="radar-note">Loading radar chart…</p>
+    <div class="cc-tips" data-reveal>
+      <p><b>Power distance</b> — who speaks first in a meeting? In high-scoring cultures the most senior person sets the tone and subordinates rarely contradict them in public, and the email cc-chain is a map of power; low-scoring cultures (such as the US or Germany) expect you to go straight to the decision-maker.</p>
+      <p><b>Individualism vs collectivism</b> — praise the individual or the team in public? In collectivist cultures being singled out can cause discomfort; whether bonuses hang on the team or the individual changes behavior directly.</p>
+      <p><b>Masculinity vs femininity</b> — posture at the negotiating table: high-scoring societies revere performance, competition, and the courage to “call the shots”; low-scoring societies lean toward the language of consensus, welfare, and quality of life.</p>
+      <p><b>Uncertainty avoidance</b> — contract first, or relationship first? High-avoidance cultures (such as Japan or Germany) demand complete details and credentials; low-avoidance cultures accept “start now, fill in later” far more readily.</p>
+      <p><b>Long-term vs short-term orientation</b> — over how many years should relationship investment pay back? Long-term-oriented cultures will spend years cultivating a market and trust; short-term-oriented cultures care more about this quarter’s results and visible returns.</p>
+    </div>
+    <p style="font-size:.87rem;color:var(--ink-faint);margin:.4rem 0 0">Scores are rough figures on the order of those published by the Hofstede Institute (illustrative), for teaching comparison only; the dimensions describe country averages and cannot predict any individual.</p>
+  </div>
+
+  <div class="table-wrap" data-reveal><table class="compact">
+    <thead><tr><th>Illustrative magnitudes (approximate)</th><th>China</th><th>United States</th><th>Japan</th><th>Germany</th><th>Brazil</th></tr></thead>
+    <tbody>
+      <tr><td>Power distance</td><td>80</td><td>40</td><td>54</td><td>35</td><td>69</td></tr>
+      <tr><td>Individualism</td><td>20</td><td>91</td><td>46</td><td>67</td><td>38</td></tr>
+      <tr><td>Masculinity</td><td>66</td><td>62</td><td>95</td><td>66</td><td>49</td></tr>
+      <tr><td>Uncertainty avoidance</td><td>30</td><td>46</td><td>92</td><td>65</td><td>76</td></tr>
+      <tr><td>Long-term orientation</td><td>87</td><td>26</td><td>88</td><td>83</td><td>44</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case · Disney’s Three Resorts: Paris, Tokyo, and Shanghai (illustrative)</p>
+    <p><b>Paris (1992, a rocky start):</b> Disney carried its American standards to Europe nearly verbatim: no alcohol served in the park at first, strict grooming rules for staff, dining and holiday rhythms designed around American habits — each colliding in turn with French dining culture, labor attitudes, and the European way of vacationing, and the resort sank into heavy losses in its early years (public reporting). Only after renaming the park and thoroughly localizing menus and operations did results gradually improve — the market voted with its feet and sent the bill for standardization.</p>
+    <p><b>Tokyo (1983, licensed):</b> Disney chose licensing, handing the park to Oriental Land Company — an operator steeped in the local culture — to invest in and run, while Disney collected license fees. The Japanese side localized deeply on dining, seasonal events, and service details, and the Tokyo park has long ranked among the most-visited theme parks in the world (order-of-magnitude, illustrative). <b>Shanghai (2016, joint venture):</b> a joint venture with Chinese companies in which the Chinese side holds a majority stake (approximate, illustrative), with the deepest localization Disney has yet built — from gardens and architecture to live shows — and the largest Disney castle in the world inside the park (public reporting).</p>
+    <p class="case-learn"><b>The lesson:</b> one brand, three modes, three depths of localization — Paris began as “the American way,” Tokyo became “a Japanese company,” Shanghai has “Chinese shareholders.” The greater the cultural distance, the more delegation and local responsiveness it takes; this connects straight back to the entry-mode ladder of <a href="0003-market-entry-modes.html">Lesson 3</a>: <b>choose the wrong mode, and no amount of localization can patch it.</b></p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Cultural Dimensions</dt><dd>Hofstede’s coordinates for national cultural differences; each dimension is a relative 0–100 scale.</dd>
+      <dt>Power Distance</dt><dd>The degree to which members accept an unequal distribution of power; in high-scoring cultures, hierarchy and speaking order are tightly bound together.</dd>
+      <dt>Individualism vs Collectivism</dt><dd>A value orientation toward personal goals or group belonging.</dd>
+      <dt>Uncertainty Avoidance</dt><dd>How much ambiguous, unfamiliar situations provoke anxiety — it decides “contract first” or “relationship first.”</dd>
+      <dt>Masculinity vs Femininity</dt><dd>A value spectrum running from competitive achievement to quality of life and consensus.</dd>
+      <dt>Long-Term vs Short-Term Orientation</dt><dd>The willingness to sacrifice today’s payoff for future rewards.</dd>
+      <dt>High-Context vs Low-Context Communication</dt><dd>Communication styles: meaning carried mostly by context and relationships, or written fully into the words themselves.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Cultural difference is not a question of manners; it is a question of cost: five dimensions turn “assumptions” into structural differences you can diagnose. First admit your own way is only one option, then adapt using the dimensions and context — the deepest moat in global business is turning yourself into a “bicultural organization.”</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "In a business meeting in a high power-distance culture, the most common phenomenon is?",
+        "options": ["The most senior person speaks first, and subordinates rarely contradict them openly", "Everyone talks over each other, and the meeting centers on the loudest voice", "An anonymous vote is taken first, then the final conclusion is announced", "Subordinates directly veto the plan their superior proposed"],
+        "answer": 0,
+        "explain": "Power distance measures how much members <b>accept unequal power</b>: in high-scoring cultures, speaking order, seating, and the email cc-chain all encode hierarchy; mistaking silence for consensus is the most common cross-cultural meeting error." },
+      { "q": "Japan and Germany both score high on uncertainty avoidance. Which negotiating approach matches that?",
+        "options": ["Sign a framework agreement first and leave the details for later", "Improvise on the spot to show how flexible you are", "Arrive with complete data, contract details, and credentials", "Schedule more social events and talk less about the contract itself"],
+        "answer": 2,
+        "explain": "High uncertainty-avoidance cultures feel more anxiety about ambiguity and risk, and decide only after seeing <b>complete rules, data, and credentials</b>; “start now, fill in later” reads to them not as flexibility but as unprofessionalism." },
+      { "q": "In a high-context culture, your counterpart says “we will study this proposal further.” Which reading is safer?",
+        "options": ["The literal one: the proposal has passed; just wait for notice", "A tactful signal: doubts exist — follow up and probe actively", "A formal commitment: all contract terms are now settled", "Mere politeness: it has nothing to do with the decision"],
+        "answer": 1,
+        "explain": "High-context communication places the key message in implication and relationships; trusting the literal words leads to misjudgment. The right move is to follow up privately, give them a graceful way out, and invite the objections into the open — not to calendar a “study session.”" },
+      { "q": "The Tokyo park is run by the Japanese side (licensing model), while Paris was initially managed by the American side to American standards. What does the contrast best illustrate?",
+        "options": ["Licensing always beats wholly owned operations, in every industry", "European consumers naturally reject American entertainment products", "A theme park’s fate depends only on climate and ticket prices", "Entry mode and localization depth must match the local culture"],
+        "answer": 3,
+        "explain": "Same brand: Tokyo handed operations to a Japanese operator fluent in the local culture (deep localization) and thrived; Paris initially forced American rules (shallow localization) and hit friction. The greater the cultural distance, the more delegation and responsiveness required — exactly where Lesson 3’s entry modes meet Lesson 4’s cultural dimensions." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">4</span>Further Reading</h2>
+    <ul>
+      <li>Cultures and Organizations: Software of the Mind by Geert Hofstede, Gert Jan Hofstede, and Michael Minkov (recommended: the dimension theory and country-comparison chapters)</li>
+      <li>The Culture Map by Erin Meyer (recommended: the eight scales covering communicating, evaluating, and deciding)</li>
+      <li>International Business: Competing in the Global Marketplace by Charles W. L. Hill (recommended: the chapters on cross-cultural management and international HRM)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-market-entry-modes.html"><span class="pager-label">← Previous</span><span class="pager-title">Market Entry Modes: The Ladder of International Expansion</span></a>
+    <a class="next" href="../../12-business-law-ethics/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Business Law &amp; Ethics · Branch 12</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “I’m negotiating a contract with a German client — which dimensions should I prepare for first?” Bring your real negotiation into the course. Follow-up questions are part of learning.</div>
+    <p>International Business · Lesson 4 · Cross-Cultural Management | Interactive: culture-comparison radar (illustrative magnitudes) · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  if (!window.Viz) return;
+  var radarBox = document.getElementById("radar-fig");
+  var legendBox = document.getElementById("radar-legend");
+  var noteEl = document.getElementById("radar-note");
+  if (!radarBox || !legendBox || !noteEl) return;
+
+  var DIMS = ["Power distance", "Individualism", "Masculinity", "Uncertainty avoidance", "Long-term orientation"];
+  var COUNTRIES = [
+    { id: "cn", name: "China", color: "#b91c1c", scores: [80, 20, 66, 30, 87], on: true },
+    { id: "us", name: "United States", color: "#1d4ed8", scores: [40, 91, 62, 46, 26], on: true },
+    { id: "jp", name: "Japan", color: "#0e7490", scores: [54, 46, 95, 92, 88], on: false },
+    { id: "de", name: "Germany", color: "#15803d", scores: [35, 67, 66, 65, 83], on: false },
+    { id: "br", name: "Brazil", color: "#b45309", scores: [69, 38, 49, 76, 44], on: false }
+  ];
+
+  var CX = 320, CY = 218, R = 148;
+  var svg = Viz.svgEl("svg", {
+    viewBox: "0 0 640 440", role: "img",
+    style: "width:100%;height:auto;display:block"
+  });
+  radarBox.appendChild(svg);
+
+  function angleAt(k) { return (-90 + 72 * k) * Math.PI / 180; }
+  function pt(k, score, f) {
+    var a = angleAt(k);
+    var r = R * (score / 100) * (f == null ? 1 : f);
+    return [CX + r * Math.cos(a), CY + r * Math.sin(a)];
+  }
+  function toPath(pts) {
+    return pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ") + " Z";
+  }
+
+  /* Reference rings and axes */
+  [20, 40, 60, 80, 100].forEach(function (v) {
+    var pts = [];
+    for (var k = 0; k < 5; k++) pts.push(pt(k, v));
+    svg.appendChild(Viz.svgEl("path", { d: toPath(pts), fill: "none", stroke: "#ece6da", "stroke-width": 1 }));
+    var lab = Viz.svgEl("text", { x: CX + 5, y: CY - R * v / 100 + 3.5, "font-size": 9.5, fill: "#a8a29e" });
+    lab.textContent = v;
+    svg.appendChild(lab);
+  });
+  var anchors = ["middle", "start", "start", "end", "end"];
+  var dys = [-9, -3, 13, 13, -3];
+  for (var k = 0; k < 5; k++) {
+    var a = angleAt(k);
+    svg.appendChild(Viz.svgEl("line", {
+      x1: CX, y1: CY, x2: CX + R * Math.cos(a), y2: CY + R * Math.sin(a),
+      stroke: "#d6cfc2", "stroke-width": 1
+    }));
+    var t = Viz.svgEl("text", {
+      x: CX + (R + 26) * Math.cos(a), y: CY + (R + 26) * Math.sin(a) + dys[k],
+      "text-anchor": anchors[k], "font-size": 12.5, "font-weight": 700, fill: "#57534e"
+    });
+    t.textContent = DIMS[k];
+    svg.appendChild(t);
+  }
+
+  /* Country polygons (build first, animate later) */
+  COUNTRIES.forEach(function (c) {
+    c.f = 0;
+    c.poly = Viz.svgEl("path", {
+      fill: c.color, "fill-opacity": 0.14,
+      stroke: c.color, "stroke-width": 2.5, "stroke-linejoin": "round"
+    });
+    c.poly.style.display = "none";
+    svg.appendChild(c.poly);
+  });
+  function renderPoly(c) {
+    var pts = [];
+    for (var k = 0; k < 5; k++) pts.push(pt(k, c.scores[k], c.f));
+    c.poly.setAttribute("d", toPath(pts));
+  }
+  function tween(c, to) {
+    var from = c.f, t0 = null;
+    if (to > 0) c.poly.style.display = "";
+    function frame(ts) {
+      if (t0 === null) t0 = ts;
+      var p = Math.min(1, (ts - t0) / 480);
+      var e = 1 - Math.pow(1 - p, 3);
+      c.f = from + (to - from) * e;
+      renderPoly(c);
+      if (p < 1) requestAnimationFrame(frame);
+      else if (to === 0) c.poly.style.display = "none";
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* Legend and checkboxes */
+  COUNTRIES.forEach(function (c) {
+    var chip = document.createElement("label");
+    chip.className = "cc-chip" + (c.on ? " on" : "");
+    chip.style.setProperty("--cc", c.color);
+    var box = document.createElement("input");
+    box.type = "checkbox";
+    box.checked = c.on;
+    chip.appendChild(box);
+    chip.appendChild(document.createTextNode(c.name));
+    box.addEventListener("change", function () {
+      c.on = box.checked;
+      chip.classList.toggle("on", c.on);
+      tween(c, c.on ? 1 : 0);
+      updateNote();
+    });
+    legendBox.appendChild(chip);
+    if (c.on) tween(c, 1);
+  });
+
+  function updateNote() {
+    var sel = COUNTRIES.filter(function (c) { return c.on; });
+    if (sel.length < 2) {
+      noteEl.innerHTML = "Check at least one more country to see the dimensional gaps.";
+      return;
+    }
+    var a = sel[0], b = sel[1], best = 0, bi = 0;
+    for (var k = 0; k < 5; k++) {
+      var d = Math.abs(a.scores[k] - b.scores[k]);
+      if (d > best) { best = d; bi = k; }
+    }
+    var hi = a.scores[bi] > b.scores[bi] ? a : b, lo = hi === a ? b : a;
+    noteEl.innerHTML = "Now comparing: " + sel.map(function (c) { return c.name; }).join(" · ") +
+      " — the widest gap is in <b>" + DIMS[bi] + "</b>: " + hi.name + " (" + hi.scores[bi] + ") vs " + lo.name + " (" + lo.scores[bi] +
+      "), a gap of <b>" + best + "</b> points (approximate, illustrative). In cross-border collaboration this is often the first dimension to “throw an error.”";
+  }
+  updateNote();
+})();
+</script>
+</body>
+</html>

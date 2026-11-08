@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contracts: The Glue of Business · Business Law &amp; Ethics</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .clause {
+    border: 1.5px solid var(--line); border-radius: 10px; background: #fff;
+    padding: .75rem 1rem; margin-bottom: .7rem; cursor: pointer; transition: all .15s ease;
+  }
+  .clause:hover:not(.locked) { border-color: var(--accent); transform: translateX(3px); }
+  .clause .clause-head { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: .3rem; }
+  .clause .clause-no { font-weight: 800; color: var(--accent); font-size: .9rem; }
+  .clause .clause-tag {
+    font-size: .72rem; font-weight: 800; letter-spacing: .08em; border-radius: 999px; padding: .05rem .6rem;
+  }
+  .clause .clause-tag.t-must { color: var(--bad); border: 1.5px solid color-mix(in srgb, var(--bad) 45%, #fff); }
+  .clause .clause-tag.t-opt  { color: var(--ink-faint); border: 1.5px solid var(--line); }
+  .clause .clause-text { font-size: .92rem; color: var(--ink-soft); line-height: 1.75; }
+  .clause.locked { cursor: default; }
+  .clause.hit-mine { border-color: var(--bad); background: #fef2f2; box-shadow: inset 4px 0 0 var(--bad); }
+  .clause.hit-safe { border-color: var(--good); background: #f0fdf4; box-shadow: inset 4px 0 0 var(--good); }
+  .clause .clause-why { display: none; font-size: .88rem; margin-top: .5rem; padding-top: .5rem; border-top: 1px dashed var(--line); color: var(--ink-soft); line-height: 1.8; }
+  .clause.hit-mine .clause-why, .clause.hit-safe .clause-why { display: block; }
+  .clause .clause-why b { color: var(--ink); }
+  .contract-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .6rem; margin: .3rem 0 .9rem; }
+  .contract-head .ch-title { font-weight: 800; color: var(--accent); font-size: .95rem; }
+  .mine-score { font-size: .9rem; font-weight: 700; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .mine-score b { color: var(--bad); }
+  .btn-primary {
+    background: var(--accent); color: #fff; border: none; border-radius: 999px;
+    padding: .45rem 1.2rem; font-weight: 700; cursor: pointer; font-family: var(--sans); font-size: .9rem;
+  }
+  .btn-ghost {
+    background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); border-radius: 999px;
+    padding: .4rem 1.1rem; font-weight: 700; cursor: pointer; font-family: var(--sans); font-size: .88rem;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .mine-summary {
+    margin-top: .9rem; font-size: .93rem; background: var(--paper-deep); border-radius: 10px;
+    padding: .9rem 1.05rem; color: var(--ink-soft); line-height: 1.85;
+  }
+  .mine-summary b { color: var(--ink); }
+</style>
+</head>
+<body class="branch-law-ethics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Business Law &amp; Ethics</a><span class="crumb-sep">/</span>
+  <span>Contracts: The Glue of Business</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../12-business-law-ethics/lessons/0002-contracts-101.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Business Law &amp; Ethics · Lesson 2</p>
+  <h1>Contracts: The Glue of Business</h1>
+  <p class="lead">Every business is a pile of promises: what gets delivered, at what price, by when, and what happens when things go wrong. A <em>contract</em> is the technology that turns promises into <em>enforceable agreements</em> — it costs little, yet it decides whether you hold any cards when the relationship turns sour. In this lesson you learn how contracts are formed and how to review one, then hunt for landmines yourself in a rigged purchase agreement.</p>
+
+  <div class="callout warn">
+    <span class="callout-label">Read this first</span>
+    This lesson and its flaw-hunting exercise are <b>teaching illustrations and do not constitute legal advice</b>; the contract text is fictional. For significant transactions, have a licensed attorney draft and review the documents.
+  </div>
+
+  <h2><span class="secno">1</span>How a contract is formed: offer, acceptance, and consideration</h2>
+  <p>A contract does not need a red seal stamped on it to “count” — its skeleton is just two moves. An <em>offer</em> is a manifestation of intent by one party, specific and definite in content, showing an intent to be bound once it is accepted: a purchase order naming the goods, the quantity, and the price is an offer. Goods displayed at marked prices in a shop window, or a product page in an online store, are usually treated as an <em>invitation to offer</em> — an invitation for you to make the offer. When the other side accepts unconditionally, that is <em>acceptance</em>: <b>when acceptance takes effect, the contract is in principle formed</b>. A reply saying “we agree to all terms, shipping next week” is acceptance; a reply saying “the price works, but payment becomes net 60 after delivery” is a new offer — negotiation is just passing the ball back and forth between offers and counteroffers.</p>
+  <div class="concept">
+    <div class="concept-title">Definition · Consideration, and why promises get enforced</div>
+    <p style="margin:0"><em>Consideration</em> is a common-law concept: each side gives up something — money for goods, services for commission — and that exchange is precisely the economic reason the law protects a contract. Civil-law systems (including Chinese law) do not use the term, but the spirit is the same: rights and obligations must correspond; free-standing promises and one-sided favors are usually not treated as contracts. Once you see this, you understand: contract law does not protect the virtue of keeping one’s word — it protects <b>a transaction structure that can be relied upon</b>. It is precisely because promises can be enforced that strangers dare to ship first and collect later.</p>
+  </div>
+  <p>Let us correct a common misconception along the way: verbal agreements can, as a rule, form valid contracts (except where the law requires writing — illustrative). The problem is never “invalidity” but the <em>burden of proof</em>: once you are in court, what was never written down might as well never have existed. So “put it in writing” is mostly about preserving evidence, setting expectations, and sparing yourselves the argument.</p>
+
+  <h2><span class="secno">2</span>The life of a contract: from negotiation to remedies for breach</h2>
+  <ul class="timeline">
+    <li><b>Negotiate:</b> Probe, quote, haggle — usually no contract yet, but bad-faith bargaining or leaking secrets can still create pre-contractual liability (illustrative).</li>
+    <li><b>Draft:</b> Write the agreed terms into clauses; whoever holds the pen sets the tone first — wording is interest.</li>
+    <li><b>Sign:</b> Verify the parties and their authority: seals, the signatory’s identity, the date — assume nothing.</li>
+    <li><b>Perform:</b> Deliver, inspect, invoice, pay; every letter, site sign-off, and chat log during performance is one link in the chain of evidence.</li>
+    <li><b>Amend:</b> Change quantities, extend deadlines, swap specifications — lock changes into a written supplemental agreement; a verbal amendment sends you straight back to the proof problem.</li>
+    <li><b>Remedies for breach:</b> Demand performance, remedial measures, damages, or the agreed <em>liquidated damages</em>; the remedy clause is the contract’s “teeth.”</li>
+  </ul>
+
+  <h2><span class="secno">3</span>The five-point review: reading a contract like a lawyer</h2>
+  <p>Whatever contract lands on your desk, professionals run it through these five gates first, and the order matters — from “who am I dealing with” to “what happens when it breaks”:</p>
+  <div class="table-wrap" data-reveal>
+    <table>
+      <thead><tr><th>The five checks</th><th>What to look at</th><th>Common landmines</th></tr></thead>
+      <tbody>
+        <tr><td><b>Check 1 · Parties and authority</b></td><td>Is the counterparty a legal person or organization with the power to contract? Is the signatory authorized?</td><td>Signing with an internal unit such as a “project department” or “preparation office”; the seal and the name do not match</td></tr>
+        <tr><td><b>Check 2 · Subject matter and quality</b></td><td>What is delivered, how much, to what standard, inspected how?</td><td>A product name with no standard; no inspection deadline or objection window</td></tr>
+        <tr><td><b>Check 3 · Price and payment</b></td><td>Is the unit price locked? Tax included or not? What payment milestones, and how many days?</td><td>“Settled at market price”; “pay after acceptance” with no day count</td></tr>
+        <tr><td><b>Check 4 · Liability for breach</b></td><td>What are the penalties for delay, quality failures, leaks?</td><td>Nothing but “friendly negotiation” — breach costs nothing</td></tr>
+        <tr><td><b>Check 5 · Dispute resolution</b></td><td>Which court has jurisdiction, or which arbitration institution? Which law applies?</td><td>“Resolved according to law” — no venue named, so the first fight after a dispute is over jurisdiction</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The first four checks decide whether you make or lose money; the fifth decides where the fight happens when things go bad, how long it lasts, and how much it costs. Many businesspeople skip the fifth check, and only discover — when payment never arrives — that the counterparty’s court is two thousand kilometers away (illustrative).</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">Simulator · Contract Flaw Finder — a purchase agreement with three buried landmines</div>
+    <p class="scen-desc" style="margin-bottom:.7rem;font-size:.93rem;color:var(--ink-soft)">Buyer “Hongtu Construction Group” purchases cement from seller “Chenguang Building Materials.” Hidden among the 8 clauses below are <b>3 landmines</b> (each maps to one of the five checks) plus 5 clauses that pass. Click the clauses you think are <b>risky</b>: hit a landmine and it is defused on the spot; click a safe clause and you will learn why it is safe. Find all 3 landmines.</p>
+    <div class="contract-head">
+      <span class="ch-title">📄 Cement Purchase Agreement (fictional · illustrative)</span>
+      <span class="mine-score" id="mine-score">Landmines found: <b>0</b> / 3 · false alarms: 0</span>
+    </div>
+    <div id="clause-list"></div>
+    <div class="mine-summary" id="mine-summary" hidden></div>
+    <div style="margin-top:.9rem;display:flex;gap:.7rem;flex-wrap:wrap">
+      <button type="button" class="btn-ghost" id="mine-reset">↻ Reset and try again</button>
+    </div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case: The typical path by which a verbal “buddy deal” crashes (illustrative)</p>
+    <p>Business disputes include one highly repetitive script, whose leads are usually old classmates or army buddies (a typical path, illustrative — no specific company):</p>
+    <ul class="timeline">
+      <li><b>Launched over drinks:</b> “Let’s do this together — 60/40 if we make money.” No written agreement; pure friendship.</li>
+      <li><b>Honeymoon:</b> The business runs on trust; transfer memos are a mess — “loan,” “stock purchase,” and “dividend” all flow through one account.</li>
+      <li><b>Cracks:</b> One side puts in equipment and patents, the other holds the customer relationships — and each keeps a different ledger on how contributions should count.</li>
+      <li><b>The market turns:</b> Business sours, the splits stop; the chat log becomes the only “contract.”</li>
+      <li><b>Court:</b> An oral partnership must be reconstructed from bank records and witness testimony — proof is brutally hard, and cases run for years (illustrative).</li>
+      <li><b>Hindsight:</b> A modestly priced written agreement could have locked down ninety percent of the disputes in advance (illustrative).</li>
+    </ul>
+    <p class="case-learn"><b>What to notice in this case:</b> the point of a contract is not “preparing for litigation” — it is <b>not going to court at all</b>. Writing the hard words down first is precisely how you protect the relationship: the terms hardest to say to a friend’s face, a document says for both of you.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Offer</dt><dd>A manifestation of intent, specific and definite in content, showing the offerer is bound upon acceptance — for example, a purchase order naming goods, quantity, and price.</dd>
+      <dt>Invitation to offer</dt><dd>An invitation for the other party to make an offer — price lists, shop-window displays, tender announcements.</dd>
+      <dt>Acceptance</dt><dd>The offeree’s unqualified acceptance of the offer; when acceptance takes effect, the contract is in principle formed.</dd>
+      <dt>Consideration</dt><dd>A common-law concept: the value each side gives up; the exchange is what makes a contract enforceable.</dd>
+      <dt>Liquidated damages</dt><dd>A breach-compensation amount or formula agreed in advance, putting a definite price on breach.</dd>
+      <dt>Jurisdiction</dt><dd>The agreed court that will hear disputes; absent an agreement, statutory rules apply — and fights over jurisdiction follow.</dd>
+      <dt>Arbitration</dt><dd>Referring disputes to an arbitration institution for a final, binding award — usually faster and private, but it requires an arbitration agreement.</dd>
+      <dt>Burden of proof</dt><dd>Whoever asserts a fact must prove it; verbal deals are dangerous precisely because they are hard to prove.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Offer plus acceptance, and the contract stands; whether it can be enforced — and enforced without a fight — depends on clauses written in advance. Run the five checks in order: parties, subject matter, price, breach, disputes. A contract is not there to guard against the other side; it guards against yourself when the relationship turns.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "Company A sends a purchase order; Company B replies: “We agree to all the terms of your order and will arrange shipment next week.” Within the offer–acceptance framework, the legal character of this reply is:",
+        "options": ["A new offer, requiring Company A to confirm once more", "An invitation to offer — a non-binding reference", "Acceptance — a contractual relationship is in principle formed", "Culpa in contrahendo, entitling A to claim damages"],
+        "answer": 2,
+        "explain": "The purchase order is specific and definite — an offer; the reply <b>accepts all terms unconditionally</b> — acceptance, and when acceptance takes effect the contract is in principle formed. Only if the reply had changed the price or the payment terms would it become a “new offer” awaiting the other side’s acceptance." },
+      { "q": "Reviewing a purchase agreement, you find the payment clause says only “pay after delivery and acceptance,” with no day count. Under the five-point review, which gate does this problem belong to?",
+        "options": ["Price and payment", "Parties and authority", "Dispute resolution", "Subject matter and quality"],
+        "answer": 0,
+        "explain": "A payment milestone with no day count means “after acceptance” can stretch out to forever — the classic landmine of the <b>price and payment</b> gate. “Parties” is about identity, “subject matter” about goods and standards, “dispute resolution” about where to argue when things break; none of those fits." },
+      { "q": "A contract’s dispute clause reads: “In case of dispute, the parties shall resolve it through legal channels according to law” — and nothing more. The risk in this landmine is:",
+        "options": ["The contract never takes legal effect in the first place", "The counterparty can invoke it to escape its payment obligation", "The authorities have power to revoke the contract outright", "No court or arbitration forum is agreed, so the first costly fight after a dispute is over jurisdiction"],
+        "answer": 3,
+        "explain": "“Resolved according to law” is a correct-sounding platitude: with <b>no agreed court or arbitration institution</b>, the parties often start by wrestling over whose home turf hosts the lawsuit, burning extra time and money for nothing. Neither the contract’s validity nor the payment obligation is automatically affected." },
+      { "q": "In a “buddy deal,” supply terms and profit splits were agreed verbally; a year later the two sides’ accounts disagree and the fight reaches court. The core lesson of this case is:",
+        "options": ["However small the business, register a pledge first", "Key rights and obligations must be put in writing; verbal agreements are brutally hard to prove", "Complete transfer records can substitute for a contract", "The parties should have jointly registered a new company first"],
+        "answer": 1,
+        "explain": "Verbal contracts can in principle be valid; the difficulty is <b>proof</b>: split ratios, how contributions count, and every change live only in memory and chat logs, and in court each side tells its own story. Bank records prove money moved, not why or under what rules; and registering a company is a choice of form, not a substitute for trust." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Getting to Yes, Roger Fisher and William Ury (Chinese edition, CITIC Press) — recommended: the chapters on separating people from the problem and positions from interests, the classic method for the negotiation stage</li>
+      <li>Wang Liming, A Study of Contract Law (in Chinese), China Renmin University Press — recommended: the parts on contract formation and liability for breach, a systematic textbook treatment</li>
+      <li>Search keywords: the contract book of the PRC Civil Code / contract review checklist / liquidated damages adjustment (run your five checks against a real-world checklist)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-business-entities.html"><span class="pager-label">← Previous</span><span class="pager-title">Business Entities</span></a>
+    <a class="next" href="0003-corporate-governance.html"><span class="pager-label">Next →</span><span class="pager-title">Corporate Governance: The Agency Problem</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Here is a clause from a contract I am holding — check it with the five-point review.’ or ‘Write another rigged contract for me to practice on.’ Follow-up questions are part of learning.</div>
+    <p>Business Law &amp; Ethics · Lesson 2 · The contract text is a fictional teaching illustration, not legal advice.</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var CLAUSES = [
+    { no: "Clause 1", tag: "Required", title: "Parties",
+      text: "Party A (buyer): Hongtu Construction Group No. 1 Project Department; Party B (seller): Chenguang Building Materials Co., Ltd.",
+      mine: true,
+      why: "<b>Landmine 1 · Wrong counterparty.</b> A “No. 1 Project Department” is typically an internal unit of the enterprise — generally without independent legal personality and unable to bear civil liability on its own. When you chase payment, you may find no “Party A” that can actually answer for the debt. That is Check 1: verify the counterparty’s legal personality, that its name and seal match, and that the signatory is authorized.<br><b>The fix:</b> have “Hongtu Construction Group Co., Ltd.” — which does have legal personality — sign the contract, or have the group company issue an explicit authorization and affix the corporate seal." },
+    { no: "Clause 2", tag: "Required", title: "Subject matter and quality",
+      text: "Party B shall supply Party A with approximately 500 tonnes of P.O 42.5 cement; quality shall conform to the applicable national standard, with sampling inspection on arrival as the basis for acceptance.",
+      mine: false,
+      why: "A passing clause: product name, quantity, governing standard, and acceptance basis — all four elements present. This is exactly what a clean “subject matter and quality” check looks like." },
+    { no: "Clause 3", tag: "Required", title: "Price and payment",
+      text: "The tax-inclusive unit price is locked per batch order; within 30 days after delivery passes acceptance, Party A shall pay that batch’s price by bank transfer.",
+      mine: false,
+      why: "A passing clause: unit price locked, tax status stated, a payment milestone with a day count, and a named payment method — with all four in place, the vagueness of “market price” and “pay after acceptance” is fully avoided." },
+    { no: "Clause 4", tag: "Required", title: "Delivery and acceptance",
+      text: "Party B shall deliver in batches to the site designated by Party A; Party A shall complete acceptance within 3 days of arrival, and failing a written objection within that time, the batch is deemed accepted.",
+      mine: false,
+      why: "A passing clause: delivery location, acceptance deadline, objection method, and the “deemed accepted” consequence are all spelled out. The point of a deadline clause is not that it be long — but that it <b>exist</b>." },
+    { no: "Clause 5", tag: "Required", title: "Liability for breach",
+      text: "The parties shall perform this contract in good faith; in case of breach, the parties shall resolve the matter through friendly negotiation.",
+      mine: true,
+      why: "<b>Landmine 2 · No liquidated damages.</b> The whole clause says nothing about penalties for late delivery, interest on late payment, or compensation for failed quality — the cost of breach is zero, and “friendly negotiation” is not a remedy, it is a euphemism for delay. Breach liability is the contract’s teeth: without teeth, the prettiest clauses cannot bite.<br><b>The fix:</b> price each breach — liquidated damages per day of delay as a set percentage of the batch price; for quality failures, return and replacement plus inspection and loss costs (percentages as actually negotiated — illustrative)." },
+    { no: "Clause 6", tag: "Optional", title: "Confidentiality",
+      text: "The parties shall keep the price terms of this contract and exchanged technical materials confidential for two years, except as otherwise provided by law or regulation.",
+      mine: false,
+      why: "A passing optional clause: scope, duration, and exceptions are all clear. It belongs to the “optional” family — the contract is complete without it, but in a long-term supply relationship it is worth writing." },
+    { no: "Clause 7", tag: "Required", title: "Dispute resolution",
+      text: "If negotiation fails, the parties shall resolve the dispute through legal channels according to law.",
+      mine: true,
+      why: "<b>Landmine 3 · No forum agreed.</b> “Legal channels” does not say litigation or arbitration, and does not name a court — after a dispute breaks out, the parties typically deadlock first over whose home turf the case lands in, and time and travel costs double for nothing. Check 5 exists to fill exactly this box.<br><b>The fix:</b> name it — “litigate before the competent court at Party A’s domicile” or “submit to arbitration at a named arbitration institution” (choose one, based on bargaining position and cost)." },
+    { no: "Clause 8", tag: "Optional", title: "Effectiveness and miscellany",
+      text: "This contract takes effect on the date both parties affix their seals, in two counterparts of equal legal force.",
+      mine: false,
+      why: "A passing boilerplate clause: the effective date and the number of counterparts are clear. It settles “when the contract starts to count” — standard tail matter, but do not underestimate “the date of sealing”: it anchors the day liquidated damages start running." }
+  ];
+
+  var listEl = document.getElementById("clause-list"),
+      scoreEl = document.getElementById("mine-score"),
+      sumEl = document.getElementById("mine-summary"),
+      resetBtn = document.getElementById("mine-reset");
+
+  if (!listEl) return;
+
+  var found = 0, wrong = 0, clicked = {};
+
+  function build() {
+    listEl.innerHTML = "";
+    CLAUSES.forEach(function (c, i) {
+      var d = document.createElement("div");
+      d.className = "clause";
+      d.innerHTML =
+        '<div class="clause-head"><span class="clause-no">' + c.no + " · " + c.title + "</span>" +
+        '<span class="clause-tag ' + (c.tag === "Required" ? "t-must" : "t-opt") + '">' + (c.tag === "Required" ? "Required clause" : "Optional clause") + "</span></div>" +
+        '<div class="clause-text">' + c.text + '</div><div class="clause-why"></div>';
+      d.addEventListener("click", function () {
+        if (clicked[i]) return;
+        clicked[i] = true;
+        d.classList.add("locked", c.mine ? "hit-mine" : "hit-safe");
+        var why = d.querySelector(".clause-why");
+        if (c.mine) {
+          found++;
+          why.innerHTML = "🧨 <b>Defused!</b>" + c.why;
+        } else {
+          wrong++;
+          why.innerHTML = "✅ This clause is safe." + c.why;
+        }
+        scoreEl.innerHTML = "Landmines found: <b>" + found + "</b> / 3 · false alarms: " + wrong;
+        if (found === 3) {
+          sumEl.innerHTML = "<b>All three landmines defused!</b> False alarms: " + wrong + ". Look back: the wrong counterparty maps to <b>Check 1 · Parties and authority</b>, no liquidated damages to <b>Check 4 · Liability for breach</b>, no forum to <b>Check 5 · Dispute resolution</b> — the five checks are not a checklist, they are a map of the minefield." +
+            (wrong === 0 ? "Zero false alarms — you already read like a lawyer." : "False alarms are fine: read the reasons a clause is safe too, and your judgment will get faster.");
+          sumEl.hidden = false;
+        }
+      });
+      listEl.appendChild(d);
+    });
+  }
+
+  build();
+
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      found = 0; wrong = 0; clicked = {};
+      scoreEl.innerHTML = "Landmines found: <b>0</b> / 3 · false alarms: 0";
+      sumEl.hidden = true;
+      build();
+    });
+  }
+})();
+</script>
+</body>
+</html>

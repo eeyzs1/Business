@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Five Forces: How Attractive Is the Industry? · Strategy</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .sim-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 700; cursor: pointer;
+    border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+    color: var(--accent); background: #fff; border-radius: 999px; padding: .35rem 1.05rem;
+    transition: all .15s ease;
+  }
+  .sim-btn:hover { background: color-mix(in srgb, var(--accent) 10%, #fff); }
+  .sim-btn.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .sim-presets { display: flex; gap: .6rem; flex-wrap: wrap; margin: .5rem 0 .2rem; }
+  .sim-controls label > span { min-width: 6.5em; }
+  .ff-layout { display: grid; grid-template-columns: 1fr; gap: .6rem; align-items: start; }
+  @media (min-width: 760px) { .ff-layout { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+  .ff-score-box {
+    background: var(--paper-deep); border-radius: 12px; padding: .9rem 1.1rem; text-align: center;
+  }
+  .ff-score-box .ff-score-label { font-size: .82rem; letter-spacing: .12em; color: var(--ink-soft); font-weight: 800; }
+  .ff-score-box .ff-score-num { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; color: var(--accent); line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .ff-note { font-size: .88rem; color: var(--ink-soft); line-height: 1.75; margin: .8rem 0 0; }
+  .sim-verdict {
+    font-size: .93rem; line-height: 1.75; color: var(--ink);
+    background: var(--paper-deep); border-radius: 10px; padding: .7rem .95rem; margin: .8rem 0 0;
+  }
+</style>
+</head>
+<body class="branch-strategy">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Strategy</a><span class="crumb-sep">/</span>
+  <span>Five Forces</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../08-strategy/lessons/0002-five-forces.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Strategy · Lesson 2</p>
+  <h1>Five Forces: How Attractive Is the Industry?</h1>
+  <p class="lead">Two equally excellent companies: one toils in airlines, the other thrives in software. Before rushing to praise or blame management, note that industry structure itself may already have settled most of the outcome. Porter’s <strong>Five Forces</strong> provides a cool-headed lens: <em>an industry’s average profitability is written in the strength of five competitive forces</em>. After this lesson, you will first ask “is this industry’s money easy to earn,” and only then “what makes me the one to earn it.”</p>
+
+  <h2><span class="secno">1</span>The Profit Pool: The Industry Settles Most of the Outcome</h2>
+  <p>Add up a full year of profits across an industry and you get its <strong>profit pool</strong>. Pools differ enormously in depth, and the differences often persist for decades: some industries toil all year to skim a thin layer, while others are cornucopias (illustrative magnitudes). Why? Not because practitioners are dumb or lazy, but because <strong>industry structure</strong> — the “physics” of competition — sets how high prices can be pushed and how low costs can be squeezed. The Five Forces framework turns this vague intuition into five variables you can score one by one.</p>
+
+  <h2><span class="secno">2</span>The Five Forces: Who Is Taking a Slice of Your Profit</h2>
+  <figure class="figure">
+    <div class="figure-body">
+      <svg viewBox="0 0 640 380" role="img" style="width:100%;height:auto;display:block" aria-label="Five Forces framework diagram">
+        <defs>
+          <marker id="ff-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#a8a29e"></path>
+          </marker>
+        </defs>
+        <g font-family="inherit">
+          <line x1="320" y1="88" x2="320" y2="158" stroke="#a8a29e" stroke-width="2.5" marker-end="url(#ff-arrow)"></line>
+          <line x1="320" y1="292" x2="320" y2="222" stroke="#a8a29e" stroke-width="2.5" marker-end="url(#ff-arrow)"></line>
+          <line x1="200" y1="190" x2="238" y2="190" stroke="#a8a29e" stroke-width="2.5" marker-end="url(#ff-arrow)"></line>
+          <line x1="440" y1="190" x2="402" y2="190" stroke="#a8a29e" stroke-width="2.5" marker-end="url(#ff-arrow)"></line>
+          <rect x="245" y="32" width="150" height="56" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="320" y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#1c1917">New Entrants</text>
+          <text x="320" y="74" text-anchor="middle" font-size="9.5" fill="#a8a29e">Threat of New Entrants</text>
+          <rect x="245" y="292" width="150" height="56" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="320" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#1c1917">Substitutes</text>
+          <text x="320" y="334" text-anchor="middle" font-size="9.5" fill="#a8a29e">Threat of Substitutes</text>
+          <rect x="52" y="162" width="148" height="56" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="126" y="186" text-anchor="middle" font-size="14" font-weight="700" fill="#1c1917">Supplier Power</text>
+          <text x="126" y="204" text-anchor="middle" font-size="9.5" fill="#a8a29e">Bargaining Power of Suppliers</text>
+          <rect x="440" y="162" width="148" height="56" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="514" y="186" text-anchor="middle" font-size="14" font-weight="700" fill="#1c1917">Buyer Power</text>
+          <text x="514" y="204" text-anchor="middle" font-size="9.5" fill="#a8a29e">Bargaining Power of Buyers</text>
+          <rect x="240" y="158" width="160" height="64" rx="10" fill="#fdf2f4" stroke="#9f1239" stroke-width="2"></rect>
+          <text x="320" y="184" text-anchor="middle" font-size="15" font-weight="800" fill="#9f1239">Rivalry</text>
+          <text x="320" y="204" text-anchor="middle" font-size="9.5" fill="#a8a29e">Rivalry Among Existing Competitors</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The Five Forces (Porter): four forces squeeze the center from three directions, and each ultimately takes a share of industry profit by pressing prices down or pushing costs up.</figcaption>
+  </figure>
+  <p>Every force is grabbing the same pie: either pushing your selling price down, or pushing your costs up.</p>
+  <ol class="steps">
+    <li><strong>Rivalry</strong>: when competitors are numerous and evenly matched, products homogeneous, and exit barriers high, price wars and marketing arms races erupt — profit evaporates on the spot.</li>
+    <li><strong>Threat of new entrants</strong>: the lower the <strong>barriers to entry</strong>, the easier it is for new rivals to charge in with fresh capacity and turn good years into bad ones.</li>
+    <li><strong>Threat of substitutes</strong>: other forms that satisfy the same need — high-speed rail for short-haul flying, video calls for business trips — put a ceiling on your prices.</li>
+    <li><strong>Bargaining power of buyers</strong>: when customers are concentrated, comparison is easy, and switching is cheap, they can negotiate you down to nothing but sweat.</li>
+    <li><strong>Bargaining power of suppliers</strong>: when key inputs are controlled by a few suppliers, the ones raising prices are them, not you.</li>
+  </ol>
+  <p>The stronger the five forces, the thinner the industry’s average margin; when the forces are weak, “even mediocre firms live decently.” Note: the Five Forces describe the <b>industry average</b> — they do not deny that individual firms win against the tide. That is the topic of the next lesson, competitive advantage.</p>
+
+  <div class="sim">
+    <div class="sim-title">Five Forces Diagnostic: Score an Industry</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">Drag the five sliders (0 = a very weak force, 10 = a very strong force) and watch the radar chart and the overall industry-attractiveness score redraw in real time. Click a preset to load <b>illustrative readings</b> for three industries and compare them: airlines, premium baijiu, and software SaaS.</p>
+    <div class="sim-presets" id="ff-presets"></div>
+    <div class="sim-controls" id="ff-sliders"></div>
+    <div class="ff-layout">
+      <div>
+        <div class="figure-body" id="ff-radar" style="padding:.6rem 0 0"></div>
+      </div>
+      <div>
+        <div class="ff-score-box">
+          <div class="ff-score-label">Overall industry attractiveness</div>
+          <div class="ff-score-num"><span id="ff-score">–</span><span style="font-size:1rem;color:var(--ink-faint)"> / 100</span></div>
+          <div style="font-size:.8rem;color:var(--ink-faint)">Score = 100 − mean of the five forces × 10 (illustrative)</div>
+        </div>
+        <p class="ff-note" id="ff-note">Preset readings are teaching illustrations, not any institution’s ratings. Load an industry preset and examine the logic behind each number.</p>
+        <p class="sim-verdict" id="ff-verdict">Drag a slider to start the diagnosis.</p>
+      </div>
+    </div>
+  </div>
+  <div class="callout note"><span class="callout-label">Compare and discuss</span>Of the three presets, airlines face strong forces, baijiu weak ones, and SaaS sits in between. Think it over: if airlines are such hard money, why does capital keep pouring in? If baijiu is such easy money, why do new brands keep charging forward? Hint: the Five Forces explain the “average” — and every generation of entrants believes it is not the average.</div>
+
+  <h2><span class="secno">3</span>A Static Snapshot Plus a Dynamic Lens</h2>
+  <p>The Five Forces are often criticized as “static” — a criticism that is half right. The framework does deliver an <strong>industry snapshot</strong> at one point in time: today’s landscape, today’s barriers, today’s comparison shopping. But the forces themselves flow: deregulation can weaken entry barriers overnight (open skies for airlines); technology can conjure substitutes out of thin air (streaming for DVD rental); and the internet turned price comparison into a single swipe, so <em>buyer power has been rising in almost every industry</em>.</p>
+  <p>The right way to use it is two steps: score today first, then ask “what will move these five numbers within five years.” The static score tells you which table you are sitting at; the dynamic follow-up tells you how much longer that table will stay open.</p>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case · Airlines: A Century of Glamour, Razor-Thin Profits; Baijiu and Software Quietly Print Money</p>
+    <p>Airlines are among the most glamorous industries of the twentieth century: they redrew the map, yet have almost never treated shareholders well as a whole — cumulative global profits over decades are astonishingly thin against enormous revenues, with outright losses in some years, and the old joke about “turning billionaires into millionaires” has circulated for ages (illustrative magnitudes). Viewed through the Five Forces, the reasons are plain: aircraft come from a duopoly of manufacturers and fuel and airport charges are rigid (<b>strong suppliers</b>); comparison platforms make fares visible in one click (<b>strong buyers</b>); high-speed rail and video conferencing siphon off passengers (<b>strong substitutes</b>); aircraft can be leased and slots grabbed, so newcomers keep entering (<b>moderately strong entry</b>); and whenever capacity overshoots, carriers slash prices at each other (<b>strong rivalry</b>).</p>
+    <p>Premium baijiu is the mirror image: brands and aged fermentation pits form <strong>barriers to entry</strong> accumulated over decades; grain comes from a fragmented commodity market (<b>weak suppliers</b>); consumers are dispersed while famous labels run perennially short of demand (<b>weak buyers</b>); and the threat of substitutes is limited. Software SaaS sits between the two: the lane is crowded and talent expensive, but once a product is embedded in the workflow its <b>switching costs</b> are steep, subscriptions renew year after year, and gross margins stay handsome (all illustrative magnitudes).</p>
+    <p class="case-learn"><b>The lesson of this case:</b> in a good industry even a mediocre firm can live comfortably; in a bad industry even an excellent one must fight with everything it has. “Picking the right track” and “building inner strength” are two different disciplines — you need both. Use the Five Forces to guide investments, job choices, or where to start a company: size up the table first, then look at the cards in your hand.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Five Forces</dt><dd>Porter’s framework for analyzing industry structure; it explains an industry’s average profitability through five competitive forces.</dd>
+      <dt>Industry Structure</dt><dd>The underlying rules that determine how fiercely an industry competes and how its profit is divided — roughly the industry’s “physics.”</dd>
+      <dt>Profit Pool</dt><dd>The total profit earned by all participants in an industry over a period of time; a measure of how deep the pool runs.</dd>
+      <dt>Barriers to Entry</dt><dd>Structural obstacles that keep new rivals out: scale, licenses, brands, channels, patents, and the like.</dd>
+      <dt>Substitutes</dt><dd>Products or services that meet the same need in a different form, setting a ceiling on prices.</dd>
+      <dt>Buyer Power</dt><dd>Customers’ ability to push prices down or demand more value; it rises with concentration and information transparency.</dd>
+      <dt>Supplier Power</dt><dd>Suppliers’ ability to raise input prices or tighten supply; it rises with supply-side concentration.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Whether an industry’s money comes easily is mostly settled by five forces: rivalry, entry, substitutes, buyers, suppliers — any one of them strengthening means pressing prices down or pushing costs up. Score the industry today, then ask what will change those scores: the static view picks the table, the dynamic view reads the game.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      {
+        "q": "The high-speed rail network keeps expanding. For carriers on short-haul routes, which force does this most directly represent?",
+        "options": ["Intensity of rivalry among existing competitors", "The threat of new entrants", "The threat of substitutes", "A rise in supplier bargaining power"],
+        "answer": 2,
+        "explain": "High-speed rail and flights are <b>substitutes</b>: different in form, yet they serve the same need — fast arrival within a few hundred kilometers. The existence of substitutes puts a ceiling on air fares."
+      },
+      {
+        "q": "In an industry where all five forces are strong, the most likely outcome is:",
+        "options": ["Average prices and margins squeezed from both sides", "Industry concentration rising rapidly as a matter of course", "Barriers to entry rising automatically to block newcomers", "Customer loyalty improving markedly across the board"],
+        "answer": 0,
+        "explain": "Buyers and substitutes press <b>prices</b> down, suppliers push <b>costs</b> up, and rivalry and new entrants steal <b>volume</b> — a three-way squeeze on the industry’s average margin. That is exactly the airline industry’s century-long position (illustrative)."
+      },
+      {
+        "q": "An industry’s key raw material has a single supplier, and no alternative input is available in the near term. This directly raises:",
+        "options": ["The threat of new entrants", "The threat of substitutes", "Buyer bargaining power", "Supplier bargaining power"],
+        "answer": 3,
+        "explain": "Concentrated supply with no substitute input hands the supplier leverage to raise prices and tighten availability — <b>supplier bargaining power</b> is strong, directly eroding downstream profit."
+      },
+      {
+        "q": "Which reading of the Five Forces framework is correct?",
+        "options": ["It can forecast a firm’s exact market share", "It is a static snapshot and needs a dynamic complement", "It applies only to traditional manufacturing analysis", "It guarantees picking a profitable niche"],
+        "answer": 1,
+        "explain": "The Five Forces are a <b>snapshot of industry structure</b> at one moment: regulation, technology, and preferences all move those forces. The right use is to score today first, then ask “what will change these five numbers.”"
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Competitive Strategy by Michael E. Porter (start with: Chapter 1, “The Structural Analysis of Industries” — the original Five Forces argument)</li>
+      <li>Competitive Advantage by Michael E. Porter (start with: Chapter 1)</li>
+      <li>Blue Ocean Strategy by W. Chan Kim &amp; Renée Mauborgne (start with: Chapters 1–2 — another route out of the Five Forces red ocean)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-what-is-strategy.html"><span class="pager-label">← Previous</span><span class="pager-title">What Is Strategy: The Art of Trade-offs</span></a>
+    <a class="next" href="0003-competitive-advantage.html"><span class="pager-label">Next →</span><span class="pager-title">Competitive Advantage: Cost Leadership and Differentiation</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Run a Five Forces analysis of the industry I work in — what scores would you give the five forces?’ Applying the framework to an industry you know well beats rereading the definition ten times. Follow-up questions are part of learning.</div>
+    <p>Strategy · Lesson 2 · Five Forces: How Attractive Is the Industry? | Interactive: Five Forces diagnostic with radar chart · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+  var box = document.getElementById("ff-radar");
+  var slidersBox = document.getElementById("ff-sliders");
+  var scoreEl = document.getElementById("ff-score");
+  var noteEl = document.getElementById("ff-note");
+  var verdictEl = document.getElementById("ff-verdict");
+  if (!box || !slidersBox || !window.Viz) return;
+
+  var FORCES = [
+    { name: "Competitive rivalry" },
+    { name: "New entrants" },
+    { name: "Substitutes" },
+    { name: "Buyer power" },
+    { name: "Supplier power" }
+  ];
+  var CX = 190, CY = 168, R = 95;
+  function angleAt(i) { return -Math.PI / 2 + i * 2 * Math.PI / 5; }
+  function pt(i, r) {
+    return [CX + Math.cos(angleAt(i)) * r, CY + Math.sin(angleAt(i)) * r];
+  }
+
+  var svg = Viz.svgEl("svg", {
+    viewBox: "0 0 380 330", role: "img",
+    style: "width:100%;max-width:380px;height:auto;display:block;margin:0 auto"
+  });
+  box.appendChild(svg);
+
+  [0.25, 0.5, 0.75, 1].forEach(function (f) {
+    var ring = R * f;
+    var pts = [0, 1, 2, 3, 4].map(function (i) { return pt(i, ring); });
+    var d = pts.map(function (p, k) {
+      return (k ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1);
+    }).join(" ") + " Z";
+    svg.appendChild(Viz.svgEl("path", { d: d, fill: "none", stroke: "#e7e0d3", "stroke-width": 1 }));
+  });
+  FORCES.forEach(function (f, i) {
+    var p = pt(i, R);
+    svg.appendChild(Viz.svgEl("line", { x1: CX, y1: CY, x2: p[0], y2: p[1], stroke: "#e7e0d3", "stroke-width": 1 }));
+    var lp = pt(i, R + 16);
+    var c = Math.cos(angleAt(i));
+    var anchor = Math.abs(c) < 0.3 ? "middle" : (c > 0 ? "start" : "end");
+    Viz.label(svg, lp[0], lp[1] + 4, f.name, { size: 11.5, color: "#57534e", anchor: anchor });
+  });
+  Viz.label(svg, CX, CY - 3, "Industry", { size: 10.5, color: "#a8a29e", anchor: "middle", weight: 400 });
+  Viz.label(svg, CX, CY + 11, "attractiveness", { size: 10.5, color: "#a8a29e", anchor: "middle", weight: 400 });
+
+  var poly = Viz.svgEl("g");
+  svg.appendChild(poly);
+
+  var sliders = FORCES.map(function (f) {
+    var s = Viz.slider(slidersBox, {
+      label: f.name, min: 0, max: 10, step: 1, value: 5,
+      format: function (v) { return v + " / 10"; }
+    });
+    s.onChange(update);
+    return s;
+  });
+
+  function update() {
+    var vs = sliders.map(function (s) { return s.get(); });
+    var avg = (vs[0] + vs[1] + vs[2] + vs[3] + vs[4]) / 5;
+    var score = Math.round(100 - avg * 10);
+    scoreEl.textContent = String(score);
+    while (poly.firstChild) poly.removeChild(poly.firstChild);
+    var pts = vs.map(function (v, i) { return pt(i, v / 10 * R); });
+    var d = pts.map(function (p, k) {
+      return (k ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1);
+    }).join(" ") + " Z";
+    poly.appendChild(Viz.svgEl("path", {
+      d: d, fill: "#9f1239", opacity: 0.22,
+      stroke: "#9f1239", "stroke-width": 2.5, "stroke-linejoin": "round"
+    }));
+    pts.forEach(function (p) { Viz.dot(poly, p[0], p[1], { r: 4, fill: "#9f1239" }); });
+    var verdict;
+    if (score >= 70) {
+      verdict = "Weak forces (high score): a rich industry structure, and average profitability is usually handsome — but good industries attract new rivals, so keep asking the dynamic questions.";
+    } else if (score >= 45) {
+      verdict = "Moderate forces: the money is neither easy nor impossible to make, and a firm’s relative advantage starts to matter — which is exactly the topic of the next lesson.";
+    } else {
+      verdict = "Strong forces (low score): a brutal industry structure, with prices and costs squeezed from both directions — most players earn hard money only and must break out through competitive advantage.";
+    }
+    verdictEl.textContent = verdict;
+  }
+
+  var PRESETS = [
+    {
+      name: "Airlines", values: [9, 7, 5, 8, 8],
+      note: "Airlines (illustrative readings): many rivals and chronic overcapacity (rivalry 9); aircraft can be leased and slots grabbed (entry 7); high-speed rail and video calls siphon off demand (substitutes 5); comparison platforms let passengers squeeze fares in one click (buyers 8); aircraft, fuel, and airports are concentrated (suppliers 8)."
+    },
+    {
+      name: "Premium baijiu", values: [3, 2, 3, 2, 2],
+      note: "Premium baijiu (illustrative readings): a stable pecking order, with brands and aged fermentation pits forming high barriers (entry 2); fragmented, cheap inputs such as grain (suppliers 2); dispersed consumers and perennial excess demand (buyers 2); a limited threat of substitutes (substitutes 3)."
+    },
+    {
+      name: "Software SaaS", values: [6, 5, 3, 5, 4],
+      note: "Software SaaS (illustrative readings): a crowded lane (rivalry 6); modest startup capital (entry 5); high migration costs once the product is embedded in the workflow (substitutes 3); subscribers negotiate annually under the subscription model (buyers 5); engineer pay pushes supplier power up (suppliers 4)."
+    }
+  ];
+  var presetBox = document.getElementById("ff-presets");
+  PRESETS.forEach(function (p, idx) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "sim-btn";
+    b.textContent = p.name;
+    b.addEventListener("click", function () {
+      sliders.forEach(function (s, i) { s.set(p.values[i]); });
+      noteEl.textContent = p.note;
+      presetBox.querySelectorAll(".sim-btn").forEach(function (x, i) {
+        x.classList.toggle("active", i === idx);
+      });
+    });
+    presetBox.appendChild(b);
+  });
+
+  update();
+  if (window.Viz && Viz.countUp) { Viz.countUp(scoreEl, 50, { dur: 700, format: function (x) { return String(Math.round(x)); } }); }
+})();
+</script>
+</body>
+</html>

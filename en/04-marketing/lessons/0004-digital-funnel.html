@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Marketing and the Conversion Funnel · Marketing</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .verdict { display: inline-block; padding: .18rem .8rem; border-radius: 999px; font-weight: 800; font-size: .86rem; }
+  .v-good { background: #f0fdf4; color: #15803d; border: 1.5px solid #15803d; }
+  .v-warn { background: #fffbeb; color: #b45309; border: 1.5px solid #d97706; }
+  .v-bad  { background: #fef2f2; color: #b91c1c; border: 1.5px solid #b91c1c; }
+</style>
+</head>
+<body class="branch-marketing">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Marketing</a><span class="crumb-sep">/</span>
+  <span>Digital Marketing and the Conversion Funnel</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../04-marketing/lessons/0004-digital-funnel.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Marketing · Lesson 4</p>
+  <h1>Digital Marketing and the Conversion Funnel</h1>
+  <p class="lead">In traditional marketing, half the money is spent with no idea “where it was wasted”. Digital marketing’s greatest revolution is that every step becomes measurable: who saw it, who clicked, who bought, and who came back. This lesson turns customer acquisition into an arithmetic problem — by the end you will use the conversion funnel, AARRR, and CAC/LTV to judge whether a business earns more the more it spends, or loses more.</p>
+
+  <h2><span class="secno">1</span>The Funnel: A Chain of Multiplications</h2>
+  <p>From strangers to repeat customers, buyers travel a path that keeps narrowing: <strong>exposure → click → sign-up → purchase → repeat purchase</strong>. It is called the conversion funnel, and at heart it is one long multiplication:</p>
+  <div class="formula">Final purchases = impressions × CTR × sign-up rate × purchase rate</div>
+  <p>Two corollaries follow from this chain. First, <strong>double the head while conversion rates stay put, and the result doubles</strong> — buying traffic works precisely because it multiplies at the front of the chain. Second, <strong>improving the weakest layer carries the most leverage</strong>: lifting CTR from 2% to 3% is a 1.5× gain, while lifting purchase rate from 8% to 16% is 2× — and the cost may be nothing more than a redesigned landing page. Funnel thinking turns “marketing alchemy” into the engineer’s job of finding the bottleneck and fixing it.</p>
+
+  <h2><span class="secno">2</span>AARRR: Pirate Metrics</h2>
+  <p>The growth community abbreviates a startup’s five critical metrics as AARRR, also known as pirate metrics:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Funnel stage</th><th>AARRR</th><th>Core question and metrics</th></tr></thead>
+    <tbody>
+      <tr><td>Exposure, clicks</td><td>Acquisition</td><td>Where do users come from? — CPM, CTR, downloads</td></tr>
+      <tr><td>Sign-up, first use</td><td>Activation</td><td>Did they experience the value the first time (the Aha moment)? — activation rate</td></tr>
+      <tr><td>Keeps coming back</td><td>Retention</td><td>Will they return? — retention rate, repeat-purchase rate</td></tr>
+      <tr><td>Pays money</td><td>Revenue</td><td>How much will they pay? — conversion rate, average order value</td></tr>
+      <tr><td>Shares and invites</td><td>Referral</td><td>Will they bring others in? — invite rate, K-factor</td></tr>
+    </tbody>
+  </table></div>
+  <p>Note that AARRR’s order does not map one-to-one onto the funnel (it places revenue after retention), because it leans toward subscription products’ logic of “keep them first, monetize later”. Which set you use depends on the shape of the business — but the underlying data is the same.</p>
+
+  <h2><span class="secno">3</span>CAC and LTV: The Arithmetic Floor of Growth</h2>
+  <div class="concept">
+    <div class="concept-title">Concept card · A make-or-break pair of metrics</div>
+    <p><strong>CAC (Customer Acquisition Cost)</strong> = total acquisition spend ÷ new customers acquired: on average, how much you “pay” to win one new customer. <strong>LTV (Lifetime Value)</strong> = average order value × gross margin × average number of purchases: the profit one customer contributes across their entire life. Rule of thumb: only <em>LTV / CAC ≥ 3</em> justifies scaling up spend; near 1 you are burning cash on the break-even line, and below 1 every new customer you win loses money.</p>
+  </div>
+  <p>Why 3 and not 1? Because gross margin has to feed the team, R&amp;D, and trial-and-error — and CAC tends to climb as traffic auctions heat up. This also marks the watershed of the subsidy wars: subsidies can temporarily lift every layer’s conversion rate, but only retention and repeat purchase (thickening LTV) turn a model into a real business.</p>
+
+  <h2><span class="secno">4</span>Hands-On: The Funnel Simulator</h2>
+  <div class="sim">
+    <div class="sim-title">Simulator · The conversion funnel: turn acquisition into an arithmetic problem</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">Drag the top-of-funnel traffic and each layer’s conversion rate (plus the average order value), and watch the funnel narrow layer by layer while CAC, LTV, and the profit verdict update in real time. Assumptions: CPM of about ¥30, gross margin of about 60%, and average number of purchases estimated as the geometric series 1/(1−repeat rate) — all illustrative.</p>
+    <div class="sim-controls" id="funnelCtrls"></div>
+    <div class="figure-body" id="funnelWrap"></div>
+    <p class="sim-readout" id="fReadout"></p>
+  </div>
+
+  <div class="case">
+    <div class="case-title">Case · Luckin: a computable playbook of subsidized acquisition plus private-traffic repeat purchase</div>
+    <p>From 2018, Luckin Coffee turned “winning new customers” into a funnel-engineering project: a free first cup and referral coupons lowered the trial barrier (ordering had to run through the app, so every layer’s conversion could be instrumented and measured), while Focus Media advertising and store density supplied the exposure — by the time of its IPO the store count had reached roughly 4,500 (public reporting, illustrative). Early on, heavy subsidies put CAC and retention under fierce scrutiny, and for a while the model looked broken by the math.</p>
+    <p>After 2020 the playbook pivoted to “thickening LTV”: store communities and WeCom groups formed a private-traffic pool (Private Traffic), and coupon pushes reached existing customers at near-zero cost to drive repeat purchase; hit products like the Coconut Latte kept manufacturing reasons to return (public reporting: overall profitability from 2021, illustrative). Same funnel — switched from “burning cash to buy growth” to “earning growth through retention”.</p>
+    <div class="case-learn"><b>The lesson:</b> digital marketing is not about buying ads; it is about turning every AARRR layer into a measurable, optimizable experiment. Subsidies merely pry the funnel open — <b>repeat purchase is the profit engine</b>. CAC can buy the first purchase; it cannot buy a habit.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Conversion Funnel</dt><dd>A model of the customer path that narrows from exposure to repeat purchase, each layer multiplying the last.</dd>
+      <dt>AARRR (Pirate Metrics)</dt><dd>The five families of growth metrics: acquisition, activation, retention, revenue, referral.</dd>
+      <dt>CAC (Customer Acquisition Cost)</dt><dd>Total acquisition spend divided by new customers acquired — the average cost of winning one new customer.</dd>
+      <dt>LTV (Lifetime Value)</dt><dd>The profit a customer contributes over their whole life: average order value × gross margin × average number of purchases.</dd>
+      <dt>Repeat-Purchase Rate</dt><dd>The share of customers who buy again within a period; the core indicator of retention.</dd>
+      <dt>Private Traffic</dt><dd>A brand’s own pool of users it can reach repeatedly and cheaply (communities, its app, its membership).</dd>
+      <dt>CPM (Cost per Mille)</dt><dd>The cost of showing an ad one thousand times; the basic unit for buying traffic.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Digital marketing = funnel thinking + one bottom-line calculation: <b>impressions × CTR × sign-up rate × purchase rate</b> sets the scale, and <b>LTV/CAC ≥ 3</b> decides whether you may scale. Always optimize the weakest layer first — and thicken LTV with retention and repeat purchase, not with more ad spend.</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "A new user completes their first key action after signing up (say, publishing their first post). In AARRR, this corresponds to which stage?",
+      "options": ["Acquisition", "Retention", "Revenue", "Activation"],
+      "answer": 3,
+      "explain": "Activation is the new user completing key behaviors and first experiencing the product’s value — the <b>Aha moment</b>; acquisition only gets people in the door, and retention asks whether they keep coming back." },
+    { "q": "A product has CAC = ¥100 and LTV = ¥200, so LTV/CAC = 2. By the rule of thumb, the most sensible move now is:",
+      "options": ["Immediately scale up ad spend to grab territory", "First improve conversion and repeat purchase, then scale", "Immediately shut off all acquisition spend", "Simply double the product’s price"],
+      "answer": 1,
+      "explain": "A ratio of 2 is below 3, and scaling now mostly scales losses: first lift conversion in the funnel’s <b>weakest layer</b> and repeat purchase (thicken LTV, dilute CAC), then add budget once the bar is met." },
+    { "q": "Holding everything else constant, you double top-of-funnel impressions (CTR, sign-up rate, and purchase rate unchanged). Final purchases will:",
+      "options": ["Stay the same — conversion rates cap everything", "Halve — traffic quality is diluted", "Double — the head of the multiplication chain scales proportionally", "Cannot tell — no average-order-value data"],
+      "answer": 2,
+      "explain": "The funnel is a multiplication chain: purchases = impressions × CTR × sign-up rate × purchase rate. Double the head with unchanged conversion rates and the result <b>doubles proportionally</b> — the mathematical reason buying traffic works." },
+    { "q": "When estimating LTV as “average order value × gross margin × average number of purchases”, the purpose of multiplying by gross margin is:",
+      "options": ["To convert revenue into approximate contribution profit", "To convert tax-inclusive prices into net-of-tax amounts", "To convert brand premium into market share", "To fold promotional discounts into acquisition cost"],
+      "answer": 0,
+      "explain": "LTV measures the <b>profit</b> a customer contributes, not the revenue: without gross margin, even huge GMV can mean losing money on every sale — exactly why many subsidy-driven models never add up." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Hacking Growth by Sean Ellis &amp; Morgan Brown (a good starting point: the chapters on building a growth team and running high-tempo tests)</li>
+      <li>The Lean Startup by Eric Ries (a good starting point: the chapters on pivots and the engine of growth)</li>
+      <li>Marketing Management by Philip Kotler &amp; Kevin Lane Keller (a good starting point: the chapters on digital marketing and personal selling)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-marketing-mix-4p.html"><span class="pager-label">← Previous</span><span class="pager-title">The 4 Ps: Orchestrating the Marketing Mix</span></a>
+    <a class="next" href="../../05-management/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Management · Branch 05 — getting results through others</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Compute the LTV/CAC of my business’ or ‘Which layer of my funnel is weakest?’. Follow-up questions are part of learning.</div>
+    <p>Marketing · Lesson 4 · Digital Marketing and the Conversion Funnel | Interactive: five-layer funnel simulator with a live CAC, LTV, and LTV/CAC readout · simulator parameters and case figures are illustrative magnitudes from public reporting</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var CPM = 30, MARGIN = 0.6;
+  var st = { exp: 300000, ctr: 2, reg: 25, buy: 20, rep: 40, aov: 50 };
+  var wrap = document.getElementById("funnelWrap");
+  var readout = document.getElementById("fReadout");
+
+  var layers = [
+    { name: "Impressions", tag: "Reach", color: "#fdba74" },
+    { name: "Clicks", tag: "Acquisition", color: "#fb923c" },
+    { name: "Sign-ups", tag: "Activation", color: "#f97316" },
+    { name: "Purchases", tag: "Revenue", color: "#ea580c" },
+    { name: "Repeat buys", tag: "Retention", color: "#c2410c" }
+  ];
+  var CX = 330, MAXW = 400, BH = 40;
+
+  var svg = Viz.svgEl("svg", { viewBox: "0 0 640 322", role: "img", style: "width:100%;height:auto;display:block" });
+  wrap.appendChild(svg);
+  var bars = [], counts = [], convs = [];
+
+  layers.forEach(function (L, i) {
+    var y = 12 + i * 58;
+    var nm = Viz.svgEl("text", { x: 10, y: y + 18, "font-size": 13.5, "font-weight": 800, fill: "#1c1917" });
+    nm.textContent = L.name;
+    var tg = Viz.svgEl("text", { x: 10, y: y + 34, "font-size": 10.5, fill: "#a8a29e" });
+    tg.textContent = L.tag;
+    var bar = Viz.svgEl("rect", {
+      x: CX - MAXW / 2, y: y, width: MAXW, height: BH, rx: 8, fill: L.color,
+      style: "transition: transform .5s ease; transform-box: fill-box; transform-origin: center;"
+    });
+    bar.appendChild(Viz.svgEl("animate", { attributeName: "opacity", from: "0", to: "1", dur: "0.45s", begin: (i * 0.12) + "s", fill: "freeze" }));
+    var cnt = Viz.svgEl("text", { x: 632, y: y + 25, "text-anchor": "end", "font-size": 12.5, "font-weight": 800, fill: "#1c1917" });
+    svg.appendChild(nm); svg.appendChild(tg); svg.appendChild(bar); svg.appendChild(cnt);
+    bars.push(bar); counts.push(cnt);
+    if (i < 4) {
+      var cv = Viz.svgEl("text", { x: 632, y: y + BH + 13, "text-anchor": "end", "font-size": 11, fill: "#78716c" });
+      svg.appendChild(cv); convs.push(cv);
+    }
+  });
+
+  function fmtC(n) {
+    return Math.round(n).toLocaleString("en-US");
+  }
+
+  function update() {
+    var clicks = st.exp * st.ctr / 100;
+    var regs = clicks * st.reg / 100;
+    var buyers = regs * st.buy / 100;
+    var repeat = buyers * st.rep / 100;
+    var vals = [st.exp, clicks, regs, buyers, repeat];
+    vals.forEach(function (v, i) {
+      var k = 0.10 + 0.90 * Math.sqrt(v / vals[0]);
+      bars[i].style.transform = "scaleX(" + k.toFixed(3) + ")";
+      counts[i].textContent = fmtC(v);
+    });
+    convs[0].textContent = "↓ CTR " + st.ctr.toFixed(1) + "%";
+    convs[1].textContent = "↓ Sign-up rate " + st.reg + "%";
+    convs[2].textContent = "↓ Purchase rate " + st.buy + "%";
+    convs[3].textContent = "↓ Repeat-purchase rate " + st.rep + "%";
+
+    var spend = st.exp / 1000 * CPM;
+    var cac = buyers > 0 ? spend / buyers : 0;
+    var avgBuy = 1 / (1 - st.rep / 100);
+    var ltv = st.aov * MARGIN * avgBuy;
+    var ratio = cac > 0 ? ltv / cac : 0;
+    var cls, msg;
+    if (ratio >= 3) { cls = "v-good"; msg = "Profitable model: rule of thumb met — you may scale spend"; }
+    else if (ratio >= 1) { cls = "v-warn"; msg = "Below the 3× rule: improve conversion and repeat purchase before scaling"; }
+    else { cls = "v-bad"; msg = "Losing money: every new customer acquired loses money — stop the bleed, then optimize"; }
+
+    readout.innerHTML =
+      "New buyers <b>" + fmtC(buyers) + "</b> · Repeat customers <b>" + fmtC(repeat) + "</b> · Ad spend <b>¥" +
+      Math.round(spend).toLocaleString("en-US") + "</b><br>" +
+      "CAC <b>¥" + cac.toFixed(1) + "</b> (spend ÷ new buyers) · LTV <b>¥" + ltv.toFixed(1) +
+      "</b> (AOV × margin × " + avgBuy.toFixed(2) + " purchases) · LTV/CAC = <b>" + ratio.toFixed(1) + "×</b> " +
+      '<span class="verdict ' + cls + '">' + msg + "</span>";
+  }
+
+  var ctrls = document.getElementById("funnelCtrls");
+  var defs = [
+    { key: "exp", label: "Top-of-funnel impressions", min: 10, max: 100, step: 5, get: 30, set: function (v) { return v * 10000; }, fmt: function (v) { return (v * 10000).toLocaleString("en-US"); } },
+    { key: "ctr", label: "Click-through rate (CTR)", min: 0.5, max: 10, step: 0.1, get: 2, set: function (v) { return v; }, fmt: function (v) { return v.toFixed(1) + "%"; } },
+    { key: "reg", label: "Click → sign-up", min: 5, max: 60, step: 1, get: 25, set: function (v) { return v; }, fmt: function (v) { return v + "%"; } },
+    { key: "buy", label: "Sign-up → purchase", min: 5, max: 60, step: 1, get: 20, set: function (v) { return v; }, fmt: function (v) { return v + "%"; } },
+    { key: "rep", label: "Repeat-purchase rate", min: 10, max: 80, step: 1, get: 40, set: function (v) { return v; }, fmt: function (v) { return v + "%"; } },
+    { key: "aov", label: "Average order value", min: 20, max: 200, step: 5, get: 50, set: function (v) { return v; }, fmt: function (v) { return "¥" + v; } }
+  ];
+  defs.forEach(function (d) {
+    var s = Viz.slider(ctrls, { label: d.label, min: d.min, max: d.max, step: d.step, value: d.get, format: d.fmt });
+    s.onChange(function (v) { st[d.key] = d.set(v); update(); });
+  });
+
+  update();
+})();
+</script>
+</body>
+</html>

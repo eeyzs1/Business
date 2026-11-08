@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lean Startup: Build–Measure–Learn · Entrepreneurship</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  #bmlDot { transition: transform .85s cubic-bezier(.45,.05,.55,.95); }
+  .bmlnode { cursor: pointer; }
+  .bmlnode:hover circle { stroke-width: 4; }
+  #bmlCard { border-left: 4px solid var(--accent); background: var(--paper-deep); border-radius: 10px; padding: .8rem 1.05rem; margin-top: .7rem; transition: opacity .25s ease; }
+  #bmlCard .bq-t { font-weight: 800; color: var(--accent); font-size: .92rem; letter-spacing: .04em; }
+  #bmlCard .bq-q { font-weight: 700; margin: .25rem 0 .2rem; }
+  #bmlCard .bq-h { font-size: .88rem; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+  .hbtn { font-family: var(--sans); font-size: .9rem; font-weight: 700; border-radius: 999px; padding: .45rem 1.3rem; cursor: pointer; border: none; }
+  .hbtn-go { background: var(--accent); color: var(--accent-ink); }
+  .hbtn-ghost { background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); }
+  .hbtn:disabled { opacity: .4; cursor: default; }
+  #mvpText { background: var(--paper-deep); border-radius: 10px; padding: 1rem 1.15rem; font-size: 1.02rem; line-height: 1.8; margin: .6rem 0 .8rem; min-height: 5.2em; }
+  #mvpFeed { display: none; border-radius: 10px; padding: .8rem 1.05rem; font-size: .93rem; line-height: 1.75; margin: .8rem 0; }
+  #mvpFeed.ok { display: block; background: #f0fdf4; border: 1.5px solid var(--good); }
+  #mvpFeed.no { display: block; background: #fef2f2; border: 1.5px solid var(--bad); }
+  #mvpFeed b.v { font-size: .95rem; }
+</style>
+</head>
+<body class="branch-entrepreneurship">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Entrepreneurship</a><span class="crumb-sep">/</span>
+  <span>The Lean Startup: Build–Measure–Learn</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../09-entrepreneurship/lessons/0002-lean-startup.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Entrepreneurship · Lesson 2</p>
+  <h1>The Lean Startup: Build–Measure–Learn</h1>
+  <p class="lead">Last lesson we found the riskiest assumption; this lesson answers the next question: what process do you use to test it? The lean startup answer: turn “building a product” into “running experiments,” so that every effort becomes a unit of learning — and spin the learning loop as fast as it will go.</p>
+
+  <h2><span class="secno">1</span>Why Big-Company Playbooks Fail in Startups</h2>
+  <p>The management tools of established companies — annual plans, waterfall development, departmental reviews — all rest on the same premise: <em>the market is known, and execution is what matters</em>. A startup lives on exactly the opposite premise: who the customer is, what the product is, and what it should cost are all unknown. Under that extreme uncertainty, executing the plan impeccably, step by step, can carry you elegantly toward the wrong answer.</p>
+  <p>Eric Ries drew the conclusion and named it the lean startup: what a startup must manage is not execution progress but <strong>speed of learning</strong> — using the shortest possible time and the lowest possible cost to work out what to do and what not to do. The whole methodology compresses into one loop.</p>
+
+  <h2><span class="secno">2</span>The Loop: Build–Measure–Learn</h2>
+  <div class="concept">
+    <div class="concept-title">Concept Card · The Build–Measure–Learn Loop</div>
+    <p><strong>Build</strong>: around the riskiest assumption, create the smallest possible experiment vehicle. <strong>Measure</strong>: with metrics fixed in advance, observe the result of the experiment. <strong>Learn</strong>: let the evidence decide whether to persevere, adjust, or pivot — then start the next lap. The three steps link head to tail; the faster the loop spins, the more insight per unit of time, and the more each month of burned runway (the time your remaining cash can sustain you) buys.</p>
+  </div>
+  <p>The most counterintuitive part of the loop: <em>it looks like it starts at “build,” but it is actually reverse-engineered from “learn.”</em> First decide what you want to learn, then decide which metric measures it, and only then decide what to build. Many people build the product first and think about metrics afterwards — the loop runs backwards.</p>
+
+  <h2><span class="secno">3</span>Hands-On 1: Spin the Loop</h2>
+  <div class="sim">
+    <div class="sim-title">BML Loop Animation: The Key Question at Each Station</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">Click “Play” to watch the loop turn; at each station, the key question for that stage pops up. You can also click a node to jump straight to it.</p>
+    <div class="figure-body" style="padding:.2rem 0 0">
+      <svg viewBox="0 0 640 300" role="img" style="width:100%;height:auto;display:block" aria-label="Build–measure–learn loop">
+        <defs>
+          <marker id="arrw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#0f766e"/>
+          </marker>
+        </defs>
+        <path d="M175,152 Q210,55 267,106" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round" marker-end="url(#arrw)" opacity=".55"/>
+        <path d="M368,104 Q430,55 462,151" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round" marker-end="url(#arrw)" opacity=".55"/>
+        <path d="M462,179 Q320,292 178,179" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round" marker-end="url(#arrw)" opacity=".55"/>
+        <g class="bmlnode" id="bn0" transform="translate(130,175)">
+          <circle r="48" fill="#fff" stroke="#0f766e" stroke-width="3"/>
+          <text y="-2" text-anchor="middle" font-size="17" font-weight="800" fill="#1c1917">Build</text>
+          <text y="20" text-anchor="middle" font-size="11.5" font-weight="700" fill="#78716c">Station 1</text>
+        </g>
+        <g class="bmlnode" id="bn1" transform="translate(320,80)">
+          <circle r="48" fill="#fff" stroke="#0f766e" stroke-width="3"/>
+          <text y="-2" text-anchor="middle" font-size="17" font-weight="800" fill="#1c1917">Measure</text>
+          <text y="20" text-anchor="middle" font-size="11.5" font-weight="700" fill="#78716c">Station 2</text>
+        </g>
+        <g class="bmlnode" id="bn2" transform="translate(510,175)">
+          <circle r="48" fill="#fff" stroke="#0f766e" stroke-width="3"/>
+          <text y="-2" text-anchor="middle" font-size="17" font-weight="800" fill="#1c1917">Learn</text>
+          <text y="20" text-anchor="middle" font-size="11.5" font-weight="700" fill="#78716c">Station 3</text>
+        </g>
+        <g id="bmlDot" style="transform:translate(130px,175px)">
+          <circle r="11" fill="#0f766e" stroke="#fff" stroke-width="3"/>
+          <circle r="3.5" fill="#fff"/>
+        </g>
+      </svg>
+    </div>
+    <p style="margin:.5rem 0 .1rem">
+      <button type="button" class="hbtn hbtn-go" id="bmlPlay">▶ Play loop</button>
+      <button type="button" class="hbtn hbtn-ghost" id="bmlStep">⏭ Step forward</button>
+      <span style="font-size:.86rem;color:var(--ink-faint);margin-left:.4rem">Loops completed: <b id="bmlLoops" style="color:var(--accent)">0</b></span>
+    </p>
+    <div id="bmlCard">
+      <div class="bq-t" id="bmlStage">Station 1 · BUILD</div>
+      <p class="bq-q" id="bmlQ">Which assumption do we most want to test? What is the fastest thing we could build to test it?</p>
+      <p class="bq-h" id="bmlHint">Build only the smallest experiment tied to the riskiest assumption — a video, a landing page, or a manual concierge service all count.</p>
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>MVP: Minimum Viable Product</h2>
+  <div class="concept">
+    <div class="concept-title">Concept Card · Minimum Viable Product (MVP)</div>
+    <p>An MVP is <strong>the smallest experiment vehicle that produces the learning you need</strong> — note: it is not “a rough version of the final product,” and certainly not “a full product with features deleted.” “Viable” measures whether it can test the assumption, not whether it is fit for daily use. Three common forms: <strong>demo</strong> (one video explains the solution; count how many line up), <strong>Wizard of Oz</strong> (a website at the front, humans doing all the work behind the curtain), and <strong>landing page</strong> (sell one promise only, and take pre-order money).</p>
+  </div>
+  <p>To judge whether something is a proper MVP, ask a single question: <em>does it buy a verdict on the riskiest assumption at the lowest possible cost?</em> If yes, then even a bare-bones single page or a manual process is an MVP; if no, then even a hundred thousand lines of code are just expensive self-consolation.</p>
+
+  <h2><span class="secno">5</span>Hands-On 2: The MVP Judgment Game</h2>
+  <div class="sim">
+    <div class="sim-title">Judgment Game: Are These Five Plans Proper MVPs?</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)" id="mvpProg">Card 1 of 5</p>
+    <div id="mvpText"></div>
+    <p style="margin:.4rem 0">
+      <button type="button" class="hbtn hbtn-go" id="mvpYes">✔ Proper MVP</button>
+      <button type="button" class="hbtn hbtn-ghost" id="mvpNo">✘ Not one</button>
+      <button type="button" class="hbtn hbtn-go" id="mvpNext" style="display:none">Next card →</button>
+      <button type="button" class="hbtn hbtn-ghost" id="mvpRestart" style="display:none">↻ Play again</button>
+    </p>
+    <div id="mvpFeed"></div>
+    <div class="callout note" id="mvpDone" style="display:none">
+      <span class="callout-label">Game over</span>
+      You judged <b id="mvpScore">0</b>/5 cards correctly. The rule is one sentence: <b>does it buy a verdict on the riskiest assumption at the lowest possible cost?</b> If yes, it is an MVP.
+    </div>
+  </div>
+
+  <h2><span class="secno">6</span>Pivot or Persevere: First Pick the Right Ruler</h2>
+  <p>When the loop reaches the “learn” station, there are only three exits: <strong>persevere</strong> — the evidence supports the assumption, so press the accelerator; <strong>adjust</strong> — tweak the product or the pricing locally and keep looping; <strong>pivot</strong> — keep everything you have learned but change one pillar of the strategy: serve a different set of customers (customer-segment pivot), solve a different problem (problem pivot), or switch to a different channel (channel pivot).</p>
+  <p>And choosing the exit requires the right ruler. <strong>Vanity metrics</strong> only ever go up, make you feel good, and cannot guide action: cumulative sign-ups, total downloads, total article views. <strong>Actionable metrics</strong> can locate problems and support decisions: next-week retention, paid conversion rate, the share of active users. A rule of thumb: <em>if the number improves and you still do not know what to do next, it is a vanity metric.</em></p>
+  <div class="callout warn"><span class="callout-label">The worst combination</span> Using vanity metrics to persuade yourself that “the numbers are climbing,” and postponing the pivot again and again — the runway burns away one “just give it three more months” at a time.</div>
+
+  <div class="case">
+    <div class="case-title">Case Study · Dropbox: An Answer Bought with One Video</div>
+    <p>Around 2008, Drew Houston was building Dropbox, a file-sync tool. The problem: sync is a feature you cannot feel without a demo, yet building the product was grueling work. Instead of heads-down development, he first released a roughly three-minute demo video that showed the core scenario end to end — drop a file into a folder, and it appears automatically on another computer. After the video took off in the tech community, the waitlist jumped overnight from about five thousand to about seventy-five thousand people (as recounted in The Lean Startup; figures illustrative).</p>
+    <p>Notice the structure of the experiment: the video was the build, the waitlist’s growth rate was the measure, and “the demand for sync is real and worth building” was the learning. The loop completed its full circle without writing a single line of sync code, yet delivered the most critical validation the new venture needed.</p>
+    <div class="case-learn"><b>The lesson:</b> the merit of an MVP is not measured in features but in the key learning it buys. A video is an MVP, a cereal box is an MVP, a weekend of door-to-door photography is an MVP — each answered the riskiest assumption in its own project.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Lean Startup</dt><dd>A methodology for managing startups under extreme uncertainty, with speed of learning at its core.</dd>
+      <dt>Build–Measure–Learn</dt><dd>The build–measure–learn feedback loop; in direction it works backwards from “what we want to learn” to “what we should build.”</dd>
+      <dt>Minimum Viable Product (MVP)</dt><dd>The smallest experiment vehicle that produces the learning you need; not a rough version of the final product.</dd>
+      <dt>Wizard of Oz</dt><dd>An experiment that looks automated at the front while humans stand in behind the curtain.</dd>
+      <dt>Pivot</dt><dd>A structural change that keeps what has been learned but changes one pillar of the strategy.</dd>
+      <dt>Vanity Metrics</dt><dd>Numbers that only rise and cannot guide action, such as cumulative sign-ups.</dd>
+      <dt>Actionable Metrics</dt><dd>Metrics that can locate problems and support decisions, such as retention and paid conversion rate.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>The lean startup turns product development into an experiment pipeline: the faster the <b>build–measure–learn</b> loop spins, the cheaper each piece of insight; the MVP is the smallest stake you can trade for learning; and on pivot or persevere, listen only to actionable metrics.</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "The precise definition of an MVP (minimum viable product) is:",
+      "options": ["An early, complete product aimed at seed users, with plenty of defects", "A product with features cut to the minimum but architecture designed for millions of users", "An experiment vehicle that buys a verdict on a key assumption at minimal cost", "A half-finished product that launches with half its features and adds the rest after user feedback"],
+      "answer": 2,
+      "explain": "“Viable” measures the power to <b>test the assumption</b>, not everyday usability, let alone completeness. A demo video or a manual service can be an MVP; it is not a rough or trimmed-down version of the final product." },
+    { "q": "Dropbox’s 3-minute demo video made the waitlist explode. Broken down by the BML loop, the exploding list most directly delivers value at which step?",
+      "options": ["The measure step — the list’s growth rate is hard evidence that “the demand is real”", "The learn step — the team then decided to pivot toward the enterprise market", "The build step — the video itself later became part of the official product", "The pivot step — the team moved from the consumer market to the developer market"],
+      "answer": 0,
+      "explain": "The video is the build, the exploding list is what gets measured, and it validated the assumption “users truly hurt over sync” — the evidence from measuring feeds the learning directly. Without writing a line of sync code, the loop had already turned a full circle." },
+    { "q": "Which of the following is a classic “vanity metric”?",
+      "options": ["Next-week retention: the share of last week’s new users who return this week", "Paid conversion rate: the share of visitors who complete a first order", "Net promoter score: how willing existing users are to recommend the product to friends", "Cumulative downloads: total downloads since launch, rising and never falling"],
+      "answer": 3,
+      "explain": "Cumulative numbers only ever rise, and even when they rise you do not know what to do; retention, conversion, and recommendation intent can all locate problems and support decisions. The test: when the number improves, do you know what to do next?" },
+    { "q": "When deciding “pivot or persevere,” the most defensible basis is:",
+      "options": ["The cash burn rate — if the account is nearly empty, pivot immediately", "Evidence accumulated through loop learning — the core assumption has been systematically falsified", "The trend in team morale — if morale stays low, it is time to pivot", "Competitors’ moves — if a rival pivots, I pivot too"],
+      "answer": 1,
+      "explain": "The trigger for a pivot is “after multiple loops, the core assumption is still systematically falsified by evidence”; cash, morale, and rivals are background variables only. Pivoting on emotion or fashion just resets the learning you have accumulated back to zero." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>The Lean Startup by Eric Ries (recommended: the chapters on the build–measure–learn loop)</li>
+      <li>Zero to One by Peter Thiel with Blake Masters (recommended: the chapter on how every successful business is different)</li>
+      <li>The Hard Thing About Hard Things by Ben Horowitz (recommended: the chapters on layoffs and the struggle)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-opportunity-and-validation.html"><span class="pager-label">← Previous</span><span class="pager-title">Opportunity Recognition and Validation</span></a>
+    <a class="next" href="0003-business-plan.html"><span class="pager-label">Next →</span><span class="pager-title">The Business Plan: Think Before You Launch</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Could you break my project into the three BML steps?’ or ‘Is my metric a vanity metric?’ — follow-up questions are part of learning.</div>
+    <p>Entrepreneurship · Lesson 2 · cases are real companies; figures are indicative magnitudes</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---------- Interaction 1: BML loop animation ---------- */
+  var NODES = [
+    { stage: "Station 1 · BUILD", q: "Which assumption do we most want to test? What is the fastest thing we could build to test it?", hint: "Build only the smallest experiment tied to the riskiest assumption — a video, a landing page, or a manual concierge service all count." },
+    { stage: "Station 2 · MEASURE", q: "Which metric would prove the assumption true? What are the baseline and the target?", hint: "Fix the actionable metric and the pass/fail bar before you act — so you cannot cherry-pick a flattering number afterwards." },
+    { stage: "Station 3 · LEARN", q: "Does the evidence say persevere, adjust, or pivot? Which new assumption does the next lap test?", hint: "Decide on learning evidence alone — sunk costs, face, and morale have no business at this station." }
+  ];
+  var POS = [[130, 175], [320, 80], [510, 175]];
+  var NAMES = ["Build", "Measure", "Learn"];
+  var idx = 0, loops = 0, timer = null;
+  var dot = document.getElementById("bmlDot");
+  var nodeGs = [document.getElementById("bn0"), document.getElementById("bn1"), document.getElementById("bn2")];
+  var card = document.getElementById("bmlCard");
+
+  function render() {
+    nodeGs.forEach(function (g, i) {
+      var c = g.querySelector("circle");
+      var t1 = g.querySelectorAll("text")[0];
+      if (i === idx) {
+        c.setAttribute("fill", "#0f766e"); c.setAttribute("stroke", "#0f766e");
+        t1.setAttribute("fill", "#ffffff"); t1.setAttribute("y", "6");
+        g.querySelectorAll("text")[1].setAttribute("fill", "#ccfbf1");
+      } else {
+        c.setAttribute("fill", "#ffffff"); c.setAttribute("stroke", "#0f766e");
+        t1.setAttribute("fill", "#1c1917"); t1.setAttribute("y", "-2");
+        g.querySelectorAll("text")[1].setAttribute("fill", "#78716c");
+      }
+    });
+    dot.style.transform = "translate(" + POS[idx][0] + "px," + POS[idx][1] + "px)";
+    card.style.opacity = 0;
+    setTimeout(function () {
+      document.getElementById("bmlStage").textContent = NODES[idx].stage;
+      document.getElementById("bmlQ").textContent = NODES[idx].q;
+      document.getElementById("bmlHint").textContent = NODES[idx].hint;
+      card.style.opacity = 1;
+    }, 160);
+  }
+
+  function step() {
+    idx = (idx + 1) % 3;
+    if (idx === 0) {
+      loops++;
+      document.getElementById("bmlLoops").textContent = loops;
+    }
+    render();
+  }
+  function pause() {
+    if (timer) { clearInterval(timer); timer = null; }
+    document.getElementById("bmlPlay").textContent = "▶ Play loop";
+  }
+
+  document.getElementById("bmlPlay").addEventListener("click", function () {
+    if (timer) { pause(); return; }
+    step();
+    timer = setInterval(step, 2600);
+    this.textContent = "⏸ Pause";
+  });
+  document.getElementById("bmlStep").addEventListener("click", function () { pause(); step(); });
+  nodeGs.forEach(function (g, i) {
+    g.addEventListener("click", function () { pause(); idx = i; render(); });
+  });
+  render();
+
+  /* ---------- Interaction 2: MVP judgment game ---------- */
+  var CARDS = [
+    { text: "“File sync is not built yet — release a 3-minute demo video first that walks through the core scenario, and watch whether the waitlist explodes.”",
+      is: true, why: "Tests “do users truly hurt over this problem” at nearly zero development cost — the textbook demo MVP." },
+    { text: "“The roadmap has 20 features — spend six months building them all before launch, so users get a complete first impression.”",
+      is: false, why: "Delays validation to the most expensive moment: only after six months do you learn whether anyone wants it. An MVP optimizes for fastest learning, not a perfect first impression." },
+    { text: "“Manually run fruit group-buys for neighbors in the community WeChat group, keep the books in a spreadsheet, and first watch repeat-purchase rates and how much room there is to raise prices.”",
+      is: true, why: "A classic Wizard-of-Oz MVP: humans do everything backstage, while the storefront is enough to test the key assumption — will neighbors pay, again and again?" },
+    { text: "“Launch an official site with just a logo and the words ‘coming soon’ — no email capture, no action of any kind.”",
+      is: false, why: "Collects no measurable behavior signal and tests not a single assumption — it is not an MVP, just a digital poster." },
+    { text: "“Hand a survey to 500 people asking ‘if such a product existed, would you use it?’ and count the share who answer ‘yes.’”",
+      is: false, why: "A survey collects verbal attitudes — weaker evidence than even a landing page (see last lesson’s ranking); it is an interview, not a product experiment." }
+  ];
+  var mvpIdx = 0, mvpScore = 0, mvpAnswered = false;
+  var mvpText = document.getElementById("mvpText");
+  var mvpProg = document.getElementById("mvpProg");
+  var mvpFeed = document.getElementById("mvpFeed");
+  var bYes = document.getElementById("mvpYes"), bNo = document.getElementById("mvpNo");
+  var bNext = document.getElementById("mvpNext"), bRestart = document.getElementById("mvpRestart");
+
+  function mvpShow() {
+    mvpAnswered = false;
+    mvpFeed.className = ""; mvpFeed.style.display = "none";
+    mvpProg.textContent = "Card " + (mvpIdx + 1) + " of " + CARDS.length;
+    mvpText.textContent = CARDS[mvpIdx].text;
+    bYes.disabled = false; bNo.disabled = false; bNext.style.display = "none";
+  }
+  function mvpJudge(userSaidYes) {
+    if (mvpAnswered) return;
+    mvpAnswered = true;
+    bYes.disabled = true; bNo.disabled = true;
+    var cardItem = CARDS[mvpIdx];
+    var right = userSaidYes === cardItem.is;
+    if (right) mvpScore++;
+    mvpFeed.className = right ? "ok" : "no";
+    mvpFeed.innerHTML = "<b class='v'>" + (right ? "✓ Correct." : "✗ Think again.") + "</b>Reference answer: this <b>" +
+      (cardItem.is ? "is" : "is not") + "</b> a proper MVP. " + cardItem.why;
+    if (mvpIdx < CARDS.length - 1) bNext.style.display = "inline-block";
+    else {
+      bRestart.style.display = "inline-block";
+      document.getElementById("mvpDone").style.display = "block";
+      Viz.countUp(document.getElementById("mvpScore"), mvpScore, { from: 0, dur: 700, format: function (x) { return String(Math.round(x)); } });
+    }
+  }
+  bYes.addEventListener("click", function () { mvpJudge(true); });
+  bNo.addEventListener("click", function () { mvpJudge(false); });
+  bNext.addEventListener("click", function () { mvpIdx++; mvpShow(); });
+  bRestart.addEventListener("click", function () {
+    mvpIdx = 0; mvpScore = 0;
+    bRestart.style.display = "none";
+    document.getElementById("mvpDone").style.display = "none";
+    mvpShow();
+  });
+  mvpShow();
+})();
+</script>
+</body>
+</html>

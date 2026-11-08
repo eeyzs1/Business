@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunity Recognition and Validation · Entrepreneurship</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .hcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: .75rem; margin: .9rem 0; }
+  .hcard { background: #fff; border: 1.5px solid var(--line); border-radius: 10px; padding: .75rem .95rem; cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .hcard:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .hcard.sel { border-color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); background: color-mix(in srgb, var(--accent) 6%, #fff); }
+  .hcard.fatal { border-color: var(--bad); box-shadow: inset 0 0 0 1.5px var(--bad); }
+  .hcard.minor2 { opacity: .82; }
+  .hcard .hc-no { font-size: .72rem; font-weight: 800; color: var(--accent); letter-spacing: .1em; }
+  .hcard .hc-title { font-weight: 700; margin: .1rem 0 .2rem; }
+  .hcard .hc-text { font-size: .86rem; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+  .hcard .hc-verdict { display: none; margin-top: .4rem; font-size: .76rem; font-weight: 800; padding: .1rem .6rem; border-radius: 999px; }
+  .hcard.fatal .hc-verdict { background: #fef2f2; color: var(--bad); border: 1.5px solid var(--bad); }
+  .hcard.minor2 .hc-verdict { background: #f0fdf4; color: var(--good); border: 1.5px solid var(--good); }
+  .hcard .hc-why { display: none; font-size: .83rem; color: var(--ink-soft); margin: .45rem 0 0; padding-top: .4rem; border-top: 1px dashed var(--line); line-height: 1.65; }
+  .hcard .hc-why b { color: var(--accent); }
+  .hbtn { font-family: var(--sans); font-size: .9rem; font-weight: 700; border-radius: 999px; padding: .45rem 1.3rem; cursor: pointer; border: none; }
+  .hbtn-go { background: var(--accent); color: var(--accent-ink); }
+  .hbtn-ghost { background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); }
+  .hbtn:disabled { opacity: .4; cursor: default; }
+</style>
+</head>
+<body class="branch-entrepreneurship">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Entrepreneurship</a><span class="crumb-sep">/</span>
+  <span>Opportunity Recognition and Validation</span>
+  <span class="progress">Lesson 1 of 4</span>
+<a class="lang-switch" href="../../../09-entrepreneurship/lessons/0001-opportunity-and-validation.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Entrepreneurship · Lesson 1</p>
+  <h1>Opportunity Recognition and Validation</h1>
+  <p class="lead">Of every ten new ventures, roughly nine die of the same cause: they built something nobody truly wants. This lesson teaches you to upgrade “I have a great idea” into “I have found a testable opportunity” — first take it apart with a formula, then ask the market for evidence at minimal cost.</p>
+
+  <h2><span class="secno">1</span>Why “Great Ideas” Are Worth the Least</h2>
+  <p>The asset founders most easily overrate is the idea itself. Open the business history books: group buying, bike sharing, and short video each saw a crowd of companies pile in at almost the same moment. Hence a piece of received wisdom in the investment world: <em>ideas are not scarce; validated opportunities are</em>.</p>
+  <p>A founder’s first job, then, is not to build the product but to answer two questions: is this a real opportunity? and can I find out at the lowest possible cost? This lesson answers the first, and puts “validation” in priority order — which is exactly the doorway into the next lesson.</p>
+
+  <h2><span class="secno">2</span>The Opportunity Formula: Three Multiplying Factors</h2>
+  <div class="concept">
+    <div class="concept-title">Concept Card · The Opportunity Formula</div>
+    <p><strong>Opportunity = a real pain point × a workable solution × a reachable market</strong>. <strong>Pain Point</strong>: a problem customers will pay to be rid of — not “nice to have,” but “can’t live without it.” <strong>Solution</strong>: something you can actually build under today’s technology, costs, and regulations, and that customers can afford to use. <strong>Market</strong>: the first batch of customers you can name and reach — not “all 1.4 billion people in the country.”</p>
+  </div>
+  <figure class="figure"><div class="figure-body">
+    <svg viewBox="0 0 640 210" role="img" style="width:100%;height:auto;display:block" aria-label="Opportunity formula diagram">
+      <g font-size="14" font-weight="700">
+        <rect x="26" y="34" width="158" height="66" rx="12" fill="#fff" stroke="#0f766e" stroke-width="2"/>
+        <text x="105" y="62" text-anchor="middle" fill="#0f766e">Real pain point</text>
+        <text x="105" y="84" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="600">Can’t live without it</text>
+        <text x="204" y="76" text-anchor="middle" font-size="22" fill="#1c1917">×</text>
+        <rect x="226" y="34" width="158" height="66" rx="12" fill="#fff" stroke="#0f766e" stroke-width="2"/>
+        <text x="305" y="62" text-anchor="middle" fill="#0f766e">Workable solution</text>
+        <text x="305" y="84" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="600">Buildable and affordable</text>
+        <text x="404" y="76" text-anchor="middle" font-size="22" fill="#1c1917">×</text>
+        <rect x="426" y="34" width="158" height="66" rx="12" fill="#fff" stroke="#0f766e" stroke-width="2"/>
+        <text x="505" y="62" text-anchor="middle" fill="#0f766e">Reachable market</text>
+        <text x="505" y="84" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="600">A first batch within reach</text>
+      </g>
+      <text x="320" y="146" text-anchor="middle" font-size="13.5" fill="#b91c1c" font-weight="700">Multiplication, not addition: if any factor is 0, the product is 0</text>
+      <text x="320" y="176" text-anchor="middle" font-size="12" fill="#78716c" font-weight="600">A real pain you can’t solve = 0; a solution you can’t reach customers with = 0; no real pain = 0</text>
+    </svg>
+  </div>
+  <figcaption class="figure-caption"><b>Figure 1</b> The three factors of an opportunity multiply: the weakest factor decides life or death, and a strong one adds nothing.</figcaption></figure>
+
+  <h2><span class="secno">3</span>Where Pain Points Come From: Five Signals</h2>
+  <p>The daily homework of opportunity recognition is listening to complaints with a framework in hand. Pain points usually hide inside five kinds of signals:</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>Signal</th><th>What customers say</th><th>A typical startup response</th></tr></thead>
+      <tbody>
+        <tr><td><b>Hassle</b></td><td>“This is such a hassle — three trips to get it done.”</td><td>Re-engineer the process: errand services, one-tap ordering, home visits</td></tr>
+        <tr><td><b>Expensive</b></td><td>“Nice product, just way too pricey.”</td><td>Strip out the channel markup: direct sales, rebuild the price-performance ratio</td></tr>
+        <tr><td><b>Slow</b></td><td>“The waiting is unbearable.”</td><td>Compress the wait: instant delivery, pre-ordering, parallel processing</td></tr>
+        <tr><td><b>Ugly</b></td><td>“It works, but it’s so crude / embarrassing.”</td><td>Redesign the entire category, driven by design</td></tr>
+        <tr><td><b>Risky</b></td><td>“I don’t dare trust it — I’m afraid of being scammed.”</td><td>Escrow transactions, review systems, inspection and verification reports</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Gauge the strength of a pain point on two dials: <strong>frequency</strong> and <strong>intensity</strong> — only trouble that is both frequent and intense can feed a business. Wherever users are complaining, that is where the opportunity is: complaints are free market research.</p>
+
+  <h2><span class="secno">4</span>The Riskiest Assumption: Test the One That Loses Everything First</h2>
+  <div class="concept">
+    <div class="concept-title">Concept Card · The Riskiest Assumption</div>
+    <p>Behind every opportunity stands a chain of assumptions. The <strong>riskiest assumption</strong> is the one that, if it fails, makes the whole business impossible. The test is not “hardest to validate,” but “how much destruction if it fails × how uncertain it is” — the most destructive and least certain assumption deserves to be validated first.</p>
+  </div>
+  <p>Validation methods themselves come in ranks of strength, and the core difference is how much action cost the other side has to pay:</p>
+  <figure class="figure"><div class="figure-body">
+    <svg viewBox="0 0 640 236" role="img" style="width:100%;height:auto;display:block" aria-label="Ladder of validation strength">
+      <path d="M70 200 L170 200 L170 152 L270 152 L270 104 L370 104 L370 56 L470 56" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+      <path d="M470 56 l-11 -3 M470 56 l-4 11" stroke="#0f766e" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <g font-size="13.5" font-weight="700">
+        <rect x="70" y="200" width="200" height="0" fill="none"/>
+        <text x="72" y="186" fill="#57534e">① Customer interviews</text>
+        <text x="72" y="222" font-size="11" fill="#a8a29e" font-weight="600">Verbal attitude · nearly zero cost</text>
+        <text x="200" y="138" fill="#57534e">② Landing page email capture</text>
+        <text x="200" y="174" font-size="11" fill="#a8a29e" font-weight="600">Leaves contact info · a small cost</text>
+        <text x="330" y="90" fill="#57534e">③ Pre-sale / deposit</text>
+        <text x="330" y="126" font-size="11" fill="#a8a29e" font-weight="600">Real money · the hardest evidence</text>
+      </g>
+      <text x="560" y="120" font-size="12.5" fill="#0f766e" font-weight="800" transform="rotate(-90 560 120)">Signal strength rises</text>
+      <text x="320" y="34" text-anchor="middle" font-size="13" fill="#b91c1c" font-weight="700">Principle: the more people give (time, privacy, money), the more credible their answer</text>
+    </svg>
+  </div>
+  <figcaption class="figure-caption"><b>Figure 2</b> Strength ranking: interviews &lt; landing-page email capture &lt; pre-sales. Out of politeness, everyone will call an idea “quite nice”; leaving an email is a little more real; only willingness to pay is demand.</figcaption></figure>
+  <div class="callout warn"><span class="callout-label">The most expensive mistake</span> Armed with a stack of “I love it” from interviews, bet your entire savings on building the product — you have validated whether people are polite, not whether they will pay.</div>
+
+  <h2><span class="secno">5</span>Hands-On: Riskiest-Assumption Ranking Exercise</h2>
+  <div class="sim">
+    <div class="sim-title">Risk-Ranking Exercise: Six Assumption Cards for an “Office Coffee Subscription”</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">The setup: a subscription service delivering freshly ground drip-bag coffee to office workers’ desks every week. The six cards are the assumptions behind it — <b>click the two you think are most fatal</b>, then submit to see the reference answer and the reasoning.</p>
+    <div class="hcards" id="hypCards">
+      <div class="hcard" data-i="0">
+        <span class="hc-no">Assumption A</span>
+        <p class="hc-title">Coffee is a daily habit</p>
+        <p class="hc-text">Office workers drink coffee almost every workday; purchase frequency is high enough to support a subscription.</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>Can wait:</b> one day of observation in the break room settles it; a lower frequency only worsens the unit economics — not fatal.</p>
+      </div>
+      <div class="hcard" data-i="1">
+        <span class="hc-no">Assumption B</span>
+        <p class="hc-title">The queue hurts enough</p>
+        <p class="hc-text">Buying coffee downstairs means a ten-minute wait, and colleagues widely complain about the hassle.</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>Can wait:</b> the pain is real, but substitutes such as the self-service coffee machine in the lobby can also satisfy it; intensity affects pricing, not life or death on its own.</p>
+      </div>
+      <div class="hcard" data-i="2">
+        <span class="hc-no">Assumption C</span>
+        <p class="hc-title">Willingness to pay monthly</p>
+        <p class="hc-text">Users are willing to pay a monthly subscription for fresh drip-bag coffee delivered to their desks each week.</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>Reference answer · riskiest:</b> the foundation of the entire business model. “Saying they like it” and “paying monthly” are two different things; if it fails, there is no revenue and everything is lost — only a pre-sale-grade experiment can test it.</p>
+      </div>
+      <div class="hcard" data-i="3">
+        <span class="hc-no">Assumption D</span>
+        <p class="hc-title">Delivery can enter the offices</p>
+        <p class="hc-text">Company admin teams will let couriers enter the building weekly and bring coffee to people’s desks.</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>Reference answer · riskiest:</b> a one-vote veto over the delivery step: if couriers cannot enter the offices, the service never happens; it depends on each company’s rules, and if it fails there is almost no workaround.</p>
+      </div>
+      <div class="hcard" data-i="4">
+        <span class="hc-no">Assumption E</span>
+        <p class="hc-title">Cheap, stable supply</p>
+        <p class="hc-text">Coffee beans and drip bags of stable quality can be sourced at prices below what cafés charge.</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>Can wait:</b> supply is an execution problem — switch suppliers or switch products and it is solved; it affects gross margin, not survival.</p>
+      </div>
+      <div class="hcard" data-i="5">
+        <span class="hc-no">Assumption F</span>
+        <p class="hc-title">Price acceptance</p>
+        <p class="hc-text">A subscription price of ¥99 per month will strike target users as good value.</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>Can wait:</b> price is an adjustable parameter — pre-sale experiments at different price points can test it again and again; a wrong price can be fixed, so the damage is low.</p>
+      </div>
+    </div>
+    <p id="hypFeedback" style="font-size:.9rem;color:var(--ink-soft)">0/2 selected — force yourself to rank them first.</p>
+    <p>
+      <button type="button" class="hbtn hbtn-go" id="hypSubmit">Submit selection</button>
+      <button type="button" class="hbtn hbtn-ghost" id="hypReset" style="display:none">Start over</button>
+    </p>
+    <div class="callout note" id="hypSummary" style="display:none">
+      <span class="callout-label">Reference answer</span>
+      The most fatal are <b>C (willingness to pay monthly)</b> and <b>D (delivery can enter the offices)</b>: the former is the foundation on the revenue side, the latter a veto on the delivery side. You hit <b id="hypHits">0</b>/2.<span id="hypComment"></span>
+    </div>
+  </div>
+
+  <div class="case">
+    <div class="case-title">Case Study · Airbnb’s Cereal Boxes and Cameras</div>
+    <p>In 2008, Airbnb’s founders ran out of cash and maxed out their credit cards. To survive the validation phase, they rode the U.S. election hype and produced two custom cereal boxes — “Obama O’s” and “Cap’n McCain’s” — peddling them box by box for roughly $30,000 (as publicly reported; figures illustrative), money that carried them into the Y Combinator incubator. <strong>A company in its validation phase must first live long enough to see the answer.</strong></p>
+    <p>Around 2010, the team noticed that bookings for New York listings were low. On visits they found the hosts’ photos dark and distorted, leaving guests afraid to book. The founders picked up cameras and re-shot listings for hosts, free of charge (illustrative account), and bookings visibly improved — “photos by strangers cannot be trusted” had been identified as a key assumption, and validating it took only a camera and a weekend, not a development cycle.</p>
+    <div class="case-learn"><b>The lesson:</b> the riskiest assumption deserves to be validated first, and validation does not have to burn cash — cereal boxes and cameras are both cheap; the answers are found by walking out the door, not guessed in front of a screen.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Opportunity</dt><dd>The product of a real pain point, a workable solution, and a reachable market; if any factor is zero, the whole is zero.</dd>
+      <dt>Pain Point</dt><dd>A problem customers will pay to be rid of, measured by frequency and intensity.</dd>
+      <dt>Riskiest Assumption</dt><dd>The premise whose failure collapses the entire business model; it should be validated first.</dd>
+      <dt>Customer Interview</dt><dd>A low-cost way to gather verbal feedback; weakened by politeness bias, it is the weakest evidence.</dd>
+      <dt>Landing Page Test</dt><dd>Publish a product page, drive a small amount of traffic, and measure real interest by sign-ups.</dd>
+      <dt>Pre-order</dt><dd>Collect deposits or full payment before the product is finished; validates willingness to pay with real money — the strongest evidence.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Opportunity = <b>a real pain point × a workable solution × a reachable market</b> — three factors multiplied, with the weakest deciding life or death; validation starts from the <b>riskiest assumption</b>; and the strength of evidence is always: pre-orders &gt; landing page &gt; interviews.</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "Judging with “opportunity = real pain point × workable solution × reachable market,” which situation below has a product closest to zero?",
+      "options": ["The pain point is real, but there are no precise statistics on the size of the target customer group", "The pain point is real, but no workable solution can be built with current technology", "The solution can be built, but the first users will not be reachable for another six months", "The solution is already built and has dozens of paying early customers"],
+      "answer": 1,
+      "explain": "In a multiplicative formula, any factor at zero makes the whole zero: a real pain with no workable solution yields a product of zero. An unknown market size or slow reach is merely uncertainty or delay, not necessarily zero; paying early customers mean all three factors are already positive." },
+    { "q": "This lesson ranks validation methods as pre-orders &gt; landing-page email capture &gt; interviews. The root reason interviews are weakest is:",
+      "options": ["Interviewees are usually not target customers, so the sample is badly biased", "Interview guides contain too few questions to cover every assumption", "Interviews actually cost the most overall and eat up the most team time", "Interviews collect verbal attitudes, and people politely say they like things"],
+      "answer": 3,
+      "explain": "A spoken answer to “would you buy this?” is far from real money on the table — out of politeness, most people say “it’s lovely.” Leaving an email carries a small action cost, and a deposit is real money, so signal strength rises in that order." },
+    { "q": "The precise definition of the “riskiest assumption” is:",
+      "options": ["The assumption whose failure makes the entire business model impossible", "The assumptions the team argues about most and finds hardest to agree on", "The single assumption that is most expensive and time-consuming to validate", "The assumptions a competitor is most likely to solve first"],
+      "answer": 0,
+      "explain": "“Risk” is measured by destruction-if-it-fails times uncertainty — not by difficulty of validation, heat of internal debate, or competitive movements. Order validation by danger, not by ease." },
+    { "q": "“Will company admin allow couriers into the building every week?” was listed as the riskiest assumption of the office coffee subscription. The best reason is:",
+      "options": ["Admin approvals take a long cycle and will noticeably slow the whole product launch", "Admin departments have limited budgets and may not afford subscription coffee", "Without permission, delivery cannot happen — however strong the demand, everything goes to zero", "Most admin staff do not like coffee, so the pilot will lack internal supporters"],
+      "answer": 2,
+      "explain": "“Risk” is measured by destruction if the assumption fails: if couriers cannot enter the offices, even strong willingness to pay cannot be honored, and the delivery factor of the opportunity formula goes straight to zero. Slow speed, tight budgets, and taste preferences are not vetoes." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>The Lean Startup by Eric Ries (recommended: the chapters on validated learning)</li>
+      <li>Zero to One by Peter Thiel with Blake Masters (recommended: the chapters on secrets and niche markets)</li>
+      <li>Business Model Generation by Alexander Osterwalder and Yves Pigneur (recommended: the customer-segments and value-proposition blocks)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← Previous</span><span class="pager-title">Branch Guide · Entrepreneurship</span></a>
+    <a class="next" href="0002-lean-startup.html"><span class="pager-label">Next →</span><span class="pager-title">The Lean Startup: Build–Measure–Learn</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Could you run my idea through the opportunity formula?’ or ‘Which is the riskiest assumption in my project?’ — follow-up questions are part of learning.</div>
+    <p>Entrepreneurship · Lesson 1 · cases are real companies; figures are indicative magnitudes</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var REF = [2, 3];
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#hypCards .hcard"));
+  var feedback = document.getElementById("hypFeedback");
+  var submitBtn = document.getElementById("hypSubmit");
+  var resetBtn = document.getElementById("hypReset");
+  var summary = document.getElementById("hypSummary");
+  var submitted = false;
+
+  function pickedCount() {
+    return cards.filter(function (c) { return c.classList.contains("sel"); }).length;
+  }
+
+  cards.forEach(function (c) {
+    c.addEventListener("click", function () {
+      if (submitted) return;
+      if (!c.classList.contains("sel") && pickedCount() >= 2) {
+        feedback.textContent = "You can select at most two — forcing yourself to rank them is exactly the value of this exercise.";
+        return;
+      }
+      c.classList.toggle("sel");
+      var n = pickedCount();
+      feedback.textContent = n === 2 ? "Both selected — click “Submit selection” to see the reference answer." : n + " of 2 selected.";
+    });
+  });
+
+  submitBtn.addEventListener("click", function () {
+    if (pickedCount() < 2) {
+      feedback.textContent = "Select both cards before submitting — the point of a ranking exercise is the trade-off.";
+      return;
+    }
+    submitted = true;
+    var pickedIdx = cards.map(function (c, i) { return c.classList.contains("sel") ? i : -1; })
+      .filter(function (i) { return i >= 0; });
+    var hits = pickedIdx.filter(function (i) { return REF.indexOf(i) >= 0; }).length;
+    cards.forEach(function (c, i) {
+      var fatal = REF.indexOf(i) >= 0;
+      c.classList.add(fatal ? "fatal" : "minor2");
+      var v = c.querySelector(".hc-verdict");
+      v.textContent = fatal ? "Reference · riskiest" : "Can wait";
+      v.style.display = "inline-block";
+      c.querySelector(".hc-why").style.display = "block";
+    });
+    summary.style.display = "block";
+    Viz.countUp(document.getElementById("hypHits"), hits, { from: 0, dur: 700, format: function (x) { return String(Math.round(x)); } });
+    var msg;
+    if (hits === 2) msg = " Your ranking matches the reference answer: validate the revenue-side foundation and the delivery-side veto first; everything else can wait.";
+    else if (hits === 1) msg = " Half right. Let the rule sink in: risk = destruction if it fails × uncertainty — nothing to do with how hard it is to validate.";
+    else msg = " No worries — most beginners pick the cards that look most like a problem rather than the most fatal ones. Reread the reasoning on all six cards, then try again.";
+    document.getElementById("hypComment").textContent = msg;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitted";
+    resetBtn.style.display = "inline-block";
+  });
+
+  resetBtn.addEventListener("click", function () {
+    submitted = false;
+    cards.forEach(function (c) {
+      c.classList.remove("sel", "fatal", "minor2");
+      c.querySelector(".hc-verdict").style.display = "none";
+      c.querySelector(".hc-why").style.display = "none";
+    });
+    summary.style.display = "none";
+    feedback.textContent = "0/2 selected — force yourself to rank them first.";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit selection";
+    resetBtn.style.display = "none";
+  });
+})();
+</script>
+</body>
+</html>

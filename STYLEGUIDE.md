@@ -49,6 +49,7 @@ F:\Business\
   <a href="../index.html">{分支中文名}</a><span class="crumb-sep">/</span>
   <span>{课题}</span>
   <span class="progress">第 2 课 · 共 4 课</span>
+  <a class="lang-switch" href="{对应另一语言的同页路径}">EN/中文</a>
 </div></nav>
 
 <main class="container">
@@ -82,6 +83,7 @@ F:\Business\
 ```
 
 路径规则:分支 `index.html` 与课程页的相对路径不同——分支首页用 `../assets/...`,课程页(在 `lessons/` 下)用 `../../assets/...`。
+语言切换:每个页面(中文版与 `en/` 镜像)的顶部导航末尾必须带 `<a class="lang-switch">` 胶囊按钮,指向另一语言的对应页面(中文页显示 EN,英文页显示 中文);新增页面时两语言必须成对增补。
 
 ## 3. 内容要求(教学法)
 

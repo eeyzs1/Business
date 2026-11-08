@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Thinking: From Problem to Data · Business Analytics</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .stage-detail { background: var(--paper-deep); border-radius: 10px; padding: .9rem 1.1rem; margin-top: .8rem; min-height: 7.5rem; }
+  .stage-detail h3 { margin: .1rem 0 .5rem; font-size: 1.02rem; }
+  .stage-detail p { font-size: .92rem; margin: .35rem 0; color: var(--ink-soft); }
+  .stage-detail b { color: var(--accent); }
+  .pipe-hint { font-size: .85rem; color: var(--ink-faint); margin: .4rem 0 .8rem; }
+</style>
+</head>
+<body class="branch-analytics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Business Analytics</a><span class="crumb-sep">/</span>
+  <span>Data Thinking: From Problem to Data</span>
+  <span class="progress">Lesson 1 of 4</span>
+<a class="lang-switch" href="../../../10-business-analytics/lessons/0001-data-thinking.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Business Analytics · Lesson 1</p>
+  <h1>Data Thinking: From Problem to Data</h1>
+  <p class="lead">Open a spreadsheet with hundreds of thousands of rows: a novice’s first reaction is “Where do I even start?”, while a veteran’s is “What question am I answering?”. The business world has never lacked data — cash registers, customer-management systems, and advertising consoles record it automatically every day. What is missing is the thinking process that turns data into decisions. This lesson hands you that process — it holds its value better than any tool.</p>
+
+  <h2><span class="secno">1</span>The Five Steps of Analysis: From Business Question to Decision</h2>
+  <p>Data Analysis in business never ends at a chart; it ends at a decision. A complete analytics pipeline runs in five steps: <strong>business question → decompose hypotheses → pull the data → analyze → drive the decision</strong>. Click each stage in the pipeline diagram below to see what it does, where it tends to go wrong, and what it produces:</p>
+
+  <div class="sim">
+    <div class="sim-title">Analytics Pipeline: Click Any Stage to Open Its Detail Card</div>
+    <div id="pipeWrap"></div>
+    <p class="pipe-hint">The five stages link head to tail: each stage’s deliverable is the next stage’s input.</p>
+    <div class="stage-detail" id="stageCard"></div>
+  </div>
+
+  <p>The costliest errors in the five steps happen at the two ends: if Step 1 defines the problem wrong, every later gain in precision is wasted; if Step 5’s conclusions never drive a decision, the analysis was merely “homework turned in”. The middle three steps are craft; the two ends are responsibility.</p>
+
+  <h2><span class="secno">2</span>What Makes a Good Question: Actionable and Owned</h2>
+  <div class="concept" data-reveal>
+    <div class="concept-title">Concept Card · What Makes a Good Analytics Question</div>
+    <p>Two yardsticks. <strong>Actionability</strong> — different values of the answer should point to different actions; if you would do nothing whether the answer turns out A or B, that is not a question, it is curiosity. <strong>Ownership</strong> — a specific person is accountable for the answer and has the authority to push the follow-up actions. Counter-example: “Why don’t users stay?” (too broad, nobody owns it). Good example: “New-user 7-day retention fell 3 percentage points month over month — at which step after signup is the loss concentrated?” (metric, scope, baseline, and time frame all present, and a product owner claims it).</p>
+  </div>
+  <p>“Why” questions need to be rewritten as “which explanation does the data support” — because “why” cannot be answered directly; it can only be broken into several testable hypotheses for the data to eliminate one by one.</p>
+
+  <h2><span class="secno">3</span>Metrics and Dimensions: The Two Axes of Data</h2>
+  <p>A Metric is “a computed number” that answers <strong>how much</strong>: sales, conversion rate, retention rate. A Dimension is “an angle for slicing” that answers <strong>viewed from where</strong>: region, channel, category, time. Slice the same metric along different dimensions, and “total sales fell” becomes “dairy sales fell in the online channel in the East China region” — exactly the seed of Lesson 4’s drill-down.</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Type</th><th>Examples</th><th>Question It Answers</th></tr></thead>
+    <tbody>
+      <tr><td>Metric</td><td>Monthly sales, conversion rate, 7-day retention</td><td>How much? What ratio, what trend?</td></tr>
+      <tr><td>Dimension</td><td>East China region, online channel, dairy, March</td><td>Which slice are we viewing? Compared with whom?</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout note"><span class="callout-label">Data literacy, ranked</span><br>Data Literacy = <strong>asking good questions &gt; mastering tools</strong>. Excel, SQL, and Python get replaced every few years; the ability to translate a business concern into a data question stays scarce forever. When an interviewer asks “what tools do you know”, what they really want to know is whether you can pull the right question out of the fog.</div>
+
+  <h2><span class="secno">4</span>Worked Walk-Through: “Sales Are Down — How Do We Analyze It?”</h2>
+  <p>Let’s run this most common of questions through the five-step process (figures are classroom illustrations). Scroll down to expand each step:</p>
+  <ol class="steps">
+    <li data-reveal><strong>Define the question.</strong> Storewide monthly sales fell about 12% month over month (illustrative), scope limited to the online channel, observation window the last 8 weeks. Output: a one-sentence problem definition plus a named owner.</li>
+    <li data-reveal><strong>Decompose into hypotheses.</strong> Sales = traffic × conversion rate × average order value; three candidate explanations: a competitor promotion diverted traffic, stockouts of best-sellers depressed conversion, reduced promotion of high-ticket categories dragged average order value down.</li>
+    <li data-reveal><strong>Pull the data.</strong> Bring up 8 weeks of the three metrics by category and by day, plus the promotion calendar; agree on the “sales including tax” definition first, then check for missing days.</li>
+    <li data-reveal><strong>Analyze.</strong> Traffic is roughly flat; average order value fell about 8%; the steepest volume drops sit in high-ticket categories and coincide with the stockout records — the stockout hypothesis holds (illustrative).</li>
+    <li data-reveal><strong>Drive the decision.</strong> Restocking priority for high-ticket categories is raised, a weekly stockout alert goes live, and the metrics get reviewed after two weeks. Only now does the analysis close its loop.</li>
+  </ol>
+
+  <div class="case">
+    <div class="case-title">Case · 7-Eleven: Running Hypothesis–Act–Verify in Every Convenience Store</div>
+    <p>A convenience store must answer a thousand small questions a day: how many extra rice balls to order today? What goes on the second shelf? 7-Eleven’s Item-by-Item Management treats every SKU (Stock Keeping Unit, the smallest unit of inventory) as a hypothesis: ordering is the hypothesis, selling out is the verification, sell-outs and waste are error signals. Championed by Toshifumi Suzuki, this loop — paired with information systems and temperature-controlled logistics — let stores order by hypothesis–act–verify rather than pure gut feel (a synthesis of public sources, illustrative). Site selection works the same way: not “a feeling”, but first quantifying district foot traffic, customer mix, and competitor distribution, then answering “who is this store for”.</p>
+    <div class="case-learn"><b>The lesson:</b> data thinking is not a technology, it is a work habit — break a big worry into small, specific, data-refutable hypotheses and speed the cycle up. Once the question is well defined, Lesson 2’s statistical tools have a target to hit.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Metric</dt><dd>A quantity computed from data that answers “how much” — e.g. sales, conversion rate, retention rate.</dd>
+      <dt>Dimension</dt><dd>An angle for slicing and viewing a metric — e.g. region, channel, category, time.</dd>
+      <dt>Actionability</dt><dd>One criterion of a good question: different values of the answer point to different actions.</dd>
+      <dt>Ownership</dt><dd>One criterion of a good question: a clear owner is accountable for the answer and empowered to push follow-up actions.</dd>
+      <dt>Hypothesis</dt><dd>A candidate explanation for the question, written so data can test it — and refute it.</dd>
+      <dt>Data Literacy</dt><dd>The ability to translate business concerns into data questions and to read conclusions critically.</dd>
+      <dt>Item Management</dt><dd>The ordering and shelf-management loop of hypothesis–act–verify run at the level of individual SKUs.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Ask the right question before touching the data: a good question is <b>actionable and owned</b>; walk the five steps — question → hypotheses → data → analysis → decision, and any missing link leaves a half-finished product; people who can ask questions will always be worth more than people who can only operate tools.</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "Your boss asks, “Why did East China sales miss the target last quarter?” As an analytics question, what it most urgently needs first is:",
+      "options": ["Exporting a longer history of data", "Upgrading to a fancier charting tool", "Pinning down the metric, scope, baseline, and time frame", "Pulling an industry-average benchmark"],
+      "answer": 2,
+      "explain": "A good question = metric × scope × baseline × time frame + a named owner. Until that definition is pinned down, the later data pulls and analysis cannot be checked — and no tool, however fancy, can compensate." },
+    { "q": "In the five-step pipeline, “turning a vague worry into several testable candidate explanations” happens in:",
+      "options": ["Step 2: decompose hypotheses", "Step 1: define the business question", "Step 3: pull the data", "Step 4: analyze"],
+      "answer": 0,
+      "explain": "The decompose-hypotheses stage is exactly where “why” is rewritten as a ranked list of candidate explanations the data can eliminate; defining the question comes before it, pulling data and analyzing after." },
+    { "q": "Which of these questions best meets the “actionable” standard?",
+      "options": ["Who exactly are our users?", "Why doesn’t everyone love our product?", "Can data tell us everything?", "New-customer first-order conversion is down 30% — at which step are they stuck?"],
+      "answer": 3,
+      "explain": "The test of actionability: different values of the answer should point to different actions. “Conversion is down 30% — where are they stuck?” yields answers that directly determine what to change; the others are either too broad or pure curiosity." },
+    { "q": "Which statement about data literacy is closest to this lesson’s view?",
+      "options": ["Fluency in five or more analytics tools", "Being able to translate business concerns into data questions", "Mastering every statistical formula and derivation", "Reciting the standard definitions of common business metrics"],
+      "answer": 1,
+      "explain": "Data literacy = asking good questions &gt; operating tools. Tools turn over every few years, while the ability to turn a business concern into metrics, dimensions, and testable hypotheses stays scarce — and it is where the analytics pipeline starts." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>How to Measure Anything by Douglas W. Hubbard (recommended: the chapters on clarifying the decision question and quantification methods)</li>
+      <li>Naked Statistics by Charles Wheelan (recommended: the chapters on how statistical thinking serves decisions)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← Previous</span><span class="pager-title">Branch Guide · Business Analytics</span></a>
+    <a class="next" href="0002-descriptive-stats.html"><span class="pager-label">Next →</span><span class="pager-title">Descriptive Statistics: Don’t Be Fooled by Averages</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “Help me rewrite a business problem on my desk into an actionable analytics question” or “Which dimensions should I slice my metric by?” — running the five-step pipeline on your own business works best. Follow-up questions are part of learning.</div>
+    <p>Business Analytics · Lesson 1 of 4 · case studies and figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var STAGES = [
+    { name: "Question", en: "Define",
+      what: "Translate a vague worry into an answerable question: which metric, what scope, against which baseline, over which time window.",
+      err: "The question is too broad (“Why aren’t we profitable?”) or too narrow (jumping straight to demanding a table) — every later step sharpens the wrong target.",
+      out: "A one-sentence problem definition — metric × scope × baseline × time frame — with a named owner." },
+    { name: "Hypotheses", en: "Decompose",
+      what: "Split the question into candidate explanations that data can test, ranked by likelihood and impact.",
+      err: "Running with a single explanation and a confirmation bias; or hypotheses that map to no possible action.",
+      out: "A hypothesis list that is as complete and non-overlapping as possible, with priorities and test methods noted." },
+    { name: "Data", en: "Collect",
+      what: "Fix the definitions and sources, then pull, clean, and check the data; argue the definitions through before touching the data.",
+      err: "Inconsistent definitions (with or without tax, deduplicated or not), biased samples, or reusing someone else’s table unchecked.",
+      out: "A trustworthy dataset plus a note on definitions, so the conclusion is reproducible." },
+    { name: "Analysis", en: "Examine",
+      what: "Test the hypotheses with descriptive statistics, comparisons, and drill-downs: which one holds? How big is the effect? How strong is the evidence?",
+      err: "Reading correlation as causation, staring at averages only, or looking at totals without subgrouping (the next two lessons dismantle these traps one by one).",
+      out: "Conclusions with evidence: which hypothesis is supported, the size of the effect, and the degree of confidence." },
+    { name: "Decision", en: "Act",
+      what: "Translate conclusions into action options: do what, who owns it, when to review — then follow up on the results.",
+      err: "A report nobody reads; conclusions without actions; no follow-up, so the same mistake replays next time.",
+      out: "A decision plus an action list (owner / deadline) and a review date." }
+  ];
+  var wrap = document.getElementById("pipeWrap");
+  var card = document.getElementById("stageCard");
+  var svg = Viz.svgEl("svg", {
+    viewBox: "0 0 680 136", role: "img",
+    style: "width:100%;height:auto;display:block"
+  });
+  wrap.appendChild(svg);
+  var items = [];
+
+  STAGES.forEach(function (s, i) {
+    var x = 12 + i * 133;
+    var g = Viz.svgEl("g", { style: "cursor:pointer" });
+    var rect = Viz.svgEl("rect", {
+      x: x, y: 36, width: 112, height: 66, rx: 12,
+      fill: "#fff", stroke: "#e7e0d3", "stroke-width": 2
+    });
+    g.appendChild(rect);
+    Viz.label(g, x + 56, 26, "0" + (i + 1), { anchor: "middle", size: 12, color: "#a8a29e", weight: 800 });
+    var nm = Viz.label(g, x + 56, 65, s.name, { anchor: "middle", size: 15, color: "#1c1917", weight: 800 });
+    var en = Viz.label(g, x + 56, 87, s.en, { anchor: "middle", size: 11, color: "#a8a29e", weight: 600 });
+    svg.appendChild(g);
+    if (i < STAGES.length - 1) {
+      var ax = x + 116;
+      svg.appendChild(Viz.svgEl("line", { x1: ax, x2: ax + 11, y1: 69, y2: 69, stroke: "#c9c1b2", "stroke-width": 2.5 }));
+      svg.appendChild(Viz.svgEl("polygon", { points: (ax + 11) + ",64 " + (ax + 11) + ",74 " + (ax + 18) + ",69", fill: "#c9c1b2" }));
+    }
+    g.addEventListener("click", function () { select(i); });
+    items.push({ rect: rect, nm: nm, en: en });
+  });
+
+  function select(i) {
+    items.forEach(function (it, j) {
+      var on = j === i;
+      it.rect.setAttribute("fill", on ? "var(--accent)" : "#fff");
+      it.rect.setAttribute("stroke", on ? "var(--accent)" : "#e7e0d3");
+      it.nm.setAttribute("fill", on ? "#fff" : "#1c1917");
+      it.en.setAttribute("fill", on ? "#e0e7ff" : "#a8a29e");
+    });
+    var s = STAGES[i];
+    card.innerHTML = "<h3>Step " + (i + 1) + " · " + s.name + " (" + s.en + ")</h3>" +
+      "<p><b>What it does:</b> " + s.what + "</p>" +
+      "<p><b>Common failure:</b> " + s.err + "</p>" +
+      "<p><b>Output:</b> " + s.out + "</p>";
+  }
+  select(0);
+})();
+</script>
+</body>
+</html>

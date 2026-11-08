@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NPV: Deciding Whether a Project Is Worth It · Finance</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  #npv-val { font-size: 1.3rem; }
+  #npv-decision { margin-left: .6rem; }
+</style>
+</head>
+<body class="branch-finance">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Finance</a><span class="crumb-sep">/</span>
+  <span>NPV: Deciding Whether a Project Is Worth It</span>
+  <span class="progress">Lesson 3 of 4</span>
+<a class="lang-switch" href="../../../03-finance/lessons/0003-npv-and-irr.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Finance · Lesson 3</p>
+  <h1>NPV: Deciding Whether a Project Is Worth It</h1>
+  <p class="lead">Before you sits a project: open a store, buy equipment, launch a new system. Invest, or not? Lesson 1’s time value and Lesson 2’s risk premium converge here into a single yardstick — <em>net present value</em> — turning “a debate of gut feelings” into “one arithmetic problem.”</p>
+
+  <h2><span class="secno">1</span>The Yardstick: Project Return vs. the Cost of Capital</h2>
+  <p>Comparing a project’s total outlay with its total income is wrong — money at different points in time cannot be added directly. The right question is always: <strong>after every cash flow is discounted to the same point in time, can the project beat the return from putting the money somewhere else?</strong> That “return somewhere else” is the <em>cost of capital</em>, the discount rate of the previous lesson: the risk-free rate plus a premium for the project’s risk. Steady, defensible cash flows can be discounted at a lower rate; an unproven new product must carry a higher one.</p>
+
+  <h2><span class="secno">2</span>Discounted Cash Flow and Net Present Value</h2>
+  <p><em>Discounted cash flow (DCF)</em>: divide each future year’s cash flow back to today by (1+r)<sup>t</sup>, then subtract the initial outlay, and you get the <em>net present value (NPV)</em>:</p>
+  <div class="formula">NPV = −I + CF<sub>1</sub>/(1+r) + CF<sub>2</sub>/(1+r)<sup>2</sup> + … + CF<sub>n</sub>/(1+r)<sup>n</sup></div>
+  <div class="concept">
+    <div class="concept-title">One rule, and only one</div>
+    <p><strong>NPV &gt; 0</strong>: the project earns more than the cost of capital and creates value for the firm — invest. <strong>NPV &lt; 0</strong>: it fails to earn even the baseline return the capital should earn — it destroys value; walk away. <strong>NPV = 0</strong>: it exactly matches the baseline; invest or not, you are indifferent. You can read NPV as “how much richer you are after correcting for time and risk.”</p>
+  </div>
+
+  <div class="sim" id="npv-sim">
+    <div class="sim-title">NPV decision machine: four knobs, one verdict</div>
+    <div class="sim-controls" id="npv-controls"></div>
+    <p class="sim-readout" style="margin:.7rem 0 .25rem;font-size:1.12rem">
+      NPV = <b id="npv-val">¥0</b><span id="npv-decision"></span>
+    </p>
+    <p class="sim-readout" style="margin:.25rem 0 .8rem;font-size:.95rem">
+      Internal rate of return IRR ≈ <b id="npv-irr">—</b> · static payback period (no discounting): <b id="npv-pay">—</b>
+    </p>
+    <div id="npv-chart" aria-label="Bar chart of discounted cash flows by year"></div>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin:.6rem 0 0">
+      The red bar is the initial outlay; the green bars are each year’s net cash flow discounted to today — note how a higher discount rate makes the distant years’ bars shorter. The verdict next to the NPV recolors with its sign: green = invest, red = walk away.
+    </p>
+  </div>
+
+  <h2><span class="secno">3</span>IRR: Asking the Question a Different Way</h2>
+  <p>The <em>internal rate of return (IRR)</em> is the discount rate that makes NPV exactly zero — intuitively, the project’s own compound rate of return. Using it is just as simple: invest if IRR is above the cost of capital, pass if it is below — usually the same verdict NPV gives. Know its limits too: IRR is a percentage and says nothing about scale (a small project returning 30% can carry a smaller NPV than a large one returning 12%); and when the cash-flow sign flips back and forth, there can even be multiple IRRs. When in doubt, <strong>let NPV rule</strong>.</p>
+
+  <h2><span class="secno">4</span>Two Classic Traps: Sunk Cost and Opportunity Cost</h2>
+  <div class="callout warn">
+    <span class="callout-label">Trap 1: a sunk cost is not a cost</span>
+    <p style="margin:.4rem 0 0">A <em>sunk cost</em> is money already spent and unrecoverable. The ¥200,000 sunk into last year’s renovation is gone whether or not you invest today, so it is <strong>irrelevant to the decision</strong>. Decide only on the incremental cash flows from this point forward.</p>
+  </div>
+  <div class="callout warn">
+    <span class="callout-label">Trap 2: an opportunity cost is a cost</span>
+    <p style="margin:.4rem 0 0">The reverse trap: a project that never sends you a bill can still be expensive. Opening a store in your own building pays no rent, but it <strong>gives up the rent the space could collect</strong> — that <em>opportunity cost</em> must enter the cash flows (valued at the best forgone use). Your own funds are no different: investing them means giving up the return of lending them out.</p>
+  </div>
+
+  <h2><span class="secno">5</span>Case: Is That Coffee Shop Worth Opening?</h2>
+  <div class="case">
+    <p class="case-title">The arithmetic behind one latte</p>
+    <p>Suppose you take over a small shop (all figures <strong>illustrative</strong>): an initial outlay of about <strong>¥600,000</strong> (renovation, equipment, and the transfer deposit); expected monthly revenue around <strong>¥80,000</strong>, with a net margin of about <strong>15%</strong> after ingredients, labor, and rent — roughly <strong>¥140,000</strong> a year in net cash flow; an <strong>8-year</strong> horizon; and, given your own read of the risks, a required return of <strong>8%</strong>. Dial those parameters into the decision machine above and you get: a static payback of a little over four years, an NPV of about <strong>+¥200,000</strong>, and an IRR above 8% — if the assumptions hold, this shop is worth opening. Watch the sensitive spot: let the net margin fall from 15% to 10% and NPV can turn negative. <strong>A project’s life or death often hangs on a single assumption.</strong></p>
+    <p class="case-learn"><b>The lesson:</b> the counterexample is a classic too: in 2008, having over-expanded straight into a financial crisis, Starbucks announced it would close about 600 underperforming US stores. However painful the renovation costs, they are sunk — the decision looks only at those stores’ <strong>future</strong> cash flows: negative NPV, so close them.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Discounted cash flow (DCF)</dt><dd>A valuation method that discounts each future cash flow to present value and adds them up.</dd>
+      <dt>Net present value (NPV)</dt><dd>The sum of the present values of future cash flows, minus the initial outlay.</dd>
+      <dt>Cost of capital</dt><dd>The required return on money invested in this project; used as the discount rate.</dd>
+      <dt>Internal rate of return (IRR)</dt><dd>The discount rate at which NPV is exactly zero; the project’s intrinsic return.</dd>
+      <dt>Sunk cost</dt><dd>Spending already incurred and unrecoverable; irrelevant to the current decision.</dd>
+      <dt>Opportunity cost</dt><dd>The return on the best alternative forgone by choosing this project.</dd>
+      <dt>Payback period</dt><dd>The years needed to recoup the initial outlay, with no discounting.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Discount every cash flow back to today and add them up: that is NPV — above zero it creates value, below zero it destroys it, and when in doubt NPV rules. Sunk costs are irrelevant to the decision; <strong>opportunity costs must be counted</strong>.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">Self-Check Quiz</div>
+    <script type="application/json">
+    [
+      {
+        "q": "A project’s NPV, discounted at the company’s cost of capital, is +¥2,000,000. What does that most accurately mean?",
+        "options": [
+          "The project earns positive cash flow in every future year",
+          "The project’s return exceeds the cost of capital; it creates value",
+          "After launch, annual net profit exceeds ¥2,000,000 every year",
+          "The project is fully funded and never needs a bank loan"
+        ],
+        "answer": 1,
+        "explain": "A positive NPV says just one thing: the discounted total return exceeds the cost of capital, so the project creates value. It does not guarantee positive cash flow in every year, and it is neither an annual profit nor proof that cash is plentiful."
+      },
+      {
+        "q": "A project has already spent ¥1,000,000 on R&D (unrecoverable). For another ¥500,000 it can be launched, and the present value of its future cash flows is ¥600,000. The rational decision is:",
+        "options": [
+          "Stop the project: total spending of ¥1,500,000 across both stages exceeds the present value",
+          "Push ahead: the ¥1,000,000 already spent must be earned back",
+          "Push ahead: the new ¥600,000 of present value exceeds the new ¥500,000 of outlay",
+          "Stop the project: sunk costs should never be allowed to keep growing"
+        ],
+        "answer": 2,
+        "explain": "The ¥1,000,000 already spent is a sunk cost and irrelevant. Look only at the increment: pay ¥500,000 more, receive ¥600,000 of present value — an incremental NPV of +¥100,000, so continue. Throwing in more money to “earn back” sunk costs is the most classic decision trap of all."
+      },
+      {
+        "q": "A company opens a store in a building it owns; rented out, the space would earn about ¥100,000 a year. How should the investment analysis treat this?",
+        "options": [
+          "Leave it out: the company never actually pays that rent",
+          "Leave it out: the building’s depreciation is already booked",
+          "Count it in: add the property’s market value to the initial investment once",
+          "Count it in: the forgone ¥100,000 of annual rent is an opportunity cost"
+        ],
+        "answer": 3,
+        "explain": "Paying no rent is not the same as zero cost: using the space for the store forgoes ¥100,000 a year of rent — a real opportunity cost that should be deducted from the project’s cash flows. Depreciation is an accounting entry and no substitute for opportunity cost."
+      },
+      {
+        "q": "Which statement about the internal rate of return (IRR) is correct?",
+        "options": [
+          "It is the discount rate at which the project’s NPV is exactly zero",
+          "It is the arithmetic average of the project’s annual cash flows",
+          "It is the loan rate the bank charges the company",
+          "It is net profit as a percentage of operating revenue"
+        ],
+        "answer": 0,
+        "explain": "IRR is the intrinsic discount rate that makes NPV = 0 — think of it as the project’s own compound rate of return, compared against the cost of capital to reach a verdict. A cash-flow average, a loan rate, and a net margin are all something else."
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Corporate Finance by Ross, Westerfield &amp; Jaffe, Chinese edition (China Machine Press) (recommended: Chapter 6, “Net Present Value and Other Investment Rules”)</li>
+      <li>Valuation: Measuring and Managing the Value of Companies by Koller, Goedhart &amp; Wessels (McKinsey) (recommended: the discounted cash flow valuation chapters)</li>
+      <li>Search keywords: sunk cost fallacy · opportunity cost in capital budgeting</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-risk-and-return.html"><span class="pager-label">← Previous</span><span class="pager-title">Risk and Return</span></a>
+    <a class="next" href="0004-financial-markets.html"><span class="pager-label">Next →</span><span class="pager-title">Financial Markets: Mapping the Flow of Money</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘For the shop I want to open, should the discount rate be 8% or 15%?’ — and run this decision machine on one of your real projects. Follow-up questions are part of learning.</div>
+    <p>Finance · Lesson 3 · NPV | Interactive: NPV decision machine · case figures are illustrative · next up: pull the camera back and see the market network this money travels through</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- NPV decision machine ---- */
+  var controls = document.getElementById("npv-controls");
+  var chartBox = document.getElementById("npv-chart");
+  var valEl = document.getElementById("npv-val");
+  var decEl = document.getElementById("npv-decision");
+  var irrEl = document.getElementById("npv-irr");
+  var payEl = document.getElementById("npv-pay");
+
+  var sI = Viz.slider(controls, { label: "Initial investment", min: 10, max: 100, step: 5, value: 60, format: function (v) { return "¥" + (v * 10000).toLocaleString("en-US"); } });
+  var sC = Viz.slider(controls, { label: "Annual net cash flow", min: 3, max: 40, step: 1, value: 14, format: function (v) { return "¥" + (v * 10000).toLocaleString("en-US"); } });
+  var sN = Viz.slider(controls, { label: "Project life", min: 3, max: 10, step: 1, value: 8, format: function (v) { return v + " years"; } });
+  var sR = Viz.slider(controls, { label: "Discount rate", min: 4, max: 15, step: 0.5, value: 8, format: function (v) { return v.toFixed(1) + "%"; } });
+
+  function annuity(r, n) { return (1 - Math.pow(1 + r, -n)) / r; }
+
+  function irrOf(I, C, n) {
+    var f = function (r) { return C * annuity(r, n) - I; };
+    var lo = 0.0001, hi = 20;
+    if (f(lo) < 0) return null;
+    for (var k = 0; k < 200; k++) {
+      var mid = (lo + hi) / 2;
+      if (f(mid) > 0) lo = mid; else hi = mid;
+    }
+    return (lo + hi) / 2;
+  }
+
+  function roll(el, target, fmt) {
+    var from = typeof el.__v === "number" ? el.__v : 0;
+    el.__v = target;
+    Viz.countUp(el, target, { from: from, dur: 360, format: fmt });
+  }
+
+  function render() {
+    var I = sI.get(), C = sC.get(), n = sN.get(), r = sR.get() / 100;
+    var npv = -I + C * annuity(r, n);
+    var irr = irrOf(I, C, n);
+
+    var good = npv > 0.05, bad = npv < -0.05;
+    roll(valEl, npv, function (v) {
+      return (v < 0 ? "−¥" : (v > 0 ? "+¥" : "¥")) + Math.round(Math.abs(v) * 10000).toLocaleString("en-US");
+    });
+    valEl.style.color = good ? "var(--good)" : (bad ? "var(--bad)" : "var(--ink-soft)");
+    decEl.textContent = good ? "→ Invest: expected to create value" : (bad ? "→ Walk away: expected to destroy value" : "→ Indifferent");
+    decEl.style.color = good ? "var(--good)" : (bad ? "var(--bad)" : "var(--ink-soft)");
+    if (irr !== null) {
+      irrEl.textContent = (irr * 100).toFixed(1) + "% (" + (irr > r ? "above" : "below") + " the discount rate)";
+      irrEl.style.color = irr > r ? "var(--good)" : "var(--bad)";
+    } else {
+      irrEl.textContent = "does not exist — not recovered within the term";
+      irrEl.style.color = "var(--bad)";
+    }
+    payEl.textContent = (I / C).toFixed(1) + " years";
+
+    /* Bar chart of discounted cash flows by year (year 0 = outlay) */
+    chartBox.innerHTML = "";
+    var ax = Viz.axes(chartBox, {
+      w: 640, h: 360, margin: { t: 22, r: 18, b: 46, l: 56 },
+      xDomain: [0, n + 1], yDomain: [-I * 1.12, C * 1.3],
+      xLabel: "Years", yLabel: "Cash-flow PV (¥10,000s)",
+      xTicks: n + 1, yTicks: 5,
+      xFormat: function (v) { return String(Math.round(v)); },
+      yFormat: function (v) { return Math.round(v); }
+    });
+    ax.plot(function (svg, x, y, m, iw, ih) {
+      Viz.line(svg, [[m.l, y(0)], [m.l + iw, y(0)]], { color: "#1c1917", width: 1.5 });
+      var bw = iw / (n + 1) * 0.62;
+      for (var k = 0; k <= n; k++) {
+        var v = (k === 0) ? -I : C / Math.pow(1 + r, k);
+        var bx = m.l + iw * (k + 0.5) / (n + 1) - bw / 2;
+        var by = Math.min(y(v), y(0));
+        var bh = Math.abs(y(v) - y(0));
+        svg.appendChild(Viz.svgEl("rect", {
+          x: bx, y: by, width: bw, height: Math.max(bh, 1.5), rx: 5,
+          fill: k === 0 ? "#b91c1c" : "#15803d",
+          opacity: k === 0 ? 0.9 : 0.45 + 0.55 * (v / C)
+        }));
+        var lab = Viz.svgEl("text", {
+          x: bx + bw / 2, y: v >= 0 ? y(v) - 7 : y(v) + 15,
+          "text-anchor": "middle", "font-size": 11.5, "font-weight": 800,
+          fill: k === 0 ? "#b91c1c" : "#15803d"
+        });
+        lab.textContent = k === 0 ? ("−" + I) : v.toFixed(1);
+        svg.appendChild(lab);
+      }
+    });
+  }
+  [sI, sC, sN, sR].forEach(function (s) { s.onChange(render); });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supply Chains and the Bullwhip Effect · Operations &amp; Supply Chain</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .bw-layers { font-size:.9rem; color:var(--ink-soft); }
+  .bw-layers b { color:var(--accent); }
+  .bw-share { display:flex; align-items:center; gap:.55rem; font-size:.95rem; padding:.6rem 0; }
+  .bw-share input { width:18px; height:18px; accent-color:var(--accent); cursor:pointer; }
+  .bw-chart-title { font-weight:800; font-size:.95rem; margin:.9rem 0 .3rem; color:var(--ink); }
+  .bw-readout { background:var(--paper-deep); border-radius:10px; padding:.75rem 1rem; font-size:.95rem; line-height:1.8; margin-top:.9rem; }
+  .bw-readout b { color:var(--accent); font-variant-numeric:tabular-nums; }
+  .bw-readout .amp { color:var(--bad); font-weight:800; }
+  .bw-readout .calm { color:var(--good); font-weight:800; }
+</style>
+</head>
+<body class="branch-operations">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Operations &amp; Supply Chain</a><span class="crumb-sep">/</span>
+  <span>Supply Chains and the Bullwhip Effect</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../07-operations-supply-chain/lessons/0004-supply-chain-bullwhip.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Operations &amp; Supply Chain · Lesson 4</p>
+  <h1>Supply Chains and the Bullwhip Effect</h1>
+  <p class="lead">The earlier lessons aimed the camera at a single factory; this one pulls back to the panorama: from raw material supplier to consumer, every company on the chain is “guessing” at demand — and the guesses distort as they become orders. A gentle flick at the handle, a sharp crack at the tip: that is the bullwhip effect, the headache of every industry.</p>
+
+  <h2><span class="secno">1</span>The Supply Chain: A Relay Race from Ore to Phone</h2>
+  <p>The <em>supply chain</em> is the chain of organizations and processes that carries a product from raw material into the consumer’s hands: <b>raw material supplier → manufacturing plant → distribution center → retail store → consumer</b>. Two flows run along it in opposite directions: the <em>material flow</em> heads downstream, gaining value as it goes; the <em>information flow</em> heads upstream — orders, forecasts, sales data. Nearly every hard problem in supply chain management grows out of the <b>speed gap</b> between those two flows: material moves in days, while information often takes weeks — and arrives distorted.</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 760 250" role="img" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="ar3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#b45309"></path>
+          </marker>
+          <marker id="ar4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#0369a1"></path>
+          </marker>
+        </defs>
+        <text x="380" y="34" text-anchor="middle" font-size="13" font-weight="800" fill="#b45309">Material flow → the product gains value all the way downstream</text>
+        <g font-size="12.5" font-weight="700">
+          <rect x="16" y="60" width="128" height="64" rx="12" fill="#fff" stroke="#d6cdbd"></rect>
+          <text x="80" y="88" text-anchor="middle" fill="#1c1917">Material Supplier</text>
+          <text x="80" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">ore · chips · fabric</text>
+          <rect x="166" y="60" width="128" height="64" rx="12" fill="#fff" stroke="#d6cdbd"></rect>
+          <text x="230" y="88" text-anchor="middle" fill="#1c1917">Manufacturing</text>
+          <text x="230" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">transform · assemble</text>
+          <rect x="316" y="60" width="128" height="64" rx="12" fill="#fff" stroke="#d6cdbd"></rect>
+          <text x="380" y="88" text-anchor="middle" fill="#1c1917">Distribution Center</text>
+          <text x="380" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">warehousing · allocation</text>
+          <rect x="466" y="60" width="128" height="64" rx="12" fill="#fff" stroke="#d6cdbd"></rect>
+          <text x="530" y="88" text-anchor="middle" fill="#1c1917">Retail Store</text>
+          <text x="530" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">shelves · service</text>
+          <rect x="616" y="60" width="128" height="64" rx="12" fill="#f2ede3" stroke="#d6cdbd"></rect>
+          <text x="680" y="88" text-anchor="middle" fill="#1c1917">Consumer</text>
+          <text x="680" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">true demand</text>
+        </g>
+        <g>
+          <line x1="146" y1="76" x2="164" y2="76" stroke="#b45309" stroke-width="2.5" marker-end="url(#ar3)"></line>
+          <line x1="296" y1="76" x2="314" y2="76" stroke="#b45309" stroke-width="2.5" marker-end="url(#ar3)"></line>
+          <line x1="446" y1="76" x2="464" y2="76" stroke="#b45309" stroke-width="2.5" marker-end="url(#ar3)"></line>
+          <line x1="596" y1="76" x2="614" y2="76" stroke="#b45309" stroke-width="2.5" marker-end="url(#ar3)"></line>
+        </g>
+        <g>
+          <line x1="164" y1="112" x2="146" y2="112" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar4)"></line>
+          <line x1="314" y1="112" x2="296" y2="112" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar4)"></line>
+          <line x1="464" y1="112" x2="446" y2="112" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar4)"></line>
+          <line x1="614" y1="112" x2="596" y2="112" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar4)"></line>
+        </g>
+        <text x="380" y="170" text-anchor="middle" font-size="13" font-weight="800" fill="#0369a1">← Information flow · orders, forecasts, and POS sales data travel back upstream</text>
+        <text x="380" y="205" text-anchor="middle" font-size="11.5" fill="#a8a29e">The more delay and re-processing between two tiers, the further orders drift from true demand</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The supply chain’s five-leg relay (illustrative): material flows right, information flows left. The bullwhip effect lives on that dashed leftward line.</figcaption>
+  </figure>
+  <p>Supply chain performance rests on three fundamentals. <em>Lead time</em> — the time from placing an order to receiving it, which sets how far into the future you must place your bet. <em>Inventory</em> — insurance against forecast error, paid for in cash and in the risk of masking problems (Lesson 3). <em>Orders</em> — the only demand signal upstream can “see.” Memorize this fatal equation: <b>what upstream sees is not demand, it is downstream’s orders — and orders are demand after four mechanisms have distorted it</b>.</p>
+
+  <h2><span class="secno">2</span>The Bullwhip Effect: A Small Twitch at the End, a Loud Crack at the Tip</h2>
+  <p>The <em>bullwhip effect</em> is the phenomenon in which small fluctuations in consumer demand at the end of the chain keep getting amplified as they travel upstream through retailer, distributor, and factory — like cracking a whip: the wrist twitches only once, yet the tip snaps out a sharp crack. Procter &amp; Gamble first documented it systematically on its diaper supply chain: babies consume at an almost constant rate, yet the orders coming from the distribution tier swung violently. Research distills four root causes:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Root Cause</th><th>Mechanism</th><th>How It Amplifies</th></tr></thead>
+    <tbody>
+      <tr><td>Order Batching<br><span style="color:var(--ink-faint)">fewer, bigger orders</span></td><td>To spread ordering and shipping costs, a whole week’s — even a month’s — demand is accumulated into one big order</td><td>Small steady demand is squeezed into pulsed mega-orders; what upstream sees is a sawtooth</td></tr>
+      <tr><td>Shortage Gaming<br><span style="color:var(--ink-faint)">inflate to get a share</span></td><td>Expecting a shortage, and knowing quota will be allocated in proportion to orders, buyers deliberately overstate demand</td><td>Everyone exaggerates; total orders far exceed true demand</td></tr>
+      <tr><td>Price Promotions<br><span style="color:var(--ink-faint)">stock up on discount</span></td><td>The channel stockpiles during discounts (forward buying), then orders fall off a cliff after the promotion</td><td>Price swings turn directly into order swings</td></tr>
+      <tr><td>Demand Signal Processing<br><span style="color:var(--ink-faint)">each tier forecasts alone</span></td><td>Each tier runs an exponential-smoothing forecast on downstream orders alone, and raises safety stock to match</td><td>The previous tier’s overreaction is read as a new trend — and amplified one more layer</td></tr>
+    </tbody>
+  </table></div>
+  <p>The four causes share one structure: <b>each tier reacts rationally to the distorted signal it sees, and the stacking of rational reactions produces systemic madness</b>. The order peak upstream observes may be three echoes laid on top of one another — which is exactly what the simulator in the next section will let you see with your own eyes.</p>
+
+  <h2><span class="secno">3</span>Interactive Lab: Whip Up a Bullwhip with Your Own Hands</h2>
+  <div class="sim" id="bw-sim">
+    <div class="sim-title">Interactive Lab · Bullwhip Effect Simulator</div>
+    <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:.4rem">Baseline: consumers buy <b>100 units</b> a week. From week 8 on, move the slider anywhere within ±10% — say 105 (demand up only 5%). Watch the <b>peak/trough bar chart</b> of the four tiers’ orders and the <b>week-by-week order curves</b> (each tier reacts one period later than the tier below): with no information sharing, demand signal processing amplifies that 5% all the way up. Then check “Share demand information” so every tier sees true end demand directly, and compare the bar heights again.</p>
+    <div class="sim-controls" id="bw-controls"></div>
+    <label class="bw-share"><input type="checkbox" id="bw-share"><span><b>Share demand information</b> (end-market POS sales data reaches every tier in real time; upstream no longer forecasts from downstream orders)</span></label>
+    <div class="bw-chart-title">① Peak / trough orders by tier (units/week)</div>
+    <div id="bw-bars"></div>
+    <div class="bw-chart-title">② Week-by-week order curves (each tier lags one period and swings harder than the one below)</div>
+    <div id="bw-lines"></div>
+    <div class="bw-readout" id="bw-readout"></div>
+    <div class="callout warn" style="margin-bottom:0"><span class="callout-label">Worth noting</span>
+      This simulator switches on only one of the four root causes — demand signal processing with its safety-stock markup. Add order batching and shortage gaming, as real supply chains do, and the amplification grows far larger; and the capacity and inventory costs of that amplification are ultimately shared along the whole chain — consumers included.
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>Taming the Bullwhip: Let Upstream See True Demand</h2>
+  <p>Since the disease is “upstream cannot see true demand, and every reaction is delayed,” the prescription follows those two tracks:</p>
+  <ul class="timeline">
+    <li><b>Information sharing</b>: pipe end-market <em>point-of-sale (POS)</em> data straight upstream so every tier forecasts on true consumption rather than on downstream orders — demolishing the echo chamber outright.</li>
+    <li><b>Vendor-managed inventory (VMI)</b>: downstream stops placing orders altogether; the supplier replenishes automatically from the shared data and manages the stock level itself, and the incentive to game the system disappears.</li>
+    <li><b>Shorten the lead time</b>: the shorter the lead time, the shorter the future you must forecast, and the smaller the correction and safety stock needed — local warehouses and small, high-frequency replenishment are all doing exactly this.</li>
+    <li><b>Every day low price (EDLP)</b>: replace promotional pulses with stable pricing and eliminate the man-made swing of “stock up on discount”; going one step further, collaborative mechanisms such as <em>collaborative planning, forecasting, and replenishment (CPFR)</em> put every company on the chain on one shared set of forecast numbers.</li>
+  </ul>
+  <div class="concept">
+    <div class="concept-title">The Management Lesson of the Bullwhip Effect</div>
+    <p style="margin-bottom:0">Wild swings in inventory and capacity often come not because demand truly changed, but because <b>every tier on the chain made locally rational decisions on distorted signals</b>. Supply chain competition is therefore, at heart, competition between information architectures: whoever lets true demand reach every decision point by the shortest path, with the least re-processing, wins the chain.</p>
+  </div>
+
+  <h2><span class="secno">5</span>Case: Double-Ordering in the Chip Shortage</h2>
+  <div class="case">
+    <div class="case-title">2020–2022: Amplification in the Global Chip Shortage</div>
+    <p>When the pandemic struck in 2020, car sales plunged and automakers slashed their chip orders; chipmakers cut output in step. Demand then rebounded fast, chip supply could not keep up, and panic began to spread: with the widespread expectation that “scarce capacity is allocated in proportion to order size,” automakers and dealers <b>double-ordered</b> en masse — placing the same demand with several chipmakers at once and quoting order volumes far beyond their real plans, “grab the supply first, sort it out later.”</p>
+    <p>This is a textbook shortage game: upstream saw orders at several multiples of true demand (illustrative magnitude) and poured money into capacity; when demand cooled in 2022, the inflated orders evaporated together, leaving overcapacity, piled-up inventory, and a wave of cancellations — the whip tip lashed out, then whipped back. Through the whole cycle, no company was “lying”; every step was locally rational. The disaster was a product of <em>structure</em>, not of some villain’s conspiracy. (This case is an illustrative account based on public reporting; magnitudes are for reference only)</p>
+    <div class="case-learn"><b>The operations lesson:</b> when allocation rules reward whoever shouts loudest, orders distort; when information is delayed and re-processed layer by layer, fluctuation amplifies. The fix is not moral persuasion but structural change — share true demand data, replenish against actual consumption, shorten lead times, and make telling the truth the cheapest strategy.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Supply Chain</dt><dd>The chain of organizations and processes, from raw material to consumer, that together deliver the product.</dd>
+      <dt>Bullwhip Effect</dt><dd>The phenomenon in which small end-demand fluctuations amplify tier by tier as they move upstream, swinging upstream orders violently.</dd>
+      <dt>Order Batching</dt><dd>Consolidating demand into large, infrequent orders to spread costs — squeezing steady demand into pulses.</dd>
+      <dt>Shortage Gaming</dt><dd>The rational behavior of buyers who deliberately inflate order quantities when they expect quota to be allocated in proportion to order size.</dd>
+      <dt>Lead Time</dt><dd>The time from placing an order to receiving the goods; the length of future your forecast must cover.</dd>
+      <dt>Vendor-Managed Inventory (VMI)</dt><dd>A replenishment model in which the supplier restocks the downstream party automatically from shared data and manages the stock level itself.</dd>
+      <dt>Point-of-Sale (POS) Data</dt><dd>Records of what actually sells at the end market — the core raw material of information sharing.</dd>
+      <dt>Collaborative Planning, Forecasting and Replenishment (CPFR)</dt><dd>A collaboration mechanism in which all parties on the chain work from one shared forecast and replenishment plan.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    What upstream sees is not demand but orders distorted layer by layer by order batching, shortage gaming, promotions, and demand signal processing — <strong>the stacking of local rationality manufactures systemic madness</strong>. The bullwhip is tamed not by forecasting harder but by letting true demand reach every tier: share the data, compress lead times, replenish against consumption.
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "What does the “bullwhip effect” refer to?",
+      "options": ["A retail promotion briefly lifts sales", "Small fluctuations at the end amplify tier by tier as they move upstream", "Raw material price increases pass through the chain to retail prices", "Insufficient factory capacity causes widespread stockouts at the end"],
+      "answer": 1,
+      "explain": "The bullwhip’s keywords are “amplified tier by tier” and “traveling upstream”: a 5% swing at the consumer end can become order swings many times larger by the time it reaches the supplier. Price pass-through and stockouts are supply chain problems too, but neither defines the bullwhip." },
+    { "q": "Which of the four root causes is “shortage gaming”?",
+      "options": ["Deliberately inflating order quantities for fear of not getting a share of supply", "Consolidating demand into large batches to spread ordering costs", "Stockpiling before a promotion, then returning goods in bulk after it ends", "Revising order quantities every period from a smoothed forecast"],
+      "answer": 0,
+      "explain": "When scarce capacity is allocated in proportion to order size, overstating becomes every buyer’s rational strategy — everyone exaggerates, and total orders far exceed true demand; the double-ordering of the chip shortage is exactly this. The other three options are order batching, price promotions, and demand signal processing, respectively." },
+    { "q": "What is the most direct move to dampen the bullwhip effect?",
+      "options": ["Upstream holds more safety stock to hedge against downstream swings", "Run bigger promotions to stimulate the true underlying demand", "Lengthen replenishment lead times to smooth out production scheduling", "Share end-market POS sales data with every tier"],
+      "answer": 3,
+      "explain": "The root disease is that upstream sees only distorted orders — so hand it true demand directly: with POS data reaching every tier, forecasts are no longer built on echoes. Holding more stock merely piles cost upstream, and longer lead times give the amplification an even longer lever." },
+    { "q": "The automakers’ double-ordering in the 2020–2022 chip shortage most resembles which of the four root causes?",
+      "options": ["An everyday-low-price strategy that stabilized demand", "Vendor-managed inventory shifting risk upstream", "Shortage gaming: ordering to the size of one’s worst fear", "Swings triggered by just-in-time pull replenishment"],
+      "answer": 2,
+      "explain": "The expectation that “shortages are allocated in proportion to order size” made buyers quote volumes far beyond their plans — a textbook shortage game. Once the new capacity landed and demand cooled, the inflated orders evaporated together, and the whip tip lashed back across the whole chain." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul class="timeline">
+      <li><b>Supply Chain Management: Strategy, Planning, and Operation</b> by Sunil Chopra (read: the chapters on demand forecasting and supply chain coordination) — the textbook source of this lesson’s model, with a dedicated section on the bullwhip effect.</li>
+      <li><b>Logistics and Supply Chain Management</b> by Martin Christopher (read: the chapters linking supply chain and competitive strategy) — the home of the famous dictum that future competition will be supply chain against supply chain.</li>
+      <li><b>Operations Management</b> by William J. Stevenson (read: the inventory and supply chain management chapters) — sets the operations concepts of the first four lessons into one master map.</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-quality-and-lean.html"><span class="pager-label">← Previous</span><span class="pager-title">Quality and Lean</span></a>
+    <a class="next" href="../../08-strategy/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Strategy · Branch 08 — the next stage for operational capability</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “We sell through two layers of distributors — how bad is our bullwhip, and could VMI work for us?” Drawing your own company’s chain is the single best exercise for this lesson. Follow-up questions are part of learning.</div>
+    <p>Operations &amp; Supply Chain · Lesson 4 of 4 · Supply Chains and the Bullwhip Effect | Interactive: course library generated by your AI teacher · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+/* ===== Bullwhip effect simulator ===== */
+(function () {
+  "use strict";
+  var barsBox = document.getElementById("bw-bars");
+  var linesBox = document.getElementById("bw-lines");
+  var readout = document.getElementById("bw-readout");
+  var shareBox = document.getElementById("bw-share");
+  var controls = document.getElementById("bw-controls");
+  if (!barsBox || !linesBox || !window.Viz) return;
+
+  var BASE = 100, STEP_AT = 8, T = 22, ALPHA = 0.6, LCOV = 2;
+  var NAMES = ["Retailer", "Distributor", "Factory", "Supplier"];
+  var COLORS = ["#f59e0b", "#ea580c", "#dc2626", "#991b1b"];
+  var C_CONSUMER = "#78716c";
+
+  function simulate(S, shared) {
+    var orders = [[], [], [], []];
+    var f = [BASE, BASE, BASE, BASE];
+    for (var t = 0; t < T; t++) {
+      var d = t < STEP_AT ? BASE : S;
+      for (var i = 0; i < 4; i++) {
+        var recv;
+        if (shared) recv = d;
+        else if (i === 0) recv = d;
+        else recv = orders[i - 1][t - 1] != null ? orders[i - 1][t - 1] : BASE;
+        var fPrev = f[i];
+        var fNew = shared ? d : fPrev + ALPHA * (recv - fPrev);
+        f[i] = fNew;
+        var ord = shared ? d : Math.max(0, Math.round(fNew + LCOV * (fNew - fPrev)));
+        orders[i].push(ord);
+      }
+    }
+    return orders;
+  }
+
+  function extremes(orders, S) {
+    var up = S >= BASE;
+    return orders.map(function (arr) {
+      var vals = arr.slice(STEP_AT - 1);
+      return up ? Math.max.apply(null, vals) : Math.min.apply(null, vals);
+    });
+  }
+
+  function pct(v) {
+    var p = Math.round((v / BASE - 1) * 100);
+    return (p > 0 ? "+" : "") + p + "%";
+  }
+
+  function render(S, shared) {
+    var orders = simulate(S, shared);
+    var dArr = [];
+    for (var t = 0; t < T; t++) dArr.push(t < STEP_AT ? BASE : S);
+    var ext = extremes(orders, S);
+    var values = [S].concat(ext);
+
+    /* Bar chart */
+    barsBox.innerHTML = "";
+    var maxV = Math.max.apply(null, values) * 1.18;
+    Viz.bars(barsBox, [
+      { label: "True consumer demand", value: S, color: C_CONSUMER },
+      { label: NAMES[0] + " orders", value: ext[0], color: COLORS[0] },
+      { label: NAMES[1] + " orders", value: ext[1], color: COLORS[1] },
+      { label: NAMES[2] + " orders", value: ext[2], color: COLORS[2] },
+      { label: NAMES[3] + " orders", value: ext[3], color: COLORS[3] }
+    ], { w: 720, h: 300, max: maxV, margin: { t: 20, r: 14, b: 46, l: 46 } });
+
+    /* Line chart */
+    linesBox.innerHTML = "";
+    var all = dArr.slice();
+    orders.forEach(function (a) { all = all.concat(a); });
+    var ymax = Math.max(140, Math.max.apply(null, all) * 1.12);
+    var ch = Viz.axes(linesBox, {
+      w: 720, h: 310, margin: { t: 48, r: 16, b: 44, l: 52 },
+      xDomain: [0, T - 1], yDomain: [0, ymax],
+      xTicks: 7, yTicks: 4, xLabel: "Week", yLabel: "Orders (units/week)"
+    });
+    ch.plot(function (svg, x, y) {
+      /* Legend */
+      var legend = [["Consumer demand", C_CONSUMER]].concat(NAMES.map(function (n, i2) { return [n + " orders", COLORS[i2]]; }));
+      legend.forEach(function (item, i2) {
+        var lx = 56 + i2 * 128;
+        svg.appendChild(Viz.svgEl("rect", { x: lx, y: 12, width: 11, height: 11, rx: 2, fill: item[1] }));
+        var lt = Viz.svgEl("text", { x: lx + 16, y: 22, "font-size": 11, fill: "#57534e", "font-weight": 700 });
+        lt.textContent = item[0];
+        svg.appendChild(lt);
+      });
+      /* Demand-change marker line */
+      svg.appendChild(Viz.svgEl("line", { x1: x(STEP_AT), x2: x(STEP_AT), y1: y(0), y2: y(ymax), stroke: "#a8a29e", "stroke-width": 1.5, "stroke-dasharray": "5 4" }));
+      var mk = Viz.svgEl("text", { x: x(STEP_AT) + 5, y: y(ymax) + 14, "font-size": 11, fill: "#a8a29e", "font-weight": 700 });
+      mk.textContent = "Week " + STEP_AT + " demand " + (S >= BASE ? "+" : "−") + Math.abs(Math.round((S / BASE - 1) * 100)) + "%";
+      svg.appendChild(mk);
+      /* Consumer demand line */
+      Viz.line(svg, dArr.map(function (v, t) { return [x(t), y(v)]; }), { color: C_CONSUMER, width: 2.5, dash: "7 5" });
+      /* Order lines by tier */
+      orders.forEach(function (a, i2) {
+        Viz.line(svg, a.map(function (v, t) { return [x(t), y(v)]; }), { color: COLORS[i2], width: 2.5 });
+      });
+    });
+
+    /* Readout */
+    var consPct = pct(S);
+    if (S === BASE) {
+      readout.innerHTML = "Consumer demand currently equals the baseline of <b>100</b> — no change at all: every tier’s orders sit steady at 100. Move the slider to any notch within ±10% and watch a bullwhip get manufactured.";
+    } else if (!shared) {
+      var html = "Consumer demand " + consPct + " → ";
+      html += NAMES.map(function (n, i2) { return n + " order " + (S >= BASE ? "peak" : "trough") + " <span class='amp'>" + pct(ext[i2]) + "</span>"; }).join(" → ");
+      html += "<br>Each tier reads the tier below’s overreaction as a new trend, then tops up with another round of safety stock: the farther upstream, the harder the whip tip lashes. Most of the capacity and inventory upstream prepares is serving <b>echoes</b>, not demand.";
+      readout.innerHTML = html;
+    } else {
+      var html2 = "With sharing on, consumer demand " + consPct + ", and every tier’s order " + (S >= BASE ? "peak" : "trough") + " ≈ <span class='calm'>" + pct(ext[3]) + "</span> — locked to true demand, and <span class='calm'>the amplification is gone</span>.";
+      html2 += "<br>Upstream no longer forecasts against the echo of downstream orders but aligns directly with end-market consumption: that is the power of “seeing true demand.”";
+      readout.innerHTML = html2;
+    }
+  }
+
+  var demand = { v: 105 };
+  var slider = Viz.slider(controls, {
+    label: "Consumer demand from week 8", min: 90, max: 110, step: 1, value: demand.v,
+    format: function (v) { return v + " units/week (" + pct(v) + ")"; }
+  });
+  slider.onChange(function (v) { demand.v = v; render(v, shareBox.checked); });
+  shareBox.addEventListener("change", function () { render(demand.v, shareBox.checked); });
+
+  render(demand.v, false);
+})();
+</script>
+</body>
+</html>

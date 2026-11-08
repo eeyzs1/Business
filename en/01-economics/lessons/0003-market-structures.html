@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Market Structures: From Perfect Competition to Monopoly · Economics</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .spectrum { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; margin: .4rem 0 .9rem; }
+  .spec-cell { text-align: center; border: 1.5px solid var(--line); border-radius: 10px; padding: .45rem .3rem; background: #fff; transition: all .2s ease; }
+  .spec-cell b { display: block; font-size: .92rem; }
+  .spec-cell span { font-size: .74rem; color: var(--ink-faint); }
+  .spec-cell.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, #fff); }
+  .spec-cell.on b { color: var(--accent); }
+  @media (max-width: 560px) { .spectrum { grid-template-columns: repeat(2, 1fr); } }
+  .dims { display: grid; gap: .55rem; margin: .9rem 0 .4rem; }
+  .dim { display: grid; grid-template-columns: 5.4rem 1fr; gap: .15rem .8rem; align-items: center; }
+  .dim-name { font-weight: 700; font-size: .9rem; color: var(--ink-soft); }
+  .meter { height: 10px; border-radius: 999px; background: var(--paper-deep); overflow: hidden; }
+  .meter i { display: block; height: 100%; width: 0; border-radius: 999px; background: var(--accent); transition: width .3s ease; }
+  .dim-txt { grid-column: 2; font-size: .84rem; color: var(--ink-soft); }
+</style>
+</head>
+<body class="branch-economics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Economics</a><span class="crumb-sep">/</span>
+  <span>Market Structures</span>
+  <span class="progress">Lesson 3 of 4</span>
+<a class="lang-switch" href="../../../01-economics/lessons/0003-market-structures.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Economics · Lesson 3</p>
+  <h1>Market Structures: From Perfect Competition to Monopoly</h1>
+  <p class="lead">Why can’t a vegetable vendor charge a ‘brand premium’ for greens, while the iPhone dares to sell for over ¥10,000? Why have the two cola giants fought an advertising war for a century yet rarely fought a real price war? The answer lies not in the products but in market structure — the competitive environment you operate in has already determined how much money you can make.</p>
+
+  <h2><span class="secno">1</span>Market structure: the ranking ladder of competition</h2>
+  <p>The first question of business strategy is not ‘how do I fight’ but ‘what does the battlefield look like’. Within an industry, the ‘elasticity’ from <a href="0002-price-elasticity.html">Lesson 2</a> determines how easily your customers can flee, while <em>market structure</em> determines how many rivals you have, whether the product can be differentiated, whether new players can enter, and whether you hold pricing power. Economics arranges markets along a spectrum by four dimensions: <em>perfect competition</em> → <em>monopolistic competition</em> → <em>oligopoly</em> → <em>monopoly</em>.</p>
+
+  <div class="table-wrap" data-reveal>
+    <table class="compact">
+      <thead>
+        <tr><th>Dimension</th><th>Perfect Competition</th><th>Monopolistic Competition</th><th>Oligopoly</th><th>Monopoly</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>Number of firms</b></td><td>Countless</td><td>Many</td><td>A few</td><td>One</td></tr>
+        <tr><td><b>Product differences</b></td><td>Perfectly homogeneous</td><td>Differentiated (brand/flavor)</td><td>Homogeneous or differentiated</td><td>Unique, no close substitutes</td></tr>
+        <tr><td><b>Entry barriers</b></td><td>Almost none</td><td>Low</td><td>High</td><td>Very high</td></tr>
+        <tr><td><b>Pricing power</b></td><td>None</td><td>Weak</td><td>Fairly strong (mutual restraint)</td><td>Strongest</td></tr>
+        <tr><td><b>Typical examples</b></td><td>Wet markets, farm produce</td><td>Restaurants, toiletries</td><td>Cola, airlines</td><td>Power grids, WeChat</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="secno">2</span>Walk the spectrum: simulator</h2>
+  <p>Drag the slider from ‘countless small firms’ all the way to ‘a single dominant firm’. The four-axis radar chart and the dimension cards below update in real time — watch how <em>entry barriers</em> and <em>pricing power</em> climb together as you move to the right.</p>
+
+  <div class="sim">
+    <div class="sim-title">Simulator · The market-structure spectrum: from countless small firms to one dominant player</div>
+    <div class="spectrum" id="ms-spec">
+      <div class="spec-cell on"><b>Perfect Competition</b><span>countless small firms</span></div>
+      <div class="spec-cell"><b>Monopolistic Competition</b><span>many firms, each distinctive</span></div>
+      <div class="spec-cell"><b>Oligopoly</b><span>a few rivals facing off</span></div>
+      <div class="spec-cell"><b>Monopoly</b><span>one dominant player</span></div>
+    </div>
+    <div class="sim-controls" id="ms-controls"></div>
+    <div id="ms-radar"></div>
+    <div class="dims">
+      <div class="dim"><span class="dim-name">Firms</span><div class="meter"><i id="ms-firms"></i></div><span class="dim-txt" id="ms-firms-t"></span></div>
+      <div class="dim"><span class="dim-name">Differentiation</span><div class="meter"><i id="ms-diff"></i></div><span class="dim-txt" id="ms-diff-t"></span></div>
+      <div class="dim"><span class="dim-name">Barriers</span><div class="meter"><i id="ms-barrier"></i></div><span class="dim-txt" id="ms-barrier-t"></span></div>
+      <div class="dim"><span class="dim-name">Pricing power</span><div class="meter"><i id="ms-power"></i></div><span class="dim-txt" id="ms-power-t"></span></div>
+    </div>
+    <p class="sim-readout" id="ms-readout">Loading simulator…</p>
+    <p style="font-size:.87rem;color:var(--ink-faint);margin:.4rem 0 0">The radar chart and 1–5 scores are teaching aids to help you remember directions, not precise measurements.</p>
+  </div>
+
+  <div class="concept">
+    <div class="concept-title">Price Taker</div>
+    <p style="margin:.2rem 0 0">A firm in a perfectly competitive market: its share is too small, so it must take the going price — raise your greens 50% at a wet market and customers simply turn to the next stall. In the long run, competition squeezes economic profit toward zero.</p>
+  </div>
+  <div class="concept">
+    <div class="concept-title">Price Maker</div>
+    <p style="margin:.2rem 0 0">A monopoly (and some oligopoly) firm: facing the entire downward-sloping demand curve, it can ‘set the price first, then choose the quantity’. It has no rivals, yet remains constrained by two things: the law of demand (price too high and fewer buy) and government regulation / antitrust.</p>
+  </div>
+  <p>What underpins pricing power is <em>entry barriers</em>: economies of scale, patents and licenses, brand and switching costs, and network effects — products that get more useful the more people use them (social networks, payments) naturally slide toward winner-take-all. The higher the barriers, the longer profits persist; high profits without barriers are simply an invitation to future entrants.</p>
+
+  <h2><span class="secno">3</span>Case: three markets, three fates</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">The wet market, the cola duopoly, and the power grid</p>
+    <p><b>The wet market (near-perfect competition):</b> dozens of stalls sell nearly identical vegetables, information is transparent, and entry and exit are free. Each stall owner is a price taker with only a few cents of bargaining room; the edge comes from a sharp eye at the early-morning wholesale market and a good stall location, not pricing power.</p>
+    <p><b>The cola duopoly:</b> Coca-Cola and Pepsi together hold roughly 70% of the global carbonated-soft-drink market (order of magnitude, illustrative); they are mutually dependent and watch each other closely — if one cuts price, the other follows, and a price war wounds both, so the battlefield shifts to advertising, sponsorships, and distribution channels. This is the classic strategic interaction of oligopoly.</p>
+    <p><b>State Grid and WeChat (monopoly):</b> a transmission grid is asset-heavy and uneconomic to duplicate — the textbook <em>natural monopoly</em> — and is therefore subject to strict government price regulation. WeChat, powered by network effects, dominates acquaintance-based social networking: the product is free, yet across payments, advertising, and the mini-program ecosystem it wields enormous pricing and rule-setting power — and accordingly faces continuing antitrust scrutiny.</p>
+    <p class="case-learn"><b>The lesson:</b> structure decides fate — your pricing power equals ‘the degree to which your customers cannot find substitutes’. Much of what corporate strategy does (brand, patents, ecosystems) is, in essence, an effort to move the firm from the left end of the spectrum to the right.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Perfect Competition</dt><dd>Countless firms selling homogeneous products with free entry and exit; firms are price takers.</dd>
+      <dt>Monopolistic Competition</dt><dd>Many firms with differentiated products; differentiation earns a sliver of pricing power.</dd>
+      <dt>Oligopoly</dt><dd>A few large firms that are mutually dependent, each decision restraining the others.</dd>
+      <dt>Monopoly</dt><dd>A single firm owns the whole market; the product has no close substitutes.</dd>
+      <dt>Entry Barriers</dt><dd>Factors that keep new firms out: economies of scale, patents, licenses, brand, network effects.</dd>
+      <dt>Price Taker</dt><dd>A firm with no pricing power that must transact at the market price.</dd>
+      <dt>Price Maker</dt><dd>A firm able to set its own price and then decide its quantity.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>The ceiling on profit is set by market structure: the more rivals and the lower the barriers, the less pricing power you have. The essence of competitive strategy is to move yourself from the price-taker box into the price-maker box.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "At a wet market, dozens of stalls sell nearly identical vegetables. One stall owner raises prices by 50%. What most likely happens?",
+        "options": ["Customers don’t care and keep buying", "The owner earns higher total revenue", "Every stall immediately raises prices too", "Customers move to the next stall and sales collapse"],
+        "answer": 3,
+        "explain": "Homogeneous products + countless substitute sellers = <b>perfect competition</b>; the lone stall owner is a price taker: raise the price and customers instantly flow next door. The power to set prices is not in his hands." },
+      { "q": "Coca-Cola and Pepsi wage a long advertising war yet rarely fight a real price war. Which market structure does this fit best?",
+        "options": ["Perfect competition — everyone takes the market price", "Oligopoly — mutually dependent strategic interaction", "Monopoly — one firm owns the market", "Monopolistic competition — thousands of firms"],
+        "answer": 1,
+        "explain": "The crux of oligopoly is <b>mutual dependence</b>: a price cut will be matched and both sides bleed; so competition shifts to advertising and differentiation. Perfect competition has no strategic interaction, and monopoly has no rivals." },
+      { "q": "WeChat’s position in acquaintance-based social networking is closest to which structure and pricing power?",
+        "options": ["Monopoly — close to a price maker", "Perfect competition — must take the market price", "Oligopoly — takes turns setting prices with rivals", "Monopolistic competition — splits the market by differentiation"],
+        "answer": 0,
+        "explain": "Network effects (all your friends are on it) build extremely high barriers, leaving WeChat close to a <b>single dominant firm</b>: even with a free product, it holds price-maker-like clout over its ecosystem and rules — and therefore faces antitrust constraints." },
+      { "q": "How does the height of entry barriers affect whether an industry’s high profits persist?",
+        "options": ["Lower barriers bring more entrants and thinner profits", "No stable relationship between barriers and profit", "Higher barriers keep new rivals out, so profits stay stable", "Higher barriers mean lower profits — defending costs more"],
+        "answer": 2,
+        "explain": "High profits without barriers invite entrants, and competition grinds the profits down; barriers (patents, network effects, economies of scale) block entrants, so monopoly profits can <b>persist</b> — which is why strategy studies barriers so closely." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">4</span>Further Reading</h2>
+    <ul>
+      <li>Principles of Economics (8th ed., microeconomics volume) by N. Gregory Mankiw — Peking University Press (suggested: Chs. 14–17, competitive markets, monopoly, monopolistic competition, and oligopoly)</li>
+      <li>Competitive Strategy by Michael E. Porter — Huaxia Publishing House edition (suggested: Ch. 1, ‘General Structural Analysis’)</li>
+      <li>Search keywords: Porter Five Forces, Natural Monopoly</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-price-elasticity.html"><span class="pager-label">← Previous</span><span class="pager-title">Elasticity: Why Raising Prices Doesn’t Always Raise Revenue</span></a>
+    <a class="next" href="0004-macroeconomics.html"><span class="pager-label">Next →</span><span class="pager-title">Macroeconomics: GDP, Inflation, and Interest Rates</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Which structure does my industry count as?’ or ‘Why do network effects so easily end in winner-take-all?’ — follow-up questions are part of learning.</div>
+    <p>Economics · Lesson 3 · Market Structures | Interactive: structure-spectrum slider × four-axis radar × dimension cards · case figures are illustrative magnitudes</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  if (!window.Viz) return;
+  var DATA = [
+    { name: "Perfect Competition", firms: 5, diff: 1, barrier: 1, power: 1,
+      desc: "Both sides are price takers: products are homogeneous and entry is free; in the long run competition erases economic profit, and money is made only through efficiency and cost.",
+      ex: "wet markets, commodity agriculture, stock exchanges" },
+    { name: "Monopolistic Competition", firms: 4, diff: 4, barrier: 2, power: 2,
+      desc: "Many firms, each with its own flavor; brand, taste, or location earns a sliver of pricing power — and the profits keep attracting imitators who nibble it away.",
+      ex: "restaurants, bubble-tea brands, shampoos" },
+    { name: "Oligopoly", firms: 2, diff: 3, barrier: 4, power: 4,
+      desc: "A few big players watching one another: if one cuts prices, the rest follow at once; decisions are mutually restraining, and advertising wars and differentiation usually replace price wars.",
+      ex: "cola (Coca-Cola/Pepsi), airlines, telecom carriers" },
+    { name: "Monopoly", firms: 1, diff: 3, barrier: 5, power: 5,
+      desc: "One firm owns the entire market and acts as a near price maker; without regulation it can restrict output and raise prices for monopoly profit — and it is the most likely target of antitrust.",
+      ex: "power transmission (State Grid), WeChat (acquaintance social networking)" }
+  ];
+  var DIMS = [
+    ["firms", ["Countless tiny buyers and sellers", "Many, each with its niche audience", "A few, watching one another", "Just one"]],
+    ["diff", ["Perfectly homogeneous, no differences", "Differentiation is the selling point (brand/flavor)", "Homogeneous or differentiated, by industry", "Unique product, no close substitutes"]],
+    ["barrier", ["Nearly zero — come and go freely", "Low — rent a shop and you’re in", "High: scale, licenses, channels", "Very high: licenses, patents, network effects"]],
+    ["power", ["None — must take the market price", "Weak — a small premium", "Fairly strong, but restrained by rivals", "Strongest — close to a price maker"]]
+  ];
+  var radarBox = document.getElementById("ms-radar");
+  var readout = document.getElementById("ms-readout");
+  var controls = document.getElementById("ms-controls");
+  var specCells = document.querySelectorAll("#ms-spec .spec-cell");
+  if (!radarBox || !readout || !controls || !specCells.length) return;
+
+  var W = 440, H = 330, cx = 220, cy = 168, R = 105;
+  var svg = Viz.svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img", style: "width:100%;height:auto;display:block" });
+  var AXES = [
+    { name: "Firms", angle: -Math.PI / 2 },
+    { name: "Differentiation", angle: 0 },
+    { name: "Barriers", angle: Math.PI / 2 },
+    { name: "Pricing power", angle: Math.PI }
+  ];
+  function pt(axis, v) {
+    var r = R * v / 5;
+    return [cx + Math.cos(axis.angle) * r, cy + Math.sin(axis.angle) * r];
+  }
+  for (var k = 1; k <= 5; k++) {
+    var ring = AXES.map(function (a) { var p = pt(a, k); return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ");
+    svg.appendChild(Viz.svgEl("polygon", { points: ring, fill: "none", stroke: "#e7e0d3", "stroke-width": 1 }));
+  }
+  AXES.forEach(function (a) {
+    var p = pt(a, 5);
+    svg.appendChild(Viz.svgEl("line", { x1: cx, y1: cy, x2: p[0].toFixed(1), y2: p[1].toFixed(1), stroke: "#e7e0d3", "stroke-width": 1.2 }));
+  });
+  var labelPos = [
+    [cx, cy - R - 12, "middle"], [cx + R + 14, cy + 4, "start"],
+    [cx, cy + R + 20, "middle"], [cx - R - 14, cy + 4, "end"]
+  ];
+  AXES.forEach(function (a, i) {
+    var t = Viz.svgEl("text", { x: labelPos[i][0], y: labelPos[i][1], "text-anchor": labelPos[i][2], "font-size": 12.5, "font-weight": 700, fill: "#57534e" });
+    t.textContent = a.name;
+    svg.appendChild(t);
+  });
+  var poly = Viz.svgEl("polygon", { fill: "#0e7490", opacity: "0.25", stroke: "#0e7490", "stroke-width": 2.5 });
+  svg.appendChild(poly);
+  var vdots = AXES.map(function () {
+    var c = Viz.svgEl("circle", { r: 4.5, fill: "#0e7490", stroke: "#fff", "stroke-width": 1.5 });
+    svg.appendChild(c);
+    return c;
+  });
+  radarBox.appendChild(svg);
+
+  function apply(i) {
+    var s = DATA[i];
+    var vals = [s.firms, s.diff, s.barrier, s.power];
+    poly.setAttribute("points", AXES.map(function (a, j) {
+      var p = pt(a, vals[j]);
+      return p[0].toFixed(1) + "," + p[1].toFixed(1);
+    }).join(" "));
+    vdots.forEach(function (c, j) {
+      var p = pt(AXES[j], vals[j]);
+      c.setAttribute("cx", p[0].toFixed(1)); c.setAttribute("cy", p[1].toFixed(1));
+    });
+    DIMS.forEach(function (dim, j) {
+      var bar = document.getElementById("ms-" + dim[0]);
+      var txt = document.getElementById("ms-" + dim[0] + "-t");
+      if (bar) bar.style.width = (vals[j] * 20) + "%";
+      if (txt) txt.textContent = dim[1][i];
+    });
+    readout.innerHTML = "<b>" + s.name + "</b> — " + s.desc + " Typical markets: " + s.ex + ".";
+    specCells.forEach(function (c, j) { c.classList.toggle("on", j === i); });
+  }
+
+  var sl = Viz.slider(controls, {
+    label: "Drag from countless small firms to one dominant player", min: 0, max: 3, step: 1, value: 0,
+    format: function (v) { return DATA[Math.round(v)].name; }
+  });
+  sl.onChange(function (v) { apply(Math.round(v)); });
+  apply(0);
+})();
+</script>
+</body>
+</html>

@@ -222,6 +222,7 @@ def main():
     only = sys.argv[1] if len(sys.argv) > 1 else None
 
     pages = [p for p in sorted(ROOT.rglob("*.html"))
+             if "en" not in p.parts  # 英文镜像由 tools/check_en.py 校验
              if not only or any(only in part for part in p.parts)]
     if only and not pages:
         print(f"未找到与 {only!r} 匹配的页面")

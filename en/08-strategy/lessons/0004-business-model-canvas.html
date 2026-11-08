@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Business Model Canvas · Strategy</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .sim-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 700; cursor: pointer;
+    border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+    color: var(--accent); background: #fff; border-radius: 999px; padding: .35rem 1.05rem;
+    transition: all .15s ease;
+  }
+  .sim-btn:hover { background: color-mix(in srgb, var(--accent) 10%, #fff); }
+  .sim-btn.ghost { color: var(--ink-soft); border-color: var(--line); }
+  /* ---- Canvas lab ---- */
+  .bmc-legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .82rem; margin: .4rem 0 .8rem; color: var(--ink-soft); }
+  .bmc-legend .sw { display: inline-block; width: 1em; height: 1em; border-radius: 3px; vertical-align: -2px; margin-right: .35em; }
+  .bmc-canvas {
+    display: grid; gap: 6px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-areas:
+      "kp ka vp cr cs"
+      "kp kr vp ch cs"
+      "cost cost rev rev rev";
+  }
+  .bmc-cell {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: .55rem .65rem; cursor: pointer; min-height: 118px;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .bmc-cell[data-wing="cost"] { border-top: 3px solid #b91c1c; }
+  .bmc-cell[data-wing="value"] { border-top: 3px solid #0e7490; }
+  .bmc-cell:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow); }
+  .bmc-cell.active { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 40%, transparent); }
+  .bmc-cell h4 { margin: 0 0 .3rem; font-family: var(--sans); font-size: .84rem; font-weight: 800; color: var(--ink); line-height: 1.4; }
+  .bmc-cell h4 .bmc-en { display: block; font-size: .62rem; font-weight: 600; color: var(--ink-faint); letter-spacing: .02em; }
+  .bmc-content { font-size: .76rem; line-height: 1.6; color: var(--ink-faint); font-style: italic; }
+  .bmc-content.filled { color: var(--ink); font-style: normal; animation: bmcIn .45s ease; }
+  @keyframes bmcIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .bmc-cell.wing-flash { animation: wingPulse 1s ease 1; }
+  @keyframes wingPulse {
+    40% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--wing, #999) 35%, transparent); transform: scale(1.03); }
+  }
+  .bmc-kp { grid-area: kp; } .bmc-ka { grid-area: ka; } .bmc-kr { grid-area: kr; }
+  .bmc-vp { grid-area: vp; } .bmc-cr { grid-area: cr; } .bmc-ch { grid-area: ch; }
+  .bmc-cs { grid-area: cs; } .bmc-cost { grid-area: cost; min-height: 92px; } .bmc-rev { grid-area: rev; min-height: 92px; }
+  @media (max-width: 640px) {
+    .bmc-canvas {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "vp vp"
+        "cs cs"
+        "ch cr"
+        "ka kr"
+        "kp kp"
+        "rev rev"
+        "cost cost";
+    }
+    .bmc-cell { min-height: 92px; }
+  }
+  .bmc-panel { border: 1px solid var(--line); background: #fff; border-radius: 12px; box-shadow: var(--shadow); padding: 1rem 1.2rem; margin-top: 1rem; }
+  .bmc-panel h4 { margin: 0 0 .4rem; font-size: .95rem; }
+  .bmc-panel ul { margin: .2rem 0 .6rem; padding-left: 1.2rem; font-size: .9rem; color: var(--ink-soft); line-height: 1.8; }
+  .bmc-panel p { font-size: .88rem; line-height: 1.7; margin: 0 0 .35rem; }
+  .bmc-good b { color: var(--good); }
+  .bmc-bad b { color: var(--bad); }
+  .bmc-panel p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body class="branch-strategy">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Strategy</a><span class="crumb-sep">/</span>
+  <span>Business Model Canvas</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../08-strategy/lessons/0004-business-model-canvas.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Strategy · Lesson 4</p>
+  <h1>The Business Model Canvas</h1>
+  <p class="lead">“Getting great content in front of people” can be three completely different businesses: selling discs, running cinemas, or streaming by subscription. Strategic positioning answers “why do you win”; the <strong>business model</strong> answers <em>how value turns into cash — and how cash turns back into value</em>. This lesson teaches you to take any business apart with the nine-block, one-page <strong>Business Model Canvas</strong> — including your own.</p>
+
+  <h2><span class="secno">1</span>Nine Blocks: A Whole Business on One Page</h2>
+  <p>Proposed by Alexander Osterwalder and Yves Pigneur in Business Model Generation, the canvas breaks any business model into nine building blocks:</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>Area</th><th>Building blocks</th><th>One question to ask yourself</th></tr></thead>
+      <tbody>
+        <tr><td><b>Customer side</b></td><td>Customer Segments, Channels, Customer Relationships</td><td>Whom do we serve? How do we reach them? How do we keep them?</td></tr>
+        <tr><td><b>Value core</b></td><td>Value Proposition</td><td>What job do we help with, what pain do we relieve?</td></tr>
+        <tr><td><b>Efficiency side</b></td><td>Key Activities, Key Resources, Key Partners</td><td>Which people, activities, and assets deliver the promise?</td></tr>
+        <tr><td><b>The money</b></td><td>Revenue Streams, Cost Structure</td><td>Who pays, and how? What burns the most cash?</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="concept">
+    <div class="concept-title">Concept Card · Business Model</div>
+    <p style="margin:.2rem 0 0">The fundamental logic of how a firm <strong>creates value, delivers value, and captures value</strong>. It is not strategy: strategy chooses which battle to fight, while the business model is that battle’s logistics system — where the grain comes from, how the wounded are treated, how the captured towns are taxed.</p>
+  </div>
+
+  <h2><span class="secno">2</span>Efficiency on the Left, Value on the Right: The Physics of the Canvas</h2>
+  <p>Fold the canvas down the middle and a clear dividing line appears. The <strong>right wing (value side)</strong> — customer segments, value proposition, channels, customer relationships, revenue streams — answers “what value for whom, how is it delivered, how is it charged”; the <strong>left wing (efficiency side)</strong> — key partners, key activities, key resources, cost structure — answers “what infrastructure produces the whole thing efficiently.”</p>
+  <p>The division of labor between the wings sets a business’s ceiling and floor: the right wing fixes the <strong>revenue ceiling</strong> (how much customers will pay for a unit of value), the left wing fixes the <strong>cost floor</strong> (the least it can cost to deliver that unit). Profit lives between the two lines. A dazzling right wing on a collapsing left wing loses money on every sale; a lean left wing without a standing right wing is a money-saving machine nobody visits.</p>
+
+  <h2><span class="secno">3</span>Telling the Story with the Canvas: Four Steps Through a Business</h2>
+  <ol class="steps">
+    <li><b>For whom:</b> start by circling customer segments — not “everyone,” but specific people whose faces you can picture.</li>
+    <li><b>Offering what:</b> the value proposition — which jobs you help finish, which pains you ease, which gains you create.</li>
+    <li><b>Delivered how:</b> channels and customer relationships — where they hear about you, where they buy, and why they stay afterward.</li>
+    <li><b>Earning how:</b> revenue streams and cost structure — who pays, how often, and which block eats most of the money.</li>
+  </ol>
+  <p>This is the right narrative order for introducing a business to investors or new hires — right to left, then down to the money at the bottom. Reverse it (opening with how hard you work and how impressive your assets are) and the audience usually feels nothing.</p>
+
+  <div class="sim">
+    <div class="sim-title">Business Model Canvas Lab</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .6rem"><b>Click any block</b> and the panel below unfolds its key questions with good and bad examples; click <b>“Fill in Netflix in one click”</b> and the nine blocks fill in one after another with an illustrative subscription-streaming canvas, highlighting how the left (cost/efficiency) and right (value) wings move together.</p>
+    <div class="bmc-legend">
+      <span><span class="sw" style="background:#b91c1c"></span>Left wing · efficiency side (cost)</span>
+      <span><span class="sw" style="background:#0e7490"></span>Right wing · value side (demand)</span>
+    </div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:.2rem 0 .9rem">
+      <button type="button" class="sim-btn" id="bmc-fill">Fill in the Netflix subscription model (illustrative)</button>
+      <button type="button" class="sim-btn ghost" id="bmc-clear">Clear the canvas</button>
+    </div>
+    <div class="bmc-canvas" id="bmc-canvas">
+      <div class="bmc-cell bmc-kp" data-key="kp" data-wing="cost">
+        <h4>Key Partners<span class="bmc-en">Who helps us?</span></h4>
+        <div class="bmc-content" id="bmc-c-kp">To be filled · click this block</div>
+      </div>
+      <div class="bmc-cell bmc-ka" data-key="ka" data-wing="cost">
+        <h4>Key Activities<span class="bmc-en">What do we do?</span></h4>
+        <div class="bmc-content" id="bmc-c-ka">To be filled · click this block</div>
+      </div>
+      <div class="bmc-cell bmc-kr" data-key="kr" data-wing="cost">
+        <h4>Key Resources<span class="bmc-en">What do we need?</span></h4>
+        <div class="bmc-content" id="bmc-c-kr">To be filled · click this block</div>
+      </div>
+      <div class="bmc-cell bmc-vp" data-key="vp" data-wing="value">
+        <h4>Value Proposition<span class="bmc-en">What do we offer?</span></h4>
+        <div class="bmc-content" id="bmc-c-vp">To be filled · click this block</div>
+      </div>
+      <div class="bmc-cell bmc-cr" data-key="cr" data-wing="value">
+        <h4>Customer Relationships<span class="bmc-en">How do we interact?</span></h4>
+        <div class="bmc-content" id="bmc-c-cr">To be filled · click this block</div>
+      </div>
+      <div class="bmc-cell bmc-ch" data-key="ch" data-wing="value">
+        <h4>Channels<span class="bmc-en">How do we reach them?</span></h4>
+        <div class="bmc-content" id="bmc-c-ch">To be filled · click this block</div>
+      </div>
+      <div class="bmc-cell bmc-cs" data-key="cs" data-wing="value">
+        <h4>Customer Segments<span class="bmc-en">Who do we serve?</span></h4>
+        <div class="bmc-content" id="bmc-c-cs">To be filled · click this block</div>
+      </div>
+      <div class="bmc-cell bmc-cost" data-key="cost" data-wing="cost">
+        <h4>Cost Structure<span class="bmc-en">What will it cost?</span></h4>
+        <div class="bmc-content" id="bmc-c-cost">To be filled · click this block</div>
+      </div>
+      <div class="bmc-cell bmc-rev" data-key="rev" data-wing="value">
+        <h4>Revenue Streams<span class="bmc-en">How do we earn?</span></h4>
+        <div class="bmc-content" id="bmc-c-rev">To be filled · click this block</div>
+      </div>
+    </div>
+    <div class="bmc-panel">
+      <h4 id="bmc-panel-title">Canvas panel</h4>
+      <div id="bmc-panel-body"><p style="color:var(--ink-faint)">Click any block in the canvas, and this panel will unfold its key questions, a good way to fill it in, and common pitfalls.</p></div>
+    </div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case · Netflix: One Canvas, Redrawn Three Times</p>
+    <ul class="timeline">
+      <li><b>circa 1997–2000 · DVD-by-mail subscription:</b> the customers were movie fans fed up with video-store late fees; the value proposition was “unlimited rentals for a monthly fee, no late fees”; the channel was the mailbox; revenue was a monthly subscription. Note that the disruption was written into the “Revenue Streams” block from day one — not into the discs themselves.</li>
+      <li><b>circa 2007 · streaming launches:</b> the channel shifted from the post office to the internet and device apps, and marginal delivery cost collapsed; the customer relationship went from “waiting for the disc” to “the recommendation algorithm is the relationship”; the cost structure tilted from logistics and warehouses to bandwidth and content licensing.</li>
+      <li><b>circa 2013 to today · original content:</b> the key resource swapped licensed rights for a self-produced, exclusive content library, and key partners became production companies and creators; revenue stayed subscription, but the value proposition upgraded to “shows you can only find here” — the moat (last lesson) got poured into the “Key Resources” block.</li>
+    </ul>
+    <p class="case-learn"><b>The lesson of this case:</b> none of Netflix’s leaps was a single-block optimization — each was a <b>whole-canvas redraw</b> of channels, revenue, resources, and costs together (the years and descriptions above are illustrative readings of public information). A business model is not strategy; but without a model that actually collects money, even the best strategy remains a manifesto.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Business Model</dt><dd>The fundamental logic by which a firm creates, delivers, and captures value — how value turns into cash.</dd>
+      <dt>Business Model Canvas</dt><dd>A one-page, nine-block tool that breaks any business model into building blocks you can discuss and redraw.</dd>
+      <dt>Value Proposition</dt><dd>The bundle of jobs done, pains relieved, and gains created for a customer.</dd>
+      <dt>Customer Segments</dt><dd>The people or organizations a firm chooses to serve; “everyone” means no segmentation at all.</dd>
+      <dt>Channels</dt><dd>Every touchpoint through which customers learn about, evaluate, buy, and receive the value.</dd>
+      <dt>Revenue Streams</dt><dd>The cash a firm collects from each customer segment, one-off or recurring.</dd>
+      <dt>Recurring Revenue</dt><dd>Revenue that flows in continuously through subscriptions or renewals; the lifeblood of subscription models.</dd>
+      <dt>Cost Structure</dt><dd>All the costs of running the business model, and their fixed-versus-variable mix.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Nine blocks: the right wing sets the ceiling on value and revenue, the left wing sets the floor on cost and efficiency, and profit lives between the two wings. Tell the story as “for whom → offering what → delivered how → earning how”; a business leaps by redrawing the whole canvas, not by patching a single block.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      {
+        "q": "The “left wing” of the Business Model Canvas (partners, activities, resources, costs) mainly answers:",
+        "options": ["For whom value is created, and how to reach them", "What unique value proposition is offered", "How to charge and build continuing revenue", "What it takes to get things done efficiently"],
+        "answer": 3,
+        "explain": "The left wing is the <b>efficiency side</b>: infrastructure and cost structure, setting the minimum cost of delivering a unit of value. Value and revenue are the right wing’s territory."
+      },
+      {
+        "q": "When filling in the “Customer Segments” block, the most classic failure is:",
+        "options": ["Splitting customers into two groups by use case", "Writing that everyone is a target customer", "Describing only the most important paying segment", "Listing household users who are willing to pay"],
+        "answer": 1,
+        "explain": "“Everyone is our customer” = no trade-offs = no position (an old friend from Lesson 1). Segments must be specific enough to picture a face — and explicit about who is being given up."
+      },
+      {
+        "q": "Early Netflix replaced pay-per-disc rental with “unlimited rentals for a monthly fee, no late fees.” Which canvas block did this directly reshape?",
+        "options": ["Key Partners", "Customer Relationships", "Revenue Streams", "Cost Structure"],
+        "answer": 2,
+        "explain": "From per-transaction to monthly subscription: <b>revenue streams</b> turned from one-off income into recurring revenue — the fulcrum of the whole business model innovation (illustrative)."
+      },
+      {
+        "q": "When introducing a business to others with the canvas, the right narrative order is:",
+        "options": ["For whom → offering what → delivered how → earning how", "Earning how → for whom → offering what → delivered how", "Offering what → earning how → for whom → delivered how", "Delivered how → offering what → earning how → for whom"],
+        "answer": 0,
+        "explain": "People first (customer segments), then the offer (value proposition), then reach (channels and relationships), and finally down to the money (revenue and costs). Open with how impressive your assets are, and the audience usually feels nothing."
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Business Model Generation by Alexander Osterwalder &amp; Yves Pigneur (start with: Chapters 1–2 — the canvas in its authors’ own words)</li>
+      <li>Value Proposition Design by Alexander Osterwalder, Yves Pigneur, et al. (start with: Chapter 1 — going deeper on the right wing)</li>
+      <li>Good Strategy Bad Strategy by Richard Rumelt (start with: Chapter 4 — connecting strategy to action)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-competitive-advantage.html"><span class="pager-label">← Previous</span><span class="pager-title">Competitive Advantage: Cost Leadership and Differentiation</span></a>
+    <a class="next" href="../../09-entrepreneurship/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Entrepreneurship · Branch 09 — putting strategy to work on a new venture</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Fill a company you know well into the nine-block canvas and tell me where it is weakest.’ Take the canvas to a company you use every day, and this lesson comes alive at once. Follow-up questions are part of learning.</div>
+    <p>Strategy · Lesson 4 · The Business Model Canvas | Interactive: Business Model Canvas lab · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+  var canvasEl = document.getElementById("bmc-canvas");
+  var panelTitle = document.getElementById("bmc-panel-title");
+  var panelBody = document.getElementById("bmc-panel-body");
+  var btnFill = document.getElementById("bmc-fill");
+  var btnClear = document.getElementById("bmc-clear");
+  if (!canvasEl || !panelBody) return;
+
+  var BMC = {
+    cs: {
+      name: "Customer Segments", en: "Who do we serve?", wing: "value",
+      q: ["For whom are we creating value? Who are our most important paying customers?", "Which segments are we explicitly not serving?"],
+      good: "Sharp enough to picture faces, e.g. “mass-market households who binge-watch.”",
+      bad: "“Everyone is our customer” — which means no customer at all.",
+      netflix: "Mass-market binge-watchers and families; localized operations in each market"
+    },
+    vp: {
+      name: "Value Proposition", en: "What do we offer?", wing: "value",
+      q: ["Which jobs do we help customers finish, and which pains do we relieve?", "Why would they choose us over substitutes?"],
+      good: "Concrete and felt: a huge catalog on demand, no ad breaks, cancel anytime (illustrative).",
+      bad: "“High quality, great service, low prices” all at once — slogans that fight each other.",
+      netflix: "A huge catalog on demand, no ad breaks, cancel anytime; exclusive originals"
+    },
+    ch: {
+      name: "Channels", en: "How do we reach them?", wing: "value",
+      q: ["Where do customers hear about, evaluate, and buy from us?", "How do we deliver the value into their hands?"],
+      good: "Lay out every touchpoint along customer habits: website and app, built into devices, app stores.",
+      bad: "Sell but never deliver — the channel breaks right after payment.",
+      netflix: "Website and app; built into smart TVs and set-top boxes; app-store distribution"
+    },
+    cr: {
+      name: "Customer Relationships", en: "How do we interact?", wing: "value",
+      q: ["What relationship does each segment expect: self-service, dedicated, or community?", "How do we acquire, retain, and turn customers into recruiters?"],
+      good: "Self-service signup and cancellation + algorithmic personalization: the relationship lives in the product (illustrative).",
+      bad: "One-off transactions with no retention mechanics — re-acquiring customers every month.",
+      netflix: "Self-service signup and cancellation; personalized recommendations; social buzz around hit shows"
+    },
+    rev: {
+      name: "Revenue Streams", en: "How do we earn?", wing: "value",
+      q: ["What do customers pay for today? What would they most gladly pay for?", "Is the revenue one-off or recurring? How is the pricing tiered?"],
+      good: "Recurring revenue that interlocks with the value proposition: a monthly subscription with tiers (illustrative).",
+      bad: "Only single sales, with acquisition costs eating up the profit.",
+      netflix: "Monthly subscription fees, tiered by picture quality and simultaneous screens (illustrative)"
+    },
+    kr: {
+      name: "Key Resources", en: "What do we need?", wing: "cost",
+      q: ["Which few assets does our value proposition most depend on?", "Can rivals get their hands on those assets (the moat)?"],
+      good: "A combination hard to imitate: content library + recommendation algorithm + brand (illustrative).",
+      bad: "A list of equipment and office space with no visible barrier.",
+      netflix: "Licensed and original content library; recommendation algorithms and viewing data; global brand"
+    },
+    ka: {
+      name: "Key Activities", en: "What do we do?", wing: "cost",
+      q: ["Which few things must we do at world-class level for the model to work?", "Which things only need to be good enough?"],
+      good: "Directly tied to the value proposition: content investment and originals, platform operations (illustrative).",
+      bad: "Trying to do everything in-house and failing the critical few.",
+      netflix: "Content investment and originals; platform tech and recommendations; localization and acquisition"
+    },
+    kp: {
+      name: "Key Partners", en: "Who helps us?", wing: "cost",
+      q: ["Which key steps do we skip and hand to partners?", "Which partners hold our lifeline?"],
+      good: "A complementary division of labor: rights holders and studios, device makers and carriers, cloud services (illustrative).",
+      bad: "A lifeline step wholly dependent on a single partner — bargaining power slips away.",
+      netflix: "Rights holders and production companies; device makers and carriers; cloud and payment providers"
+    },
+    cost: {
+      name: "Cost Structure", en: "What will it cost?", wing: "cost",
+      q: ["What is the biggest cost in the model? Fixed or variable?", "As scale grows, which cost falls first?"],
+      good: "A clear structure with known levers: content investment dominates and spreads thinner as users grow (illustrative).",
+      bad: "Only a total figure, with no story about what drives it.",
+      netflix: "Content investment dominates (illustrative); technology and bandwidth; marketing"
+    }
+  };
+  var ORDER = ["cs", "vp", "ch", "cr", "rev", "kr", "ka", "kp", "cost"];
+  var timers = [];
+  var fillRun = 0;
+
+  function select(key) {
+    var d = BMC[key];
+    if (!d) return;
+    canvasEl.querySelectorAll(".bmc-cell").forEach(function (c) {
+      c.classList.toggle("active", c.dataset.key === key);
+    });
+    panelTitle.textContent = d.name + " · " + d.en + " (" + (d.wing === "cost" ? "left wing · efficiency" : "right wing · value") + ")";
+    var html = "<ul>" + d.q.map(function (q) { return "<li>" + q + "</li>"; }).join("") + "</ul>";
+    html += "<p class='bmc-good'><b>✔ Done well:</b>" + d.good + "</p>";
+    html += "<p class='bmc-bad'><b>✘ Common pitfall:</b>" + d.bad + "</p>";
+    panelBody.innerHTML = html;
+  }
+
+  canvasEl.querySelectorAll(".bmc-cell").forEach(function (cell) {
+    cell.addEventListener("click", function () { select(cell.dataset.key); });
+  });
+
+  function flashWing(wing, done) {
+    canvasEl.querySelectorAll('.bmc-cell[data-wing="' + wing + '"]').forEach(function (c) {
+      c.classList.remove("wing-flash");
+      void c.offsetWidth;
+      c.style.setProperty("--wing", wing === "cost" ? "#b91c1c" : "#0e7490");
+      c.classList.add("wing-flash");
+    });
+    setTimeout(done, 1050);
+  }
+
+  btnFill.addEventListener("click", function () {
+    timers.forEach(clearTimeout);
+    timers = [];
+    var run = ++fillRun;
+    ORDER.forEach(function (k, i) {
+      timers.push(setTimeout(function () {
+        if (run !== fillRun) return;
+        var el = document.getElementById("bmc-c-" + k);
+        if (!el) return;
+        el.textContent = BMC[k].netflix;
+        el.classList.remove("filled");
+        void el.offsetWidth;
+        el.classList.add("filled");
+        select(k);
+      }, i * 150));
+    });
+    timers.push(setTimeout(function () {
+      if (run !== fillRun) return;
+      flashWing("cost", function () {
+        if (run !== fillRun) return;
+        flashWing("value", function () {
+          if (run !== fillRun) return;
+          panelTitle.textContent = "How the wings interlock: the left wing carries the cost, the right wing carries the value";
+          panelBody.innerHTML =
+            "<p>The left wing (partners / activities / resources / costs) decides whether the business can be <b>afforded</b>; the right wing (segments / value / channels / relationships / revenue) decides whether it is <b>worth doing</b>.</p>" +
+            "<p>The magic of the subscription model is wiring the wings into a loop: monthly fees on the right fund content investment on the left, and the content in turn deepens retention and word of mouth on the right (illustrative).</p>";
+          canvasEl.querySelectorAll(".bmc-cell").forEach(function (c) { c.classList.remove("active"); });
+        });
+      });
+    }, ORDER.length * 150 + 400));
+  });
+
+  btnClear.addEventListener("click", function () {
+    fillRun++;
+    canvasEl.querySelectorAll(".bmc-content").forEach(function (el) {
+      el.textContent = "To be filled · click this block";
+      el.classList.remove("filled");
+    });
+    canvasEl.querySelectorAll(".bmc-cell").forEach(function (c) {
+      c.classList.remove("active", "wing-flash");
+    });
+    panelTitle.textContent = "Canvas panel";
+    panelBody.innerHTML = "<p style='color:var(--ink-faint)'>Click any block in the canvas, and this panel will unfold its key questions, a good way to fill it in, and common pitfalls.</p>";
+  });
+
+  select("vp");
+})();
+</script>
+</body>
+</html>

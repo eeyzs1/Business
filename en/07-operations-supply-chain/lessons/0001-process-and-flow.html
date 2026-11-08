@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Essence of Operations: Process · Operations &amp; Supply Chain</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .ro-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:.6rem; margin:.9rem 0; }
+  .ro-chip { background:var(--paper-deep); border-radius:10px; padding:.55rem .85rem; font-size:.9rem; line-height:1.6; }
+  .ro-chip small { display:block; color:var(--ink-faint); font-size:.78rem; letter-spacing:.05em; }
+  .ro-chip b { font-variant-numeric:tabular-nums; font-size:1.05rem; color:var(--accent); }
+  .sim-btn { background:var(--paper-deep); border:1.5px solid var(--line); border-radius:999px; padding:.38rem 1rem;
+    font-weight:700; font-size:.88rem; cursor:pointer; color:var(--ink); font-family:var(--sans); }
+  .sim-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .sim-btn.primary { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+</style>
+</head>
+<body class="branch-operations">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Operations &amp; Supply Chain</a><span class="crumb-sep">/</span>
+  <span>The Essence of Operations: Process</span>
+  <span class="progress">Lesson 1 of 4</span>
+<a class="lang-switch" href="../../../07-operations-supply-chain/lessons/0001-process-and-flow.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Operations &amp; Supply Chain · Lesson 1</p>
+  <h1>The Essence of Operations: Process</h1>
+  <p class="lead">Two shops sell the same cup of milk tea; one puts it in your hand in three minutes, the other keeps you waiting twenty. The difference is not the barista’s hand speed — it is <em>process</em>. This lesson teaches you to break any business into a process flow diagram, and to see straight through its fast and slow with three measures.</p>
+
+  <h2><span class="secno">1</span>Operations: Turning Inputs into Outputs</h2>
+  <p>Tea shop, car factory, or hospital — every organization is doing the same thing: taking a set of <em>inputs</em> — materials, labor, equipment, information — putting them through a <em>transformation</em>, and turning out <em>outputs</em> that customers will pay for. The discipline that studies how to do this fast, cheap, and reliably is <em>operations management</em>.</p>
+  <div class="concept">
+    <div class="concept-title">Three Elements of an Operating System</div>
+    <p style="margin-bottom:0"><b>Inputs</b>: materials, people, machines, energy, information. <b>Transformation</b>: changing form (manufacturing), changing place (logistics), changing state (health care, education), storing (warehousing). <b>Outputs</b>: products and services — plus two by-products nobody wants: inventory and queues. All of operations management’s craft lies in making the transformation as direct as possible and the by-products as small as possible.</p>
+  </div>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 760 200" role="img" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="ar1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#b45309"></path>
+          </marker>
+        </defs>
+        <rect x="20" y="55" width="150" height="80" rx="12" fill="#f2ede3" stroke="#d6cdbd"></rect>
+        <text x="95" y="85" text-anchor="middle" font-size="14" font-weight="800" fill="#1c1917">Inputs</text>
+        <text x="95" y="108" text-anchor="middle" font-size="11" fill="#78716c">Materials · people · machines · info</text>
+        <line x1="176" y1="95" x2="212" y2="95" stroke="#b45309" stroke-width="3" marker-end="url(#ar1)"></line>
+        <rect x="218" y="40" width="200" height="110" rx="14" fill="#fff" stroke="#b45309" stroke-width="2.5"></rect>
+        <text x="318" y="78" text-anchor="middle" font-size="15" font-weight="800" fill="#b45309">TRANSFORM</text>
+        <text x="318" y="102" text-anchor="middle" font-size="11" fill="#78716c">Manufacturing / logistics / service</text>
+        <text x="318" y="122" text-anchor="middle" font-size="11" fill="#78716c">Value is added here</text>
+        <line x1="424" y1="95" x2="460" y2="95" stroke="#b45309" stroke-width="3" marker-end="url(#ar1)"></line>
+        <rect x="466" y="55" width="150" height="80" rx="12" fill="#f2ede3" stroke="#d6cdbd"></rect>
+        <text x="541" y="85" text-anchor="middle" font-size="14" font-weight="800" fill="#1c1917">Outputs</text>
+        <text x="541" y="108" text-anchor="middle" font-size="11" fill="#78716c">Products · services · experiences</text>
+        <text x="652" y="88" font-size="11" fill="#b91c1c" font-weight="700">By-products:</text>
+        <text x="652" y="106" font-size="11" fill="#b91c1c">inventory &amp; queues</text>
+        <text x="380" y="185" text-anchor="middle" font-size="11.5" fill="#a8a29e">Operations management = making this chain fast, lean, and reliable</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The operating system: inputs → transformation → outputs. Customers pay only for the outputs on the right, yet cost often hides in the by-products on the left and in the middle.</figcaption>
+  </figure>
+
+  <h2><span class="secno">2</span>The Process Flow Diagram: Operations’ X-Ray</h2>
+  <p>A <em>process</em> is a set of activities linked together to create output. The fastest way to understand a company is not to read its annual report but to draw its process flow diagram. The diagram uses two basic symbols: an <em>activity</em> — a step that actually does work and changes the thing (a circle); and <em>inventory</em> — anything waiting between two activities (a triangle). Piles of raw material, a queue of people, unprocessed orders — all of it is inventory.</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 760 250" role="img" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#a8a29e"></path>
+          </marker>
+        </defs>
+        <text x="24" y="94" font-size="12.5" fill="#57534e" font-weight="700">Customer arrives</text>
+        <line x1="86" y1="88" x2="118" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <path d="M156,68 L178,108 L134,108 Z" fill="#f2ede3" stroke="#c9c1b2" stroke-width="1.5"></path>
+        <line x1="184" y1="88" x2="206" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <circle cx="248" cy="88" r="34" fill="#fff" stroke="#b45309" stroke-width="2.5"></circle>
+        <text x="248" y="93" text-anchor="middle" font-size="13.5" font-weight="800" fill="#1c1917">Order</text>
+        <line x1="286" y1="88" x2="308" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <path d="M346,68 L368,108 L324,108 Z" fill="#f2ede3" stroke="#c9c1b2" stroke-width="1.5"></path>
+        <line x1="374" y1="88" x2="396" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <circle cx="438" cy="88" r="34" fill="#fef2f2" stroke="#b91c1c" stroke-width="3"></circle>
+        <text x="438" y="93" text-anchor="middle" font-size="13.5" font-weight="800" fill="#b91c1c">Make</text>
+        <text x="438" y="148" text-anchor="middle" font-size="11.5" fill="#b91c1c" font-weight="700">Bottleneck: the slowest step</text>
+        <line x1="476" y1="88" x2="498" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <path d="M536,68 L558,108 L514,108 Z" fill="#f2ede3" stroke="#c9c1b2" stroke-width="1.5"></path>
+        <line x1="564" y1="88" x2="586" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <circle cx="628" cy="88" r="34" fill="#fff" stroke="#b45309" stroke-width="2.5"></circle>
+        <text x="628" y="93" text-anchor="middle" font-size="13.5" font-weight="800" fill="#1c1917">Pickup</text>
+        <line x1="666" y1="88" x2="700" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <text x="702" y="93" font-size="12" fill="#57534e" font-weight="700">Exit</text>
+        <path d="M470,196 L596,196" stroke="#b91c1c" stroke-width="1.6" marker-start="url(#ar2)" marker-end="url(#ar2)" opacity="0"></path>
+        <text x="110" y="200" font-size="12" fill="#78716c"><tspan font-weight="800" fill="#b45309">○ Activity</tspan> a step that does real work</text>
+        <text x="110" y="222" font-size="12" fill="#78716c"><tspan font-weight="800" fill="#b45309">△ Inventory</tspan> people &amp; goods waiting between activities</text>
+        <text x="400" y="200" font-size="12" fill="#78716c"><tspan font-weight="800" fill="#b91c1c">Red circle = bottleneck</tspan> the slowest activity sets the line’s pace</text>
+        <text x="400" y="222" font-size="12" fill="#78716c"><tspan font-weight="800" fill="#57534e">Cycle time</tspan> the gap between consecutive cups finished</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 2</b> A tea shop process flow diagram (illustrative): three activities, three inventories. Once the diagram is drawn, there is nowhere for “what exactly are the customers waiting for?” to hide.</figcaption>
+  </figure>
+  <p>Figure 2 also hides two key measures. <em>Cycle time</em> is the interval between the process completing successive units — the whole line’s cycle time equals the cycle time of its <em>slowest activity</em>, and that slowest step is called the <em>bottleneck</em>. The total time a unit spends inside the process, waits included, is <em>flow time</em>: almost always far longer than the time actually spent working — everything in between is queueing.</p>
+
+  <h2><span class="secno">3</span>Capacity, Throughput, and Little’s Law</h2>
+  <p>Three words that are easy to confuse: <em>capacity</em> is how fast the process could run at most — equal to the bottleneck’s speed; <em>throughput</em> is how fast it actually runs, limited jointly by demand and supply, and never above capacity; <em>work-in-process (WIP)</em> is the number of units inside the process at this moment — the people queuing, the semi-finished goods, the orders waiting to be picked up all count.</p>
+  <p>Between these three runs a surprising bridge: <em>Little’s Law</em>.</p>
+  <div class="formula">L = λ × W<div style="font-size:.82rem;font-family:var(--sans);margin-top:.5rem;color:var(--ink-soft)">WIP (L) = effective arrival rate (λ) × average time in system (W)</div></div>
+  <p>The intuitive version: picture the process as a pipe. λ is the water flowing in per second, W is the seconds each drop spends inside the pipe; multiply them and you get exactly the water sitting in the pipe. Its most counterintuitive corollary: <b>want it “fast” (shorter W)? Either cut WIP (L) or raise λ — with λ fixed, stuffing more WIP into the system only makes every unit wait longer</b>. “The harder you push, the slower it gets” is not mysticism; it is the inevitable arithmetic of queueing.</p>
+
+  <div class="sim" id="tea-sim">
+    <div class="sim-title">Interactive Lab · Three-Station Tea Shop Process Simulator</div>
+    <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:.4rem">On arrival, customers pass through three stations — order → make → pickup (the cup icons flow along the process). Drag the sliders to set the arrival rate and each station’s speed, and watch: <b>who sets throughput? Where do the queues pile up? Does L = λ × W hold?</b></p>
+    <div class="sim-controls" id="tea-controls"></div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;padding:.5rem 0">
+      <button class="sim-btn primary" id="tea-toggle" type="button">⏸ Pause</button>
+      <button class="sim-btn" id="tea-reset" type="button">↺ Reset</button>
+    </div>
+    <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden">
+      <svg id="tea-svg" viewBox="0 0 760 300" role="img" style="width:100%;height:auto;display:block"></svg>
+    </div>
+    <div class="ro-grid">
+      <div class="ro-chip"><small>System capacity (theory = slowest station)</small><b id="ro-cap">9</b> cups/min</div>
+      <div class="ro-chip"><small>Measured throughput</small><b id="ro-thr">—</b> cups/min</div>
+      <div class="ro-chip"><small>Average WIP L (inside the shop)</small><b id="ro-L">0</b> cups</div>
+      <div class="ro-chip"><small>Average time in system W (door to door)</small><b id="ro-W">0</b> min</div>
+      <div class="ro-chip"><small>Check λ×W vs L</small><b id="ro-check" style="font-size:.95rem">Collecting data…</b></div>
+      <div class="ro-chip"><small>Customers lost to a full queue</small><b id="ro-lost" style="color:var(--bad)">0</b> lost</div>
+    </div>
+    <div class="callout warn" style="margin-bottom:0"><span class="callout-label">Try these three things</span>
+      ① Drag “Make” to its slowest — cups pile up in front of it instantly, and throughput gets nailed to the make speed. ② Push arrivals above capacity — the queue grows without end and customers start walking away; <em>when demand exceeds capacity, queuing is not an accident, it is arithmetic</em>. ③ In any steady state, read the last tile: λ×W and L are always nearly equal — that is Little’s Law verifying itself in real time.
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>Case: The Assembly Line vs the One-Person Bar</h2>
+  <div class="case">
+    <div class="case-title">McDonald’s Division of Labor vs the Specialty Café’s One-Person Bar</div>
+    <p>Both are in the business of “handing a drink to a customer,” yet the two chose completely different processes. Ever since its “Speedee Service System” of the 1950s, McDonald’s has split production into razor-fine divisions of labor: one person owns order-taking and payment, one owns the drink machines, one owns assembling and handing off each order. Every motion is standardized to “a newcomer is productive within two hours,” the cycle time per order is squeezed down to tens of seconds (illustrative order of magnitude), and throughput at peak is enormous — the price is capital equipment and flexibility: overhaul the menu once, and the whole process has to move with it.</p>
+    <p>In a specialty café, the same barista handles the greeting, the grinding, the pour-over, the latte art, and the bussing; one cup takes minutes (illustrative). Throughput is far lower, but what each customer receives is the craft and singularity of this particular cup — the queue is part of what they are buying.</p>
+    <div class="case-learn"><b>The operations lesson:</b> There is no “better” process — only a process better matched to the competitive strategy. Fast food trades specialization for throughput and low prices; the specialty shop trades low throughput for premium and experience. No process is inherently superior; <b>misalignment with what you are trying to win</b> is the only error. (Case details are illustrative; magnitudes are for reference only)</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Operations Management</dt><dd>Designing, running, and improving the input → transformation → output system so that value is created fast, cheaply, and reliably.</dd>
+      <dt>Process</dt><dd>A set of activities linked together to create output, plus the inventories sitting between them.</dd>
+      <dt>Activity / Inventory</dt><dd>In a process flow diagram: activities are the steps that do real work; inventory is the people and goods waiting between activities, queues included.</dd>
+      <dt>Bottleneck</dt><dd>The slowest step in a process; it sets the line’s cycle time and caps capacity.</dd>
+      <dt>Capacity / Throughput</dt><dd>Capacity is how fast the process could run at most (= bottleneck speed); throughput is how fast it actually runs, never above capacity.</dd>
+      <dt>Cycle Time</dt><dd>The interval between successive completed units; equals the bottleneck’s cycle time.</dd>
+      <dt>Work-in-Process (WIP)</dt><dd>The units inside the process at a given moment: everyone queuing, all semi-finished goods, and all open orders combined.</dd>
+      <dt>Little’s Law</dt><dd>L = λ × W: WIP = effective arrival rate × average time in system; stuffing in more WIP only makes everything slower.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    Every business is inputs → transformation → outputs, and the process flow diagram is its X-ray: <strong>throughput is set by the bottleneck, and waiting is stacked up by WIP</strong>, while L = λ × W locks the two together forever. Want customers served sooner? Either speed up the bottleneck or stuff in less WIP — and stop pushing.
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "A tea shop’s three stations run at 20, 12, and 25 cups/min, and customers keep arriving at 18 cups/min. After the system runs for a while, throughput settles at roughly?",
+      "options": ["12 cups/min, set by the slowest station", "18 cups/min, set by arrivals", "20 cups/min, set by the first station", "25 cups/min, set by the fastest station"],
+      "answer": 0,
+      "explain": "Throughput is capped by the bottleneck (the make station at 12 cups/min); the 18 − 12 excess of arrivals only feeds an ever-lengthening queue, never output." },
+    { "q": "Speed the make station up from 12 to 16 cups/min (all else unchanged). System throughput will?",
+      "options": ["Fall to about 10 cups/min", "Explode past 30 cups/min", "Rise to about 16 cups/min", "Stay exactly 12 cups/min"],
+      "answer": 2,
+      "explain": "The stations now run at 20/16/25; the slowest is still make (16 cups/min). The bottleneck has not moved, only gotten faster, so system throughput rises to 16. Whatever you add to the bottleneck, output gains — exactly the theme of the next lesson." },
+    { "q": "At peak hour a café holds an average of 15 customers (queue included), and each stays an average of 25 minutes, door to door. The arrival rate is about?",
+      "options": ["0.25 customers per minute", "0.6 customers per minute", "3.75 customers per minute", "15 customers per minute"],
+      "answer": 1,
+      "explain": "Little’s Law: λ = L ÷ W = 15 ÷ 25 = 0.6 customers per minute. The 3.75 is what you get by flipping the multiplication and division — a coincidental trap number; don’t be fooled." },
+    { "q": "McDonald’s splits a single drink across several specialized employees. The main economic purpose is?",
+      "options": ["Raise the price and margin per drink", "Reduce the store’s total headcount", "Make the product more photogenic and shareable", "Shorten cycle time and raise throughput"],
+      "answer": 3,
+      "explain": "Division of labor turns a long string of activities into short parallel segments; cycle time per item drops sharply and the customers served per hour (throughput) climbs — a classic case of process design serving a competitive strategy." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul class="timeline">
+      <li><b>Operations Management</b> by William J. Stevenson (read: the chapters on process analysis and constraint management) — the textbook-grade map for this branch.</li>
+      <li><b>The Goal: A Process of Ongoing Improvement</b> by Eliyahu M. Goldratt · the classic business novel that teaches the Theory of Constraints (read: the first third — how a plant manager discovers his bottleneck) — the full prequel to Lesson 2.</li>
+      <li><b>Learning to See</b> by Mike Rother &amp; John Shook · a slim primer on value stream mapping that teaches you to draw a diagram like Figure 2 by hand (search keywords: value stream map, VSM).</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← Previous</span><span class="pager-title">Branch Guide · Operations &amp; Supply Chain</span></a>
+    <a class="next" href="0002-bottleneck-and-toc.html"><span class="pager-label">Next →</span><span class="pager-title">Bottlenecks and the Theory of Constraints</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “Why does speeding up pickup just move the queue back to the make station?” Keep handing the phenomena you observe to your teacher until they truly click. Follow-up questions are part of learning.</div>
+    <p>Operations &amp; Supply Chain · Lesson 1 of 4 · The Essence of Operations: Process | Interactive: course library generated by your AI teacher · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+/* ===== Three-station tea shop process simulator ===== */
+(function () {
+  "use strict";
+  var svg = document.getElementById("tea-svg");
+  if (!svg || !window.Viz) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  function clear(g) { while (g.firstChild) g.removeChild(g.firstChild); }
+
+  var NAMES = ["Order", "Make", "Pickup"];
+  var BW = 120, BY = 168, BH = 62;
+  var BX = [130, 340, 550], CX = [190, 400, 610];
+  var LINE = BY + BH / 2;
+
+  var rates = [16, 9, 14];
+  var lam = 12;
+
+  function freshState() {
+    return {
+      t: 0, acc: 0, q: [[], [], []],
+      st: [{ b: null, s0: 0, s1: 0 }, { b: null, s0: 0, s1: 0 }, { b: null, s0: 0, s1: 0 }],
+      tr: [], done: 0, lost: 0, Lint: 0, Wsum: 0, Wn: 0
+    };
+  }
+  var S = freshState();
+
+  var gFlow = el("g"), gSt = el("g"), gDyn = el("g");
+  svg.appendChild(gFlow); svg.appendChild(gSt); svg.appendChild(gDyn);
+
+  /* Flow line and entrances */
+  gFlow.appendChild(el("line", { x1: 24, y1: LINE, x2: 736, y2: LINE, stroke: "#e7e0d3", "stroke-width": 10, "stroke-linecap": "round" }));
+  gFlow.appendChild(el("text", { x: 30, y: LINE - 26, "font-size": 12.5, fill: "#a8a29e", "font-weight": 700, text: "Arrive →" }));
+  gFlow.appendChild(el("text", { x: 736, y: LINE - 26, "font-size": 12.5, fill: "#a8a29e", "font-weight": 700, "text-anchor": "end", text: "→ Leave" }));
+
+  function drawStations() {
+    clear(gSt);
+    var min = Math.min(rates[0], rates[1], rates[2]);
+    for (var i = 0; i < 3; i++) {
+      var isBn = rates[i] === min;
+      if (i < 2) {
+        gSt.appendChild(el("line", { x1: BX[i] + BW + 4, y1: LINE, x2: BX[i + 1] - 10, y2: LINE, stroke: "#c9c1b2", "stroke-width": 2 }));
+        gSt.appendChild(el("path", { d: "M" + (BX[i + 1] - 16) + "," + (LINE - 5) + " L" + (BX[i + 1] - 8) + "," + LINE + " L" + (BX[i + 1] - 16) + "," + (LINE + 5) + " Z", fill: "#c9c1b2" }));
+      }
+      gSt.appendChild(el("rect", { x: BX[i], y: BY, width: BW, height: BH, rx: 12, fill: isBn ? "#fef2f2" : "#fff", stroke: isBn ? "#b91c1c" : "#d6cdbd", "stroke-width": isBn ? 2.5 : 1.5 }));
+      gSt.appendChild(el("text", { x: BX[i] + 10, y: BY + 23, "font-size": 13.5, "font-weight": 800, fill: "#1c1917", text: (i + 1) + " · " + NAMES[i] }));
+      gSt.appendChild(el("text", { x: BX[i] + 10, y: BY + 41, "font-size": 11, fill: "#78716c", text: rates[i] + " cups/min" }));
+      gSt.appendChild(el("text", { x: BX[i] + 10, y: BY + 55, "font-size": 10.5, fill: isBn ? "#b91c1c" : "#a8a29e", text: isBn ? "Bottleneck = capacity" : "Slack available" }));
+    }
+    var bi = rates.indexOf(min);
+    gSt.appendChild(el("rect", { x: CX[bi] - 26, y: BY - 74, width: 52, height: 20, rx: 10, fill: "#b91c1c" }));
+    gSt.appendChild(el("text", { x: CX[bi], y: BY - 60, "text-anchor": "middle", "font-size": 11.5, "font-weight": 800, fill: "#fff", text: "Bottleneck" }));
+  }
+
+  function cup(color) {
+    var g = el("g");
+    g.appendChild(el("path", { d: "M-8,-9 L8,-9 L5.5,9 L-5.5,9 Z", fill: color, stroke: "#fff", "stroke-width": 1 }));
+    g.appendChild(el("line", { x1: -8.5, y1: -9, x2: 8.5, y2: -9, stroke: color, "stroke-width": 3 }));
+    return g;
+  }
+
+  function step(dt) {
+    S.t += dt;
+    S.acc += lam / 60 * dt;
+    while (S.acc >= 1) {
+      S.acc -= 1;
+      if (S.q[0].length >= 60) S.lost++;
+      else S.q[0].push({ born: S.t });
+    }
+    for (var i = 0; i < 3; i++) {
+      if (S.st[i].b && S.t >= S.st[i].s1) {
+        var it = S.st[i].b; S.st[i].b = null;
+        if (i < 2) S.tr.push({ it: it, x0: BX[i] + BW, x1: BX[i + 1], t0: S.t, t1: S.t + 0.45, q: i + 1 });
+        else {
+          S.tr.push({ it: it, x0: BX[2] + BW, x1: 732, t0: S.t, t1: S.t + 0.45, q: 3 });
+          S.done++; S.Wsum += S.t - it.born; S.Wn++;
+        }
+      }
+      if (!S.st[i].b && S.q[i].length) {
+        var it2 = S.q[i].shift();
+        S.st[i].b = it2; S.st[i].s0 = S.t; S.st[i].s1 = S.t + 60 / rates[i];
+      }
+    }
+    var keep = [];
+    S.tr.forEach(function (t2) {
+      if (S.t >= t2.t1) { if (t2.q < 3) S.q[t2.q].push(t2.it); }
+      else keep.push(t2);
+    });
+    S.tr = keep;
+    var inSys = S.q[0].length + S.q[1].length + S.q[2].length + S.tr.length +
+      (S.st[0].b ? 1 : 0) + (S.st[1].b ? 1 : 0) + (S.st[2].b ? 1 : 0);
+    S.Lint += inSys * dt;
+  }
+
+  function render() {
+    clear(gDyn);
+    var worst = Math.max(S.q[0].length, S.q[1].length, S.q[2].length);
+    for (var i = 0; i < 3; i++) {
+      var n = S.q[i].length;
+      if (n >= 6 && n === worst && n >= Math.max(6, 0)) {
+        gDyn.appendChild(el("rect", { x: CX[i] - 148, y: BY - 52, width: 196, height: 42, rx: 10, fill: "#fef2f2", stroke: "#b91c1c", "stroke-dasharray": "5 4", "stroke-width": 1.5 }));
+        gDyn.appendChild(el("text", { x: CX[i] - 138, y: BY - 36, "font-size": 11.5, "font-weight": 800, fill: "#b91c1c", text: "Pile-up: " + n + " cups" }));
+      }
+      var show = Math.min(n, 8);
+      for (var k = 0; k < show; k++) {
+        var c = cup("#b45309");
+        c.setAttribute("transform", "translate(" + (CX[i] + 44 - k * 23) + "," + (BY - 27) + ")");
+        gDyn.appendChild(c);
+      }
+      if (n > 8) gDyn.appendChild(el("text", { x: CX[i] + 44 - 8 * 23 - 4, y: BY - 23, "font-size": 12, "font-weight": 800, fill: "#b91c1c", "text-anchor": "end", text: "×" + n }));
+    }
+    for (i = 0; i < 3; i++) {
+      var st = S.st[i];
+      if (st.b) {
+        var c2 = cup("#15803d");
+        c2.setAttribute("transform", "translate(" + (BX[i] + BW - 26) + "," + (LINE + 2) + ")");
+        gDyn.appendChild(c2);
+        var p = Math.max(0, Math.min(1, (S.t - st.s0) / (st.s1 - st.s0)));
+        gDyn.appendChild(el("rect", { x: BX[i] + 5, y: BY + BH - 11, width: (BW - 10) * p, height: 5, rx: 2.5, fill: "#15803d" }));
+      }
+    }
+    S.tr.forEach(function (t2) {
+      var p = Math.max(0, Math.min(1, (S.t - t2.t0) / (t2.t1 - t2.t0)));
+      var c3 = cup("#b45309");
+      c3.setAttribute("transform", "translate(" + (t2.x0 + (t2.x1 - t2.x0) * p) + "," + (LINE + 2) + ")");
+      gDyn.appendChild(c3);
+    });
+  }
+
+  var $ = function (id) { return document.getElementById(id); };
+  function updateReadout() {
+    var min = Math.min(rates[0], rates[1], rates[2]);
+    $("ro-cap").textContent = min;
+    var mins = S.t / 60;
+    if (mins >= 1) {
+      var thr = S.done / mins;
+      $("ro-thr").textContent = thr.toFixed(1);
+      var L = S.Lint / S.t, W = S.Wn ? S.Wsum / S.Wn : 0;
+      $("ro-L").textContent = L.toFixed(1);
+      $("ro-W").textContent = W.toFixed(1);
+      if (mins >= 2 && W > 0) $("ro-check").textContent = "λ×W=" + (thr * W).toFixed(1) + " ≈ L=" + L.toFixed(1) + " ✓";
+      else $("ro-check").textContent = "Collecting data…";
+    }
+    $("ro-lost").textContent = S.lost;
+  }
+
+  /* Controls */
+  var controls = $("tea-controls");
+  var sLam = Viz.slider(controls, { label: "Arrival rate λ", min: 3, max: 20, step: 1, value: lam, format: function (v) { return v + " cups/min"; } });
+  sLam.onChange(function (v) { lam = v; });
+  var sR = [];
+  for (var i = 0; i < 3; i++) {
+    (function (idx) {
+      var s = Viz.slider(controls, { label: NAMES[idx] + " speed", min: 5, max: 25, step: 1, value: rates[idx], format: function (v) { return v + " cups/min"; } });
+      s.onChange(function (v) { rates[idx] = v; drawStations(); });
+      sR.push(s);
+    })(i);
+  }
+
+  var running = true, lastTs = null, frame = 0, SPEED = 14;
+  $("tea-toggle").addEventListener("click", function () {
+    running = !running;
+    this.textContent = running ? "⏸ Pause" : "▶ Resume";
+  });
+  $("tea-reset").addEventListener("click", function () {
+    S = freshState();
+    $("ro-thr").textContent = "—"; $("ro-L").textContent = "0";
+    $("ro-W").textContent = "0"; $("ro-check").textContent = "Collecting data…";
+    updateReadout();
+  });
+
+  function loop(ts) {
+    if (lastTs == null) lastTs = ts;
+    var dtr = Math.min(0.05, (ts - lastTs) / 1000);
+    lastTs = ts;
+    if (running) {
+      var dt = dtr * SPEED;
+      while (dt > 0) { var d = Math.min(0.1, dt); step(d); dt -= d; }
+    }
+    render();
+    if (++frame % 10 === 0) updateReadout();
+    requestAnimationFrame(loop);
+  }
+  drawStations();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

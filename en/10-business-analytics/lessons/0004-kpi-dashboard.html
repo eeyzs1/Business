@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Intelligence and Dashboards · Business Analytics</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .chip { font-family: var(--sans); font-size: .85rem; font-weight: 700; color: var(--ink-soft);
+    background: #fff; border: 1.5px solid var(--line); border-radius: 999px; padding: .32rem 1rem;
+    cursor: pointer; margin-right: .5rem; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.active { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; margin: .8rem 0; }
+  @media (max-width: 560px) { .kpi-row { grid-template-columns: 1fr; } }
+  .kpi { background: var(--paper-deep); border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; }
+  .kpi-label { font-size: .75rem; color: var(--ink-soft); font-weight: 800; letter-spacing: .05em; }
+  .kpi-value { font-size: 1.45rem; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .kpi-value.bad { color: var(--bad); }
+  .kpi-note { font-size: .78rem; color: var(--ink-faint); }
+  .dash-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 1rem; align-items: start; }
+  @media (max-width: 720px) { .dash-grid { grid-template-columns: 1fr; } }
+  .dash-sub { font-size: .85rem; font-weight: 800; color: var(--ink-soft); margin: .3rem 0 .4rem; }
+  .dash-task { border-top: 1px dashed var(--line); margin-top: 1rem; padding-top: .9rem; }
+  .dash-task-q { font-weight: 800; margin: 0 0 .5rem; }
+  .task-opts { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .task-opts button {
+    font-family: var(--sans); font-size: .9rem; border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 999px; padding: .35rem 1rem; cursor: pointer; transition: all .15s ease;
+  }
+  .task-opts button:hover { border-color: var(--accent); }
+  .task-opts button.ok { border-color: var(--good); background: #f0fdf4; color: var(--good); font-weight: 700; }
+  .task-opts button.bad { border-color: var(--bad); background: #fef2f2; color: var(--bad); }
+  .task-fb { font-size: .92rem; color: var(--ink-soft); background: var(--paper-deep); border-radius: 8px; padding: .65rem .9rem; margin: .7rem 0 0; display: none; }
+</style>
+</head>
+<body class="branch-analytics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Business Analytics</a><span class="crumb-sep">/</span>
+  <span>Business Intelligence and Dashboards</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../10-business-analytics/lessons/0004-kpi-dashboard.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Business Analytics · Lesson 4</p>
+  <h1>Business Intelligence and Dashboards</h1>
+  <p class="lead">The meeting-room screen crams in forty numbers, and when the meeting breaks, nobody remembers a single decision. A Dashboard is not a “chart storage box” — it is a decision cockpit: one North Star sets the direction, one metric tree sets the structure, and one set of linked interactions and alerts handles the exceptions. This lesson assembles the process, the statistics, and the causal guardrails of the first three lessons into an interactive mini dashboard.</p>
+
+  <h2><span class="secno">1</span>The North Star Metric: The One and Only Star</h2>
+  <div class="concept">
+    <div class="concept-title">Concept Card · North Star Metric</div>
+    <p>The single metric that best captures “the value users get from the product”: when user value grows, it grows; and when it keeps growing, long-term business results are rarely bad. Subscription businesses commonly use “monthly active subscriptions” or “total time spent”, while e-commerce commonly uses a gross-merchandise-value measure (illustrative). Three lines qualify it: it <strong>reflects user value</strong> (not the revenue the company extracts), it is <strong>decomposable</strong> (splittable into sub-metrics that teams can move), and it is <strong>influenceable</strong> (action can push it). Classic counter-example: “cumulative registered users” — it only ever rises, reflecting no value and guiding no action.</p>
+  </div>
+
+  <h2><span class="secno">2</span>Metric Trees and Dimensional Drill-Down</h2>
+  <div class="formula" data-reveal>Revenue = Traffic × Conversion Rate × Average Order Value × Repeat Purchases</div>
+  <p>A Metric Tree breaks a big metric into small, attributable, actionable ones: when total revenue stalls, check first whether traffic has plateaued, conversion is slipping, or average order value is weakening. Pinpointing “which cell” takes <strong>Drill-Down</strong>: slicing layer by layer along dimensions (an old friend from Lesson 1) such as region, channel, and category, narrowing “overall softness” down to “a problem in one channel at one stage”. Decompose to locate <strong>where</strong> first, then apply Lesson 3’s causal guardrails to ask <strong>why</strong>.</p>
+
+  <h2><span class="secno">3</span>Three Principles of Dashboards</h2>
+  <ol class="steps">
+    <li data-reveal><strong>One screen, one decision.</strong> Every screen answers one operating question; decorative charts with no decision attached get deleted. More metrics does not mean more professional — it means fewer readers.</li>
+    <li data-reveal><strong>Compare period over period.</strong> Absolute numbers say almost nothing: “¥9,800,000 in sales this month” — good or bad, nobody knows. Compare <b>month-over-month</b> (MoM, against the prior period) to read momentum and <b>year-over-year</b> (YoY, against the same month last year) to strip out seasonality — if ice cream sells well in August, hold the good-news memo.</li>
+    <li data-reveal><strong>Alerting.</strong> Set thresholds and anomaly rules on key metrics so the system watches them 24/7 and people handle only the exceptions. Watching screens is not work; handling exceptions is.</li>
+  </ol>
+
+  <h2><span class="secno">4</span>Hands-On: A Mini Dashboard (Subscription Business)</h2>
+  <p>A simplified dashboard for a subscription content product (all figures illustrative). Click any channel in the bar chart and the North Star card and the trend line filter accordingly; no peeking at the answer yet — find which channel “looks the most glamorous but drags you down the most”:</p>
+
+  <div class="sim">
+    <div class="sim-title">Mini Dashboard: North Star × Channel Bars × Linked Trend Line</div>
+    <p><button type="button" class="chip active" id="allBtn">All channels</button><span style="font-size:.85rem;color:var(--ink-faint)">Click a bar below to switch / filter the view</span></p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-label" id="k1l"></div><div class="kpi-value" id="k1v">0</div><div class="kpi-note" id="k1n"></div></div>
+      <div class="kpi"><div class="kpi-label" id="k2l"></div><div class="kpi-value" id="k2v"></div><div class="kpi-note" id="k2n"></div></div>
+      <div class="kpi"><div class="kpi-label" id="k3l"></div><div class="kpi-value" id="k3v"></div><div class="kpi-note" id="k3n"></div></div>
+    </div>
+    <div class="dash-grid">
+      <div>
+        <p class="dash-sub">New subscriptions this month · by channel (click a bar to drill down)</p>
+        <div id="dashBars"></div>
+      </div>
+      <div>
+        <p class="dash-sub" id="trendTitle"></p>
+        <div id="dashTrend"></div>
+      </div>
+    </div>
+    <div class="dash-task">
+      <p class="dash-task-q">🧭 Mini task: which channel looks the most glamorous but actually drags you down the most?</p>
+      <div class="task-opts" id="taskOpts">
+        <button type="button" data-i="0">Organic traffic</button>
+        <button type="button" data-i="1">Search ads</button>
+        <button type="button" data-i="2">Social media</button>
+        <button type="button" data-i="3">Channel partnerships</button>
+      </div>
+      <p class="task-fb" id="taskFb"></p>
+    </div>
+  </div>
+
+  <div class="case">
+    <div class="case-title">Case · Spotify and Netflix: Choosing “the Value Users Receive” as the North Star</div>
+    <p>What should a subscription content business pick as its North Star? In public interviews and product discussions, Spotify has long gauged user value with listening-time metrics — the more users listen, the better retention and paid conversion (per public sources, illustrative). Netflix treats total watch time as the core thermometer of its membership business and discloses related figures regularly in its shareholder letters (public figures, illustrative). The common thread: the North Star measures <b>the value users receive</b> (listening and watching), not <b>the revenue the company collects</b> (subscription fees), and the metric tree below the North Star branches into content, recommendations, and acquisition channels. The counter-example is “new downloads” as a North Star — downloads are not listening, let alone value: inflated downloads paired with dismal retention are exactly the makeup job that paid traffic acquisition does best.</p>
+    <div class="case-learn"><b>The lesson:</b> set the North Star first (user value), then split the metric tree (growth levers), and keep only the decision-critical tiles on the dashboard. Metrics are not better when more numerous — they are better when they lead to action.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>North Star Metric</dt><dd>The one metric that best represents the value users receive — decomposable and influenceable — aligning everyone’s direction.</dd>
+      <dt>Metric Tree</dt><dd>A structure that decomposes a core metric layer by layer into attributable, actionable sub-metrics.</dd>
+      <dt>Drill-Down</dt><dd>Slicing a metric layer by layer along dimensions such as region, channel, and category to locate the problem cell.</dd>
+      <dt>Year-over-Year (YoY)</dt><dd>Comparison against the same period last year, used to strip out seasonality and read the long-term trend.</dd>
+      <dt>Month-over-Month (MoM)</dt><dd>Comparison against the prior period, used to watch short-term momentum and anomalies.</dd>
+      <dt>Retention Rate</dt><dd>The share of a period’s users still active in later periods; measures real value and channel quality.</dd>
+      <dt>Alerting</dt><dd>Thresholds and anomaly rules set on key metrics, with the system alerting automatically so people handle only exceptions.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>A dashboard is a cockpit, not a poster: <b>one North Star, one metric tree, three principles</b> — one screen one decision, MoM and YoY comparisons, alerting; drill down to locate which cell went wrong, then apply causal thinking to ask why.</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "A subscription product makes “cumulative registered users” its North Star metric. The biggest problem is:",
+      "options": ["The metric does not move with user value", "The metric cannot be computed", "The metric lacks historical data", "The metric cannot be split by week"],
+      "answer": 0,
+      "explain": "A cumulative count only ever rises: it neither reflects whether users are actually using — that is, receiving value from — the product, nor guides any action. A North Star must reflect user value, be decomposable, and be influenceable." },
+    { "q": "Splitting “revenue = traffic × conversion × average order value × repeat purchases” into a metric tree mainly serves to:",
+      "options": ["Make the report’s color palette richer", "Reduce the amount of data to store", "Locate and attribute the action points", "Speed up system access"],
+      "answer": 2,
+      "explain": "Decomposition turns “revenue is stuck” into sub-problems like “conversion is slipping” that are <b>attributable and actionable</b>, each with a clear owning team — the precondition for drill-down and for decisions." },
+    { "q": "“Sales this month are higher than last month but lower than the same month last year.” The sounder reading is:",
+      "options": ["The MoM rise means the whole year is improving", "With seasonality stripped out, still declining", "The two figures contradict each other", "The reporting system must be broken"],
+      "answer": 1,
+      "explain": "MoM reads momentum; YoY strips seasonality: a peak-season month that ticks up MoM yet turns negative YoY means the tide is going out. The two figures do not contradict each other — they answer two different questions." },
+    { "q": "The main purpose of configuring “anomaly alerts” on key metrics is:",
+      "options": ["Make the page’s animations flashier", "Free people from screen-watching to handle only exceptions", "Replace all operating review meetings", "Chain every metric into a single line"],
+      "answer": 3,
+      "explain": "The alerting principle = let the system watch thresholds and anomalies 24/7, freeing people from staring at screens to handle only the exceptions; it does not replace analysis — it directs attention to the moments worth seeing." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Lean Analytics by Alistair Croll and Benjamin Yoskovitz (recommended: the chapters on North Star metrics and metric benchmarks)</li>
+      <li>How to Measure Anything by Douglas W. Hubbard (recommended: the chapters on decomposing decisions and quantification methods)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-correlation-vs-causation.html"><span class="pager-label">← Previous</span><span class="pager-title">Correlation Is Not Causation</span></a>
+    <a class="next" href="../../11-international-business/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">International Business · Branch 11</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “What North Star metric should my business choose?” or “Help me break revenue into a metric tree” — bring a screenshot of your own dashboard and we will do the subtraction together. Follow-up questions are part of learning.</div>
+    <p>Business Analytics · Lesson 4 of 4 · case studies and figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var channels = [
+    { name: "Organic traffic", color: "#0f766e", added: 12, ret: 62, trend: [6, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12] },
+    { name: "Search ads", color: "#1d4ed8", added: 18, ret: 48, trend: [9, 10, 11, 12, 13, 14, 15, 16, 16, 17, 17, 18] },
+    { name: "Social media", color: "#d97706", added: 15, ret: 45, trend: [8, 9, 10, 10, 11, 12, 13, 13, 14, 14, 15, 15] },
+    { name: "Channel partnerships", color: "#b91c1c", added: 22, ret: 20, trend: [8, 9, 11, 12, 14, 16, 18, 19, 20, 21, 21, 22] }
+  ];
+  var total = [];
+  for (var w = 0; w < 12; w++) {
+    (function (ww) {
+      total.push(channels.reduce(function (s, c) { return s + c.trend[ww]; }, 0));
+    })(w);
+  }
+  var sel = null;
+  var barsWrap = document.getElementById("dashBars");
+  var trendWrap = document.getElementById("dashTrend");
+  var trendTitle = document.getElementById("trendTitle");
+  var allBtn = document.getElementById("allBtn");
+
+  function renderBars() {
+    barsWrap.innerHTML = "";
+    var svg = Viz.bars(barsWrap,
+      channels.map(function (c) { return { label: c.name, value: c.added, color: c.color }; }),
+      { w: 640, h: 300, animate: false, valueFormat: function (v) { return v + "k"; } });
+    var rects = svg.querySelectorAll("rect");
+    channels.forEach(function (c, i) {
+      var r = rects[i];
+      r.style.cursor = "pointer";
+      if (sel !== null && sel !== i) r.style.opacity = 0.35;
+      if (sel === i) { r.setAttribute("stroke", "#1c1917"); r.setAttribute("stroke-width", 2.5); }
+      r.addEventListener("click", function () { select(i); });
+    });
+  }
+
+  function renderTrend() {
+    trendWrap.innerHTML = "";
+    var data, color;
+    if (sel === null) {
+      data = total; color = "#4338ca";
+      trendTitle.textContent = "All channels · total new subscriptions per week (thousands, illustrative)";
+    } else {
+      var c = channels[sel];
+      data = c.trend; color = c.color;
+      trendTitle.textContent = c.name + " · new subscriptions per week (thousands, illustrative)";
+    }
+    var max = Math.max.apply(null, data) * 1.2;
+    var chart = Viz.axes(trendWrap, {
+      w: 640, h: 300, margin: { t: 24, r: 20, b: 48, l: 56 },
+      xDomain: [1, 12], yDomain: [0, max], xTicks: 11, yTicks: 4,
+      xLabel: "Week", yLabel: "New subscriptions (thousands)",
+      xFormat: function (v) { return "W" + Math.round(v); }, yFormat: Math.round
+    });
+    var pts = data.map(function (v, i) { return [chart.x(i + 1), chart.y(v)]; });
+    var base = chart.m.t + chart.ih;
+    Viz.area(chart.svg, [[chart.x(1), base]].concat(pts, [[chart.x(12), base]]), color, 0.12);
+    Viz.line(chart.svg, pts, { color: color, width: 3 });
+    pts.forEach(function (p) { Viz.dot(chart.svg, p[0], p[1], { r: 4.5, fill: color }); });
+  }
+
+  function renderKpi() {
+    if (sel === null) {
+      document.getElementById("k1l").textContent = "North Star · monthly active subscriptions";
+      document.getElementById("k1n").textContent = "whole-site basis";
+      Viz.countUp(document.getElementById("k1v"), 86.4, { dur: 700, format: function (v) { return v.toFixed(1) + " ×10k"; } });
+      document.getElementById("k2l").textContent = "MoM";
+      document.getElementById("k2v").textContent = "+6.2%";
+      document.getElementById("k2v").className = "kpi-value";
+      document.getElementById("k2n").textContent = "versus last month";
+      document.getElementById("k3l").textContent = "YoY";
+      document.getElementById("k3v").textContent = "+28%";
+      document.getElementById("k3v").className = "kpi-value";
+      document.getElementById("k3n").textContent = "versus the same month last year";
+    } else {
+      var c = channels[sel];
+      document.getElementById("k1l").textContent = "New subscriptions this month";
+      document.getElementById("k1n").textContent = c.name;
+      Viz.countUp(document.getElementById("k1v"), c.added, { dur: 600, format: function (v) { return Math.round(v) + "k"; } });
+      document.getElementById("k2l").textContent = "Month-1 retention";
+      document.getElementById("k2v").textContent = c.ret + "%";
+      document.getElementById("k2v").className = "kpi-value" + (c.ret < 40 ? " bad" : "");
+      document.getElementById("k2n").textContent = c.ret < 40 ? "⚠ Abnormal: below the 40% health line (illustrative threshold)" : "Above the 40% health line (illustrative)";
+      var growth = Math.round((c.trend[11] - c.trend[0]) / c.trend[0] * 100);
+      document.getElementById("k3l").textContent = "12-week growth";
+      document.getElementById("k3v").textContent = "+" + growth + "%";
+      document.getElementById("k3v").className = "kpi-value";
+      document.getElementById("k3n").textContent = "W1 → W12";
+    }
+  }
+
+  function select(i) { sel = i; renderAll(); }
+  allBtn.addEventListener("click", function () { sel = null; renderAll(); });
+
+  function renderAll() {
+    allBtn.classList.toggle("active", sel === null);
+    renderKpi(); renderBars(); renderTrend();
+  }
+  renderAll();
+
+  /* ---- Mini task: spot the channel that drags ---- */
+  var taskBtns = document.querySelectorAll("#taskOpts button");
+  var taskFb = document.getElementById("taskFb");
+  Array.prototype.forEach.call(taskBtns, function (b) {
+    b.addEventListener("click", function () {
+      if (taskFb.style.display === "block") return;
+      var ok = b.getAttribute("data-i") === "3";
+      taskFb.style.display = "block";
+      taskFb.innerHTML = ok
+        ? "<b style='color:var(--good)'>✓ Correct.</b> Channel partnerships added the most this month (22k), but its month-1 retention is only 20% (illustrative): bought users do not stay, and on the full ledger it is the biggest loser. Click its bar and watch the warning light up on the retention card."
+        : "<b style='color:var(--bad)'>✗ Think again.</b> Hint: don’t just compare bar heights — click through the channels one by one and keep your eye on the “Month-1 retention” card. Whose light is red?";
+      b.classList.add(ok ? "ok" : "bad");
+    });
+  });
+})();
+</script>
+</body>
+</html>

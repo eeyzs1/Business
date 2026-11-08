@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compensation and Incentives · Human Resources</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .scn-row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin: .5rem 0; }
+  .scn-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 700; cursor: pointer;
+    border-radius: 999px; padding: .4rem 1.05rem; border: 2px solid var(--line); background: #fff; color: var(--ink-soft);
+    transition: all .15s ease;
+  }
+  .scn-btn:hover { border-color: var(--accent); }
+  .scn-btn.active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .preset-label { font-size: .85rem; color: var(--ink-soft); font-weight: 700; }
+  #payChart { margin-top: .6rem; }
+  .pay-note { font-size: .88rem; color: var(--ink-faint); margin-top: .6rem; }
+</style>
+</head>
+<body class="branch-hr">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Human Resources</a><span class="crumb-sep">/</span>
+  <span>Compensation and Incentives</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../06-human-resources/lessons/0004-compensation-and-incentives.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Human Resources · Lesson 4</p>
+  <h1>Compensation and Incentives</h1>
+  <p class="lead">Money is not the only motivator — but a badly designed pay structure is enough to destroy every other one. This lesson takes apart the design logic of paying people: 3P pay, total rewards, the fixed-variable mix, and equity incentives — with a single goal: employees who feel secure and still strive.</p>
+
+  <h2><span class="secno">1</span>Pay Design Answers Three Questions at Once</h2>
+  <p>In companies of any size, complaints about pay always arrive from three directions. <b>Is it fair inside</b> (same work — how large is the gap in pay)? <b>Is it competitive outside</b> (compared with the market — am I losing out)? <b>Does it motivate this person</b> (does income actually differ by effort and by result)? These three questions map onto the classic framework of pay design — <em>3P pay</em>: paying for the <b>position</b> (the value of the role itself), for <b>performance</b> (the results delivered), and for the <b>person</b> (the scarcity of their knowledge and skills). Most roles’ pay is a weighted blend of the three — only the weights differ: production lines weight the position, sales weights performance, R&amp;D weights the person.</p>
+  <div class="concept">
+    <div class="concept-title">Concept: 3P Pay · Pay for Position / Performance / Person</div>
+    <p style="margin:.2rem 0 0">The position sets the band (what this role is worth), performance sets where you sit inside the band (strong results pull you upward), and the person sets the scarcity premium (skills nobody can replace command extra). The three logics complement one another; paying on any single dimension alone will skew.</p>
+  </div>
+
+  <h2><span class="secno">2</span>Total Rewards and the Fixed-Variable Mix: The Knobs of Security and Drive</h2>
+  <p>What an employee receives goes far beyond the monthly salary. Widening the lens gives the <em>total rewards</em> view:</p>
+  <div class="formula">Total rewards = fixed cash + variable cash + benefits + growth and experience</div>
+  <p>The fixed part buys security, the variable part buys drive, and benefits and growth buy belonging and a future. The most important knob among them is the <em>fixed-variable mix</em> (the ratio of fixed to variable pay). In <b>sales roles</b>, output is quantifiable and performance varies person to person, so pay is usually low-fixed and high-variable — income swings widely with results, and the best performers face no cap. In <b>staff functions</b>, output is collaborative and hard to quantify month by month, so pay is usually high-fixed and low-variable — stability first, driven by growth and recognition. There is no standard answer — only a fit with “how quantifiable the output is” and “people’s appetite for risk.” The simulator below hands you the knob to turn yourself.</p>
+
+  <div class="sim" data-reveal id="pay-sim">
+    <div class="sim-title">Interactive · Fixed-Variable Mix Simulator: The Flip Side of High Incentive Is High Risk</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .6rem">Assume a role with a <b>target monthly total reward of ¥20,000 (illustrative)</b>: the fixed part is rain-or-shine; the variable part tracks performance — up to 1.2× in a good year (the cap, illustrative) and only 0.3× in a bad one (illustrative). Drag the slider, switch scenarios, and compare the bars for take-home pay:</p>
+    <div class="sim-controls" id="payControls"></div>
+    <div class="scn-row" id="payScenarios">
+      <span class="preset-label">Scenario:</span>
+      <button type="button" class="scn-btn active" data-m="compare">Compare side by side</button>
+      <button type="button" class="scn-btn" data-m="good">Good year only</button>
+      <button type="button" class="scn-btn" data-m="bad">Bad year only</button>
+    </div>
+    <div class="scn-row" id="payPresets">
+      <span class="preset-label">Role presets:</span>
+      <button type="button" class="scn-btn" data-fix="50">Sales (50% fixed)</button>
+      <button type="button" class="scn-btn" data-fix="70">Balanced (70% fixed)</button>
+      <button type="button" class="scn-btn" data-fix="90">Staff function (90% fixed)</button>
+    </div>
+    <div id="payChart"></div>
+    <p class="sim-readout" id="payReadout">Loading simulator…</p>
+    <p class="pay-note">All figures are illustrative teaching values and do not constitute compensation advice; actual variable multipliers, caps, and floors are set by each company’s own policy.</p>
+  </div>
+
+  <h2><span class="secno">3</span>Internal Equity and External Competitiveness</h2>
+  <p>“Fair inside” rests on <em>job evaluation</em>: scoring roles on scope of responsibility, complexity, impact, and qualifications (the point-factor method, for example; indicative), then slotting them into a grade ladder — same grade, same band. The psychological intuition underneath: employees are far more sensitive to “unfairness” than to “how much” — change the reference point, and the same salary carries a different feeling (Adams’s equity theory; see Branch 05, Management). “Competitive outside” rests on <em>market percentiles</em>: benchmark against salary-survey data — anchoring at P50 (the market median) is a “match” strategy, anchoring at P75 or above is a “lead” strategy, and paying a premium for scarce, critical roles is common practice (indicative). The tension between the two: inside, grades and bands rule; outside, the going rate rules. The usual resolution is “totals follow the market, structure follows the grades,” plus a tolerated “exception for scarce roles.”</p>
+
+  <h2><span class="secno">4</span>Equity and Options: Letting Employees Share the Residual</h2>
+  <p>Wages buy labor; equity buys “thinking like an owner”: binding employees’ gains to the company’s long-term residual. The standard mechanics of a <em>stock option</em> (indicative): a set exercise price, <em>vesting</em> gradually over four years, usually with a one-year <em>cliff</em> — leave before you are vested and the options lapse, which is why they are jokingly called “golden handcuffs.” The cost is just as plain: if the company does not make it, the options are worth zero. So in a healthy design, equity is “the amplifier of the upside” and cannot substitute for “the floor of security” — paying an entire salary in options means the employee carries founder-level risk while holding only an employee’s single vote.</p>
+
+  <h2><span class="secno">5</span>Case Study: Huawei’s Virtual Restricted Shares and Startup Options</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">Two ways of sharing the residual</p>
+    <p><b>Huawei</b> (illustrative): the company has long run an employee stock-ownership plan; employees hold “virtual restricted shares” — entitled to dividends and appreciation in value, but without full shareholder rights, not transferable to outsiders, and bought back by the company at departure. The logic is to let “strivers” share the fruits of the company’s growth, binding personal gain deeply to long-term performance. <b>Startups</b> (illustrative): with cash scarce, they top up total rewards with options — a lower fixed salary plus a grant that vests over four years. This naturally selects for people “willing to trade certainty for possibility”: if the company appreciates, early members earn a return far beyond what cash alone would have paid; if it fails, the options are worth zero and only the lower salary remains.</p>
+    <p class="case-learn"><b>The lesson:</b> the two share one core — “trading a share of tomorrow’s residual for today’s effort.” The difference is that Huawei shares already-validated cash flows, while startups share unvalidated possibility — the higher the certainty, the more expensive the “golden handcuffs” can be.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>3P Pay</dt><dd>The framework that blends pay for position, performance, and person.</dd>
+      <dt>Total Rewards</dt><dd>The full package of fixed cash, variable cash, benefits, and growth experience.</dd>
+      <dt>Fixed-Variable Mix</dt><dd>The ratio of fixed pay to variable pay; the core knob balancing security and drive.</dd>
+      <dt>Job Evaluation</dt><dd>Scoring and ranking roles on responsibility, complexity, and other factors to support internal equity.</dd>
+      <dt>Market Percentile</dt><dd>Where pay sits in the market data — P50 to match, P75 to lead (indicative).</dd>
+      <dt>Equity Incentive</dt><dd>Arrangements that let employees share the company’s long-term residual through equity-type instruments.</dd>
+      <dt>Stock Option</dt><dd>The right to buy shares at a set exercise price in the future, usually vesting over four years.</dd>
+      <dt>Vesting</dt><dd>The schedule on which options gradually become yours; leave unvested and they lapse — the “golden handcuffs.”</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Pay design answers three questions at once: fair inside (job value), competitive outside (market percentile), motivating for the person (performance and capability). The fixed-variable mix is a single knob for incentive and risk: low fixed and high variable buys drive — and buys volatility. Equity trades tomorrow’s residual for today’s effort: it is an amplifier of the upside, not a substitute for the floor.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">Quiz · Retrieval Practice</div>
+    <script type="application/json">
+    [
+      { "q": "In 3P pay, what does the “position” dimension mainly pay for?",
+        "options": ["The employee’s zodiac sign and birth chart determine the pay package", "The value of the role itself (duties and impact) determines the band", "Monthly bonuses follow each employee’s posting popularity on the internal forum", "Allowances are paid monthly according to the cost of living in the employee’s registered hometown"],
+        "answer": 1,
+        "explain": "Pay for position asks <b>what the role itself is worth</b>: scope of duty, complexity, and impact — usually graded and banded through job evaluation. A cost-of-living allowance is a separate, independent practice and not the “position” dimension of 3P." },
+      { "q": "Sales roles usually run a more “low-fixed, high-variable” mix than administrative functions mainly because:",
+        "options": ["Recruiting for sales takes far longer than for staff functions", "Administrative functions never require any performance management at all", "The law forbids paying any variable bonus to functional departments", "Sales output is easier to quantify, so a variable tied to results motivates more strongly"],
+        "answer": 3,
+        "explain": "The core variable of the mix is <b>how quantifiable the output is</b>: sales performance is highly quantifiable and varies person to person, so a high variable links income directly to output; functional output is collaborative and hard to quantify month by month, so fixed pay dominates. No law forbids bonuses for functions." },
+      { "q": "Which pair of practices do “internal equity” and “external competitiveness” respectively rest on?",
+        "options": ["Employees score and rank one another, while the boss sets salaries in secret", "Queueing by length of service versus queueing by diploma level", "Job evaluation sets the grade, versus benchmarking market percentiles sets the pay", "An annual raise contest versus a quarterly pay-cut ceremony"],
+        "answer": 2,
+        "explain": "Internal equity rests on <b>job evaluation</b> (one ruler measuring every role); external competitiveness rests on <b>market-percentile</b> benchmarking (anchor P50 or P75; indicative). Seniority and diplomas are only reference variables, and secret salaries and pay-cut ceremonies are not mechanisms at all." },
+      { "q": "What is the primary logic of paying part of the package in options rather than all cash?",
+        "options": ["Letting employees share the gains of the company’s growth and binding long-term interests", "Because banks freeze cash, while option settlement escapes all regulation", "Because options carry no exercise price — employees cannot lose and face zero risk", "Because once employees sign an option agreement they may never change employers"],
+        "answer": 0,
+        "explain": "Options bind employees’ gains to the company’s long-term appreciation in exchange for “thinking like an owner”; but they carry an exercise price and a vesting schedule, and go to zero if the company fails — <b>an amplifier of the upside, not a risk-free benefit</b>, and certainly not a restriction on personal freedom." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>Further Reading</h2>
+    <ul>
+      <li>Drive: The Surprising Truth About What Motivates Us by Daniel H. Pink (recommended: the autonomy–mastery–purpose triad and the boundary between intrinsic and extrinsic motivation)</li>
+      <li>Work Rules! by Laszlo Bock (recommended: the compensation chapters and the idea of “unfair pay”)</li>
+      <li>The Alliance: Managing Talent in the Networked Age by Reid Hoffman, Ben Casnocha &amp; Chris Yeh (recommended: the second half, on rebuilding the employment relationship with an equity mindset)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-performance-management.html"><span class="pager-label">← Previous</span><span class="pager-title">Performance Management: KPIs and OKRs</span></a>
+    <a class="next" href="../../07-operations-supply-chain/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Operations &amp; Supply Chain · Branch 07</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Cash is tight at my startup — how should we set the fixed-variable mix?’ or ‘Help me work out the dilution impact of our option pool.’ — follow-up questions are part of learning.</div>
+    <p>Human Resources · Lesson 4 · Compensation and Incentives | Interactive: fixed-variable mix simulator · all figures are illustrative teaching values, not compensation advice</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var host = document.getElementById("payChart");
+  var readout = document.getElementById("payReadout");
+  var controls = document.getElementById("payControls");
+  if (!host || !readout || !controls || !window.Viz) return;
+
+  var TC = 20000, GOOD_K = 1.2, BAD_K = 0.3, YMAX = 25000;
+  var mode = "compare";
+
+  var slider = Viz.slider(controls, {
+    label: "Fixed share of pay", min: 40, max: 95, step: 5, value: 70,
+    format: function (v) { return v + "% fixed"; }
+  });
+
+  function calc(pct) {
+    var fixed = TC * pct / 100, pool = TC - fixed;
+    return { pct: pct, fixed: fixed, pool: pool,
+      bad: fixed + pool * BAD_K, good: fixed + pool * GOOD_K };
+  }
+  function yuan(v) { return "¥" + v.toLocaleString("en-US") + "/month"; }
+  function wan(v) {
+    return "¥" + Math.round(v).toLocaleString("en-US");
+  }
+
+  function draw(c) {
+    host.innerHTML = "";
+    var W = 640, H = 350, m = { t: 40, r: 26, b: 52, l: 70 };
+    var ih = H - m.t - m.b, iw = W - m.l - m.r;
+    var Y = Viz.scale(0, YMAX, m.t + ih, m.t);
+    var svg = Viz.svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img",
+      style: "width:100%;height:auto;display:block" });
+
+    for (var g = 0; g <= 5; g++) {
+      var vy = 5000 * g;
+      svg.appendChild(Viz.svgEl("line", { x1: m.l, x2: m.l + iw, y1: Y(vy), y2: Y(vy),
+        stroke: "#ece6da", "stroke-width": 1 }));
+      var gl = Viz.svgEl("text", { x: m.l - 8, y: Y(vy) + 4, "text-anchor": "end", "font-size": 11, fill: "#a8a29e" });
+      gl.textContent = vy === 0 ? "0" : "¥" + vy.toLocaleString("en-US");
+      svg.appendChild(gl);
+    }
+
+    var scen = mode === "compare" ? ["bad", "good"] : [mode];
+    var names = { bad: "Bad year (variable ×" + BAD_K + ")", good: "Good year (variable ×" + GOOD_K + ")" };
+    var varFill = { bad: "#f9a8d4", good: "#be185d" };
+    var slot = iw / scen.length, bw = Math.min(130, slot * 0.56);
+
+    scen.forEach(function (key, idx) {
+      var total = key === "good" ? c.good : c.bad;
+      var varPart = total - c.fixed;
+      var cx = m.l + slot * (idx + 0.5);
+      var x0 = cx - bw / 2;
+      var yFixed = Y(c.fixed), yTotal = Y(total), yBase = m.t + ih;
+      var rectF = Viz.svgEl("rect", { x: x0, y: yFixed, width: bw, height: yBase - yFixed, rx: 5, fill: "#57534e" });
+      var rectV = Viz.svgEl("rect", { x: x0, y: yTotal, width: bw, height: yFixed - yTotal, rx: 5, fill: varFill[key] });
+      rectF.appendChild(Viz.svgEl("animate", { attributeName: "opacity", from: "0", to: "1", dur: "0.4s", fill: "freeze" }));
+      rectV.appendChild(Viz.svgEl("animate", { attributeName: "opacity", from: "0", to: "1", dur: "0.4s", begin: "0.1s", fill: "freeze" }));
+      svg.appendChild(rectF);
+      svg.appendChild(rectV);
+      function inside(yTop, yBot, text) {
+        if (yBot - yTop < 34) return;
+        var t = Viz.svgEl("text", { x: cx, y: (yTop + yBot) / 2 + 4, "text-anchor": "middle", "font-size": 11, "font-weight": 700, fill: "#fff" });
+        t.textContent = text;
+        svg.appendChild(t);
+      }
+      inside(yTotal, yFixed, "Variable " + wan(varPart));
+      inside(yFixed, yBase, "Fixed " + wan(c.fixed));
+      var top = Viz.svgEl("text", { x: cx, y: yTotal - 8, "text-anchor": "middle", "font-size": 12.5, "font-weight": 800, fill: "#1c1917" });
+      top.textContent = "Total " + wan(total);
+      svg.appendChild(top);
+      var xl = Viz.svgEl("text", { x: cx, y: yBase + 20, "text-anchor": "middle", "font-size": 12, fill: "#78716c" });
+      xl.textContent = names[key];
+      svg.appendChild(xl);
+    });
+
+    svg.appendChild(Viz.svgEl("line", { x1: m.l, x2: m.l + iw, y1: m.t + ih, y2: m.t + ih, stroke: "#c9c1b2", "stroke-width": 1.5 }));
+    svg.appendChild(Viz.svgEl("line", { x1: m.l, x2: m.l + iw, y1: Y(TC), y2: Y(TC),
+      stroke: "#1c1917", "stroke-width": 1.4, "stroke-dasharray": "7 6", opacity: 0.55 }));
+    var tl = Viz.svgEl("text", { x: m.l + iw, y: Y(TC) - 7, "text-anchor": "end", "font-size": 11.5, "font-weight": 700, fill: "#57534e" });
+    tl.textContent = "Target total rewards ¥20,000 (illustrative)";
+    svg.appendChild(tl);
+
+    var legend = [["#57534e", "Fixed"], ["#be185d", "Variable · good"], ["#f9a8d4", "Variable · bad"]];
+    legend.forEach(function (lg, idx) {
+      var lx = m.l + idx * 118;
+      svg.appendChild(Viz.svgEl("rect", { x: lx, y: 16, width: 13, height: 13, rx: 3, fill: lg[0] }));
+      var lt = Viz.svgEl("text", { x: lx + 19, y: 27, "font-size": 11.5, fill: "#57534e" });
+      lt.textContent = lg[1];
+      svg.appendChild(lt);
+    });
+    host.appendChild(svg);
+  }
+
+  function update(c) {
+    draw(c);
+    var spread = Math.round((c.good - c.bad) / c.good * 100);
+    var verdict;
+    if (c.pct <= 55) {
+      verdict = "A low-fixed, high-variable <b>sales-style structure</b>: attractive upside, but income shrinks sharply in a bad year — it selects for people who can live with income volatility, and it only works when performance is genuinely measurable.";
+    } else if (c.pct >= 85) {
+      verdict = "A high-fixed, low-variable <b>staff-function structure</b>: high certainty, weaker incentives — suited to roles whose output is hard to quantify month by month, with growth and recognition supplying the drive.";
+    } else {
+      verdict = "A <b>balanced structure</b> between the two: stability first while keeping some pay-for-performance elasticity — a common starting point for most roles.";
+    }
+    readout.innerHTML =
+      "Guaranteed income (rain or shine): <b>" + yuan(c.fixed) + "</b> · " +
+      "Upside income (good year): <b>" + yuan(c.good) + "</b> · " +
+      "Bad-year income: <b>" + yuan(c.bad) + "</b> · " +
+      "Swing of about <b>" + spread + "%</b><br>" + verdict;
+  }
+
+  slider.onChange(function (v) { update(calc(v)); });
+  document.querySelectorAll("#payScenarios .scn-btn").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#payScenarios .scn-btn").forEach(function (x) { x.classList.remove("active"); });
+      b.classList.add("active");
+      mode = b.getAttribute("data-m");
+      update(calc(slider.get()));
+    });
+  });
+  document.querySelectorAll("#payPresets .scn-btn").forEach(function (b) {
+    b.addEventListener("click", function () {
+      slider.set(parseFloat(b.getAttribute("data-fix")));
+    });
+  });
+  update(calc(slider.get()));
+})();
+</script>
+</body>
+</html>

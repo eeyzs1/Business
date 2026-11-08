@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Accounting Equation: The Language of Business · Accounting</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  #scale-sim .tx-btns{display:flex;flex-wrap:wrap;gap:.6rem;padding:.8rem 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin:.6rem 0;}
+  #scale-sim .tx-btns button{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--accent);background:#fff;
+    border:1.5px solid color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:999px;padding:.42rem 1.05rem;cursor:pointer;transition:all .15s ease;}
+  #scale-sim .tx-btns button:hover{background:var(--accent);color:var(--accent-ink);}
+  #scale-sim .tx-btns button.ghost{color:var(--ink-soft);border-color:var(--line);}
+  #scale-svg{margin:.3rem 0 .1rem;}
+  #sc-msg{min-height:1.6rem;font-size:.9rem;color:var(--ink-soft);margin:.4rem 0 0;}
+  #sc-msg.err{color:var(--bad);font-weight:700;}
+  #sc-beam{transform-box:view-box;transform-origin:340px 64px;transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
+  .plate-l,.plate-r{transition:transform .35s ease;}
+  .acct rect{transition:opacity .35s ease;}
+  .acct-hot rect{opacity:.15 !important;}
+  .acct-hot text{fill:var(--accent) !important;font-weight:800 !important;}
+  .bal-ok{color:var(--good);font-weight:800;}
+</style>
+</head>
+<body class="branch-accounting">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Accounting</a><span class="crumb-sep">/</span>
+  <span>The Accounting Equation: The Language of Business</span>
+  <span class="progress">Lesson 1 of 4</span>
+<a class="lang-switch" href="../../../02-accounting/lessons/0001-accounting-equation.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Accounting · Lesson 1</p>
+  <h1>The Accounting Equation: The Language of Business</h1>
+  <p class="lead">Accounting is often called the language of business, and the first sentence of that language is only one line long: Assets = Liabilities + Owners’ Equity. In this lesson we will not memorize a chart of accounts — we will build a single intuition instead: every transaction has two sides at once, and the scale always stays level.</p>
+
+  <h2><span class="secno">1</span>Why Start with One Equation</h2>
+  <p>Face any company in the world, and the business world is always asking three questions: <b>What does it own? What does it owe? What is truly left for the shareholders?</b> Banks ask before lending, investors ask before buying in, and owners ask themselves at every month-end. The accounting equation compresses those three questions into a one-line identity — it is not a computing formula but a constitution that always holds.</p>
+  <div class="concept">
+    <div class="concept-title">Accounting Equation</div>
+    <p style="margin:.2rem 0 .6rem"><b>Assets = Liabilities + Owners’ Equity</b></p>
+    <p style="margin:0;font-size:.95rem;color:var(--ink-soft)">Assets are the economic resources a company controls: cash, inventory, equipment, the amounts customers still owe. Liabilities are what it owes others: bank loans, unpaid supplier bills. Owners’ equity is the <em>residual</em> left when liabilities are subtracted from assets — also called net assets. Equity behaves like a balance, passively pushed around by both sides of the equation — settle the assets and liabilities first, and equity falls out on its own.</p>
+  </div>
+  <div class="callout note"><span class="callout-label">Synonym cheat sheet</span> Owners’ equity = shareholders’ equity = net assets = book value — four names for the same thing, used interchangeably in exams and annual reports.</div>
+
+  <h2><span class="secno">2</span>The Accounting Entity: Drawing a Boundary Around “the Company”</h2>
+  <p>Before you can record anything with the equation, you must answer one question: whose books are these? The accounting entity defines the boundary of the books: it is <b>this company</b> — not the owner as a person, and not the family’s private savings. Every yuan on the company’s books must be traceable to a transaction at the level of the company.</p>
+  <p>Why the fuss? Because the most common disease of young startups is commingling: the founder’s personal card pays company costs, and company money pays for family holidays. Once the two mix, the statements lose their meaning — you can no longer tell whether the company actually made money, and fundraising due diligence and tax filing both sink into the mud.</p>
+  <div class="callout warn"><span class="callout-label">Watch out</span> When an owner pays company costs out of their own pocket and keeps the receipts, that is perfectly proper — a shareholder lending to the company. What goes wrong is not where the money comes from; it is where the books draw the line.</div>
+
+  <h2><span class="secno">3</span>Double-Entry Bookkeeping: Every Transaction Has Two Sides</h2>
+  <p>The equation’s most beautiful corollary: <b>no transaction touches only one place.</b> Every transaction either raises or lowers both sides of the equation together, or swaps one up and one down within the same side — that is double-entry bookkeeping. Written in the language of the ledger, it becomes debit-and-credit bookkeeping: a debit and a credit are not the everyday “borrowing and lending” — they are simply left and right position markers, summed up by the motto “every debit has a credit, and debits must equal credits.” The journal is the book that records these two-sided entries one by one, in chronological order.</p>
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>Example transaction</th><th>Left side: Assets</th><th>Right side: Liabilities + Equity</th><th>How the scale stays level</th></tr></thead>
+    <tbody>
+      <tr><td>Bank loan of ¥1,000,000</td><td>Cash +¥1,000,000</td><td>Bank loan +¥1,000,000</td><td>Both sides rise</td></tr>
+      <tr><td>Shareholders invest ¥500,000</td><td>Cash +¥500,000</td><td>Paid-in capital +¥500,000</td><td>Both sides rise</td></tr>
+      <tr><td>Buy equipment for cash ¥300,000</td><td>Cash −¥300,000, Equipment +¥300,000</td><td>Unchanged</td><td>One up, one down on the same side</td></tr>
+      <tr><td>Buy materials on credit ¥200,000</td><td>Inventory +¥200,000</td><td>Accounts payable +¥200,000</td><td>Both sides rise</td></tr>
+      <tr><td>Repay borrowing ¥100,000</td><td>Cash −¥100,000</td><td>Bank loan −¥100,000</td><td>Both sides fall</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Look at the last column: whatever the combination, the <b>total weight</b> on the two pans always stays equal. What auditors are really checking, entry by entry, is whether both pans of the scale were recorded for every transaction.</p>
+
+  <h2><span class="secno">4</span>Try It Yourself: The Transaction Scale</h2>
+  <p>Click the example transaction buttons below and watch both pans of the scale move <b>at the same time</b>: the affected accounts light up, the amounts count up, and the beam sways gently before settling level. After a few entries, read the journal that writes itself.</p>
+  <div class="sim" id="scale-sim">
+    <div class="sim-title">The Transaction Scale · Two Sides to Every Transaction</div>
+    <div class="tx-btns">
+      <button data-tx="loan">Bank loan ¥1,000,000</button>
+      <button data-tx="cap">Shareholders invest ¥500,000</button>
+      <button data-tx="equip">Buy equipment for cash ¥300,000</button>
+      <button data-tx="inv">Buy materials on credit ¥200,000</button>
+      <button data-tx="reset" class="ghost">↺ Reset the scale</button>
+    </div>
+    <div id="scale-svg"></div>
+    <p class="sim-readout">Assets <b id="bal-l">0</b> ×10,000 = Liabilities <b id="bal-d">0</b> ×10,000 + Owners’ equity <b id="bal-e">0</b> ×10,000 <span class="bal-ok">✓ the scale always stays level</span></p>
+    <p id="sc-msg">Click any transaction button above to start recording.</p>
+    <div class="table-wrap">
+    <table class="compact" id="journal">
+      <thead><tr><th>#</th><th>Transaction</th><th>Debit account</th><th>Credit account</th><th>Amount (×10,000)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    </div>
+  </div>
+
+  <h2><span class="secno">5</span>Case Study: The Lemonade Stand’s First Week</h2>
+  <div class="case">
+    <div class="case-title">The first week’s journal of one lemonade stand (figures are illustrative)</div>
+    <p>The Accounting Game teaches an entire set of books through a lemonade stand; let us replay it here. Suppose you decide to start a business selling lemonade:</p>
+    <ul class="timeline">
+      <li><b>Day 1 · You invest ¥200.</b> You put your own savings into the stand: debit “Cash” ¥200, credit “Paid-in Capital” ¥200 — assets and equity rise together, and from this moment the right-hand pan carries your share.</li>
+      <li><b>Day 1 · You borrow ¥100 from family.</b> Debit “Cash” ¥100, credit “Loans” ¥100 — both pans gain again, but what the right pan gains is a liability: this part must be repaid later.</li>
+      <li><b>Day 2 · You buy supplies for cash ¥80.</b> Lemons and sugar not yet sold are still your assets: debit “Inventory” ¥80, credit “Cash” ¥80 — assets merely change shape, and the total does not move.</li>
+      <li><b>Day 3 · Sales of ¥150, using ¥60 of supplies.</b> Two entries: debit “Cash” ¥150 and credit “Revenue” ¥150; debit “Cost of Sales” ¥60 and credit “Inventory” ¥60. The ¥90 difference between revenue and cost rolls into “Retained Earnings” within equity at the weekend.</li>
+      <li><b>Day 5 · You repay ¥50 of the loan.</b> Debit “Loans” ¥50, credit “Cash” ¥50 — both sides shrink, and the liability thins with every repayment.</li>
+    </ul>
+    <p><b>Weekend count-up:</b> cash ¥320 (200 + 100 − 80 + 150 − 50) + inventory ¥20 = assets ¥340; liabilities are down to the ¥50 loan; equity = paid-in capital ¥200 + this week’s profit ¥90 = ¥290. <b>¥340 = ¥50 + ¥290</b> — the scale closes.</p>
+    <p class="case-learn"><b>What this case teaches:</b> “earned ¥90” and “cash went up” are two different things — profit is computed as revenue minus costs, while cash is merely one form of asset. That crack is exactly the problem the next lesson’s three financial statements deal with formally.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Accounting Equation</dt><dd>Assets = Liabilities + Owners’ Equity; an identity that always holds.</dd>
+      <dt>Assets</dt><dd>The economic resources a company controls: cash, inventory, equipment, receivables, and more.</dd>
+      <dt>Liabilities</dt><dd>Obligations owed to outsiders: borrowings, payables, and the like.</dd>
+      <dt>Owners’ Equity</dt><dd>What remains of assets after liabilities; it belongs to the shareholders and is also called net assets.</dd>
+      <dt>Accounting Entity</dt><dd>The boundary of the books: record the accounts of “this company,” not the owner’s personal affairs.</dd>
+      <dt>Double-Entry Bookkeeping</dt><dd>Every transaction is recorded in two places at once, keeping the equation balanced.</dd>
+      <dt>Debit / Credit</dt><dd>Left and right position markers for recording entries — not everyday borrowing and lending.</dd>
+      <dt>Journal</dt><dd>The original book that records transactions one by one in chronological order.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    Assets = Liabilities + Owners’ Equity is a constitution that cannot be violated. Every transaction strikes both sides of the equation at once (or two places on the same side), so the scale always stays level — not by coincidence, but by the very design of double-entry bookkeeping.
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "A company buys a piece of equipment for ¥500,000 out of its bank deposits. What does this transaction do to the accounting equation?",
+      "options": ["Assets and liabilities both increase by ¥500,000", "Assets and equity both decrease by ¥500,000", "One asset rises as another falls, and the total is unchanged", "Total assets increase while equity decreases"],
+      "answer": 2,
+      "explain": "Cash (an asset) falls by ¥500,000 while equipment (an asset) rises by ¥500,000 — the assets merely swap form. Total assets and the right-hand side are unchanged, and the scale stays balanced." },
+    { "q": "A shareholder invests ¥1,000,000 of cash in the company. Which entry direction is correct?",
+      "options": ["Debit: bank deposits; credit: paid-in capital", "Debit: paid-in capital; credit: bank deposits", "Debit: bank deposits; credit: sales revenue", "Debit: fixed assets; credit: accounts payable"],
+      "answer": 0,
+      "explain": "The company receives cash, so the increase in assets is a debit; the shareholder’s investment increases equity, so paid-in capital is credited. Reverse the direction and you have recorded a withdrawal instead of a contribution." },
+    { "q": "An owner pays for a family holiday with a personal bank card, and it cannot be entered in the company’s books. What is the most accurate reason?",
+      "options": ["The holiday spend is too small to meet the threshold for recording", "The company is a separate accounting entity; family matters are not its business", "No formal invoice was obtained, so it cannot be booked for now", "Personal spending should be netted against equity once, at year-end"],
+      "answer": 1,
+      "explain": "The key is neither the amount nor the invoice — it is the entity boundary: this transaction is not an operating activity of “this company.” Draw the accounting entity wrong, and the statements distort as a whole." },
+    { "q": "Double-entry bookkeeping requires every transaction to be recorded in two places. What is its fundamental purpose?",
+      "options": ["It doubles the length of the books, which is convenient for archiving", "It makes it easier to separate revenue accounts from expense accounts", "It helps the company pay less income tax at filing time", "It keeps both sides of the accounting equation equal at all times"],
+      "answer": 3,
+      "explain": "The twin records check each other: omit or misstate either side, and the equation instantly stops balancing — the double-entry scale is itself the oldest error-detection mechanism." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>Further Reading</h2>
+    <ul>
+      <li>The Accounting Game: Basic Accounting Fresh from the Lemonade Stand by Darrell Mullis &amp; Judith Orloff, Chinese edition (China Machine Press) — suggested: the opening through the middle, keeping the first set of books along with the lemonade stand.</li>
+      <li>Accounting: The Basis for Business Decisions by John J. Wild (Chinese edition, China Machine Press) — suggested: chapters 1–2, “Accounting in Business” and “Analyzing and Recording Transactions.”</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← Previous</span><span class="pager-title">Branch Guide · Accounting</span></a>
+    <a class="next" href="0002-three-statements.html"><span class="pager-label">Next →</span><span class="pager-title">The Three Financial Statements: A Company’s Report Card</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Why isn’t a ¥1,000,000 loan my profit?’ or ‘How do I tell debit from credit — which side is which?’ You can also ask for a transaction and call which way the scale moves. Follow-up questions are part of learning.</div>
+    <p>Accounting · Lesson 1 · The Accounting Equation: The Language of Business | Interactive: simulator and quiz · all figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var host = document.getElementById("scale-svg");
+  if (!host) return;
+  var svg = Viz.svgEl("svg", { viewBox: "0 0 680 300", role: "img", "aria-label": "Illustration of the transaction scale" });
+  svg.style.cssText = "width:100%;height:auto;display:block";
+
+  /* Beam and post */
+  var beam = Viz.svgEl("g", { id: "sc-beam" });
+  beam.appendChild(Viz.svgEl("line", { x1: 110, y1: 64, x2: 570, y2: 64, stroke: "#1c1917", "stroke-width": 6, "stroke-linecap": "round" }));
+  beam.appendChild(Viz.svgEl("circle", { cx: 110, cy: 64, r: 5, fill: "#1c1917" }));
+  beam.appendChild(Viz.svgEl("circle", { cx: 570, cy: 64, r: 5, fill: "#1c1917" }));
+  svg.appendChild(beam);
+  svg.appendChild(Viz.svgEl("line", { x1: 340, y1: 64, x2: 340, y2: 150, stroke: "#c9c1b2", "stroke-width": 8, "stroke-linecap": "round" }));
+  svg.appendChild(Viz.svgEl("circle", { cx: 340, cy: 64, r: 8, fill: "#1d4ed8" }));
+  svg.appendChild(Viz.svgEl("rect", { x: 278, y: 150, width: 124, height: 12, rx: 6, fill: "#c9c1b2" }));
+  var motto = Viz.svgEl("text", { x: 340, y: 186, "text-anchor": "middle", "font-size": 12, fill: "#a8a29e", "font-weight": 700 });
+  motto.textContent = "Every debit has a credit · and the two must be equal";
+  svg.appendChild(motto);
+
+  /* Account balances */
+  var ACC = {
+    cash:  { side: "L", label: "Cash",              v: 0 },
+    equip: { side: "L", label: "Equipment",         v: 0 },
+    inv:   { side: "L", label: "Materials",         v: 0 },
+    loan:  { side: "R", label: "Bank loan",         v: 0 },
+    ap:    { side: "R", label: "Payables",          v: 0 },
+    cap:   { side: "R", label: "Paid-in capital",   v: 0 }
+  };
+  var PLATES = { L: { cx: 110, title: "Assets · ×10,000" }, R: { cx: 570, title: "Liabilities + Equity · ×10,000" } };
+  var totEls = {};
+
+  function buildPlate(side) {
+    var p = PLATES[side];
+    var w = 190, x = p.cx - w / 2, y = 96, h = 192;
+    var g = Viz.svgEl("g", { "class": side === "L" ? "plate-l" : "plate-r" });
+    g.appendChild(Viz.svgEl("line", { x1: p.cx, y1: 66, x2: x + 18, y2: y, stroke: "#a8a29e", "stroke-width": 1.5 }));
+    g.appendChild(Viz.svgEl("line", { x1: p.cx, y1: 66, x2: x + w - 18, y2: y, stroke: "#a8a29e", "stroke-width": 1.5 }));
+    g.appendChild(Viz.svgEl("rect", { x: x, y: y, width: w, height: h, rx: 12, fill: "#ffffff", stroke: "#e7e0d3", "stroke-width": 1.5 }));
+    var hd = Viz.svgEl("text", { x: p.cx, y: y + 24, "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#1d4ed8" });
+    hd.textContent = p.title;
+    g.appendChild(hd);
+    g.appendChild(Viz.svgEl("line", { x1: x + 10, y1: y + 34, x2: x + w - 10, y2: y + 34, stroke: "#e7e0d3", "stroke-width": 1 }));
+    svg.appendChild(g);
+    /* Total row */
+    g.appendChild(Viz.svgEl("line", { x1: x + 10, y1: y + 150, x2: x + w - 10, y2: y + 150, stroke: "#e7e0d3", "stroke-width": 1 }));
+    var tl = Viz.svgEl("text", { x: x + 16, y: y + 172, "font-size": 12.5, "font-weight": 800, fill: "#1c1917" });
+    tl.textContent = side === "L" ? "Total assets" : "Liab. + equity total";
+    g.appendChild(tl);
+    var tv = Viz.svgEl("text", { x: x + w - 16, y: y + 172, "font-size": 12.5, "font-weight": 800, fill: "#1d4ed8", "text-anchor": "end" });
+    tv.textContent = "0";
+    g.appendChild(tv);
+    totEls[side] = tv;
+    return { g: g, x: x, y: y, w: w };
+  }
+
+  function buildRows(plate, keys) {
+    keys.forEach(function (k, i) {
+      var a = ACC[k];
+      var y = plate.y + 56 + i * 27;
+      var row = Viz.svgEl("g", { "class": "acct" });
+      row.appendChild(Viz.svgEl("rect", { x: plate.x + 8, y: y - 16, width: plate.w - 16, height: 23, rx: 6, fill: "#1d4ed8", opacity: 0 }));
+      var nm = Viz.svgEl("text", { x: plate.x + 16, y: y, "font-size": 12.5, fill: "#1c1917" });
+      nm.textContent = a.label;
+      row.appendChild(nm);
+      var amt = Viz.svgEl("text", { x: plate.x + plate.w - 16, y: y, "font-size": 12.5, "font-weight": 700, fill: "#1c1917", "text-anchor": "end" });
+      amt.textContent = "0";
+      row.appendChild(amt);
+      svg.appendChild(row);
+      a.g = row; a.amtEl = amt; a.timer = null;
+    });
+  }
+
+  var pL = buildPlate("L"), pR = buildPlate("R");
+  buildRows(pL, ["cash", "equip", "inv"]);
+  buildRows(pR, ["loan", "ap", "cap"]);
+  host.appendChild(svg);
+
+  /* Transaction definitions (dr/cr are per-account deltas; drTxt/crTxt feed the journal) */
+  var TXS = {
+    loan:  { name: "Bank loan of ¥1,000,000",        dr: { cash: 100 },  cr: { loan: 100 }, drTxt: "Cash",      crTxt: "Bank loan",      amt: 100 },
+    cap:   { name: "Shareholders invest ¥500,000",   dr: { cash: 50 },   cr: { cap: 50 },   drTxt: "Cash",      crTxt: "Paid-in capital", amt: 50 },
+    equip: { name: "Buy equipment for cash ¥300,000", dr: { equip: 30 }, cr: { cash: -30 }, drTxt: "Equipment", crTxt: "Cash",           amt: 30 },
+    inv:   { name: "Buy materials on credit ¥200,000", dr: { inv: 20 },  cr: { ap: 20 },    drTxt: "Materials", crTxt: "Payables",       amt: 20 }
+  };
+  var fmt = function (x) { return Math.round(x).toLocaleString("en-US"); };
+  var msgEl = document.getElementById("sc-msg");
+  function msg(text, err) { msgEl.textContent = text; msgEl.className = err ? "err" : ""; }
+
+  function totals() {
+    var l = ACC.cash.v + ACC.equip.v + ACC.inv.v;
+    var d = ACC.loan.v + ACC.ap.v;
+    var e = ACC.cap.v;
+    document.getElementById("bal-l").textContent = fmt(l);
+    document.getElementById("bal-d").textContent = fmt(d);
+    document.getElementById("bal-e").textContent = fmt(e);
+    totEls.L.textContent = fmt(l);
+    totEls.R.textContent = fmt(d + e);
+  }
+
+  function tilt() {
+    beam.style.transform = "rotate(-2deg)";
+    pL.g.style.transform = "translateY(5px)";
+    pR.g.style.transform = "translateY(5px)";
+    setTimeout(function () {
+      beam.style.transform = "rotate(0deg)";
+      pL.g.style.transform = "translateY(0)";
+      pR.g.style.transform = "translateY(0)";
+    }, 280);
+  }
+
+  var seq = 0;
+  function journalRow(tx) {
+    var tb = document.querySelector("#journal tbody");
+    var tr = document.createElement("tr");
+    var cells = [String(++seq), tx.name, tx.drTxt, tx.crTxt, fmt(tx.amt)];
+    cells.forEach(function (c) {
+      var td = document.createElement("td");
+      td.textContent = c;
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  }
+
+  function apply(key) {
+    var tx = TXS[key];
+    var deltas = {};
+    Object.keys(tx.dr).forEach(function (k) { deltas[k] = (deltas[k] || 0) + tx.dr[k]; });
+    Object.keys(tx.cr).forEach(function (k) { deltas[k] = (deltas[k] || 0) + tx.cr[k]; });
+    if (ACC.cash.v + (deltas.cash || 0) < 0) {
+      msg("Not enough cash — record the bank loan or the shareholder investment first; the scale does not allow negative cash.", true);
+      return;
+    }
+    msg("Entry #" + (seq + 1) + " recorded: " + tx.name + " → debit: " + tx.drTxt + ", credit: " + tx.crTxt + ", amount " + tx.amt + " ×10,000.");
+    Object.keys(deltas).forEach(function (k) {
+      var a = ACC[k], from = a.v;
+      a.v += deltas[k];
+      Viz.countUp(a.amtEl, a.v, { from: from, dur: 650, format: fmt });
+      a.g.classList.add("acct-hot");
+      clearTimeout(a.timer);
+      a.timer = setTimeout(function () { a.g.classList.remove("acct-hot"); }, 1600);
+    });
+    tilt(); totals(); journalRow(tx);
+  }
+
+  function reset() {
+    Object.keys(ACC).forEach(function (k) {
+      var a = ACC[k];
+      a.v = 0; a.amtEl.textContent = "0";
+      a.g.classList.remove("acct-hot");
+      clearTimeout(a.timer);
+    });
+    seq = 0;
+    document.querySelector("#journal tbody").innerHTML = "";
+    totals();
+    msg("The scale is back to zero. Click any transaction button to start again.");
+  }
+
+  document.querySelectorAll("#scale-sim [data-tx]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var k = b.getAttribute("data-tx");
+      if (k === "reset") reset(); else apply(k);
+    });
+  });
+  totals();
+})();
+</script>
+</body>
+</html>

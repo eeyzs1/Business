@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Entities · Business Law &amp; Ethics</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .scen-tabs { display: flex; flex-wrap: wrap; gap: .55rem; margin: .4rem 0 .8rem; }
+  .scen-tab {
+    font-family: var(--sans); font-size: .9rem; font-weight: 700; cursor: pointer;
+    border: 1.5px solid var(--line); background: var(--paper); color: var(--ink);
+    border-radius: 999px; padding: .4rem 1rem; transition: all .15s ease;
+  }
+  .scen-tab:hover { border-color: var(--accent); }
+  .scen-tab.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .scen-tab .done-mark { color: var(--good); font-weight: 800; }
+  .scen-tab.on .done-mark { color: #bbf7d0; }
+  .scen-desc {
+    background: var(--paper-deep); border-radius: 10px; padding: .8rem 1rem;
+    font-size: .95rem; color: var(--ink-soft); margin-bottom: .9rem; line-height: 1.8;
+  }
+  .scen-desc b { color: var(--ink); }
+  .form-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .6rem; margin: .8rem 0; }
+  .form-btn {
+    font-family: var(--sans); font-size: .93rem; font-weight: 600; cursor: pointer;
+    border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 10px; padding: .6rem .7rem; transition: all .15s ease; line-height: 1.5;
+  }
+  .form-btn small { display: block; color: var(--ink-faint); font-weight: 400; font-size: .78rem; }
+  .form-btn:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-2px); }
+  .form-btn.picked { border-color: var(--accent); box-shadow: inset 4px 0 0 var(--accent); background: #fafafa; }
+  .form-btn:disabled { cursor: default; opacity: .75; }
+  .ent-fb {
+    margin-top: .9rem; font-size: .93rem; background: var(--paper-deep); border-radius: 10px;
+    padding: .9rem 1.05rem; color: var(--ink-soft); line-height: 1.85;
+  }
+  .ent-fb b { color: var(--ink); }
+  .ent-fb .verdict { display: inline-block; font-weight: 800; margin-right: .35rem; }
+  .ent-fb .verdict.v-best { color: var(--good); }
+  .ent-fb .verdict.v-ok { color: #b45309; }
+  .ent-fb .verdict.v-bad { color: var(--bad); }
+  .ent-tried { font-size: .85rem; color: var(--ink-faint); margin-top: .6rem; }
+</style>
+</head>
+<body class="branch-law-ethics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Business Law &amp; Ethics</a><span class="crumb-sep">/</span>
+  <span>Business Entities</span>
+  <span class="progress">Lesson 1 of 4</span>
+<a class="lang-switch" href="../../../12-business-law-ethics/lessons/0001-business-entities.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Business Law &amp; Ethics · Lesson 1</p>
+  <h1>Business Entities</h1>
+  <p class="lead">The first task in business is not finding customers — it is answering one question: <em>in what legal identity will this business exist?</em> Your legal form decides who answers for debts, where money can come from, whether equity can move, and how you are taxed. It is the first, and the most overlooked, “default contract” a founder ever signs. In this lesson you personally assign an identity to three startup scenarios.</p>
+
+  <div class="callout warn">
+    <span class="callout-label">Read this first</span>
+    This lesson is a <b>teaching illustration and does not constitute legal advice</b>. Registration requirements and tax treatment for each form change as statutes are amended; for real decisions, consult a licensed attorney and a tax professional.
+  </div>
+
+  <h2><span class="secno">1</span>Choosing a form is choosing a whole package of default rules</h2>
+  <p>Many people treat “what to register as” as just another checkbox on a form. In fact, your legal form (business entity) is an entire <em>package of default rules</em>: whose doorstep debts can reach, how profits are split, whether outsiders can invest, whether transferring shares needs anyone’s blessing, and how the tax authorities treat you — every one of these is preset by the form you choose. Whatever your agreements do not spell out, the law fills in for you with defaults; and the defaults may not be what you wanted.</p>
+  <p>The four mainstream forms line up on a spectrum. At the left end sits the <b>sole proprietorship</b> (in China, the individually-owned business) — easiest to set up, with unlimited liability. At the right end sits the <b>joint-stock company</b> (the corporation) — the heaviest structure and the strongest fundraising power. Between them come the <b>partnership</b> and the <b>limited liability company (LLC)</b>. Moving right, liability insulation and fundraising capacity grow — and so do setup costs and the compliance burden. There is no such thing as free liability insulation.</p>
+  <div class="concept">
+    <div class="concept-title">Definition · Legal personality and limited liability</div>
+    <p style="margin:.2rem 0 .5rem">A <b>legal person</b> is a legally constructed “person”: in its own name the company owns property, signs contracts, and sues or gets sued — separate and independent from the founder’s personal assets. From this flows the most important concept of the lesson:</p>
+    <p style="margin:0"><em>Limited liability</em>: if the company owes money, the owners (limited partners or shareholders, depending on the form) are, as a matter of principle, liable only <em>up to the capital they subscribed</em>; personal homes and savings sit outside the creditor’s reach. By contrast, sole proprietors and general partners bear <b>unlimited liability</b> for business debts, and general partners bear <b>joint and several liability</b> as well — a creditor can demand the entire debt from any single one of them.</p>
+  </div>
+  <p>Limited liability is not a failsafe firewall: where company assets are misappropriated, personal and company accounts commingled, or subscribed capital siphoned out, courts may “pierce the corporate veil” (disregard of legal personality) and hold the owners personally liable. Limited liability protects the shareholder who plays by the rules — not the one who treats the company as a personal wallet.</p>
+
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 640 300" role="img" aria-label="Limited liability firewall diagram">
+        <defs>
+          <marker id="arr1" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#78716c"/></marker>
+        </defs>
+        <rect x="30" y="70" width="150" height="110" rx="12" fill="#fff" stroke="#c9c1b2" stroke-width="1.6"/>
+        <text x="105" y="105" text-anchor="middle" font-size="15" font-weight="800" fill="#1c1917">The shareholder</text>
+        <text x="105" y="130" text-anchor="middle" font-size="12" fill="#57534e">Home · savings</text>
+        <text x="105" y="150" text-anchor="middle" font-size="12" fill="#57534e">Other personal assets</text>
+        <rect x="245" y="70" width="150" height="110" rx="12" fill="#f4f4f5" stroke="#52525b" stroke-width="2.4"/>
+        <text x="320" y="100" text-anchor="middle" font-size="15" font-weight="800" fill="#1c1917">The company</text>
+        <text x="320" y="123" text-anchor="middle" font-size="12" fill="#57534e">Separate legal assets</text>
+        <text x="320" y="143" text-anchor="middle" font-size="12" fill="#57534e">Signs contracts · answers suits</text>
+        <rect x="460" y="70" width="150" height="110" rx="12" fill="#fff" stroke="#c9c1b2" stroke-width="1.6"/>
+        <text x="535" y="105" text-anchor="middle" font-size="15" font-weight="800" fill="#1c1917">Creditors</text>
+        <text x="535" y="130" text-anchor="middle" font-size="12" fill="#57534e">Suppliers · banks</text>
+        <text x="535" y="150" text-anchor="middle" font-size="12" fill="#57534e">Employees · the tax office</text>
+        <line x1="180" y1="125" x2="243" y2="125" stroke="#78716c" stroke-width="2" marker-end="url(#arr1)"/>
+        <text x="211" y="112" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="700">Capital</text>
+        <line x1="395" y1="125" x2="458" y2="125" stroke="#78716c" stroke-width="2" marker-end="url(#arr1)"/>
+        <text x="426" y="112" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="700">Operating debts</text>
+        <line x1="212" y1="66" x2="212" y2="186" stroke="#b91c1c" stroke-width="2.2" stroke-dasharray="7 5"/>
+        <line x1="428" y1="66" x2="428" y2="186" stroke="#15803d" stroke-width="2.2" stroke-dasharray="7 5"/>
+        <text x="212" y="212" text-anchor="middle" font-size="12" font-weight="800" fill="#b91c1c">Limited liability wall: claims stop at the capital</text>
+        <text x="428" y="212" text-anchor="middle" font-size="12" font-weight="800" fill="#15803d">Repaid only from company assets</text>
+        <text x="320" y="248" text-anchor="middle" font-size="12.5" fill="#57534e">Exception: commingling or siphoned capital may let courts pierce the veil and reach the owner (illustrative)</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The limited liability firewall: creditors can take the company’s assets but, as a rule, cannot reach the shareholder’s personal property — the most valuable gift the corporate form gives the people who fund it.</figcaption>
+  </figure>
+
+  <h2><span class="secno">2</span>The four forms at a glance: liability, financing, transferability, taxes</h2>
+  <p>The table below is a qualitative comparison across four dimensions — remember the direction, not the statutes. One caution: the tax column speaks only to structural simplicity or complexity, with no specific rates, because rates change constantly with tax type, region, and policy.</p>
+  <div class="table-wrap" data-reveal>
+    <table class="compact">
+      <thead><tr><th>Form</th><th>Liability for debts</th><th>Financing channels</th><th>Transfer of equity</th><th>Tax &amp; compliance (qualitative)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Sole proprietorship</b></td><td>Owner has unlimited liability</td><td>Own funds, borrowing</td><td>No equity concept; attached to the owner personally</td><td>Simplest structure, lightest compliance</td></tr>
+        <tr><td><b>General partnership</b></td><td>Partners unlimited, joint and several</td><td>Partner capital</td><td>Requires partners’ consent; tightly bound</td><td>Income passes through to partners, taxed in their hands (illustrative)</td></tr>
+        <tr><td><b>Limited partnership</b></td><td>GPs unlimited; LPs capped at their capital</td><td>Capital from GPs + LPs</td><td>LP interests transfer fairly freely</td><td>Same pass-through; often used as a shareholding platform (illustrative)</td></tr>
+        <tr><td><b>Limited liability company (LLC)</b></td><td>Shareholders liable up to their capital</td><td>Equity financing, bank loans</td><td>Bound by the articles; relatively restricted</td><td>Taxed at company level; dividends taxed again in personal hands (a structural “double” layer, illustrative)</td></tr>
+        <tr><td><b>Joint-stock company</b></td><td>Shareholders liable up to their capital</td><td>May issue shares publicly (when conditions are met)</td><td>Shares transfer fairly freely</td><td>Same as above, but the highest disclosure and governance requirements</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>How you read the table matters more than the table itself: first ask “in the worst case, whose loss is this?”, then ask “what does this business most need?” — cheap and flexible, or a container big enough for outside investors’ money. Now for some hands-on practice.</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">Simulator · Entity Selector — three startup scenarios, you assign the identity</div>
+    <p class="scen-desc" style="margin-bottom:.6rem;font-size:.93rem;color:var(--ink-soft)">Open each scenario, pick a legal form for it, and get an instant verdict with the reasoning. Try all three, and “form = package of rules” will stick to your hands.</p>
+    <div class="scen-tabs" id="ent-tabs"></div>
+    <div class="scen-desc" id="ent-desc"></div>
+    <div class="form-opts" id="ent-forms"></div>
+    <div class="ent-fb" id="ent-fb" hidden></div>
+    <div class="ent-tried" id="ent-tried">Tried 0 / 3 scenarios</div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case: Why tech startups almost always use an LLC plus a limited-partnership holding platform</p>
+    <p>Look at any technology company that has taken institutional investment (illustrative; no specific company named): the fundraising vehicle is almost invariably a <em>limited liability company</em> — because what investors want is <em>calculable risk</em>: put in a sum, own a percentage, lose at most that sum, and never be personally chased for more. The same legal shell holds capital increases, employee option pools, and the governance terms investors require.</p>
+    <p>The second layer is the more interesting one: employee equity incentives are usually <em>not</em> granted to employees directly, but parked inside a <b>limited partnership</b> — employees join as limited partners (LPs) holding interests and sharing the upside, while the general partner (GP) is the founder or a company the founder controls. <em>Voting power concentrates in the GP’s hands</em>: dozens of employees never enter the shareholder register, shareholders’ meetings do not need every signature, and control is not diluted by the incentive plan; employees, capped at their capital, keep a purely economic upside. One structure solves two problems: the LLC gives investors the confidence to invest, the limited partnership preserves the ability to govern.</p>
+    <p class="case-learn"><b>What to notice in this case:</b> choosing a form is not paperwork — it is <strong>designing the structure that allocates responsibility and power</strong>. Who bears risk, who collects returns, and who decides can be arranged separately, in different forms at different layers. This is the founder’s first true exercise in top-level design.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Legal person</dt><dd>A legally constructed independent entity that owns property, concludes contracts, and bears debts in its own name, separate from its investors’ personal assets.</dd>
+      <dt>Limited liability</dt><dd>Shareholders are liable for company debts only up to the capital they subscribed; personal assets are, as a rule, beyond creditors’ reach.</dd>
+      <dt>Joint and several liability</dt><dd>General partners are collectively liable for partnership debts; a creditor may claim the entire debt from any single partner.</dd>
+      <dt>General partnership</dt><dd>A partnership in which all partners bear unlimited joint and several liability, with roles and splits governed by the partnership agreement.</dd>
+      <dt>Limited partnership</dt><dd>A form in which general partners (GPs) run the business with unlimited liability and limited partners (LPs) are liable only up to their capital; commonly used as a shareholding platform.</dd>
+      <dt>Piercing the corporate veil</dt><dd>When owners abuse the company’s independent status and commingle personal and company affairs, courts may “pierce the veil” and hold them liable for the company’s debts.</dd>
+      <dt>Sole proprietorship</dt><dd>The registration form for a business run by an individual or family (China’s individually-owned business): simplest to set up, with the owner bearing unlimited liability.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Choosing a form is choosing your default rules: liability, financing, transferability, and taxes come as one bundle. Limited liability protects the rule-abiding investor; fundraising power comes at the price of governance and compliance.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "Three friends each put in money to open a restaurant and register it as a general partnership. The defining feature of this form is:",
+        "options": ["The business acquires independent legal personality", "The partners bear unlimited joint and several liability for the partnership’s debts", "Each partner is liable only up to the amount they contributed", "The business must offer shares to the public"],
+        "answer": 1,
+        "explain": "A general partnership has no legal personality of its own: all partners bear <b>unlimited joint and several liability</b> for its debts — a creditor can demand the full amount from any single partner. “Liable only up to capital” is the rule for LPs in a limited partnership and for shareholders in companies; public share issuance belongs to the joint-stock company." },
+      { "q": "Tech companies commonly use a two-tier structure: an LLC as the operating company plus a limited-partnership holding platform. The main purpose of placing employee equity inside the limited partnership is:",
+        "options": ["Letting employees take part in the company’s day-to-day operations", "Saving the company from its obligation to enroll employees in social insurance", "Capping employees’ liability for company debts at their contribution", "Letting the founding GP concentrate voting power without diluting control"],
+        "answer": 3,
+        "explain": "Employees as limited partners (LPs) share only in the economics; voting power concentrates in the general partner (GP), usually the founder. Employees stay off the shareholder register, control is not diluted, incentives still flow, and decisions stay fast. <b>Dodging social-insurance obligations is illegal</b> and has nothing to do with a holding platform." },
+      { "q": "The precise meaning of “limited liability” is:",
+        "options": ["Shareholders are liable for company debts only up to the capital they subscribed", "The company answers only for debts confirmed in writing", "Shareholders become liable only after the company declares a profit", "The company’s operating life is limited at will by the shareholders’ meeting"],
+        "answer": 0,
+        "explain": "Limited liability caps the scope of the <b>shareholders’</b> liability: up to the capital they subscribed. The company itself remains liable for <b>all</b> its debts with all of its assets; shareholder liability has nothing to do with profitability or the company’s lifespan." },
+      { "q": "A friend asks: “I’m opening a small noodle shop downstairs — should I just register it as a joint-stock company?” The best reply is:",
+        "options": ["Yes — a joint-stock company sounds impressive and makes listing easier", "Yes — joint-stock companies set no cap on the number of shareholders", "No need — a joint-stock company’s setup and governance costs are high, more than a small shop can use", "No — a noodle shop may not legally register as any kind of company"],
+        "answer": 2,
+        "explain": "A joint-stock company carries the heaviest setup threshold, governance machinery (shareholders’ meeting, board of directors, supervisory board), and disclosure requirements of any form; its value is supporting large-scale fundraising — a small noodle shop neither needs that nor can afford it. A sole proprietorship or a small LLC is the better match. Note that a noodle shop <b>can</b> register as a company; it just doesn’t need to." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Zero to One, Peter Thiel (Chinese edition, CITIC Press) — recommended: the chapters on equity and team, for the real trade-offs of early company structure</li>
+      <li>Corporate Finance (11th ed.), Ross, Westerfield &amp; Jaffe (Chinese edition, China Machine Press) — recommended: Chapter 1 on the corporation and financial objectives, the textbook treatment of entity choice and the agency problem</li>
+      <li>Search keywords: model articles of association / limited-partnership holding platform / concerted-action agreement (these practice keywords read much more smoothly after this lesson)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← Previous</span><span class="pager-title">Branch Guide · Business Law &amp; Ethics</span></a>
+    <a class="next" href="0002-contracts-101.html"><span class="pager-label">Next →</span><span class="pager-title">Contracts: The Glue of Business</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Here is my situation — which legal form should I choose?’ or ‘Tell me more about limited-partnership holding platforms.’ Follow-up questions are part of learning.</div>
+    <p>Business Law &amp; Ethics · Lesson 1 · Legal content is a teaching illustration, not legal advice; the tax comparison is qualitative only and cites no specific rates.</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var FORMS = [
+    { name: "Sole proprietorship", sub: "Lightest · unlimited liability" },
+    { name: "Partnership", sub: "Agreement-run · joint & several / pass-through" },
+    { name: "Limited liability company", sub: "Capital at risk · equity financing" },
+    { name: "Joint-stock company", sub: "Heaviest · can raise public capital" }
+  ];
+
+  var SCEN = [
+    {
+      tab: "Scenario 1 · Street-side shop",
+      desc: "<b>A street-side shop.</b> A husband-and-wife team takes over a breakfast stall: not much capital, two or three helpers, and all they want is flexibility, low cost, and cash in hand the same day — no expansion plans for now.",
+      best: 0,
+      verdict: {
+        0: ["v-best", "Recommended.", "Near-zero setup threshold and the simplest books and operations — the default form for a tiny business. The price: the owner has unlimited liability for the stall’s debts; with a small footprint and contained risks, that price is acceptable."],
+        1: ["v-ok", "Workable, but overkill.", "The partnership structure exists for several people pooling capital and running a business together; one person opening a shop has no use for a partnership agreement and only adds a layer of registration and bookkeeping cost."],
+        2: ["v-ok", "Workable — an upgrade option.", "It would shield the family’s assets, but a company must keep proper accounts and file on schedule — a running cost that is heavy for a breakfast stall. Upgrade when the business grows."],
+        3: ["v-bad", "Not suitable.", "A joint-stock company’s setup threshold, three-organ governance, and disclosure requirements are the heaviest of any form — a small shop has no use for them. It is like fitting an airliner’s instrument panel on a bicycle."]
+      }
+    },
+    {
+      tab: "Scenario 2 · Brothers in partnership",
+      desc: "<b>Brothers opening a shop together.</b> Two brothers each put in half the money for a hotpot-ingredients store and both work in it; their aunt also wants to contribute money, but will not work in it — she just wants a dividend every year.",
+      best: 1,
+      verdict: {
+        0: ["v-ok", "Workable, but a landmine.", "The registration can sit in only one person’s name; the other brother’s contribution and share of profits have no legal vessel and run entirely on trust — a breakup, a debt, or a family shock can turn it ugly fast."],
+        1: ["v-best", "Recommended.", "Capital, roles, splits, and exit — all written into a partnership agreement: the working brothers serve as general partners (GPs), the money-only aunt as a limited partner (LP), liable only up to her capital. Remember the premise: general partners carry unlimited joint and several liability, so the partnership agreement is the partnership’s “prenup” — the hard words must be written down first."],
+        2: ["v-ok", "Workable — a safer upgrade.", "The brothers as shareholders, the aunt as a minority shareholder, everyone liable only up to their capital, and a wall around the family’s assets; the price is articles of association and a shareholders’ agreement, one more layer of cost."],
+        3: ["v-bad", "Not suitable.", "An ingredients store has no use for equal-multiple shares, public fundraising, and three-organ governance — cost and benefit are completely mismatched."]
+      }
+    },
+    {
+      tab: "Scenario 3 · Tech startup",
+      desc: "<b>A tech startup that intends to raise capital.</b> Two founders have built a prototype product and plan to bring in angel and Series A/B investors over the next two years, with an employee option pool reserved — the company will scale fast.",
+      best: 2,
+      verdict: {
+        0: ["v-bad", "Not suitable.", "Unlimited liability plus no equity concept: no options can be granted and no investors can come in — institutional money is essentially shut out."],
+        1: ["v-ok", "Wrong direction.", "A limited partnership mostly serves as an <b>employee shareholding platform</b>, not as the fundraising vehicle itself; the general partner would also carry unlimited liability for the company’s debts — founders do not put themselves there."],
+        2: ["v-best", "Recommended.", "The standard shell for equity financing: shareholders liable up to their capital, with room for capital increases, an option pool, and the governance terms investors demand. The companion move: park employee options in a limited-partnership platform with the founder as GP to concentrate voting power (see the case study)."],
+        3: ["v-ok", "Workable, but not the first choice.", "Equal shares and free transferability suit large-scale fundraising, but setup and governance costs are high — companies usually convert to a joint-stock company only when an IPO is near; using one early is over-engineering."]
+      }
+    }
+  ];
+
+  var tabsEl = document.getElementById("ent-tabs"),
+      descEl = document.getElementById("ent-desc"),
+      formsEl = document.getElementById("ent-forms"),
+      fbEl = document.getElementById("ent-fb"),
+      triedEl = document.getElementById("ent-tried");
+
+  if (!tabsEl) return;
+
+  var cur = 0, tried = {};
+
+  SCEN.forEach(function (s, i) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "scen-tab";
+    b.innerHTML = s.tab + ' <span class="done-mark" hidden>✓</span>';
+    b.addEventListener("click", function () { show(i); });
+    tabsEl.appendChild(b);
+  });
+
+  function show(i) {
+    cur = i;
+    var s = SCEN[i];
+    tabsEl.querySelectorAll(".scen-tab").forEach(function (t, j) {
+      t.classList.toggle("on", j === i);
+    });
+    descEl.innerHTML = s.desc;
+    fbEl.hidden = true;
+    formsEl.innerHTML = "";
+    FORMS.forEach(function (f, k) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "form-btn";
+      b.innerHTML = f.name + "<small>" + f.sub + "</small>";
+      b.addEventListener("click", function () { pick(k, b); });
+      formsEl.appendChild(b);
+    });
+  }
+
+  function pick(k, btn) {
+    var s = SCEN[cur];
+    formsEl.querySelectorAll(".form-btn").forEach(function (x) { x.disabled = true; });
+    btn.classList.add("picked");
+    var v = s.verdict[k];
+    fbEl.innerHTML = 'You picked <b>' + FORMS[k].name + '</b> for this scenario — <span class="verdict ' + v[0] + '">' + v[1] + '</span>' + v[2] +
+      (k === s.best ? "" : '<br><span style="font-size:.85rem;color:var(--ink-faint)">Reference recommendation for this scenario: ' + FORMS[s.best].name + '.</span>');
+    fbEl.hidden = false;
+    if (!tried[cur]) {
+      tried[cur] = true;
+      var done = tabsEl.querySelectorAll(".scen-tab")[cur];
+      done.querySelector(".done-mark").hidden = false;
+      var n = Object.keys(tried).length;
+      triedEl.textContent = "Tried " + n + " / 3 scenarios" + (n === 3 ? " · All three scenarios done — go back to the comparison table and the pattern will surface on its own" : "");
+    }
+  }
+
+  show(0);
+})();
+</script>
+</body>
+</html>

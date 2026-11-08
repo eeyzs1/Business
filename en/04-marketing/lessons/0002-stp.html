@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STP: Segmentation, Targeting, Positioning · Marketing</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .chip { font-family: var(--sans); font-size: .85rem; font-weight: 700; color: var(--ink-soft);
+    background: #fff; border: 1.5px solid var(--line); border-radius: 999px; padding: .32rem 1rem;
+    cursor: pointer; margin-right: .5rem; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.active { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .verdict { display: inline-block; padding: .18rem .8rem; border-radius: 999px; font-weight: 800; font-size: .86rem; }
+  .v-good { background: #f0fdf4; color: #15803d; border: 1.5px solid #15803d; }
+  .v-warn { background: #fffbeb; color: #b45309; border: 1.5px solid #d97706; }
+  .v-bad  { background: #fef2f2; color: #b91c1c; border: 1.5px solid #b91c1c; }
+</style>
+</head>
+<body class="branch-marketing">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Marketing</a><span class="crumb-sep">/</span>
+  <span>STP: Segmentation, Targeting, Positioning</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../04-marketing/lessons/0002-stp.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Marketing · Lesson 2</p>
+  <h1>STP: Segmentation, Targeting, Positioning</h1>
+  <p class="lead">“Our product is for everyone” — that sentence almost always means “for no one”. Every company’s resources are finite: the ad budget is finite, channel shelf space is finite, R&amp;D bandwidth is finite. STP is the spine of marketing strategy, and it forces you to answer three questions first: how to slice the market into segments (S), which segments to compete in (T), and what to say to customers inside the ones you choose (P) — in short, “to whom, saying what”.</p>
+
+  <h2><span class="secno">1</span>Segmentation (S): The Market Is Not One Whole Cake</h2>
+  <p>Market segmentation means cutting the apparently “everyone” total market into groups that are similar inside and different from one another, along differences in customer characteristics. Four families of segmentation variables are in common use:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Variable family</th><th>What you look at</th><th>Beverage-market example</th></tr></thead>
+    <tbody>
+      <tr><td>Demographic</td><td>Age, gender, income, occupation, family structure</td><td>Urban women aged 18–30</td></tr>
+      <tr><td>Geographic</td><td>City tier, climate, regional tastes</td><td>Office districts in tier-1 and tier-2 cities</td></tr>
+      <tr><td>Psychographic</td><td>Values, lifestyle, personality</td><td>Sugar-watching fitness buffs; ingredient-label readers</td></tr>
+      <tr><td>Behavioral</td><td>Usage occasion, frequency, loyalty, benefits sought</td><td>The daily afternoon-tea occasion; chasing “zero burden”</td></tr>
+    </tbody>
+  </table></div>
+  <p>In practice the families are usually combined — “tier-1 city + aged 25–35 + healthy lifestyle + several drinks a week”, for instance. <strong>A good segment must be identifiable, reachable, and worth a dedicated set of moves</strong> — otherwise slicing it is the same as not slicing it at all.</p>
+
+  <h2><span class="secno">2</span>Targeting (T): Pick the Battles Worth Fighting</h2>
+  <p>Targeting means trading off between segments; three yardsticks do most of the work:</p>
+  <ol class="steps">
+    <li><strong>Is the size right?</strong> (Segment Size): too small and the market cannot carry the business model; too big and you may not have the teeth for it.</li>
+    <li><strong>Can you reach them?</strong> (Accessibility): can existing channels and media actually get to these people — and at what cost?</li>
+    <li><strong>Does it fit?</strong> (Fit / Sustainability): does the segment match the company’s capabilities, resources, and long-term direction, and can you build a durable advantage there?</li>
+  </ol>
+  <p>From there the firm chooses a coverage strategy: focus on a single segment (concentrated marketing), cover several chosen segments (differentiated marketing), or run one plan across the whole market (undifferentiated marketing). New brands with limited resources usually enter through a single segment.</p>
+
+  <h2><span class="secno">3</span>Positioning (P): Claim a Slot in the Customer’s Mind</h2>
+  <div class="concept">
+    <div class="concept-title">Concept card · Positioning</div>
+    <p>Positioning is not “what you think you are”; it is <strong>your location relative to competitors inside the target customer’s mind</strong>. In Ries and Trout’s famous formulation, positioning is seizing an open slot on the ladder in the customer’s mind. The standard positioning-statement template: “For (the target segment), (brand) is the (point-of-difference) choice in (the category), because (reason to believe).”</p>
+  </div>
+  <p>The perceptual map is positioning’s workbench: put the two dimensions customers genuinely care about on the axes (say price × healthiness) and draw the category’s brands as bubbles — bubble size stands for scale (illustrative). <strong>Dense, crowded zones are red oceans; unoccupied blank space may be an opportunity</strong> — but first ask: is the blank there because nobody thought of it, or because there is no demand here?</p>
+
+  <h2><span class="secno">4</span>Hands-On: The Perceptual-Map Builder</h2>
+  <div class="sim">
+    <div class="sim-title">Simulator · The perceptual map: drag “Your Brand” into open space</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">Switch between the two axis sets (price × healthiness / price × fashion) and <b>press and drag the orange “You” bubble</b> to hunt for thin spots where competitors are sparse. The simulator computes your perceived distance to the nearest competitor in real time (each 1 point on either axis counts as roughly 1 unit, illustrative) and hands you a competitive verdict:</p>
+    <p style="margin:.7rem 0 .3rem">
+      <button type="button" class="chip active" id="axHealth">Axis A · Price × Healthiness</button>
+      <button type="button" class="chip" id="axFashion">Axis B · Price × Fashion</button>
+    </p>
+    <div class="sim-controls"><div id="sizeCtrl"></div></div>
+    <div class="figure-body" style="padding:.6rem 0 .2rem" id="pmWrap"></div>
+    <p class="sim-readout" id="pmReadout"></p>
+  </div>
+
+  <div class="case">
+    <div class="case-title">Case · Genki Forest: “0-sugar sparkling water” won on a perceptual map</div>
+    <p><strong>S · Segmentation</strong>: the sparkling-water market had long been split between pricey imported mineral sparkling water and sugary carbonated soft drinks. Sliced by “health appeal × taste appeal”, there was a crowd of young people who “want sweet, fizzy refreshment while watching their sugar” (urban office workers aged 25–35, gym-goers, ingredient-label readers) — and the cola giants’ sugar-free lines either tasted limited or still read as “cola” in the mind.</p>
+    <p><strong>T · Targeting</strong>: the segment was swelling as health awareness spread; convenience stores, e-commerce, and content platforms kept reach costs manageable; and the team’s strengths in internet playbooks and new channels made for a strong fit — all three yardsticks passed.</p>
+    <p><strong>P · Positioning</strong>: using erythritol, it built a sparkling water with “0 sugar, 0 calories, 0 fat”, dressed it in minimalist Japanese-style packaging, claimed the open “health × fashion” quadrant, and said it in one line: “guilt-free fizz”. After launch, sales climbed from roughly ¥200 million to around ¥2.7 billion by 2020 (public reporting, illustrative), and several giants followed with sugar-free lines of their own — the position, validated by the market.</p>
+    <div class="case-learn"><b>The lesson:</b> STP is not a form-filling ritual; it is the entry algorithm by which a new brand fights above its weight: segmentation finds the people, targeting runs the numbers, positioning claims the open slot — three interlocking steps.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Segmentation</dt><dd>Slicing the total market into internally similar customer groups using demographic, geographic, psychographic, and behavioral variables.</dd>
+      <dt>Targeting</dt><dd>Evaluating segments with three yardsticks — size, accessibility, and fit — and choosing which to serve.</dd>
+      <dt>Positioning</dt><dd>Occupying a clear, favorable place in the target customer’s mind, relative to competitors.</dd>
+      <dt>Perceptual Map</dt><dd>A plot of brands’ relative positions on two dimensions customers care about; often used to spot open space.</dd>
+      <dt>Segmentation Variables</dt><dd>The customer characteristics used to slice the market: demographic, geographic, psychographic, and behavioral.</dd>
+      <dt>Differentiation</dt><dd>The set of value-creating moves designed around the position, giving customers a perceivable difference from rivals.</dd>
+      <dt>White Space</dt><dd>An unoccupied area on the perceptual map — possibly an opportunity, possibly a false blank with no demand.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Marketing strategy in one line: <b>segment first (S), select next (T), position last (P)</b>. Segment with the four families of variables, select with the three yardsticks, position by finding open space on the perceptual map inside the customer’s mind — until you can answer “to whom, saying what”, every marketing action just spins its wheels.</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "An electric-vehicle brand hammers one line over and over: “five minutes of charging, 300 li (about 150 km) of range”. From a positioning standpoint, this move is mainly:",
+      "options": ["Sizing the target market", "Re-choosing the segmentation variables", "Delivering a point of difference and its reason to believe", "Precisely collecting perception data"],
+      "answer": 2,
+      "explain": "Positioning means claiming a place in the target customer’s mind relative to competitors; hammering one <b>verifiable point of difference</b> (fast charging) plus its reason to believe is exactly the act of nailing a position into the mind." },
+    { "q": "You split users into heavy / light / potential groups by usage occasion and purchase frequency. Which family of segmentation variables is this?",
+      "options": ["Behavioral segmentation", "Demographic segmentation", "Geographic segmentation", "Psychographic segmentation"],
+      "answer": 0,
+      "explain": "Usage occasion, purchase frequency, benefits sought, and loyalty are features of customer <b>behavior</b> — behavioral segmentation; demographics look at attributes, geography at location, psychographics at values and lifestyle." },
+    { "q": "A segment is huge, but the company’s current channels and media simply cannot reach these people. Which criterion does this fail?",
+      "options": ["Fit: resources and capabilities don’t match", "Profitability: margin can’t cover the cost to serve", "Accessibility: the group can’t be reached", "Measurability: the size can’t be estimated"],
+      "answer": 2,
+      "explain": "Of the three yardsticks, <b>accessibility</b> asks whether channels and communication can actually reach the target group; a market you cannot reach exists only on paper, however large it looks." },
+    { "q": "On the perceptual map, your brand’s bubble sits far from every competitor. The first question to ask is:",
+      "options": ["Why competitors don’t cut prices to follow my positioning", "Whether real demand actually exists in this open space", "Whether my bubble’s radius is drawn large enough", "Whether my ad budget is big enough to drown out rivals"],
+      "answer": 1,
+      "explain": "Open space can be a real opportunity or a “false blank” with no demand — a place where nobody will pay at all. First use Lesson 1’s value subtraction and research to verify <b>real demand</b>; only then talk about claiming the position." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Marketing Management by Philip Kotler &amp; Kevin Lane Keller (a good starting point: the chapters on segmentation, target-market selection, and positioning)</li>
+      <li>Positioning: The Battle for Your Mind by Al Ries &amp; Jack Trout (a good starting point: the chapters on the ladders in the mind and on finding an open position)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-value-and-customer.html"><span class="pager-label">← Previous</span><span class="pager-title">The Essence of Marketing: Creating and Keeping Customers</span></a>
+    <a class="next" href="0003-marketing-mix-4p.html"><span class="pager-label">Next →</span><span class="pager-title">The 4 Ps: Orchestrating the Marketing Mix</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Help me draw a perceptual map for my category’ or ‘Which quadrant should my brand stand in?’. Follow-up questions are part of learning.</div>
+    <p>Marketing · Lesson 2 · STP: Segmentation, Targeting, Positioning | Interactive: perceptual-map simulator with a draggable brand bubble and two switchable axis sets · bubble positions and sizes are illustrative, not precise market data</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var presets = {
+    health: {
+      xLabel: "Price: low → high", yLabel: "Healthiness: low → high",
+      brands: [
+        { n: "Coca-Cola", x: 3, y: 3, s: 10 }, { n: "Pepsi", x: 2.8, y: 3.2, s: 8 },
+        { n: "Iced tea", x: 2.5, y: 3.4, s: 7 }, { n: "Coke Zero", x: 3.5, y: 5.2, s: 5 },
+        { n: "Oriental Leaf", x: 5, y: 8.4, s: 7 }, { n: "Suntory Oolong", x: 4.8, y: 7.6, s: 6 },
+        { n: "Perrier", x: 7, y: 8, s: 4 }, { n: "Sanpellegrino", x: 8.2, y: 7.8, s: 3 },
+        { n: "Red Bull", x: 6, y: 3.8, s: 6 }
+      ]
+    },
+    fashion: {
+      xLabel: "Price: low → high", yLabel: "Youthful fashion: low → high",
+      brands: [
+        { n: "Coca-Cola", x: 3, y: 7, s: 10 }, { n: "Coke Zero", x: 3.5, y: 7.6, s: 5 },
+        { n: "Iced tea", x: 2.5, y: 4, s: 7 }, { n: "Oriental Leaf", x: 5, y: 6.6, s: 7 },
+        { n: "Perrier", x: 7, y: 8.6, s: 4 }, { n: "Sanpellegrino", x: 8.2, y: 8, s: 3 },
+        { n: "Red Bull", x: 6, y: 5, s: 6 }, { n: "Wanglaoji", x: 4.2, y: 3.4, s: 6 }
+      ]
+    }
+  };
+  var mine = { x: 4.5, y: 7.2, s: 6 };
+  var cur = presets.health;
+  var wrap = document.getElementById("pmWrap");
+  var readout = document.getElementById("pmReadout");
+  var axA, axB, chart, link, distText, myCircle, myGroup;
+
+  function build() {
+    wrap.innerHTML = "";
+    chart = Viz.axes(wrap, {
+      w: 640, h: 460, margin: { t: 26, r: 26, b: 50, l: 58 },
+      xDomain: [0, 10], yDomain: [0, 10], xTicks: 1, yTicks: 1,
+      xLabel: cur.xLabel, yLabel: cur.yLabel,
+      xFormat: function (v) { return v < 5 ? "Low" : "High"; },
+      yFormat: function (v) { return v < 5 ? "Low" : "High"; }
+    });
+    link = Viz.svgEl("line", { stroke: "#b91c1c", "stroke-width": 2, "stroke-dasharray": "5 4", opacity: 0.6 });
+    chart.svg.appendChild(link);
+    distText = Viz.svgEl("text", { "font-size": 11.5, "font-weight": 700, fill: "#b91c1c", "text-anchor": "middle" });
+    chart.svg.appendChild(distText);
+    cur.brands.forEach(function (b) {
+      var r = 7 + b.s * 1.1;
+      var c = Viz.dot(chart.svg, chart.x(b.x), chart.y(b.y), { r: r, fill: "#a8a29e" });
+      c.setAttribute("opacity", 0.9);
+      Viz.label(chart.svg, chart.x(b.x), chart.y(b.y) - r - 7, b.n, { anchor: "middle", size: 12, color: "#57534e", weight: 600 });
+    });
+    myGroup = Viz.svgEl("g", {});
+    myCircle = Viz.svgEl("circle", { r: 16, fill: "#ea580c", stroke: "#fff", "stroke-width": 3 });
+    var t = Viz.svgEl("text", { "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#fff", y: 4.5 });
+    t.textContent = "You";
+    myGroup.appendChild(myCircle); myGroup.appendChild(t);
+    chart.svg.appendChild(myGroup);
+    Viz.draggable(chart.svg, myGroup, function (p) {
+      mine.x = Math.max(0.3, Math.min(9.7, chart.x.invert(p.x)));
+      mine.y = Math.max(0.3, Math.min(9.7, chart.y.invert(p.y)));
+      place();
+    });
+    place();
+  }
+
+  function place() {
+    var mx = chart.x(mine.x), my = chart.y(mine.y);
+    var r = 9 + mine.s * 1.2;
+    myCircle.setAttribute("r", r);
+    myGroup.setAttribute("transform", "translate(" + mx.toFixed(1) + " " + my.toFixed(1) + ")");
+    var best = null, bd = 1e9;
+    cur.brands.forEach(function (b) {
+      var d = Math.sqrt(Math.pow(b.x - mine.x, 2) + Math.pow(b.y - mine.y, 2));
+      if (d < bd) { bd = d; best = b; }
+    });
+    var bx = chart.x(best.x), by = chart.y(best.y);
+    link.setAttribute("x1", mx); link.setAttribute("y1", my);
+    link.setAttribute("x2", bx); link.setAttribute("y2", by);
+    distText.setAttribute("x", (mx + bx) / 2);
+    distText.setAttribute("y", (my + by) / 2 - 8);
+    distText.textContent = "Distance " + bd.toFixed(1);
+    var cls, msg, stroke;
+    if (bd < 1.5) { cls = "v-bad"; msg = "Crowded zone: head-on collision with " + best.n; stroke = "#b91c1c"; }
+    else if (bd < 3) { cls = "v-warn"; msg = "Viable zone: nearest rival is " + best.n + " — differentiate hard"; stroke = "#d97706"; }
+    else { cls = "v-good"; msg = "Open space: far from " + best.n + " — validate real demand first"; stroke = "#15803d"; }
+    myCircle.setAttribute("stroke", stroke);
+    readout.innerHTML = "Nearest competitor: <b>" + best.n + "</b> · Perceived distance <b>" + bd.toFixed(1) +
+      "</b> units (each 1 point on either axis ≈ 1 unit, illustrative) " +
+      '<span class="verdict ' + cls + '">' + msg + "</span>";
+  }
+
+  function setAxis(key, btn) {
+    cur = presets[key];
+    axA.classList.remove("active"); axB.classList.remove("active");
+    btn.classList.add("active");
+    build();
+  }
+  axA = document.getElementById("axHealth");
+  axB = document.getElementById("axFashion");
+  axA.addEventListener("click", function () { setAxis("health", axA); });
+  axB.addEventListener("click", function () { setAxis("fashion", axB); });
+
+  var sizeS = Viz.slider(document.getElementById("sizeCtrl"),
+    { label: "Your brand’s share of voice (bubble size, illustrative)", min: 1, max: 10, step: 1, value: 6 });
+  sizeS.onChange(function (v) { mine.s = v; place(); });
+
+  build();
+})();
+</script>
+</body>
+</html>

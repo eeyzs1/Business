@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading Financial Statements: Structure and Method · Accounting</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  #pl-sim .pl-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:1.2rem;align-items:start;}
+  @media (max-width:720px){ #pl-sim .pl-grid{grid-template-columns:1fr;} }
+  .pl-rows{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;}
+  button.pl-row{display:grid;grid-template-columns:1fr auto auto;gap:.8rem;align-items:baseline;width:100%;text-align:left;
+    background:#fff;border:0;border-bottom:1px solid var(--line);padding:.5rem .85rem;font:inherit;font-size:.95rem;cursor:pointer;transition:background .2s ease;}
+  button.pl-row:last-child{border-bottom:0;}
+  button.pl-row .amt{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap;}
+  button.pl-row .pct{color:var(--ink-soft);font-size:.84rem;font-variant-numeric:tabular-nums;min-width:3.2em;text-align:right;}
+  button.pl-row.subtotal{background:var(--paper-deep);font-weight:800;}
+  button.pl-row:hover{background:color-mix(in srgb,var(--accent) 7%,#fff);}
+  button.pl-row.active{background:color-mix(in srgb,var(--accent) 12%,#fff);box-shadow:inset 4px 0 0 var(--accent);}
+  .pl-panel{border:1.5px dashed color-mix(in srgb,var(--accent) 40%,var(--line));border-radius:10px;padding:1rem 1.15rem;background:#fff;}
+  .pl-step{display:inline-block;font-size:.74rem;font-weight:800;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:.1em .75em;margin-bottom:.5rem;letter-spacing:.06em;}
+  .pl-panel h4{margin:.05rem 0 .55rem;font-family:var(--serif);font-size:1.08rem;}
+  .pl-panel p{font-size:.93rem;margin:0 0 .65rem;}
+  .pl-panel .pl-read{color:var(--ink-soft);}
+  .pl-hint{font-size:.85rem;color:var(--ink-faint);margin:.6rem 0 0;}
+</style>
+</head>
+<body class="branch-accounting">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Accounting</a><span class="crumb-sep">/</span>
+  <span>Reading Financial Statements: Structure and Method</span>
+  <span class="progress">Lesson 3 of 4</span>
+<a class="lang-switch" href="../../../02-accounting/lessons/0003-reading-statements.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Accounting · Lesson 3</p>
+  <h1>Reading Financial Statements: Structure and Method</h1>
+  <p class="lead">People who know how to “read” statements do not recite the numbers from top to bottom — they drill down by structure: first how big the cake is, then how much each layer carves away. This lesson hands you a simplified income statement and lights up every line — what it says and how to read it — then adds two reference rulers: year-over-year and sequential growth.</p>
+
+  <h2><span class="secno">1</span>Read the Structure First: Who Pays, and Where the Money Goes</h2>
+  <p>The numbers on an income statement change with scale, but the <b>structure</b> exposes the shape of the business itself. The revenue mix answers “whose pockets does the money come from”: split it by product line, by region, by customer type, and you will see what the company truly leans on. The cost structure answers “whose pockets does the money flow to”: what share goes to materials, labor, rent, marketing — which items move with sales volume (variable costs) and which never budge (fixed costs).</p>
+  <div class="concept">
+    <div class="concept-title">Why structure matters more than numbers</div>
+    <p style="margin:.2rem 0 0;font-size:.95rem;color:var(--ink-soft)">A company’s revenue climbs from ¥10 billion to ¥12 billion — is that good news or bad? If the entire increase came from one money-losing promotion, the structure turns ugly before the profit does. Numbers are the outcome; structure is the cause — which is why analysts always flip to the <b>segment data</b> first.</p>
+  </div>
+
+  <h2><span class="secno">2</span>Three Layers of Profit: Read It Like Peeling an Onion</h2>
+  <p>From top to bottom, an income statement is not a running log but a three-stage “peeling”:</p>
+  <div class="formula">Gross Profit = Revenue − Cost of Goods Sold</div>
+  <div class="formula">Operating Profit = Gross Profit − Period Expenses</div>
+  <div class="formula">Net Income = Operating Profit − Finance Costs, Tax, etc.</div>
+  <p>Each layer manages one stretch: <b>gross margin</b> measures whether the product itself is worth money (pricing power); <b>operating margin</b> measures how well the business is run (expense control); <b>net margin</b> is the share that finally lands in the pocket after every layer is peeled away. Whichever layer “suddenly collapses” is where the problem lives — a gross-profit collapse means the product has fallen from favor, an operating-profit collapse means expenses are out of control, and a net-income collapse usually means a shock to interest or tax.</p>
+
+  <h2><span class="secno">3</span>Try It Yourself: Light Up the Income Statement Line by Line</h2>
+  <p>Below is a simplified annual income statement for “Sample Restaurant Group,” a fictional restaurant chain (in hundreds of millions of yuan; figures are illustrative). Click or hover any line, and the panel on the right will tell you <b>what it is, whether to read it early or late, and what to compare it against</b>. Work through it top to bottom, in the suggested order.</p>
+  <div class="sim" id="pl-sim">
+    <div class="sim-title">The Income Statement Dissection Table · Every Line Answers One Question</div>
+    <div class="pl-grid">
+      <div>
+        <div class="pl-rows">
+          <button class="pl-row" data-k="rev"><span>Revenue</span><span class="amt">120.0</span><span class="pct">100%</span></button>
+          <button class="pl-row" data-k="cogs"><span>Cost of goods sold</span><span class="amt">66.0</span><span class="pct">55%</span></button>
+          <button class="pl-row subtotal" data-k="gp"><span>Gross profit</span><span class="amt">54.0</span><span class="pct">45%</span></button>
+          <button class="pl-row" data-k="sell"><span>Selling expenses</span><span class="amt">18.0</span><span class="pct">15%</span></button>
+          <button class="pl-row" data-k="adm"><span>G&amp;A · R&amp;D expenses</span><span class="amt">12.0</span><span class="pct">10%</span></button>
+          <button class="pl-row subtotal" data-k="op"><span>Operating profit</span><span class="amt">24.0</span><span class="pct">20%</span></button>
+          <button class="pl-row" data-k="tax"><span>Income tax expense</span><span class="amt">4.8</span><span class="pct">4%</span></button>
+          <button class="pl-row subtotal" data-k="ni"><span>Net income</span><span class="amt">19.2</span><span class="pct">16%</span></button>
+        </div>
+        <p class="pl-hint">Share of revenue = the line ÷ total revenue. The reading order follows the step tags on the right: ① revenue → ② gross profit → ③ operating profit → ④ net income, then loop back for a close look at the expense lines.</p>
+      </div>
+      <div class="pl-panel" id="pl-panel">
+        <span class="pl-step" id="pl-step"></span>
+        <h4 id="pl-name"></h4>
+        <p id="pl-mean"></p>
+        <p class="pl-read" id="pl-read"></p>
+      </div>
+    </div>
+  </div>
+  <div class="callout tip"><span class="callout-label">The five-step reading routine</span> ① Revenue for scale and growth; ② gross profit for product strength; ③ operating profit for management efficiency; ④ net income for what finally lands in the pocket; ⑤ loop back for a close look at expense structure and its trend. When printing or reviewing, retell the statement in these five steps.</div>
+
+  <h2><span class="secno">4</span>Year-over-Year and Sequential: Finding a Frame of Reference</h2>
+  <p>A single period’s number has no context: “up 12%” must answer “compared with what?” Year-over-year (YoY) compares with the same period this year last year and washes out seasonality — cold drinks are always quiet in winter. Sequential (Seq., versus the prior period) captures the freshest momentum — turning points show up here first. Use the two rulers together: sequential gains for several quarters while YoY still falls can be an early signal of recovery.</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body" id="yoy-bars"></div>
+    <figcaption class="figure-caption"><b>Figure 1</b> Eight quarters of revenue at one company (unit: hundreds of millions of yuan; figures are illustrative). Gray is last year, blue is this year. 24Q3 year-over-year = 110 ÷ 95 − 1 ≈ <b>+16%</b> (the same quarter across years); sequential = 110 ÷ 96 − 1 ≈ <b>+15%</b> (adjacent quarters). Note the dips in 23Q4 and 24Q2 — the sequential lens alone would misread them as decline, while year-over-year tells us this is probably seasonal swing.</figcaption>
+  </figure>
+
+  <h2><span class="secno">5</span>Case Study: Two Businesses, 90% and 20%</h2>
+  <div class="case">
+    <div class="case-title">Premium baijiu vs. budget grocery: two worlds of gross margin (orders of magnitude, illustrative)</div>
+    <p>Put two companies you have heard of into one table: a premium baijiu producer (Kweichow Moutai, say) runs a gross margin around <b>90%</b> year after year, while a budget grocery chain (retailers like Walmart or Yonghui) typically sits near <b>20%</b> (both approximate, illustrative orders of magnitude). Why is the gap so wide?</p>
+    <p>Baijiu: the inputs are grain and packaging, costs are a sliver of the price, and brand plus scarcity hold up the pricing power — <b>fat margin, slow volume</b>; the gross margin is the business model itself. Groceries: the store sells other people’s branded goods at transparent prices in fierce competition, earning hard money through scale and turnover — <b>thin margin, high volume</b>; a low gross margin does not mean a bad business, it means the money in this business is made on “turning fast.”</p>
+    <p class="case-learn"><b>What this case teaches:</b> margin talk without the business model is empty. Before frowning at a 20% gross margin, ask “how fast does it turn over?” — exactly the question the next lesson’s financial ratios and the DuPont analysis are built to answer.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Revenue Mix</dt><dd>How revenue splits after being broken down by product, region, customer, and other dimensions.</dd>
+      <dt>Cost Structure</dt><dd>Each cost’s share of revenue, including variable and fixed costs.</dd>
+      <dt>Gross Profit</dt><dd>Revenue minus cost of goods sold; a measure of profitability at the product level.</dd>
+      <dt>Period Expenses</dt><dd>Selling, administrative, and R&amp;D expenses of the period, not matched to individual units sold.</dd>
+      <dt>Operating Profit</dt><dd>Gross profit minus period expenses; the result of core operations.</dd>
+      <dt>Year-over-Year</dt><dd>Compared with the same period a year earlier; the ruler that removes seasonality.</dd>
+      <dt>Sequential</dt><dd>Compared with the immediately preceding period; the ruler that reads the latest momentum.</dd>
+      <dt>Net Profit Margin</dt><dd>Net income ÷ revenue; the share that finally lands in the pocket.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    Drill into statements by structure: first revenue scale and growth, then the three profit layers — gross, operating, net — and finally a close look at expense structure; for horizontal comparison, use the year-over-year and sequential rulers together. Gross margin is the fingerprint of a business model — a high or low reading without context is a misreading.
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "Which statement about year-over-year and sequential growth is correct?",
+      "options": ["YoY compares with the prior period; sequential compares with the same period last year", "YoY compares with the same period last year; sequential compares with the prior period", "YoY looks at cumulative amounts; sequential looks at current-period amounts", "YoY is used for revenue metrics; sequential can only be used for profit"],
+      "answer": 1,
+      "explain": "YoY aligns the same season across years (removing seasonality); sequential hugs the adjacent period (reading momentum). Mix up the two directions and you will mistake a seasonal dip for a recession." },
+    { "q": "Two businesses with gross margins of roughly 90% and roughly 20% (orders of magnitude, illustrative) — which pairing is most likely?",
+      "options": ["Budget grocery and premium baijiu, in that order", "Chip foundries and container-shipping fleets, in that order", "Premium baijiu and budget grocery, in that order", "Gym chains and pharmacy chains, in that order"],
+      "answer": 2,
+      "explain": "Premium baijiu has rock-bottom input costs and strong pricing power, so its gross margin runs near 90% (approximate); groceries sell standardized goods and earn through turnover, near 20% (approximate). The numbers are consequences of the business model." },
+    { "q": "Moving from gross profit to operating profit, what is mainly deducted along the way?",
+      "options": ["Period expenses such as selling, administrative, and R&D", "Raw-material costs and direct labor costs", "Corporate income tax and dividends to shareholders", "Capital spending on plants and equipment"],
+      "answer": 0,
+      "explain": "Gross profit minus period expenses (selling, administrative, R&D, and so on) gives operating profit; materials and labor were already deducted inside cost of goods sold; income tax comes after operating profit; capital expenditure never enters the income statement directly — it arrives in installments as depreciation." },
+    { "q": "You are handed an income statement. What is usually the first step of a structural reading?",
+      "options": ["Jump straight to the notes to check accounting-policy detail", "Look first at book value per share and the dividend yield", "Read the management discussion for shifts in strategy", "Read revenue scale and growth first, then drill down layer by layer"],
+      "answer": 3,
+      "explain": "Revenue is the denominator and the source of every number below: how big the cake is and how fast it grows sets the tone, and only then do you test whether margins and expense structure support that growth. The notes and the management discussion are verification tools for later." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>Further Reading</h2>
+    <ul>
+      <li>Accounting: The Basis for Business Decisions by John J. Wild (Chinese edition, China Machine Press) — suggested: the chapters on the income statement and on financial statement analysis, including common-size statements.</li>
+      <li>The Accounting Game: Basic Accounting Fresh from the Lemonade Stand by Darrell Mullis &amp; Judith Orloff, Chinese edition (China Machine Press) — suggested: the closing section, where the income statement is taken apart line by line.</li>
+      <li>Going deeper: <a href="https://en.wikipedia.org/wiki/Income_statement">Income statement — Wikipedia</a></li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-three-statements.html"><span class="pager-label">← Previous</span><span class="pager-title">The Three Financial Statements: A Company’s Report Card</span></a>
+    <a class="next" href="0004-financial-ratios.html"><span class="pager-label">Next →</span><span class="pager-title">Financial Ratios: A Company Checkup</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Why isn’t depreciation a period expense?’ or ‘Is a higher gross margin always a good thing?’ You can also ask it to coach you through the five-step routine with two real companies. Follow-up questions are part of learning.</div>
+    <p>Accounting · Lesson 3 · Reading Financial Statements: Structure and Method | Interactive: simulator and quiz · all figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- Figure 1: bar chart of eight quarters of revenue (illustrative) ---- */
+  var barsHost = document.getElementById("yoy-bars");
+  if (barsHost && window.Viz) {
+    var data = [
+      { label: "23Q1", value: 80, color: "#d6cfc2" },
+      { label: "23Q2", value: 88, color: "#d6cfc2" },
+      { label: "23Q3", value: 95, color: "#d6cfc2" },
+      { label: "23Q4", value: 90, color: "#d6cfc2" },
+      { label: "24Q1", value: 86, color: "#1d4ed8" },
+      { label: "24Q2", value: 96, color: "#1d4ed8" },
+      { label: "24Q3", value: 110, color: "#1d4ed8" },
+      { label: "24Q4", value: 105, color: "#1d4ed8" }
+    ];
+    Viz.bars(barsHost, data, { w: 640, h: 300, max: 125 });
+  }
+
+  /* ---- Interaction: the income statement, line by line ---- */
+  var PL = {
+    rev: { step: "Step 1 · How big is the cake", name: "Revenue",
+      mean: "The total of goods and services sold over a period — the denominator and the source of every number below.",
+      read: "Start with scale and growth: is the growth rate year-over-year or sequential? Is it beating the industry? When revenue stalls, even beautiful margins below rarely last." },
+    cogs: { step: "Zoom in · structure item", name: "Cost of goods sold",
+      mean: "The costs directly matched to revenue: materials, purchases, direct labor — recognized in step with sales.",
+      read: "In a healthy business it moves in line with revenue; you can back its share out as 1 − gross margin. If the share keeps climbing year after year, watch for fading bargaining power." },
+    gp: { step: "Step 2 · Product strength", name: "Gross profit (45%)",
+      mean: "Revenue minus cost of goods sold — a measure of what the product itself is worth and how hard the pricing power is.",
+      read: "Gross margin is the most stable fingerprint of a business model: 45% is excellent for restaurants but low for software — be very careful comparing across industries." },
+    sell: { step: "Zoom in · structure item", name: "Selling expenses",
+      mean: "What it costs to move the goods: store rents, advertising, promotions, sales commissions.",
+      read: "Watch its share of revenue over time: rising during expansion is normal; if it keeps climbing once revenue steadies, customers are getting more expensive to win." },
+    adm: { step: "Zoom in · structure item", name: "G&A · R&D expenses",
+      mean: "Support spending: administration, management salaries, and research and development.",
+      read: "It should grow slowly with scale; if it doubles before revenue does, the organization may be putting on weight — and R&D share has to be judged by industry." },
+    op: { step: "Step 3 · Management efficiency", name: "Operating profit (20%)",
+      mean: "The result after period expenses are deducted from gross profit — stripped of financing and tax, the cleanest read on core competitiveness.",
+      read: "Operating margin = operating profit ÷ revenue. Peer comparisons favor it over net margin, because interest and tax often have little to do with operations." },
+    tax: { step: "Zoom in · structure item", name: "Income tax expense",
+      mean: "Corporate income tax on pre-tax profit (this statement assumes roughly a 20% rate, for illustration).",
+      read: "When the effective rate diverges sharply from the statutory one, hunt through the notes for the reason: tax incentives, deferred taxes, or one-off items." },
+    ni: { step: "Step 4 · What lands in the pocket", name: "Net income (16%)",
+      mean: "The profit that belongs to shareholders — what is left after all three layers are peeled away.",
+      read: "Net margin = net income ÷ revenue; the gap versus operating margin reveals the weight of interest and tax. Persistent losses call for the next question: how long can the cash keep burning?" }
+  };
+  var rows = document.querySelectorAll(".pl-row");
+  if (!rows.length) return;
+  var stepEl = document.getElementById("pl-step");
+  var nameEl = document.getElementById("pl-name");
+  var meanEl = document.getElementById("pl-mean");
+  var readEl = document.getElementById("pl-read");
+
+  function setRow(k) {
+    var d = PL[k];
+    if (!d) return;
+    stepEl.textContent = d.step;
+    nameEl.textContent = d.name;
+    meanEl.textContent = d.mean;
+    readEl.textContent = "How to read: " + d.read;
+    rows.forEach(function (r) { r.classList.toggle("active", r.getAttribute("data-k") === k); });
+  }
+  rows.forEach(function (r) {
+    var k = r.getAttribute("data-k");
+    r.addEventListener("click", function () { setRow(k); });
+    r.addEventListener("mouseenter", function () { setRow(k); });
+    r.addEventListener("focus", function () { setRow(k); });
+  });
+  setRow("rev");
+})();
+</script>
+</body>
+</html>

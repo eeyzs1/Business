@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Time Value of Money · Finance</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+</head>
+<body class="branch-finance">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Finance</a><span class="crumb-sep">/</span>
+  <span>The Time Value of Money</span>
+  <span class="progress">Lesson 1 of 4</span>
+<a class="lang-switch" href="../../../03-finance/lessons/0001-time-value-of-money.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Finance · Lesson 1</p>
+  <h1>The Time Value of Money</h1>
+  <p class="lead">The same ¥100 is not worth the same when you get it today versus next year. This seemingly simple intuition is the foundation of the entire edifice of finance: loan rates, insurance pricing, company valuation, retirement planning — all of them are answering one question: <em>what is future money worth today?</em></p>
+
+  <h2><span class="secno">1</span>Why ¥100 Today Is Worth More</h2>
+  <p>Money sitting at different points in time cannot be added directly, for three reasons:</p>
+  <div class="concept">
+    <div class="concept-title">Three reasons</div>
+    <p><strong>Opportunity cost.</strong> Money in hand today can be put to work at once — invested in production or lent out at interest — while money you wait for misses a year of returns. The return you give up when you lend money out is the true price of funds.</p>
+    <p><strong>Inflation.</strong> In most years prices drift gently upward, so the same banknote usually buys less next year than it does this year.</p>
+    <p><strong>Risk.</strong> Future promises may not be kept — the borrower defaults, the company fails, policy changes. Waiting itself exposes you to uncertainty.</p>
+  </div>
+  <p>So “time” itself has a price, and that price is the <em>interest rate</em>. Accepting this is the first step of every financial calculation.</p>
+
+  <h2><span class="secno">2</span>Future Value and Compounding: The Snowball Rolls</h2>
+  <p>Push today’s money forward and you get its <em>future value (FV)</em>; today’s amount itself is the <em>present value (PV)</em>. There is only one core formula:</p>
+  <div class="formula">FV = PV × (1 + r)<sup>n</sup></div>
+  <p>Here r is the interest rate per period and n is the number of periods. <em>Simple interest</em> pays interest on the principal alone; <em>compound interest</em> means “interest earning interest” — each period’s interest joins the principal, and the next period is charged on a larger base. For the first few years the two barely differ; later the gap tears open: <strong>the snowball’s payoff lives in the back half</strong>. Seen in reverse, it is just as brutal: the higher the rate and the longer the term, the harder the formula’s exponential effect hits — which is exactly why high-rate online loans and credit-card installments hurt so much: the snowball can roll backward too, and then it crushes the borrower.</p>
+
+  <div class="sim" id="tvm-sim">
+    <div class="sim-title">Compounding simulator: turn the three knobs and watch the snowball roll</div>
+    <div class="sim-controls" id="tvm-controls"></div>
+    <p class="sim-readout" style="margin:.6rem 0 .25rem">
+      Ending value (compound) ¥<b id="tvm-fv">0</b> · ending value (simple) ¥<b id="tvm-simple">0</b> · compounding earns ¥<b id="tvm-diff">0</b> extra
+    </p>
+    <p class="sim-readout" style="margin:.25rem 0 .8rem;font-size:.95rem">
+      By the Rule of 72, money doubles in about <b id="tvm-dbl">—</b> at the current rate (see Section 4). The curves redraw live: the solid line is compound interest, the dashed line simple interest.
+    </p>
+    <div id="tvm-chart" aria-label="Compound and simple interest growth curves"></div>
+  </div>
+
+  <h2><span class="secno">3</span>Discounting: Pulling the Future Back to Today</h2>
+  <p><em>Discounting</em> is the reverse of compounding — divide future money back and convert it into today’s present value:</p>
+  <div class="formula">PV = FV ÷ (1 + r)<sup>n</sup></div>
+  <p>Here r is also called the <em>discount rate</em> — the return you “require”: it compensates for the opportunity cost, inflation, and risk above. Example: ¥1,050,000 certain to come back in one year, with the firm requiring a 5% annual return, is worth 1,050,000 ÷ 1.05 = ¥1,000,000 today. If that IOU sells for only ¥980,000 right now, buying it nets ¥20,000 of present value — exactly the seed of Lesson 3’s NPV.</p>
+
+  <h2><span class="secno">4</span>The Rule of 72: Doubling in Your Head</h2>
+  <div class="callout tip">
+    <span class="callout-label">Mental-math tool</span>
+    <p style="margin:.4rem 0 0"><strong>The Rule of 72</strong>: at an annual rate of r%, money takes roughly <strong>72 ÷ r</strong> years to double. At 8% a year, about 9 years; at 3%, about 24; at 12%, about 6. It is an approximation (the exact answer is ln2 ÷ ln(1+r)) and is most accurate in the 6%–10% range, but it is plenty for sanity-checking the numbers in financial ads.</p>
+  </div>
+
+  <h2><span class="secno">5</span>Case: Start Ten Years Earlier, End Up a Million Ahead</h2>
+  <div class="case">
+    <p class="case-title">Chen at 25 vs. Wang at 35</p>
+    <p>Both plan to retire at <strong>60</strong> and invest <strong>¥1,000</strong> a month into the same broad-market index fund, assumed to return <strong>about 7%</strong> a year over the long run (illustrative assumption: the historical magnitude of long-run stock market returns, <strong>not a forecast</strong>; in practice there will be volatile years and losing years).</p>
+    <ul>
+      <li><strong>Chen starts at 25</strong>: 420 monthly contributions, ¥420,000 of principal in total, and about <strong>¥1,800,000</strong> at age 60;</li>
+      <li><strong>Wang starts at 35</strong>: 300 contributions, ¥300,000 of principal, and about <strong>¥810,000</strong>.</li>
+    </ul>
+    <p>Wang invests only ¥120,000 less principal, yet ends up about <strong>¥1,000,000</strong> behind — and the bulk of the gap is not “extra money saved” but the earliest batches of money rolling through ten extra years of compounding.</p>
+    <p class="sim-readout" style="font-size:.95rem">Illustrative ending values: Chen ¥<b id="case-a">0</b> · Wang ¥<b id="case-b">0</b> (monthly-compounding annuity formula)</p>
+    <div id="case-bars"></div>
+    <p class="case-learn"><b>The lesson:</b> the time value of money is not an abstract formula; it is the mathematical case for starting early. Run the same formula in reverse and you have the machinery for mortgage payments and retirement shortfalls — the numbers will make the argument for you.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Present value (PV)</dt><dd>The value today of a sum of money received in the future.</dd>
+      <dt>Future value (FV)</dt><dd>The value that today’s money compounds to by a future date.</dd>
+      <dt>Compound interest</dt><dd>Interest that joins the principal and then earns interest itself.</dd>
+      <dt>Simple interest</dt><dd>Interest charged on the original principal only.</dd>
+      <dt>Discounting</dt><dd>The reverse operation that converts future cash flows into present value.</dd>
+      <dt>Discount rate (r)</dt><dd>The “required return” used in that conversion; compensates opportunity cost, inflation, and risk.</dd>
+      <dt>Rule of 72</dt><dd>Divide 72 by the annual interest-rate percentage for a quick estimate of the years to double.</dd>
+      <dt>Opportunity cost</dt><dd>The return on the best alternative forgone by making a choice.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Money today is worth more than money tomorrow; opportunity cost, inflation, and risk are the three reasons. Compounding makes time an ally — <strong>the earlier you start, the bigger the snowball</strong>. Any future amount must first be discounted before it can be compared with money today.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">Self-Check Quiz</div>
+    <script type="application/json">
+    [
+      {
+        "q": "Your boss offers you “a ¥100,000 bonus next year,” or “¥100,000 right now.” The ¥100,000 today is worth more. Which of the following is <b>not</b> a reason supporting that judgment?",
+        "options": [
+          "Money has an opportunity cost: received today, it can be invested and start earning",
+          "Inflation exists: future money usually has less purchasing power",
+          "The future is uncertain: the promise might not be honored on time",
+          "Compounding is punitive: the longer the holding period, the thinner the interest"
+        ],
+        "answer": 3,
+        "explain": "The first three are exactly the three sources of the time value of money: opportunity cost, inflation, and risk. The fourth has it backwards — compounding lets interest earn interest, so a longer horizon means a larger future value. It is a reward, not a punishment."
+      },
+      {
+        "q": "Estimate with the Rule of 72: at a compound annual rate of about 8%, roughly how many years does money take to double?",
+        "options": ["About 5 years", "About 7 years", "About 9 years", "About 12 years"],
+        "answer": 2,
+        "explain": "72 ÷ 8 = 9 years. The exact answer is ln2 ÷ ln1.08 ≈ 9.0 years; the rule barely loses accuracy in this rate range."
+      },
+      {
+        "q": "With the same principal, rate, and term, why is the compound-interest future value higher than the simple-interest one?",
+        "options": [
+          "Compounding folds interest into the principal, so interest earns interest",
+          "Simple interest returns the interest early, shrinking the principal",
+          "The two ending values are equal; only the bookkeeping differs",
+          "Compound interest enjoys tax breaks; simple interest owes more interest tax"
+        ],
+        "answer": 0,
+        "explain": "The key to compounding is that interest earns interest: each period’s interest joins the principal and the next period is charged on a larger base; simple interest is always charged on the original principal, and the gap widens with every passing year."
+      },
+      {
+        "q": "You will receive ¥1,050,000 with certainty one year from now, and your firm requires a 5% annual return. The present value of this future receipt is closest to:",
+        "options": ["¥950,000", "¥1,000,000", "¥1,050,000", "¥1,100,000"],
+        "answer": 1,
+        "explain": "PV = 1,050,000 ÷ (1 + 5%) = ¥1,000,000. Discounting means using the return you require to divide future money back to today."
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Corporate Finance by Ross, Westerfield &amp; Jaffe, Chinese edition (China Machine Press) (recommended: Chapter 4, “Discounted Cash Flow Valuation”)</li>
+      <li>A Random Walk Down Wall Street by Burton Malkiel, Chinese edition (China Machine Press) (recommended: the life-cycle investing guide chapter, for compounding paired with steady monthly investing)</li>
+      <li>Search keywords: Rule of 72 · compound interest · dollar-cost averaging calculator</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← Previous</span><span class="pager-title">Branch Guide · Finance</span></a>
+    <a class="next" href="0002-risk-and-return.html"><span class="pager-label">Next →</span><span class="pager-title">Risk and Return</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Why does the principal–interest split in my equal-installment mortgage keep changing?’ — and try applying this lesson’s formulas to a situation of your own. Follow-up questions are part of learning.</div>
+    <p>Finance · Lesson 1 · The Time Value of Money | Interactive: compounding simulator · case figures are illustrative · next up: Risk and Return — why money lent out must also collect a “volatility fee”</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- Compounding simulator ---- */
+  var controls = document.getElementById("tvm-controls");
+  var chartBox = document.getElementById("tvm-chart");
+  var outFV = document.getElementById("tvm-fv");
+  var outSimple = document.getElementById("tvm-simple");
+  var outDiff = document.getElementById("tvm-diff");
+  var outDbl = document.getElementById("tvm-dbl");
+
+  function fmtWan(v) { return "¥" + v.toLocaleString("en-US"); }
+
+  var sPV = Viz.slider(controls, { label: "Principal", min: 10000, max: 200000, step: 5000, value: 100000, format: fmtWan });
+  var sRate = Viz.slider(controls, { label: "Annual rate", min: 1, max: 15, step: 0.5, value: 7, format: function (v) { return v.toFixed(1) + "%"; } });
+  var sYears = Viz.slider(controls, { label: "Years", min: 1, max: 40, step: 1, value: 20, format: function (v) { return v + " years"; } });
+
+  function fmtMoney(x) { return Math.round(x).toLocaleString("en-US"); }
+
+  function roll(el, target, fmt) {
+    var from = typeof el.__v === "number" ? el.__v : 0;
+    el.__v = target;
+    Viz.countUp(el, target, { from: from, dur: 380, format: fmt });
+  }
+
+  function render() {
+    var pv = sPV.get(), r = sRate.get() / 100, n = sYears.get();
+    var seriesC = [], seriesS = [], maxV = pv;
+    for (var y = 0; y <= n; y++) {
+      var c = pv * Math.pow(1 + r, y);
+      var s = pv * (1 + r * y);
+      seriesC.push([y, c]);
+      seriesS.push([y, s]);
+      if (c > maxV) maxV = c;
+    }
+    roll(outFV, seriesC[n][1], fmtMoney);
+    roll(outSimple, seriesS[n][1], fmtMoney);
+    roll(outDiff, seriesC[n][1] - seriesS[n][1], fmtMoney);
+    outDbl.textContent = (72 / (r * 100)).toFixed(0) + " years";
+
+    chartBox.innerHTML = "";
+    var ax = Viz.axes(chartBox, {
+      w: 640, h: 380, margin: { t: 22, r: 20, b: 46, l: 64 },
+      xDomain: [0, n], yDomain: [0, maxV * 1.12],
+      xLabel: "Years", yLabel: "Amount (¥)",
+      xTicks: Math.min(n, 8), yTicks: 5,
+      yFormat: function (v) { return v >= 1000000 ? "¥" + (v / 1000000).toFixed(1).replace(/\.0$/, "") + "M" : (v >= 1000 ? "¥" + Math.round(v / 1000) + "k" : "¥" + Math.round(v)); }
+    });
+    ax.plot(function (svg, x, y, m, iw, ih) {
+      var ptsC = seriesC.map(function (p) { return [x(p[0]), y(p[1])]; });
+      var ptsS = seriesS.map(function (p) { return [x(p[0]), y(p[1])]; });
+      Viz.area(svg, ptsC.concat([[x(n), y(0)], [x(0), y(0)]]), "#047857", 0.10);
+      Viz.line(svg, ptsC, { color: "#047857", width: 3.5 });
+      Viz.line(svg, ptsS, { color: "#a8a29e", width: 2.5, dash: "7 6" });
+      Viz.dot(svg, ptsC[n][0], ptsC[n][1], { fill: "#047857", r: 6 });
+      Viz.label(svg, ptsC[n][0] - 10, ptsC[n][1] - 12, "Compound ¥" + fmtMoney(seriesC[n][1]), { anchor: "end", color: "#047857" });
+      Viz.label(svg, ptsS[n][0] - 10, ptsS[n][1] + 22, "Simple ¥" + fmtMoney(seriesS[n][1]), { anchor: "end", color: "#78716c" });
+      Viz.line(svg, [[x(0), y(pv)], [x(n), y(pv)]], { color: "#d6d3d1", width: 1.5, dash: "3 5" });
+    });
+  }
+  [sPV, sRate, sYears].forEach(function (s) { s.onChange(render); });
+  render();
+
+  /* ---- Case illustration: monthly investing from 25 vs. 35 ---- */
+  function fvAnnuity(monthly, yearRate, months) {
+    var r = yearRate / 12;
+    return monthly * ((Math.pow(1 + r, months) - 1) / r);
+  }
+  var fvYoung = fvAnnuity(1000, 0.07, 420);
+  var fvOld = fvAnnuity(1000, 0.07, 300);
+  Viz.countUp(document.getElementById("case-a"), fvYoung, { dur: 1500, format: fmtMoney });
+  Viz.countUp(document.getElementById("case-b"), fvOld, { dur: 1500, format: fmtMoney });
+  Viz.bars(document.getElementById("case-bars"), [
+    { label: "Start at 25 · value at 60", value: fvYoung / 10000, color: "#047857" },
+    { label: "Start at 35 · value at 60", value: fvOld / 10000, color: "#94a3b8" },
+    { label: "Difference in principal", value: 12, color: "#d6d3d1" }
+  ], { h: 300, valueFormat: function (v) { return "¥" + Math.round(v * 10000).toLocaleString("en-US"); } });
+})();
+</script>
+</body>
+</html>

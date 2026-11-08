@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance Management: KPIs and OKRs · Human Resources</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .smart-progress { font-size: .85rem; font-weight: 700; color: var(--accent); margin-bottom: .5rem; font-variant-numeric: tabular-nums; }
+  .smart-goal {
+    background: var(--paper-deep); border-left: 4px solid var(--accent); border-radius: 10px;
+    padding: 1rem 1.15rem; font-size: 1.02rem; line-height: 1.7;
+  }
+  .smart-chips { display: flex; gap: .45rem; margin-top: .85rem; flex-wrap: wrap; }
+  .smart-chips .chip {
+    font-family: var(--sans); font-weight: 800; font-size: .8rem; border-radius: 999px;
+    padding: .12rem .8rem; border: 1.5px solid var(--line); background: #fff; color: var(--ink-faint);
+  }
+  .smart-chips .chip.ok { color: var(--good); border-color: #bbf7d0; background: #f0fdf4; }
+  .smart-chips .chip.miss { color: var(--bad); border-color: #fecaca; background: #fef2f2; text-decoration: line-through; }
+  .smart-actions { display: flex; gap: .8rem; margin-top: .9rem; flex-wrap: wrap; }
+  .smart-btn {
+    font-family: var(--sans); font-size: .97rem; font-weight: 700; cursor: pointer;
+    border-radius: 999px; padding: .55rem 1.35rem; border: 2px solid var(--line); background: #fff; color: var(--ink);
+    transition: all .15s ease;
+  }
+  .smart-btn.pass:hover:not(:disabled) { border-color: var(--good); background: #f0fdf4; }
+  .smart-btn.fail:hover:not(:disabled) { border-color: var(--bad); background: #fef2f2; }
+  .smart-btn:disabled { opacity: .4; cursor: default; }
+  .smart-feedback {
+    margin-top: .9rem; font-size: .93rem; color: var(--ink-soft); line-height: 1.75;
+    background: var(--paper-deep); border-radius: 8px; padding: .75rem .95rem;
+  }
+  .smart-feedback b { color: var(--accent); }
+  .smart-meta { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+  .smart-score { font-size: .95rem; font-weight: 700; color: var(--accent); }
+  .smart-next {
+    margin-left: auto; background: var(--accent); color: var(--accent-ink); border: none; border-radius: 999px;
+    padding: .45rem 1.3rem; font-weight: 700; font-size: .92rem; cursor: pointer; font-family: var(--sans);
+  }
+  .smart-next:disabled { opacity: .35; cursor: default; }
+  .flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .9rem; margin: 1.4rem 0; }
+  .flip-dim { font-size: .8rem; font-weight: 800; color: var(--ink-soft); letter-spacing: .06em; margin-bottom: .4rem; }
+  .flip-card { position: relative; height: 168px; cursor: pointer; perspective: 900px; }
+  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .55s ease; transform-style: preserve-3d; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 12px; padding: .85rem .95rem; box-shadow: var(--shadow); font-size: .86rem; line-height: 1.65;
+  }
+  .flip-face .flip-badge {
+    display: inline-block; font-weight: 800; font-size: .74rem; letter-spacing: .1em;
+    border-radius: 999px; padding: .08rem .7rem; margin-bottom: .4rem; color: #fff;
+  }
+  .flip-front { background: #fff; border: 1px solid var(--line); }
+  .flip-front .flip-badge { background: #7c3aed; }
+  .flip-back { background: var(--ink); color: #f5f5f4; transform: rotateY(180deg); border: 1px solid var(--ink); }
+  .flip-back .flip-badge { background: var(--accent); color: #fff; }
+  .flip-hint { font-size: .7rem; color: var(--ink-faint); position: absolute; bottom: .6rem; right: .75rem; }
+  @media print {
+    .flip-card { height: auto; perspective: none; }
+    .flip-inner { transform: none !important; transition: none; }
+    .flip-face { position: static; backface-visibility: visible; -webkit-backface-visibility: visible; margin-bottom: .4rem; }
+    .flip-back { transform: none; background: #fff; color: var(--ink); border: 1px dashed var(--line); }
+  }
+</style>
+</head>
+<body class="branch-hr">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Human Resources</a><span class="crumb-sep">/</span>
+  <span>Performance Management</span>
+  <span class="progress">Lesson 3 of 4</span>
+<a class="lang-switch" href="../../../06-human-resources/lessons/0003-performance-management.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Human Resources · Lesson 3</p>
+  <h1>Performance Management: KPIs and OKRs</h1>
+  <p class="lead">Misaligned goals are an organization’s most expensive hidden cost: a hundred people all working hard, each pointed ten degrees off. This lesson lays out the complete performance-management cycle, takes apart the two mainstream toolsets — appraisal-style KPIs and alignment-style OKRs — and adds the first operation in writing a qualified goal: SMART.</p>
+
+  <h2><span class="secno">1</span>Performance Management Is a Cycle, Not a Score</h2>
+  <p>The most common misunderstanding is to equate performance management with “year-end scoring and ranking.” In reality, the score is only one step in a cycle: <em>goal setting</em> → <em>coaching</em> → <em>appraisal</em> → <em>feedback</em> — four steps, and then the next round begins. If the appraisal’s output is not “how to improve next,” the cycle is broken — that is not performance management, only performance appraisal.</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 640 200" role="img" aria-label="The performance management cycle: goal setting, coaching, appraisal, feedback, round after round" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#be185d"></path>
+          </marker>
+        </defs>
+        <rect x="26" y="56" width="118" height="56" rx="12" fill="#881337"></rect>
+        <text x="85" y="80" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">① Goal setting</text>
+        <text x="85" y="100" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)">Align · SMART</text>
+        <line x1="146" y1="84" x2="176" y2="84" stroke="#be185d" stroke-width="2.5" marker-end="url(#arr)"></line>
+        <rect x="178" y="56" width="118" height="56" rx="12" fill="#9d174d"></rect>
+        <text x="237" y="80" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">② Coaching</text>
+        <text x="237" y="100" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)">Feedback · fix course</text>
+        <line x1="298" y1="84" x2="328" y2="84" stroke="#be185d" stroke-width="2.5" marker-end="url(#arr)"></line>
+        <rect x="330" y="56" width="118" height="56" rx="12" fill="#be185d"></rect>
+        <text x="389" y="80" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">③ Appraisal</text>
+        <text x="389" y="100" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)">Measure · calibrate</text>
+        <line x1="450" y1="84" x2="480" y2="84" stroke="#be185d" stroke-width="2.5" marker-end="url(#arr)"></line>
+        <rect x="482" y="56" width="118" height="56" rx="12" fill="#db2777"></rect>
+        <text x="541" y="80" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">④ Feedback</text>
+        <text x="541" y="100" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)">Review · improve next</text>
+        <path d="M541,116 C541,170 85,170 85,118" fill="none" stroke="#be185d" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arr)"></path>
+        <text x="313" y="182" text-anchor="middle" font-size="11.5" fill="#a8a29e">Feedback feeds the next round of goals — keep the cycle turning and performance is truly “managed”</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The performance management cycle: goals → coaching → appraisal → feedback. Drop any one of the four and “management” degrades into “grading.”</figcaption>
+  </figure>
+  <div class="concept">
+    <div class="concept-title">Concept: Performance Management</div>
+    <p style="margin:.2rem 0 0">The management system that keeps individual effort aligned with organizational direction — and keeps people getting stronger — through a continuous cycle of setting goals, coaching the process, appraising results, and giving feedback. It manages <b>performance</b>, not “people”; its endpoint is improvement, not a score.</p>
+  </div>
+
+  <h2><span class="secno">2</span>SMART: Write One Qualified Goal First</h2>
+  <p>KPI or OKR, if the very first goal is badly written, everything after it is wasted. The test is the five SMART questions: <em>Specific</em> (say exactly what will be done), <em>Measurable</em> (numbers and indicators), <em>Achievable</em> (a stretch that can actually be reached), <em>Relevant</em> (in service of a bigger goal), <em>Time-bound</em> (a deadline). Six goal statements follow — you play the doctor.</p>
+
+  <div class="sim" data-reveal id="smart-sim">
+    <div class="sim-title">Interactive · Goal Checkup: Does This Goal Pass SMART?</div>
+    <div class="smart-progress" id="smProg">Goal 1 of 6</div>
+    <div class="smart-goal" id="smGoal">Loading goals…</div>
+    <div class="smart-chips" id="smChips"></div>
+    <div class="smart-actions">
+      <button type="button" class="smart-btn pass" id="smPass">✓ Passes SMART</button>
+      <button type="button" class="smart-btn fail" id="smFail">✗ Falls short</button>
+    </div>
+    <div class="smart-feedback" id="smFb" hidden></div>
+    <div class="smart-meta">
+      <span class="smart-score" id="smScore">Correct so far: 0</span>
+      <button type="button" class="smart-next" id="smNext" disabled>Next goal →</button>
+    </div>
+  </div>
+
+  <h2><span class="secno">3</span>KPI and OKR: Appraisal-Style versus Alignment-Style</h2>
+  <p>Once the goal qualifies, which toolset carries it? The definitions first. A <em>KPI</em> (key performance indicator) cascades top-down from strategy to each role, stresses “committed means delivered,” and is often tied directly to appraisal and raises; it suits businesses with clear outcomes and proven paths — yield, error rates, and retention are natural KPIs. An <em>OKR</em> (objectives and key results) pairs one ambitious objective with several measurable key results and stresses openness and alignment up and down the organization; targets are usually set aggressively — “hitting seventy percent already counts as excellent” is a common saying (indicative) — so most practitioners <b>do not mechanically tie OKRs to raises</b>; otherwise nobody dares to declare an ambitious target. Its lineage traces back to Drucker’s management by objectives (MBO), passed from Intel to Google, where it flourished (indicative).</p>
+  <p>Click the four cards below to flip between the KPI view and the OKR view:</p>
+
+  <div class="flip-grid" data-reveal id="flipGrid">
+    <div>
+      <div class="flip-dim">① Where goals come from</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip card: where goals come from">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><span class="flip-badge">KPI view</span><br>Top-down: company indicators cascade layer by layer to departments and roles, each level committing and carrying the pressure down.<span class="flip-hint">Click to flip ↔</span></div>
+          <div class="flip-face flip-back"><span class="flip-badge">OKR view</span><br>Aligned up and down: beyond cascading, individuals and teams may propose their own — public to everyone, visible to everyone.<span class="flip-hint">Click to flip back ↔</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flip-dim">② How high the bar</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip card: how high the bar">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><span class="flip-badge">KPI view</span><br>A stretch within reach: once set, it must be delivered, and falling short costs points — favoring safety and completeness.<span class="flip-hint">Click to flip ↔</span></div>
+          <div class="flip-face flip-back"><span class="flip-badge">OKR view</span><br>Ambitious targets: about seventy percent completion counts as excellent (indicative); people are urged to declare “uncomfortable goals” to probe the ceiling.<span class="flip-hint">Click to flip back ↔</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flip-dim">③ Relationship to pay</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip card: relationship to pay">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><span class="flip-badge">KPI view</span><br>Often tied directly to appraisal and raises: the score is the bonus multiplier, with clear financial drive.<span class="flip-hint">Click to flip ↔</span></div>
+          <div class="flip-face flip-back"><span class="flip-badge">OKR view</span><br>Usually not tied directly (common practice): avoids the gaming of “aiming low for fear of missing.”<span class="flip-hint">Click to flip back ↔</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flip-dim">④ Where each fits</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="Flip card: where each fits">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><span class="flip-badge">KPI view</span><br>Mature, steady-state business: outcomes are clear and paths known; what is needed is guarding the baseline and efficiency.<span class="flip-hint">Click to flip ↔</span></div>
+          <div class="flip-face flip-back"><span class="flip-badge">OKR view</span><br>Exploratory, innovative business: paths unknown and cross-department alignment needed; what is needed is focus and room to experiment.<span class="flip-hint">Click to flip back ↔</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-label">How to choose in practice</span>
+    <p style="margin:.3rem 0 0">It is not either-or: guard the financial baseline and the mature processes with <b>KPIs</b>, and align innovation directions and cross-department efforts with <b>OKRs</b> — many companies run both in parallel: KPIs run the appraisal, OKRs run the direction.</p>
+  </div>
+
+  <h2><span class="secno">4</span>Continuous Feedback versus the Annual Review</h2>
+  <p>The annual review has two built-in defects. First, <b>feedback arrives eleven months late</b> — the mistake has long since set, and the best window for correction has closed. Second, memory’s <em>recency effect</em>: at year-end scoring, “the last month or two” crowds out the shape of the whole year. That is why modern practice shifts the weight toward <em>continuous feedback</em>: frequent, short, and improvement-facing — weekly or biweekly one-on-ones (1:1s), immediate recognition and course-correction, quarterly summaries; the annual appraisal shrinks to “a checkpoint summary plus calibration.” Calibration means multiple managers cross-align their scoring scales, preventing strict-versus-lenient incomparability across departments.</p>
+  <div class="callout tip">
+    <span class="callout-label">One practical rule</span>
+    <p style="margin:.3rem 0 0">Feedback’s half-life is measured in days: the earlier you talk after the event, the greater the leverage for improvement; delay it to year-end and only emotion remains, with no information.</p>
+  </div>
+
+  <h2><span class="secno">5</span>Case Study: OKRs at Google and ByteDance</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">Two companies’ experiments in alignment</p>
+    <p><b>Google</b> (illustrative): OKRs were brought into the still-young company around 1999 by the investor John Doerr, and the practice later became an all-hands mechanism: everyone’s OKRs are searchable on the intranet, and anyone can see a colleague’s goals for the quarter; setting “uncomfortable” stretch goals is encouraged, and OKRs are generally not mechanically tied to performance ratings — tie them, and nobody dares write an ambitious target down on paper. <b>ByteDance</b> (illustrative, based on commonly reported practice): refreshes OKRs on a two-month rhythm, with goals and progress written into shared documents, transparent to everyone — paired with the “Context, not Control” philosophy, it lets thousands of people align direction quickly; transparency itself is a management instrument.</p>
+    <p class="case-learn"><b>The lesson:</b> the value of OKRs is not in the spreadsheet but in the word “transparent”: when everyone can see everyone else’s goals, alignment shifts from “cascading messages” to “looking it up yourself” — and keeping OKRs untied from raises protects precisely the courage to set high targets.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Performance Management</dt><dd>The continuous cycle of setting goals, coaching the process, appraising results, and giving feedback — aimed at alignment and improvement.</dd>
+      <dt>Key Performance Indicator (KPI)</dt><dd>A steady-state indicator cascaded top-down, usually tied to appraisal.</dd>
+      <dt>Objectives and Key Results (OKR)</dt><dd>Ambitious objectives plus measurable milestones, stressing transparency and alignment.</dd>
+      <dt>SMART</dt><dd>The five checks of a qualified goal: specific, measurable, achievable, relevant, time-bound.</dd>
+      <dt>Key Result</dt><dd>The measurable yardstick inside an OKR that tests whether the objective was achieved.</dd>
+      <dt>Continuous Feedback</dt><dd>Frequent, short, improvement-facing everyday feedback that replaces the late annual verdict.</dd>
+      <dt>Recency Effect</dt><dd>The memory bias in appraisal where the most recent performance crowds out the whole period.</dd>
+      <dt>Calibration</dt><dd>Multiple managers cross-align their scoring scales to remove inconsistency in strictness.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Performance management is the cycle “goals → coaching → appraisal → feedback,” not a year-end score sheet. KPIs guard mature businesses through appraisal; OKRs align exploratory ones through transparency — the latter usually untied from raises. Write goals SMART before arguing about tools; the sooner the feedback, the greater the leverage.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">Quiz · Retrieval Practice</div>
+    <script type="application/json">
+    [
+      { "q": "On the difference between KPIs and OKRs, which statement is closest to common practice?",
+        "options": ["KPIs are only for governments and nonprofits; companies must adopt OKRs", "KPIs must be public to everyone, while OKRs must be strictly kept secret on file", "OKRs must be updated every day, while KPIs may be updated only once a year", "KPIs are often tied to appraisal and pay, while OKRs are usually not mechanically tied"],
+        "answer": 3,
+        "explain": "Common practice (indicative): KPIs are appraisal-style and strongly pay-linked; OKRs are alignment-style and reward ambition — mechanically tie them to raises and employees stop daring to aim high. Both are corporate tools, and OKRs, if anything, stress openness." },
+      { "q": "What is the biggest problem with the goal “optimize the settlement process as soon as possible”?",
+        "options": ["Settlement belongs to the finance department, so no other department may ever optimize it", "Both “as soon as possible” and “optimize” are vague — no measurable indicator, no clear deadline", "The goal is far too easy to achieve and cannot motivate anyone at all", "It violates the law’s uniform, mandatory rule on settlement cycles"],
+        "answer": 1,
+        "explain": "Test it with SMART: missing M (to what level does it count as optimized — from how many days down to how many?) and T (how soon is “soon”?). Rewrite example: cut average settlement time from about five days to within two days by year-end." },
+      { "q": "What role do the “key results” play in an OKR?",
+        "options": ["With measurable outcomes, they test whether the objective was actually achieved", "They list each employee’s exact clock-in times for every working day", "They record each department’s detailed budget line items for next quarter", "They state the equity split registered when the company was founded"],
+        "answer": 0,
+        "explain": "KRs are the <b>ruler</b> for the O: the objective gives direction, and the key results answer “how far counts as arrived.” Without measurable KRs, an OKR degenerates into a slogan; clock-in times, budgets, and equity are beside the point." },
+      { "q": "On the relationship between continuous feedback and the annual review, which is the more reasonable approach?",
+        "options": ["Set goals in January, communicate nothing all year, and hand down a score in December", "Abolish all appraisal and records, judging purely by colleagues’ private impressions", "Coach and give feedback at high frequency through the year, with the annual review as a checkpoint summary", "Outsource feedback entirely, with a third party submitting monthly reports"],
+        "answer": 2,
+        "explain": "The annual review’s two great defects are <b>late feedback</b> and the <b>recency effect</b>; continuous feedback moves course-correction into daily work, and the annual review shrinks to a summary plus calibration. Silence all year, abolishing records, and outsourcing feedback all throw away the “management” itself." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>Further Reading</h2>
+    <ul>
+      <li>Measure What Matters by John Doerr (recommended: the first half — focus, align, track, stretch: the four superpowers)</li>
+      <li>The Practice of Management by Peter F. Drucker (recommended: the chapter “Management by Objectives and Self-Control,” the intellectual source of OKRs)</li>
+      <li>Work Rules! by Laszlo Bock (recommended: the performance and feedback chapters, with the details of Google’s practice)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-recruiting-and-selection.html"><span class="pager-label">← Previous</span><span class="pager-title">Recruiting and Selection</span></a>
+    <a class="next" href="0004-compensation-and-incentives.html"><span class="pager-label">Next →</span><span class="pager-title">Compensation and Incentives</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Help me rewrite this goal with SMART’ or ‘Is my department better suited to KPIs or OKRs?’ — follow-up questions are part of learning.</div>
+    <p>Human Resources · Lesson 3 · Performance Management | Interactive: goal checkup + KPI/OKR flip cards · case descriptions are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var items = [
+    { t: "“Improve customer satisfaction.”",
+      ok: false, miss: ["S", "M", "T"],
+      why: "“Improve” is a direction, not a goal: which metric? From what to what? By when? — missing S (what counts as improvement), M (what measures it), and T (the deadline)." },
+    { t: "“Raise the NPS customer-satisfaction score from 40 to 55 by the end of Q3.”",
+      ok: true, miss: [],
+      why: "All five present: a specific metric (S), a measurable 40 → 55 (M), a realistic step (A), direct service to customer experience (R), and a quarter-end deadline (T)." },
+    { t: "“Make every employee a top expert in the field.”",
+      ok: false, miss: ["A", "M"],
+      why: "“Every” plus “top” is neither measurable (M) nor realistically achievable (A). A goal that can never be reached only destroys the seriousness of goals themselves — stretch should be ambitious but stay inside the boundary of the possible." },
+    { t: "“Optimize the settlement process as soon as possible.”",
+      ok: false, miss: ["M", "T"],
+      why: "How soon is “as soon as possible”? To what level does it count as “optimized”? Missing M and T. Rewrite example: cut average settlement time from about five days to within two days by year-end." },
+    { t: "“To build professional influence, publish one technical article per week this quarter — 13 in total by quarter-end.”",
+      ok: true, miss: [],
+      why: "A specific action (S), a measurable cadence and count (M), one article per week is achievable (A), it serves professional influence (R), and the cumulative quarter-end target is a clear deadline (T) — this is what a qualified goal looks like." },
+    { t: "“Grow website traffic tenfold this year, with zero budget and unchanged headcount.”",
+      ok: false, miss: ["A"],
+      why: "Tenfold is measurable and there is a deadline, but under a zero-investment constraint it is almost certainly unachievable (A) — the goal becomes a slogan. Either add resources or bring the multiple down to a realistic range." }
+  ];
+  var letters = [["S", "Specific"], ["M", "Measurable"], ["A", "Achievable"], ["R", "Relevant"], ["T", "Time-bound"]];
+  var i = 0, score = 0, answered = false;
+  var goalEl = document.getElementById("smGoal");
+  var chipsEl = document.getElementById("smChips");
+  var fbEl = document.getElementById("smFb");
+  var progEl = document.getElementById("smProg");
+  var scoreEl = document.getElementById("smScore");
+  var nextEl = document.getElementById("smNext");
+  var passBtn = document.getElementById("smPass");
+  var failBtn = document.getElementById("smFail");
+  if (!goalEl || !passBtn || !failBtn) return;
+
+  function render() {
+    answered = false;
+    var item = items[i];
+    goalEl.textContent = item.t;
+    progEl.textContent = "Goal " + (i + 1) + " of " + items.length;
+    chipsEl.innerHTML = "";
+    letters.forEach(function (l) {
+      var c = document.createElement("span");
+      c.className = "chip";
+      c.textContent = l[0] + " · " + l[1];
+      chipsEl.appendChild(c);
+    });
+    fbEl.hidden = true;
+    passBtn.disabled = false;
+    failBtn.disabled = false;
+    nextEl.disabled = true;
+    nextEl.textContent = i === items.length - 1 ? "See results →" : "Next goal →";
+  }
+  function choose(saidOk) {
+    if (answered) return;
+    answered = true;
+    var item = items[i];
+    var right = saidOk === item.ok;
+    if (right) score++;
+    var chips = chipsEl.querySelectorAll(".chip");
+    letters.forEach(function (l, j) {
+      chips[j].classList.remove("ok", "miss");
+      chips[j].classList.add(item.miss.indexOf(l[0]) >= 0 ? "miss" : "ok");
+    });
+    var verdict = item.ok
+      ? "this is a <b>qualified goal</b> — all five SMART checks pass"
+      : "this goal <b>falls short</b> — missing " + item.miss.join(", ");
+    fbEl.innerHTML = (right ? "<b>✓ Correct.</b>" : "<b>✗ Think again.</b>") + verdict + ". " + item.why;
+    fbEl.hidden = false;
+    scoreEl.textContent = "Correct so far: " + score;
+    passBtn.disabled = true;
+    failBtn.disabled = true;
+    nextEl.disabled = false;
+  }
+  function finish() {
+    progEl.textContent = "Checkup complete";
+    goalEl.textContent = "Six goals checked: " + score + " / " + items.length +
+      (score >= 4 ? ". Before writing a goal, run the five questions: what, how much, is it possible, why, and by when."
+                  : ". The common diseases are only three — vague (missing S), no yardstick (missing M), no deadline (missing T). Self-check those three spots first.");
+    chipsEl.innerHTML = "";
+    fbEl.hidden = true;
+    passBtn.disabled = true;
+    failBtn.disabled = true;
+    nextEl.disabled = false;
+    nextEl.textContent = "↻ Start over";
+  }
+  passBtn.addEventListener("click", function () { choose(true); });
+  failBtn.addEventListener("click", function () { choose(false); });
+  nextEl.addEventListener("click", function () {
+    if (nextEl.textContent.indexOf("Start over") >= 0) { i = 0; score = 0; scoreEl.textContent = "Correct so far: 0"; render(); return; }
+    if (i < items.length - 1) { i++; render(); } else { finish(); }
+  });
+  render();
+
+  document.querySelectorAll(".flip-card").forEach(function (card) {
+    card.addEventListener("click", function () { card.classList.toggle("flipped"); });
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault();
+        card.classList.toggle("flipped");
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Employee Lifecycle: An HR Overview · Human Resources</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .ring-wrap { position: relative; max-width: 640px; margin: 0 auto; }
+  .ring-wrap svg { display: block; width: 100%; height: auto; }
+  .lifecycle-seg { cursor: pointer; transition: opacity .25s ease; }
+  .ring-card {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 46%; background: #fff; border: 2px solid var(--accent);
+    border-radius: 16px; box-shadow: var(--shadow); padding: .75rem .9rem;
+    font-size: .78rem; line-height: 1.6; text-align: left;
+  }
+  .ring-card .rc-stage { font-family: var(--serif); font-weight: 700; font-size: .98rem; color: var(--ink); margin-bottom: .35rem; }
+  .ring-card .rc-stage small { display: block; font-family: var(--sans); font-weight: 800; font-size: .64rem; color: var(--accent); letter-spacing: .14em; }
+  .ring-card .rc-row { margin-bottom: .32rem; }
+  .ring-card .rc-k {
+    display: inline-block; font-weight: 800; font-size: .66rem; color: #fff;
+    background: var(--accent); border-radius: 4px; padding: 0 .38em; margin-right: .35em;
+  }
+  .ring-card .rc-link { margin-top: .4rem; padding-top: .4rem; border-top: 1px dashed var(--line); font-size: .68rem; color: var(--ink-soft); }
+  .ring-card .rc-link b { color: var(--accent); }
+  @media (max-width: 600px) {
+    .ring-card { width: 54%; font-size: .6rem; padding: .5rem .6rem; }
+    .ring-card .rc-stage { font-size: .8rem; }
+  }
+</style>
+</head>
+<body class="branch-hr">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Human Resources</a><span class="crumb-sep">/</span>
+  <span>Employee Lifecycle</span>
+  <span class="progress">Lesson 1 of 4</span>
+<a class="lang-switch" href="../../../06-human-resources/lessons/0001-employee-lifecycle.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Human Resources · Lesson 1</p>
+  <h1>The Employee Lifecycle: An HR Overview</h1>
+  <p class="lead">However brilliant a company’s strategy, it is delivered by one concrete person after another. This lesson uses the employee lifecycle — a closed loop — to fit everything HR does onto a single map: where people come from, how they grow, why they leave — and why the story does not end when they do.</p>
+
+  <h2><span class="secno">1</span>Why Everyone Should Understand a Little HR</h2>
+  <p>Even if you never work inside an HR department, the moment you start managing people you are already doing HR: interviewing, setting goals, giving feedback, negotiating pay, keeping people from leaving. Peter Drucker, the founder of management as a discipline, defined managing as “getting work done through other people” — so “how people come in, grow, and stay” is a manager’s main job, not paperwork for a staff function. Look at it the other way: the cost of choosing the wrong person goes far beyond a wasted headhunter’s fee. The wrong person in a key seat costs you opportunities, time, and team morale (a common estimate in management consulting puts the all-in cost of a bad hire at several times the seat’s annual salary — an indicative magnitude).</p>
+  <p>With the lifecycle map in hand, you can quickly locate where a talent problem lives in any organization: at the <b>entrance</b> (nobody comes, or the wrong people come), in the <b>process</b> (people arrive but never grow or align), or at the <b>exit</b> (people leave badly and the employer’s reputation collapses).</p>
+  <div class="concept">
+    <div class="concept-title">Concept: Employee Lifecycle</div>
+    <p style="margin:.2rem 0 0">The complete arc of the relationship between one employee and one organization, usually divided into six stages: <em>Attract</em> → <em>Recruit</em> → <em>Onboarding</em> → <em>Develop</em> → <em>Retain</em> → <em>Exit &amp; Alumni</em>. Note that it is not a straight line but a closed loop: the exit experience flows back into employer reputation, which becomes the starting point of the next round of attraction.</p>
+  </div>
+
+  <h2><span class="secno">2</span>The Loop: What Each Stage Does, and How It Fails</h2>
+  <p>Click any stage on the ring below: the center card unfolds what HR does at that stage, the key metrics, and the classic mistakes. The <b>two stages on either side of the selected one fade</b>, hinting at the hand-offs between stages — what the previous stage passes in, and what the next stage is waiting for. Read clockwise and you have one employee’s complete journey through the company.</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">Interactive · The Employee Lifecycle Ring</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">For example: click Onboarding and you will see that its key metric is the <b>90-day retention rate</b>; the faded neighbors remind you — the promises made during recruiting must be honored by onboarding, and once people feel they belong, they immediately ask “how do I grow here?”</p>
+    <div class="ring-wrap" id="ringWrap">
+      <svg id="ringSvg" viewBox="0 0 560 560" role="img" aria-label="Employee lifecycle ring: the six stages attract, recruit, onboard, develop, retain, and exit, connected end to end"></svg>
+      <div class="ring-card" id="ringCard">
+        <div class="rc-stage" id="rcStage"></div>
+        <div class="rc-row"><span class="rc-k">HR does</span><span id="rcWhat"></span></div>
+        <div class="rc-row"><span class="rc-k">Key metric</span><span id="rcMetric"></span></div>
+        <div class="rc-row"><span class="rc-k">Classic mistakes</span><span id="rcMiss"></span></div>
+        <div class="rc-link" id="rcLink"></div>
+      </div>
+    </div>
+  </div>
+
+  <p>The most neglected points on this ring are the two joins. <b>Onboarding</b> is often squeezed into “paperwork on day one,” yet research and practice widely agree that the first 90 days decide whether a new hire integrates or drains away (indicative); <b>the exit</b> is the stage most easily treated as “the end of the relationship” — in fact, a former employee treated with grace becomes an amplifier of employer reputation, and may even return a few years later as a boomerang employee bringing new experience back.</p>
+
+  <h2><span class="secno">3</span>From Personnel Administration to Strategic Partner</h2>
+  <p>Seen along its history, the HR function has moved through three steps. In the <em>personnel administration</em> stage, it kept records, ran payroll, and processed paperwork — purely administrative support. In the <em>human resources management</em> stage, selecting, developing, deploying, and retaining people became a professional system with methods of its own. In the <em>strategic partner</em> stage, talent strategy joins business strategy — first answering “what people will the business need over the next three years,” then “how do we hire and retain them today.”</p>
+  <p>The HR thought leader Dave Ulrich argued in Human Resource Champions that HR’s value lies not in how many activities it performs but in what outcomes it delivers. The industry later operationalized this idea as the three-pillar model (indicative): the <em>Center of Expertise</em> (COE) sets policies and methods and is the “brain”; the <em>HR Business Partner</em> (HRBP) embeds with business teams and advises them up close, and is the “partner”; the <em>Shared Service Center</em> (SSC) concentrates transactional work — standardized and digital — and is the “factory.” For this lesson, one sentence is enough: the essence of HR is not “controlling people” but raising the organization’s ability to win with people.</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>Pillar</th><th>What it does</th><th>One-line memory hook</th></tr></thead>
+      <tbody>
+        <tr><td><b>COE</b> Center of Expertise</td><td>Designs professional policies and methods for compensation, performance, recruiting</td><td>The policy-setting “brain”</td></tr>
+        <tr><td><b>HRBP</b> Business Partner</td><td>Embeds with business units and translates business problems into talent solutions</td><td>The close-in “partner”</td></tr>
+        <tr><td><b>SSC</b> Shared Service Center</td><td>Concentrates transactional work such as onboarding, offboarding, and payroll</td><td>The scaled-up “factory”</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="secno">4</span>Case Study: Google’s People Operations</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">Treating “people” as an engineering problem: Google’s People Operations</p>
+    <p>Google named its HR function <em>People Operations</em> — operations, not a traditional personnel department — and Laszlo Bock, former Senior Vice President of People Operations, laid out the philosophy systematically in Work Rules!: make decisions about people with data, experiments, and evidence, the way an engineer treats a product (an illustrative account follows). In <em>hiring</em>, structured multi-dimensional scoring replaced interviewers’ overall “feels right” impressions. In <em>management</em>, before a practice was rolled out broadly, it was tested in a small controlled experiment; even questions like “which kinds of interview questions actually predict performance” were re-checked again and again against internal data. The signal this sends: decisions about people can be designed, measured, and continuously improved — they do not have to rest on intuition and luck.</p>
+    <p class="case-learn"><b>The lesson:</b> the very name “People Operations” is a manifesto — run “people” as a system that engineering methods can keep optimizing. You do not need to become Google to borrow the same question: for each of our HR decisions, is the basis evidence, or impression?</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Employee Lifecycle</dt><dd>The complete journey of the employee–organization relationship: attract → recruit → onboard → develop → retain → exit, a closed loop.</dd>
+      <dt>Onboarding</dt><dd>The first process that helps a new hire integrate into the organization, the role, and the culture; the 90-day retention rate is its key metric.</dd>
+      <dt>Employee Value Proposition (EVP)</dt><dd>The distinctive package of work rewards an employer promises talent — the underlying asset of the attraction stage.</dd>
+      <dt>Strategic Partner</dt><dd>The highest stage of HR’s evolution: talent strategy participates in business strategy rather than only providing administrative support.</dd>
+      <dt>Center of Expertise (COE)</dt><dd>One of the three pillars: the central brain that sets professional policies and methods.</dd>
+      <dt>HR Business Partner (HRBP)</dt><dd>One of the three pillars: a generalist embedded with business teams who solves talent problems up close.</dd>
+      <dt>Shared Service Center (SSC)</dt><dd>One of the three pillars: concentrates transactional work to raise efficiency and consistency.</dd>
+      <dt>Boomerang Employee</dt><dd>A former employee who returns after leaving; a good exit experience is the foundation of the alumni network and of boomerangs.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>The employee lifecycle strings HR’s scattered work into a closed loop — attract, recruit, onboard, develop, retain, exit — where every link depends on the last: break one and the whole thing leaks. HR has evolved from personnel administration to strategic partner, with COE, HRBP, and SSC as its three organizational forms. How you send people off today determines who can be attracted tomorrow.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">Quiz · Retrieval Practice</div>
+    <script type="application/json">
+    [
+      { "q": "Which statement best describes how the role of the HR function has evolved?",
+        "options": ["HR has always been, at heart, administrative work such as payroll and social insurance", "HR is shifting from personnel administration toward a talent-and-organization partner that supports strategy", "HR’s core duty is to make all people decisions on behalf of the business units", "HR is the only staff function with the authority to sign off on company strategy directly"],
+        "answer": 1,
+        "explain": "Transactional work remains the foundation (often handled by the SSC), but modern HR must also answer “what people does the business need, and how should the organization be designed” — the <b>strategic partner</b> role. Making every decision for the business, or setting strategy directly, both overstep." },
+      { "q": "Which is the correct order of the six stages of the employee lifecycle?",
+        "options": ["Recruit → Attract → Retain → Onboard → Develop → Exit", "Attract → Onboard → Recruit → Develop → Exit → Retain", "Attract → Recruit → Onboard → Develop → Retain → Exit", "Recruit → Develop → Attract → Exit → Onboard → Retain"],
+        "answer": 2,
+        "explain": "First people are <b>attracted</b> (they know you and want in), then <b>recruited</b> (selected), then they go through <b>onboarding</b> to integrate, <b>develop</b> to grow, and are <b>retained</b>, and finally they <b>exit</b> to become alumni — whose word of mouth flows back into the next round of attraction, closing the loop." },
+      { "q": "A company concentrates repetitive transactions such as payroll and onboarding paperwork into one team that handles them uniformly and efficiently. Which of Ulrich’s three pillars is this?",
+        "options": ["The Center of Expertise (COE), which designs uniform policies and methods for the company", "The HR Business Partner (HRBP), embedded with the business at close range", "The CFO’s office, which coordinates budgeting and accounting", "The Shared Service Center (SSC), which concentrates transactional work and handles it efficiently"],
+        "answer": 3,
+        "explain": "The three pillars divide the work: the COE sets policy (the brain), the HRBP accompanies the business (the partner), and the SSC runs the transactions (the factory). Concentrating standardized, repetitive transactions and processing them at scale is precisely the definition of the <b>SSC</b>." },
+      { "q": "A company’s new hires show clearly elevated attrition within their first 90 days. Which lifecycle stage should be checked first?",
+        "options": ["Onboarding — 90-day retention is exactly its key metric", "Exit and alumni — winning people back after they have decided to leave is never too late", "Brand attraction — as long as advertising spend is high, new-hire loss will naturally fall", "Development — just pile more annual training hours onto existing employees"],
+        "answer": 0,
+        "explain": "The 90-day retention rate and time to productivity are the core metrics of <b>onboarding</b>: whether anyone owned the new hire on day one, whether the culture took hold, and whether the 30-60-90 day plan was clear all surface in this window. Retention talks after departure, more advertising, and piling on training hours all miss the lesion." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>Further Reading</h2>
+    <ul>
+      <li>Human Resource Champions by Dave Ulrich (recommended: the opening section on HR’s new roles — the wellspring of the four-roles and three-pillars thinking)</li>
+      <li>Work Rules! by Laszlo Bock (recommended: the first two chapters, on Google treating HR as an engineering problem)</li>
+      <li>The Alliance: Managing Talent in the Networked Age by Reid Hoffman, Ben Casnocha &amp; Chris Yeh (recommended: the first half, on turning employment into an alliance)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← Previous</span><span class="pager-title">Branch Guide · Human Resources</span></a>
+    <a class="next" href="0002-recruiting-and-selection.html"><span class="pager-label">Next →</span><span class="pager-title">Recruiting and Selection</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘New-hire turnover in the first 90 days is high at my company — should I investigate onboarding or recruiting first?’ or ‘Walk me through the six stages using a company I have worked at.’ — follow-up questions are part of learning.</div>
+    <p>Human Resources · Lesson 1 · Employee Lifecycle | Interactive: lifecycle ring diagram · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var stages = [
+    { no: "01", name: "Attract", en: "Attraction",
+      what: "Employer brand and employee value proposition (EVP) building, recruitment marketing, employee-referral operations",
+      metric: "Applications received, offer acceptance rate (approximate)",
+      miss: "Marketing that drifts from the real experience; talking only money, never growth",
+      from: "The reputation of departed alumni is where attraction starts",
+      to: "Profiles and talent pools turn into real applications here" },
+    { no: "02", name: "Recruit", en: "Recruitment",
+      what: "Talent profiles, channel operations, structured interviews and assessments, offer negotiation",
+      metric: "Time to fill (days, approximate), channel conversion rates",
+      miss: "Interviewing by gut feel; quietly lowering the bar when hiring in a hurry",
+      from: "The expectations attraction created are tested by the interview experience",
+      to: "Promises made in interviews must be honored by onboarding" },
+    { no: "03", name: "Onboard", en: "Onboarding",
+      what: "Onboarding proper: equipment and access, a buddy program, a 30-60-90 day plan",
+      metric: "90-day retention rate, time to productivity (weeks, approximate)",
+      miss: "Nobody owns the new hire on day one; paperwork without cultural integration",
+      from: "The promises in the offer are honored here for the first time",
+      to: "Only after integration does growth become possible" },
+    { no: "04", name: "Develop", en: "Development",
+      what: "Training, mentoring, dual career tracks, performance coaching, succession planning",
+      metric: "Internal promotion rate, skill coverage (approximate)",
+      miss: "Training detached from the business; learning that is never applied",
+      from: "Once people are settled, growth becomes the top demand",
+      to: "Visible growth is the first force of retention" },
+    { no: "05", name: "Retain", en: "Retention",
+      what: "Compensation and incentives, a culture of recognition, engagement management, key-talent retention plans",
+      metric: "Voluntary turnover rate (approximate %), engagement / eNPS",
+      miss: "Heart-to-heart talks only at resignation time; throwing money at everything",
+      from: "Blocked development is often exactly where attrition begins",
+      to: "When retention fails, move gracefully into the exit stage" },
+    { no: "06", name: "Exit", en: "Offboarding & Alumni",
+      what: "Exit interviews, knowledge handover, the alumni network and boomerang-employee operations",
+      metric: "Interview completion rate, alumni-return rate (approximate)",
+      miss: "Burning bridges at departure; no knowledge handover, doors slammed shut",
+      from: "Exit reasons are the most honest organizational checkup",
+      to: "A good exit experience flows back into employer reputation" }
+  ];
+  var palette = ["#f43f5e", "#ec4899", "#db2777", "#be185d", "#9d174d", "#881337"];
+
+  var svg = document.getElementById("ringSvg");
+  var wrap = document.getElementById("ringWrap");
+  if (!svg || !wrap) return;
+
+  var CX = 280, CY = 280, R0 = 176, R1 = 254, N = 6, GAP = 5;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  function polar(r, deg) {
+    var rad = (deg - 90) * Math.PI / 180;
+    return [CX + r * Math.cos(rad), CY + r * Math.sin(rad)];
+  }
+  function segPath(a0, a1) {
+    var p0 = polar(R1, a0), p1 = polar(R1, a1);
+    var p2 = polar(R0, a1), p3 = polar(R0, a0);
+    return "M" + p0[0].toFixed(1) + " " + p0[1].toFixed(1) +
+      " A" + R1 + " " + R1 + " 0 0 1 " + p1[0].toFixed(1) + " " + p1[1].toFixed(1) +
+      " L" + p2[0].toFixed(1) + " " + p2[1].toFixed(1) +
+      " A" + R0 + " " + R0 + " 0 0 0 " + p3[0].toFixed(1) + " " + p3[1].toFixed(1) + " Z";
+  }
+
+  svg.appendChild(el("circle", { cx: CX, cy: CY, r: R0 - 8, fill: "#fff", stroke: "#e7e0d3", "stroke-width": 1.5 }));
+
+  var segEls = [];
+  stages.forEach(function (s, k) {
+    var a0 = k * 60 + GAP, a1 = (k + 1) * 60 - GAP;
+    var p = el("path", { d: segPath(a0, a1), fill: palette[k], stroke: "#fff", "stroke-width": 2, "class": "lifecycle-seg" });
+    p.appendChild(el("title", { text: "Stage " + s.no + " · " + s.name }));
+    p.addEventListener("click", function () { select(k); });
+    svg.appendChild(p);
+    segEls.push(p);
+    var mid = (a0 + a1) / 2, pos = polar((R0 + R1) / 2, mid);
+    var no = el("text", { x: pos[0], y: pos[1] - 20, "text-anchor": "middle", "font-size": 11, "font-weight": 800, fill: "rgba(255,255,255,.85)" });
+    no.textContent = s.no;
+    svg.appendChild(no);
+    var t = el("text", { x: pos[0], y: pos[1] + 8, "text-anchor": "middle", "font-size": 23, "font-weight": 800, fill: "#fff", "pointer-events": "none" });
+    t.textContent = s.name;
+    svg.appendChild(t);
+  });
+
+  var rcStage = document.getElementById("rcStage");
+  var rcWhat = document.getElementById("rcWhat");
+  var rcMetric = document.getElementById("rcMetric");
+  var rcMiss = document.getElementById("rcMiss");
+  var rcLink = document.getElementById("rcLink");
+
+  function select(k) {
+    var prev = (k + 5) % 6, next = (k + 1) % 6;
+    segEls.forEach(function (p, j) {
+      if (j === k) {
+        p.setAttribute("opacity", "1");
+        p.setAttribute("stroke", "#fff");
+        p.setAttribute("stroke-width", "3.5");
+        p.removeAttribute("stroke-dasharray");
+      } else if (j === prev || j === next) {
+        p.setAttribute("opacity", "0.5");
+        p.setAttribute("stroke", "#fff");
+        p.setAttribute("stroke-width", "2.5");
+        p.setAttribute("stroke-dasharray", "7 5");
+      } else {
+        p.setAttribute("opacity", "0.22");
+        p.setAttribute("stroke", "#fff");
+        p.setAttribute("stroke-width", "1.5");
+        p.removeAttribute("stroke-dasharray");
+      }
+    });
+    var s = stages[k];
+    rcStage.innerHTML = s.no + " " + s.name + " <small>" + s.en + "</small>";
+    rcWhat.textContent = s.what;
+    rcMetric.textContent = s.metric;
+    rcMiss.textContent = s.miss;
+    rcLink.innerHTML = "<b>Upstream · " + stages[prev].name + "</b>: " + s.from +
+      "<br><b>Downstream · " + stages[next].name + "</b>: " + s.to;
+  }
+  select(0);
+})();
+</script>
+</body>
+</html>

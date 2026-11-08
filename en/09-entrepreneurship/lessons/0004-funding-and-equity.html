@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Funding and Equity · Entrepreneurship</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .eq-wrap { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+  @media (min-width: 720px) { .eq-wrap { grid-template-columns: 300px 1fr; align-items: start; } }
+  .legend { display: grid; gap: .3rem; margin: .4rem 0 .8rem; }
+  .legend .lg-row { display: flex; align-items: center; gap: .55rem; font-size: .9rem; }
+  .legend .lg-swatch { width: 13px; height: 13px; border-radius: 4px; flex: none; }
+  .legend .lg-name { color: var(--ink-soft); }
+  .legend .lg-val { margin-left: auto; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .round-blk { border: 1px dashed var(--line); border-radius: 10px; padding: .1rem .9rem .4rem; margin: .7rem 0; }
+  .round-head { font-weight: 800; font-size: .92rem; margin: .55rem 0 .1rem; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+  .round-pct { font-size: .8rem; font-weight: 700; color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, #fff);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); border-radius: 999px; padding: .06rem .65rem; }
+  .warn-line { color: var(--bad); font-weight: 700; }
+</style>
+</head>
+<body class="branch-entrepreneurship">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Entrepreneurship</a><span class="crumb-sep">/</span>
+  <span>Funding and Equity</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../09-entrepreneurship/lessons/0004-funding-and-equity.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Entrepreneurship · Lesson 4</p>
+  <h1>Funding and Equity</h1>
+  <p class="lead">With validation concluded and the plan written down, the final lesson talks about money: where it comes from, and what you pay with. Equity financing sells the future — this lesson works through the funding ladder and the arithmetic of dilution, so that before you ever sit down with an investor, you know the true price of every dollar.</p>
+
+  <h2><span class="secno">1</span>Equity Is the Most Expensive Money</h2>
+  <p>Founders often treat “closing a round” as an achievement, but it is really just a different way of paying dearly: a loan repays interest, while equity gives up <strong>a claim on future dividends and votes</strong>. The 15% you give up at the angel round, if the company eventually reaches ¥10 billion, is ¥1.5 billion. So the first principle of fundraising is not “take all you can get,” but: <em>every round of money must buy a clear milestone</em> — otherwise you are better off not raising at all.</p>
+
+  <h2><span class="secno">2</span>The Funding Ladder: From 3F to IPO</h2>
+  <ul class="timeline">
+    <li><b>Own savings and the 3F round</b> (Founder, Family, Friends) — the idea-validation stage, on the order of ¥100,000 to ¥1,000,000 (illustrative). The gentlest terms, but the highest human cost: if the venture falls apart, the people most easily hurt are this round’s backers.</li>
+    <li><b>Angel investors</b> — betting on the person and the product prototype, on the order of ¥1,000,000-plus (illustrative), typically for about 10%–20% of equity (illustrative). Mostly individual money, quick decisions, and early resources attached.</li>
+    <li><b>Venture capital (VC), Series A/B/C</b> — the acceleration phase after product–market fit is proven, on the order of ¥10 million to ¥100 million (illustrative), giving up about 15%–25% per round (illustrative). Institutional funds, complex terms, hunting for multi-x returns at exit.</li>
+    <li><b>Private equity (PE) and the growth stage</b> — expansion, acquisitions, or restructuring of mature businesses, valuing the certainty of cash flows over their mere possibility.</li>
+    <li><b>Initial public offering (IPO)</b> — listing on the public market, giving early shareholders and investors a liquid exit channel, while accepting the strictest information disclosure.</li>
+  </ul>
+
+  <h2><span class="secno">3</span>The Arithmetic of Dilution: One Division</h2>
+  <div class="formula">New investor’s share = amount raised ÷ post-money valuation</div>
+  <p>Post-money valuation means the company’s total valuation <b>after this round’s money arrives</b>. For example, an angel round of ¥5,000,000 at a post-money valuation of ¥40,000,000 gives the new investor 5,000,000 ÷ 40,000,000 = <b>12.5%</b>; that 12.5% does not appear out of thin air — every existing shareholder cedes it proportionally. A founder who held 100% is left with 87.5%. Every later round repeats the same division, and <strong>the stake shrinks multiplicatively, round after round</strong>.</p>
+
+  <h2><span class="secno">4</span>Hands-On: The Equity Dilution Simulator</h2>
+  <div class="sim">
+    <div class="sim-title">Simulator: How Much Does the Founder Have Left After Four Rounds?</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">Drag the “amount raised” and “post-money valuation” sliders for each round, and the pie chart on the right animates in real time. The defaults trace a typical path: a 10% employee option pool set aside, with the founder’s stake landing right in the 30–40% range after four rounds.</p>
+    <div class="eq-wrap">
+      <div>
+        <div class="round-blk" style="border-style:solid">
+          <p class="round-head">Before we start · Employee option pool <span class="round-pct" id="poolPct">10% set aside</span></p>
+          <div class="sim-controls"><div id="poolCtrl"></div></div>
+        </div>
+        <div class="round-blk">
+          <p class="round-head">Round 1 · Angel round <span class="round-pct" id="rp0"></span></p>
+          <div class="sim-controls"><div id="r0amt"></div><div id="r0post"></div></div>
+        </div>
+        <div class="round-blk">
+          <p class="round-head">Round 2 · Series A <span class="round-pct" id="rp1"></span></p>
+          <div class="sim-controls"><div id="r1amt"></div><div id="r1post"></div></div>
+        </div>
+        <div class="round-blk">
+          <p class="round-head">Round 3 · Series B <span class="round-pct" id="rp2"></span></p>
+          <div class="sim-controls"><div id="r2amt"></div><div id="r2post"></div></div>
+        </div>
+        <div class="round-blk">
+          <p class="round-head">Round 4 · Series C <span class="round-pct" id="rp3"></span></p>
+          <div class="sim-controls"><div id="r3amt"></div><div id="r3post"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="figure-body" style="padding:.2rem 0 0">
+          <svg viewBox="0 0 340 340" role="img" style="width:100%;max-width:340px;height:auto;display:block;margin:0 auto" aria-label="Equity structure pie chart">
+            <g id="eqSlices"></g>
+            <text x="170" y="160" text-anchor="middle" font-size="14" font-weight="700" fill="#78716c">Founder</text>
+            <text x="170" y="196" text-anchor="middle" font-size="30" font-weight="800" fill="#0f766e" id="eqFounder">--</text>
+          </svg>
+        </div>
+        <div class="legend" id="eqLegend"></div>
+        <p class="sim-readout" id="eqReadout"></p>
+        <p id="eqWarns" style="font-size:.88rem;line-height:1.7;margin:.2rem 0 0"></p>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="secno">5</span>Beyond Dilution: Keeping Control</h2>
+  <p>Being diluted down to 30–40% does not necessarily mean losing control, because <strong>equity ≠ voting rights</strong>. Two common safeguards: <strong>dual-class shares</strong> — the founder’s Class B shares carry several times the votes of ordinary shares, a structure used by Google and Meta as well as JD.com, Xiaomi, and many other tech companies (publicly disclosed facts; the multiples vary); and <strong>voting agreements</strong> — several founding shareholders pledge to vote as a bloc, bundling scattered votes into one bundle. Beyond these, board seats, veto rights over major decisions, and similar terms also decide “who calls the shots.” All this lesson asks you to remember: stakes are arithmetic; control is design.</p>
+
+  <div class="case">
+    <div class="case-title">Case Study · One Company’s Four Rounds, Played Out (Purely Illustrative)</div>
+    <p>Imagine a fictional company running the “typical rhythm” through four rounds: the founder starts at 100%, first sets aside a 10% employee option pool, and each round thereafter gives up “amount raised ÷ post-money valuation”:</p>
+    <div class="table-wrap">
+      <table class="compact">
+        <thead><tr><th>Round</th><th>Amount raised</th><th>Post-money valuation</th><th>Given up this round</th><th>Founder stake</th></tr></thead>
+        <tbody>
+          <tr><td>Option pool set up</td><td>—</td><td>—</td><td>Employees 10%</td><td>100% → 90%</td></tr>
+          <tr><td>Angel round</td><td>¥5,000,000</td><td>¥40,000,000</td><td>12.5%</td><td>90% → ~78.8%</td></tr>
+          <tr><td>Series A</td><td>¥30,000,000</td><td>¥150,000,000</td><td>20%</td><td>~78.8% → 63.0%</td></tr>
+          <tr><td>Series B</td><td>¥100,000,000</td><td>¥500,000,000</td><td>20%</td><td>63.0% → 50.4%</td></tr>
+          <tr><td>Series C</td><td>¥250,000,000</td><td>¥1,000,000,000</td><td>25%</td><td>50.4% → ~37.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>After four rounds, the founder has been diluted from 100% to about 38% — the textbook range (roughly 30%–40%). The key is how you read it: <em>38% of a ¥1 billion company dwarfs 100% of zero</em>. If every round genuinely bought a growth milestone, dilution is an amplifier; only when the money runs out and the milestone never arrives does dilution become a pure loss.</p>
+    <div class="case-learn"><b>The lesson:</b> dilution itself is not the danger; the dangers are “accepting harsh terms for an inflated valuation” and “giving up so much that nothing is left to give and motivation collapses.” Keep each round’s give-up within a sensible range, and use devices such as dual-class shares to hold on to control.</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>3F Round (Founder / Family / Friends)</dt><dd>The earliest funding: personal savings plus money from relatives and friends; gentle terms, but high cost in relationships.</dd>
+      <dt>Angel Investment</dt><dd>Early investment by individuals at the product-prototype stage, typically for about 10%–20% of equity (illustrative).</dd>
+      <dt>Venture Capital</dt><dd>Growth-stage equity investment from institutional funds chasing high-multiple exits.</dd>
+      <dt>Post-money Valuation</dt><dd>The company’s total valuation after this round’s money arrives; equals pre-money valuation plus the amount raised.</dd>
+      <dt>Dilution</dt><dd>The proportional fall in existing shareholders’ stakes as new shareholders come in.</dd>
+      <dt>Option Pool</dt><dd>Shares reserved for future employees, usually set up before a round and ceded by existing shareholders.</dd>
+      <dt>Dual-class Share</dt><dd>A structure of unequal voting rights: the founder’s shares carry more votes per share than ordinary stock, preserving control with a smaller stake.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>New investor’s share = <b>amount raised ÷ post-money valuation</b>, with existing shareholders diluted proportionally; falling from 100% to 30–40% is normal, provided each round buys a milestone; stakes are arithmetic, and <b>control is design</b>.</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "A Series A round raises ¥20,000,000 at a post-money valuation of ¥100,000,000. The new investor’s share, and the founding team’s stake after dilution from a prior 70%, are respectively:",
+      "options": ["New investor 25%; founding team diluted to about 52%", "New investor 16%; founding team diluted to about 60%", "New investor 20%; founding team diluted to 56%", "New investor 20%; founding team diluted to 50%"],
+      "answer": 2,
+      "explain": "20,000,000 ÷ 100,000,000 = <b>20%</b>; the founding team is diluted by the remaining 80%: 70% × 80% = <b>56%</b>. Note that dilution is multiplication, not simply subtracting 20 points." },
+    { "q": "The precise meaning of “post-money valuation” is:",
+      "options": ["The company’s total valuation after this round’s money arrives", "The company’s total valuation before this round’s money arrives", "The investor’s forecast of the company’s market value three years from now", "The company’s total market value at the close of its first trading day"],
+      "answer": 0,
+      "explain": "Post-money = pre-money + the amount raised. Telling the two apart is the precondition of dilution arithmetic: for the same amount raised, a ratio computed against the pre-money figure comes out higher than one computed against the post-money figure — always check which convention the terms use before signing." },
+    { "q": "After four rounds the founder’s stake has fallen to about one third. The purpose of a dual-class share arrangement is:",
+      "options": ["To guarantee the founder a larger share of annual cash dividends", "To give the founder an automatic majority of board seats", "To stop early investors from selling their old shares at a discount to competitors", "To let the founder keep majority voting power while holding less equity"],
+      "answer": 3,
+      "explain": "The core of dual-class shares is <b>separating equity from voting rights</b>: the founder’s high-vote shares keep decision power even as economic ownership is diluted. Dividends, board seats, and secondary share sales are three entirely different matters." },
+    { "q": "About 3F funding (own savings, family, friends), the most accurate statement is:",
+      "options": ["3F money is usually the largest round, enough to carry the company all the way to Series B", "3F money is cheap but carries relationship risk; exit rules should be agreed in writing", "3F funding needs no agreement at all; working on verbal trust is more efficient", "3F is institutional funding and requires due diligence on VC terms"],
+      "answer": 1,
+      "explain": "3F money comes with low interest and loose terms, but if the business fails, the loss lands directly on the relationship. Even among relatives, put the amount, the equity, and the exit rules in black and white — what you are protecting is the relationship itself." }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Zero to One by Peter Thiel with Blake Masters (recommended: the chapter on the power law of venture returns)</li>
+      <li>Corporate Finance by Stephen Ross, Randolph Westerfield, and Jeffrey Jaffe (recommended: the chapters on capital structure and equity financing)</li>
+      <li>The Lean Startup by Eric Ries (recommended: the discussion of when to raise money, and how much)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-business-plan.html"><span class="pager-label">← Previous</span><span class="pager-title">The Business Plan: Think Before You Launch</span></a>
+    <a class="next" href="../../10-business-analytics/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Business Analytics · Branch 10 — telling business stories with data</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Could you run my cap table through the four-round defaults?’ or ‘Is a 15% option pool more sensible than 10%?’ — follow-up questions are part of learning.</div>
+    <p>Entrepreneurship · Lesson 4 · the case is a purely illustrative projection; percentage ranges are common industry magnitudes</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var META = [
+    { name: "Founder", color: "#0f766e" },
+    { name: "Employee options", color: "#94a3b8" },
+    { name: "Angel round", color: "#f59e0b" },
+    { name: "Series A", color: "#0ea5e9" },
+    { name: "Series B", color: "#8b5cf6" },
+    { name: "Series C", color: "#e11d48" }
+  ];
+  var CFG = [
+    { amt: { min: 100, max: 2000, step: 50, val: 500 }, post: { min: 1000, max: 10000, step: 100, val: 4000 } },
+    { amt: { min: 500, max: 6000, step: 100, val: 3000 }, post: { min: 3000, max: 30000, step: 500, val: 15000 } },
+    { amt: { min: 2000, max: 20000, step: 500, val: 10000 }, post: { min: 10000, max: 100000, step: 5000, val: 50000 } },
+    { amt: { min: 5000, max: 50000, step: 1000, val: 25000 }, post: { min: 30000, max: 200000, step: 5000, val: 100000 } }
+  ];
+
+  var slicesG = document.getElementById("eqSlices");
+  var paths = [];
+  META.forEach(function (m) {
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("fill", m.color);
+    p.setAttribute("stroke", "#ffffff");
+    p.setAttribute("stroke-width", "2");
+    slicesG.appendChild(p);
+    paths.push(p);
+  });
+
+  var legend = document.getElementById("eqLegend");
+  var legVals = [];
+  META.forEach(function (m, i) {
+    var row = document.createElement("div");
+    row.className = "lg-row";
+    row.innerHTML = '<span class="lg-swatch" style="background:' + m.color + '"></span>' +
+      '<span class="lg-name">' + m.name + '</span><span class="lg-val" id="lg' + i + '">–</span>';
+    legend.appendChild(row);
+    legVals.push(row.querySelector(".lg-val"));
+  });
+
+  function mkSlider(id, cfg, label, format) {
+    var s = Viz.slider(document.getElementById(id), {
+      label: label, min: cfg.min, max: cfg.max, step: cfg.step, value: cfg.val, format: format
+    });
+    s.onChange(function () { recompute(); });
+    return s;
+  }
+  var wan = function (v) { return "¥" + (v * 10000).toLocaleString("en-US"); };
+  var poolS = Viz.slider(document.getElementById("poolCtrl"), {
+    label: "Option pool", min: 0, max: 20, step: 1, value: 10, format: function (v) { return v + "%"; }
+  });
+  poolS.onChange(function () { recompute(); });
+  var amtS = [], postS = [];
+  CFG.forEach(function (r, i) {
+    amtS.push(mkSlider("r" + i + "amt", r.amt, "Amount raised", wan));
+    postS.push(mkSlider("r" + i + "post", r.post, "Post-money valuation", wan));
+  });
+
+  function polar(cx, cy, r, a) {
+    var t = (a - 90) * Math.PI / 180;
+    return (cx + r * Math.cos(t)).toFixed(2) + " " + (cy + r * Math.sin(t)).toFixed(2);
+  }
+  function slicePath(a0, a1) {
+    if (a1 - a0 < 0.4) return "";
+    var r1 = 130, r0 = 78, cx = 170, cy = 170;
+    if (a1 - a0 >= 359.6) {
+      return "M" + polar(cx, cy, r1, 0) + " A" + r1 + " " + r1 + " 0 1 1 " + polar(cx, cy, r1, 180) +
+        " A" + r1 + " " + r1 + " 0 1 1 " + polar(cx, cy, r1, 0) +
+        " M" + polar(cx, cy, r0, 0) + " A" + r0 + " " + r0 + " 0 1 0 " + polar(cx, cy, r0, 180) +
+        " A" + r0 + " " + r0 + " 0 1 0 " + polar(cx, cy, r0, 0);
+    }
+    var large = a1 - a0 > 180 ? 1 : 0;
+    return "M" + polar(cx, cy, r1, a0) +
+      " A" + r1 + " " + r1 + " 0 " + large + " 1 " + polar(cx, cy, r1, a1) +
+      " L" + polar(cx, cy, r0, a1) +
+      " A" + r0 + " " + r0 + " 0 " + large + " 0 " + polar(cx, cy, r0, a0) + " Z";
+  }
+
+  var cur = [0, 0, 0, 0, 0, 0];
+  var animId = null;
+  function drawPie(vals) {
+    var acc = 0;
+    vals.forEach(function (v, i) {
+      var span = v / 100 * 360;
+      paths[i].setAttribute("d", slicePath(acc, acc + span));
+      acc += span;
+    });
+  }
+  function animateTo(target) {
+    if (animId) cancelAnimationFrame(animId);
+    var from = cur.slice();
+    var t0 = null, dur = 550;
+    function frame(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      for (var i = 0; i < 6; i++) cur[i] = from[i] + (target[i] - from[i]) * e;
+      drawPie(cur);
+      if (p < 1) animId = requestAnimationFrame(frame);
+    }
+    animId = requestAnimationFrame(frame);
+  }
+
+  function recompute() {
+    var pool = poolS.get();
+    var stakes = [100 - pool, pool, 0, 0, 0, 0];
+    var warns = [];
+    var ratios = [];
+    CFG.forEach(function (r, i) {
+      var amt = amtS[i].get(), post = postS[i].get();
+      var raw = amt / post;
+      var ratio = Math.min(raw, 0.9);
+      if (raw >= 1) warns.push("Round " + (i + 1) + ": the amount raised is at least the post-money valuation; the demo caps it at 90% — in reality these would be extreme terms");
+      else if (raw > 0.4) warns.push("Round " + (i + 1) + " gives up about " + (raw * 100).toFixed(0) + "% — a lot for a single round; beware of over-dilution");
+      ratios.push(ratio);
+      for (var k = 0; k < 6; k++) stakes[k] *= (1 - ratio);
+      stakes[2 + i] = ratio * 100;
+    });
+    var founder = stakes[0];
+    if (founder < 25) warns.push("The founder is down to about " + founder.toFixed(1) + "%, below one quarter — the usual warning line for motivation and bargaining power");
+    else if (founder < 33.34) warns.push("The founder is below one third; consider dual-class shares or a voting agreement to keep control");
+
+    document.getElementById("poolPct").textContent = pool + "% set aside";
+    ratios.forEach(function (ratio, i) {
+      document.getElementById("rp" + i).textContent = (ratio * 100).toFixed(1) + "% given up";
+    });
+    stakes.forEach(function (v, i) {
+      legVals[i].textContent = v.toFixed(1) + "%";
+    });
+    document.getElementById("eqFounder").textContent = founder.toFixed(1) + "%";
+    document.getElementById("eqReadout").innerHTML =
+      "After four rounds, the founder holds <b>" + founder.toFixed(1) + "%</b>; investors and employees together hold the remaining <b>" +
+      (100 - founder).toFixed(1) + "%</b> (illustrative). Dilution is multiplication: each round you give up shrinks everything left, proportionally, once more.";
+    var warnsEl = document.getElementById("eqWarns");
+    warnsEl.innerHTML = warns.length
+      ? warns.map(function (w) { return '<span class="warn-line">⚠ ' + w + "</span>"; }).join("<br>")
+      : '<span style="color:var(--good);font-weight:700">✓ The current structure sits in the common range: no round gives up more than 25%, and the founder is still above one third</span>';
+    animateTo(stakes);
+  }
+
+  recompute();
+})();
+</script>
+</body>
+</html>

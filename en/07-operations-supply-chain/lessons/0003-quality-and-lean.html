@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quality and Lean · Operations &amp; Supply Chain</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .pdca-seg { cursor:pointer; stroke:#fff; stroke-width:2; transition:filter .2s ease, stroke .2s ease; }
+  .pdca-seg:hover, .pdca-seg.active { filter:brightness(1.15); stroke:#1c1917; stroke-width:2.5; }
+  .pdca-panel { min-height:5.2em; background:var(--paper-deep); border-radius:10px; padding:.8rem 1rem;
+    font-size:.93rem; color:var(--ink-soft); line-height:1.75; }
+  .pdca-panel b { color:var(--accent); }
+  .waste-checklist { display:grid; grid-template-columns:repeat(auto-fill,minmax(148px,1fr)); gap:.5rem; padding:0; margin:.9rem 0 0; list-style:none; }
+  .waste-checklist li { font-size:.88rem; background:var(--paper); border:1.5px solid var(--line); border-radius:8px;
+    padding:.35rem .65rem; color:var(--ink-soft); }
+  .waste-checklist li.found { border-color:var(--good); color:var(--good); font-weight:700; background:#f0fdf4; }
+  .wz { cursor:pointer; }
+  .wz:hover .wz-frame { stroke:var(--accent); }
+  .sim-btn { background:var(--paper-deep); border:1.5px solid var(--line); border-radius:999px; padding:.38rem 1rem;
+    font-weight:700; font-size:.88rem; cursor:pointer; color:var(--ink); font-family:var(--sans); }
+  .sim-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .wz-msg { border-radius:10px; padding:.65rem .95rem; font-size:.93rem; line-height:1.7; margin-top:.7rem; }
+  .wz-msg.good { background:#f0fdf4; border:1px solid var(--good); color:var(--ink); }
+  .wz-msg.note { background:var(--paper-deep); border:1px solid var(--line); color:var(--ink-soft); }
+  .wz-msg b { color:var(--accent); }
+</style>
+</head>
+<body class="branch-operations">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Operations &amp; Supply Chain</a><span class="crumb-sep">/</span>
+  <span>Quality and Lean</span>
+  <span class="progress">Lesson 3 of 4</span>
+<a class="lang-switch" href="../../../07-operations-supply-chain/lessons/0003-quality-and-lean.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Operations &amp; Supply Chain · Lesson 3</p>
+  <h1>Quality and Lean</h1>
+  <p class="lead">The first two lessons solved for “fast”: find the bottleneck, focus your effort there. This lesson solves for “good” and “lean”: should quality rest on inspection or on prevention? And why does Toyota say that nine-tenths of what happens in a factory is waste? The answer is an improvement flywheel you can spin every single day.</p>
+
+  <h2><span class="secno">1</span>Quality Is Free: The Arithmetic of Prevention</h2>
+  <p>The traditional view treats quality and cost as enemies: want it better, spend more on inspection. The quality guru Philip Crosby argued the opposite in <em>Quality Is Free</em>: <em>quality is free</em> — what is truly expensive is the <em>cost of poor quality</em>. Accountants split the cost of quality into four buckets:</p>
+  <ul class="timeline">
+    <li><b>Prevention costs</b>: training, process design, mistake-proofing (poka-yoke) — keeping defects from ever happening;</li>
+    <li><b>Appraisal costs</b>: inspection, testing, sampling — catching defects that have already happened;</li>
+    <li><b>Internal failure costs</b>: scrap, rework, line stops — the price paid when a defect is caught before it ships;</li>
+    <li><b>External failure costs</b>: returns, recalls, lawsuits, reputation — the price paid when a defect reaches the customer.</li>
+  </ul>
+  <p>The further down this list the money lands, the more expensive it gets. The 1-10-100 rule of thumb says: a defect that costs ¥1 to prevent at the design stage costs ¥10 to correct in production and ¥100 to remedy once it reaches the market (orders of magnitude, illustrative). So “quality is free” means this: <em>move resources from back-end inspection and firefighting to front-end prevention</em> — spend slightly more up front, failure costs collapse, and the total bill actually shrinks. This echoes Lesson 2: inventory hides defects, and the earlier you intercept them, the cheaper they are.</p>
+
+  <h2><span class="secno">2</span>PDCA: The Flywheel That Keeps Improvement Turning</h2>
+  <p>How does quality improvement keep sinking in instead of blowing through as a one-off campaign? W. Edwards Deming, the father of statistical quality management, distilled improvement into a cycle that can spin forever — the <em>plan-do-check-act (PDCA) cycle</em>, also called the Deming cycle. It turns “fixed it once” into a mechanism of “one turn a day, the standard one notch higher.”</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg id="pdca-svg" viewBox="0 0 380 310" role="img" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto"></svg>
+    </div>
+    <figcaption class="figure-caption"><b>Figure 1</b> The PDCA cycle: hover over (or tap) any quadrant to see its job. The direction the needle rotates is the direction the standard keeps rising.</figcaption>
+  </figure>
+  <div class="pdca-panel" id="pdca-panel"><b>Hover over or tap any quadrant</b> to see what that step does. Improvement is not one sprint — it is earned lap by lap like this, and the more laps, the higher the standard.</div>
+  <ol class="steps">
+    <li><b>Plan</b>: define the problem, dig for the root cause, and design one small, measurable improvement experiment — the five-whys exercise usually lives here.</li>
+    <li><b>Do</b>: run a small-scale pilot while faithfully recording the data; resist the urge to roll it out everywhere at once.</li>
+    <li><b>Check</b>: hold the data against expectations: did it work? where did it drift? The most often skipped — and most valuable — step.</li>
+    <li><b>Act</b>: standardize what worked into the new norm, and carry what didn’t back to Plan with its lessons — the cycle never stops.</li>
+  </ol>
+
+  <h2><span class="secno">3</span>Lean: Pulling Waste Out by the Roots</h2>
+  <p>On the shop floor of postwar Toyota, Taiichi Ohno arrived at a blunt standard: customers pay only for <em>value-adding</em> activities — changing form, changing place, changing information; everything else is <em>waste</em> (muda in Japanese). He distilled the <em>seven wastes (muda)</em>, which became the shared language of <em>lean production</em>:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Waste</th><th>Spot it in one line</th><th>Typical scene on the floor</th></tr></thead>
+    <tbody>
+      <tr><td>① Overproduction</td><td>Making more, earlier, and faster than the next step needs</td><td>Finished goods filling the warehouse (the worst of the worst)</td></tr>
+      <tr><td>② Waiting</td><td>People wait for parts, machines wait for people, jobs wait for batches</td><td>Long stretches with nothing to do at a station</td></tr>
+      <tr><td>③ Transport</td><td>Materials take long trips around the plant without gaining value</td><td>Forklifts crossing the entire shop floor</td></tr>
+      <tr><td>④ Overprocessing</td><td>More precision, more steps than the customer asked for</td><td>Polishing an inconsequential surface twice</td></tr>
+      <tr><td>⑤ Inventory</td><td>Any stay longer than one step requires</td><td>Raw material and work-in-process stacked layer on layer</td></tr>
+      <tr><td>⑥ Motion</td><td>Bending, turning, rummaging — human movement that adds no value</td><td>Tools kept in a cabinet three meters away</td></tr>
+      <tr><td>⑦ Defects</td><td>Rework, scrap, recalls</td><td>The rework bench never has an empty seat</td></tr>
+    </tbody>
+  </table></div>
+  <p>Two paired mechanisms power the hunt for waste. The first is <em>just-in-time (JIT)</em>: make and move only what is needed, when it is needed, in the quantity needed — using <em>kanban</em> as the pull signal by which each downstream step withdraws parts from the step before, so that overproduction becomes physically impossible. The second is <em>kaizen</em>: continuous improvement by everyone, every day, in small steps — PDCA in its everyday shop-floor form. As for <em>Six Sigma</em>, it is the statistical quality management method that General Electric and others championed around the turn of the millennium: five DMAIC steps driving the defect rate toward a target of 3.4 defects per million — the same lineage of thinking as PDCA, with heavier statistical tools.</p>
+  <div class="callout tip"><span class="callout-label">A word of caution</span>Lean is not a reckless dash to zero inventory: without stable quality and reliable suppliers, slashing inventory only snaps the line. Lean is “stabilize first, then accelerate” — first use quality to squeeze out variation, then peel away inventory, the shock-absorbing cushion, layer by layer.</div>
+
+  <h2><span class="secno">4</span>Interactive Lab: Where Are the Seven Wastes Hiding?</h2>
+  <div class="sim" id="wz-sim">
+    <div class="sim-title">Interactive Lab · The Seven-Wastes Spot-the-Flaw Map</div>
+    <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:.4rem">Below is the floor plan of a factory (illustrative), hiding live scenes of all seven wastes — plus <b>two “necessary activities” that are not waste</b>. Click the zones you believe hide waste to mark and score them red; clicking a necessary activity costs you nothing, but read why it counts.</p>
+    <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden">
+      <svg id="wz-svg" viewBox="0 0 760 420" role="img" style="width:100%;height:auto;display:block"></svg>
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.8rem">
+      <span style="font-weight:800;font-size:1.05rem">Found <b id="wz-score" style="color:var(--accent)">0</b> / 7</span>
+      <button class="sim-btn" id="wz-reset" type="button">↺ Hunt again</button>
+    </div>
+    <ul class="waste-checklist" id="wz-checklist">
+      <li data-key="overproduction">☐ Overproduction</li>
+      <li data-key="waiting">☐ Waiting</li>
+      <li data-key="transport">☐ Transport</li>
+      <li data-key="overprocessing">☐ Overprocessing</li>
+      <li data-key="inventory">☐ Inventory</li>
+      <li data-key="motion">☐ Motion</li>
+      <li data-key="defect">☐ Defects</li>
+    </ul>
+    <div class="wz-msg note" id="wz-msg">Click any zone in the scene to begin. Hint: first ask, “Would the customer pay for this?”</div>
+  </div>
+
+  <h2><span class="secno">5</span>Case: A Cord That Can Stop the Whole Line</h2>
+  <div class="case">
+    <div class="case-title">Toyota’s Andon Cord</div>
+    <p>On Toyota’s final assembly line, an <em>andon</em> cord hangs above every workstation. Any frontline worker who spots an abnormality at their station — a missing part, a wrong assembly, a torque out of range — can pull it at once: the andon board overhead lights up, a chime sounds, and the team leader arrives within the takt time; if the problem is not solved in time, <b>the entire line stops</b>. On a line that produces roughly one car per minute (illustrative magnitude), every stopped minute is visible money — yet Toyota hands the power to halt the line to the workers on the lowest rung.</p>
+    <p>The logic is exactly where this lesson’s two main threads converge. First, quality must be intercepted <em>at the source</em> — a defect that flows to the next station doubles the rework bill, and one that reaches the customer becomes a recall (1-10-100). Second, a line stop is the loudest improvement alarm: every andon pull is the P of a PDCA cycle, exposing and zeroing out the problem on the spot instead of letting it hide overnight under layers of inventory.</p>
+    <div class="case-learn"><b>The operations lesson:</b> give the power — and the incentive — to spot problems to the people closest to them, and trade small line stops for giant recalls. This is the exact opposite of many factories’ “the line must never stop; problems can wait until after the shift,” and that latter approach is precisely the hothouse where defects and inventory cover for each other. (This case is an illustrative account compiled from public sources)</div>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>PDCA Cycle</dt><dd>Plan-Do-Check-Act, the Deming cycle: the plan → do → check → act loop of continuous improvement.</dd>
+      <dt>Cost of Quality</dt><dd>The four cost buckets — prevention, appraisal, internal failure, external failure; the further down the list, the more expensive.</dd>
+      <dt>Seven Wastes (Muda)</dt><dd>Overproduction, waiting, transport, overprocessing, inventory, motion, defects — every consumption the customer will not pay for.</dd>
+      <dt>Just-in-Time (JIT)</dt><dd>Produce and move only what is needed, when it is needed, in the quantity needed; pull signals replace push scheduling.</dd>
+      <dt>Kanban</dt><dd>The visual card that carries withdrawal and production instructions from downstream to upstream steps — the signal carrier of a pull system.</dd>
+      <dt>Kaizen</dt><dd>Continuous improvement by everyone, in small daily steps — PDCA’s shop-floor form.</dd>
+      <dt>Andon</dt><dd>A visual abnormality-alert system; the andon cord gives frontline workers the authority to stop the line.</dd>
+      <dt>Six Sigma</dt><dd>A quality management method that uses statistical tools (DMAIC) to drive the defect rate toward a target of 3.4 per million.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    Quality lives not in the inspection room but at the source, in prevention — <strong>the farther a defect travels, the bigger the bill</strong>. Lean treats every activity the customer will not pay for as waste: JIT strangles overproduction, and kaizen spins PDCA once a day. Remember: inventory is the cover-up that hides problems; the andon cord is the searchlight that exposes them.
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "What is the core claim behind the phrase “quality is free”?",
+      "options": ["The inspection step no longer needs any spending", "Customers don’t really care about small defects", "The investment in prevention is far smaller than the cost of failure", "Six Sigma can eliminate all variation"],
+      "answer": 2,
+      "explain": "Quality certainly costs money — Crosby is talking about the total bill: shift resources into prevention, and the drop in failure costs (rework, recalls, reputation) far outweighs the prevention spend. Skipping prevention and betting on luck is the most expensive plan of all." },
+    { "q": "Among the seven wastes, overproduction is often ranked the worst of the lot. Why?",
+      "options": ["It multiplies the other six wastes", "It directly drags down the product’s ex-factory price", "It occurs only in the traditional auto industry", "It is the easiest for automation to solve"],
+      "answer": 0,
+      "explain": "Everything overproduced must be moved and stored (inventory) and tended by people (motion, waiting), and defects get hidden in bulk — an overproducing line feeds the other six wastes all at once." },
+    { "q": "What is the most counterintuitive feature of Toyota’s andon cord design?",
+      "options": ["Rework is handled by a separate dedicated crew", "Quality targets are set uniformly by headquarters", "Defect records are compiled and reported only weekly", "A frontline worker can stop the entire line"],
+      "answer": 3,
+      "explain": "The authority to stop the line goes to the lowest rung — the people closest to the problem — trading small line stops for giant recalls. Most factories do exactly the opposite: the line must never stop, so defects and inventory cover for each other and problems flow farther and farther downstream." },
+    { "q": "In the PDCA cycle, Check (C) comes right after Do (D). What is Check’s job?",
+      "options": ["Immediately plan the next round of improvement", "Use data to verify whether the change actually worked", "Standardize the effective practice into a new norm", "Pour in resources and roll the pilot out everywhere"],
+      "answer": 1,
+      "explain": "Check holds the pilot’s data against Plan’s expectations: only if it worked do you move on to Act and standardize; otherwise you return to Plan carrying the lessons. Skipping C and rolling out treats “feels effective” as “is effective.”" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul class="timeline">
+      <li><b>Taiichi Ohno, Toyota Production System</b> (in Chinese, China Railway Publishing House; read: the chapters on kanban and just-in-time) — the first-hand source of the seven wastes and JIT; brief, and all but a manifesto.</li>
+      <li><b>Lean Thinking</b> by James Womack &amp; Daniel Jones (read: the value and value-stream chapters) — distills the Toyota experience into five principles: value → value stream → flow → pull → perfection.</li>
+      <li><b>Quality Is Free</b> by Philip Crosby (read: the chapters on the cost of quality and prevention) — the primary source for this lesson’s first section; also worth searching for: W. Edwards Deming’s Out of the Crisis.</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-bottleneck-and-toc.html"><span class="pager-label">← Previous</span><span class="pager-title">Bottlenecks and the Theory of Constraints</span></a>
+    <a class="next" href="0004-supply-chain-bullwhip.html"><span class="pager-label">Next →</span><span class="pager-title">Supply Chains and the Bullwhip Effect</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: “Our processes are office workflows, not a factory — do the seven wastes still apply?” Your teacher can even rebuild the spot-the-flaw map around your own office. Follow-up questions are part of learning.</div>
+    <p>Operations &amp; Supply Chain · Lesson 3 of 4 · Quality and Lean | Interactive: course library generated by your AI teacher · case figures are illustrative</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+/* ===== PDCA rotating ring ===== */
+(function () {
+  "use strict";
+  var svg = document.getElementById("pdca-svg");
+  var panel = document.getElementById("pdca-panel");
+  if (!svg || !panel) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  var CXc = 190, CYc = 158, R1 = 60, R2 = 120;
+  function pt(r, a) { var rad = a * Math.PI / 180; return [CXc + r * Math.cos(rad), CYc + r * Math.sin(rad)]; }
+  var QUADS = [
+    { key: "P", a0: 225, a1: 315, color: "#92400e", name: "Plan",
+      text: "Define the problem, dig into the root cause, and design one small, measurable improvement experiment: what to change, how to measure it, what result to expect." },
+    { key: "D", a0: -45, a1: 45, color: "#b45309", name: "Do",
+      text: "Run the change as a small-scale pilot while faithfully recording process data — resist the urge to scale up; let the pilot run a little first." },
+    { key: "C", a0: 45, a1: 135, color: "#d97706", name: "Check",
+      text: "Hold the data against the plan’s expectations: worked? didn’t? where did it drift? This is the most-skipped and most valuable step of all." },
+    { key: "A", a0: 135, a1: 225, color: "#f59e0b", name: "Act",
+      text: "Standardize what worked; carry what didn’t, with its lessons, back to Plan. Every lap around the loop lifts the standard one notch." }
+  ];
+  var DEFAULT = "<b>Hover over or tap any quadrant</b> to see what that step does. Improvement is not one sprint — it is earned lap by lap like this, and the more laps, the higher the standard.";
+  QUADS.forEach(function (q) {
+    var p0 = pt(R2, q.a0), p1 = pt(R2, q.a1), p2 = pt(R1, q.a1), p3 = pt(R1, q.a0);
+    var d = "M" + p0[0].toFixed(1) + "," + p0[1].toFixed(1) +
+      " A" + R2 + "," + R2 + " 0 0 1 " + p1[0].toFixed(1) + "," + p1[1].toFixed(1) +
+      " L" + p2[0].toFixed(1) + "," + p2[1].toFixed(1) +
+      " A" + R1 + "," + R1 + " 0 0 0 " + p3[0].toFixed(1) + "," + p3[1].toFixed(1) + " Z";
+    var path = el("path", { d: d, fill: q.color, "class": "pdca-seg" });
+    path.addEventListener("mouseenter", function () {
+      panel.innerHTML = "<b>" + q.key + " · " + q.name + "</b> — " + q.text;
+    });
+    path.addEventListener("mouseleave", function () { panel.innerHTML = DEFAULT; });
+    path.addEventListener("click", function () { panel.innerHTML = "<b>" + q.key + " · " + q.name + "</b> — " + q.text; });
+    svg.appendChild(path);
+    var mid = (q.a0 + q.a1) / 2, lr = (R1 + R2) / 2;
+    var c = pt(lr, mid);
+    svg.appendChild(el("text", { x: c[0], y: c[1] + 2, "text-anchor": "middle", "font-size": 30, "font-weight": 800, fill: "#fff", text: q.key }));
+    svg.appendChild(el("text", { x: c[0], y: c[1] + 24, "text-anchor": "middle", "font-size": 13.5, "font-weight": 700, fill: "#fff", text: q.name.split(" ")[0] }));
+  });
+  /* central rotating needle */
+  var needle = el("g");
+  needle.appendChild(el("line", { x1: CXc, y1: CYc, x2: CXc, y2: CYc - R1 + 14, stroke: "#1c1917", "stroke-width": 3, "stroke-linecap": "round" }));
+  needle.appendChild(el("path", { d: "M" + (CXc - 7) + "," + (CYc - R1 + 22) + " L" + (CXc + 7) + "," + (CYc - R1 + 22) + " L" + CXc + "," + (CYc - R1 + 8) + " Z", fill: "#1c1917" }));
+  needle.appendChild(el("circle", { cx: CXc, cy: CYc, r: 7, fill: "#1c1917" }));
+  var anim = el("animateTransform", { attributeName: "transform", type: "rotate", from: "0 " + CXc + " " + CYc, to: "360 " + CXc + " " + CYc, dur: "14s", repeatCount: "indefinite" });
+  needle.appendChild(anim);
+  svg.appendChild(needle);
+  svg.appendChild(el("text", { x: CXc, y: CYc + 26, "text-anchor": "middle", "font-size": 10.5, fill: "#a8a29e", text: "the standard rises with each lap" }));
+})();
+
+/* ===== Seven-wastes spot-the-flaw map ===== */
+(function () {
+  "use strict";
+  var svg = document.getElementById("wz-svg");
+  if (!svg) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  function person(g, x, y, color) {
+    g.appendChild(el("circle", { cx: x, cy: y, r: 8, fill: color }));
+    g.appendChild(el("path", { d: "M" + (x - 9) + "," + (y + 26) + " Q" + x + "," + (y + 6) + " " + (x + 9) + "," + (y + 26) + " Z", fill: color, opacity: .85 }));
+  }
+  function box(g, x, y, w, h, fill) {
+    g.appendChild(el("rect", { x: x, y: y, width: w, height: h, rx: 2, fill: fill || "#e7e0d3", stroke: "#c9c1b2" }));
+  }
+  var ZONES = [
+    { key: "overproduction", x: 16, y: 20, w: 173, h: 130, cap: "Finished goods storage", type: "waste", name: "Overproduction",
+      msg: "Finished goods are flooding the warehouse — production outruns sales, tying up cash and floor space while manufacturing slow-moving risk in bulk. Overproduction is the worst of the wastes; nearly all the other six get magnified by it.",
+      draw: function (g, z) {
+        for (var r = 0; r < 2; r++) for (var c = 0; c < 5; c++) box(g, z.x + 22 + c * 27, z.y + 26 + r * 22, 22, 17);
+        box(g, z.x + 22, z.y + 70, 132, 17);
+        g.appendChild(el("text", { x: z.x + 88, y: z.y + 102, "text-anchor": "middle", "font-size": 11, fill: "#a8a29e", text: "still checking in…" }));
+      } },
+    { key: "transport", x: 201, y: 20, w: 173, h: 130, cap: "Forklift aisle", type: "waste", name: "Transport",
+      msg: "Materials are taking a cross-plant road trip: from the east-end warehouse to the west-end workstation. Transport changes the product not one bit — it is simply the bill for poor layout and batch thinking.",
+      draw: function (g, z) {
+        g.appendChild(el("line", { x1: z.x + 8, y1: z.y + 88, x2: z.x + z.w - 8, y2: z.y + 88, stroke: "#c9c1b2", "stroke-width": 3 }));
+        g.appendChild(el("path", { d: "M" + (z.x + 10) + "," + (z.y + 60) + " L" + (z.x + 160) + "," + (z.y + 60), stroke: "#b45309", "stroke-width": 2, "stroke-dasharray": "7 5", fill: "none" }));
+        g.appendChild(el("path", { d: "M" + (z.x + 152) + "," + (z.y + 54) + " L" + (z.x + 164) + "," + (z.y + 60) + " L" + (z.x + 152) + "," + (z.y + 66) + " Z", fill: "#b45309" }));
+        box(g, z.x + 22, z.y + 34, 26, 20);
+        box(g, z.x + 20, z.y + 26, 30, 10, "#d6cdbd");
+        g.appendChild(el("rect", { x: z.x + 96, y: z.y + 64, width: 26, height: 16, rx: 3, fill: "#57534e" }));
+        g.appendChild(el("circle", { cx: z.x + 102, cy: z.y + 84, r: 5, fill: "#1c1917" }));
+        g.appendChild(el("circle", { cx: z.x + 116, cy: z.y + 84, r: 5, fill: "#1c1917" }));
+        g.appendChild(el("line", { x1: z.x + 122, y1: z.y + 48, x2: z.x + 122, y2: z.y + 78, stroke: "#57534e", "stroke-width": 3 }));
+        g.appendChild(el("line", { x1: z.x + 124, y1: z.y + 62, x2: z.x + 146, y2: z.y + 62, stroke: "#b45309", "stroke-width": 3 }));
+      } },
+    { key: "inventory", x: 386, y: 20, w: 173, h: 130, cap: "Raw material warehouse", type: "waste", name: "Inventory",
+      msg: "Raw material stacked to the ceiling. Inventory is the just-in-case cushion — and the most expensive cover-up: it soaks up cash and floor space, and it keeps process problems (slow, unstable, defect-prone) hidden underwater.",
+      draw: function (g, z) {
+        for (var c = 0; c < 4; c++) for (var r = 0; r < 3; r++) box(g, z.x + 20 + c * 36, z.y + 24 + r * 22, 30, 17);
+        g.appendChild(el("text", { x: z.x + 86, y: z.y + 102, "text-anchor": "middle", "font-size": 11, fill: "#a8a29e", text: "three months of supply (illustrative)" }));
+      } },
+    { key: "ok-maint", x: 571, y: 20, w: 173, h: 130, cap: "Equipment maintenance point", type: "ok", name: "Necessary",
+      msg: "Preventive maintenance spends a little to prevent giant downtime; it is a necessary investment, not one of the seven wastes — cut it, and the small saving buys you the most expensive failure costs from Lesson 1.",
+      draw: function (g, z) {
+        g.appendChild(el("circle", { cx: z.x + 52, cy: z.y + 52, r: 18, fill: "none", stroke: "#15803d", "stroke-width": 3 }));
+        for (var a = 0; a < 8; a++) {
+          var rad = a * Math.PI / 4;
+          g.appendChild(el("line", { x1: z.x + 52 + 22 * Math.cos(rad), y1: z.y + 52 + 22 * Math.sin(rad), x2: z.x + 52 + 30 * Math.cos(rad), y2: z.y + 52 + 30 * Math.sin(rad), stroke: "#15803d", "stroke-width": 3 }));
+        }
+        g.appendChild(el("rect", { x: z.x + 92, y: z.y + 38, width: 40, height: 32, rx: 4, fill: "#fff", stroke: "#15803d", "stroke-width": 2 }));
+        g.appendChild(el("text", { x: z.x + 112, y: z.y + 60, "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#15803d", text: "PM" }));
+      } },
+    { key: "waiting", x: 16, y: 162, w: 173, h: 130, cap: "Station · waiting for parts", type: "waste", name: "Waiting",
+      msg: "People wait for parts, machines wait for people, jobs wait for batches: the station idles while time — a capacity that can’t be stocked or reworked — drains away for nothing. Waiting mostly traces back to upstream instability and batch thinking.",
+      draw: function (g, z) {
+        person(g, z.x + 50, z.y + 42, "#57534e");
+        g.appendChild(el("circle", { cx: z.x + 115, cy: z.y + 48, r: 22, fill: "none", stroke: "#b45309", "stroke-width": 3 }));
+        g.appendChild(el("line", { x1: z.x + 115, y1: z.y + 48, x2: z.x + 115, y2: z.y + 32, stroke: "#b45309", "stroke-width": 2.5, "stroke-linecap": "round" }));
+        g.appendChild(el("line", { x1: z.x + 115, y1: z.y + 48, x2: z.x + 127, y2: z.y + 52, stroke: "#b45309", "stroke-width": 2.5, "stroke-linecap": "round" }));
+      } },
+    { key: "overprocessing", x: 201, y: 162, w: 173, h: 130, cap: "Station · two passes", type: "waste", name: "Overprocessing",
+      msg: "The same polish, done twice, “just in case.” Customers pay to the specification: that extra-shinier pass is pure cost. Overprocessing often disguises itself as craftsmanship.",
+      draw: function (g, z) {
+        g.appendChild(el("circle", { cx: z.x + 62, cy: z.y + 52, r: 22, fill: "none", stroke: "#b45309", "stroke-width": 3 }));
+        for (var a = 0; a < 6; a++) {
+          var rad = a * Math.PI / 3;
+          g.appendChild(el("line", { x1: z.x + 62 + 26 * Math.cos(rad), y1: z.y + 52 + 26 * Math.sin(rad), x2: z.x + 62 + 36 * Math.cos(rad), y2: z.y + 52 + 36 * Math.sin(rad), stroke: "#b45309", "stroke-width": 4 }));
+        }
+        g.appendChild(el("text", { x: z.x + 118, y: z.y + 62, "font-size": 26, "font-weight": 800, fill: "#b91c1c", text: "×2" }));
+        g.appendChild(el("text", { x: z.x + 86, y: z.y + 102, "text-anchor": "middle", "font-size": 11, fill: "#a8a29e", text: "pass two: just in case" }));
+      } },
+    { key: "motion", x: 386, y: 162, w: 173, h: 130, cap: "Station · fetching tools", type: "waste", name: "Motion",
+      msg: "The tool cabinet sits three meters away and the worker trots back and forth twelve times an hour (illustrative). Bending, turning, and rummaging change nothing about the product — they only drain the person. The cure for motion waste is often just re-laying-out the station.",
+      draw: function (g, z) {
+        person(g, z.x + 40, z.y + 48, "#57534e");
+        box(g, z.x + 122, z.y + 38, 34, 26, "#d6cdbd");
+        g.appendChild(el("text", { x: z.x + 139, y: z.y + 56, "text-anchor": "middle", "font-size": 10, "font-weight": 700, fill: "#57534e", text: "tools" }));
+        g.appendChild(el("path", { d: "M" + (z.x + 52) + "," + (z.y + 44) + " Q" + (z.x + 82) + "," + (z.y + 18) + " " + (z.x + 120) + "," + (z.y + 44), stroke: "#b91c1c", "stroke-width": 2, fill: "none", "stroke-dasharray": "5 4" }));
+        g.appendChild(el("path", { d: "M" + (z.x + 52) + "," + (z.y + 56) + " Q" + (z.x + 82) + "," + (z.y + 80) + " " + (z.x + 120) + "," + (z.y + 56), stroke: "#b91c1c", "stroke-width": 2, fill: "none", "stroke-dasharray": "5 4" }));
+      } },
+    { key: "defect", x: 571, y: 162, w: 173, h: 130, cap: "Inspection & rework bench", type: "waste", name: "Defects",
+      msg: "The rework bench is always full: detect, repair, scrap. Defects carry the highest unit price of any waste — they swallow the labor of every step before them, and they can graduate into external failure costs (returns, recalls).",
+      draw: function (g, z) {
+        g.appendChild(el("line", { x1: z.x + 20, y1: z.y + 74, x2: z.x + 90, y2: z.y + 74, stroke: "#57534e", "stroke-width": 4 }));
+        box(g, z.x + 34, z.y + 50, 30, 22, "#fef2f2");
+        g.appendChild(el("path", { d: "M" + (z.x + 36) + "," + (z.y + 52) + " L" + (z.x + 62) + "," + (z.y + 70) + " M" + (z.x + 62) + "," + (z.y + 52) + " L" + (z.x + 36) + "," + (z.y + 70), stroke: "#b91c1c", "stroke-width": 2.5 }));
+        g.appendChild(el("path", { d: "M" + (z.x + 104) + "," + (z.y + 40) + " L" + (z.x + 142) + "," + (z.y + 40) + " L" + (z.x + 136) + "," + (z.y + 76) + " L" + (z.x + 110) + "," + (z.y + 76) + " Z", fill: "#f2ede3", stroke: "#b91c1c", "stroke-width": 2 }));
+        g.appendChild(el("circle", { cx: z.x + 118, cy: z.y + 56, r: 4, fill: "#b91c1c" }));
+        g.appendChild(el("circle", { cx: z.x + 130, cy: z.y + 62, r: 4, fill: "#b91c1c" }));
+      } },
+    { key: "ok-training", x: 190, y: 304, w: 380, h: 92, cap: "Training corner (daily all-hands kaizen meeting)", type: "ok", name: "Necessary",
+      msg: "Training and kaizen meetings invest in people’s capability — a value-adding support activity, not waste; in fact they are exactly where PDCA and kaizen happen. Cut this kind of activity as a cost, and the wastes will run wild instead.",
+      draw: function (g, z) {
+        person(g, z.x + 70, z.y + 32, "#15803d");
+        person(g, z.x + 120, z.y + 36, "#57534e");
+        person(g, z.x + 168, z.y + 32, "#57534e");
+        g.appendChild(el("rect", { x: z.x + 220, y: z.y + 30, width: 70, height: 22, rx: 4, fill: "#fff", stroke: "#15803d", "stroke-width": 2 }));
+        g.appendChild(el("text", { x: z.x + 255, y: z.y + 46, "text-anchor": "middle", "font-size": 11, "font-weight": 700, fill: "#15803d", text: "Kaizen" }));
+        g.appendChild(el("circle", { cx: z.x + 330, cy: z.y + 30, r: 12, fill: "none", stroke: "#15803d", "stroke-width": 2 }));
+        g.appendChild(el("path", { d: "M" + (z.x + 324) + "," + (z.y + 42) + " L" + (z.x + 336) + "," + (z.y + 42), stroke: "#15803d", "stroke-width": 2 }));
+      } }
+  ];
+  var score = 0, found = {};
+  var msgBox = document.getElementById("wz-msg"), scoreBox = document.getElementById("wz-score");
+  ZONES.forEach(function (z) {
+    var g = el("g", { "class": "wz" });
+    g.appendChild(el("rect", { x: z.x, y: z.y, width: z.w, height: z.h, rx: 10, fill: "#fff", stroke: "#d6cdbd", "stroke-width": 1.5, "class": "wz-frame" }));
+    z.draw(g, z);
+    g.appendChild(el("text", { x: z.x + z.w / 2, y: z.y + z.h - 10, "text-anchor": "middle", "font-size": 11.5, "font-weight": 700, fill: "#78716c", text: z.cap }));
+    g.addEventListener("click", function () { resolve(z, g); });
+    svg.appendChild(g);
+    z.node = g;
+  });
+  function resolve(z, g) {
+    if (found[z.key]) return;
+    found[z.key] = true;
+    var badge = el("g");
+    if (z.type === "waste") {
+      score++; scoreBox.textContent = score;
+      g.querySelector(".wz-frame").setAttribute("stroke", "#b91c1c");
+      g.querySelector(".wz-frame").setAttribute("stroke-width", 2.5);
+      var li = document.querySelector('#wz-checklist li[data-key="' + z.key + '"]');
+      if (li) { li.classList.add("found"); li.textContent = "✓ " + z.name; }
+      var bw = Math.max(z.name.length * 13 + 18, 66);
+      badge.appendChild(el("rect", { x: z.x + z.w / 2 - bw / 2, y: z.y - 2, width: bw, height: 22, rx: 11, fill: "#b91c1c" }));
+      badge.appendChild(el("text", { x: z.x + z.w / 2, y: z.y + 14, "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#fff", text: z.name }));
+      msgBox.className = "wz-msg good";
+      msgBox.innerHTML = "<b>✓ Found “" + z.name + "” (" + score + "/7)</b> — " + z.msg;
+      if (score === 7) {
+        msgBox.innerHTML = "<b>🎉 All seven wastes found!</b> Keep this set of eyes: activities the customer won’t pay for should be deleted, compressed, or converted into necessary investment. And don’t hit the two “necessary activities” by mistake — lean cuts waste, not capability." ;
+      }
+    } else {
+      g.querySelector(".wz-frame").setAttribute("stroke", "#15803d");
+      g.querySelector(".wz-frame").setAttribute("stroke-width", 2.5);
+      badge.appendChild(el("rect", { x: z.x + z.w / 2 - 42, y: z.y - 2, width: 84, height: 22, rx: 11, fill: "#15803d" }));
+      badge.appendChild(el("text", { x: z.x + z.w / 2, y: z.y + 14, "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#fff", text: z.name }));
+      msgBox.className = "wz-msg note";
+      msgBox.innerHTML = "<b>This one is not waste.</b>" + z.msg;
+    }
+    g.appendChild(badge);
+    z.badge = badge;
+  }
+  document.getElementById("wz-reset").addEventListener("click", function () {
+    score = 0; found = {};
+    scoreBox.textContent = "0";
+    msgBox.className = "wz-msg note";
+    msgBox.textContent = "Click any zone in the scene to begin. Hint: first ask, “Would the customer pay for this?”";
+    document.querySelectorAll("#wz-checklist li").forEach(function (li, i) {
+      li.classList.remove("found");
+      li.textContent = "☐ " + ["Overproduction", "Waiting", "Transport", "Overprocessing", "Inventory", "Motion", "Defects"][i];
+    });
+    ZONES.forEach(function (z) {
+      if (z.badge) { z.badge.remove(); z.badge = null; }
+      var f = z.node.querySelector(".wz-frame");
+      f.setAttribute("stroke", "#d6cdbd");
+      f.setAttribute("stroke-width", 1.5);
+    });
+  });
+})();
+</script>
+</body>
+</html>

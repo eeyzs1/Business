@@ -1,6 +1,7 @@
 # Business 通识课程库
 
 > 一个可以离线浏览、交互式的商业通识课程库。12 个主分支 · 48 节课 · 全部中文。
+> **English edition**:[`en/index.html`](en/index.html) — 每页导航栏右侧都有 中/EN 切换按钮。
 > **入口:双击打开 [index.html](index.html)**,从任意分支开始。
 
 本课程库遵循经过认知科学验证的学习方法(源自 `teach` 教学技能):
@@ -56,7 +57,9 @@ Business/
 ├── NOTES.md                 ← 你的学习偏好记录
 ├── STYLEGUIDE.md            ← 教材编写规范(教材生产合同)
 ├── tools/
-│   └── check.py             ← 自动化自检(链接/组件/quiz/pager 一键检查)
+│   ├── check.py             ← 自动化自检(链接/组件/quiz/pager 一键检查)
+│   ├── check_en.py          ← 英文镜像自检
+│   └── audit_en.py          ← 中英逐页结构比对(答案索引/id/链接)
 ├── assets/                  # 共享设计系统与组件
 │   ├── course.css           # 统一样式(纸感·Tufte 风)
 │   ├── quiz.js              # 测验组件(即时反馈 + 成绩自动保存)
@@ -66,6 +69,7 @@ Business/
 ├── 01-economics/ … 12-business-law-ethics/
 │   ├── index.html           # 分支导学页(子分支全景+学习路径)
 │   └── lessons/0001-….html  # 交互课程(每分支 4 课)
+├── en/                      # 英文镜像(结构同上,共享 assets/,导航栏可中英切换)
 └── learning-records/        # 学习记录(随学习进度产生)
 ```
 
@@ -77,7 +81,7 @@ Business/
 4. 学完一课后,让 AI 老师出更多变式题、或结合你的行业深入讲解;
 5. 重要领悟可以记入 `learning-records/`(问 AI 老师即可)。
 
-> 维护提示:新增或修改课程后,运行 `python tools/check.py` 做全量自检(链接可达、组件齐全、quiz 规范、pager 链路等),零依赖。
+> 维护提示:新增或修改课程后,运行 `python tools/check.py` 做全量自检(链接可达、组件齐全、quiz 规范、pager 链路等,零依赖;自动跳过英文镜像)。英文镜像用 `python tools/check_en.py` 校验,`python tools/audit_en.py` 可逐页比对中英结构(答案索引、id、链接)。
 
 ## 方法论致谢
 

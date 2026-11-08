@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risk and Return · Finance</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+</head>
+<body class="branch-finance">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Finance</a><span class="crumb-sep">/</span>
+  <span>Risk and Return</span>
+  <span class="progress">Lesson 2 of 4</span>
+<a class="lang-switch" href="../../../03-finance/lessons/0002-risk-and-return.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Finance · Lesson 2</p>
+  <h1>Risk and Return</h1>
+  <p class="lead">In the world of investing there are only two currencies: return and risk. A pitch that quotes the return and never mentions the risk is like quoting a price without the weight. Learning to read both numbers at once — and to buy them in combination — is the real entry ticket.</p>
+
+  <h2><span class="secno">1</span>Return and Risk: Two Sides of the Same Coin</h2>
+  <p><em>Return</em> measures how much you made: (ending value − initial investment + dividends along the way) ÷ initial investment. And the most common measure of “risk” in finance is <em>volatility</em> — the standard deviation of returns. It answers not “how much can I lose” but <strong>“how badly behaved are the outcomes”</strong>: the bigger the volatility, the wider the gap between the best and the worst years.</p>
+  <div class="concept">
+    <div class="concept-title">A quick intuition</div>
+    <p>Never compare two funds on average return alone. A product averaging 8% with 4% volatility and one averaging 8% with 25% volatility can compound to very different long-run results — the second has to climb out of a deep hole before its snowball can roll again.</p>
+  </div>
+
+  <h2><span class="secno">2</span>The Risk Premium: What the Market Pays for Volatility</h2>
+  <p>Over the long run, stocks as a whole have returned more than government bonds. The excess is the <em>risk premium</em>: the market’s payment to those willing to bear volatility. The starting point is the <em>risk-free rate</em>, usually approximated by the short-term government-bond rate. Remember this food chain: <strong>the risk-free rate is the floor, and each asset class marks up from it according to its volatility</strong>. Risk that can be cheaply eliminated earns no premium from anyone — which brings us to this lesson’s protagonist.</p>
+
+  <h2><span class="secno">3</span>Diversification: The Only Free Lunch</h2>
+  <p>Combine stocks and bonds with weights w and (1−w): the portfolio’s expected return is the weighted average of the two, but its volatility depends on the <em>correlation coefficient (ρ)</em>:</p>
+  <div class="formula">σ<sub>p</sub><sup>2</sup> = w<sup>2</sup>σ<sub>S</sub><sup>2</sup> + (1−w)<sup>2</sup>σ<sub>B</sub><sup>2</sup> + 2w(1−w)ρσ<sub>S</sub>σ<sub>B</sub></div>
+  <p>As long as ρ &lt; 1 (the two assets are not perfect copies rising and falling in lockstep), portfolio risk is <strong>below</strong> the weighted average of risks, while expected return is not discounted at all. The volatility that disappears costs no return — which is why Markowitz called <em>diversification</em> “<strong>the only free lunch</strong>.”</p>
+
+  <div class="sim" id="pt-sim">
+    <div class="sim-title">Two-asset portfolio simulator: how big is this “lunch”?</div>
+    <div class="sim-controls" id="pt-controls"></div>
+    <p class="sim-readout">
+      Current portfolio: expected return <b id="pt-ret">—</b> · volatility <b id="pt-risk">—</b>
+      | With no diversification at all (risk simply weighted): <span id="pt-avg">—</span>
+      · volatility diversification saves you: <b id="pt-save">—</b>
+    </p>
+    <div id="pt-chart" aria-label="Two-asset portfolio risk and return chart"></div>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin:.6rem 0 0">
+      Assumptions (illustrative): stocks return 8% with 20% volatility; bonds 3% with 5%. The gray dashed line is the weighted risk at ρ=1 (zero diversification benefit); the green solid line is the feasible line at the current ρ. The pulsing dot is your allocation; the hollow dot is the hypothetical “undiversified” position. Drag ρ from −1 up to 1.0 and watch the curve straighten out and the lunch disappear.
+    </p>
+  </div>
+
+  <h2><span class="secno">4</span>Systematic vs. Unsystematic Risk</h2>
+  <p>What diversification can eliminate is only <em>unsystematic risk</em>: problems specific to one company — accounting fraud, a fire, a failed flagship product. Rate hikes, recessions, and geopolitical shocks hit every asset: that is <em>systematic risk</em>, and no amount of diversification helps against it. As the number of holdings grows, portfolio volatility falls and quickly approaches a “floor”:</p>
+  <figure class="figure">
+    <div class="figure-body"><div id="div-chart"></div></div>
+    <figcaption class="figure-caption"><b>Figure 1</b> As the number of stocks grows, total volatility falls fast at first and then flattens out: the part that never drops below the floor is systematic risk (illustrative parameters: single-stock idiosyncratic volatility about 25%, floor about 15%).</figcaption>
+  </figure>
+  <p>This also explains the food chain in Section 2: only bearing <strong>undiversifiable systematic risk</strong> earns a risk premium; the idiosyncratic risk of a single stock earns nothing from the market.</p>
+
+  <h2><span class="secno">5</span>Case: Why Index Funds Beat Most Stock Pickers Over the Long Run</h2>
+  <div class="case">
+    <p class="case-title">The fund that picks nothing</p>
+    <p>In 1976, John Bogle launched the first index fund for ordinary investors at Vanguard, buying the whole basket of the market with almost no active selection. Ridiculed at the time as “a choice for the mediocre,” index funds are now among the largest investment vehicles in the world.</p>
+    <p>Two pieces of oft-cited evidence (illustrative): Buffett’s “ten-year bet” — he wagered on an S&amp;P 500 index fund that, after ten years, beat a basket of funds picked by hedge-fund managers; and S&amp;P’s annual SPIVA reports — over roughly fifteen-year horizons, most active stock funds trail their own benchmarks.</p>
+    <p>The reason is no mystery: the information of millions of investors is already “stirred into” prices, and active stock picking still pays research and trading costs; index funds, with near-complete diversification and rock-bottom costs, reliably capture the market’s return. Most people lose to fees and luck, not to the index’s cleverness.</p>
+    <p class="case-learn"><b>The lesson:</b> diversification removes single-stock risk, fees erode compounding, and only systematic risk earns a premium — this lesson’s three ideas come together in a single product: the index fund.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Return</dt><dd>The ratio of gain to amount invested, including dividends and price change.</dd>
+      <dt>Volatility</dt><dd>The standard deviation of returns; measures how uncertain the outcome is.</dd>
+      <dt>Risk-free rate</dt><dd>The starting point of returns, approximated by the short-term government-bond rate.</dd>
+      <dt>Risk premium</dt><dd>Compensation above the risk-free rate for bearing risk.</dd>
+      <dt>Correlation coefficient (ρ)</dt><dd>How closely two assets rise and fall together; ranges from −1 to 1.</dd>
+      <dt>Diversification</dt><dd>Combining multiple assets to reduce unsystematic risk.</dd>
+      <dt>Systematic risk</dt><dd>Risk shared by the entire market; cannot be diversified away.</dd>
+      <dt>Unsystematic risk</dt><dd>Risk specific to a single company; can be diversified away.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>Risk is not just “the chance of losing money” — it is the volatility of outcomes, measured as the standard deviation of returns. Return must always be quoted together with risk: only systematic risk earns a premium. <strong>Diversification is the only free lunch</strong> — it shaves away single-stock risk without sacrificing expected return.</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">Self-Check Quiz</div>
+    <script type="application/json">
+    [
+      {
+        "q": "In investments, what is the most common measure of an asset’s “risk”?",
+        "options": [
+          "Volatility: how far returns stray from their average",
+          "Expected value: the return earned on average over the long run",
+          "Correlation coefficient: how closely two assets move together",
+          "Turnover: how frequently shares change hands over a period"
+        ],
+        "answer": 0,
+        "explain": "Volatility (the standard deviation of returns) measures the uncertainty of outcomes and is finance’s default measure of risk; expected value measures return, correlation describes co-movement, and turnover measures trading activity — none of them is risk itself."
+      },
+      {
+        "q": "Why is diversification called “the only free lunch”?",
+        "options": [
+          "It raises each asset’s own expected return",
+          "It eliminates every risk the portfolio faces",
+          "With correlation below 1, risk falls below the weighted average",
+          "It guarantees the portfolio never loses money in any year"
+        ],
+        "answer": 2,
+        "explain": "When the correlation coefficient is below 1, portfolio volatility is below the weighted average of the assets’ volatilities while expected return still equals the weighted average — the risk removed costs no return, hence “free.” It cannot raise returns, cannot remove systematic risk, and certainly cannot guarantee against losses."
+      },
+      {
+        "q": "Which of the following risks can, in principle, be essentially eliminated by holding enough different stocks?",
+        "options": [
+          "Whole-market valuations shifting down in a rate-hike cycle",
+          "The risk that one company’s accounting fraud blows up",
+          "A recession dragging down profits in every industry",
+          "Exchange-rate swings affecting the value of overseas assets"
+        ],
+        "answer": 1,
+        "explain": "Fraud at a single company is stock-specific risk, largely canceled once you spread across enough companies; the other three affect the entire market — systematic risk that buying a few more stocks cannot remove."
+      },
+      {
+        "q": "Stocks’ long-run expected return is usually higher than that of government bonds. What is the extra compensation called?",
+        "options": ["The nominal interest rate", "The real interest rate", "The term spread", "The risk premium"],
+        "answer": 3,
+        "explain": "The expected return above the risk-free rate (approximated by the government-bond rate) is the risk premium — the market’s payment for bearing stock volatility. The term spread measures differences in maturity, not differences in risk."
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Investments by Bodie, Kane &amp; Marcus (recommended: the chapters on the historical record of risk and return, and on building the optimal risky portfolio)</li>
+      <li>A Random Walk Down Wall Street by Burton Malkiel (the parts on market efficiency and index investing)</li>
+      <li>Search keywords: Markowitz portfolio theory · SPIVA report</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-time-value-of-money.html"><span class="pager-label">← Previous</span><span class="pager-title">The Time Value of Money</span></a>
+    <a class="next" href="0003-npv-and-irr.html"><span class="pager-label">Next →</span><span class="pager-title">NPV: Deciding Whether a Project Is Worth It</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘What correlation should I roughly assume between my deposits and my funds?’ or ‘How would I estimate the volatility of my overall portfolio?’ — follow-up questions are part of learning.</div>
+    <p>Finance · Lesson 2 · Risk and Return | Interactive: two-asset portfolio simulator · case figures are illustrative · next up: time value and risk premium loaded into one machine — NPV investment decisions</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- Two-asset portfolio simulator ---- */
+  var muS = 8, sgS = 20, muB = 3, sgB = 5; // illustrative parameters: %
+  var controls = document.getElementById("pt-controls");
+  var chartBox = document.getElementById("pt-chart");
+
+  var sW = Viz.slider(controls, { label: "Stock weight", min: 0, max: 100, step: 5, value: 50, format: function (v) { return v + "%"; } });
+  var sRho = Viz.slider(controls, { label: "Correlation ρ", min: -1, max: 1, step: 0.1, value: 0, format: function (v) { return v.toFixed(1); } });
+
+  function port(w, rho) {
+    var v = w * w * sgS * sgS + (1 - w) * (1 - w) * sgB * sgB + 2 * w * (1 - w) * rho * sgS * sgB;
+    return [w * muS + (1 - w) * muB, Math.sqrt(Math.max(v, 0))];
+  }
+
+  var ax = Viz.axes(chartBox, {
+    w: 640, h: 420, margin: { t: 20, r: 26, b: 48, l: 56 },
+    xDomain: [0, 22], yDomain: [0, 10],
+    xLabel: "Risk: volatility (%)", yLabel: "Expected return (%)",
+    xTicks: 6, yTicks: 5,
+    xFormat: function (v) { return v + "%"; },
+    yFormat: function (v) { return v + "%"; }
+  });
+  var gDyn = Viz.svgEl("g", {});
+  ax.svg.appendChild(gDyn);
+
+  function render() {
+    var w = sW.get() / 100, rho = sRho.get();
+    var p = port(w, rho), pnd = port(w, 1);
+    document.getElementById("pt-ret").textContent = p[0].toFixed(1) + "%";
+    document.getElementById("pt-risk").textContent = p[1].toFixed(1) + "%";
+    document.getElementById("pt-avg").textContent = pnd[1].toFixed(1) + "%";
+    document.getElementById("pt-save").textContent = (pnd[1] - p[1]).toFixed(1) + " percentage points";
+
+    while (gDyn.firstChild) gDyn.removeChild(gDyn.firstChild);
+    var curve = [], line = [];
+    for (var i = 0; i <= 40; i++) {
+      var t = i / 40;
+      curve.push([ax.x(port(t, rho)[1]), ax.y(port(t, rho)[0])]);
+      line.push([ax.x(port(t, 1)[1]), ax.y(port(t, 1)[0])]);
+    }
+    Viz.line(gDyn, line, { color: "#c9c1b2", width: 2, dash: "6 6" });
+    Viz.line(gDyn, curve, { color: "#047857", width: 3 });
+    Viz.dot(gDyn, ax.x(sgS), ax.y(muS), { fill: "#1c1917", r: 5 });
+    Viz.label(gDyn, ax.x(sgS) + 8, ax.y(muS) - 8, "Stocks 100%", { size: 12 });
+    Viz.dot(gDyn, ax.x(sgB), ax.y(muB), { fill: "#1c1917", r: 5 });
+    Viz.label(gDyn, ax.x(sgB) - 8, ax.y(muB) + 20, "Bonds 100%", { size: 12, anchor: "end" });
+    if (pnd[1] - p[1] > 0.4) {
+      Viz.line(gDyn, [[ax.x(pnd[1]), ax.y(p[0])], [ax.x(p[1]), ax.y(p[0])]], { color: "#b91c1c", width: 2, dash: "4 4" });
+      Viz.label(gDyn, (ax.x(pnd[1]) + ax.x(p[1])) / 2, ax.y(p[0]) + 18, "Risk saved", { size: 11.5, color: "#b91c1c", anchor: "middle" });
+      Viz.dot(gDyn, ax.x(pnd[1]), ax.y(p[0]), { fill: "#e7e0d3", r: 5 });
+    }
+    Viz.dot(gDyn, ax.x(p[1]), ax.y(p[0]), { fill: "#047857", r: 8, pulse: true });
+    Viz.label(gDyn, ax.x(p[1]), ax.y(p[0]) - 18, "Your portfolio", { size: 12.5, color: "#047857", anchor: "middle" });
+  }
+  [sW, sRho].forEach(function (s) { s.onChange(render); });
+  render();
+
+  /* ---- Figure 1: number of stocks vs. total volatility ---- */
+  var box = document.getElementById("div-chart");
+  var sys = 15, idio = 25;
+  var ax2 = Viz.axes(box, {
+    w: 640, h: 340, margin: { t: 16, r: 22, b: 46, l: 54 },
+    xDomain: [1, 40], yDomain: [0, 32],
+    xLabel: "Number of stocks in the portfolio", yLabel: "Portfolio volatility (%)",
+    xTicks: 8, yTicks: 4,
+    yFormat: function (v) { return v + "%"; }
+  });
+  ax2.plot(function (svg, x, y) {
+    var pts = [];
+    for (var n = 1; n <= 40; n++) pts.push([x(n), y(Math.sqrt(sys * sys + idio * idio / n))]);
+    Viz.line(svg, pts, { color: "#047857", width: 3 });
+    Viz.line(svg, [[x(1), y(sys)], [x(40), y(sys)]], { color: "#b91c1c", width: 2, dash: "6 5" });
+    Viz.label(svg, x(22), y(sys) - 10, "Systematic-risk floor (about 15%, illustrative)", { color: "#b91c1c", size: 12 });
+    var n20 = Math.sqrt(sys * sys + idio * idio / 20);
+    Viz.dot(svg, x(20), y(n20), { fill: "#047857", r: 5 });
+    Viz.label(svg, x(20) + 8, y(n20) - 12, "About 20 stocks: already near the floor", { size: 12 });
+    Viz.label(svg, x(1.5), y(Math.sqrt(sys * sys + idio * idio)) - 12, "Single stock", { size: 12 });
+  });
+})();
+</script>
+</body>
+</html>

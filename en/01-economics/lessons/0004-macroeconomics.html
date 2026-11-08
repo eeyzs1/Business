@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Macroeconomics: GDP, Inflation, and Interest Rates · Economics</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .flow-svg .node rect { fill: #fff; stroke: #0e7490; stroke-width: 2; }
+  .flow-svg .node text { font-weight: 800; font-size: 14px; fill: #1c1917; text-anchor: middle; }
+  .flow-svg .node .sub { font-weight: 400; font-size: 10.5px; fill: #57534e; }
+  .flow-svg .fl { fill: none; stroke-width: 2.4; stroke-dasharray: 8 7; animation: flowmove 1.4s linear infinite; }
+  .flow-svg .flb { font-size: 11.5px; font-weight: 700; fill: #57534e; }
+  .flow-svg .c2 .fl { stroke: #2563eb; }
+  .flow-svg .c3 .fl { stroke: #b45309; }
+  .flow-svg .c5 .fl { stroke: #047857; }
+  .flow-svg .c3, .flow-svg .c5 { display: none; }
+  .flow-svg[data-mode="3"] .c3 { display: block; }
+  .flow-svg[data-mode="5"] .c3, .flow-svg[data-mode="5"] .c5 { display: block; }
+  @keyframes flowmove { to { stroke-dashoffset: -60; } }
+  .mode-btn { border: 1.5px solid var(--line); background: #fff; border-radius: 999px; padding: .3rem .95rem;
+    font-size: .88rem; cursor: pointer; font-family: var(--sans); color: var(--ink-soft); transition: all .15s ease; }
+  .mode-btn:hover { border-color: var(--accent); }
+  .mode-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .steps.chain li { display: none; }
+  .steps.chain li.on { display: block; animation: fadein .45s ease; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body class="branch-economics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Economics</a><span class="crumb-sep">/</span>
+  <span>Macroeconomics</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../01-economics/lessons/0004-macroeconomics.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Economics · Lesson 4</p>
+  <h1>Macroeconomics: GDP, Inflation, and Interest Rates</h1>
+  <p class="lead">The first three lessons looked at one good and one firm; this one zooms all the way out to an entire country: how much was produced in a year (GDP), how fast money is losing its value (inflation), how many people are out of work (unemployment) — and what happens after the central bank presses the ‘rate hike’ button. That chain reaction is the front-page logic of financial news.</p>
+
+  <h2><span class="secno">1</span>GDP: taking stock of a year’s output</h2>
+  <p><em>Gross domestic product</em> (GDP) measures the market value of all <em>final</em> goods and services an economy produces over a period. Two keywords: ‘final’ — intermediate goods are excluded to avoid double counting (the flour inside the bread is counted only once); ‘domestic’ — anything produced within the country counts, whoever owns the factory. The most common measurement is the <em>expenditure approach</em>: add up everything society spends, in four categories.</p>
+  <div class="formula">
+    GDP = C + I + G + NX
+  </div>
+  <p><em>Consumption</em> (C) is household spending; <em>investment</em> (I) is firms buying equipment, building plants, and adding inventory (note: buying shares is not investment — it merely changes the asset’s owner); <em>government purchases</em> (G) is what government pays for output; <em>net exports</em> (NX) = exports − imports. The four blocks rise and fall against one another and add up to total output.</p>
+
+  <figure class="figure">
+    <div class="figure-body"><div id="gdp-bars"></div></div>
+    <figcaption class="figure-caption"><b>Figure 1</b> Composition of GDP by the expenditure approach (illustrative shares, not real data for any economy; in developed economies C is often around 60%, and net exports can be positive or negative)</figcaption>
+  </figure>
+
+  <div class="callout warn">
+    <span class="callout-label">Common miscounts</span>
+    <p style="margin:.3rem 0 0">① The full price of a second-hand home: an asset transfer, not new output (the agent’s service fee does count). ② Unemployment benefits and other <em>transfer payments</em>: no corresponding output, so they are not in G. ③ Buying and selling shares: a financial transaction, not investment I. In all three cases ‘money moved’, but GDP doesn’t budge.</p>
+  </div>
+
+  <h2><span class="secno">2</span>Inflation and unemployment: the economy’s thermometer</h2>
+  <p>The <em>consumer price index</em> (CPI) tracks the average price of a basket of consumer goods and services; a year-on-year rise in the CPI is <em>inflation</em>. The causes fall roughly into three types: demand-pull (too much money chasing goods), cost-push (raw materials and wages getting pricier), and excessive money creation. Inflation erodes purchasing power — it is ‘friction on money’. The <em>unemployment rate</em> = unemployed ÷ labor force (employed + actively looking); people who have left the labor force are not in the denominator. In the short run, inflation and unemployment often sit on a <em>seesaw</em> (the Phillips curve, illustrative), which keeps policymakers forever torn.</p>
+
+  <h2><span class="secno">3</span>Interest rates: the economy’s master valve</h2>
+  <p>The whole economy is an interlocking web of money flows: the <em>circular flow diagram</em> links households, firms, government, banks (finance), and the rest of the world into a closed loop — your spending is someone else’s income, and someone else’s investment is tomorrow’s supply. The <em>central bank’s</em> policy rate is the master valve on all borrowing in this web.</p>
+
+  <div class="sim">
+    <div class="sim-title">Simulator · The circular flow diagram: light up five sectors layer by layer</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .6rem">Arrows flow in the direction money travels. Start with the simplest two-sector loop, then add government, then banks and the rest of the world, and watch a complete macroeconomic web weave itself.</p>
+    <div class="sim-controls">
+      <label>Expand step by step:</label>
+      <button type="button" class="mode-btn active" data-mode="2">① Two sectors (households ↔ firms)</button>
+      <button type="button" class="mode-btn" data-mode="3">② Three sectors (+ government)</button>
+      <button type="button" class="mode-btn" data-mode="5">③ Five sectors (+ banks · abroad)</button>
+    </div>
+    <svg id="flow-svg" class="flow-svg" data-mode="2" viewBox="0 0 640 470" role="img" style="width:100%;height:auto;display:block" aria-label="Circular flow diagram: money flows among households, firms, government, banks, and the rest of the world">
+      <g class="c2">
+        <path class="fl" d="M 250,196 C 285,140 355,140 390,196"/>
+        <text class="flb" x="320" y="150" text-anchor="middle">Consumption C</text>
+      </g>
+      <g class="c2">
+        <path class="fl" d="M 390,240 C 355,296 285,296 250,240"/>
+        <text class="flb" x="320" y="292" text-anchor="middle">Factor income (wages · profit)</text>
+      </g>
+      <g class="c3">
+        <path class="fl" d="M 195,190 C 200,130 225,85 262,68"/>
+        <text class="flb" x="180" y="118" text-anchor="end">Taxes T</text>
+      </g>
+      <g class="c3">
+        <path class="fl" d="M 378,68 C 415,85 440,130 445,190"/>
+        <text class="flb" x="458" y="118" text-anchor="start">Government purchases G</text>
+      </g>
+      <g class="c5">
+        <path class="fl" d="M 150,246 C 105,285 100,330 122,358"/>
+        <text class="flb" x="86" y="308" text-anchor="middle">Saving S</text>
+      </g>
+      <g class="c5">
+        <path class="fl" d="M 175,375 C 300,362 415,300 440,250"/>
+        <text class="flb" x="300" y="380" text-anchor="middle">Investment I</text>
+      </g>
+      <g class="c5">
+        <path class="fl" d="M 252,236 C 330,270 420,315 460,358"/>
+        <text class="flb" x="398" y="288" text-anchor="start">Imports (money out)</text>
+      </g>
+      <g class="c5">
+        <path class="fl" d="M 505,358 C 545,300 530,262 497,244"/>
+        <text class="flb" x="548" y="300" text-anchor="end">Exports (money in)</text>
+      </g>
+      <g class="node"><rect x="140" y="192" width="112" height="52" rx="12"/><text x="196" y="214">Households</text><text class="sub" x="196" y="232">supply inputs · consume</text></g>
+      <g class="node"><rect x="388" y="192" width="112" height="52" rx="12"/><text x="444" y="214">Firms</text><text class="sub" x="444" y="232">produce goods &amp; services</text></g>
+      <g class="node"><rect x="262" y="42" width="116" height="52" rx="12"/><text x="320" y="64">Government</text><text class="sub" x="320" y="82">tax · buy · transfer</text></g>
+      <g class="node"><rect x="66" y="358" width="112" height="52" rx="12"/><text x="122" y="380">Banks (finance)</text><text class="sub" x="122" y="398">take deposits · make loans</text></g>
+      <g class="node"><rect x="452" y="358" width="112" height="52" rx="12"/><text x="508" y="380">Abroad</text><text class="sub" x="508" y="398">export buyers · import sources</text></g>
+    </svg>
+  </div>
+
+  <p>With this diagram, a ‘rate hike’ stops being abstract: the central bank raises the <em>policy rate</em>, the wholesale price of funds for commercial banks gets dearer, the retail price of loans follows, and the speed of money across the whole web slows. Open the transmission chain below and watch the shock travel step by step.</p>
+
+  <div class="sim">
+    <div class="sim-title">Simulator · Press the rate-hike button: the transmission chain, step by step</div>
+    <ol class="steps chain" id="chain">
+      <li><b>The central bank raises the policy rate</b> (e.g. the federal funds rate) — the ‘wholesale price’ of money gets dearer.</li>
+      <li><b>Commercial banks raise deposit and loan rates in turn</b> — the ‘retail price’ faced by firms and households gets dearer.</li>
+      <li><b>Willingness to borrow falls</b>: firms take on less debt to expand (I↓); households take fewer mortgages and car loans and run up less credit (C↓).</li>
+      <li><b>Aggregate demand cools</b>: goods and services stop flying off the shelves, firms lose the urge to raise prices, and expansion and hiring turn cautious.</li>
+      <li><b>Inflation pressure eases</b> — typically with a lag of six months to over a year before fully showing (illustrative), and the price is usually slower growth and employment.</li>
+    </ol>
+    <div class="sim-controls">
+      <button type="button" class="mode-btn" id="chain-btn">Next step →</button>
+      <span id="chain-hint" style="font-size:.88rem;color:var(--ink-faint)">5 steps remaining</span>
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>Case: the 2022–2023 global inflation and rate-hike cycle</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">The Fed steps on the brakes</p>
+    <p>From 2021, the post-pandemic demand rebound, snarled supply chains, and energy and food price shocks piled up, and global inflation soared: US CPI inflation reached about 9% year-on-year in mid-2022 (roughly a forty-year high, illustrative magnitude). The Federal Reserve’s response was the textbook transmission chain: from March 2022 it hiked rates more than ten times in a row, lifting the federal funds rate from about 0–0.25% to about 5.25–5.5% (held after July 2023, illustrative magnitude). Mortgage, auto-loan, and credit-card rates rose in step; housing and durable-goods spending cooled visibly; by 2023 inflation had fallen back to roughly the 3–4% range (illustrative magnitude) — at the cost of persistent market worry about recession and jobs.</p>
+    <p class="case-learn"><b>The lesson:</b> monetary policy fights inflation through exactly one mechanism — raising the price of money to cool aggregate demand; it works slowly and with lags, and almost always at a cost to growth and jobs. When the financial news says ‘a 25-basis-point hike’, put it back on the transmission chain and it stops being jargon.</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Gross Domestic Product (GDP)</dt><dd>The market value of all final goods and services produced within a country in a given period.</dd>
+      <dt>Expenditure Approach</dt><dd>Measuring GDP by summing the four spending categories C+I+G+NX.</dd>
+      <dt>Consumer Price Index (CPI)</dt><dd>An index of the average price change for a basket of consumer goods and services.</dd>
+      <dt>Inflation</dt><dd>A sustained rise in the overall price level; money’s purchasing power falls.</dd>
+      <dt>Unemployment Rate</dt><dd>The share of the labor force (employed plus job-seekers) that is unemployed.</dd>
+      <dt>Policy Rate</dt><dd>The benchmark rate a central bank uses to steer commercial banks’ cost of funds.</dd>
+      <dt>Circular Flow Diagram</dt><dd>A macro schematic of spending and income circulating among sectors.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>The macroeconomy is an interlocking web: your spending is someone else’s income (GDP = C+I+G+NX), and the central bank’s rate is the master valve on all borrowing. A rate hike = braking: it cools aggregate demand, tames inflation, and pays for it with growth.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "Using the expenditure approach to measure GDP, which of these is counted?",
+        "options": ["A firm’s equipment investment in a newly built plant", "The full price paid in a second-hand home sale", "Government-paid unemployment benefits", "A household’s spending to buy shares"],
+        "answer": 0,
+        "explain": "A newly built plant is new output in the year and counts in <b>I (investment)</b>. A second-hand home payment is an asset transfer, benefits are a <b>transfer payment</b>, and buying shares is a financial transaction — in all three, money moves but GDP doesn’t." },
+      { "q": "After the central bank raises the policy rate, what is the most immediate first link of transmission?",
+        "options": ["Rates fall, borrowing expands, demand overheats", "Stocks rise, wealth grows, consumption climbs", "Deposit and loan rates rise; borrowing and investment cool", "The currency depreciates, exports surge, the surplus widens"],
+        "answer": 2,
+        "explain": "The first link of the chain is <b>wholesale price → retail price</b>: the policy rate raises banks’ cost of funds, deposit and loan rates follow, firms’ and households’ appetite for borrowing falls, and I and C cool together." },
+      { "q": "The statistics bureau reports ‘CPI up 3% year-on-year’. What is the correct reading?",
+        "options": ["Every good’s price rose by 3%", "The average price of a basket of goods and services rose about 3% versus last year", "Households’ real purchasing power rose 3%", "Real GDP growth accelerated by the same 3%"],
+        "answer": 1,
+        "explain": "The CPI is the average rise across a <b>basket</b> of goods and services: some rose more, some fell; it measures prices — not a gain in purchasing power, let alone GDP growth." },
+      { "q": "How does economics usually describe the short-run relationship between inflation and unemployment?",
+        "options": ["There is no stable link of any kind", "They always move together by the same amount", "Higher inflation means proportionally higher unemployment", "In the short run they often sit on a seesaw"],
+        "answer": 3,
+        "explain": "The Phillips curve (illustrative) captures the short-run trade-off: taming inflation often means tolerating higher unemployment, and protecting jobs often means tolerating higher inflation — precisely the dilemma central banks faced in 2022–2023." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>Further Reading</h2>
+    <ul>
+      <li>Principles of Economics (8th ed., macroeconomics volume) by N. Gregory Mankiw — Peking University Press (suggested: Ch. 23, ‘Measuring a Nation’s Income’ and Ch. 24, ‘Measuring the Cost of Living’)</li>
+      <li>Economics (19th ed.) by Paul Samuelson &amp; William Nordhaus — Commercial Press edition (suggested: the macro chapters on monetary policy and aggregate demand)</li>
+      <li>Search keywords: Federal Funds Rate, Phillips Curve</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-market-structures.html"><span class="pager-label">← Previous</span><span class="pager-title">Market Structures: From Perfect Competition to Monopoly</span></a>
+    <a class="next" href="../../02-accounting/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Accounting · Branch 02</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Why does a Fed rate hike affect my mortgage rate?’ or ‘What exactly is inside the CPI?’ — follow-up questions are part of learning.</div>
+    <p>Economics · Lesson 4 · Macroeconomics | Interactive: five-sector circular flow (animated) + step-by-step rate-hike transmission chain · case figures are approximate values from public reporting, illustrative magnitudes</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  var box = document.getElementById("gdp-bars");
+  if (box && window.Viz) {
+    Viz.bars(box, [
+      { label: "Consumption C", value: 55 },
+      { label: "Investment I", value: 25 },
+      { label: "Government G", value: 15 },
+      { label: "Net Exports NX", value: 5 }
+    ], { max: 70, h: 300, color: "#0e7490", valueFormat: function (v) { return v + "%"; } });
+  }
+})();
+
+(function () {
+  var flow = document.getElementById("flow-svg");
+  var btns = document.querySelectorAll(".mode-btn[data-mode]");
+  if (!flow || !btns.length) return;
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      flow.setAttribute("data-mode", b.getAttribute("data-mode"));
+      btns.forEach(function (x) { x.classList.toggle("active", x === b); });
+    });
+  });
+})();
+
+(function () {
+  var steps = document.querySelectorAll("#chain li");
+  var btn = document.getElementById("chain-btn");
+  var hint = document.getElementById("chain-hint");
+  if (!steps.length || !btn) return;
+  var i = 0;
+  function refresh() {
+    btn.textContent = i >= steps.length ? "↻ Replay" : "Next step →";
+    if (hint) hint.textContent = i >= steps.length
+      ? "Transmission complete — try reciting the chain in your own words without looking"
+      : (steps.length - i) + " steps remaining";
+  }
+  btn.addEventListener("click", function () {
+    if (i >= steps.length) {
+      steps.forEach(function (li) { li.classList.remove("on"); });
+      i = 0;
+    }
+    if (i < steps.length) { steps[i].classList.add("on"); i++; }
+    refresh();
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>

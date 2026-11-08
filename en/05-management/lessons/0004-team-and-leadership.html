@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teams and Leadership · Management</title>
+<link rel="stylesheet" href="../../../assets/course.css">
+<link rel="icon" type="image/svg+xml" href="../../../assets/favicon.svg">
+<style>
+  .lab-fb{margin-top:.9rem;font-size:.92rem;background:var(--paper-deep);border-radius:8px;padding:.85rem 1rem;color:var(--ink-soft);line-height:1.8}
+  .lab-fb b{color:var(--accent)}
+  .tuck-strip{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0 .4rem}
+  .tuck-btn{font-family:var(--sans);font-size:.86rem;font-weight:700;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:.35rem .85rem;cursor:pointer;transition:all .15s ease}
+  .tuck-btn:hover{border-color:var(--accent)}
+  .tuck-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .tuck-btn small{font-weight:400;opacity:.75;margin-left:.25rem}
+  #tuck-svg .tuck-dot{cursor:pointer}
+  .sl-layout{display:grid;grid-template-columns:minmax(280px,1.25fr) 1fr;gap:1.2rem;align-items:start;margin-top:.5rem}
+  @media(max-width:760px){.sl-layout{grid-template-columns:1fr}}
+  .sl-readbox{background:var(--paper-deep);border-radius:10px;padding:.9rem 1.05rem;font-size:.93rem;line-height:1.8}
+  .sl-readbox .sl-rec{font-size:1.02rem;font-weight:800;color:var(--accent);margin-bottom:.3rem}
+  .sl-readbox .sl-tip{font-size:.8rem;color:var(--ink-faint);margin-top:.6rem;border-top:1px dashed var(--line);padding-top:.5rem}
+  #sl-dot{transition:transform .18s ease}
+  #sl-chart svg text{font-family:var(--sans)}
+</style>
+</head>
+<body class="branch-management">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">Overview</a><span class="crumb-sep">/</span>
+  <a href="../index.html">Management</a><span class="crumb-sep">/</span>
+  <span>Teams and Leadership</span>
+  <span class="progress">Lesson 4 of 4</span>
+<a class="lang-switch" href="../../../05-management/lessons/0004-team-and-leadership.html">中文</a></div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">Management · Lesson 4</p>
+  <h1>Teams and Leadership</h1>
+  <p class="lead">Put five people in a meeting room: do you get five solo performers, or a team? This lesson covers two things — how teams evolve over time, and why leadership style should never be one-size-fits-all — and closes with a matrix simulator for practicing the art of matching your style to the person.</p>
+
+  <h2><span class="secno">1</span>From a Group to a Team: Tuckman’s Five Stages</h2>
+  <p>After observing large numbers of small groups, the psychologist Bruce Tuckman proposed in 1965 that virtually all teams pass through four stages in sequence, adding a fifth in 1977. These are <em>Tuckman’s stages</em>, still in use today: forming → storming → norming → performing → adjourning.</p>
+  <p>The stage most often misread is storming: open conflict looks like bad news, but it is the road a team must travel to become real — disagreements that are never argued out never become rules that are truly kept. The manager’s task is not to eliminate conflict, but to give it rules.</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">The Five-Stage Curve: click around and see what happens at each stage</div>
+    <div id="tuck-svg"></div>
+    <div class="tuck-strip" id="tuck-strip"></div>
+    <div class="lab-fb" id="tuck-fb"></div>
+  </div>
+
+  <h2><span class="secno">2</span>Two Rulers of Leadership Behavior: Task and Relationship</h2>
+  <p>Any act of leadership can be measured against two rulers. <em>Task behavior</em>: setting what to do, how to do it, and when it must be done — aimed at “moving the work forward.” <em>Relationship behavior</em>: listening, encouraging, supporting, involving people in decisions — aimed at “holding the person.”</p>
+  <p>Neither ruler ranks above the other; the only question is the mix. Offering a novice nothing but warmth and no method is a gentle form of delay; giving a veteran instructions on every detail is a suffocating form of distrust. <strong>What sets the mix?</strong> The subordinate’s readiness. That is the starting point of situational leadership.</p>
+
+  <h2><span class="secno">3</span>Situational Leadership: Style Follows Readiness</h2>
+  <div class="concept">
+    <div class="concept-title">Definition · Situational Leadership</div>
+    <p style="margin:0">In the late 1960s, Paul Hersey and Ken Blanchard proposed <em>situational leadership</em>: <strong>there is no single best leadership style, only the style that best matches the subordinate’s readiness</strong>. Readiness has two dimensions — <b>ability</b> (can they do it?) and <b>willingness</b> (do they want to?) — which combine into four profiles, matched by four styles: directing, coaching, supporting, and delegating.</p>
+  </div>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">The Situational Leadership Matrix Simulator: slide “ability × willingness” and watch the recommended style change in real time</div>
+    <div class="sim-controls" id="sl-controls"></div>
+    <div class="sl-layout">
+      <div id="sl-chart"></div>
+      <div class="sl-readbox" id="sl-read"></div>
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>Leadership vs Management: Partners, Not Rivals</h2>
+  <p>It is easy to come away from all this with the illusion that “leadership outranks management.” John Kotter’s classic clarification is that the two solve different problems — <strong>management copes with complexity and produces order; leadership copes with change and produces movement</strong>. Organizations cannot do without either:</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th></th><th>Management</th><th>Leadership</th></tr></thead>
+      <tbody>
+        <tr><td><b>Copes with</b></td><td>Complexity: making complicated things run reliably</td><td>Change: taking people somewhere they have never been</td></tr>
+        <tr><td><b>Core moves</b></td><td>Planning and budgeting → organizing and staffing → controlling and problem-solving</td><td>Setting direction → aligning people → inspiring and motivating</td></tr>
+        <tr><td><b>Produces</b></td><td>The predictable: order, consistency, on-time delivery</td><td>The hoped-for: change, energy, fresh attempts</td></tr>
+        <tr><td><b>When unbalanced</b></td><td>Management only: bureaucracy, rigidity, no one charging forward</td><td>Leadership only: rabble-rousing, chaos, no one closing things out</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>One widely quoted line serves as a memory hook: managers do things right; leaders do the right things. Look back at Lesson 1 — efficiency and effectiveness, the four functions — and they converge again here.</p>
+
+  <div class="case" data-reveal>
+    <p class="case-title">Case: A New Project Team’s First 12 Weeks (Illustrative)</p>
+    <p>The following <b>illustrative</b> case, synthesized from common project patterns, strings the five stages and situational leadership onto a single timeline. An internet company assembles a five-person cross-functional squad, Qingmiao (literally “green shoots”), with a goal of shipping a new feature in 12 weeks:</p>
+    <ul class="timeline">
+      <li><b>Weeks 1–2 · Forming</b> — In meetings everyone is polite; nobody volunteers for the gray areas, and everything waits for the lead to make the call. The lead uses <b>directing + coaching</b>: breaking tasks down to individuals, spelling out acceptance criteria, and learning each member’s strengths and worries one by one.</li>
+      <li><b>Weeks 3–5 · Storming</b> — The technology-choice fight goes public: two key engineers fall out in front of everyone, and one threatens to quit. Instead of papering over it, the lead sets a decision rule — “data decides, and whoever owns it calls it” — and lets the conflict argue itself out within the rules.</li>
+      <li><b>Weeks 6–8 · Norming</b> — Stand-ups, peer code reviews, and covering for one another become defaults; members start aligning privately instead of escalating everything. The lead shifts to a <b>supporting</b> style: asking “what do you need” more, issuing orders less.</li>
+      <li><b>Weeks 9–12 · Performing</b> — The team re-prioritizes on its own and ships early (illustrative). The lead moves into <b>delegating</b>: milestone check-ins only, hands off in between.</li>
+      <li><b>After launch · Adjourning</b> — After the celebration and the retrospective, members scatter to new projects. The lead holds one-on-ones: what capability did you build this time, and where do you want to go next — the team dissolves, but the people stay.</li>
+    </ul>
+    <p class="case-learn"><b>What to notice in this case:</b> leadership style is not the lead’s “personality” but a variable that shifts notch by notch with the team’s stage and each member’s readiness. Same team, same leader: tight in week 2 and loose in week 12 is not inconsistency — the situation changed.</p>
+  </div>
+
+  <div class="glossary">
+    <h3>Key Terms</h3>
+    <dl>
+      <dt>Tuckman’s Stages</dt><dd>The five-stage model of team development: forming, storming, norming, performing, adjourning.</dd>
+      <dt>Task Behavior</dt><dd>Behavior aimed at moving the work forward: assigning goals, demonstrating methods, checking progress.</dd>
+      <dt>Relationship Behavior</dt><dd>Behavior aimed at holding the person: listening, encouraging, supporting, involving them in decisions.</dd>
+      <dt>Situational Leadership</dt><dd>Hersey and Blanchard’s model: switch among directing, coaching, supporting, and delegating to match subordinate readiness.</dd>
+      <dt>Readiness</dt><dd>A subordinate’s combination of ability and willingness on a specific task; it determines the matching leadership style.</dd>
+      <dt>Delegation</dt><dd>Shifting decision rights and responsibility to a capable subordinate, agreeing only on goals and checkpoints.</dd>
+      <dt>Leadership</dt><dd>The ability to influence others to follow willingly toward a shared goal; it complements management.</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">Key Takeaways</div>
+    <p>A team must travel through forming, storming, norming, and performing before it reaches high output; storming is not an accident but the necessary passage. Leadership style switches with each subordinate’s “ability × willingness”: four quadrants, four mixes. Management brings order, leadership brings change — an organization needs both.</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "At a new team’s first retrospective, everyone is polite, only pleasantries are spoken, and nobody points out the obvious problems in the process. The team is most likely in:",
+        "options": ["Norming", "Performing", "Forming", "Adjourning"],
+        "answer": 2,
+        "explain": "Politeness, probing, conflict avoidance, and waiting for the boss to hand down instructions is the classic forming portrait. The real disagreements have not been argued out yet — that belongs to the next stop, storming. Norming is marked by established rapport and norms: problems get put on the table directly." },
+      { "q": "Senior engineer Zhou is technically excellent, but since being passed over for promotion he has been visibly deflated and does assigned work half-heartedly. The best-matching leadership style is:",
+        "options": ["Supporting: listen more, give recognition", "Directing: break down the steps and track progress", "Delegating: go fully hands-off", "Coaching: teach the method while encouraging"],
+        "answer": 0,
+        "explain": "High ability + low willingness → supporting (S3): the problem is not “can he” but “does he want to.” Direct less, listen more, search together for what caused the slide, and rebuild drive with recognition and a sense of involvement. Keeping him on a short leash — or letting go entirely — will only push him further away." },
+      { "q": "“Managers do things right; leaders do the right things.” In Kotter’s view, this line emphasizes:",
+        "options": ["Leadership outranks management — transform as soon as possible", "Management and leadership are opposites", "Leadership is the execution arm of management", "Management and leadership are complementary — neither can be missing"],
+        "answer": 3,
+        "explain": "Kotter’s clarification: management copes with complexity, producing order and predictability; leadership copes with change, producing direction and energy. Management-only organizations calcify; leadership-only organizations descend into chaos — the two are complementary partners, not rivals." },
+      { "q": "Two key members of a project team argue fiercely in public over a design disagreement, and afterward each shows signs of building a faction. As the person in charge, the soundest move is to:",
+        "options": ["Keep the surface calm and avoid the conflict", "Bring the conflict onto the table and set rules", "Break up the team and re-form it quickly", "Delegate outright and let the team self-regulate"],
+        "answer": 1,
+        "explain": "This is the standard storming scenario: open conflict is not an accident but the passage toward norming. The manager’s task is to give the conflict rules — for instance “data decides, and whoever owns it calls it” — and let the disagreement argue itself out within them. Papering over it or letting it run loose only drives the storm underground." }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>Further Reading</h2>
+    <ul>
+      <li>Organizational Behavior by Stephen P. Robbins &amp; Timothy A. Judge (16th edition) — read the chapters on teams and leadership for the textbook treatment of the five stages and leadership theory.</li>
+      <li>The Leadership Pipeline by Ram Charan &amp; Stephen Drotter — read the chapter on the turn from managing oneself to managing others.</li>
+      <li>The Effective Executive by Peter F. Drucker — read the chapter “What Can I Contribute?” to connect leadership with contribution.</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-motivation-theories.html"><span class="pager-label">← Previous</span><span class="pager-title">Motivation: Why People Are Willing to Work Hard</span></a>
+    <a class="next" href="../../06-human-resources/index.html"><span class="pager-label">Next Branch →</span><span class="pager-title">Human Resources · Branch 06</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>Questions?</b> Return to the conversation and ask your AI teacher directly — for example: ‘Help me judge which stage my team is in right now’ or ‘Run me through situational leadership with the two people I manage.’ Practicing on your own team is how this lesson lands. Follow-up questions are part of learning.</div>
+    <p>Management · Lesson 4 · Teams and Leadership | Interactive: five-stage curve + situational leadership matrix · case figures are illustrative magnitudes</p>
+  </footer>
+</main>
+
+<script src="../../../assets/viz.js"></script>
+<script src="../../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+  if (!window.Viz) return;
+
+  /* ---------- Tuckman’s five stages ---------- */
+  var STAGES = [
+    { n: "Forming", en: "getting acquainted", x: 55, y: 150,
+      feat: "Polite and tentative; the team leans on its leader for instructions, and disagreements stay politely hidden.",
+      act: "Provide structure and information: clarify goals, roles, and boundaries; get to know each person one-on-one.",
+      style: "Mostly directing and coaching (illustrative)" },
+    { n: "Storming", en: "conflict surfaces", x: 170, y: 180,
+      feat: "Opinions and personalities collide and conflict goes public; some go passive, some think about leaving.",
+      act: "Put the conflict on the table and set decision rules — no papering over it, no taking sides.",
+      style: "Coaching: listening while setting rules (illustrative)" },
+    { n: "Norming", en: "rules settle in", x: 300, y: 110,
+      feat: "Rapport and work norms form, trust builds, and the cost of communication drops visibly.",
+      act: "Consolidate the norms, start delegating and exchanging feedback; celebrate small milestones.",
+      style: "Supporting (illustrative)" },
+    { n: "Performing", en: "full speed", x: 430, y: 45,
+      feat: "Roles flex and complement one another; energy goes into the task itself and output peaks.",
+      act: "Delegate and manage by results: agree on goals and checkpoints only, and let go of the process.",
+      style: "Delegating (illustrative)" },
+    { n: "Adjourning", en: "wrap-up", x: 545, y: 150,
+      feat: "The task is done and the team disbands; emotions are mixed — achievement alongside loss.",
+      act: "Run the retrospective and the celebration, write the lessons down; attend to each member’s next step and growth.",
+      style: "Back to supporting (illustrative)" }
+  ];
+  var tuckBox = document.getElementById("tuck-svg"),
+      tuckStrip = document.getElementById("tuck-strip"),
+      tuckFb = document.getElementById("tuck-fb");
+  if (tuckBox) {
+    var NS = "http://www.w3.org/2000/svg";
+    function E(tag, attrs) {
+      var e = document.createElementNS(NS, tag);
+      if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+    var svg = E("svg", { viewBox: "0 0 620 235", role: "img", style: "width:100%;height:auto;display:block" });
+    var curve = E("path", {
+      d: "M55 150 C 105 172 130 190 170 180 C 222 168 268 124 300 110 C 345 93 395 48 430 45 C 475 42 522 112 545 150",
+      fill: "none", stroke: "#c4b5fd", "stroke-width": 4, "stroke-linecap": "round"
+    });
+    svg.appendChild(curve);
+    svg.appendChild(E("text", { x: 20, y: 30, "font-size": 12, fill: "#a8a29e", "font-weight": "700" })).textContent = "↑ Team effectiveness";
+    svg.appendChild(E("text", { x: 585, y: 225, "font-size": 12, fill: "#a8a29e", "font-weight": "700" })).textContent = "Time →";
+
+    var dots = [];
+    STAGES.forEach(function (st, i) {
+      var g = E("g", { "class": "tuck-dot" });
+      var halo = E("circle", { cx: st.x, cy: st.y, r: 15, fill: "#7c3aed", opacity: "0" });
+      var c = E("circle", { cx: st.x, cy: st.y, r: 8, fill: "#a78bfa", stroke: "#fff", "stroke-width": "2" });
+      var t1 = E("text", {
+        x: st.x, y: st.y + (i === 1 ? 40 : -26), "text-anchor": "middle",
+        "font-size": "13.5", "font-weight": "800", fill: "#57534e"
+      });
+      t1.textContent = st.n;
+      var t2 = E("text", {
+        x: st.x, y: st.y + (i === 1 ? 55 : -12), "text-anchor": "middle",
+        "font-size": "10.5", fill: "#a8a29e"
+      });
+      t2.textContent = st.en;
+      g.appendChild(halo); g.appendChild(c); g.appendChild(t1); g.appendChild(t2);
+      g.addEventListener("click", function () { setStage(i); });
+      svg.appendChild(g);
+      dots.push({ g: g, halo: halo, c: c });
+    });
+    tuckBox.appendChild(svg);
+
+    STAGES.forEach(function (st, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "tuck-btn";
+      b.innerHTML = st.n + "<small> · " + st.en + "</small>";
+      b.addEventListener("click", function () { setStage(i); });
+      tuckStrip.appendChild(b);
+    });
+
+    var stageBtns = tuckStrip.querySelectorAll(".tuck-btn");
+    window.setStage = function (i) {
+      var st = STAGES[i];
+      dots.forEach(function (d, j) {
+        d.halo.setAttribute("opacity", j === i ? "0.22" : "0");
+        d.c.setAttribute("fill", j === i ? "#7c3aed" : "#a78bfa");
+        d.c.setAttribute("r", j === i ? "10" : "8");
+      });
+      stageBtns.forEach(function (b, j) { b.classList.toggle("on", j === i); });
+      tuckFb.innerHTML = "<b>" + (i + 1) + " / 5 · " + st.n + " (" + st.en + ")</b><br>" +
+        "<b>Typical features:</b> " + st.feat + "<br><b>Manager’s moves:</b> " + st.act +
+        "<br><b>Style reference:</b> " + st.style;
+    };
+    setStage(0);
+  }
+
+  /* ---------- situational leadership matrix simulator ---------- */
+  var ctrl = document.getElementById("sl-controls"),
+      chartBox = document.getElementById("sl-chart"),
+      readBox = document.getElementById("sl-read");
+  if (!ctrl || !chartBox) return;
+
+  var fmt = function (v) {
+    return v === 0 ? "Low" : v === 10 ? "High" : "";
+  };
+  var ch = Viz.axes(chartBox, {
+    w: 560, h: 470, margin: { t: 16, r: 16, b: 52, l: 64 },
+    xDomain: [0, 10], yDomain: [0, 10],
+    xLabel: "Subordinate’s ability →", yLabel: "Subordinate’s willingness →",
+    xTicks: 2, yTicks: 2, xFormat: fmt, yFormat: fmt
+  });
+
+  var QUADS = [
+    { name: "Coaching", code: "S2 · R2", x0: 0, x1: 5, y0: 5, y1: 10,
+      match: function (a, w) { return a < 5 && w >= 5; },
+      advice: "Explain why, demonstrate how, and affirm small wins; the decision right stays with you." },
+    { name: "Delegating", code: "S4 · R4", x0: 5, x1: 10, y0: 5, y1: 10,
+      match: function (a, w) { return a >= 5 && w >= 5; },
+      advice: "Hand over the decision right: agree only on goals and checkpoints, let go of the process, and let results speak." },
+    { name: "Directing", code: "S1 · R1", x0: 0, x1: 5, y0: 0, y1: 5,
+      match: function (a, w) { return a < 5 && w < 5; },
+      advice: "Be explicit: what to do, how to do it, when it is due; demonstrate in small steps and check closely." },
+    { name: "Supporting", code: "S3 · R3", x0: 5, x1: 10, y0: 0, y1: 5,
+      match: function (a, w) { return a >= 5 && w < 5; },
+      advice: "Direct less, listen more: search together for what caused the slump in willingness; give recognition and options." }
+  ];
+  var quadEls = QUADS.map(function (q) {
+    var rect = Viz.svgEl("rect", {
+      x: ch.x(q.x0), y: ch.y(q.y1),
+      width: ch.x(q.x1) - ch.x(q.x0), height: ch.y(q.y0) - ch.y(q.y1),
+      fill: "#efebf7", stroke: "#fff", "stroke-width": 2.5
+    });
+    ch.svg.appendChild(rect);
+    var cx = (ch.x(q.x0) + ch.x(q.x1)) / 2, cy = (ch.y(q.y0) + ch.y(q.y1)) / 2;
+    var t1 = Viz.label(ch.svg, cx, cy - 8, q.name, { size: 22, weight: 800, anchor: "middle", color: "#7c3aed" });
+    var t2 = Viz.label(ch.svg, cx, cy + 14, q.code, { size: 12, weight: 700, anchor: "middle", color: "#8a7fb8" });
+    return { rect: rect, t1: t1, t2: t2 };
+  });
+
+  var dotG = Viz.svgEl("g", { id: "sl-dot" });
+  var dotC = Viz.svgEl("circle", { cx: 0, cy: 0, r: 9, fill: "#1c1917", stroke: "#fff", "stroke-width": 3 });
+  dotC.appendChild(Viz.svgEl("animate", { attributeName: "r", values: "9;12;9", dur: "2s", repeatCount: "indefinite" }));
+  dotG.appendChild(dotC);
+  ch.svg.appendChild(dotG);
+
+  function upd(a, w) {
+    var active = 0;
+    QUADS.forEach(function (q, i) { if (q.match(a, w)) active = i; });
+    quadEls.forEach(function (e, i) {
+      var on = i === active;
+      e.rect.setAttribute("fill", on ? "#7c3aed" : "#efebf7");
+      e.t1.setAttribute("fill", on ? "#ffffff" : "#7c3aed");
+      e.t2.setAttribute("fill", on ? "#efe9dd" : "#8a7fb8");
+    });
+    dotG.style.transform = "translate(" + ch.x(a).toFixed(1) + "px," + ch.y(w).toFixed(1) + "px)";
+    var q = QUADS[active];
+    readBox.innerHTML =
+      '<div class="sl-rec">Recommended: ' + q.name + " (" + q.code + ")</div>" +
+      "<b>Profile:</b> ability " + a + " / 10 · willingness " + w + " / 10<br>" +
+      "<b>How to proceed:</b> " + q.advice +
+      '<div class="sl-tip">The boundary sits at 5 (illustrative). Ability and willingness are continuous spectra, and style should shift gradually with the person and the task — the same person can land in different quadrants on different tasks.</div>';
+  }
+
+  var sA = Viz.slider(ctrl, { label: "Subordinate’s ability", min: 0, max: 10, step: 1, value: 3, format: function (v) { return v + " / 10"; } });
+  var sW = Viz.slider(ctrl, { label: "Subordinate’s willingness", min: 0, max: 10, step: 1, value: 8, format: function (v) { return v + " / 10"; } });
+  sA.onChange(function (v) { upd(v, sW.get()); });
+  sW.onChange(function (v) { upd(sA.get(), v); });
+  upd(sA.get(), sW.get());
+})();
+</script>
+</body>
+</html>

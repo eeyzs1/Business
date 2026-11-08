@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>机会识别与验证 · 创业学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .hcards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: .75rem; margin: .9rem 0; }
+  .hcard { background: #fff; border: 1.5px solid var(--line); border-radius: 10px; padding: .75rem .95rem; cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .hcard:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .hcard.sel { border-color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent); background: color-mix(in srgb, var(--accent) 6%, #fff); }
+  .hcard.fatal { border-color: var(--bad); box-shadow: inset 0 0 0 1.5px var(--bad); }
+  .hcard.minor2 { opacity: .82; }
+  .hcard .hc-no { font-size: .72rem; font-weight: 800; color: var(--accent); letter-spacing: .1em; }
+  .hcard .hc-title { font-weight: 700; margin: .1rem 0 .2rem; }
+  .hcard .hc-text { font-size: .86rem; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+  .hcard .hc-verdict { display: none; margin-top: .4rem; font-size: .76rem; font-weight: 800; padding: .1rem .6rem; border-radius: 999px; }
+  .hcard.fatal .hc-verdict { background: #fef2f2; color: var(--bad); border: 1.5px solid var(--bad); }
+  .hcard.minor2 .hc-verdict { background: #f0fdf4; color: var(--good); border: 1.5px solid var(--good); }
+  .hcard .hc-why { display: none; font-size: .83rem; color: var(--ink-soft); margin: .45rem 0 0; padding-top: .4rem; border-top: 1px dashed var(--line); line-height: 1.65; }
+  .hcard .hc-why b { color: var(--accent); }
+  .hbtn { font-family: var(--sans); font-size: .9rem; font-weight: 700; border-radius: 999px; padding: .45rem 1.3rem; cursor: pointer; border: none; }
+  .hbtn-go { background: var(--accent); color: var(--accent-ink); }
+  .hbtn-ghost { background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); }
+  .hbtn:disabled { opacity: .4; cursor: default; }
+</style>
+</head>
+<body class="branch-entrepreneurship">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">创业学</a><span class="crumb-sep">/</span>
+  <span>机会识别与验证</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">创业学 · Lesson 1</p>
+  <h1>机会识别与验证</h1>
+  <p class="lead">十个新创项目里,大约九个死于同一个原因:做了一个没人真正想要的东西。这一课教你把「我有个好点子」升级为「我找到一个可验证的机会」——先用公式拆解,再用最小代价向市场要证据。</p>
+
+  <h2><span class="secno">1</span>为什么「好点子」最不值钱</h2>
+  <p>创业者最容易高估的资产是点子本身。翻开商业史,团购、共享单车、短视频几乎都是同一时期一群人同时入场。投资圈因此有条常识:<em>点子不稀缺,被验证过的机会才稀缺</em>。</p>
+  <p>所以创业者的第一项工作不是开发产品,而是回答两个问题:这是不是真机会?我能否用最低成本知道答案?本课回答前者,并为「验证」排出优先级——这正是下一课的入口。</p>
+
+  <h2><span class="secno">2</span>机会公式:三个因子相乘</h2>
+  <div class="concept">
+    <div class="concept-title">概念卡 · 机会公式</div>
+    <p><strong>机会 = 真实痛点 × 可行方案 × 可触达市场</strong>。<strong>真实痛点(Pain Point)</strong>:顾客愿意付出代价去摆脱的麻烦——不是「有了更好」,而是「没有不行」。<strong>可行方案(Solution)</strong>:在当前的技术、成本与法规下真的做得出来、顾客也用得起。<strong>可触达市场(Market)</strong>:你叫得出名字、够得着的第一批顾客,而不是「全国十四亿人」。</p>
+  </div>
+  <figure class="figure"><div class="figure-body">
+    <svg viewBox="0 0 640 210" role="img" style="width:100%;height:auto;display:block" aria-label="机会公式示意">
+      <g font-size="14" font-weight="700">
+        <rect x="26" y="34" width="158" height="66" rx="12" fill="#fff" stroke="#0f766e" stroke-width="2"/>
+        <text x="105" y="62" text-anchor="middle" fill="#0f766e">真实痛点</text>
+        <text x="105" y="84" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="600">没有就不行</text>
+        <text x="204" y="76" text-anchor="middle" font-size="22" fill="#1c1917">×</text>
+        <rect x="226" y="34" width="158" height="66" rx="12" fill="#fff" stroke="#0f766e" stroke-width="2"/>
+        <text x="305" y="62" text-anchor="middle" fill="#0f766e">可行方案</text>
+        <text x="305" y="84" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="600">做得出来、用得起</text>
+        <text x="404" y="76" text-anchor="middle" font-size="22" fill="#1c1917">×</text>
+        <rect x="426" y="34" width="158" height="66" rx="12" fill="#fff" stroke="#0f766e" stroke-width="2"/>
+        <text x="505" y="62" text-anchor="middle" fill="#0f766e">可触达市场</text>
+        <text x="505" y="84" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="600">够得着的第一批人</text>
+      </g>
+      <text x="320" y="146" text-anchor="middle" font-size="13.5" fill="#b91c1c" font-weight="700">用乘法而不是加法:任何一个因子为 0,乘积就是 0</text>
+      <text x="320" y="176" text-anchor="middle" font-size="12" fill="#78716c" font-weight="600">痛点很真但做不出来 = 0;做得出来但够不着顾客 = 0;两者都行但没人真痛 = 0</text>
+    </svg>
+  </div>
+  <figcaption class="figure-caption"><b>图 1</b> 机会的三个因子是相乘关系:短板决定生死,长板不加分。</figcaption></figure>
+
+  <h2><span class="secno">3</span>痛点从哪来:五个信号</h2>
+  <p>机会识别的日常功课,是带着框架去听人抱怨。痛点通常藏在五种信号里:</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>信号</th><th>顾客在说什么</th><th>典型的创业回应</th></tr></thead>
+      <tbody>
+        <tr><td><b>不便</b></td><td>「太麻烦了,要跑三趟」</td><td>流程再造:代办、一键下单、上门服务</td></tr>
+        <tr><td><b>贵</b></td><td>「东西不错,就是太贵」</td><td>砍掉渠道溢价:直销、性价比重构</td></tr>
+        <tr><td><b>慢</b></td><td>「等得也太久了」</td><td>压缩等待:即时配送、预点、并行处理</td></tr>
+        <tr><td><b>丑</b></td><td>「能用,但太糙了/太丢人了」</td><td>设计驱动重做整个品类</td></tr>
+        <tr><td><b>险</b></td><td>「我不敢信、怕被骗」</td><td>担保交易、评价体系、验货与体检报告</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>判断痛点强度看两个刻度:<strong>频率</strong>与<strong>强度</strong>——高频且强烈的麻烦才养得起一门生意。用户在哪里骂,机会就在哪里:抱怨是免费的调研报告。</p>
+
+  <h2><span class="secno">4</span>最危险假设:先验证「会全盘皆输」的那一个</h2>
+  <div class="concept">
+    <div class="concept-title">概念卡 · 最危险假设(Riskiest Assumption)</div>
+    <p>每个机会背后都站着一串假设。<strong>最危险假设</strong>是其中一旦不成立、整盘生意就无法成立的那一条。判断标准不是「最难验证」,而是「不成立时的毁灭程度 × 不确定程度」——毁灭大且最没把握的,应该最先被验证。</p>
+  </div>
+  <p>验证手段本身也有「效力等级」,核心区别在于<strong>对方付出的行动代价</strong>有多大:</p>
+  <figure class="figure"><div class="figure-body">
+    <svg viewBox="0 0 640 236" role="img" style="width:100%;height:auto;display:block" aria-label="验证效力阶梯">
+      <path d="M70 200 L170 200 L170 152 L270 152 L270 104 L370 104 L370 56 L470 56" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
+      <path d="M470 56 l-11 -3 M470 56 l-4 11" stroke="#0f766e" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <g font-size="13.5" font-weight="700">
+        <rect x="70" y="200" width="200" height="0" fill="none"/>
+        <text x="72" y="186" fill="#57534e">① 客户访谈</text>
+        <text x="72" y="222" font-size="11" fill="#a8a29e" font-weight="600">口头态度 · 代价几乎为零</text>
+        <text x="200" y="138" fill="#57534e">② 落地页收集邮箱</text>
+        <text x="200" y="174" font-size="11" fill="#a8a29e" font-weight="600">留下联系方式 · 小小代价</text>
+        <text x="330" y="90" fill="#57534e">③ 预售 / 付定金</text>
+        <text x="330" y="126" font-size="11" fill="#a8a29e" font-weight="600">真金白银 · 最硬的证据</text>
+      </g>
+      <text x="560" y="120" font-size="12.5" fill="#0f766e" font-weight="800" transform="rotate(-90 560 120)">信号强度递增</text>
+      <text x="320" y="34" text-anchor="middle" font-size="13" fill="#b91c1c" font-weight="700">原则:让对方付出越多(时间、隐私、钱),回答越可信</text>
+    </svg>
+  </div>
+  <figcaption class="figure-caption"><b>图 2</b> 验证效力排序:访谈 &lt; 落地页收集邮箱 &lt; 预售。出于礼貌,人人都会对想法说「挺好的」;愿意留邮箱更真实一点;愿意付钱才是需求。</figcaption></figure>
+  <div class="callout warn"><span class="callout-label">最贵的错误</span> 拿着访谈里收获的一堆「我很喜欢」,就押上全部积蓄开发产品——你验证的是「人会不会客气」,不是「人会不会买单」。</div>
+
+  <h2><span class="secno">5</span>动手:最危险假设排序练习</h2>
+  <div class="sim">
+    <div class="sim-title">排险练习:「办公室咖啡订阅」的六张假设卡</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">项目设定:为写字楼白领提供「每周配送到工位的现磨挂耳咖啡」订阅服务。六张卡片是它背后的假设——<b>点选你认为最致命的两个</b>,提交后看参考答案与理由。</p>
+    <div class="hcards" id="hypCards">
+      <div class="hcard" data-i="0">
+        <span class="hc-no">假设 A</span>
+        <p class="hc-title">咖啡刚需高频</p>
+        <p class="hc-text">白领工作日几乎每天都要喝咖啡,消费频率足够支撑订阅。</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>可后置:</b>茶水间观察一天即可确认;频率偏低只是单位经济变差,不致命。</p>
+      </div>
+      <div class="hcard" data-i="1">
+        <span class="hc-no">假设 B</span>
+        <p class="hc-title">排队痛点够痛</p>
+        <p class="hc-text">楼下买咖啡要排队十来分钟,同事普遍抱怨太麻烦。</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>可后置:</b>痛点是真的,但它也能被「楼下自助咖啡机」等替代方案满足;强度影响定价,不单独决定生死。</p>
+      </div>
+      <div class="hcard" data-i="2">
+        <span class="hc-no">假设 C</span>
+        <p class="hc-title">按月付费意愿</p>
+        <p class="hc-text">用户愿意为「每周配送到工位的新鲜挂耳」按月掏钱订阅。</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>参考答案 · 最危险:</b>整个商业模式的地基。「说喜欢」与「按月掏钱」是两回事;它一旦不成立便没有收入,全盘皆输,只能靠预售级实验验证。</p>
+      </div>
+      <div class="hcard" data-i="3">
+        <span class="hc-no">假设 D</span>
+        <p class="hc-title">配送可进办公区</p>
+        <p class="hc-text">公司行政愿意让配送员每周进楼,把咖啡送到工位。</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>参考答案 · 最危险:</b>交付环节的一票否决项:进不了办公区,服务就无法发生;它取决于各公司规定,一旦不成立几乎没有绕行方案。</p>
+      </div>
+      <div class="hcard" data-i="4">
+        <span class="hc-no">假设 E</span>
+        <p class="hc-title">低价稳定供给</p>
+        <p class="hc-text">能以低于门店的价格采购到品质稳定的咖啡豆与挂耳。</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>可后置:</b>供给侧是执行问题,换供应商、换品类即可解决;影响毛利,不构成生死假设。</p>
+      </div>
+      <div class="hcard" data-i="5">
+        <span class="hc-no">假设 F</span>
+        <p class="hc-title">定价接受度</p>
+        <p class="hc-text">每月 99 元的订阅定价,会被目标用户认为划算。</p>
+        <span class="hc-verdict"></span>
+        <p class="hc-why"><b>可后置:</b>价格是可调参数,可以用不同价位的预售实验反复测试;定错了可以改,毁灭性低。</p>
+      </div>
+    </div>
+    <p id="hypFeedback" style="font-size:.9rem;color:var(--ink-soft)">已选 0/2 张——先逼自己排个序。</p>
+    <p>
+      <button type="button" class="hbtn hbtn-go" id="hypSubmit">提交选择</button>
+      <button type="button" class="hbtn hbtn-ghost" id="hypReset" style="display:none">重新来一遍</button>
+    </p>
+    <div class="callout note" id="hypSummary" style="display:none">
+      <span class="callout-label">参考答案</span>
+      最致命的是 <b>C(按月付费意愿)</b> 与 <b>D(配送可进办公区)</b>:前者是收入端的地基,后者是交付端的一票否决。你命中了 <b id="hypHits">0</b>/2。<span id="hypComment"></span>
+    </div>
+  </div>
+
+  <div class="case">
+    <div class="case-title">案例 · Airbnb 的麦片与相机</div>
+    <p>2008 年,爱彼迎(Airbnb)创始人资金见底、信用卡刷爆。为撑过验证期,他们蹭美国大选热点定制两款麦片盒——「Obama O's」与「Cap'n McCain's」——逐盒推销,卖出约 3 万美元(公开报道口径,示意),靠这笔钱撑到进入孵化器 Y Combinator。<strong>验证期的公司,得先活到看见答案的那天</strong>。</p>
+    <p>2010 年前后,团队发现纽约房源预订率偏低,走访发现房东照片昏暗失真、房客不敢下订。创始人便带上相机上门替房东免费重拍(示意描述),预订随之明显改善——「陌生人的照片不可信」被识别为关键假设,而验证它的只是一台相机和一个周末,不是一轮开发。</p>
+    <div class="case-learn"><b>学到什么:</b>最危险的假设值得最先验证,而验证未必要烧钱——麦片与相机都不贵;答案是「走出门」找到的,不是坐在屏幕前猜出来的。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>商业机会 Opportunity</dt><dd>真实痛点、可行方案与可触达市场三者相乘的结果,任一因子为零则整体为零。</dd>
+      <dt>痛点 Pain Point</dt><dd>顾客愿意付出代价去摆脱的麻烦,按频率与强度衡量。</dd>
+      <dt>最危险假设 Riskiest Assumption</dt><dd>一旦不成立则整个商业模式崩塌的前提,应最先被验证。</dd>
+      <dt>客户访谈 Interview</dt><dd>收集口头反馈的低成本方式,受礼貌性偏差影响,效力最弱。</dd>
+      <dt>落地页测试 Landing Page Test</dt><dd>发布产品介绍页并投放少量流量,以留资行为衡量真实兴趣。</dd>
+      <dt>预售 Pre-order</dt><dd>在产品完成前收取定金或全款,以真金白银验证付费意愿,效力最强。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>机会 = <b>真实痛点 × 可行方案 × 可触达市场</b>,三个因子相乘,短板决定生死;验证从<b>最危险假设</b>开始;证据强度永远是:预售 &gt; 落地页 &gt; 访谈。</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "用「机会=真实痛点×可行方案×可触达市场」判断,以下哪种情形的乘积最接近于零?",
+      "options": ["痛点很真实,但目标客户群的规模尚无精确统计", "痛点很真实,但以现有技术根本做不出可行方案", "方案做得出来,但首批用户要半年之后才触达", "方案已经做出来,而且有了几十位付费的天使用户"],
+      "answer": 1,
+      "explain": "乘法公式里任何一个因子为零,整体即为零:痛点真实但方案做不出来,乘积是零。规模未知、触达偏慢只是不确定或偏慢,不必然为零;已有天使用户说明三因子都初步为正。" },
+    { "q": "本课把验证方式的效力排序为:预售 &gt; 落地页收集邮箱 &gt; 访谈。访谈效力最弱的根本原因是:",
+      "options": ["访谈对象通常不是目标客户,样本存在严重偏差", "访谈提纲的问题数量太少,覆盖不了全部假设", "访谈的综合成本其实最高,最占用团队时间", "访谈收集的是口头态度,人往往会礼貌性说喜欢"],
+      "answer": 3,
+      "explain": "对「你会买吗」的口头回答与真实掏钱差距很大——出于礼貌,多数人会说「挺好的」。留邮箱有轻微的行动代价,付定金是真金白银,信号强度依次递增。" },
+    { "q": "「最危险假设」的准确定义是:",
+      "options": ["一旦不成立,整个商业模式就无法成立的假设", "团队内部争论最大、最难达成一致的那些假设", "验证起来花费最高、最耗时间的那一条假设", "竞争对手最可能抢先一步解决掉的那些假设"],
+      "answer": 0,
+      "explain": "判断「危险」看的是不成立时的毁灭程度与不确定性,而不是验证难度、争论热度或竞争动向。验证顺序应按危险程度排,而不是按容易程度排。" },
+    { "q": "「公司行政是否允许配送员每周进楼」被列为办公室咖啡订阅的最危险假设,最恰当的理由是:",
+      "options": ["行政审批周期长,会显著拖慢产品上线的整体速度", "行政部门的预算有限,可能无力承担订阅咖啡的费用", "许可不成立则交付无法发生,需求再强也全盘归零", "行政人员大多不爱喝咖啡,试点会缺乏内部支持者"],
+      "answer": 2,
+      "explain": "「危险」的度量是不成立时的毁灭程度:进不了办公区,再强的付费意愿也无法兑现,机会公式的交付环节直接归零。速度慢、预算紧、口味偏好都不构成一票否决。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《精益创业:新创企业的成长思维》埃里克·莱斯 · 中信出版社(建议读:关于「验证学习」的章节)</li>
+      <li>《从0到1:开启商业与未来的秘密》彼得·蒂尔 · 中信出版社(建议读:关于「秘密」与利基市场的章节)</li>
+      <li>《商业模式新生代》亚历山大·奥斯特瓦德、伊夫·皮尼厄 · 机械工业出版社(建议读:客户细分与价值主张两格)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">上一课</span><span class="pager-title">返回 · 创业学导学</span></a>
+    <a class="next" href="0002-lean-startup.html"><span class="pager-label">下一课</span><span class="pager-title">精益创业:构建-衡量-学习</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我用机会公式拆一下我的想法」「我这个项目的最危险假设是哪条?」——拿你自己的点子练一遍,才算真的学会。</div>
+    <p>创业学 · 第 1 课 · 案例为真实公司,数字为示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var REF = [2, 3];
+  var cards = Array.prototype.slice.call(document.querySelectorAll("#hypCards .hcard"));
+  var feedback = document.getElementById("hypFeedback");
+  var submitBtn = document.getElementById("hypSubmit");
+  var resetBtn = document.getElementById("hypReset");
+  var summary = document.getElementById("hypSummary");
+  var submitted = false;
+
+  function pickedCount() {
+    return cards.filter(function (c) { return c.classList.contains("sel"); }).length;
+  }
+
+  cards.forEach(function (c) {
+    c.addEventListener("click", function () {
+      if (submitted) return;
+      if (!c.classList.contains("sel") && pickedCount() >= 2) {
+        feedback.textContent = "最多选两张——强迫自己排序,正是这个练习的价值。";
+        return;
+      }
+      c.classList.toggle("sel");
+      var n = pickedCount();
+      feedback.textContent = n === 2 ? "已选满 2 张,点「提交选择」看参考答案。" : "已选 " + n + "/2 张。";
+    });
+  });
+
+  submitBtn.addEventListener("click", function () {
+    if (pickedCount() < 2) {
+      feedback.textContent = "先选满 2 张再提交——排序练习的意义在于取舍。";
+      return;
+    }
+    submitted = true;
+    var pickedIdx = cards.map(function (c, i) { return c.classList.contains("sel") ? i : -1; })
+      .filter(function (i) { return i >= 0; });
+    var hits = pickedIdx.filter(function (i) { return REF.indexOf(i) >= 0; }).length;
+    cards.forEach(function (c, i) {
+      var fatal = REF.indexOf(i) >= 0;
+      c.classList.add(fatal ? "fatal" : "minor2");
+      var v = c.querySelector(".hc-verdict");
+      v.textContent = fatal ? "参考答案 · 最危险" : "可后置验证";
+      v.style.display = "inline-block";
+      c.querySelector(".hc-why").style.display = "block";
+    });
+    summary.style.display = "block";
+    Viz.countUp(document.getElementById("hypHits"), hits, { from: 0, dur: 700, format: function (x) { return String(Math.round(x)); } });
+    var msg;
+    if (hits === 2) msg = " 你的排序与参考答案一致:先验证收入端地基与交付端否决项,其余都可以靠边站。";
+    else if (hits === 1) msg = " 命中一半。再体会一下口诀:危险 = 不成立时的毁灭程度 × 不确定程度,与验证难易无关。";
+    else msg = " 没关系——大多数新手都会先选「最像问题」的而不是「最致命」的。重读六张卡的理由,然后重做一遍。";
+    document.getElementById("hypComment").textContent = msg;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "已提交";
+    resetBtn.style.display = "inline-block";
+  });
+
+  resetBtn.addEventListener("click", function () {
+    submitted = false;
+    cards.forEach(function (c) {
+      c.classList.remove("sel", "fatal", "minor2");
+      c.querySelector(".hc-verdict").style.display = "none";
+      c.querySelector(".hc-why").style.display = "none";
+    });
+    summary.style.display = "none";
+    feedback.textContent = "已选 0/2 张——先逼自己排个序。";
+    submitBtn.disabled = false;
+    submitBtn.textContent = "提交选择";
+    resetBtn.style.display = "none";
+  });
+})();
+</script>
+</body>
+</html>

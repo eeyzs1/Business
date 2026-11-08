@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>商业智能与仪表盘 · 商业分析</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .chip { font-family: var(--sans); font-size: .85rem; font-weight: 700; color: var(--ink-soft);
+    background: #fff; border: 1.5px solid var(--line); border-radius: 999px; padding: .32rem 1rem;
+    cursor: pointer; margin-right: .5rem; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.active { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem; margin: .8rem 0; }
+  @media (max-width: 560px) { .kpi-row { grid-template-columns: 1fr; } }
+  .kpi { background: var(--paper-deep); border: 1px solid var(--line); border-radius: 10px; padding: .65rem .8rem; }
+  .kpi-label { font-size: .75rem; color: var(--ink-soft); font-weight: 800; letter-spacing: .05em; }
+  .kpi-value { font-size: 1.45rem; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; line-height: 1.3; }
+  .kpi-value.bad { color: var(--bad); }
+  .kpi-note { font-size: .78rem; color: var(--ink-faint); }
+  .dash-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 1rem; align-items: start; }
+  @media (max-width: 720px) { .dash-grid { grid-template-columns: 1fr; } }
+  .dash-sub { font-size: .85rem; font-weight: 800; color: var(--ink-soft); margin: .3rem 0 .4rem; }
+  .dash-task { border-top: 1px dashed var(--line); margin-top: 1rem; padding-top: .9rem; }
+  .dash-task-q { font-weight: 800; margin: 0 0 .5rem; }
+  .task-opts { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .task-opts button {
+    font-family: var(--sans); font-size: .9rem; border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 999px; padding: .35rem 1rem; cursor: pointer; transition: all .15s ease;
+  }
+  .task-opts button:hover { border-color: var(--accent); }
+  .task-opts button.ok { border-color: var(--good); background: #f0fdf4; color: var(--good); font-weight: 700; }
+  .task-opts button.bad { border-color: var(--bad); background: #fef2f2; color: var(--bad); }
+  .task-fb { font-size: .92rem; color: var(--ink-soft); background: var(--paper-deep); border-radius: 8px; padding: .65rem .9rem; margin: .7rem 0 0; display: none; }
+</style>
+</head>
+<body class="branch-analytics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">商业分析</a><span class="crumb-sep">/</span>
+  <span>商业智能与仪表盘</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">商业分析 · Lesson 4</p>
+  <h1>商业智能与仪表盘</h1>
+  <p class="lead">会议室大屏上密密麻麻四十个数字,散会时没人记得任何一个决策。仪表盘(Dashboard)不是「图表收纳箱」,而是决策驾驶舱:一颗北极星指方向,一棵指标树定结构,一套联动与告警管例外。本课把前三课的流程、统计与因果护栏,组装成一台可交互的迷你仪表盘。</p>
+
+  <h2><span class="secno">1</span>北极星指标:唯一的那颗星</h2>
+  <div class="concept">
+    <div class="concept-title">概念卡 · 北极星指标(North Star Metric)</div>
+    <p>唯一最能代表「用户从产品获得价值」的指标:用户价值增长,它就增长;它持续增长,长期商业结果大概率不差。订阅制业务常用「月度活跃订阅数」或「总使用时长」,电商常用成交总额口径(示意)。合格线有三条:<strong>反映用户价值</strong>(不是公司索取的收入)、<strong>可分解</strong>(能拆成团队可影响的子指标)、<strong>可影响</strong>(行动能推动它)。典型反例:「累计注册用户数」——只增不减,既不反映价值也无法指导行动。</p>
+  </div>
+
+  <h2><span class="secno">2</span>指标树与维度下钻</h2>
+  <div class="formula" data-reveal>收入 = 流量 × 转化率 × 客单价 × 复购次数</div>
+  <p>指标树(Metric Tree)把大指标拆成可归因、可行动的小指标:总收入涨不动,先看是流量见顶、转化率下滑还是客单价走弱。定位到「哪一格」要靠<strong>维度下钻(Drill-Down)</strong>:沿区域、渠道、品类等维度(第 1 课的老朋友)层层切片,把「整体疲软」缩小成「某渠道某环节的问题」。先拆解定位<strong>哪</strong>,再用第 3 课的因果护栏问<strong>为什么</strong>。</p>
+
+  <h2><span class="secno">3</span>仪表盘三原则</h2>
+  <ol class="steps">
+    <li data-reveal><strong>一屏一决策。</strong>每块屏回答一个经营问题,与决策无关的装饰性图表一律删除;指标多不等于专业,等于没人看。</li>
+    <li data-reveal><strong>同比环比。</strong>绝对数几乎没有意义:「本月销售 980 万」好坏未知。要同时对比<b>环比</b>(Month-over-Month,与上一期)看动能、<b>同比</b>(Year-over-Year,与去年同期)剔除季节性——八月冰淇淋卖得好,先别急着发喜报。</li>
+    <li data-reveal><strong>异常告警(Alerting)。</strong>给关键指标设阈值与异动规则,让系统 7×24 小时盯着,人只处理例外。盯屏不是工作,处理例外才是。</li>
+  </ol>
+
+  <h2><span class="secno">4</span>动手:迷你仪表盘(订阅业务)</h2>
+  <p>某订阅制内容产品的简化仪表盘(数字均为示意)。点击柱图中任一渠道,北极星卡片与趋势线随之过滤;先别偷看答案——找一找哪个渠道「看着最风光,其实最拖后腿」:</p>
+
+  <div class="sim">
+    <div class="sim-title">迷你仪表盘:北极星 × 渠道柱图 × 趋势线联动</div>
+    <p><button type="button" class="chip active" id="allBtn">全部渠道</button><span style="font-size:.85rem;color:var(--ink-faint)">点击下方柱子可切换 / 过滤视图</span></p>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-label" id="k1l"></div><div class="kpi-value" id="k1v">0</div><div class="kpi-note" id="k1n"></div></div>
+      <div class="kpi"><div class="kpi-label" id="k2l"></div><div class="kpi-value" id="k2v"></div><div class="kpi-note" id="k2n"></div></div>
+      <div class="kpi"><div class="kpi-label" id="k3l"></div><div class="kpi-value" id="k3v"></div><div class="kpi-note" id="k3n"></div></div>
+    </div>
+    <div class="dash-grid">
+      <div>
+        <p class="dash-sub">本月新增订阅 · 按渠道(点击柱子下钻)</p>
+        <div id="dashBars"></div>
+      </div>
+      <div>
+        <p class="dash-sub" id="trendTitle"></p>
+        <div id="dashTrend"></div>
+      </div>
+    </div>
+    <div class="dash-task">
+      <p class="dash-task-q">🧭 小任务:哪个渠道看着最风光、其实最拖后腿?</p>
+      <div class="task-opts" id="taskOpts">
+        <button type="button" data-i="0">自然流量</button>
+        <button type="button" data-i="1">搜索广告</button>
+        <button type="button" data-i="2">社交种草</button>
+        <button type="button" data-i="3">渠道合作</button>
+      </div>
+      <p class="task-fb" id="taskFb"></p>
+    </div>
+  </div>
+
+  <div class="case">
+    <div class="case-title">案例 · Spotify 与 Netflix:北极星选「用户得到的价值」</div>
+    <p>订阅制内容业务选什么当北极星?Spotify 在公开访谈与产品讨论中长期以「收听时长」类指标衡量用户价值——用户听得越多,留存与付费转化越好(公开资料口径,示意);Netflix 则把「总观看时长」当作会员业务的核心温度计,并定期在股东信中披露相关数据(公开口径,示意)。两家的共同点:北极星衡量<b>用户获得的价值</b>(听/看),而非<b>公司索取的收入</b>(订阅费),再由北极星向下拆出内容、推荐、获客渠道的指标树。反例是把「新增下载量」当北极星——下载不等于收听,更不等于价值:虚高的下载配合惨淡的留存,正是渠道买量最擅长的化妆术。</p>
+    <div class="case-learn"><b>学到什么:</b>先定北极星(用户价值),再拆指标树(增长杠杆),最后仪表盘只保留决策必需的块。指标不是越多越好,而是越能导向行动越好。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>北极星指标 North Star Metric</dt><dd>唯一最能代表用户获得价值的指标,可分解、可影响,指引全员方向。</dd>
+      <dt>指标树 Metric Tree</dt><dd>把核心指标逐层拆解为可归因、可行动的子指标的结构。</dd>
+      <dt>维度下钻 Drill-Down</dt><dd>沿区域、渠道、品类等维度对指标逐层切片,定位问题所在格。</dd>
+      <dt>同比 Year-over-Year</dt><dd>与去年同期对比,用于剔除季节性因素看长期趋势。</dd>
+      <dt>环比 Month-over-Month</dt><dd>与上一期对比,用于观察短期动能与异动。</dd>
+      <dt>留存率 Retention Rate</dt><dd>某期用户在后续周期仍活跃的比例,衡量真实价值与渠道质量。</dd>
+      <dt>异常告警 Alerting</dt><dd>对关键指标设定阈值与异动规则,系统自动提醒,人只处理例外。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>仪表盘是驾驶舱不是海报:<b>一颗北极星、一棵指标树、三原则</b>——一屏一决策、同比环比、异常告警;先靠下钻定位「哪一格外错了」,再用因果思维问「为什么」。</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "订阅产品把「累计注册用户数」当北极星指标,最不妥之处在于:",
+      "options": ["该指标不随用户价值变化", "该指标无法被统计计算", "该指标缺少历史数据", "该指标不能按周拆分"],
+      "answer": 0,
+      "explain": "累计数只增不减,既不反映用户是否真的在使用(获得价值),也无法指导行动。北极星必须反映用户价值、可分解、可影响。" },
+    { "q": "把「收入 = 流量 × 转化率 × 客单价 × 复购」拆成指标树,主要作用是:",
+      "options": ["让报表配色更丰富", "减少需要存储的数据", "便于定位与归因行动点", "提高系统的访问速度"],
+      "answer": 2,
+      "explain": "拆解让「收入涨不动」变成「转化率下滑」这类<b>可归因、可行动</b>的子问题,每个子指标都有明确负责团队——这是下钻与决策的前提。" },
+    { "q": "「本月销售额比上月高,但比去年同期低」,更稳妥的解读是:",
+      "options": ["环比上升说明全年向好", "剔除季节性后仍在下滑", "两种口径数据互相矛盾", "统计系统必然出了错误"],
+      "answer": 1,
+      "explain": "环比看动能、同比剔季节:旺季环比小涨而同比转负,说明大盘在退潮。两个口径并不矛盾,它们回答的是两个不同的问题。" },
+    { "q": "给关键指标配置「异常告警」的最主要目的是:",
+      "options": ["让页面动效更显眼", "减少人工盯屏只处理例外", "替代一切经营分析会议", "把所有指标连成一条线"],
+      "answer": 3,
+      "explain": "告警原则 = 让系统 7×24 小时盯着阈值与异动,把人从盯盘中解放出来、只处理例外;它不替代分析,只是把注意力分配给值得看的时刻。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《精益数据分析》阿利斯泰尔·克罗尔、本杰明·尤科维奇 · 人民邮电出版社(建议读:北极星指标与指标基准的相关章节)</li>
+      <li>《数据化决策》道格拉斯·W. 哈伯德 · 世界图书出版公司(建议读:拆解决策与量化方法的相关章节)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-correlation-vs-causation.html"><span class="pager-label">上一课</span><span class="pager-title">相关不是因果</span></a>
+    <a class="next" href="../../11-international-business/index.html"><span class="pager-label">下一课 · 下一分支</span><span class="pager-title">国际商务 · 分支导学</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「我的业务该选什么北极星指标?」「帮我把收入拆成一棵指标树」——把你自己的仪表盘截图带来,我们一起做减法。</div>
+    <p>商业分析 · 第 4 课 · 共 4 课 · 案例与数字均为教学示意</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var channels = [
+    { name: "自然流量", color: "#0f766e", added: 12, ret: 62, trend: [6, 6, 7, 7, 8, 8, 9, 9, 10, 11, 11, 12] },
+    { name: "搜索广告", color: "#1d4ed8", added: 18, ret: 48, trend: [9, 10, 11, 12, 13, 14, 15, 16, 16, 17, 17, 18] },
+    { name: "社交种草", color: "#d97706", added: 15, ret: 45, trend: [8, 9, 10, 10, 11, 12, 13, 13, 14, 14, 15, 15] },
+    { name: "渠道合作", color: "#b91c1c", added: 22, ret: 20, trend: [8, 9, 11, 12, 14, 16, 18, 19, 20, 21, 21, 22] }
+  ];
+  var total = [];
+  for (var w = 0; w < 12; w++) {
+    (function (ww) {
+      total.push(channels.reduce(function (s, c) { return s + c.trend[ww]; }, 0));
+    })(w);
+  }
+  var sel = null;
+  var barsWrap = document.getElementById("dashBars");
+  var trendWrap = document.getElementById("dashTrend");
+  var trendTitle = document.getElementById("trendTitle");
+  var allBtn = document.getElementById("allBtn");
+
+  function renderBars() {
+    barsWrap.innerHTML = "";
+    var svg = Viz.bars(barsWrap,
+      channels.map(function (c) { return { label: c.name, value: c.added, color: c.color }; }),
+      { w: 640, h: 300, animate: false, valueFormat: function (v) { return v + " 千"; } });
+    var rects = svg.querySelectorAll("rect");
+    channels.forEach(function (c, i) {
+      var r = rects[i];
+      r.style.cursor = "pointer";
+      if (sel !== null && sel !== i) r.style.opacity = 0.35;
+      if (sel === i) { r.setAttribute("stroke", "#1c1917"); r.setAttribute("stroke-width", 2.5); }
+      r.addEventListener("click", function () { select(i); });
+    });
+  }
+
+  function renderTrend() {
+    trendWrap.innerHTML = "";
+    var data, color;
+    if (sel === null) {
+      data = total; color = "#4338ca";
+      trendTitle.textContent = "全部渠道 · 每周新增订阅合计(千,示意)";
+    } else {
+      var c = channels[sel];
+      data = c.trend; color = c.color;
+      trendTitle.textContent = c.name + " · 每周新增订阅(千,示意)";
+    }
+    var max = Math.max.apply(null, data) * 1.2;
+    var chart = Viz.axes(trendWrap, {
+      w: 640, h: 300, margin: { t: 24, r: 20, b: 48, l: 56 },
+      xDomain: [1, 12], yDomain: [0, max], xTicks: 11, yTicks: 4,
+      xLabel: "周", yLabel: "新增订阅(千)",
+      xFormat: function (v) { return "W" + Math.round(v); }, yFormat: Math.round
+    });
+    var pts = data.map(function (v, i) { return [chart.x(i + 1), chart.y(v)]; });
+    var base = chart.m.t + chart.ih;
+    Viz.area(chart.svg, [[chart.x(1), base]].concat(pts, [[chart.x(12), base]]), color, 0.12);
+    Viz.line(chart.svg, pts, { color: color, width: 3 });
+    pts.forEach(function (p) { Viz.dot(chart.svg, p[0], p[1], { r: 4.5, fill: color }); });
+  }
+
+  function renderKpi() {
+    if (sel === null) {
+      document.getElementById("k1l").textContent = "北极星 · 月度活跃订阅数";
+      document.getElementById("k1n").textContent = "全站口径";
+      Viz.countUp(document.getElementById("k1v"), 86.4, { dur: 700, format: function (v) { return v.toFixed(1) + " 万"; } });
+      document.getElementById("k2l").textContent = "环比 MoM";
+      document.getElementById("k2v").textContent = "+6.2%";
+      document.getElementById("k2v").className = "kpi-value";
+      document.getElementById("k2n").textContent = "对比上一月";
+      document.getElementById("k3l").textContent = "同比 YoY";
+      document.getElementById("k3v").textContent = "+28%";
+      document.getElementById("k3v").className = "kpi-value";
+      document.getElementById("k3n").textContent = "对比去年同期";
+    } else {
+      var c = channels[sel];
+      document.getElementById("k1l").textContent = "本月新增订阅";
+      document.getElementById("k1n").textContent = c.name;
+      Viz.countUp(document.getElementById("k1v"), c.added, { dur: 600, format: function (v) { return Math.round(v) + " 千"; } });
+      document.getElementById("k2l").textContent = "次月留存率";
+      document.getElementById("k2v").textContent = c.ret + "%";
+      document.getElementById("k2v").className = "kpi-value" + (c.ret < 40 ? " bad" : "");
+      document.getElementById("k2n").textContent = c.ret < 40 ? "⚠ 异常:低于 40% 健康线(示意阈值)" : "高于 40% 健康线(示意)";
+      var growth = Math.round((c.trend[11] - c.trend[0]) / c.trend[0] * 100);
+      document.getElementById("k3l").textContent = "12 周增量";
+      document.getElementById("k3v").textContent = "+" + growth + "%";
+      document.getElementById("k3v").className = "kpi-value";
+      document.getElementById("k3n").textContent = "W1 → W12";
+    }
+  }
+
+  function select(i) { sel = i; renderAll(); }
+  allBtn.addEventListener("click", function () { sel = null; renderAll(); });
+
+  function renderAll() {
+    allBtn.classList.toggle("active", sel === null);
+    renderKpi(); renderBars(); renderTrend();
+  }
+  renderAll();
+
+  /* ---- 小任务:找出拖后腿的渠道 ---- */
+  var taskBtns = document.querySelectorAll("#taskOpts button");
+  var taskFb = document.getElementById("taskFb");
+  Array.prototype.forEach.call(taskBtns, function (b) {
+    b.addEventListener("click", function () {
+      if (taskFb.style.display === "block") return;
+      var ok = b.getAttribute("data-i") === "3";
+      taskFb.style.display = "block";
+      taskFb.innerHTML = ok
+        ? "<b style='color:var(--good)'>✓ 答对了。</b>渠道合作本月新增最多(22 千),但次月留存率只有 20%(示意):买来的用户留不住,算总账反而最亏。点一下它的柱子,看看留存卡片上的警报。"
+        : "<b style='color:var(--bad)'>✗ 再想想。</b>提示:别只比柱子高低——逐个点击渠道,盯住「次月留存率」那张卡片,谁在亮红灯?";
+      b.classList.add(ok ? "ok" : "bad");
+    });
+  });
+})();
+</script>
+</body>
+</html>

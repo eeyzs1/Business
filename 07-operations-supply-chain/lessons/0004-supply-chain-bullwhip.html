@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>供应链与牛鞭效应 · 运营与供应链</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .bw-layers { font-size:.9rem; color:var(--ink-soft); }
+  .bw-layers b { color:var(--accent); }
+  .bw-share { display:flex; align-items:center; gap:.55rem; font-size:.95rem; padding:.6rem 0; }
+  .bw-share input { width:18px; height:18px; accent-color:var(--accent); cursor:pointer; }
+  .bw-chart-title { font-weight:800; font-size:.95rem; margin:.9rem 0 .3rem; color:var(--ink); }
+  .bw-readout { background:var(--paper-deep); border-radius:10px; padding:.75rem 1rem; font-size:.95rem; line-height:1.8; margin-top:.9rem; }
+  .bw-readout b { color:var(--accent); font-variant-numeric:tabular-nums; }
+  .bw-readout .amp { color:var(--bad); font-weight:800; }
+  .bw-readout .calm { color:var(--good); font-weight:800; }
+</style>
+</head>
+<body class="branch-operations">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">运营与供应链</a><span class="crumb-sep">/</span>
+  <span>供应链与牛鞭效应</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">运营与供应链 · LESSON 4</p>
+  <h1>供应链与牛鞭效应</h1>
+  <p class="lead">前两课的镜头对准一家工厂,这一课拉到全景:从原料商到消费者,一条链上每家企业都在「猜」需求——而猜出来的订单会失真。末端轻轻一抖,鞭梢重重一响,这就是让所有行业都头疼的牛鞭效应。</p>
+
+  <h2><span class="secno">1</span>供应链:一场从矿石到手机的接力赛</h2>
+  <p><em>供应链(Supply Chain)</em>是让产品从原料走到消费者手中的全部组织与流程的串联:<b>原料供应商 → 制造工厂 → 分销中心 → 零售门店 → 消费者</b>。链上流动着两样方向相反的东西:<em>物料流</em>向下游走,越走越增值;<em>信息流</em>向上游走——订单、预测、销售数据。供应链管理的全部难题,几乎都出在这两条流的<b>速度差</b>上:物料以天计,信息却常常以周计、还失真。</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 760 250" role="img" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="ar3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#b45309"></path>
+          </marker>
+          <marker id="ar4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#0369a1"></path>
+          </marker>
+        </defs>
+        <text x="380" y="34" text-anchor="middle" font-size="13" font-weight="800" fill="#b45309">物料流 → 产品一路向下游增值</text>
+        <g font-size="12.5" font-weight="700">
+          <rect x="16" y="60" width="128" height="64" rx="12" fill="#fff" stroke="#d6cdbd"></rect>
+          <text x="80" y="88" text-anchor="middle" fill="#1c1917">原料供应商</text>
+          <text x="80" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">矿石·芯片·面料</text>
+          <rect x="166" y="60" width="128" height="64" rx="12" fill="#fff" stroke="#d6cdbd"></rect>
+          <text x="230" y="88" text-anchor="middle" fill="#1c1917">制造工厂</text>
+          <text x="230" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">转化·组装</text>
+          <rect x="316" y="60" width="128" height="64" rx="12" fill="#fff" stroke="#d6cdbd"></rect>
+          <text x="380" y="88" text-anchor="middle" fill="#1c1917">分销中心</text>
+          <text x="380" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">仓储·调拨</text>
+          <rect x="466" y="60" width="128" height="64" rx="12" fill="#fff" stroke="#d6cdbd"></rect>
+          <text x="530" y="88" text-anchor="middle" fill="#1c1917">零售门店</text>
+          <text x="530" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">货架·服务</text>
+          <rect x="616" y="60" width="128" height="64" rx="12" fill="#f2ede3" stroke="#d6cdbd"></rect>
+          <text x="680" y="88" text-anchor="middle" fill="#1c1917">消费者</text>
+          <text x="680" y="108" text-anchor="middle" font-size="10.5" fill="#a8a29e" font-weight="400">真实需求</text>
+        </g>
+        <g>
+          <line x1="146" y1="76" x2="164" y2="76" stroke="#b45309" stroke-width="2.5" marker-end="url(#ar3)"></line>
+          <line x1="296" y1="76" x2="314" y2="76" stroke="#b45309" stroke-width="2.5" marker-end="url(#ar3)"></line>
+          <line x1="446" y1="76" x2="464" y2="76" stroke="#b45309" stroke-width="2.5" marker-end="url(#ar3)"></line>
+          <line x1="596" y1="76" x2="614" y2="76" stroke="#b45309" stroke-width="2.5" marker-end="url(#ar3)"></line>
+        </g>
+        <g>
+          <line x1="164" y1="112" x2="146" y2="112" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar4)"></line>
+          <line x1="314" y1="112" x2="296" y2="112" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar4)"></line>
+          <line x1="464" y1="112" x2="446" y2="112" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar4)"></line>
+          <line x1="614" y1="112" x2="596" y2="112" stroke="#0369a1" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ar4)"></line>
+        </g>
+        <text x="380" y="170" text-anchor="middle" font-size="13" font-weight="800" fill="#0369a1">← 信息流 · 订单、预测与 POS 销售数据向上游回传</text>
+        <text x="380" y="205" text-anchor="middle" font-size="11.5" fill="#a8a29e">两级之间的信息每多延迟一期、多一层加工,订单就离真实需求更远一步</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 供应链的五段接力(示意):物料向右流,信息向左流。牛鞭效应发生在左侧那条虚线上。</figcaption>
+  </figure>
+  <p>供应链绩效有三个基本盘:<em>提前期(Lead Time)</em>——从下单到收货的时间,它决定了你必须在多远的未来下注;<em>库存</em>——对预测失误的保险,代价是资金与遮蔽问题的风险(第 3 课);<em>订单</em>——上游唯一能「看见」的需求信号。记住这个要命的等式:<b>上游看见的不是需求,是下游的订单;而订单是被四个机制扭曲过的需求</b>。</p>
+
+  <h2><span class="secno">2</span>牛鞭效应:末端轻抖,鞭梢重响</h2>
+  <p><em>牛鞭效应(Bullwhip Effect)</em>指供应链末端消费者需求的微小波动,沿零售商、分销商、工厂逐级向上传导时被不断放大——像甩鞭子:手腕只抖了一下,鞭梢却能抽出脆响。宝洁当年在纸尿裤供应链上首次系统观察到它:婴儿的消费量几乎恒定,可分销环节的订单却剧烈起落。研究归纳出四大成因:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>成因</th><th>机制</th><th>放大方式</th></tr></thead>
+    <tbody>
+      <tr><td>批量订货<br><span style="color:var(--ink-faint)">Order Batching</span></td><td>为摊薄订货与运输成本,攒一整周甚至一个月的需求下一次大单</td><td>小需求被压成脉冲式大单,上游看到的是锯齿</td></tr>
+      <tr><td>缺货博弈<br><span style="color:var(--ink-faint)">Shortage Gaming</span></td><td>预期缺货时按「配额按订单比例分」的规则,故意多报需求</td><td>人人夸大,订单总量远超真实需求</td></tr>
+      <tr><td>价格促销<br><span style="color:var(--ink-faint)">Price Promotions</span></td><td>打折时渠道囤货(forward buying),促销后订单断崖</td><td>价格波动直接变成订单波动</td></tr>
+      <tr><td>预测修正<br><span style="color:var(--ink-faint)">Demand Signal Processing</span></td><td>每层只看「下游订单」做指数平滑预测,并随之上调安全库存</td><td>上一层的放大被当成新趋势,再放大一层</td></tr>
+    </tbody>
+  </table></div>
+  <p>四大成因有一个共同结构:<b>每一层都在对自己看见的失真信号做理性反应,而理性的叠加制造出系统的疯狂</b>。上游看到的订单峰值,可能是三重回声的叠加——这正是下一节模拟器要让你亲眼看到的。</p>
+
+  <h2><span class="secno">3</span>交互实验:亲手制造一场牛鞭</h2>
+  <div class="sim" id="bw-sim">
+    <div class="sim-title">交互实验 · 牛鞭效应模拟器</div>
+    <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:.4rem">基线:消费者每周买 <b>100 件</b>。第 8 周起,把滑块拨到 ±10% 之间——比如 105(需求只涨 5%)。观察四层订单的<b>峰值/谷值柱状图</b>与<b>逐周订单曲线</b>(每层比下游晚一期反应):没有信息共享时,预测修正机制会把这 5% 一路放大;勾选「共享需求信息」,让每一层直接看见终端真实需求,再对比柱高。</p>
+    <div class="sim-controls" id="bw-controls"></div>
+    <label class="bw-share"><input type="checkbox" id="bw-share"><span><b>共享需求信息</b>(终端 POS 销售数据实时直达每一层,上游不再依赖下游订单做预测)</span></label>
+    <div class="bw-chart-title">① 各层订单的峰值 / 谷值(件/周)</div>
+    <div id="bw-bars"></div>
+    <div class="bw-chart-title">② 逐周订单曲线(可看到每层晚一期、一层比一层猛)</div>
+    <div id="bw-lines"></div>
+    <div class="bw-readout" id="bw-readout"></div>
+    <div class="callout warn" style="margin-bottom:0"><span class="callout-label">值得注意</span>
+      本模拟只启用了四大成因中的「预测修正 + 安全库存上调」,真实供应链叠加批量订货与缺货博弈时,放大倍数还要大得多;而放大带来的产能与库存成本,最终由整条链分摊——包括消费者。
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>驯服牛鞭:让上游看见真实需求</h2>
+  <p>既然病因是「上游看不见真实需求、反应又被延迟」,药方就顺着这两条开出:</p>
+  <ul class="timeline">
+    <li><b>信息共享</b>:把终端<em>销售时点数据(Point of Sale, POS)</em>直通上游,每一层都按真实消费量而非下游订单做预测——直接拆掉「回声室」。</li>
+    <li><b>供应商管理库存(Vendor Managed Inventory, VMI)</b>:下游不再拍订单,由供应商依据共享数据自动补货、自己管库存水位,博弈动机消失。</li>
+    <li><b>缩短提前期</b>:提前期越短,需要预测的未来越短,修正与安全库存的需求都变小——本地仓、小批量高频补货都在干这件事。</li>
+    <li><b>天天平价(Every Day Low Price, EDLP)</b>:用稳定价格代替促销脉冲,消灭「打折囤货」这个人为波动源;更进一步的协同机制如<em>联合计划、预测与补货(CPFR)</em>,让链上各家用同一套预测数字。</li>
+  </ul>
+  <div class="concept">
+    <div class="concept-title">牛鞭效应的管理启示</div>
+    <p style="margin-bottom:0">库存与产能的巨幅波动,常常不是因为需求真的变了,而是因为<b>链上每一层都在对失真的信号做出局部理性的决策</b>。所以供应链竞争的本质是信息架构的竞争:谁能让真实需求以最短路径、最少加工地触达每一个决策点,谁就赢得了这条链。</p>
+  </div>
+
+  <h2><span class="secno">5</span>案例:缺芯潮里的重复下单</h2>
+  <div class="case">
+    <div class="case-title">2020–2022:全球「缺芯」中的放大效应</div>
+    <p>2020 年疫情初起,汽车销量骤降,整车厂大规模砍掉芯片订单;芯片厂随之减产。随后需求快速反弹,芯片供应跟不上,恐慌开始蔓延:因为普遍传闻「缺货时会按订单比例分配产能」,整车厂与经销商纷纷<b>重复下单</b>——同一批需求向多家芯片厂下单、并把订单量报到远超真实计划的水平,「先抢到再说」。</p>
+    <p>这正是教科书级的缺货博弈:上游看到的订单是真实需求的数倍(示意量级),于是砸重金扩产;到 2022 年需求转冷,虚高的订单集体蒸发,留下的是过剩产能、堆积库存与砍单风潮——鞭梢甩出去,又抽了回来。整个周期中,没有哪家企业在「撒谎」,每一步都是局部理性;灾难是<em>结构</em>的产物,而非某个坏人的阴谋。(案例为公开报道的示意性梳理,量级仅供参考)</p>
+    <div class="case-learn"><b>运营课</b>:当分配规则奖励「喊得响」,订单就会失真;当信息延迟且层层加工,波动就会放大。破解之道不在道德劝说,而在改结构——共享真实需求数据、按消耗量补货、缩短提前期,让说真话成为最便宜的策略。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>供应链 Supply Chain</dt><dd>从原料到消费者,共同完成产品交付的组织与流程的串联。</dd>
+      <dt>牛鞭效应 Bullwhip Effect</dt><dd>末端需求的微小波动沿链向上逐级放大,令上游订单剧烈起落的现象。</dd>
+      <dt>批量订货 Order Batching</dt><dd>为摊薄成本而集中下大单,把连续需求压成脉冲订单。</dd>
+      <dt>缺货博弈 Shortage Gaming</dt><dd>预期配额按订单比例分配时,买方故意夸大订单量的理性行为。</dd>
+      <dt>提前期 Lead Time</dt><dd>从下达订单到收到货物的时间;预测必须覆盖的赌注长度。</dd>
+      <dt>供应商管理库存 VMI</dt><dd>Vendor Managed Inventory:由供应商按共享数据为下游自动补货的模式。</dd>
+      <dt>销售时点数据 POS</dt><dd>Point of Sale:终端真实卖出的数据,信息共享的核心原料。</dd>
+      <dt>联合计划预测与补货 CPFR</dt><dd>Collaborative Planning, Forecasting and Replenishment:链上各方共用一套预测与补货计划的协同机制。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    上游看到的不是需求,是被批量订货、缺货博弈、促销与预测修正层层扭曲的订单——<strong>局部理性的叠加,制造系统的疯狂</strong>。驯服牛鞭靠的不是更努力的预测,而是让真实需求直达每一层:共享数据、压缩提前期、按消耗补货。
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "「牛鞭效应」指的是?",
+      "options": ["零售促销让销量出现短暂上升", "末端小波动沿链条向上游逐级放大", "原料涨价沿链条传导到零售价格", "工厂产能不足导致终端全面断货"],
+      "answer": 1,
+      "explain": "牛鞭效应的关键词是「逐级放大」与「向上游传导」:消费者端 5% 的波动,到供应商处可能变成几十倍的订单起落。涨价传导与断货都是供应链问题,但不是牛鞭的定义。" },
+    { "q": "四大成因中的「缺货博弈」指的是?",
+      "options": ["担心分不到货而故意夸大订单量", "为摊薄订货成本而集中下大批量单", "促销前囤货促销结束后集中退货", "每期根据平滑预测不断修正订货量"],
+      "answer": 0,
+      "explain": "当稀缺产能按「订单比例」分配时,多报成为每个买方的理性策略——人人夸大,订单总量便远超真实需求,缺芯潮中的重复下单正是如此。其余三项分别对应批量订货、价格促销与预测修正。" },
+    { "q": "缓解牛鞭效应最直接的一招是?",
+      "options": ["上游多备安全库存对冲下游波动", "加大促销力度刺激出真实的需求", "延长补货提前期让排产更加平稳", "共享终端 POS 销售数据给每一层级"],
+      "answer": 3,
+      "explain": "病根是上游只能看见失真的订单,那就把真实需求直接给它:POS 数据直达每一层,预测不再基于回声。多备库存只是把成本往上堆,延长提前期反而给放大留出更长的杠杆。" },
+    { "q": "2020–2022 年「缺芯潮」中整车厂的重复下单,最像四大成因中的?",
+      "options": ["天天平价策略稳定住了需求", "供应商管理库存把风险转移上游", "缺货博弈:按最大恐惧下订单", "准时制拉动式补货引发的波动"],
+      "answer": 2,
+      "explain": "「缺货时按订单比例分货」的预期让买方报出远超计划的量——教科书级的缺货博弈。等扩产的产能落地、需求转冷,虚高订单集体蒸发,鞭梢反抽回整条链。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul class="timeline">
+      <li><b>《供应链管理:战略、规划与运营》</b>苏尼尔·乔普拉(Sunil Chopra)(建议读:需求预测与供应链协同章节)——本课模型的教科书出处,牛鞭效应有专节讨论。</li>
+      <li><b>《物流与供应链管理》</b>马丁·克里斯托弗(Martin Christopher)(建议读:供应链与竞争战略相关章节)——「未来的竞争是供应链与供应链的竞争」这句名言的语境。</li>
+      <li><b>《运营管理》(Operations Management)</b>威廉·史蒂文森(William Stevenson)· 机械工业出版社(建议读:库存与供应链管理章节)——把前四课的运营概念放进一张总地图。</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-quality-and-lean.html">
+      <div class="pager-label">← 上一课</div>
+      <div class="pager-title">质量与精益</div>
+    </a>
+    <a class="next" href="../../08-strategy/index.html">
+      <div class="pager-label">下一分支 →</div>
+      <div class="pager-title">08 战略管理:运营能力的下一个舞台</div>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师——比如「我们两层经销商,牛鞭效应严重吗?能不能用 VMI?」把你公司的链条画出来,是学这一课最好的练习。</div>
+    <p>运营与供应链 · 第 4/4 课 · 课程库由 AI 教师生成,案例数字均为示意量级。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+/* ===== 牛鞭效应模拟器 ===== */
+(function () {
+  "use strict";
+  var barsBox = document.getElementById("bw-bars");
+  var linesBox = document.getElementById("bw-lines");
+  var readout = document.getElementById("bw-readout");
+  var shareBox = document.getElementById("bw-share");
+  var controls = document.getElementById("bw-controls");
+  if (!barsBox || !linesBox || !window.Viz) return;
+
+  var BASE = 100, STEP_AT = 8, T = 22, ALPHA = 0.6, LCOV = 2;
+  var NAMES = ["零售商", "分销商", "工厂", "供应商"];
+  var COLORS = ["#f59e0b", "#ea580c", "#dc2626", "#991b1b"];
+  var C_CONSUMER = "#78716c";
+
+  function simulate(S, shared) {
+    var orders = [[], [], [], []];
+    var f = [BASE, BASE, BASE, BASE];
+    for (var t = 0; t < T; t++) {
+      var d = t < STEP_AT ? BASE : S;
+      for (var i = 0; i < 4; i++) {
+        var recv;
+        if (shared) recv = d;
+        else if (i === 0) recv = d;
+        else recv = orders[i - 1][t - 1] != null ? orders[i - 1][t - 1] : BASE;
+        var fPrev = f[i];
+        var fNew = shared ? d : fPrev + ALPHA * (recv - fPrev);
+        f[i] = fNew;
+        var ord = shared ? d : Math.max(0, Math.round(fNew + LCOV * (fNew - fPrev)));
+        orders[i].push(ord);
+      }
+    }
+    return orders;
+  }
+
+  function extremes(orders, S) {
+    var up = S >= BASE;
+    return orders.map(function (arr) {
+      var vals = arr.slice(STEP_AT - 1);
+      return up ? Math.max.apply(null, vals) : Math.min.apply(null, vals);
+    });
+  }
+
+  function pct(v) {
+    var p = Math.round((v / BASE - 1) * 100);
+    return (p > 0 ? "+" : "") + p + "%";
+  }
+
+  function render(S, shared) {
+    var orders = simulate(S, shared);
+    var dArr = [];
+    for (var t = 0; t < T; t++) dArr.push(t < STEP_AT ? BASE : S);
+    var ext = extremes(orders, S);
+    var values = [S].concat(ext);
+
+    /* 柱状图 */
+    barsBox.innerHTML = "";
+    var maxV = Math.max.apply(null, values) * 1.18;
+    Viz.bars(barsBox, [
+      { label: "消费者真实需求", value: S, color: C_CONSUMER },
+      { label: NAMES[0] + "订单", value: ext[0], color: COLORS[0] },
+      { label: NAMES[1] + "订单", value: ext[1], color: COLORS[1] },
+      { label: NAMES[2] + "订单", value: ext[2], color: COLORS[2] },
+      { label: NAMES[3] + "订单", value: ext[3], color: COLORS[3] }
+    ], { w: 720, h: 300, max: maxV, margin: { t: 20, r: 14, b: 46, l: 46 } });
+
+    /* 折线图 */
+    linesBox.innerHTML = "";
+    var all = dArr.slice();
+    orders.forEach(function (a) { all = all.concat(a); });
+    var ymax = Math.max(140, Math.max.apply(null, all) * 1.12);
+    var ch = Viz.axes(linesBox, {
+      w: 720, h: 310, margin: { t: 48, r: 16, b: 44, l: 52 },
+      xDomain: [0, T - 1], yDomain: [0, ymax],
+      xTicks: 7, yTicks: 4, xLabel: "周", yLabel: "订单量(件/周)"
+    });
+    ch.plot(function (svg, x, y) {
+      /* 图例 */
+      var legend = [["消费者需求", C_CONSUMER]].concat(NAMES.map(function (n, i2) { return [n + "订单", COLORS[i2]]; }));
+      legend.forEach(function (item, i2) {
+        var lx = 56 + i2 * 128;
+        svg.appendChild(Viz.svgEl("rect", { x: lx, y: 12, width: 11, height: 11, rx: 2, fill: item[1] }));
+        var lt = Viz.svgEl("text", { x: lx + 16, y: 22, "font-size": 11, fill: "#57534e", "font-weight": 700 });
+        lt.textContent = item[0];
+        svg.appendChild(lt);
+      });
+      /* 需求变动标线 */
+      svg.appendChild(Viz.svgEl("line", { x1: x(STEP_AT), x2: x(STEP_AT), y1: y(0), y2: y(ymax), stroke: "#a8a29e", "stroke-width": 1.5, "stroke-dasharray": "5 4" }));
+      var mk = Viz.svgEl("text", { x: x(STEP_AT) + 5, y: y(ymax) + 14, "font-size": 11, fill: "#a8a29e", "font-weight": 700 });
+      mk.textContent = "第" + STEP_AT + "周 需求 " + (S >= BASE ? "+" : "−") + Math.abs(Math.round((S / BASE - 1) * 100)) + "%";
+      svg.appendChild(mk);
+      /* 消费者需求线 */
+      Viz.line(svg, dArr.map(function (v, t) { return [x(t), y(v)]; }), { color: C_CONSUMER, width: 2.5, dash: "7 5" });
+      /* 各层订单线 */
+      orders.forEach(function (a, i2) {
+        Viz.line(svg, a.map(function (v, t) { return [x(t), y(v)]; }), { color: COLORS[i2], width: 2.5 });
+      });
+    });
+
+    /* 读数 */
+    var consPct = pct(S);
+    if (S === BASE) {
+      readout.innerHTML = "当前消费者需求 = 基线 <b>100</b>,没有任何变化:各层订单稳定在 100。把滑块拨到 ±10% 的任何一格,看看一场牛鞭如何被制造出来。";
+    } else if (!shared) {
+      var html = "消费者需求 " + consPct + " → ";
+      html += NAMES.map(function (n, i2) { return n + "订单" + (S >= BASE ? "峰值" : "谷值") + " <span class='amp'>" + pct(ext[i2]) + "</span>"; }).join(" → ");
+      html += "<br>每一层都把下游的过度反应当成新趋势,再补上一轮安全库存:越往上游,鞭梢甩得越狠。上游为此准备的产能与库存,大部分服务的是<b>回声</b>,不是需求。";
+      readout.innerHTML = html;
+    } else {
+      var html2 = "共享模式下,消费者需求 " + consPct + ",各层订单" + (S >= BASE ? "峰值" : "谷值") + " ≈ <span class='calm'>" + pct(ext[3]) + "</span>——与真实需求同步,<span class='calm'>放大消失了</span>。";
+      html2 += "<br>上游不再对着下游订单的回声做预测,而是直接对齐终端消费量:这才是「看见真实需求」的力量。";
+      readout.innerHTML = html2;
+    }
+  }
+
+  var demand = { v: 105 };
+  var slider = Viz.slider(controls, {
+    label: "第 8 周起的消费者需求", min: 90, max: 110, step: 1, value: demand.v,
+    format: function (v) { return v + " 件/周(" + pct(v) + ")"; }
+  });
+  slider.onChange(function (v) { demand.v = v; render(v, shareBox.checked); });
+  shareBox.addEventListener("change", function () { render(demand.v, shareBox.checked); });
+
+  render(demand.v, false);
+})();
+</script>
+</body>
+</html>

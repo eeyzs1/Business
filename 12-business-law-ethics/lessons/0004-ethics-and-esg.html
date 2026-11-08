@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>商业伦理与 ESG · 商业伦理与法律</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .dl-body { font-size: .95rem; color: var(--ink-soft); line-height: 1.85; background: var(--paper-deep); border-radius: 10px; padding: .85rem 1rem; margin: .6rem 0 .9rem; }
+  .dl-body b { color: var(--ink); }
+  .dl-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .7rem; margin: .8rem 0; }
+  .dl-btn {
+    text-align: left; font-family: var(--sans); font-size: .94rem; font-weight: 600; cursor: pointer;
+    border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 10px; padding: .65rem .95rem; line-height: 1.65; transition: all .15s ease;
+  }
+  .dl-btn:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-2px); }
+  .dl-btn.picked { border-color: var(--accent); box-shadow: inset 4px 0 0 var(--accent); background: #fafafa; }
+  .dl-btn:disabled { cursor: default; opacity: .75; }
+  .dl-result { margin-top: 1rem; border-top: 1px dashed var(--line); padding-top: 1rem; }
+  .dl-result h4 { margin: .2rem 0 .5rem; font-size: .98rem; font-family: var(--serif); }
+  .dl-matrix td, .dl-matrix th { font-size: .88rem; }
+  .imp-up { color: var(--good); font-weight: 800; }
+  .imp-down { color: var(--bad); font-weight: 800; }
+  .imp-flat { color: var(--ink-faint); font-weight: 800; }
+  .dl-branches { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .7rem; margin: .8rem 0; }
+  .dl-branch { border: 1.5px solid var(--line); border-radius: 10px; padding: .75rem .95rem; font-size: .89rem; color: var(--ink-soft); line-height: 1.75; background: #fff; }
+  .dl-branch b { color: var(--ink); display: block; margin-bottom: .25rem; }
+  .dl-review { background: color-mix(in srgb, var(--accent) 7%, #fff); border-left: 4px solid var(--accent); border-radius: 8px; padding: .8rem 1rem; font-size: .9rem; color: var(--ink-soft); line-height: 1.8; }
+  .dl-review b { color: var(--ink); }
+  .dl-swap { margin-top: .8rem; }
+  .btn-ghost {
+    background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); border-radius: 999px;
+    padding: .4rem 1.1rem; font-weight: 700; cursor: pointer; font-family: var(--sans); font-size: .88rem;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .green-list li { margin-bottom: .45rem; }
+</style>
+</head>
+<body class="branch-law-ethics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">商业伦理与法律</a><span class="crumb-sep">/</span>
+  <span>商业伦理与 ESG</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">商业伦理与法律 · LESSON 4</p>
+  <h1>商业伦理与 ESG</h1>
+  <p class="lead">法律告诉你「不能做什么」,伦理追问「还应该做什么」。一家公司真正的资产负债表上,有一项资产从不入账,却决定长期估值——<em>信任</em>。这一课学两套语言:伦理决策的框架,以及把「做好事」变成可管理指标的 ESG;然后走进两个没有标准答案的困境,亲眼看看信任如何被赚走、又如何被亏掉。</p>
+
+  <h2><span class="secno">1</span>公司为谁存在:股东至上 vs 利益相关者</h2>
+  <p>1970 年,经济学家米尔顿·弗里德曼写下著名论断:企业唯一的社会责任,是为股东创造利润(「股东至上」,<em>Shareholder Primacy</em>)——只要在规则内赚钱,就是在为社会做贡献。这一思想主导了此后几十年的商学院与华尔街。</p>
+  <p>挑战它的是<em>利益相关者理论</em>(Stakeholder Theory):公司是一张关系网,客户要安全的产品、员工要公平的对待、供应商要守时的付款、社区要干净的环境——股东只是网络中的一个节点,而不是唯一的服务对象。给所有利益相关者创造价值,长期看反而最大化股东价值;把股东放到所有人之先,短期报表可能漂亮,信任却在悄悄漏气。</p>
+  <div class="concept">
+    <div class="concept-title">定义 · 两种企业观</div>
+    <p style="margin:.2rem 0 .5rem"><b>股东至上:</b>经理人对股东负责,利润是记分牌;约束主要来自法律与市场。</p>
+    <p style="margin:0"><b>利益相关者:</b>经理人对所有受影响者负责,信任是记分牌;约束还包括伦理、声誉与长期关系。两者不是善恶之争,而是<b>时间尺度之争</b>:拉到足够长,两者大体重合;短视的「股东至上」与煽情的「利益相关者」各自都会走偏。</p>
+  </div>
+
+  <h2><span class="secno">2</span>伦理决策三道门:合法性 → 政策 → 良知</h2>
+  <p>面对灰色地带,商学院给了一个朴素好用的「三道门」框架——按顺序过,一扇都不要跳:</p>
+  <ul class="steps">
+    <li><b>第一道门 · 合法性:</b>这事违法吗?合规是底线,不讨论。注意:合法只回答「会不会被罚」,不回答「该不该做」。</li>
+    <li><b>第二道门 · 政策:</b>这事符合我们自己写下的价值观、行为准则与对客户的承诺吗?公司政策是把自己钉在墙上的字。</li>
+    <li><b>第三道门 · 良知:</b>过了前两道门,还要过「报纸测试」(<em>Newspaper Test</em>):如果这个决定明天出现在头版,标题怎么写?你愿意让你的家人读到吗?</li>
+  </ul>
+  <p>大多数「翻车」的公司,垮的都不是第一道门,而是把第三道门当成不存在:每一步都「合法」,连起来却是一场灾难。<em>长期主义</em>(Long-termism)的提醒是:信任像复利,建立很慢、清算很快——它不能靠一次公关买回来,只能靠一次次在诱惑面前的选择攒出来。</p>
+
+  <h2><span class="secno">3</span>ESG 三支柱与漂绿识别</h2>
+  <p><em>ESG</em>(Environmental, Social, Governance)是把伦理议题翻译成可度量指标的框架,现在已是投资机构与监管的共同语言:</p>
+  <div class="table-wrap" data-reveal>
+    <table>
+      <thead><tr><th>支柱</th><th>看什么</th><th>示例议题(定性)</th></tr></thead>
+      <tbody>
+        <tr><td><b>E 环境</b>(Environmental)</td><td>经营对自然的影响</td><td>碳排放与能耗、水资源、废弃物与循环、气候风险披露</td></tr>
+        <tr><td><b>S 社会</b>(Social)</td><td>经营对人的影响</td><td>产品安全、员工安全与多元化、供应链劳工、社区关系、数据隐私</td></tr>
+        <tr><td><b>G 治理</b>(Governance)</td><td>权力如何被看住</td><td>董事会独立性与结构、股东权利、商业道德、反腐败、信息披露</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout note">
+    <span class="callout-label">识别漂绿(Greenwashing)的五个信号</span>
+    <ul class="green-list" style="margin:.4rem 0 0;padding-left:1.2rem">
+      <li><b>措辞模糊:</b>「绿色」「环保友好」「可持续」,却给不出任何标准与定义;</li>
+      <li><b>选择性披露:</b>大讲一条环保产线,回避整体排放与污染总量;</li>
+      <li><b>无第三方核验:</b>自说自话,不引用任何独立认证或审计;</li>
+      <li><b>只有故事没有数据:</b>谈愿景、谈初心,唯独没有可比数字;</li>
+      <li><b>言行相悖:</b>主业与宣传互相矛盾——一边加大高污染产能,一边把环保海报买出天价(示意)。</li>
+    </ul>
+    <p style="margin:.6rem 0 0;font-size:.88rem">ESG 内容与相关法规均为<b>教学内容示意,不构成法律建议</b>,亦不构成投资建议。</p>
+  </div>
+
+  <h2><span class="secno">4</span>动手决定:伦理困境决策器</h2>
+  <p>框架背得再熟,不等于会用。下面两个困境都<b>没有唯一正确答案</b>:做出选择后,你会看到该选择对四方利益相关者的影响矩阵、两种可能的后续发展,以及用三道门做的复盘。<em>请两个选项都点一遍</em>——决策器不给你答案,它给你的是「看清自己在押注什么」。</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">伦理困境决策器 · 两个情景,你来拍板</div>
+    <div id="dl-1"></div>
+    <div id="dl-2" style="margin-top:1.6rem;border-top:1px dashed var(--line);padding-top:1.2rem"></div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例:1982 年强生泰诺召回——短期巨亏,换来长期信任(经典案例)</p>
+    <p>1982 年秋,美国芝加哥地区有人在零售货架上的泰诺(Tylenol)胶囊中注入氰化物,七人服用后死亡(公开事实)。致命物质并非强生(Johnson &amp; Johnson)生产环节的过错——投毒发生在产品离开工厂之后。公司面临抉择:等待调查结论,还是立即行动?</p>
+    <p>强生选择了最快的行动:立即在全美范围内下架回收约 3100 万瓶泰诺(公开资料,约值),直接损失以当时亿美元计(示意);同时与媒体充分沟通,并率先推出三重防篡改包装,把行业安全标准整体抬高。短期看,泰诺市场份额大幅下滑;但据公开资料,约两年内销量基本恢复至事发前水平(约值),强生的品牌信任不降反升——「泰诺决策」从此成为商业伦理课堂的第一案例。</p>
+    <p class="case-learn"><b>这一案例的看点:</b>责任不在强生,它仍选择把客户安全放在成本之前——这正是利益相关者逻辑:短期利润是股东的,长期信任是所有人的。信任资产在危机中有两种命运:要么被一次性清算,要么因一次「亏本」的选择而增值。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>股东至上(Shareholder Primacy)</dt><dd>企业首要责任是为股东创造利润的观点,与弗里德曼 1970 年的论述相关。</dd>
+      <dt>利益相关者(Stakeholder)</dt><dd>受公司经营影响的各方:客户、员工、供应商、社区、监管与股东。</dd>
+      <dt>报纸测试(Newspaper Test)</dt><dd>伦理自检:如果这个决定明天登上报纸头版,你能否坦然面对。</dd>
+      <dt>ESG</dt><dd>环境(Environmental)、社会(Social)、治理(Governance)三支柱的可持续性评估框架。</dd>
+      <dt>漂绿(Greenwashing)</dt><dd>以模糊、片面或无核验的环保宣传,包装实质未改善的环境表现。</dd>
+      <dt>长期主义(Long-termism)</dt><dd>以长期价值而非短期利润为决策坐标,把信任视为核心资产。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>法律是底线,伦理是方向盘:三道门顺序过——合法、合政策、过良知。信任是最大的资产:建立靠复利,崩塌只在一夜。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "「股东至上」与「利益相关者理论」的根本分歧在于:",
+        "options": ["企业要不要依法完成工商登记注册", "公司经营应当首要为谁创造价值", "企业要不要编制报表并对外披露", "经理人的薪酬要不要与业绩挂钩"],
+        "answer": 1,
+        "explain": "分歧只有一个:<b>首要为谁服务</b>——是股东独享优先级,还是客户、员工、社区、股东等利益相关者共同进入目标函数。登记、披露、薪酬激励在两种企业观下都需要,分歧不在这些工具上。" },
+      { "q": "某公司年报大篇幅宣传「绿色愿景」,却不披露排放总量数据,也没有任何第三方核验。这种行为最接近:",
+        "options": ["绿色溢价(Green Premium)的合理定价", "循环经济(Circular Economy)的闭环设计", "碳中和(Carbon Neutrality)的科学核算", "漂绿(Greenwashing)的典型操作"],
+        "answer": 3,
+        "explain": "模糊措辞 + 选择性披露 + 无核验,正中漂绿的识别信号。注意区分:绿色溢价是定价概念,循环经济是生产模式,碳中和需要可核算的排放数据——它们都要「有数字、有标准」,漂绿的特点恰恰是只有故事。" },
+      { "q": "对伦理决策三道门「合法性 → 政策 → 良知」的正确理解是:",
+        "options": ["三道门任选其一通过即可心安理得", "只要合法就必然合乎伦理无需再问", "合法是底线而非上限,后两道门继续把关", "良知这一道门应当最先于法律去使用"],
+        "answer": 2,
+        "explain": "合法只回答「会不会被罚」,不回答「该不该做」;政策与良知继续把关。顺序也不能颠倒:先用良知凌驾法律的「侠客式决策」,往往同时伤害公司与利益相关者——三道门是层层递进的过滤器。" },
+      { "q": "1982 年强生在泰诺投毒事件中,事故并非自身过错,仍全面下架召回。长期看,这次「巨亏」换来的核心资产是:",
+        "options": ["消费者与市场的信任", "更低的单位生产成本", "更高的渠道库存水平", "更严格的劳动用工制度"],
+        "answer": 0,
+        "explain": "召回花掉的是当期利润(成本反而上升,库存被清空),换来的是<b>信任</b>:约两年内销量基本恢复(公开资料,约值),品牌资产增值。这正是「信任是最大的资产」最著名的一次实物演示。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《基业长青》吉姆·柯林斯、杰里·波拉斯 · 中信出版社(建议读:造钟而非报时、超越利润的追求两章,长期主义的经典研究)</li>
+      <li>《资本主义与自由》米尔顿·弗里德曼 · 商务印书馆(建议读:相关章节,理解股东至上的思想源头)</li>
+      <li>可搜索:利益相关者理论 / ESG / 漂绿(greenwashing)/ 弗里德曼 1970《企业的社会责任是增加利润》</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-corporate-governance.html"><span class="pager-label">上一课</span><span class="pager-title">公司治理:代理问题</span></a>
+    <a class="next" href="../../index.html"><span class="pager-label">下一课</span><span class="pager-title">回到总览 · 完成全部课程 🎉</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「把决策器里的情景换成我行业里的版本让我再练一次?」「帮我用三道门分析一个我遇到的灰色决定?」——伦理这一课,只能在真实处境里学会。</div>
+    <p>商业伦理与法律 · 第 4 课 · 情景与案例为公开资料的约值描述或教学虚构示意;教学内容示意,不构成法律建议,亦不构成投资建议。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var IMP = { up: '<span class="imp-up">▲ 改善</span>', down: '<span class="imp-down">▼ 受损</span>', flat: '<span class="imp-flat">━ 持平/复杂</span>' };
+
+  var DILEMMAS = [
+    {
+      mount: "dl-1",
+      title: "困境一 · 低概率的安全隐患",
+      body: "你是一家中型家电厂商的负责人。上市一年的空气炸锅收到零星反馈:极少数机器在极端工况下存在过热隐患,发生概率估计约十万分之一(示意),尚无严重人身伤害。全面召回换新大约要花掉相当于<b>全年利润一半</b>的钱(示意)。法务提醒:现行规则下是否触发强制召回义务,存在解释空间。你拍板:",
+      choices: {
+        a: {
+          label: "A · 全面召回,公开说明",
+          matrix: [
+            ["客户", "up", "隐患清零,安全感与信任上升"],
+            ["员工", "flat", "短期高压加班,但普遍认同公司在担责"],
+            ["股东", "down", "当年约一半利润转为召回成本(示意)"],
+            ["社区与监管", "up", "主动担责,成为行业参照案例"]
+          ],
+          branches: [
+            ["分支 ① · 更常见的发展", "短期利润受挫 → 媒体与监管认可 → 老用户复购与口碑回升,市占率在数个季度内修复。1982 年强生泰诺走的正是这条路(见下方案例)。"],
+            ["分支 ② · 风险路径", "竞争对手借「质量风波」攻击,召回被部分用户误读为产品不可靠——主动担责并不自动兑换市场回报,还需要强沟通与执行配套。"]
+          ],
+          review: "<b>三道门复盘:</b>合法性——主动召回同时满足报告与召回义务,法律风险最低;政策——与「用户安全优先」的公开承诺一致;良知——报纸测试通过:头版登出来,这是一家你愿意为之工作的公司。"
+        },
+        b: {
+          label: "B · 暂不召回,静默改进下一批",
+          matrix: [
+            ["客户", "down", "继续承担未告知的低概率风险"],
+            ["员工", "down", "知情员工承受道德压力,士气受损"],
+            ["股东", "flat", "短期报表好看,尾部风险在积累"],
+            ["社区与监管", "down", "一旦曝光,处罚、诉讼与信任清算集中到来"]
+          ],
+          branches: [
+            ["分支 ① · 侥幸过关", "隐患概率极低,新批次已改进,事件渐渐平息——确实有公司这样「过关」,但你把公司押在了运气上。"],
+            ["分支 ② · 爆雷路径", "一次事故上了热搜 → 监管调查 → 集体索赔 → 品牌塌方。悖论:单件概率低,基数一大几乎必然发生;而「早就知道」四个字,是法庭与舆论手里最重的砝码(汽车与家电业均有先例,示意)。"]
+          ],
+          review: "<b>三道门复盘:</b>合法性——若被认定隐瞒已知风险,可能触犯报告与召回义务,「质量问题」会升级为「诚信问题」;政策——与公司公开承诺的安全条款相悖;良知——报纸测试很难通过。记住:「存在解释空间」不等于「存在伦理空间」。"
+        }
+      }
+    },
+    {
+      mount: "dl-2",
+      title: "困境二 · 能变现的数据",
+      body: "你的 App 积累了大量用户行为数据。一家广告集团开出可观报价——大约相当于你<b>全年研发预算</b>(示意),希望购买一份「脱敏」数据包用于精准投放。而你的隐私政策只写了数据「用于改进产品」,并未就此类用途取得用户的明确同意。你拍板:",
+      choices: {
+        a: {
+          label: "A · 先建「征求同意」流程,再谈变现",
+          matrix: [
+            ["客户", "up", "拿回知情权与选择权"],
+            ["员工", "up", "获得干净合法的数据管道,长期好做事"],
+            ["股东", "flat", "短期错失一笔大钱,换来可持续的数据资产"],
+            ["社区与监管", "up", "合规姿态降低系统性风险"]
+          ],
+          branches: [
+            ["分支 ① · 复利分支", "同意率做起来之后,数据合作反而更稳固、单价更高——「用户同意」本身变成了信任资产与竞争壁垒。"],
+            ["分支 ② · 成本分支", "开发同意流程需要时间,广告集团转身找了别家;对手用变现的钱跑得更快——信任的溢价,短期报表上看不见。"]
+          ],
+          review: "<b>三道门复盘:</b>合法性——先取得同意再使用,风险最低;政策——把「用户授权」落进数据政策的执行细则;良知——报纸测试通过。长期主义视角:数据生意恰恰是建立在信任上的生意。"
+        },
+        b: {
+          label: "B · 出售「脱敏」数据包",
+          matrix: [
+            ["客户", "down", "用途超出预期;纵然「脱敏」,选择权已被绕过"],
+            ["员工", "down", "工程与法务被迫为决定背书,承受道德压力"],
+            ["股东", "up", "一笔可观的即时现金入账"],
+            ["社区与监管", "down", "个人信息保护的法律与舆论风险陡增"]
+          ],
+          branches: [
+            ["分支 ① · 过关分支", "「脱敏」经得起推敲,合作低调完成,无人追究——短期财报确实更好看。"],
+            ["分支 ② · 爆雷分支", "研究者证明「脱敏」数据可被重新识别(此类研究真实存在,示意)→ 媒体报道 → 监管处罚 → 用户卸载潮。数据上的信任一旦崩塌,会连带主业一起受损。"]
+          ],
+          review: "<b>三道门复盘:</b>合法性——「脱敏」与「匿名化」在法律上不是一回事,定性存在实质风险;政策——与隐私政策明示的用途相悖;良知——换位测试:如果是你自己的行为记录被这样卖掉,你接受吗?"
+        }
+      }
+    }
+  ];
+
+  DILEMMAS.forEach(function (d) {
+    var root = document.getElementById(d.mount);
+    if (!root) return;
+
+    var title = document.createElement("div");
+    title.className = "sim-title";
+    title.style.marginTop = ".3rem";
+    title.textContent = d.title;
+
+    var body = document.createElement("div");
+    body.className = "dl-body";
+    body.innerHTML = d.body;
+
+    var choices = document.createElement("div");
+    choices.className = "dl-choices";
+
+    var result = document.createElement("div");
+    result.className = "dl-result";
+
+    function render(key) {
+      var c = d.choices[key];
+      result.innerHTML =
+        "<h4>你选择了:" + c.label + "</h4>" +
+        '<p style="font-size:.88rem;color:var(--ink-faint);margin:.1rem 0 .6rem">利益相关者影响矩阵(客户 / 员工 / 股东 / 社区)</p>' +
+        '<div class="table-wrap"><table class="dl-matrix"><thead><tr><th>利益相关者</th><th>影响</th><th>说明</th></tr></thead><tbody>' +
+        c.matrix.map(function (m) { return "<tr><td><b>" + m[0] + "</b></td><td>" + IMP[m[1]] + "</td><td>" + m[2] + "</td></tr>"; }).join("") +
+        "</tbody></table></div>" +
+        '<div class="dl-branches">' +
+        c.branches.map(function (b) { return '<div class="dl-branch"><b>' + b[0] + "</b>" + b[1] + "</div>"; }).join("") +
+        "</div>" +
+        '<div class="dl-review">' + c.review + "</div>" +
+        '<p style="font-size:.86rem;color:var(--ink-faint);margin:.7rem 0 0">两种后续发展都写给你看——不是让你挑后果,而是让你看清自己在押注哪种后果。没有唯一正确答案,但有更清醒的决策者。</p>';
+      result.hidden = false;
+    }
+
+    ["a", "b"].forEach(function (key) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "dl-btn";
+      btn.textContent = d.choices[key].label;
+      btn.addEventListener("click", function () {
+        choices.querySelectorAll(".dl-btn").forEach(function (x) { x.disabled = true; });
+        choices.querySelectorAll(".dl-btn").forEach(function (x) { x.classList.remove("picked"); });
+        btn.classList.add("picked");
+        render(key);
+      });
+      choices.appendChild(btn);
+    });
+
+    var swap = document.createElement("button");
+    swap.type = "button";
+    swap.className = "btn-ghost dl-swap";
+    swap.textContent = "↻ 换一个选择对比(建议两边都试)";
+    swap.hidden = true;
+    swap.addEventListener("click", function () {
+      choices.querySelectorAll(".dl-btn").forEach(function (x) { x.disabled = false; x.classList.remove("picked"); });
+      result.innerHTML = "";
+      result.hidden = true;
+    });
+
+    root.appendChild(title);
+    root.appendChild(body);
+    root.appendChild(choices);
+    root.appendChild(result);
+    root.appendChild(swap);
+
+    /* 首次选择后,露出「换一个选择」按钮 */
+    choices.addEventListener("click", function () {
+      swap.hidden = false;
+    });
+  });
+})();
+</script>
+</body>
+</html>

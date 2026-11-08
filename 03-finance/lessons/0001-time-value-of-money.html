@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>货币的时间价值 · 金融学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+</style>
+</head>
+<body class="branch-finance">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">金融学</a><span class="crumb-sep">/</span>
+  <span>货币的时间价值</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">金融学 · LESSON 1</p>
+  <h1>货币的时间价值</h1>
+  <p class="lead">同样是 100 元,今天拿到与明年拿到,价值并不相等。这个看似简单的直觉,是整座金融大厦的地基:贷款利率、保险定价、公司估值、退休规划,本质上都在回答同一个问题——<em>未来的钱,今天值多少?</em></p>
+
+  <h2><span class="secno">1</span>为什么今天的 100 元更值钱</h2>
+  <p>钱在不同时点不能直接相加,原因有三个:</p>
+  <div class="concept">
+    <div class="concept-title">三大原因</div>
+    <p><strong>机会成本(Opportunity Cost)</strong>:今天的钱可以立刻投入生产或放贷生息,等到明年就少赚一年的回报。把钱借出去时放弃的这部分回报,是资金真实的价格。</p>
+    <p><strong>通货膨胀(Inflation)</strong>:大多数年份物价温和上涨,同样的钞票,明年的购买力通常低于今年。</p>
+    <p><strong>风险(Risk)</strong>:未来的承诺可能兑现不了——借款人违约、公司倒闭、政策生变。等待,本身就是把自己暴露在不确定性里。</p>
+  </div>
+  <p>所以「时间」本身有价格,这个价格就是<em>利率(Interest Rate)</em>。承认它,是所有金融计算的第一步。</p>
+
+  <h2><span class="secno">2</span>终值与复利:钱会滚雪球</h2>
+  <p>把今天的钱推向未来,得到<em>终值(Future Value, FV)</em>;今天的金额本身叫<em>现值(Present Value, PV)</em>。核心公式只有一个:</p>
+  <div class="formula">FV = PV × (1 + r)<sup>n</sup></div>
+  <p>其中 r 是每期利率,n 是期数。<em>单利(Simple Interest)</em>只有本金生息;而<em>复利(Compound Interest)</em>是「利息也生息」——每期利息计入本金,下一期按更大的基数计息。前几年两者差距很小,后段越拉越大:<strong>雪球的意义在后半程</strong>。反过来看也一样残酷:利率越高、期限越长,公式的指数效应越猛——这正是高息网贷与信用卡分期如此伤人的原因:雪球也可以反向滚,碾压的是借款人。</p>
+
+  <div class="sim" id="tvm-sim">
+    <div class="sim-title">复利模拟器:拨动三个旋钮,看雪球怎么滚</div>
+    <div class="sim-controls" id="tvm-controls"></div>
+    <p class="sim-readout" style="margin:.6rem 0 .25rem">
+      期末终值(复利)<b id="tvm-fv">0</b> 元 · 期末终值(单利)<b id="tvm-simple">0</b> 元 · 复利多赚 <b id="tvm-diff">0</b> 元
+    </p>
+    <p class="sim-readout" style="margin:.25rem 0 .8rem;font-size:.95rem">
+      按 72 法则,当前利率下资金翻倍约需 <b id="tvm-dbl">—</b>(见第 4 节)。曲线实时重绘:实线为复利,虚线为单利。
+    </p>
+    <div id="tvm-chart" aria-label="复利与单利增长曲线"></div>
+  </div>
+
+  <h2><span class="secno">3</span>贴现:把未来拉回今天</h2>
+  <p><em>贴现(Discounting)</em>是复利的逆运算——把未来的钱除回去,换算成今天的现值:</p>
+  <div class="formula">PV = FV ÷ (1 + r)<sup>n</sup></div>
+  <p>这里的 r 又叫<em>折现率(Discount Rate)</em>,是你「要求的回报率」:它同时补偿了上面说的机会成本、通胀与风险。举例:一年后确定收回 105 万元、公司要求 5% 的年回报,现值就是 105 ÷ 1.05 = 100 万元。如果这张欠条现在只卖 98 万元,买下它就白赚 2 万元的净现值——这正是第 3 课 NPV 的雏形。</p>
+
+  <h2><span class="secno">4</span>72 法则:心算翻倍</h2>
+  <div class="callout tip">
+    <span class="callout-label">速算工具</span>
+    <p style="margin:.4rem 0 0"><strong>72 法则(Rule of 72)</strong>:年利率为 r% 时,资金翻倍大约需要 <strong>72 ÷ r</strong> 年。年化 8% 约 9 年翻倍,3% 约 24 年,12% 约 6 年。它是近似(精确解是 ln2 ÷ ln(1+r)),在 6%–10% 区间最准,但足够用来快速校验理财宣传里的数字。</p>
+  </div>
+
+  <h2><span class="secno">5</span>案例:早十年定投,差出一百万</h2>
+  <div class="case">
+    <p class="case-title">25 岁的小陈 vs 35 岁的老王</p>
+    <p>两人都计划 <strong>60 岁</strong>退休,每月定投 <strong>1000 元</strong>买同一只宽基指数基金,假设长期年化<strong>约 7%</strong>(示意假设:取长期股票市场收益的历史量级,<strong>不构成预测</strong>;实际会有波动与亏损年份)。</p>
+    <ul>
+      <li><strong>小陈 25 岁开始</strong>:投 420 个月,本金共 42 万元,60 岁时终值约 <strong>180 万元</strong>;</li>
+      <li><strong>老王 35 岁开始</strong>:投 300 个月,本金共 30 万元,终值约 <strong>81 万元</strong>。</li>
+    </ul>
+    <p>老王只少投了 12 万元本金,终值却少了约 <strong>100 万元</strong>——差距的大头不是「多存的钱」,而是最早期那批钱多滚了十年复利。</p>
+    <p class="sim-readout" style="font-size:.95rem">示意终值:小陈 <b id="case-a">0</b> 元 · 老王 <b id="case-b">0</b> 元(按月复利公式计算)</p>
+    <div id="case-bars"></div>
+    <p class="case-learn"><b>学到什么</b>时间价值不是抽象公式,而是「早开始」的数学理由。同一公式反向用,就是贷款月供与退休缺口的算法——数字会替你讲道理。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>现值(PV)</dt><dd>未来的一笔钱折算到今天的价值。</dd>
+      <dt>终值(FV)</dt><dd>今天的钱按复利滚到未来某时点的价值。</dd>
+      <dt>复利(Compound Interest)</dt><dd>利息计入本金、继续生息的计息方式。</dd>
+      <dt>单利(Simple Interest)</dt><dd>只按原始本金计息的方式。</dd>
+      <dt>贴现(Discounting)</dt><dd>把未来的现金流换算成现值的逆运算。</dd>
+      <dt>折现率(r)</dt><dd>换算时「要求的回报率」,补偿机会成本、通胀与风险。</dd>
+      <dt>72 法则(Rule of 72)</dt><dd>用 72 除以年利率百分数,速算资金翻倍年数。</dd>
+      <dt>机会成本(Opportunity Cost)</dt><dd>为某个选择而放弃的最佳替代收益。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>今天的钱比未来的钱更值钱:机会成本、通胀与风险是三大原因。复利让时间成为盟友——<strong>越早开始,雪球越大</strong>。任何未来的钱都必须先贴现,才能与今天的钱比较。</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">自查测验</div>
+    <script type="application/json">
+    [
+      {
+        "q": "老板说「明年发你 10 万元奖金」,另一个方案是「现在立刻给你 10 万元」。今天的 10 万元更值钱。下列哪一项<b>不是</b>支持这一判断的理由?",
+        "options": [
+          "资金有机会成本:今天拿到可以先投资生息",
+          "存在通货膨胀:未来的钱购买力通常更低",
+          "未来有不确定性:承诺可能无法按时兑现",
+          "复利具有惩罚性:持有期限越长利息越稀薄"
+        ],
+        "answer": 3,
+        "explain": "前三项正是货币时间价值的三大来源:机会成本、通胀与风险。第四项说反了——复利让利息再生利息,期限越长终值越大,是奖励而不是惩罚。"
+      },
+      {
+        "q": "用「72 法则」估算:年复利率约 8%,一笔钱翻倍大约需要多少年?",
+        "options": ["约 5 年", "约 7 年", "约 9 年", "约 12 年"],
+        "answer": 2,
+        "explain": "72 ÷ 8 = 9 年。精确解为 ln2 ÷ ln1.08 ≈ 9.0 年,法则在这个利率区间几乎不失真。"
+      },
+      {
+        "q": "同样的本金、利率与期限,复利终值为什么高于单利?",
+        "options": [
+          "复利把利息并入本金,让利滚利",
+          "单利把利息提前返还,本金变少",
+          "两者终值相同,只是记账口径不同",
+          "复利享有税优,单利要多缴利息税"
+        ],
+        "answer": 0,
+        "explain": "复利的关键在「利息也生息」:每期利息计入本金,下一期按更大的基数计息;单利始终按原始本金计息,两者的差距随期限越拉越大。"
+      },
+      {
+        "q": "一年后将确定收到 105 万元,公司要求的年回报率为 5%。这笔未来收入的现值最接近多少?",
+        "options": ["95 万元", "100 万元", "105 万元", "110 万元"],
+        "answer": 1,
+        "explain": "现值 = 105 ÷ (1 + 5%) = 100 万元。贴现,就是用你要求的回报率,把未来的钱「除回」今天。"
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《公司理财》斯蒂芬·罗斯 等 · 机械工业出版社(建议读:第 4 章「折现现金流量估价」)</li>
+      <li>《漫步华尔街》伯顿·马尔基尔 · 机械工业出版社(建议读:「生命周期投资指南」一章,看复利与长期定投的配合)</li>
+      <li>可搜索关键词:Rule of 72 · compound interest · 定投复利计算器</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">← 上一课</span><span class="pager-title">金融学 · 分支导学</span></a>
+    <a class="next" href="0002-risk-and-return.html"><span class="pager-label">下一课 →</span><span class="pager-title">风险与收益</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>比如「房贷等额本息里本金和利息的比例为什么在变?」——回到对话里直接问你的 AI 老师,把本课公式套进你自己的场景。</div>
+    <p>金融学 · 第 1 课 · 货币的时间价值 | 下一课:风险与收益——为什么借出去的钱,还要收一笔「波动费」?</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- 复利模拟器 ---- */
+  var controls = document.getElementById("tvm-controls");
+  var chartBox = document.getElementById("tvm-chart");
+  var outFV = document.getElementById("tvm-fv");
+  var outSimple = document.getElementById("tvm-simple");
+  var outDiff = document.getElementById("tvm-diff");
+  var outDbl = document.getElementById("tvm-dbl");
+
+  function fmtWan(v) { return (v / 10000).toFixed(1).replace(/\.0$/, "") + " 万"; }
+
+  var sPV = Viz.slider(controls, { label: "本金", min: 10000, max: 200000, step: 5000, value: 100000, format: fmtWan });
+  var sRate = Viz.slider(controls, { label: "年利率", min: 1, max: 15, step: 0.5, value: 7, format: function (v) { return v.toFixed(1) + "%"; } });
+  var sYears = Viz.slider(controls, { label: "年数", min: 1, max: 40, step: 1, value: 20, format: function (v) { return v + " 年"; } });
+
+  function fmtMoney(x) { return Math.round(x).toLocaleString("zh-CN"); }
+
+  function roll(el, target, fmt) {
+    var from = typeof el.__v === "number" ? el.__v : 0;
+    el.__v = target;
+    Viz.countUp(el, target, { from: from, dur: 380, format: fmt });
+  }
+
+  function render() {
+    var pv = sPV.get(), r = sRate.get() / 100, n = sYears.get();
+    var seriesC = [], seriesS = [], maxV = pv;
+    for (var y = 0; y <= n; y++) {
+      var c = pv * Math.pow(1 + r, y);
+      var s = pv * (1 + r * y);
+      seriesC.push([y, c]);
+      seriesS.push([y, s]);
+      if (c > maxV) maxV = c;
+    }
+    roll(outFV, seriesC[n][1], fmtMoney);
+    roll(outSimple, seriesS[n][1], fmtMoney);
+    roll(outDiff, seriesC[n][1] - seriesS[n][1], fmtMoney);
+    outDbl.textContent = (72 / (r * 100)).toFixed(0) + " 年";
+
+    chartBox.innerHTML = "";
+    var ax = Viz.axes(chartBox, {
+      w: 640, h: 380, margin: { t: 22, r: 20, b: 46, l: 64 },
+      xDomain: [0, n], yDomain: [0, maxV * 1.12],
+      xLabel: "年", yLabel: "金额(元)",
+      xTicks: Math.min(n, 8), yTicks: 5,
+      yFormat: function (v) { return v >= 10000 ? Math.round(v / 10000) + "万" : Math.round(v); }
+    });
+    ax.plot(function (svg, x, y, m, iw, ih) {
+      var ptsC = seriesC.map(function (p) { return [x(p[0]), y(p[1])]; });
+      var ptsS = seriesS.map(function (p) { return [x(p[0]), y(p[1])]; });
+      Viz.area(svg, ptsC.concat([[x(n), y(0)], [x(0), y(0)]]), "#047857", 0.10);
+      Viz.line(svg, ptsC, { color: "#047857", width: 3.5 });
+      Viz.line(svg, ptsS, { color: "#a8a29e", width: 2.5, dash: "7 6" });
+      Viz.dot(svg, ptsC[n][0], ptsC[n][1], { fill: "#047857", r: 6 });
+      Viz.label(svg, ptsC[n][0] - 10, ptsC[n][1] - 12, "复利 " + fmtMoney(seriesC[n][1]) + " 元", { anchor: "end", color: "#047857" });
+      Viz.label(svg, ptsS[n][0] - 10, ptsS[n][1] + 22, "单利 " + fmtMoney(seriesS[n][1]) + " 元", { anchor: "end", color: "#78716c" });
+      Viz.line(svg, [[x(0), y(pv)], [x(n), y(pv)]], { color: "#d6d3d1", width: 1.5, dash: "3 5" });
+    });
+  }
+  [sPV, sRate, sYears].forEach(function (s) { s.onChange(render); });
+  render();
+
+  /* ---- 案例示意:25 岁 vs 35 岁定投 ---- */
+  function fvAnnuity(monthly, yearRate, months) {
+    var r = yearRate / 12;
+    return monthly * ((Math.pow(1 + r, months) - 1) / r);
+  }
+  var fvYoung = fvAnnuity(1000, 0.07, 420);
+  var fvOld = fvAnnuity(1000, 0.07, 300);
+  Viz.countUp(document.getElementById("case-a"), fvYoung, { dur: 1500, format: fmtMoney });
+  Viz.countUp(document.getElementById("case-b"), fvOld, { dur: 1500, format: fmtMoney });
+  Viz.bars(document.getElementById("case-bars"), [
+    { label: "25 岁起步 · 到 60 岁终值", value: fvYoung / 10000, color: "#047857" },
+    { label: "35 岁起步 · 到 60 岁终值", value: fvOld / 10000, color: "#94a3b8" },
+    { label: "两者的本金之差", value: 12, color: "#d6d3d1" }
+  ], { h: 300, valueFormat: function (v) { return v.toFixed(0) + " 万"; } });
+})();
+</script>
+</body>
+</html>

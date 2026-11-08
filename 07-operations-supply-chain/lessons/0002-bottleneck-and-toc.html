@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>瓶颈与约束理论 · 运营与供应链</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .sim-btn { background:var(--paper-deep); border:1.5px solid var(--line); border-radius:999px; padding:.38rem 1rem;
+    font-weight:700; font-size:.88rem; cursor:pointer; color:var(--ink); font-family:var(--sans); }
+  .sim-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .sim-btn.primary { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+  .outbar { position:relative; height:36px; background:var(--paper-deep); border-radius:999px; overflow:hidden; margin:.9rem 0 .4rem; }
+  .outbar-fill { position:absolute; top:0; bottom:0; left:0; width:0;
+    background:linear-gradient(90deg,#f59e0b,#b45309); border-radius:999px; transition:width .5s ease; }
+  .outbar-label { position:relative; z-index:1; text-align:center; line-height:36px; font-weight:800; font-size:.92rem; }
+  .toc-msg { border-radius:10px; padding:.65rem .95rem; font-size:.93rem; line-height:1.7; margin-top:.6rem; }
+  .toc-msg.good { background:#f0fdf4; border:1px solid var(--good); color:var(--good); }
+  .toc-msg.bad  { background:#fef2f2; border:1px solid var(--bad);  color:var(--bad); }
+  .toc-msg.note { background:var(--paper-deep); border:1px solid var(--line); color:var(--ink-soft); }
+</style>
+</head>
+<body class="branch-operations">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">运营与供应链</a><span class="crumb-sep">/</span>
+  <span>瓶颈与约束理论</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">运营与供应链 · LESSON 2</p>
+  <h1>瓶颈与约束理论</h1>
+  <p class="lead">上一课你已经在奶茶店里见过瓶颈:最慢的一站决定整条线的产出。这一课把这个直觉升级成一套完整的管理哲学——<em>约束理论</em>,并回答一个扎心的问题:为什么给快的环节投资,几乎总是白花钱?</p>
+
+  <h2><span class="secno">1</span>一家越忙越亏的工厂</h2>
+  <p>1984 年,物理学家出身的顾问高德拉特(Eliyahu Goldratt)写了一本商业小说《目标》(The Goal):厂长罗哥的工厂人人忙碌、机器满负荷,却在倒闭边缘。顾问钟纳只问了一个问题:「你们的瓶颈在哪里?」由此引出<em>约束理论(Theory of Constraints, TOC)</em>的核心命题:</p>
+  <div class="concept">
+    <div class="concept-title">约束理论的核心命题</div>
+    <p style="margin-bottom:0">任何系统的产出都由极少数<em>约束(Constraint)</em>——也就是瓶颈——决定,如同一条链子的强度由最弱一环决定。因此:<b>提升非瓶颈环节,不会增加系统产出</b>;它多干出来的东西无法通过瓶颈,只会变成堆积的库存与提前花掉的成本。管理一个系统,首先意味着管理它的约束。</p>
+  </div>
+  <p>为什么「人人忙碌」反而是坏消息?因为非瓶颈环节的忙碌,本质上是在给瓶颈「排长队」。约束理论甚至给了一套不一样的账本——<em>产出会计(Throughput Accounting)</em>:只盯三个数:<em>有效产出(Throughput, T)</em>(卖出去赚回来的钱)、<em>库存(Inventory, I)</em>(压在系统里的钱)、<em>运营费用(Operating Expense, OE)</em>(把钱变成产出所花的钱)。利润的方向,就是让 T 升、让 I 和 OE 降——而提升非瓶颈速度,常常是 I 升、T 不动。</p>
+
+  <h2><span class="secno">2</span>为什么提升非瓶颈无用,甚至有害</h2>
+  <p>把五站流水线想成五段粗细不同的水管:水量由最细的一段决定。把粗管换成更粗的,水流一分不变;但上游的水会更快地涌到细管前,积成一潭——在工厂里,这一潭就是在制品(Work in Process)库存:占资金、占场地、还会把缺陷藏起来(第 3 课会看到,库存是问题的「遮羞布」)。</p>
+  <p>更隐蔽的伤害在决策层面:非瓶颈环节「效率」的考核数字变漂亮了,管理层误以为系统在改善,于是继续在错误的地方投资。TOC 的忠告是:<em>让非瓶颈环节按需生产、允许它「闲置」,不是浪费,是纪律</em>。这就是「鼓-缓冲-绳」(Drum-Buffer-Rope, DBR)调度思想的精髓:以瓶颈的鼓点定全线节拍(鼓),在瓶颈前设一小段缓冲库存保护它不挨饿(缓冲),用一根「绳」限制投料速度,不让上游脱缰(绳)。</p>
+
+  <h2><span class="secno">3</span>聚焦五步:与约束共处的方法论</h2>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 560 310" role="img" style="width:100%;max-width:520px;height:auto;display:block;margin:0 auto">
+        <circle cx="280" cy="158" r="105" fill="none" stroke="#e7e0d3" stroke-width="2" stroke-dasharray="6 6"></circle>
+        <path d="M348,70 L338,76 L347,80 Z" fill="#b45309" transform="rotate(18 348 70)"></path>
+        <path d="M380,184 L378,173 L370,180 Z" fill="#b45309" transform="rotate(90 380 184)"></path>
+        <path d="M212,246 L222,242 L214,236 Z" fill="#b45309" transform="rotate(162 212 246)"></path>
+        <path d="M180,184 L190,180 L182,173 Z" fill="#b45309" transform="rotate(234 180 184)"></path>
+        <path d="M218,70 L214,80 L224,78 Z" fill="#b45309" transform="rotate(306 218 70)"></path>
+        <circle cx="280" cy="53" r="42" fill="#fff" stroke="#b45309" stroke-width="2.5"></circle>
+        <text x="280" y="50" text-anchor="middle" font-size="13" font-weight="800" fill="#b45309">① 识别</text>
+        <text x="280" y="68" text-anchor="middle" font-size="10.5" fill="#78716c">找到瓶颈</text>
+        <circle cx="380" cy="126" r="42" fill="#fff" stroke="#b45309" stroke-width="2.5"></circle>
+        <text x="380" y="123" text-anchor="middle" font-size="13" font-weight="800" fill="#b45309">② 挖尽</text>
+        <text x="380" y="141" text-anchor="middle" font-size="10.5" fill="#78716c">榨干瓶颈产能</text>
+        <circle cx="342" cy="243" r="42" fill="#fff" stroke="#b45309" stroke-width="2.5"></circle>
+        <text x="342" y="240" text-anchor="middle" font-size="13" font-weight="800" fill="#b45309">③ 迁就</text>
+        <text x="342" y="258" text-anchor="middle" font-size="10.5" fill="#78716c">全线配合瓶颈</text>
+        <circle cx="218" cy="243" r="42" fill="#fff" stroke="#b45309" stroke-width="2.5"></circle>
+        <text x="218" y="240" text-anchor="middle" font-size="13" font-weight="800" fill="#b45309">④ 打破</text>
+        <text x="218" y="258" text-anchor="middle" font-size="10.5" fill="#78716c">扩容或另想办法</text>
+        <circle cx="180" cy="126" r="42" fill="#fef2f2" stroke="#b91c1c" stroke-width="2.5"></circle>
+        <text x="180" y="123" text-anchor="middle" font-size="13" font-weight="800" fill="#b91c1c">⑤ 循环</text>
+        <text x="180" y="141" text-anchor="middle" font-size="10.5" fill="#b91c1c">约束会换地方</text>
+        <text x="280" y="154" text-anchor="middle" font-size="13" font-weight="800" fill="#1c1917">聚焦五步</text>
+        <text x="280" y="172" text-anchor="middle" font-size="10.5" fill="#a8a29e">Five Focusing Steps</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 聚焦五步(Five Focusing Steps):一个永不完结的循环——打破旧约束后,新约束会在别处出现,于是回到第一步。</figcaption>
+  </figure>
+  <ol class="steps">
+    <li><b>识别(Identify)</b>——找出系统真正的瓶颈:排队最长、在制品堆积最多的地方,通常就是。</li>
+    <li><b>挖尽(Exploit)</b>——不花一分钱,先榨干瓶颈的既有产能:不让它停机待料、不在瓶颈时段换型、把质检与保养挪到非瓶颈时段、不让它加工废件。</li>
+    <li><b>迁就(Subordinate)</b>——让其余一切环节迁就瓶颈的节奏:按瓶颈的「鼓点」投料,宁可让快的环节闲着。</li>
+    <li><b>打破(Elevate)</b>——前三步用尽仍不够,才花钱扩容:加设备、加班次、外协分流。</li>
+    <li><b>循环(Repeat)</b>——瓶颈被打断后会上移到别处;警惕惰性,回到第一步,而不是对着已被解决的旧约束继续优化。</li>
+  </ol>
+  <div class="callout note"><span class="callout-label">顺序即深意</span>先「挖尽、迁就」再「打破」——花钱扩容永远是最后一步。多数公司的做法恰好相反:一看到排队就买设备,买来的产能又堆出一潭新库存。</div>
+
+  <h2><span class="secno">4</span>交互实验:五站瓶颈实验室</h2>
+  <div class="sim" id="toc-sim">
+    <div class="sim-title">交互实验 · 五站流水线瓶颈实验室</div>
+    <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:.4rem">五站串联(冲压→焊接→喷涂→装配→检验),拖动滑块调每站速度:<b>红色高亮 = 自动识别的瓶颈,系统产出条永远等于瓶颈速度</b>。点「+5」按钮做对照实验:提升瓶颈站立见产出增长;提升非瓶颈站,产出纹丝不动,库存却加速堆积——TOC 全部命题浓缩在这一个盒子里。</p>
+    <div class="sim-controls" id="toc-controls"></div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;padding:.5rem 0">
+      <button class="sim-btn" id="toc-run" type="button">▶ 开班运行</button>
+      <button class="sim-btn" id="toc-reset" type="button">↺ 重置</button>
+      <button class="sim-btn primary" id="toc-up-bn" type="button">⬆ 瓶颈站 +5</button>
+      <button class="sim-btn" id="toc-up-nb" type="button">⬆ 非瓶颈站 +5</button>
+    </div>
+    <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden">
+      <svg id="toc-svg" viewBox="0 0 760 252" role="img" style="width:100%;height:auto;display:block"></svg>
+    </div>
+    <div class="outbar"><div class="outbar-fill" id="toc-fill"></div><div class="outbar-label" id="toc-out">系统产出 = 9 件/时</div></div>
+    <div class="toc-msg note" id="toc-msg">瓶颈在 2·焊接(9 件/时)。系统产出条 = 瓶颈速度,与其余四站无关。</div>
+  </div>
+
+  <h2><span class="secno">5</span>案例:走得最慢的孩子,决定全队的速度</h2>
+  <div class="case">
+    <div class="case-title">《目标》里的童子军远足</div>
+    <p>小说中最著名的一幕不是发生在工厂,而是一条山间小路。厂长罗哥带童子军远足,队伍越拉越长:快的孩子在前面闲逛等,慢的孩子在后面拼命追,队伍像一根被拉长的橡皮筋,前面的人几乎全程「空闲」,整支部队到达营地的时间,完全由走得最慢的胖男孩贺比(Herbie)决定。</p>
+    <p>罗哥的解法正是聚焦五步的微缩版:先<b>识别</b>——贺比就是瓶颈;再<b>挖尽</b>——把贺比背包里的重物分给其他人背,他立刻快了许多;然后<b>迁就</b>——让全队按贺比的节奏走、把他放在队伍中间,队伍不再拉散;如果还不够快,才考虑<b>打破</b>——比如给贺比换双好鞋(对应工厂买设备)。</p>
+    <div class="case-learn"><b>运营课</b>:「贺比背包」是所有组织里瓶颈改善的模板:先做不花钱的重新分配与排序(挖尽、迁就),再谈投资(打破)。识别错误的贺比、给本来就快的孩子减负,队伍的到达时间一分钟都不会提前。(情节为小说示意)</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>约束理论 TOC</dt><dd>Theory of Constraints:系统产出由极少数约束决定,管理就是持续识别并利用约束的方法论。</dd>
+      <dt>瓶颈 / 约束 Bottleneck</dt><dd>系统中产能最小、决定整体产出的环节;排队与在制品堆积的所在地。</dd>
+      <dt>非瓶颈资源 Non-Bottleneck</dt><dd>产能大于系统需要的环节;让它满负荷运转只会制造库存。</dd>
+      <dt>有效产出 Throughput, T</dt><dd>通过销售实现的产出速率——系统真正赚到钱的速率。</dd>
+      <dt>库存 Inventory, I</dt><dd>系统内待售与在制的物料:压在链条里的钱。</dd>
+      <dt>运营费用 Operating Expense, OE</dt><dd>把库存变成有效产出所消耗的一切费用。</dd>
+      <dt>聚焦五步 Five Focusing Steps</dt><dd>识别→挖尽→迁就→打破→循环的约束改善循环。</dd>
+      <dt>鼓-缓冲-绳 DBR</dt><dd>Drum-Buffer-Rope:以瓶颈节拍为鼓、瓶颈前设缓冲、以绳限投料的排程思想。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    系统产出由瓶颈决定,如同链子由最弱一环决定:<strong>提升非瓶颈不增加产出,只增加库存</strong>。先挖尽、迁就,最后才花钱打破——然后循环,因为新的瓶颈已经在别处等你。
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "五站流水线速度分别为 12、9、15、11、14 件/时(按站序)。满负荷稳定运行时,系统产出等于?",
+      "options": ["15 件/时,最快站决定", "9 件/时,最慢站决定", "12 件/时,首站来料决定", "12.2 件/时,五站平均值"],
+      "answer": 1,
+      "explain": "串联系统吞吐量 = min(各站速度) = 9 件/时(第 2 站)。平均值与最快站都是常见错觉——多余的能力过不去瓶颈,只能变成库存。" },
+    { "q": "其他不变,只把喷涂站从 15 提速到 20 件/时。短期内最可能观察到的现象是?",
+      "options": ["系统产出同比例上升两成", "有效产出与利润同步上升", "焊接站前的库存随之下降", "焊接站前库存加速堆积"],
+      "answer": 3,
+      "explain": "瓶颈仍是 9 件/时的焊接站,系统产出不变;喷涂干得越快,件数越快涌到焊接站前排成长队。这正是 TOC 的警告:非瓶颈提速,买来的多是库存。" },
+    { "q": "远足队伍走得太慢。把最慢孩子贺比背包里的重物分给其他人背,全队速度立刻提升。这对应聚焦五步中的?",
+      "options": ["挖尽:不花钱榨干瓶颈产能", "打破:给瓶颈增加新产能", "识别:找出真正的瓶颈", "迁就:全队按瓶颈节奏走"],
+      "answer": 0,
+      "explain": "分背包没有添置任何新资源,只是消除了压在瓶颈上的负担(重物≈占用瓶颈的杂务),属于第 2 步「挖尽」。买好鞋才是「打破」,排队形是「迁就」,发现贺比最慢是「识别」。" },
+    { "q": "按约束理论,工厂想在下季度提高利润,管理层应当首先做什么?",
+      "options": ["五站同时等比例小幅提速", "全面压缩运营费用先裁员", "找到瓶颈并挖尽其产能", "给最快的设备再买新机器"],
+      "answer": 2,
+      "explain": "TOC 的杠杆点只有一个:约束。先识别、再挖尽(通常不花钱),必要时迁就全链、最后才扩容。平均用力与投资非瓶颈,都动不了系统产出的天花板。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul class="timeline">
+      <li><b>《目标:简单而有效的常识管理》(The Goal)</b>艾利·高德拉特(Eliyahu M. Goldratt)· 以小说讲透约束理论的经典(建议读:贺比远足与机器人车间两章)——本课的全部原型都在这本书里。</li>
+      <li><b>《运营管理》(Operations Management)</b>威廉·史蒂文森(William Stevenson)· 机械工业出版社(建议读:瓶颈、约束与排程相关章节)——把 TOC 放回运营管理全景中的教科书视角。</li>
+      <li><b>《绝不是靠运气》(It's Not Luck)</b>艾利·高德拉特 · 《目标》续篇,看约束思想如何从工厂延伸到营销与配销(可搜索关键词:TOC 思维流程)。</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-process-and-flow.html">
+      <div class="pager-label">← 上一课</div>
+      <div class="pager-title">运营的本质:流程</div>
+    </a>
+    <a class="next" href="0003-quality-and-lean.html">
+      <div class="pager-label">下一课 →</div>
+      <div class="pager-title">质量与精益:把浪费连根拔起</div>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师——比如「我们公司的瓶颈好像在审批环节,不在产线,TOC 还适用吗?」把课程概念对到你的真实工作上,才算学以致用。</div>
+    <p>运营与供应链 · 第 2/4 课 · 课程库由 AI 教师生成,案例情节与数字均为示意量级。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+/* ===== 五站流水线瓶颈实验室 ===== */
+(function () {
+  "use strict";
+  var svg = document.getElementById("toc-svg");
+  if (!svg || !window.Viz) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  function clear(g) { while (g.firstChild) g.removeChild(g.firstChild); }
+
+  var NAMES = ["冲压", "焊接", "喷涂", "装配", "检验"];
+  var N = 5, BW = 118, GAP = 26, Y = 118, BH = 66, MAXR = 24;
+  var BX = [], total = N * BW + (N - 1) * GAP, x0 = (760 - total) / 2;
+  for (var i = 0; i < N; i++) BX.push(x0 + i * (BW + GAP));
+
+  var rates = [14, 9, 16, 12, 18];
+  var hours = 0, produced = 0, inv = [0, 0, 0, 0, 0];
+  var timer = null;
+
+  var gSt = el("g"), gDyn = el("g");
+  svg.appendChild(gSt); svg.appendChild(gDyn);
+
+  var $ = function (id) { return document.getElementById(id); };
+  var msg = $("toc-msg");
+
+  function minUpTo(j) { var m = rates[0]; for (var k = 1; k <= j; k++) m = Math.min(m, rates[k]); return m; }
+  function accRate(j) { return j === 0 ? 0 : Math.max(0, minUpTo(j - 1) - rates[j]); }
+  function drainRate(j) { return j === 0 ? 0 : Math.max(0, rates[j] - minUpTo(j - 1)); }
+
+  function draw() {
+    clear(gSt);
+    var min = Math.min.apply(null, rates);
+    for (var i = 0; i < N; i++) {
+      var bn = rates[i] === min;
+      if (i < N - 1) {
+        gSt.appendChild(el("line", { x1: BX[i] + BW + 3, y1: Y + BH / 2, x2: BX[i + 1] - 11, y2: Y + BH / 2, stroke: "#c9c1b2", "stroke-width": 2 }));
+        gSt.appendChild(el("path", { d: "M" + (BX[i + 1] - 17) + "," + (Y + BH / 2 - 5) + " L" + (BX[i + 1] - 9) + "," + (Y + BH / 2) + " L" + (BX[i + 1] - 17) + "," + (Y + BH / 2 + 5) + " Z", fill: "#c9c1b2" }));
+      }
+      gSt.appendChild(el("rect", { x: BX[i], y: Y, width: BW, height: BH, rx: 12, fill: bn ? "#fef2f2" : "#fff", stroke: bn ? "#b91c1c" : "#d6cdbd", "stroke-width": bn ? 2.5 : 1.5 }));
+      gSt.appendChild(el("text", { x: BX[i] + BW / 2, y: Y + 22, "text-anchor": "middle", "font-size": 13.5, "font-weight": 800, fill: bn ? "#b91c1c" : "#1c1917", text: (i + 1) + "·" + NAMES[i] }));
+      gSt.appendChild(el("text", { x: BX[i] + BW / 2, y: Y + 42, "text-anchor": "middle", "font-size": 11.5, fill: "#78716c", text: rates[i] + " 件/时" }));
+      gSt.appendChild(el("text", { x: BX[i] + BW / 2, y: Y + 58, "text-anchor": "middle", "font-size": 10.5, fill: bn ? "#b91c1c" : "#a8a29e", text: bn ? "瓶颈" : "产出/速度 " + min + "/" + rates[i] }));
+      if (bn) {
+        gSt.appendChild(el("rect", { x: BX[i] + BW / 2 - 26, y: Y - 30, width: 52, height: 20, rx: 10, fill: "#b91c1c" }));
+        gSt.appendChild(el("text", { x: BX[i] + BW / 2, y: Y - 16, "text-anchor": "middle", "font-size": 11.5, "font-weight": 800, fill: "#fff", text: "瓶颈" }));
+      }
+    }
+    gSt.appendChild(el("text", { x: x0, y: Y + BH + 26, "font-size": 11.5, fill: "#78716c", text: "开班 " + hours + " 小时 · 累计产出 " + produced + " 件" }));
+    gSt.appendChild(el("text", { x: x0 + total, y: Y + BH + 26, "text-anchor": "end", "font-size": 11.5, fill: "#a8a29e", text: "△ = 站前堆积的在制品" }));
+    // 动态:在制品堆积标记
+    clear(gDyn);
+    for (i = 1; i < N; i++) {
+      if (inv[i] > 0) {
+        var cx = (BX[i - 1] + BW + BX[i]) / 2;
+        gDyn.appendChild(el("path", { d: "M" + cx + "," + (Y - 44) + " L" + (cx + 13) + "," + (Y - 22) + " L" + (cx - 13) + "," + (Y - 22) + " Z", fill: "#f2ede3", stroke: "#b45309", "stroke-width": 1.5 }));
+        gDyn.appendChild(el("text", { x: cx, y: Y - 49, "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#b45309", text: inv[i] + " 件" }));
+      } else if (accRate(i) > 0 && timer) {
+        var cx2 = (BX[i - 1] + BW + BX[i]) / 2;
+        gDyn.appendChild(el("text", { x: cx2, y: Y - 40, "text-anchor": "middle", "font-size": 11, fill: "#b45309", text: "+" + accRate(i) + "/时" }));
+      }
+    }
+    // 产出条
+    $("toc-fill").style.width = (min / MAXR * 100) + "%";
+    $("toc-out").textContent = "系统产出 = " + min + " 件/时(= 瓶颈站 " + NAMES[rates.indexOf(min)] + " 的速度)";
+  }
+
+  function neutralMsg() {
+    var min = Math.min.apply(null, rates);
+    msg.className = "toc-msg note";
+    msg.textContent = "瓶颈在 " + (rates.indexOf(min) + 1) + "·" + NAMES[rates.indexOf(min)] + "(" + min + " 件/时)。系统产出条 = 瓶颈速度,与其余四站无关。";
+  }
+
+  function tick() {
+    hours++;
+    produced += Math.min.apply(null, rates);
+    for (var j = 1; j < N; j++) inv[j] = Math.max(0, inv[j] + accRate(j) - Math.min(drainRate(j), inv[j]));
+    draw();
+  }
+
+  $("toc-run").addEventListener("click", function () {
+    if (timer) {
+      clearInterval(timer); timer = null; this.textContent = "▶ 开班运行"; this.classList.add("primary");
+    } else {
+      tick(); timer = setInterval(tick, 1300);
+      this.textContent = "⏸ 暂停班次"; this.classList.remove("primary");
+      msg.className = "toc-msg note";
+      msg.textContent = "班次运行中:每小时产出 = 瓶颈速度;上游比瓶颈快多少,瓶颈前每小时就多堆多少件。";
+    }
+  });
+  $("toc-reset").addEventListener("click", function () {
+    if (timer) { clearInterval(timer); timer = null; }
+    $("toc-run").textContent = "▶ 开班运行"; $("toc-run").classList.add("primary");
+    hours = 0; produced = 0; inv = [0, 0, 0, 0, 0]; draw(); neutralMsg();
+  });
+  $("toc-up-bn").addEventListener("click", function () {
+    var bi = rates.indexOf(Math.min.apply(null, rates));
+    if (rates[bi] >= MAXR) {
+      msg.className = "toc-msg bad";
+      msg.textContent = NAMES[bi] + " 已到本模拟上限 " + MAXR + " 件/时——现实中这一步叫「打破瓶颈」:增加设备、加班或外协。请先重置再试。";
+      return;
+    }
+    var old = rates[bi], nv = Math.min(MAXR, old + 5);
+    rates[bi] = nv; sliders[bi].set(nv); draw();
+    var newMin = Math.min.apply(null, rates);
+    msg.className = "toc-msg good";
+    msg.textContent = "✓ 瓶颈站 " + (bi + 1) + "·" + NAMES[bi] + " " + old + "→" + nv + " 件/时:系统产出 " + old + "→" + newMin + " 件/时,立竿见影。若站前有堆积,还会逐步被消化。";
+  });
+  $("toc-up-nb").addEventListener("click", function () {
+    var min = Math.min.apply(null, rates);
+    var fastest = 0;
+    for (var k = 1; k < N; k++) if (rates[k] > rates[fastest]) fastest = k;
+    if (rates[fastest] === min) {
+      msg.className = "toc-msg note";
+      msg.textContent = "五站速度完全相同——这是「平衡产线」的理想态,没有非瓶颈可提升。先随便调乱一个滑块再试。";
+      return;
+    }
+    var old = rates[fastest], nv = Math.min(MAXR, old + 5);
+    rates[fastest] = nv; sliders[fastest].set(nv); draw();
+    msg.className = "toc-msg bad";
+    msg.textContent = "✗ 非瓶颈站 " + (fastest + 1) + "·" + NAMES[fastest] + " " + old + "→" + nv + " 件/时:系统产出仍是 " + min + " 件/时,一分未增;开班运行看看,瓶颈前的库存堆积反而更快了。";
+  });
+
+  /* 滑块 */
+  var controls = $("toc-controls"), sliders = [];
+  for (i = 0; i < N; i++) {
+    (function (idx) {
+      var s = Viz.slider(controls, { label: NAMES[idx], min: 4, max: MAXR, step: 1, value: rates[idx], format: function (v) { return v + " 件/时"; } });
+      s.onChange(function (v) { rates[idx] = v; draw(); neutralMsg(); });
+      sliders.push(s);
+    })(i);
+  }
+  draw(); neutralMsg();
+})();
+</script>
+</body>
+</html>

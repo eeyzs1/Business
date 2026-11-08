@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>弹性:为什么涨价不一定多赚钱 · 经济学基础</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+</style>
+</head>
+<body class="branch-economics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">经济学基础</a><span class="crumb-sep">/</span>
+  <span>弹性</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">经济学基础 · Lesson 2</p>
+  <h1>弹性:为什么涨价不一定多赚钱</h1>
+  <p class="lead">农民盼丰收,经济学却告诉你:大丰收之年,农民收入可能反而缩水。同一次涨价,有的行业赚得盆满钵满,有的行业把自己「涨死」。区别只在一个词:弹性——顾客对你涨价的敏感程度。</p>
+
+  <h2><span class="secno">1</span>「涨不涨价」是每个生意人的生死题</h2>
+  <p>定价是商业里最直接的杠杆:价格抬一点,毛利立刻变厚,谁不想?但<a href="0001-supply-and-demand.html">第 1 课</a>的需求定律早已警告过你——价格一涨,销量就掉。于是真正的问题变成了:<em>收入</em>到底怎么变?是「单价赚的」多,还是「销量丢的」多?答案取决于顾客面对涨价时,是转身就走,还是照买不误。经济学家给这种敏感度起了名字:<em>需求价格弹性</em>(Price Elasticity of Demand)。</p>
+
+  <h2><span class="secno">2</span>弹性是什么:一个比值,三种体质</h2>
+  <div class="formula">
+    需求价格弹性&nbsp;E = | <span class="frac"><span>需求量变化的百分比</span><span>价格变化的百分比</span></span> |
+  </div>
+  <p>分子是顾客跑掉的速度,分母是你涨价的力度,取绝对值后按大小分三档:</p>
+  <div class="concept">
+    <div class="concept-title">|E| &gt; 1 · 有弹性(Elastic)</div>
+    <p style="margin:.2rem 0 0">需求量对价格<em>敏感</em>:涨 10%,掉超过 10% 的客人。常见于替代品多、非必需、慢慢挑的商品——奶茶、机票、某个牌子的洗发水。</p>
+  </div>
+  <div class="concept">
+    <div class="concept-title">|E| &lt; 1 · 缺弹性(Inelastic)</div>
+    <p style="margin:.2rem 0 0">需求量对价格<em>不敏感</em>:涨 10%,掉的客人不到 10%。常见于必需品、替代品少、短期没得选的东西——粮食、盐、救命药、每天要坐的地铁。</p>
+  </div>
+  <div class="concept">
+    <div class="concept-title">|E| = 1 · 单位弹性(Unit Elastic)</div>
+    <p style="margin:.2rem 0 0">两边恰好抵消:涨多少比例,掉多少比例。这是收入变化的分水岭,现实中不常恰好命中,但它是判断的基准线。</p>
+  </div>
+
+  <h2><span class="secno">3</span>弹性决定收入:涨价的跷跷板</h2>
+  <p><em>总收入</em>(Total Revenue, TR)= 价格 P × 销量 Q。涨价像踩跷跷板:P 那头翘起来,Q 这头沉下去,总收入往哪边倒,取决于弹性:缺弹性市场,涨价<b>增收</b>;有弹性市场,涨价<b>减收</b>;单位弹性,刚好持平。拖动下面的滑块,亲手验证。</p>
+
+  <div class="sim">
+    <div class="sim-title">模拟器 · 弹性滑块:涨价 10%,收入怎么变?</div>
+    <div class="sim-controls" id="el-controls"></div>
+    <div id="el-curve"></div>
+    <div id="el-bars"></div>
+    <p class="sim-readout" id="el-readout">正在加载模拟器……</p>
+    <p style="font-size:.87rem;color:var(--ink-faint);margin:.4rem 0 0">模型:等弹性需求 Q = Q₀·(P/P₀)<sup>−|E|</sup>,以涨价前收入 = 100 为基准,图中数字均为示意。</p>
+  </div>
+
+  <div class="callout tip">
+    <span class="callout-label">判断弹性的三问</span>
+    <p style="margin:.3rem 0 0">① 有没有替代品?替代品越多,越有弹性。② 是不是必需品?越必需,越缺弹性。③ 占收入比例大不大?越大的支出,顾客越计较(房子、车子),越有弹性。另注:时间拉长,弹性通常变大——油价高涨的当月大家照开,两年后不少人换成了电动车。</p>
+  </div>
+
+  <h2><span class="secno">4</span>案例:粮食与 iPhone,两种命运</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">丰收悖论 vs 品牌溢价</p>
+    <p><b>粮食(缺弹性):</b>风调雨顺,供给曲线右移,粮价大跌。但人不会因为米便宜了就多吃三碗饭——粮食需求高度缺弹性(学界常用 |E| 约在 0.1-0.3 量级,示意)。价格跌两成,销量只多个两三成的一小部分,总收入反而下降,这就是<em>谷贱伤农</em>。农民没有定价权,只能被动接受市场价格,丰收反而成为坏消息。</p>
+    <p><b>iPhone(把需求做「缺弹性」):</b>苹果公司年年维持高定价,老机型降价也有限,销量却长期坚挺——品牌忠诚、iOS 生态与跨设备联动让用户迁移成本很高,需求明显缺弹性:涨价丢掉的顾客少,单价赚到的利润多。多年公开报道显示,苹果常拿走全球智能手机行业的大部分利润(量级示意)。</p>
+    <p class="case-learn"><b>这一课的教训:</b>同样是「缺弹性」,对有定价权的卖方是护城河(苹果),对没有定价权的农民却是风险(丰收悖论)——差别不在弹性本身,而在<b>你面对多少竞争、顾客有多少替代选择</b>。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>需求价格弹性 Price Elasticity of Demand</dt><dd>需求量变化百分比与价格变化百分比之比(取绝对值),衡量顾客对价格的敏感度。</dd>
+      <dt>有弹性 Elastic</dt><dd>|E| &gt; 1:需求量变化的百分比超过价格变化的百分比。</dd>
+      <dt>缺弹性 Inelastic</dt><dd>|E| &lt; 1:需求量变化的百分比小于价格变化的百分比。</dd>
+      <dt>单位弹性 Unit Elastic</dt><dd>|E| = 1:价格与需求量按同比例反向变化,收入不变。</dd>
+      <dt>总收入 Total Revenue</dt><dd>价格 × 销量,即 P × Q。</dd>
+      <dt>丰收悖论(谷贱伤农)</dt><dd>缺弹性商品供给大增后,价格暴跌导致的收入降幅超过销量增幅,总收入反而减少。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>涨价能不能多赚钱,不由你的勇气决定,由顾客的替代选择决定:有弹性市场涨价减收,缺弹性市场涨价增收。定价之前先问一句——我的顾客,跑得掉吗?</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "某日用品的需求价格弹性 |E|≈0.4。其他条件不变,它涨价 10%,总收入会怎么变?",
+        "options": ["总收入明显减少", "总收入明显增加", "总收入保持不变", "总收入先增后减少"],
+        "answer": 1,
+        "explain": "|E|&lt;1 属于<b>缺弹性</b>:销量只掉约 4%,价格却涨了 10%,单价赚的超过销量丢的,总收入上升。这正是必需品敢于涨价的原因。" },
+      { "q": "丰收之年粮食大增,为什么农民的总收入反而可能下降?",
+        "options": ["粮食需求有弹性,价格跌幅超过数量增幅", "政府强制收购压低了市场价格", "粮食缺弹性,跌价损失的收入超过多卖的收入", "运输与仓储成本上升吞掉了种粮利润"],
+        "answer": 2,
+        "explain": "粮食是典型的<b>缺弹性</b>商品:价格大跌,人们也多吃不了多少。价格下跌的损失大于销量增加的补偿,总收入反而缩水——这就是谷贱伤农。" },
+      { "q": "iPhone 能长期维持高价而销量相对坚挺,最接近哪一种经济学解释?",
+        "options": ["苹果的生产成本永远比同行低三成", "手机行业完全竞争,高价自然合理", "品牌忠诚与生态锁定使需求缺弹性", "苹果享有政府授予的独家定价特权"],
+        "answer": 2,
+        "explain": "品牌与生态提高了<b>替代难度</b>:涨价时流失的顾客比例很小(缺弹性),于是高价带来的单价收益超过销量损失。这与成本高低或特权无关。" },
+      { "q": "某商品的需求价格弹性 |E| 恰好等于 1。它涨价 10%,总收入会怎么变?",
+        "options": ["基本不变", "明显增加", "明显减少", "无法判断"],
+        "answer": 0,
+        "explain": "|E|=1 是<b>单位弹性</b>:需求量恰好减少 10%,与价格上涨互相抵消,P×Q 基本不动。它是「涨价增收」与「涨价减收」的分水岭。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>延伸阅读</h2>
+    <ul>
+      <li>《经济学原理(第 8 版):微观经济学分册》曼昆 · 北京大学出版社(建议读:第 5 章「弹性及其应用」)</li>
+      <li>《牛奶可乐经济学》罗伯特·弗兰克 · 中国人民大学出版社(建议读:供需与价格敏感度相关章节)</li>
+      <li>可搜索关键词:Price Elasticity of Demand、丰收悖论 Paradox of Plenty</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-supply-and-demand.html"><span class="pager-label">上一课</span><span class="pager-title">供给与需求:价格如何形成</span></a>
+    <a class="next" href="0003-market-structures.html"><span class="pager-label">下一课</span><span class="pager-title">市场结构:从完全竞争到垄断</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「我卖的咖啡弹性大概多少?该怎么估?」或「能不能再讲讲薄利多销的适用条件?」——追问是学习的一部分。</div>
+    <p>经济学基础 · 第 2 课 · 弹性 | 交互:弹性滑块 × 收入曲线与收入柱 · 案例数字为示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  if (!window.Viz) return;
+  var curveBox = document.getElementById("el-curve");
+  var barsBox = document.getElementById("el-bars");
+  var readout = document.getElementById("el-readout");
+  var controls = document.getElementById("el-controls");
+  if (!curveBox || !barsBox || !readout || !controls) return;
+
+  var ax = Viz.axes(curveBox, {
+    w: 640, h: 350, margin: { t: 22, r: 20, b: 46, l: 56 },
+    xDomain: [8, 12], yDomain: [40, 180],
+    xLabel: "价格 P(元,示意)", yLabel: "总收入(涨价前 = 100)",
+    xTicks: 4, yTicks: 4
+  });
+  var svg = ax.svg, X = ax.x, Y = ax.y;
+
+  function tr(p, E) { return 100 * Math.pow(p / 10, 1 - E); }
+
+  var path = Viz.svgEl("path", { fill: "none", stroke: "#0e7490", "stroke-width": 3.2, "stroke-linecap": "round" });
+  svg.appendChild(path);
+  var link = Viz.svgEl("line", { stroke: "#94a3b8", "stroke-width": 1.3, "stroke-dasharray": "3 5" });
+  var dot0 = Viz.svgEl("circle", { cx: X(10), cy: Y(100), r: 6, fill: "#1c1917", stroke: "#fff", "stroke-width": 2 });
+  var dot1 = Viz.svgEl("circle", { r: 6, fill: "#b91c1c", stroke: "#fff", "stroke-width": 2 });
+  var lab0 = Viz.svgEl("text", { x: X(10) - 10, y: Y(100) + 20, "text-anchor": "end", "font-size": 12, "font-weight": 700, fill: "#57534e" });
+  lab0.textContent = "涨价前 P=10";
+  var lab1 = Viz.svgEl("text", { x: X(11) + 10, y: Y(100), "text-anchor": "start", "font-size": 12, "font-weight": 700, fill: "#57534e" });
+  lab1.textContent = "涨价后 P=11";
+  svg.appendChild(link); svg.appendChild(dot0); svg.appendChild(dot1);
+  svg.appendChild(lab0); svg.appendChild(lab1);
+
+  function render(E) {
+    var pts = [];
+    for (var p = 8; p <= 12.0001; p += 0.1) pts.push([X(p), Y(Math.min(180, tr(p, E)))]);
+    path.setAttribute("d", pts.map(function (q, i) {
+      return (i ? "L" : "M") + q[0].toFixed(1) + " " + q[1].toFixed(1);
+    }).join(" "));
+
+    var r1 = tr(11, E);
+    dot1.setAttribute("cx", X(11)); dot1.setAttribute("cy", Y(r1));
+    dot1.setAttribute("fill", r1 >= 100 ? "#15803d" : "#b91c1c");
+    link.setAttribute("x1", X(10)); link.setAttribute("y1", Y(100));
+    link.setAttribute("x2", X(11)); link.setAttribute("y2", Y(r1));
+    lab1.setAttribute("y", Y(r1) - 10);
+
+    barsBox.innerHTML = "";
+    Viz.bars(barsBox, [
+      { label: "涨价前", value: 100, color: "#94a3b8" },
+      { label: "涨价后(+10%)", value: Math.round(r1 * 10) / 10, color: r1 >= 100 ? "#15803d" : "#b91c1c" }
+    ], { max: 130, h: 280, animate: false, valueFormat: function (v) { return v.toFixed(1); } });
+
+    var chg = r1 - 100;
+    var kind = E > 1.05 ? "有弹性" : (E < 0.95 ? "缺弹性" : "单位弹性");
+    var verdict = E > 1.05
+      ? "涨价反而<b style='color:#b91c1c'>减收</b>——需求量掉得比价格涨得多!"
+      : (E < 0.95 ? "涨价反而<b style='color:#15803d'>增收</b>——需求量几乎不掉,涨价全落进口袋。"
+                  : "收入几乎<b>不变</b>——量与价恰好互相抵消。");
+    readout.innerHTML = "|E| = <b>" + E.toFixed(1) + "</b>(" + kind + ")→ 涨价 10%,需求量约减 <b>" + (E * 10).toFixed(0) + "%</b>,总收入变化 <b>" + (chg >= 0 ? "+" : "") + chg.toFixed(1) + "%</b>。" + verdict;
+  }
+
+  var sl = Viz.slider(controls, {
+    label: "需求价格弹性 |E|", min: 0.2, max: 3, step: 0.1, value: 0.6,
+    format: function (v) { return v.toFixed(1); }
+  });
+  sl.onChange(function (E) { render(E); });
+  render(0.6);
+})();
+</script>
+</body>
+</html>

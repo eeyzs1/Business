@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NPV:一个项目值不值得投 · 金融学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  #npv-val { font-size: 1.3rem; }
+  #npv-decision { margin-left: .6rem; }
+</style>
+</head>
+<body class="branch-finance">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">金融学</a><span class="crumb-sep">/</span>
+  <span>NPV:一个项目值不值得投</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">金融学 · LESSON 3</p>
+  <h1>NPV:一个项目值不值得投</h1>
+  <p class="lead">摆在你面前的是一个项目:开店、买设备、上新系统。投还是不投?第 1 课的时间价值与第 2 课的风险溢价在此合流,变成一把统一的尺子——<em>净现值</em>,把「拍脑袋的争论」变成「一道算术题」。</p>
+
+  <h2><span class="secno">1</span>决策的标尺:项目回报 vs 资本成本</h2>
+  <p>比较项目的总投入与总收入是错的——钱在不同时点,不能直接相加。正确的问题永远是:<strong>把所有现金流折到同一时点后,项目能不能跑赢「把钱投到别处」的回报率?</strong>这个「别处的回报率」就是<em>资本成本(Cost of Capital)</em>,也就是上一课的折现率:无风险利率加上对项目风险的溢价。稳健的收费流水可用较低的折现率,前途未卜的新产品必须用较高的。</p>
+
+  <h2><span class="secno">2</span>现金流折现与净现值</h2>
+  <p><em>现金流折现(Discounted Cash Flow, DCF)</em>:把项目未来每年的现金流,逐一除以 (1+r)<sup>t</sup> 折回今天,再减去初始投入,得到<em>净现值(Net Present Value, NPV)</em>:</p>
+  <div class="formula">NPV = −I + CF<sub>1</sub>/(1+r) + CF<sub>2</sub>/(1+r)<sup>2</sup> + … + CF<sub>n</sub>/(1+r)<sup>n</sup></div>
+  <div class="concept">
+    <div class="concept-title">判据只有一条</div>
+    <p><strong>NPV &gt; 0</strong>:项目回报超过资本成本,为公司创造价值,投。<strong>NPV &lt; 0</strong>:连「本该赚到的基础回报」都没赚够,毁损价值,弃。<strong>NPV = 0</strong>:恰好打平基础回报,做不做无差别。NPV 可以理解为「扣除时间与风险修正后,净赚了多少钱」。</p>
+  </div>
+
+  <div class="sim" id="npv-sim">
+    <div class="sim-title">NPV 决策器:四个旋钮,一次裁决</div>
+    <div class="sim-controls" id="npv-controls"></div>
+    <p class="sim-readout" style="margin:.7rem 0 .25rem;font-size:1.12rem">
+      NPV = <b id="npv-val">0.0 万</b><span id="npv-decision"></span>
+    </p>
+    <p class="sim-readout" style="margin:.25rem 0 .8rem;font-size:.95rem">
+      内部收益率 IRR ≈ <b id="npv-irr">—</b> · 静态回本期(不折现)<b id="npv-pay">—</b>
+    </p>
+    <div id="npv-chart" aria-label="每年现金流折现条形图"></div>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin:.6rem 0 0">
+      红色条是初始投入,绿色条是每年净现金流折算成的现值——注意折现率越高,远处年份的条越矮。左侧结论随 NPV 正负自动变色:绿=投,红=弃。
+    </p>
+  </div>
+
+  <h2><span class="secno">3</span>IRR:换一种问法</h2>
+  <p><em>内部收益率(Internal Rate of Return, IRR)</em>是让 NPV 恰好等于 0 的那个折现率,直观理解为「项目自身的复利回报率」。用法同样简单:IRR 高于资本成本就投,低于就不投——与 NPV 的结论通常一致。局限也要知道:IRR 是百分比,不反映项目规模(回报率 30% 的小项目,NPV 可能不如 12% 的大项目);现金流方向反复变化时还可能出现多个 IRR。拿不准时,<strong>以 NPV 为准</strong>。</p>
+
+  <h2><span class="secno">4</span>两个易错点:沉没成本与机会成本</h2>
+  <div class="callout warn">
+    <span class="callout-label">陷阱一:沉没成本不是成本</span>
+    <p style="margin:.4rem 0 0"><em>沉没成本(Sunk Cost)</em>是已经花掉、无法收回的钱。去年砸进去的 20 万装修,无论今天投不投都拿不回来,因此<strong>与决策无关</strong>。决策只看「从现在起的增量现金流」。</p>
+  </div>
+  <div class="callout warn">
+    <span class="callout-label">陷阱二:机会成本才是成本</span>
+    <p style="margin:.4rem 0 0">反过来,没掏钱的项目可能是昂贵的:用自己的物业开店,虽然不付房租,却<strong>放弃了出租能收到的租金</strong>——这笔<em>机会成本</em>必须计入现金流(按放弃的最佳用途估值)。自有资金也一样:用它投资,等于放弃了放贷生息的回报。</p>
+  </div>
+
+  <h2><span class="secno">5</span>案例:开一家咖啡店值不值</h2>
+  <div class="case">
+    <p class="case-title">一杯拿铁背后的算术题</p>
+    <p>假设你盘下一家小店(全部为<strong>示意数字</strong>):初始投入约 <strong>60 万元</strong>(装修、设备与转让押金);预期月流水约 <strong>8 万元</strong>,扣掉原料、人工、租金后净利率约 <strong>15%</strong>,即年净现金流约 <strong>14 万元</strong>;经营看 <strong>8 年</strong>;你评估自身风险后要求 <strong>8%</strong> 的回报率。把参数拨进上面的决策器,会得到:静态回本期约 4 年多,NPV 约 <strong>+20 万元</strong>,IRR 高于 8%——在假设成立时,这家店值得开。注意敏感点:净利率从 15% 掉到 10%,NPV 就可能转负。<strong>项目的生死,常常就悬在一个假设上。</strong></p>
+    <p class="case-learn"><b>学到什么</b>反例同样经典:2008 年星巴克(Starbucks)因扩张过快与金融危机,宣布关闭美国约 600 家表现不佳的门店。装修再心疼也是沉没成本,决策只看这些店<strong>未来</strong>的现金流——NPV 为负,就关。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>现金流折现(DCF)</dt><dd>把未来各期现金流折成现值再加总的估值方法。</dd>
+      <dt>净现值(NPV)</dt><dd>未来现金流现值之和减去初始投入。</dd>
+      <dt>资本成本(Cost of Capital)</dt><dd>资金投入本项目的必要回报率,作折现率用。</dd>
+      <dt>内部收益率(IRR)</dt><dd>令 NPV 恰好为零的折现率,项目的内生回报。</dd>
+      <dt>沉没成本(Sunk Cost)</dt><dd>已发生且不可收回的支出,与当前决策无关。</dd>
+      <dt>机会成本(Opportunity Cost)</dt><dd>选择本项目而放弃的最佳替代收益。</dd>
+      <dt>静态回本期(Payback Period)</dt><dd>不折现时收回初始投入所需年限。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>把所有现金流折回今天再加总,就是 NPV:大于零创造价值,小于零毁损价值,拿不准时以 NPV 为准。沉没成本与决策无关,<strong>机会成本必须计入</strong>。</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">自查测验</div>
+    <script type="application/json">
+    [
+      {
+        "q": "某项目按公司资本成本折现后 NPV 为 +200 万元。这最准确地意味着什么?",
+        "options": [
+          "项目在未来任何一年都能赚到正现金流",
+          "项目回报超过资本成本,创造了价值",
+          "项目投产以后每年净利润都超过 200 万",
+          "项目资金充裕,自始至终无需银行贷款"
+        ],
+        "answer": 1,
+        "explain": "NPV 为正只说明一件事:折现后的总回报超过了资本成本,项目创造价值。它不保证每年现金流为正,也不等于年度利润或现金流充裕。"
+      },
+      {
+        "q": "项目已花掉研发费 100 万元(不可收回)。若再投入 50 万元即可上市,未来现金流现值为 60 万元。理性的决策是?",
+        "options": [
+          "停止项目:两期总投入 150 万元超过现值",
+          "继续推进:已经花掉的 100 万元必须赚回来",
+          "继续推进:新增 60 万元现值大于新增 50 万投入",
+          "停止项目:沉没成本无论如何都不应继续增加"
+        ],
+        "answer": 2,
+        "explain": "已花的 100 万是沉没成本,与决策无关。只看增量:再投入 50 万,换回现值 60 万,增量 NPV 为 +10 万,应当继续。为了「赚回沉没成本」而追加投入,是最经典的决策陷阱。"
+      },
+      {
+        "q": "公司用自有物业开店,该物业若出租每年可收租金约 10 万元。做投资测算时应如何处理?",
+        "options": [
+          "不计入:公司并未实际支付这笔租金",
+          "不计入:物业的折旧已经在账面扣除",
+          "计入:按物业市价一次性计入初始投资",
+          "计入:放弃的年租金 10 万是机会成本"
+        ],
+        "answer": 3,
+        "explain": "不付房租不等于零成本:开店占用了物业,就放弃了每年 10 万元的租金,这是真实的机会成本,应从项目现金流中扣减。折旧是会计口径,不能替代机会成本。"
+      },
+      {
+        "q": "关于内部收益率(IRR),下列说法正确的是?",
+        "options": [
+          "它是令项目 NPV 恰好等于零的折现率",
+          "它是项目各年现金流的算术平均值",
+          "它是银行向公司放贷执行的贷款利率",
+          "它是净利润占营业收入的百分比"
+        ],
+        "answer": 0,
+        "explain": "IRR 是让 NPV=0 的内生折现率,可理解为项目自身的复利回报率,与资本成本比较得出结论。现金流的平均数、贷款利率、销售净利率都不是 IRR。"
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《公司理财》斯蒂芬·罗斯 等 · 机械工业出版社(建议读:第 6 章「净现值与其他投资法则」)</li>
+      <li>《价值评估:公司价值的衡量与管理》麦肯锡(科勒 等)· 电子工业出版社(建议读:折现现金流估值部分)</li>
+      <li>可搜索关键词:sunk cost fallacy · opportunity cost in capital budgeting</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-risk-and-return.html"><span class="pager-label">← 上一课</span><span class="pager-title">风险与收益</span></a>
+    <a class="next" href="0004-financial-markets.html"><span class="pager-label">下一课 →</span><span class="pager-title">金融市场:钱的地图</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>比如「我想开的店,折现率该取 8% 还是 15%?」——回到对话里直接问你的 AI 老师,把决策器套进你的真实项目。</div>
+    <p>金融学 · 第 3 课 · NPV | 下一课:拉远镜头,看这些钱在怎样的市场网络里流动。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- NPV 决策器 ---- */
+  var controls = document.getElementById("npv-controls");
+  var chartBox = document.getElementById("npv-chart");
+  var valEl = document.getElementById("npv-val");
+  var decEl = document.getElementById("npv-decision");
+  var irrEl = document.getElementById("npv-irr");
+  var payEl = document.getElementById("npv-pay");
+
+  var sI = Viz.slider(controls, { label: "初始投资", min: 10, max: 100, step: 5, value: 60, format: function (v) { return v + " 万"; } });
+  var sC = Viz.slider(controls, { label: "年净现金流", min: 3, max: 40, step: 1, value: 14, format: function (v) { return v + " 万"; } });
+  var sN = Viz.slider(controls, { label: "项目年限", min: 3, max: 10, step: 1, value: 8, format: function (v) { return v + " 年"; } });
+  var sR = Viz.slider(controls, { label: "折现率", min: 4, max: 15, step: 0.5, value: 8, format: function (v) { return v.toFixed(1) + "%"; } });
+
+  function annuity(r, n) { return (1 - Math.pow(1 + r, -n)) / r; }
+
+  function irrOf(I, C, n) {
+    var f = function (r) { return C * annuity(r, n) - I; };
+    var lo = 0.0001, hi = 20;
+    if (f(lo) < 0) return null;
+    for (var k = 0; k < 200; k++) {
+      var mid = (lo + hi) / 2;
+      if (f(mid) > 0) lo = mid; else hi = mid;
+    }
+    return (lo + hi) / 2;
+  }
+
+  function roll(el, target, fmt) {
+    var from = typeof el.__v === "number" ? el.__v : 0;
+    el.__v = target;
+    Viz.countUp(el, target, { from: from, dur: 360, format: fmt });
+  }
+
+  function render() {
+    var I = sI.get(), C = sC.get(), n = sN.get(), r = sR.get() / 100;
+    var npv = -I + C * annuity(r, n);
+    var irr = irrOf(I, C, n);
+
+    var good = npv > 0.05, bad = npv < -0.05;
+    roll(valEl, npv, function (v) {
+      return (v > 0 ? "+" : "") + v.toFixed(1) + " 万";
+    });
+    valEl.style.color = good ? "var(--good)" : (bad ? "var(--bad)" : "var(--ink-soft)");
+    decEl.textContent = good ? "→ 投:预期创造价值" : (bad ? "→ 弃:预期毁损价值" : "→ 无差异");
+    decEl.style.color = good ? "var(--good)" : (bad ? "var(--bad)" : "var(--ink-soft)");
+    if (irr !== null) {
+      irrEl.textContent = (irr * 100).toFixed(1) + "%(" + (irr > r ? "高于" : "低于") + "折现率)";
+      irrEl.style.color = irr > r ? "var(--good)" : "var(--bad)";
+    } else {
+      irrEl.textContent = "期限内收不回,不存在";
+      irrEl.style.color = "var(--bad)";
+    }
+    payEl.textContent = (I / C).toFixed(1) + " 年";
+
+    /* 每年现金流折现条形图(含第 0 年投入) */
+    chartBox.innerHTML = "";
+    var ax = Viz.axes(chartBox, {
+      w: 640, h: 360, margin: { t: 22, r: 18, b: 46, l: 56 },
+      xDomain: [0, n + 1], yDomain: [-I * 1.12, C * 1.3],
+      xLabel: "年", yLabel: "现金流现值(万元)",
+      xTicks: n + 1, yTicks: 5,
+      xFormat: function (v) { return String(Math.round(v)); },
+      yFormat: function (v) { return Math.round(v); }
+    });
+    ax.plot(function (svg, x, y, m, iw, ih) {
+      Viz.line(svg, [[m.l, y(0)], [m.l + iw, y(0)]], { color: "#1c1917", width: 1.5 });
+      var bw = iw / (n + 1) * 0.62;
+      for (var k = 0; k <= n; k++) {
+        var v = (k === 0) ? -I : C / Math.pow(1 + r, k);
+        var bx = m.l + iw * (k + 0.5) / (n + 1) - bw / 2;
+        var by = Math.min(y(v), y(0));
+        var bh = Math.abs(y(v) - y(0));
+        svg.appendChild(Viz.svgEl("rect", {
+          x: bx, y: by, width: bw, height: Math.max(bh, 1.5), rx: 5,
+          fill: k === 0 ? "#b91c1c" : "#15803d",
+          opacity: k === 0 ? 0.9 : 0.45 + 0.55 * (v / C)
+        }));
+        var lab = Viz.svgEl("text", {
+          x: bx + bw / 2, y: v >= 0 ? y(v) - 7 : y(v) + 15,
+          "text-anchor": "middle", "font-size": 11.5, "font-weight": 800,
+          fill: k === 0 ? "#b91c1c" : "#15803d"
+        });
+        lab.textContent = k === 0 ? ("−" + I) : v.toFixed(1);
+        svg.appendChild(lab);
+      }
+    });
+  }
+  [sI, sC, sN, sR].forEach(function (s) { s.onChange(render); });
+  render();
+})();
+</script>
+</body>
+</html>

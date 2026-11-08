@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>五力模型:行业的钱好不好赚 · 战略管理</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label { display: block; }
+  .sim-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 700; cursor: pointer;
+    border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+    color: var(--accent); background: #fff; border-radius: 999px; padding: .35rem 1.05rem;
+    transition: all .15s ease;
+  }
+  .sim-btn:hover { background: color-mix(in srgb, var(--accent) 10%, #fff); }
+  .sim-btn.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .sim-presets { display: flex; gap: .6rem; flex-wrap: wrap; margin: .5rem 0 .2rem; }
+  .sim-controls label > span { min-width: 6.5em; }
+  .ff-layout { display: grid; grid-template-columns: 1fr; gap: .6rem; align-items: start; }
+  @media (min-width: 760px) { .ff-layout { grid-template-columns: minmax(0,1fr) minmax(0,1fr); } }
+  .ff-score-box {
+    background: var(--paper-deep); border-radius: 12px; padding: .9rem 1.1rem; text-align: center;
+  }
+  .ff-score-box .ff-score-label { font-size: .82rem; letter-spacing: .12em; color: var(--ink-soft); font-weight: 800; }
+  .ff-score-box .ff-score-num { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; color: var(--accent); line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .ff-note { font-size: .88rem; color: var(--ink-soft); line-height: 1.75; margin: .8rem 0 0; }
+  .sim-verdict {
+    font-size: .93rem; line-height: 1.75; color: var(--ink);
+    background: var(--paper-deep); border-radius: 10px; padding: .7rem .95rem; margin: .8rem 0 0;
+  }
+</style>
+</head>
+<body class="branch-strategy">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">战略管理</a><span class="crumb-sep">/</span>
+  <span>五力模型</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">战略管理 · Lesson 2</p>
+  <h1>五力模型:行业的钱好不好赚</h1>
+  <p class="lead">两家同样优秀的公司,一家在航空业苦熬,一家在软件业滋润——先别急着夸或骂管理层,行业结构本身可能已经决定了大半个结局。波特<strong>五力模型</strong>(Five Forces)给了一副冷静的透镜:<em>一个行业的平均利润率,写在五种竞争力量的大小里</em>。学完这一课,你会先问「这个行业的钱好不好赚」,再问「我凭什么在里面赚钱」。</p>
+
+  <h2><span class="secno">1</span>利润池:行业决定了大半个结局</h2>
+  <p>把一个行业全年的利润加总,就得到它的<strong>利润池</strong>(Profit Pool)。不同行业的池水深浅差别巨大,而且常常几十年保持稳定:有的行业辛苦一年只攒下薄薄一层,有的行业却像聚宝盆(示意量级)。为什么?不是从业者笨或懒,而是<strong>行业结构</strong>(Industry Structure)——竞争的「物理规则」——决定了价格能抬多高、成本能压多低。五力模型就是把这团模糊的直觉,拆成五个可以逐项打分的变量。</p>
+
+  <h2><span class="secno">2</span>五种力量:谁在分走你的利润</h2>
+  <figure class="figure">
+    <div class="figure-body">
+      <svg viewBox="0 0 640 380" role="img" style="width:100%;height:auto;display:block" aria-label="五力模型结构图">
+        <defs>
+          <marker id="ff-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#a8a29e"></path>
+          </marker>
+        </defs>
+        <g font-family="inherit">
+          <line x1="320" y1="88" x2="320" y2="158" stroke="#a8a29e" stroke-width="2.5" marker-end="url(#ff-arrow)"></line>
+          <line x1="320" y1="292" x2="320" y2="222" stroke="#a8a29e" stroke-width="2.5" marker-end="url(#ff-arrow)"></line>
+          <line x1="200" y1="190" x2="238" y2="190" stroke="#a8a29e" stroke-width="2.5" marker-end="url(#ff-arrow)"></line>
+          <line x1="440" y1="190" x2="402" y2="190" stroke="#a8a29e" stroke-width="2.5" marker-end="url(#ff-arrow)"></line>
+          <rect x="245" y="32" width="150" height="56" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="320" y="56" text-anchor="middle" font-size="14" font-weight="700" fill="#1c1917">新进入者威胁</text>
+          <text x="320" y="74" text-anchor="middle" font-size="9.5" fill="#a8a29e">Threat of New Entrants</text>
+          <rect x="245" y="292" width="150" height="56" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="320" y="316" text-anchor="middle" font-size="14" font-weight="700" fill="#1c1917">替代品威胁</text>
+          <text x="320" y="334" text-anchor="middle" font-size="9.5" fill="#a8a29e">Threat of Substitutes</text>
+          <rect x="52" y="162" width="148" height="56" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="126" y="186" text-anchor="middle" font-size="14" font-weight="700" fill="#1c1917">供方议价能力</text>
+          <text x="126" y="204" text-anchor="middle" font-size="9.5" fill="#a8a29e">Bargaining Power of Suppliers</text>
+          <rect x="440" y="162" width="148" height="56" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="514" y="186" text-anchor="middle" font-size="14" font-weight="700" fill="#1c1917">买方议价能力</text>
+          <text x="514" y="204" text-anchor="middle" font-size="9.5" fill="#a8a29e">Bargaining Power of Buyers</text>
+          <rect x="240" y="158" width="160" height="64" rx="10" fill="#fdf2f4" stroke="#9f1239" stroke-width="2"></rect>
+          <text x="320" y="184" text-anchor="middle" font-size="15" font-weight="800" fill="#9f1239">现有竞争强度</text>
+          <text x="320" y="204" text-anchor="middle" font-size="9.5" fill="#a8a29e">Rivalry Among Existing Competitors</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 五力模型(波特):四种力量从三个方向挤压中心,最终都通过「压价」或「抬本」分走行业利润。</figcaption>
+  </figure>
+  <p>每一股力量都在抢同一块蛋糕:要么把你的售价压下去,要么把你的成本抬上来。</p>
+  <ol class="steps">
+    <li><strong>现有竞争强度</strong>(Rivalry):对手多且势均力敌、产品同质、退出壁垒高,就会爆发价格战与营销军备竞赛——利润直接蒸发。</li>
+    <li><strong>新进入者威胁</strong>(Threat of New Entrants):<strong>进入壁垒</strong>(Barriers to Entry)越低,新对手越容易带着新产能杀进来,把好日子过成坏日子。</li>
+    <li><strong>替代品威胁</strong>(Threat of Substitutes):满足同一需求的其他形态——高铁之于短途航空、视频会议之于商务出差——给价格封了天花板。</li>
+    <li><strong>买方议价能力</strong>(Bargaining Power of Buyers):客户集中、比价容易、切换便宜时,他们能把价格谈到你只剩汗水。</li>
+    <li><strong>供方议价能力</strong>(Bargaining Power of Suppliers):关键要素被少数供应商把持时,涨价的不是你,而是他们。</li>
+  </ol>
+  <p>五力越强,行业平均利润率越薄;五力弱,「平庸的公司也能活得体面」。注意:五力说的是<b>行业平均</b>,不否定个别企业逆势赢利——那是下一课「竞争优势」的话题。</p>
+
+  <div class="sim">
+    <div class="sim-title">五力诊断器:给一个行业打分</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">拖动五个滑块(0 = 力量极弱,10 = 力量极强),雷达图与「行业吸引力综合分」实时重绘。点击预设按钮,载入三个行业的<b>示意读数</b>做对比讨论:航空公司、高端白酒、软件 SaaS。</p>
+    <div class="sim-presets" id="ff-presets"></div>
+    <div class="sim-controls" id="ff-sliders"></div>
+    <div class="ff-layout">
+      <div>
+        <div class="figure-body" id="ff-radar" style="padding:.6rem 0 0"></div>
+      </div>
+      <div>
+        <div class="ff-score-box">
+          <div class="ff-score-label">行业吸引力综合分</div>
+          <div class="ff-score-num"><span id="ff-score">–</span><span style="font-size:1rem;color:var(--ink-faint)"> / 100</span></div>
+          <div style="font-size:.8rem;color:var(--ink-faint)">综合分 = 100 − 五力均值 × 10(示意)</div>
+        </div>
+        <p class="ff-note" id="ff-note">预设读数为教学示意,非任何机构的评级。载入一个行业预设,看看每个数字背后的逻辑。</p>
+        <p class="sim-verdict" id="ff-verdict">拖动滑块开始诊断。</p>
+      </div>
+    </div>
+  </div>
+  <div class="callout note"><span class="callout-label">对比讨论</span>三个预设里,航空业五力强劲、白酒五力偏弱、SaaS 居中。想一想:如果航空业如此难赚,为什么还有资本源源不断地进入?如果白酒如此好赚,为什么新品牌仍前赴后继?提示:五力解释的是「平均」,而每一代新进入者都相信自己不是平均。</div>
+
+  <h2><span class="secno">3</span>静态快照 + 动态视角</h2>
+  <p>五力模型常被批评「静止」,这个批评对了一半。它确实给出的是某个时点的<strong>行业快照</strong>:今天的格局、今天的壁垒、今天的比价方式。但力量本身是流动的——管制放开会瞬间削弱进入壁垒(天空开放之于航空);技术会凭空造出替代品(流媒体之于 DVD 租赁);而互联网让比价变成一次滑动,<em>几乎所有行业的买方力量都在普遍上升</em>。</p>
+  <p>所以正确的用法是两步:先打今天的分,再问「什么会让这五个数字在五年内变化」。静态分数告诉你现在站在哪张牌桌上,动态追问告诉你这张牌桌还能开多久。</p>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例 · 航空百年辉煌,利润薄如刀片;白酒与软件,闷声赚钱</p>
+    <p>航空业是二十世纪最浪漫的行业之一:它重塑了地图,却几乎从未整体善待过股东——全球航空业数十年累计的利润,相对于庞大的收入而言薄得惊人,若干年份整体亏损,「把亿万富翁变成百万富翁」的老笑话流传已久(以上为示意量级)。用五力看,原因清清楚楚:飞机来自双寡头制造商、燃油与机场费用刚性(<b>供方强</b>);比价平台让票价一键可见(<b>买方强</b>);高铁与视频会议分流客源(<b>替代强</b>);购机可租、时刻可抢,新公司不断进场(<b>进入中强</b>);运力一旦过剩就互相杀价(<b>竞争强</b>)。</p>
+    <p>反观高端白酒:品牌与老窖池是几十年攒下的<strong>进入壁垒</strong>;原料是分散的粮食市场(<b>供方弱</b>);消费者分散且名酒常年供不应求(<b>买方弱</b>);替代品威胁有限。软件 SaaS 则介于两者之间:赛道拥挤、人才昂贵,但产品嵌入工作流后<b>转换成本</b>极高,订阅费按年续收,毛利率常年可观(均为示意量级)。</p>
+    <p class="case-learn"><b>这一课的要点:</b>好行业里平庸公司也可能滋润,坏行业里优秀公司也要拼尽全力——「选赛道」与「练内功」是两件事,都得会。用五力做投资、求职或创业选址,先看牌桌,再看自己手里的牌。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>五力模型 Five Forces</dt><dd>波特提出的行业结构分析框架,以五种竞争力量解释行业平均利润率的高低。</dd>
+      <dt>行业结构 Industry Structure</dt><dd>决定一个行业竞争强度与利润分配的基本规则,近似行业的「物理学」。</dd>
+      <dt>利润池 Profit Pool</dt><dd>行业全体参与者在某段时间内赚到的利润总和,衡量行业深浅。</dd>
+      <dt>进入壁垒 Barriers to Entry</dt><dd>阻止新对手进入的结构性障碍:规模、牌照、品牌、渠道、专利等。</dd>
+      <dt>替代品 Substitutes</dt><dd>以不同形态满足同一需求的产品或服务,为价格设定天花板。</dd>
+      <dt>买方议价能力 Buyer Power</dt><dd>客户压低价格或索取更多价值的能力,随集中度与信息透明度上升。</dd>
+      <dt>供方议价能力 Supplier Power</dt><dd>供应商抬高要素价格或收紧供给的能力,随供给集中度上升。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>行业的钱好不好赚,五种力量说了大半:竞争、进入、替代、买方、供方——任何一股变强,都在压价或抬本。先给今天的行业打分,再追问什么会改变这些分数:静态选牌桌,动态看牌局。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      {
+        "q": "高铁网络持续扩张,对短途航线上的航空公司而言,最直接体现哪一力量的变化?",
+        "options": ["现有竞争者的对抗强度", "新进入者的进入威胁", "替代品带来的威胁", "供方议价能力的上升"],
+        "answer": 2,
+        "explain": "高铁与飞机是<b>替代品</b>关系:它们形态不同,满足的却是同一份「几百公里内快速抵达」的需求。替代品的存在给机票价格封了天花板。"
+      },
+      {
+        "q": "一个行业五力都很强,最可能看到的结果是:",
+        "options": ["行业均价与利润率被双向压薄", "行业集中度必然快速上升", "进入壁垒自动升高阻挡新对手", "客户忠诚度普遍显著提升"],
+        "answer": 0,
+        "explain": "买方与替代压<b>价</b>,供方抬<b>本</b>,竞争与新进入者抢走<b>量</b>——三路夹击之下,行业平均利润率被双向挤压。这正是百年航空业的处境(示意)。"
+      },
+      {
+        "q": "某行业的关键原料只有一家供应商,且短期内没有替代原料。这直接抬高了:",
+        "options": ["新进入者的威胁", "替代品的威胁", "买方议价能力", "供方议价能力"],
+        "answer": 3,
+        "explain": "供给集中、无替代原料,供应商便掌握了抬价与收紧供给的筹码——<b>供方议价能力</b>强,直接侵蚀下游利润。"
+      },
+      {
+        "q": "关于五力模型的正确理解是:",
+        "options": ["它能预测企业的具体市场份额", "它是静态快照,需补动态视角", "它只适用于传统制造业分析", "它能保证选出赚钱的细分赛道"],
+        "answer": 1,
+        "explain": "五力是某一时点的<b>行业结构快照</b>:管制、技术与偏好都会移动那些力量。正确用法是先打今天的分,再追问「什么会让这五个数字变化」。"
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《竞争战略》迈克尔·波特 · 华夏出版社(建议读:第 1 章「产业结构分析」,即五力原文)</li>
+      <li>《竞争优势》迈克尔·波特 · 华夏出版社(建议读:第 1 章)</li>
+      <li>《蓝海战略》W. 钱·金、勒妮·莫博涅 · 商务印书馆(建议读:第 1–2 章,「跳出五力红海」的另一条路)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-what-is-strategy.html"><span class="pager-label">← 上一课</span><span class="pager-title">战略是什么:取舍的艺术</span></a>
+    <a class="next" href="0003-competitive-advantage.html"><span class="pager-label">下一课 →</span><span class="pager-title">竞争优势:成本领先与差异化</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我用五力模型分析一下我所在的行业,五个数字你会怎么打?」——把它套在你熟悉的行业上,比读十遍定义都有用。</div>
+    <p>战略管理 · 第 2 课 · 行业读数与利润描述均为示意量级。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+  var box = document.getElementById("ff-radar");
+  var slidersBox = document.getElementById("ff-sliders");
+  var scoreEl = document.getElementById("ff-score");
+  var noteEl = document.getElementById("ff-note");
+  var verdictEl = document.getElementById("ff-verdict");
+  if (!box || !slidersBox || !window.Viz) return;
+
+  var FORCES = [
+    { name: "现有竞争强度" },
+    { name: "新进入者威胁" },
+    { name: "替代品威胁" },
+    { name: "买方议价能力" },
+    { name: "供方议价能力" }
+  ];
+  var CX = 190, CY = 168, R = 95;
+  function angleAt(i) { return -Math.PI / 2 + i * 2 * Math.PI / 5; }
+  function pt(i, r) {
+    return [CX + Math.cos(angleAt(i)) * r, CY + Math.sin(angleAt(i)) * r];
+  }
+
+  var svg = Viz.svgEl("svg", {
+    viewBox: "0 0 380 330", role: "img",
+    style: "width:100%;max-width:380px;height:auto;display:block;margin:0 auto"
+  });
+  box.appendChild(svg);
+
+  [0.25, 0.5, 0.75, 1].forEach(function (f) {
+    var ring = R * f;
+    var pts = [0, 1, 2, 3, 4].map(function (i) { return pt(i, ring); });
+    var d = pts.map(function (p, k) {
+      return (k ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1);
+    }).join(" ") + " Z";
+    svg.appendChild(Viz.svgEl("path", { d: d, fill: "none", stroke: "#e7e0d3", "stroke-width": 1 }));
+  });
+  FORCES.forEach(function (f, i) {
+    var p = pt(i, R);
+    svg.appendChild(Viz.svgEl("line", { x1: CX, y1: CY, x2: p[0], y2: p[1], stroke: "#e7e0d3", "stroke-width": 1 }));
+    var lp = pt(i, R + 16);
+    var c = Math.cos(angleAt(i));
+    var anchor = Math.abs(c) < 0.3 ? "middle" : (c > 0 ? "start" : "end");
+    Viz.label(svg, lp[0], lp[1] + 4, f.name, { size: 11.5, color: "#57534e", anchor: anchor });
+  });
+  Viz.label(svg, CX, CY - 3, "行业", { size: 10.5, color: "#a8a29e", anchor: "middle", weight: 400 });
+  Viz.label(svg, CX, CY + 11, "吸引力", { size: 10.5, color: "#a8a29e", anchor: "middle", weight: 400 });
+
+  var poly = Viz.svgEl("g");
+  svg.appendChild(poly);
+
+  var sliders = FORCES.map(function (f) {
+    var s = Viz.slider(slidersBox, {
+      label: f.name, min: 0, max: 10, step: 1, value: 5,
+      format: function (v) { return v + " / 10"; }
+    });
+    s.onChange(update);
+    return s;
+  });
+
+  function update() {
+    var vs = sliders.map(function (s) { return s.get(); });
+    var avg = (vs[0] + vs[1] + vs[2] + vs[3] + vs[4]) / 5;
+    var score = Math.round(100 - avg * 10);
+    scoreEl.textContent = String(score);
+    while (poly.firstChild) poly.removeChild(poly.firstChild);
+    var pts = vs.map(function (v, i) { return pt(i, v / 10 * R); });
+    var d = pts.map(function (p, k) {
+      return (k ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1);
+    }).join(" ") + " Z";
+    poly.appendChild(Viz.svgEl("path", {
+      d: d, fill: "#9f1239", opacity: 0.22,
+      stroke: "#9f1239", "stroke-width": 2.5, "stroke-linejoin": "round"
+    }));
+    pts.forEach(function (p) { Viz.dot(poly, p[0], p[1], { r: 4, fill: "#9f1239" }); });
+    var verdict;
+    if (score >= 70) {
+      verdict = "五力偏弱(分高):行业结构肥美,平均利润率通常可观——但好行业会招来新对手,记得用动态视角追问。";
+    } else if (score >= 45) {
+      verdict = "五力中等:钱不好赚也不难赚,企业的相对优势开始变得关键——这正好是下一课的主题。";
+    } else {
+      verdict = "五力强劲(分低):行业结构恶劣,价格与成本被双向挤压——多数玩家只能赚辛苦钱,必须靠竞争优势突围。";
+    }
+    verdictEl.textContent = verdict;
+  }
+
+  var PRESETS = [
+    {
+      name: "航空公司", values: [9, 7, 5, 8, 8],
+      note: "航空公司(示意读数):对手多且运力常过剩(竞争 9);购机可租、时刻可抢(进入 7);高铁与视频会议分流(替代 5);比价平台让乘客一键压价(买方 8);飞机、燃油与机场集中(供方 8)。"
+    },
+    {
+      name: "高端白酒", values: [3, 2, 3, 2, 2],
+      note: "高端白酒(示意读数):格局稳定、品牌与老窖池构成高壁垒(进入 2);粮食等原料分散便宜(供方 2);消费者分散且供不应求(买方 2);替代品威胁有限(替代 3)。"
+    },
+    {
+      name: "软件 SaaS", values: [6, 5, 3, 5, 4],
+      note: "软件 SaaS(示意读数):赛道拥挤(竞争 6);启动资本不高(进入 5);产品嵌入工作流后迁移成本高(替代 3);订阅制下客户按年议价(买方 5);工程师薪酬推高供方力量(供方 4)。"
+    }
+  ];
+  var presetBox = document.getElementById("ff-presets");
+  PRESETS.forEach(function (p, idx) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "sim-btn";
+    b.textContent = p.name;
+    b.addEventListener("click", function () {
+      sliders.forEach(function (s, i) { s.set(p.values[i]); });
+      noteEl.textContent = p.note;
+      presetBox.querySelectorAll(".sim-btn").forEach(function (x, i) {
+        x.classList.toggle("active", i === idx);
+      });
+    });
+    presetBox.appendChild(b);
+  });
+
+  update();
+  if (window.Viz && Viz.countUp) { Viz.countUp(scoreEl, 50, { dur: 700, format: function (x) { return String(Math.round(x)); } }); }
+})();
+</script>
+</body>
+</html>

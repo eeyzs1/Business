@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>招聘与选拔 · 人力资源管理</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .star-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+  .star-grid .star-cell {
+    border-radius: 10px; padding: .8rem .95rem; color: #fff; line-height: 1.65;
+  }
+  .star-grid .star-cell b { font-family: var(--serif); font-size: 1.5rem; margin-right: .4rem; }
+  .star-grid .star-cell small { display: block; font-size: .78rem; opacity: .92; margin-top: .25rem; }
+  .star-grid .s1 { background: #881337; } .star-grid .s2 { background: #9d174d; }
+  .star-grid .s3 { background: #be185d; } .star-grid .s4 { background: #db2777; }
+  @media (max-width: 520px) { .star-grid { grid-template-columns: 1fr; } }
+  .star-progress { font-size: .85rem; font-weight: 700; color: var(--accent); margin-bottom: .5rem; font-variant-numeric: tabular-nums; }
+  .star-card {
+    background: var(--paper-deep); border-left: 4px solid var(--accent); border-radius: 10px;
+    padding: 1rem 1.15rem; font-size: 1.05rem; min-height: 4.2rem; display: flex; align-items: center;
+  }
+  .star-actions { display: flex; gap: .8rem; margin-top: .9rem; flex-wrap: wrap; }
+  .star-btn {
+    font-family: var(--sans); font-size: .97rem; font-weight: 700; cursor: pointer;
+    border-radius: 999px; padding: .55rem 1.35rem; border: 2px solid var(--line); background: #fff; color: var(--ink);
+    transition: all .15s ease;
+  }
+  .star-btn.yes { border-color: #bbf7d0; }
+  .star-btn.yes:hover:not(:disabled) { border-color: var(--good); background: #f0fdf4; }
+  .star-btn.no { border-color: #fecaca; }
+  .star-btn.no:hover:not(:disabled) { border-color: var(--bad); background: #fef2f2; }
+  .star-btn:disabled { opacity: .4; cursor: default; }
+  .star-feedback {
+    margin-top: .9rem; font-size: .93rem; color: var(--ink-soft); line-height: 1.75;
+    background: var(--paper-deep); border-radius: 8px; padding: .75rem .95rem;
+  }
+  .star-feedback b { color: var(--accent); }
+  .star-meta { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+  .star-score { font-size: .95rem; font-weight: 700; color: var(--accent); }
+  .star-next {
+    margin-left: auto; background: var(--accent); color: var(--accent-ink); border: none; border-radius: 999px;
+    padding: .45rem 1.3rem; font-weight: 700; font-size: .92rem; cursor: pointer; font-family: var(--sans);
+  }
+  .star-next:disabled { opacity: .35; cursor: default; }
+</style>
+</head>
+<body class="branch-hr">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">人力资源管理</a><span class="crumb-sep">/</span>
+  <span>招聘与选拔</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">人力资源管理 · Lesson 2</p>
+  <h1>招聘与选拔</h1>
+  <p class="lead">选人大概是管理者回报最高、也最容易凭感觉出错的决策:面试四十五分钟,就要对一个可能共事数年的人下判断。这一课把「识人」从玄学变成工程——先画准人才画像,再用结构化面试与 STAR 追问,拿到可比较的行为证据。</p>
+
+  <h2><span class="secno">1</span>选错人,是最贵的错误</h2>
+  <p>面试现场,候选人有充分的动机「表现出最好的自己」,而面试官只有几百秒的信息——信息不对称是结构性的。更麻烦的是,大脑自带几类系统性偏差:<em>光环效应</em>(Halo Effect,一个亮点美化整体印象——名校毕业,于是「想必也能吃苦」)、<em>首因效应</em>(Primacy Effect,前五分钟定调,后面都在找证据)、以及「像我」偏差(Similar-to-Me Bias,不自觉地偏爱与自己相似的候选人)。这些偏差不是态度问题,而是默认设置——所以要靠<b>流程设计</b>去对冲,而不是靠提醒自己「客观一点」。</p>
+  <div class="callout warn">
+    <span class="callout-label">顺带一提 · 简历筛选偏差</span>
+    <p style="margin:.3rem 0 0">姓名、性别、年龄、照片、毕业院校,都可能触发无意识联想,让简历在见面之前就被打了标签。常见对策是<b>盲筛</b>:先遮住与胜任力无关的信息,只对能力证据评分。</p>
+  </div>
+  <p>代价有多大?显性成本(猎头费、试用期工资)只是小头;错配的隐性成本——错失的机会、团队反复磨合的消耗、再次招聘的时间——往往大得多(常见量级估算为该岗位年薪的数倍,示意)。</p>
+
+  <h2><span class="secno">2</span>人才画像:从岗位到胜任力</h2>
+  <div class="concept">
+    <div class="concept-title">概念:人才画像与胜任力</div>
+    <p style="margin:.2rem 0 0">把<em>岗位说明书</em>(Job Description,职责与任职条件)翻译成一张<em>胜任力</em>(Competency)清单:专业知识与技能、经验门槛、以及通用素质(如结构化沟通、抗压性)。画像不清,招聘渠道再宽也是漏斗漏水;画像清楚,面试题目和评分表才有靶子。</p>
+  </div>
+  <p>渠道是「质量 × 速度 × 成本」的权衡:<b>内部推荐</b>质量高、成本低,但要防团队「近亲繁殖」;<b>招聘平台</b>量大,筛选负担也大;<b>猎头</b>适合高端稀缺岗位;<b>校园招聘</b>买的是潜力与可塑性。没有最好的渠道,只有与岗位画像匹配的渠道组合。</p>
+
+  <h2><span class="secno">3</span>结构化面试:效度的分水岭</h2>
+  <div class="concept">
+    <div class="concept-title">概念:结构化面试 · Structured Interview</div>
+    <p style="margin:.2rem 0 0">所有候选人回答<b>同一组</b>与胜任力挂钩的题目,并使用<b>统一评分表</b>(常附行为锚定等级描述);反之,想到哪问到哪的「聊聊看」,就是非结构化面试。</p>
+  </div>
+  <p>为什么结构化重要?数十年的选拔研究元分析一致发现:结构化面试对工作表现的<em>预测效度</em>(Validity)显著高于非结构化面试(量级约 0.5 对 0.4,示意)。原因并不神秘——同题、同标准,评分才可比,面试官的个人口味与偏差才被压缩。附带的好处是公平:每位候选人面对同样的考题,一旦发生招聘纠纷,书面评分记录也是重要的程序证据。</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>维度</th><th>结构化面试</th><th>非结构化面试</th></tr></thead>
+      <tbody>
+        <tr><td>题目</td><td>固定题库,对准胜任力</td><td>面试官即兴发挥</td></tr>
+        <tr><td>评分</td><td>统一评分表,行为锚定</td><td>凭整体印象打分</td></tr>
+        <tr><td>可比性</td><td>候选人之间可横向比较</td><td>几乎无法比较</td></tr>
+        <tr><td>预测效度</td><td>较高且稳定(约 0.5,示意)</td><td>较低且波动(约 0.4,示意)</td></tr>
+        <tr><td>体验</td><td>稳定、专业、可复用</td><td>因面试官而异</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="secno">4</span>行为面试与 STAR 追问</h2>
+  <p>结构化面试里威力最大的一类是<em>行为面试</em>(Behavioral Interview),底层假设只有一句话:<b>过去的行为,是未来表现最好的预测器。</b>所以不问「你会不会」,而问「你做过没有」;不给候选人发挥演讲术的空间,而是沿着一段真实经历层层下钻。下钻的地图就是 STAR。</p>
+
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <div class="star-grid">
+        <div class="star-cell s1"><b>S</b>情境 Situation<small>「当时是什么背景?有哪些约束和难点?」</small></div>
+        <div class="star-cell s2"><b>T</b>任务 Task<small>「你个人要完成的目标是什么?」</small></div>
+        <div class="star-cell s3"><b>A</b>行动 Action<small>「你具体做了什么?注意是『你』,不是『你们』。」</small></div>
+        <div class="star-cell s4"><b>R</b>结果 Result<small>「结果如何?有什么可量化的影响?」</small></div>
+      </div>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> STAR 追问地图:沿着四格把一段经历问透。最关键的是 A——「我们团队后来成功了」不算证据,「你当时做了哪三件事」才算。</figcaption>
+  </figure>
+
+  <p>下面把面试官的位置交给你:八张卡片,每张是一道面试题或一种问法。判断它是<b>有效的行为面试题</b>,还是<b>无效题</b>(拿不到行为证据)。判完会给出原理。</p>
+
+  <div class="sim" data-reveal id="star-sim">
+    <div class="sim-title">交互 · STAR 面试练习:这题有效吗?</div>
+    <div class="star-progress" id="starProg">第 1 / 8 张</div>
+    <div class="star-card" id="starCard">正在加载练习……</div>
+    <div class="star-actions">
+      <button type="button" class="star-btn yes" id="starYes">✓ 有效行为面试题</button>
+      <button type="button" class="star-btn no" id="starNo">✗ 无效题</button>
+    </div>
+    <div class="star-feedback" id="starFb" hidden></div>
+    <div class="star-meta">
+      <span class="star-score" id="starScore">已判对 0 张</span>
+      <button type="button" class="star-next" id="starNext" disabled>下一张 →</button>
+    </div>
+  </div>
+
+  <h2><span class="secno">5</span>案例:亚马逊的「抬杠人」</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">Bar Raiser:一个专门「泼冷水」的面试官</p>
+    <p>亚马逊的招聘流程里有一种特殊角色:<em>抬杠人</em>(Bar Raiser,直译「抬横杆的人」)。这是一位受过专门训练的资深面试官,来自与用人岗位<b>无关的部门</b>,参加面试与评审会,职责不是帮用人经理「尽快把人招进来」,而是替公司守住人员质量的长期标准——对不合格的候选人拥有否决的话语权(以上为机制的示意描述)。当业务部门急着补人手时,最容易出现「先招进来再说」的妥协;抬杠人不受交付压力影响,正是对冲这种短期主义的设计。</p>
+    <p class="case-learn"><b>这一课的教训:</b>制度比意愿可靠。想让招聘标准不被「急招」稀释,不能靠大家自觉,而要靠一个独立于利益相关方的否决权设计——这与结构化面试「同题同评分表」是同一个思想:用流程约束人性,而不是用道德要求人性。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>人才画像 Talent Profile</dt><dd>由岗位说明书翻译而成的胜任力清单,是出题与评分的靶子。</dd>
+      <dt>胜任力 Competency</dt><dd>胜任岗位所需的知识、技能、经验与素质的可观察组合。</dd>
+      <dt>结构化面试 Structured Interview</dt><dd>固定题目加统一评分表的面试,评分可比、效度更高。</dd>
+      <dt>行为面试 Behavioral Interview</dt><dd>以「过去的真实行为预测未来表现」为假设的提问方法。</dd>
+      <dt>STAR 法则</dt><dd>情境 Situation、任务 Task、行动 Action、结果 Result 的追问框架。</dd>
+      <dt>预测效度 Validity</dt><dd>选拔工具的评分对日后工作表现的预测能力,量级以相关系数表示(示意)。</dd>
+      <dt>引导性问题 Leading Question</dt><dd>答案几乎唯一、拿不到真实信息的提问,如「你是个细心的人吗」。</dd>
+      <dt>抬杠人 Bar Raiser</dt><dd>亚马逊招聘中独立于用人部门、负责守住标准的面试官角色(示意)。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>选人的准确性来自流程,不来自眼力:画像定靶子,结构化保可比,行为面试拿证据。STAR 的灵魂在 A——「你」做了什么,而不是「我们」怎么样。面试官的直觉是假设,行为证据才是验证。</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">随堂测验 · 检索练习</div>
+    <script type="application/json">
+    [
+      { "q": "与随聊式的非结构化面试相比,结构化面试的主要优势是什么?",
+        "options": ["面试耗时更短,一天之内可以安排更多候选人", "气氛更随和轻松,候选人的现场体验更加愉快", "同题加统一评分表,评分可比且预测效度显著更高", "无需面试官参与,系统可以全自动完成全部打分"],
+        "answer": 2,
+        "explain": "结构化的要义是<b>同题 + 同评分标准</b>:候选人之间可以横向比较,面试官偏差被压缩,数十年的元分析显示其预测效度显著高于非结构化(量级约 0.5 对 0.4,示意)。快、轻松、全自动都不是它的核心优势。" },
+      { "q": "面试官问「你是个细心的人吗」,几乎所有候选人都会回答「是」。这主要违反了面试设计的什么原则?",
+        "options": ["行为面试要的是过去的真实行为,而非引导式的自我评价", "面试必须安排在上午进行,候选人到了下午更容易说谎", "面试官应当当场宣布录用结果,拖到晚上诚信就要打折", "候选人的简历必须逐字朗读一遍,以体现公司对人的尊重"],
+        "answer": 0,
+        "explain": "「你是个 X 的人吗」是典型的<b>引导性问题</b>:答案预先给出,只剩「是/否」,考的是会不会答题,不是有没有行为。改成行为版:「讲一次你的细心真正避免了事故的经历」。" },
+      { "q": "按 STAR 追问一段经历时,「R(结果 Result)」这一层主要用来确认什么?",
+        "options": ["候选人当时所在团队的人数规模与汇报的层级", "候选人最喜欢的前雇主是哪一家以及其原因", "候选人期望的薪资范围以及最快可以到岗的时间", "行动最终产生的结果与影响,最好是可以量化的"],
+        "answer": 3,
+        "explain": "STAR 四层缺一不可,而 R 是<b>证据的落点</b>:交付了什么、改变了什么、有没有可量化的影响。没有 R,前面的行动只是「忙过」;团队规模、偏好、薪资都与行为证据无关。" },
+      { "q": "关于亚马逊「抬杠人」(Bar Raiser)机制,以下理解最准确的是?",
+        "options": ["抬杠人的目标是淘汰掉所有候选人,以示招聘的严格", "抬杠人独立于用人部门,以否决权帮助守住招聘标准", "抬杠人由候选人来指定,负责替候选人争取更高薪酬", "抬杠人只出现在校园招聘,社招岗位无需参与该流程"],
+        "answer": 1,
+        "explain": "抬杠人来自与用人无关的部门、不受交付压力影响,在评审中对不合格者有否决的话语权——用<b>独立第三方</b>对冲「急招放水」的短期主义。淘汰所有人、替候选人谈判、只限校招,都不符合其设计意图。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>延伸阅读</h2>
+    <ul>
+      <li>《重新定义团队:谷歌如何工作》拉斯洛·博克 · 中信出版社(建议读:招聘相关章节,「只招比你更优秀的人」)</li>
+      <li>《联盟:互联网时代的人才关系》里德·霍夫曼 · 中信出版社(建议读:前半部分,把雇佣关系变成有期限的结盟)</li>
+      <li>《组织行为学》斯蒂芬·罗宾斯 · 中国人民大学出版社(建议读:人员选拔与面试效度相关章节)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-employee-lifecycle.html"><span class="pager-label">上一课</span><span class="pager-title">HR 全景:员工生命周期</span></a>
+    <a class="next" href="0003-performance-management.html"><span class="pager-label">下一课</span><span class="pager-title">绩效管理:KPI 与 OKR</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「帮我把我常用的五个面试题改成行为面试题」「我是技术经理,该给后端岗画哪些胜任力?」——追问是学习的一部分。</div>
+    <p>人力资源管理 · 第 2 课 · 招聘与选拔 | 交互:STAR 面试题判断练习 · 效度数字为示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var cards = [
+    { t: "「讲一次你和同事发生冲突的经历:当时情况如何?你具体做了什么?结果怎样?」",
+      v: true,
+      why: "经典的行为面试题:锁定一段真实经历,且一问覆盖 S、A、R 三层,可继续追问 T(你的任务是什么)。考的是处理冲突的<b>行为记录</b>,不是「我擅长沟通」的自我评价。" },
+    { t: "「你是一个团队型的人吗?」",
+      v: false,
+      why: "引导性 + 自我评价题:答案几乎唯一,人人都会说「是」。行为版改法:「讲一次你为了团队目标而让出个人偏好的经历」。" },
+    { t: "「你最大的缺点是什么?」",
+      v: false,
+      why: "自我评价题,候选人大都备好了「我太追求完美」式的模板答案,拿不到行为证据。行为版改法:「讲一次你的某个短板真的影响了结果,后来你怎么处理?」。" },
+    { t: "「描述一次你没有按时交付的经历:背景是什么?你采取了哪些行动?最后结果如何?」",
+      v: true,
+      why: "有效,而且不回避失败:失败场景里的 STAR 更能暴露真实的责任感与复盘方式。结构完整覆盖 S-A-R,可追问 T。" },
+    { t: "「如果团队里有人总是拖延,你会怎么处理?」",
+      v: false,
+      why: "情境假设题问的是「打算怎么做」,不是「曾经做到过」——意愿不等于记录。情境题有一定预测力,但严格的行为面试会问:「讲一次你实际处理过的类似情况」。" },
+    { t: "「说说你最近一次主动承担分外工作的经历:当时的情况和结果分别是什么?」",
+      v: true,
+      why: "有效:指向<b>最近、真实、主动</b>的行为事件,两问恰好对应 S 与 R,还可以继续追问「你具体做了什么」(A)和「你的任务边界」(T)。" },
+    { t: "「讲一个你说服他人改变原定方案的具体例子:你面对什么任务?做了什么?结果怎样?」",
+      v: true,
+      why: "有效:四问几乎完整覆盖 S-T-A-R,考察「说服与影响」这类难以用证书证明、只能靠行为事件呈现的胜任力。" },
+    { t: "「你怎么看我们所在行业未来三年的趋势?」",
+      v: false,
+      why: "观点与知识题:考察信息量与表达,但与岗位胜任力的行为证据相距较远,适合放在交流环节暖场,不能作为核心评分依据。" }
+  ];
+  var order = [0, 1, 3, 5, 2, 4, 6, 7];
+  var i = 0, score = 0, answered = false;
+  var cardEl = document.getElementById("starCard");
+  var progEl = document.getElementById("starProg");
+  var fbEl = document.getElementById("starFb");
+  var scoreEl = document.getElementById("starScore");
+  var nextEl = document.getElementById("starNext");
+  var yesBtn = document.getElementById("starYes");
+  var noBtn = document.getElementById("starNo");
+  if (!cardEl || !yesBtn || !noBtn) return;
+
+  function render() {
+    answered = false;
+    var item = cards[order[i]];
+    cardEl.textContent = item.t;
+    progEl.textContent = "第 " + (i + 1) + " / " + cards.length + " 张";
+    fbEl.hidden = true;
+    yesBtn.disabled = false;
+    noBtn.disabled = false;
+    nextEl.disabled = true;
+    nextEl.textContent = i === cards.length - 1 ? "查看结果 →" : "下一张 →";
+  }
+  function choose(saidValid) {
+    if (answered) return;
+    answered = true;
+    var item = cards[order[i]];
+    var right = saidValid === item.v;
+    if (right) score++;
+    var truth = item.v ? "这是一道<b>有效的行为面试题</b>" : "这是一道<b>无效题</b>";
+    fbEl.innerHTML = (right ? "<b>✓ 判断正确。</b>" : "<b>✗ 再想想。</b>") + truth +
+      "。原理:" + item.why;
+    fbEl.hidden = false;
+    scoreEl.textContent = "已判对 " + score + " 张";
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
+    nextEl.disabled = false;
+  }
+  function finish() {
+    progEl.textContent = "练习完成";
+    cardEl.textContent = "八张卡片判完:判对 " + score + " / " + cards.length +
+      (score >= 6 ? "。你已经具备面试官的基本嗅觉:凡拿不到「你当时做了什么」的问法,都值得改造。"
+                  : "。记住一个速判口诀:好问题问「讲一次你……」,坏问题问「你是不是……」。");
+    fbEl.hidden = true;
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
+    nextEl.disabled = false;
+    nextEl.textContent = "↻ 再来一遍";
+  }
+  yesBtn.addEventListener("click", function () { choose(true); });
+  noBtn.addEventListener("click", function () { choose(false); });
+  nextEl.addEventListener("click", function () {
+    if (nextEl.textContent.indexOf("再来") >= 0) { i = 0; score = 0; scoreEl.textContent = "已判对 0 张"; render(); return; }
+    if (i < cards.length - 1) { i++; render(); } else { finish(); }
+  });
+  render();
+})();
+</script>
+</body>
+</html>

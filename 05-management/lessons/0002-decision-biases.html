@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>决策:理性与偏差 · 管理学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .btn-primary{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:.5rem 1.15rem;font-weight:700;cursor:pointer;font-family:var(--sans);font-size:.9rem}
+  .btn-primary:disabled{opacity:.4;cursor:default}
+  .lab-p{font-size:.93rem;color:var(--ink-soft);margin-bottom:.8rem}
+  .lab-q{font-size:.98rem;margin:.7rem 0}
+  .lab-plan{background:var(--paper-deep);border-radius:8px;padding:.55rem .85rem;margin:.45rem 0;font-size:.93rem}
+  .lab-opts{display:flex;flex-wrap:wrap;gap:.6rem;margin:.9rem 0}
+  .opt-btn{text-align:left;font-family:var(--sans);font-size:.94rem;line-height:1.6;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:10px;padding:.5rem .95rem;cursor:pointer;transition:all .15s ease}
+  .opt-btn:hover{border-color:var(--accent)}
+  .opt-btn.picked{border-color:var(--accent);background:#f5f0ff;font-weight:700;box-shadow:inset 4px 0 0 var(--accent)}
+  .opt-btn:disabled{cursor:default}
+  .lab-fb{margin-top:.9rem;font-size:.92rem;background:var(--paper-deep);border-radius:8px;padding:.85rem 1rem;color:var(--ink-soft);line-height:1.8}
+  .lab-fb b{color:var(--accent)}
+  .anchor-box{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin:.6rem 0}
+  .anchor-num{font-family:var(--serif);font-size:3rem;font-weight:800;color:var(--accent);min-width:3.2em;text-align:center;background:#fff;border:2px dashed var(--accent);border-radius:12px;padding:.2rem .8rem;font-variant-numeric:tabular-nums}
+  .anchor-cap{font-size:.85rem;color:var(--ink-faint)}
+</style>
+</head>
+<body class="branch-management">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">管理学</a><span class="crumb-sep">/</span>
+  <span>决策:理性与偏差</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">管理学 · LESSON 2</p>
+  <h1>决策:理性与偏差</h1>
+  <p class="lead">管理者的每一个动作都是决策:招谁、投多少、砍不砍项目。经济学假设的「理性人」在真实世界里并不存在——这一课让你在自己的判断里亲眼看见偏差长什么样,然后学会给决策装上护栏。</p>
+
+  <h2><span class="secno">1</span>完全理性是个神话</h2>
+  <p>教科书里的「经济人」会列出所有备选方案、算清每种后果、选出最优解。但诺贝尔奖得主西蒙(Herbert Simon)指出:人的认知能力与信息都是有限的,真实决策者做的是——<strong>先设定一个「够好」的标准,找到第一个达到标准的选项就停手</strong>。他把这称为<em>满意解</em>(Satisficing),与最优解(Optimizing)相对,并称之为<em>有限理性</em>(Bounded Rationality)。</p>
+  <div class="concept">
+    <div class="concept-title">定义 · 有限理性与满意解</div>
+    <p style="margin:0">受信息、时间与认知资源的限制,决策者不去穷举所有方案找最优,而是在有限选项里找<strong>「足够好」的满意解</strong>。这不是懒惰,而是现实约束下的合理策略——真正危险的不是「不最优」,而是系统性地偏离理性而不自知。</p>
+  </div>
+  <p>「不自知的偏离」就是<em>决策偏差</em>(Decision Bias):它们不是偶尔的粗心,而是人人都有、方向可预测的系统性倾向。以下四种最高频地出现在商业现场:</p>
+
+  <h2><span class="secno">2</span>四大经典偏差速览</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>偏差</th><th>一句话机制</th><th>商业现场的样子</th></tr></thead>
+      <tbody>
+        <tr><td><b>锚定效应</b>(Anchoring)</td><td>最先出现的数字拖走后续判断</td><td>先报高价再打折;第一份报价定调整场谈判</td></tr>
+        <tr><td><b>确认偏误</b>(Confirmation Bias)</td><td>只收集支持已有观点的证据</td><td>看好一个项目后,只听得进好消息</td></tr>
+        <tr><td><b>沉没成本谬误</b>(Sunk Cost Fallacy)</td><td>为已付出、收不回的成本继续加码</td><td>「都投这么多了,现在停太可惜」</td></tr>
+        <tr><td><b>损失厌恶</b>(Loss Aversion)</td><td>损失带来的痛远大于同量收益的甜</td><td>「错过立省」比「买到赚到」更能催单</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>读表只能「知道」,实验才能「看见」。下面是偏差实验室的三个迷你实验——请按顺序玩完,每个都会当场把你自己的判断记录给你看。</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">偏差实验室 · 实验一:锚定转盘</div>
+    <p class="lab-p">先玩一把「命运转盘」——转出的数字与接下来要回答的问题<b>毫无关系</b>,纯属随机。</p>
+    <div class="anchor-box">
+      <div class="anchor-num" id="anc-num">?</div>
+      <div>
+        <button type="button" class="btn-primary" id="anc-spin">🎰 转动转盘</button>
+        <div class="anchor-cap" id="anc-cap">数字是随机生成的</div>
+      </div>
+    </div>
+    <div id="anc-q" hidden>
+      <p class="lab-q">刚才转出的数字是 <b id="anc-val"></b>。请凭判断回答:非洲国家占联合国会员国总数的比例,大约是多少?</p>
+      <div class="lab-opts" id="anc-opts"></div>
+    </div>
+    <div class="lab-fb" id="anc-fb" hidden></div>
+    <div id="anc-chart"></div>
+  </div>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">偏差实验室 · 实验二:损失框架</div>
+    <div id="fr-a">
+      <p class="lab-q">情景:一种突发疾病预计将导致 600 人死亡,仅有以下两种应对方案,统计结果显示:</p>
+      <div class="lab-plan"><b>方案 A</b>:确定救活 200 人。</div>
+      <div class="lab-plan"><b>方案 B</b>:有 1/3 的可能救活 600 人,2/3 的可能一个也救不了。</div>
+      <div class="lab-opts" id="fr-opts-a"></div>
+    </div>
+    <div id="fr-b" hidden>
+      <p class="lab-q">同一批专家换了个说法重新汇报——同一场疾病、同样的两种应对,但这次以「死亡」表述:</p>
+      <div class="lab-plan"><b>方案 C</b>:确定有 400 人死亡。</div>
+      <div class="lab-plan"><b>方案 D</b>:有 1/3 的可能无人死亡,2/3 的可能 600 人全部死亡。</div>
+      <div class="lab-opts" id="fr-opts-b"></div>
+    </div>
+    <div class="lab-fb" id="fr-fb" hidden></div>
+  </div>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">偏差实验室 · 实验三:沉没成本</div>
+    <p class="lab-q">情景:你的公司为一套自研系统已投入约 800 万元,完成它还需约 400 万元。此时市场上出现了成熟的替代方案:总成本约 250 万元、三个月可用,功能覆盖自研系统规划的约九成。作为负责人,你更倾向:</p>
+    <div class="lab-opts" id="sc-opts"></div>
+    <div class="lab-fb" id="sc-fb" hidden></div>
+  </div>
+
+  <h2><span class="secno">3</span>给决策装上护栏</h2>
+  <p>偏差无法靠意志力消除——知道锚定效应的人照样被锚定。有效的是<strong>改变决策的流程与环境</strong>:</p>
+  <ul class="steps">
+    <li><b>写下锚,再质疑锚</b>:谈判前独立写下自己的心理价位与依据,标出「这个数是哪来的」。</li>
+    <li><b>指派唱反调的人</b>:决策前固定有人负责搜集反方证据,专治确认偏误。</li>
+    <li><b>问「归零问题」</b>:假如今天从头开始、不背任何历史投入,我还会选它吗?专治沉没成本。</li>
+    <li><b>事前验尸</b>(Premortem):假设项目一年后失败了,让团队现在就写下失败原因——用想象中的损失逼出被乐观掩盖的风险。</li>
+  </ul>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例:柯达的胶卷滤镜,与「填坑式」追加投资</p>
+    <p><b>确认偏误的样本:柯达(Kodak)。</b>1975 年,柯达的工程师造出了世界上最早的数码相机原型之一(公开资料)。但对当时靠胶卷利润为主的公司来说,「数码会取代胶卷」是个不受欢迎的信号。此后的岁月里,公司持续把注意力放在支持胶卷业务的证据上——胶卷仍在上量、渠道依然强势——而把替代技术的威胁解释为「不影响主业」。等到数码浪潮全面袭来,柯达于 2012 年申请破产保护(公开事实)。看到威胁的人不是没有,只是坏消息在层层汇报中被过滤掉了:这正是确认偏误在组织层面的样子。</p>
+    <p><b>沉没成本的样本:「填坑式」追加投资。</b>商业报道中常见这样的剧情(示意):一个项目已投入大额资金后露出颓势,评审会不是问「未来还需要多少、能换回什么」,而是反复论证「再追加一笔就能回本」。项目像坑一样越填越深——这与当年英法继续投入「协和」超音速客机的逻辑如出一辙,以至于沉没成本谬误也被称为「协和效应」。</p>
+    <p class="case-learn"><b>这一案例的看点:</b>偏差从不单独行动——确认偏误负责「只看好消息」,沉没成本负责「不甘心止损」,损失厌恶负责「不敢认亏」。组织需要在流程上强制出现反方证据,而不是指望当事人自己「保持理性」。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>有限理性(Bounded Rationality)</dt><dd>西蒙提出:受信息与认知限制,人只能在不完全条件下做决策。</dd>
+      <dt>满意解(Satisficing)</dt><dd>找到第一个「足够好」的选项即停止搜索,而非穷举后的最优解。</dd>
+      <dt>锚定效应(Anchoring)</dt><dd>最先出现的数字或信息不成比例地拖动后续判断。</dd>
+      <dt>确认偏误(Confirmation Bias)</dt><dd>倾向于寻找、重视支持已有观点的证据,忽视相反证据。</dd>
+      <dt>沉没成本谬误(Sunk Cost Fallacy)</dt><dd>决策时被已付出且无法收回的成本影响,进而继续加码。</dd>
+      <dt>损失厌恶(Loss Aversion)</dt><dd>损失带来的心理痛感强于等量收益带来的满足感。</dd>
+      <dt>框架效应(Framing Effect)</dt><dd>同一信息的不同表述方式(收益框架/损失框架)导致相反的选择。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>人找的是满意解而非最优解,这没问题;问题是被锚定、只认好消息、为沉没成本填坑。偏差防不住,但流程防得住:写下锚、找反方、问归零、做事前验尸。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "房产中介先带你看一套明显超出预算的豪宅,再带你去看真正想卖给你的目标房源。这一策略利用了:",
+        "options": ["损失厌恶", "确认偏误", "锚定效应", "沉没成本谬误"],
+        "answer": 2,
+        "explain": "豪宅的高价是一个「锚」:先出现的数字会拖高你对后续价格的估值,目标房于是显得「不算贵」。四个选项都与判断扭曲有关,但「先用一个数字垫高参照系」是锚定效应的标准动作。" },
+      { "q": "按西蒙的观点,面对 40 个备选供应商,现实中理性的管理者最可能:",
+        "options": ["找到足够好的就拍板", "穷举所有方案再决定", "完全交给直觉与运气", "等信息百分百齐了再说"],
+        "answer": 0,
+        "explain": "西蒙的「管理人」追求满意解:设定可接受标准,遇到第一个达标选项即停止搜索。穷举所有方案是「经济人」的完全理性假设;等信息百分百齐全在现实中永远等不到。" },
+      { "q": "电商页面上,「现在不下单,优惠就没了,相当于损失 50 元」比「下单立省 50 元」更能促成下单。这利用了:",
+        "options": ["锚定效应", "确认偏误", "过度自信", "损失厌恶"],
+        "answer": 3,
+        "explain": "两句话的数学完全相同,但把收益改述成「损失」会显著放大心理痛感——损失厌恶。它在营销、谈判与制度设计中都被广泛使用。" },
+      { "q": "柯达当年倾向于重视「胶卷仍在盈利」的证据、轻视数码替代的信号,管理层整体呈现出的偏差主要是:",
+        "options": ["锚定效应", "确认偏误", "沉没成本", "损失厌恶"],
+        "answer": 1,
+        "explain": "先有了「胶卷是主业」的判断,再选择性收集支持它的证据、过滤掉相反信号——这是确认偏误。沉没成本谬误(为已投入的产线继续加码)常常随之发生,但题干描述的核心是证据筛选的扭曲。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《思考,快与慢》丹尼尔·卡尼曼 · 中信出版社(建议读:锚定与框架相关章节,偏差研究的源头著作)</li>
+      <li>《管理学》(第 13 版)斯蒂芬·罗宾斯、玛丽·库尔特 · 中国人民大学出版社(建议读:决策章节,理性模型与有限理性的教材表述)</li>
+      <li>《清醒思考的艺术》罗尔夫·多贝里 · 中信出版社(建议读:沉没成本与确认偏误两节,52 个思维陷阱的口袋书)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-four-functions.html"><span class="pager-label">上一课</span><span class="pager-title">管理是什么:四大职能</span></a>
+    <a class="next" href="0003-motivation-theories.html"><span class="pager-label">下一课</span><span class="pager-title">激励:人们为什么愿意努力</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我复盘一个我最近的决策,看看踩了哪个偏差」「再出几道框架效应的变式题」——用自己的决策练,记忆才牢固。</div>
+    <p>管理学 · 第 2 课 · 实验数据与案例均为经典研究的约值或公开资料的示意描述。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- 实验一:锚定转盘 ---------- */
+  var spinBtn = document.getElementById("anc-spin"),
+      numEl = document.getElementById("anc-num"),
+      capEl = document.getElementById("anc-cap"),
+      qEl = document.getElementById("anc-q"),
+      valEl = document.getElementById("anc-val"),
+      optsEl = document.getElementById("anc-opts"),
+      fbEl = document.getElementById("anc-fb"),
+      chartEl = document.getElementById("anc-chart");
+  if (spinBtn) {
+    var anchorVal = 0, ancAnswered = false;
+    var ANS = ["约 10%", "约 20%", "约 28%", "约 45%"];
+    ANS.forEach(function (txt, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt-btn"; b.textContent = txt;
+      b.addEventListener("click", function () {
+        if (ancAnswered) return;
+        ancAnswered = true;
+        optsEl.querySelectorAll(".opt-btn").forEach(function (x) { x.disabled = true; });
+        b.classList.add("picked");
+        var fb = "你看到的随机数字是 <b>" + anchorVal + "</b>,你的估计是 <b>" + txt + "</b>。实际比例约为 <b>28%</b>(联合国现有约 193 个会员国,其中约 54 个为非洲国家,公开数据,约值)。<br>";
+        if ((anchorVal === 65 && i >= 2) || (anchorVal === 10 && i <= 1)) {
+          fb += "注意你的选择方向——它被那个毫无关系的随机数字<b>拖" + (anchorVal === 65 ? "高" : "低") + "</b>了。<br>";
+        }
+        fb += "经典转盘实验(特沃斯基与卡尼曼,1974,数值为中位数、约值):看到 10 的组估计约 25%,看到 65 的组估计约 45%——一个纯随机的数字,就把群体的判断拖离了真相。谈判、定价、预算评审里的「第一个数字」,都在悄悄干同样的事。";
+        fbEl.innerHTML = fb;
+        fbEl.hidden = false;
+        if (window.Viz) {
+          Viz.bars(chartEl, [
+            { label: "看到 10 的组·中位估计", value: 25, color: "#c4b5fd" },
+            { label: "实际比例", value: 28, color: "#15803d" },
+            { label: "看到 65 的组·中位估计", value: 45, color: "#7c3aed" }
+          ], { h: 230, max: 55, valueFormat: function (v) { return Math.round(v) + "%"; } });
+        }
+      });
+      optsEl.appendChild(b);
+    });
+
+    spinBtn.addEventListener("click", function () {
+      spinBtn.disabled = true;
+      capEl.textContent = "转盘旋转中……(结果完全随机)";
+      var ticks = 0;
+      var t = setInterval(function () {
+        numEl.textContent = Math.floor(1 + Math.random() * 99);
+        ticks++;
+        if (ticks > 18) {
+          clearInterval(t);
+          anchorVal = Math.random() < 0.5 ? 10 : 65;
+          numEl.textContent = anchorVal;
+          capEl.textContent = "这个数字与问题毫无关系——但请记住它";
+          valEl.textContent = anchorVal;
+          qEl.hidden = false;
+        }
+      }, 65);
+    });
+  }
+
+  /* ---------- 实验二:损失框架 ---------- */
+  var oa = document.getElementById("fr-opts-a"),
+      ob = document.getElementById("fr-opts-b"),
+      fb2 = document.getElementById("fr-fb"),
+      boxA = document.getElementById("fr-a"),
+      boxB = document.getElementById("fr-b");
+  if (oa) {
+    var pickA = -1, pickB = -1;
+    [["方案 A:确定救活 200 人", 0], ["方案 B:赌 1/3 的可能救活 600 人", 1]].forEach(function (pair) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt-btn"; b.textContent = pair[0];
+      b.addEventListener("click", function () {
+        if (pickA >= 0) return;
+        pickA = pair[1];
+        b.classList.add("picked");
+        oa.querySelectorAll(".opt-btn").forEach(function (x) { x.disabled = true; });
+        boxB.hidden = false;
+        boxB.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      });
+      oa.appendChild(b);
+    });
+    [["方案 C:确定有 400 人死亡", 0], ["方案 D:赌 1/3 的可能无人死亡", 1]].forEach(function (pair) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt-btn"; b.textContent = pair[0];
+      b.addEventListener("click", function () {
+        if (pickB >= 0) return;
+        pickB = pair[1];
+        b.classList.add("picked");
+        ob.querySelectorAll(".opt-btn").forEach(function (x) { x.disabled = true; });
+        var first = pickA === 0 ? "确定救活 200 人(A)" : "赌一把(B)";
+        var second = pickB === 0 ? "确定 400 人死亡(C)" : "赌一把(D)";
+        var msg = "你的选择被记录:正面框架下选了 <b>" + first + "</b>;负面框架下选了 <b>" + second + "</b>。<br>";
+        if (pickA !== pickB) {
+          msg += "<b>你切换了!</b>A 与 C、B 与 D 在数学上完全等价(同一个「确定结果」与同一场「赌局」),仅仅因为表述从「救活」换成了「死亡」,你的风险偏好就翻转了。这就是<em>框架效应</em>,背后的引擎是<b>损失厌恶</b>:面对收益想落袋为安,面对损失反而愿意冒险。<br>";
+        } else {
+          msg += "<b>你没有被框架切换!</b>你在两种说法下保持了同一选择——说明你在主动把两句话换算成同一把尺子。这比想象中难:经典实验(卡尼曼与特弗斯基,1981,约值)中,正面框架下约 72% 的人选「确定救 200」,负面框架下约 78% 的人选「赌一把」——同一个问题,答案分布完全翻转。<br>";
+        }
+        msg += "管理启示:汇报方式就是影响力。谁掌握「怎么描述这件事」,谁就在影响团队的决策。";
+        fb2.innerHTML = msg;
+        fb2.hidden = false;
+      });
+      ob.appendChild(b);
+    });
+  }
+
+  /* ---------- 实验三:沉没成本 ---------- */
+  var scOpts = document.getElementById("sc-opts"),
+      scFb = document.getElementById("sc-fb");
+  if (scOpts) {
+    var SC = [
+      ["追加约 400 万把自研做完——已经投了约 800 万,现在停太可惜",
+        "这是教科书式的<b>沉没成本谬误</b>:「太可惜」针对的是那 800 万,但它无论你选什么都已经花掉了、收不回来。它不该出现在比较式里。"],
+      ["停掉自研,改用替代方案——未来只需约 250 万,三个月可用",
+        "这个选择用对了尺子:只比较<b>未来的成本与收益</b>。约 250 万对约 400 万,时间还更短——在没有其他约束时是理性方向。"],
+      ["两头下注:自研继续推进,同时试点替代方案",
+        "「两头下注」常是谬误的温和版本:为了心理上不认错,把未来的钱也加倍押上。除非两条线的信息价值真的很大,否则它只是把止损决定再推迟一个季度。"]
+    ];
+    SC.forEach(function (item) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "opt-btn"; b.textContent = item[0];
+      b.addEventListener("click", function () {
+        scOpts.querySelectorAll(".opt-btn").forEach(function (x) { x.disabled = true; });
+        b.classList.add("picked");
+        scFb.innerHTML = "<b>你的选择:</b>" + item[0] + "<br>" + item[1] +
+          "<br><b>拆解一下:</b>已投入的约 800 万是沉没成本(Sunk Cost),理性决策只看「未来还要投入什么、能换回什么」。自研的未来成本约 400 万,替代方案约 250 万加上数据迁移、团队学习等切换成本——注意,这些属于未来成本,<b>应该</b>进入比较;而「已经投了多少」不应该。下次纠结时,问「归零问题」:假如今天从零开始、不背任何历史,我还会选它吗?";
+        scFb.hidden = false;
+      });
+      scOpts.appendChild(b);
+    });
+  }
+})();
+</script>
+</body>
+</html>

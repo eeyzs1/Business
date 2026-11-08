@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>管理是什么:四大职能 · 管理学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .btn-primary{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:.5rem 1.15rem;font-weight:700;cursor:pointer;font-family:var(--sans);font-size:.9rem}
+  .btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:.45rem 1rem;font-weight:700;cursor:pointer;font-family:var(--sans);font-size:.9rem}
+  .btn-primary:hover,.btn-ghost:hover{filter:brightness(1.06)}
+  .polc-wrap{display:grid;grid-template-columns:minmax(250px,330px) 1fr;gap:1.4rem;align-items:start;margin-top:.6rem}
+  @media(max-width:760px){.polc-wrap{grid-template-columns:1fr}}
+  #polc-svg .polc-sec{cursor:pointer;transition:fill .3s ease,opacity .3s ease}
+  #polc-svg .polc-sec.dim{opacity:.4}
+  #polc-svg .polc-sec.on{fill:var(--accent)}
+  #polc-svg .polc-arrow{fill:none;stroke:var(--accent);stroke-width:2.6;opacity:.45}
+  #polc-ptr{transition:transform .7s cubic-bezier(.55,-.15,.35,1.25);transform-origin:180px 180px}
+  .polc-detail-title{font-weight:800;color:var(--accent);margin-bottom:.45rem;font-size:1.05rem}
+  .polc-detail-title small{color:var(--ink-faint);font-weight:600;margin-left:.4rem}
+  .polc-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.7rem}
+  @media(max-width:520px){.polc-cols{grid-template-columns:1fr}}
+  .polc-cols h4{margin:0 0 .35rem;font-size:.82rem;color:var(--ink-soft);letter-spacing:.18em;border-bottom:2px solid var(--line);padding-bottom:.25rem;font-family:var(--sans)}
+  .polc-cols ul{margin:0;padding-left:1.05rem;font-size:.84rem;color:var(--ink-soft);line-height:1.65}
+  .polc-cols li{margin-bottom:.3rem}
+  .polc-loop-hint{margin-top:.8rem;font-size:.88rem;background:var(--paper-deep);border-radius:8px;padding:.6rem .85rem;color:var(--ink-soft);line-height:1.7}
+  .polc-loop-hint b{color:var(--accent)}
+  .polc-btns{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin-top:.9rem}
+  .polc-visited{font-size:.85rem;color:var(--ink-faint);font-weight:700;margin-left:auto}
+  .polc-visited.done{color:var(--good)}
+  .role-table td:first-child{white-space:nowrap;font-weight:700;color:var(--accent)}
+</style>
+</head>
+<body class="branch-management">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">管理学</a><span class="crumb-sep">/</span>
+  <span>管理是什么:四大职能</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">管理学 · LESSON 1</p>
+  <h1>管理是什么:四大职能</h1>
+  <p class="lead">两家门店,同样的位置、同样的人数,换了店长之后业绩常常差出一截(示意)。差别通常不在「谁更拼」,而在「谁被管理得好」。这一课给你一把看懂一切组织——便利店、球队、科技公司——的通用钥匙。</p>
+
+  <h2><span class="secno">1</span>为什么需要管理</h2>
+  <p>一个人做事,只需要勤奋;一群人做事,光勤奋就不够了。十个人各自为战,产出是十份努力减去重复、等待、扯皮与错位;<em>管理</em>(Management)要赚的,正是这部分「组织租金」:让一群人的产出大于他们各自为战之和。</p>
+  <div class="concept">
+    <div class="concept-title">定义 · 管理</div>
+    <p style="margin:0">管理是<strong>协调他人并与他人一起</strong>,<strong>有效率、有效能</strong>地实现组织目标的过程。拆开看有四个要素:有目标、通过他人、讲效率、讲效能——后两个词的区别,是本课的一处关键考点。</p>
+  </div>
+  <p>德鲁克(Peter Drucker)在《管理的实践》中把管理者称为组织的「活力器官」:资源本身不会产生成果,只有被管理地组织起来才会。这段话的商业含义很直接——<strong>管理是一种独立的职业能力,不等于业务能力</strong>:最好的销售员未必是最好的销售经理。</p>
+
+  <h2><span class="secno">2</span>四大职能:管理者的工作闭环</h2>
+  <p>教科书对管理者工作的经典拆解,是法约尔(Henri Fayol)提出、沿用至今的四大职能,常以首字母缩写为 <strong>POLC</strong>:</p>
+  <ol class="steps">
+    <li><b>计划(Planning)</b>:想清楚要达成什么、怎么达成——定目标、拆任务、编预算、排时间。产出是「目标 + 行动计划」。</li>
+    <li><b>组织(Organizing)</b>:让合适的人拿到合适的资源——分工分组、明确职责、授权授责。产出是「结构 + 权责清单」。</li>
+    <li><b>领导(Leading)</b>:让人愿意干、往一处干——激励、沟通、协调、化解冲突。产出是「高意愿的执行」。</li>
+    <li><b>控制(Controlling)</b>:量出来、改回去——衡量绩效、对照标准、纠正偏差。产出是「纠偏措施 + 更新后的计划」。</li>
+  </ol>
+  <p>注意第四条的输出:纠偏之后得到的「更新后的计划」,正是第一条的输入。四大职能不是流水线上的四道工序,而是一个<strong>转不停的闭环</strong>。下面的转轮让你亲手转一圈:</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">POLC 循环转轮:点开每个职能的「输入 → 活动 → 输出」</div>
+    <div class="polc-wrap">
+      <div><svg id="polc-svg" viewBox="0 0 360 360" role="img" aria-label="管理四大职能循环转轮,可点击扇区"></svg></div>
+      <div>
+        <div class="polc-detail-title" id="polc-dt">计划 <small>Planning · 先想清楚,再动手</small></div>
+        <div class="polc-cols">
+          <div><h4>输入</h4><ul id="polc-in"></ul></div>
+          <div><h4>活动</h4><ul id="polc-act"></ul></div>
+          <div><h4>输出</h4><ul id="polc-out"></ul></div>
+        </div>
+        <div class="polc-loop-hint" id="polc-hint">点击任一扇区开始探索;控制(Controlling)的输出会回流为下一轮计划的输入。</div>
+        <div class="polc-btns">
+          <button type="button" class="btn-primary" id="polc-next">转动到下一环节 →</button>
+          <button type="button" class="btn-ghost" id="polc-auto">▶ 自动巡环演示</button>
+          <span class="polc-visited" id="polc-visited">已探索 0 / 4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="secno">3</span>效率与效能:两把不同的尺子</h2>
+  <p>评价管理的好坏,手里要有两把尺子:<em>效率</em>(Efficiency)与<em>效能</em>(Effectiveness)。</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th></th><th>效率 Efficiency</th><th>效能 Effectiveness</th></tr></thead>
+      <tbody>
+        <tr><td><b>关注点</b></td><td>投入与产出之比(资源用得省不省)</td><td>目标是否达成(方向对不对)</td></tr>
+        <tr><td><b>一句口号</b></td><td>「把事做对」</td><td>「做对的事」</td></tr>
+        <tr><td><b>典型追问</b></td><td>同样一杯咖啡,能不能少用一个工时?</td><td>顾客到底要不要这杯咖啡?</td></tr>
+        <tr><td><b>提高手段</b></td><td>流程优化、自动化、减少浪费</td><td>战略选择、正确定位、选对战场</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout warn">
+    <span class="callout-label">警惕</span> 效率高不等于效能高:一条把错误产品做得又快又便宜的生产线,是「高效地做错事」。资源有限时,先用效能问方向,再用效率问消耗。
+  </div>
+
+  <h2><span class="secno">4</span>管理者到底在忙什么:明茨伯格的十种角色</h2>
+  <p>四大职能是骨架,血肉呢?明茨伯格(Henry Mintzberg)在《管理工作的本质》中跟踪观察管理者的真实一天,发现他们极少端坐做「大计划」,而是在大量短促事件之间跳转。他把这些瞬间归为三大类十种<em>管理者角色</em>(Managerial Roles):</p>
+  <div class="table-wrap">
+    <table class="compact role-table">
+      <thead><tr><th>类别</th><th>角色</th><th>在干什么(举例)</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="3">人际角色</td><td>挂名首脑</td><td>出席剪彩、接待来访,履行象征性职责</td></tr>
+        <tr><td>领导者</td><td>招聘、培训、激励、安抚下属</td></tr>
+        <tr><td>联络者</td><td>维护内外部人际网络、横向串资源</td></tr>
+        <tr><td rowspan="3">信息角色</td><td>监听者</td><td>四处收集内外部情报,充当组织神经末梢</td></tr>
+        <tr><td>传播者</td><td>把信息传递、翻译给团队</td></tr>
+        <tr><td>发言人</td><td>对外代表组织发声:汇报、演讲、答记者问</td></tr>
+        <tr><td rowspan="4">决策角色</td><td>企业家</td><td>发起并推动变革与新项目</td></tr>
+        <tr><td>混乱驾驭者</td><td>突发事故时坐镇排障</td></tr>
+        <tr><td>资源分配者</td><td>决定钱、人、时间花在哪</td></tr>
+        <tr><td>谈判者</td><td>代表组织与各方讨价还价</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>十种角色与四大职能并不冲突:角色是职能在具体瞬间里的样子。管理者的一天被切碎是常态——高手的本事,是在碎片中仍让四大职能的闭环持续转动。</p>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例:一家星巴克门店店长的一天(示意)</p>
+    <p>以下按公开资料与常见门店运营节奏整理的<b>示意</b>画面,帮助你把四大职能落到地面:</p>
+    <ul class="timeline">
+      <li><b>07:00 · 计划</b> — 到店先看昨日营业数据与时段客流(约值),定下今日目标:高峰等待时间压到几分钟内、重点推哪款饮品,并核一遍物料预算。</li>
+      <li><b>07:20 · 组织</b> — 按今日排班分工:谁盯吧台、谁守收银、谁补货;授权值班主管在忙时临时调度人力。</li>
+      <li><b>07:40 · 领导</b> — 十分钟晨会:同步目标、讲一个昨天做得好的瞬间,把「为什么推新品」讲成团队听得懂的故事。</li>
+      <li><b>10:30 · 领导 + 组织</b> — 高峰期巡场,现场协调卡壳环节,顺手安抚第一次顶高峰的新伙伴。</li>
+      <li><b>14:00 · 控制</b> — 对照上午指标找偏差:出杯速度慢了,原因是动线交叉还是人员缺口?定位到原因后调整。</li>
+      <li><b>16:00 · 控制 → 组织</b> — 用偏差结论微调晚班排班与物料,这同时是明天的「计划」输入。</li>
+      <li><b>21:00 · 收工复盘</b> — 三分钟复盘今天的目标达成,写进明天的晨会内容。闭环,转进新的一天。</li>
+    </ul>
+    <p class="case-learn"><b>这一案例的看点:</b>店长没有一整块时间「做管理」,四大职能被打散在一天的动作里;而让门店不同的,是<b>闭环是否完整</b>——很多店长的循环断在「控制」:有目标、有分工、也有干劲,但从不量偏差,于是同样的错误每天重演一遍。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>管理(Management)</dt><dd>协调他人并与他人一起,有效率、有效能地实现组织目标的过程。</dd>
+      <dt>计划(Planning)</dt><dd>设定目标并决定如何实现:定目标、拆任务、编预算、排时间。</dd>
+      <dt>组织(Organizing)</dt><dd>安排与设计工作:分工分组、明确职责、配置资源并授权。</dd>
+      <dt>领导(Leading)</dt><dd>影响他人共同努力:激励、沟通、协调与化解冲突。</dd>
+      <dt>控制(Controlling)</dt><dd>衡量绩效、对照标准、分析偏差并采取纠正措施;其输出回流为计划的输入。</dd>
+      <dt>效率(Efficiency)</dt><dd>产出与投入之比——把事做对,资源用得省。</dd>
+      <dt>效能(Effectiveness)</dt><dd>目标达成的程度——做对的事,方向正确。</dd>
+      <dt>管理者角色(Managerial Roles)</dt><dd>明茨伯格提出的管理者行为分类:人际、信息、决策三大类共十种角色。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>管理是通过他人拿结果的学问,骨架是计划 → 组织 → 领导 → 控制的闭环。效率问「省不省」,效能问「对不对」,先对后省。闭环断在哪一环,组织就在哪里失血。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "门店在不增加人手的情况下,用更少的工时维持了同样的营业额。这提升的是:",
+        "options": ["效能", "效率", "授权", "计划"],
+        "answer": 1,
+        "explain": "同样产出、更少投入,是典型的投入产出比改善,即<b>效率</b>:把事做对、把资源用省。效能问的是「这个目标本身对不对」,与工时多少无关。" },
+      { "q": "季度复盘会上,团队对照年初设定的标准,发现转化率偏差并分析原因、采取纠正措施。这一系列活动属于:",
+        "options": ["计划(Planning)", "组织(Organizing)", "领导(Leading)", "控制(Controlling)"],
+        "answer": 3,
+        "explain": "「衡量 → 对照标准 → 分析偏差 → 纠偏」正是控制的完整动作链。注意纠偏产生的「更新后的计划」会回流到计划职能,构成闭环。" },
+      { "q": "作为负责人,你到行业论坛上代表公司发表演讲。按明茨伯格的角色分类,这属于:",
+        "options": ["信息角色", "人际角色", "决策角色", "执行角色"],
+        "answer": 0,
+        "explain": "对外代表组织发声是<b>发言人</b>角色,归入信息角色。容易误选人际角色——挂名首脑出席活动才是人际类,区别在于前者输出信息、后者履行象征义务。" },
+      { "q": "某团队拼尽全力、按时按量交付,上线后才发现产品方向选错了,市场根本不需要。对该团队最准确的评价是:",
+        "options": ["低效率、高效能", "高效率、高效能", "高效率、低效能", "低效率、低效能"],
+        "answer": 2,
+        "explain": "按时按量、投入没有浪费,是高效率;但目标本身错了,效能低下。这正是「高效地做错事」——先用效能问方向,再用效率问消耗。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《管理学》(第 13 版)斯蒂芬·罗宾斯、玛丽·库尔特 · 中国人民大学出版社(建议读:第 1 章「管理与组织导论」,四大职能与管理角色的标准教材表述)</li>
+      <li>《管理的实践》彼得·德鲁克 · 机械工业出版社(建议读:「目标管理与自我控制」一章,看大师如何把计划职能落到人)</li>
+      <li>《组织行为学》(第 16 版)斯蒂芬·罗宾斯、蒂莫西·贾奇 · 中国人民大学出版社(建议读:管理者角色与决策相关章节,衔接下一课)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">上一课 · 回到分支导学</span><span class="pager-title">管理学 · 分支导学</span></a>
+    <a class="next" href="0002-decision-biases.html"><span class="pager-label">下一课</span><span class="pager-title">决策:理性与偏差</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「用我所在的行业重演一遍 POLC 闭环」或者「帮我判断我的管理循环断在哪一环」——把框架对到自己的场景,才算真的学会。</div>
+    <p>管理学 · 第 1 课 · 案例中的时段与动作均为示意描述,不代表任何具体门店的精确数据。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+  var svg = document.getElementById("polc-svg");
+  if (!svg || !window.Viz) return;
+
+  var FUNCS = [
+    { name: "计划", en: "Planning", slogan: "先想清楚,再动手",
+      inputs: ["上级目标与市场信息", "历史数据与资源约束", "上一轮控制的纠偏结论"],
+      acts: ["设定目标并拆解到人", "编制预算与排期", "确定衡量标准与检查节奏"],
+      outs: ["目标体系与行动计划", "预算表与排班", "→ 组织的输入:该谁干什么"] },
+    { name: "组织", en: "Organizing", slogan: "让合适的人拿到合适的资源",
+      inputs: ["行动计划与预算", "可用人才与技能盘点", "现有流程与职责现状"],
+      acts: ["分工分组,明确职责", "授权授责,配置资源", "建立汇报与协作关系"],
+      outs: ["组织结构与岗位分工", "权责清单", "→ 领导的输入:一支各就其位的队伍"] },
+    { name: "领导", en: "Leading", slogan: "让人愿意干、往一处干",
+      inputs: ["各就其位的团队", "目标与行动计划", "激励资源与沟通渠道"],
+      acts: ["激励与辅导,化解冲突", "开会对齐,以身作则", "日常沟通与横向协调"],
+      outs: ["高意愿的执行状态", "顺畅的协作节奏", "→ 控制的输入:正在发生的执行"] },
+    { name: "控制", en: "Controlling", slogan: "量出来,改回去",
+      inputs: ["目标与衡量标准", "执行中的实时数据", "顾客与员工的反馈"],
+      acts: ["衡量绩效,对照标准", "定位偏差,分析原因", "纠偏:调目标或调方法"],
+      outs: ["绩效报告与纠偏措施", "更新后的计划", "↻ 回流:下一轮计划的输入"] }
+  ];
+
+  var NS = "http://www.w3.org/2000/svg";
+  function E(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  function f(n) { return n.toFixed(1); }
+  var CX = 180, CY = 180, R1 = 78, R2 = 126, RA = 140;
+  function P(r, deg) { var a = deg * Math.PI / 180; return [CX + r * Math.cos(a), CY + r * Math.sin(a)]; }
+
+  // 箭头 marker
+  var defs = E("defs");
+  var mk = E("marker", { id: "polc-mk", viewBox: "0 0 10 10", refX: "7.5", refY: "5", markerWidth: "6.5", markerHeight: "6.5", orient: "auto-start-reverse" });
+  mk.appendChild(E("path", { d: "M0 0L10 5L0 10Z", fill: "#7c3aed" }));
+  defs.appendChild(mk);
+  svg.appendChild(defs);
+
+  var secEls = [], labelEls = [];
+  FUNCS.forEach(function (fn, i) {
+    var mid = -90 + 90 * i, a1 = mid - 42, a2 = mid + 42;
+    var o1 = P(R2, a1), o2 = P(R2, a2), i2 = P(R1, a2), i1 = P(R1, a1);
+    var d = "M" + f(o1[0]) + " " + f(o1[1]) +
+      " A" + R2 + " " + R2 + " 0 0 1 " + f(o2[0]) + " " + f(o2[1]) +
+      " L" + f(i2[0]) + " " + f(i2[1]) +
+      " A" + R1 + " " + R1 + " 0 0 0 " + f(i1[0]) + " " + f(i1[1]) + " Z";
+    var path = E("path", { d: d, "class": "polc-sec", fill: "#ece5d6", stroke: "#d6cdb9", "stroke-width": "1.5" });
+    path.addEventListener("click", function () { select(i, true); });
+    svg.appendChild(path);
+    secEls.push(path);
+
+    var lp = P(102, mid);
+    var t1 = E("text", { x: f(lp[0]), y: f(lp[1] - 5), "text-anchor": "middle", "font-size": "18", "font-weight": "800", fill: "#57534e" });
+    t1.textContent = fn.name;
+    var t2 = E("text", { x: f(lp[0]), y: f(lp[1] + 14), "text-anchor": "middle", "font-size": "10.5", fill: "#78716c" });
+    t2.textContent = fn.en;
+    svg.appendChild(t1); svg.appendChild(t2);
+    labelEls.push([t1, t2]);
+  });
+
+  // 环流箭头
+  [-45, 45, 135, 225].forEach(function (b) {
+    var p1 = P(RA, b - 9), p2 = P(RA, b + 7);
+    svg.appendChild(E("path", {
+      d: "M" + f(p1[0]) + " " + f(p1[1]) + " A" + RA + " " + RA + " 0 0 1 " + f(p2[0]) + " " + f(p2[1]),
+      "class": "polc-arrow", "marker-end": "url(#polc-mk)"
+    }));
+  });
+
+  // 中心枢纽
+  svg.appendChild(E("circle", { cx: CX, cy: CY, r: 56, fill: "#fff", stroke: "#e7e0d3", "stroke-width": "1.5" }));
+  var hub1 = E("text", { x: CX, y: CY - 14, "text-anchor": "middle", "font-size": "24", "font-weight": "800", fill: "#7c3aed" });
+  var hub2 = E("text", { x: CX, y: CY + 9, "text-anchor": "middle", "font-size": "11", fill: "#a8a29e" });
+  var hub3 = E("text", { x: CX, y: CY + 28, "text-anchor": "middle", "font-size": "11.5", "font-weight": "700", fill: "#57534e" });
+  hub1.textContent = "POLC"; hub2.textContent = "点击扇区 ↓"; hub3.textContent = "管理闭环";
+  svg.appendChild(hub1); svg.appendChild(hub2); svg.appendChild(hub3);
+
+  // 顶部指针
+  var ptr = E("g", { id: "polc-ptr" });
+  ptr.appendChild(E("path", { d: "M171 10 L189 10 L180 33 Z", fill: "#7c3aed", opacity: "0.85" }));
+  svg.appendChild(ptr);
+
+  // ---- 状态与交互 ----
+  var dtEl = document.getElementById("polc-dt"),
+      inEl = document.getElementById("polc-in"),
+      actEl = document.getElementById("polc-act"),
+      outEl = document.getElementById("polc-out"),
+      hintEl = document.getElementById("polc-hint"),
+      visEl = document.getElementById("polc-visited"),
+      nextBtn = document.getElementById("polc-next"),
+      autoBtn = document.getElementById("polc-auto");
+  var cur = -1, visited = {}, timer = null, ticks = 0;
+
+  function li(s) { return "<li>" + s + "</li>"; }
+
+  function select(i, mark) {
+    cur = i;
+    var fn = FUNCS[i];
+    secEls.forEach(function (p, j) {
+      p.classList.toggle("on", j === i);
+      p.classList.toggle("dim", j !== i);
+      labelEls[j][0].setAttribute("fill", j === i ? "#ffffff" : "#57534e");
+      labelEls[j][1].setAttribute("fill", j === i ? "#ffffff" : "#78716c");
+    });
+    hub1.textContent = fn.name;
+    hub2.textContent = fn.en;
+    hub3.textContent = "第 " + (i + 1) + " / 4 环";
+    dtEl.innerHTML = fn.name + " <small>" + fn.en + " · " + fn.slogan + "</small>";
+    inEl.innerHTML = fn.inputs.map(li).join("");
+    actEl.innerHTML = fn.acts.map(li).join("");
+    outEl.innerHTML = fn.outs.map(li).join("");
+    var nx = FUNCS[(i + 1) % 4];
+    hintEl.innerHTML = i === 3
+      ? "<b>↻ 闭环点:</b>控制的输出「更新后的计划」回流为下一轮计划的输入——管理不是四道工序,而是一个转不停的圈。"
+      : "指针已转动。下一步 → <b>" + nx.name + "(" + nx.en + ")</b>";
+    ptr.style.transform = "rotate(" + (90 * i) + "deg)";
+    if (mark) {
+      visited[i] = 1;
+      var n = Object.keys(visited).length;
+      visEl.textContent = n < 4 ? "已探索 " + n + " / 4" : "✓ 闭环达成:控制 → 计划,四环已连";
+      visEl.classList.toggle("done", n >= 4);
+    }
+  }
+
+  function stopAuto() {
+    if (timer) { clearInterval(timer); timer = null; }
+    autoBtn.textContent = "▶ 自动巡环演示";
+  }
+
+  nextBtn.addEventListener("click", function () { stopAuto(); select((cur + 1) % 4, true); });
+  autoBtn.addEventListener("click", function () {
+    if (timer) { stopAuto(); return; }
+    ticks = 0;
+    autoBtn.textContent = "⏸ 暂停巡环";
+    timer = setInterval(function () {
+      select((cur + 1) % 4, true);
+      ticks++;
+      if (ticks >= 8) stopAuto();
+    }, 1500);
+  });
+
+  select(0, false);
+})();
+</script>
+</body>
+</html>

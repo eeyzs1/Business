@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>关税与汇率 · 国际商务</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .legend-row { display: flex; flex-wrap: wrap; gap: 1.1rem; font-size: .88rem; color: var(--ink-soft); margin: .6rem 0 .2rem; }
+  .legend-row .sw { display: inline-block; width: .95em; height: .95em; border-radius: 3px; margin-right: .35em; vertical-align: -1px; }
+</style>
+</head>
+<body class="branch-international">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">国际商务</a><span class="crumb-sep">/</span>
+  <span>关税与汇率</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">国际商务 · Lesson 2</p>
+  <h1>关税与汇率</h1>
+  <p class="lead">第 1 课证明了贸易让双方变好,但商品要过两道「旋转门」:海关会加价(关税),货币要换算(汇率)。这两道门怎么拧、拧到哪一格,直接改写进出口两盘生意的盈亏——也是政治与经济吵得最凶的地方。</p>
+
+  <h2><span class="secno">1</span>关税如何抬高国内价格</h2>
+  <p><em>关税</em>(Tariff)是对进口商品征收的税。分析它的第一步,是接受「小国假设」:如果一个国家的进口量不影响世界市场,它就是<em>世界价格</em>(World Price)的接受者——国际上有多少、就是什么价。此时对每件商品征收 t 元关税,国内价格就从 P<sub>w</sub> 抬到 P<sub>w</sub> + t,一步到位。</p>
+  <p>价格一抬,三件事同时发生(供给与需求的语言,见<a href="../../01-economics/lessons/0001-supply-and-demand.html">经济学基础第 1 课</a>):国内厂商看到更高售价,愿意多生产,产量沿供给曲线上升;消费者看到更高价格,减少购买,需求量沿需求曲线下滑;两者夹住的<em>进口量</em>随之收缩。关税像一道闸门:保护了闸内的生产者,挤痛了闸内的消费者,也把外国竞争者挡在了外面。</p>
+  <div class="formula">
+    含关税国内价格 P<sub>t</sub> = 世界价格 P<sub>w</sub> + 关税 t
+  </div>
+
+  <h2><span class="secno">2</span>谁得谁失:关税的福利账</h2>
+  <p>关税不会凭空创造财富,它做的是<em>转移</em>:把消费者的钱转移给国内生产者和政府,并在转移过程中「洒漏」掉一部分。经济学家用三块面积记账:</p>
+  <ul class="steps">
+    <li><b>消费者损失</b>:价格从 P<sub>w</sub> 涨到 P<sub>t</sub>,消费者剩余(Consumer Surplus)缩水的一整块梯形。</li>
+    <li><b>生产者获益与政府收入</b>:梯形中转移给国内厂商的部分(供给曲线左侧的绿色区),以及政府拿到的「关税 × 进口量」矩形。</li>
+    <li><b>无谓损失</b>(Deadweight Loss):梯形中谁也没拿到的两个红色三角形——低效率的国内生产硬替了便宜进口,一部分消费被高价「劝退」,社会总福利净减少。</li>
+  </ul>
+  <div class="formula">
+    无谓损失 = ½ × t × 国内产量增加(生产端三角形)&nbsp;+&nbsp;½ × t × 国内消费减少(消费端三角形)
+  </div>
+
+  <div class="sim">
+    <div class="sim-title">关税福利模拟器 · 拖动关税,看每一分钱去哪儿了</div>
+    <div class="sim-controls" id="tariff-controls"></div>
+    <div id="tariff-chart"></div>
+    <div class="legend-row">
+      <span><span class="sw" style="background:#15803d"></span>生产者获益(转移)</span>
+      <span><span class="sw" style="background:#b45309"></span>政府关税收入(转移)</span>
+      <span><span class="sw" style="background:#b91c1c"></span>无谓损失(净损失)</span>
+      <span style="color:var(--ink-faint)">消费者损失 = 上述三项之和</span>
+    </div>
+    <p class="sim-readout" id="tariff-readout">正在加载模拟器……</p>
+    <p style="font-size:.87rem;color:var(--ink-faint);margin:.4rem 0 0">模型:线性供需的小国开放市场,需求 Q=120−8P、供给 Q=20+6P,世界价格 4 元/件,数量与金额均为示意单位。</p>
+  </div>
+
+  <div class="callout warn" data-reveal>
+    <span class="callout-label">为什么明知有损失还要加税</span>
+    <p style="margin:.3rem 0 0">因为收益与损失的<b>政治能见度不同</b>:生产者获益集中、组织得力、看得见(保住的工厂与岗位);消费者损失分散在每个人的一次次购物里,几乎无人上街。此外还有幼稚产业、国家安全、反倾销等理由——它们在特定条件下成立,但「消费者最终买单」这个账,大多数实证研究是一致承认的(量级示意)。</p>
+  </div>
+
+  <h2><span class="secno">3</span>汇率:一行数字改写两盘生意</h2>
+  <p>商品过境要换钱,换钱的比率就是<em>汇率</em>(Exchange Rate)。多数国家采用<em>直接标价法</em>(Direct Quotation):用本币表示 1 单位外币,如「1 美元 ≈ 7.1 人民币」(约数,示意)。数字变大(7.1→7.4),意味着要花更多本币才能买到 1 美元——本币<em>贬值</em>(Depreciation);变小(7.1→6.9)则是本币<em>升值</em>(Appreciation)。</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 640 250" role="img" style="width:100%;height:auto;display:block">
+        <rect x="18" y="22" width="292" height="200" rx="12" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5"/>
+        <text x="164" y="56" text-anchor="middle" font-size="16" font-weight="800" fill="#075985">人民币升值(如 7.2 → 6.9)</text>
+        <text x="164" y="96" text-anchor="middle" font-size="13.5" fill="#0c4a6e">出口商品以美元计更贵</text>
+        <text x="164" y="122" text-anchor="middle" font-size="13.5" font-weight="700" fill="#b91c1c">出口承压 ↓ · 出口商利润变薄</text>
+        <text x="164" y="160" text-anchor="middle" font-size="13.5" fill="#0c4a6e">进口原料与商品更便宜</text>
+        <text x="164" y="186" text-anchor="middle" font-size="13.5" font-weight="700" fill="#15803d">消费者受益 ↑ · 出国成本下降</text>
+        <rect x="330" y="22" width="292" height="200" rx="12" fill="#fef3c7" stroke="#b45309" stroke-width="1.5"/>
+        <text x="476" y="56" text-anchor="middle" font-size="16" font-weight="800" fill="#92400e">人民币贬值(如 6.9 → 7.2)</text>
+        <text x="476" y="96" text-anchor="middle" font-size="13.5" fill="#78350f">出口商品以美元计更便宜</text>
+        <text x="476" y="122" text-anchor="middle" font-size="13.5" font-weight="700" fill="#15803d">出口竞争力 ↑ · 订单更容易拿</text>
+        <text x="476" y="160" text-anchor="middle" font-size="13.5" fill="#78350f">进口原料与商品更贵</text>
+        <text x="476" y="186" text-anchor="middle" font-size="13.5" font-weight="700" fill="#b91c1c">进口成本 ↑ · 输入性通胀压力</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 升值与贬值的跷跷板(示意):同一行汇率数字,对出口是逆风,对进口就是顺风。跨国企业因此要面对汇率风险,常用远期合约等工具对冲(进阶话题)。</figcaption>
+  </figure>
+  <p>把第 1 课和本课连起来:<em>比较优势决定「该不该贸易」,关税与汇率决定「按什么价格贸易」</em>。汇率波动 5%,可能一口吞掉出口业务 3% 的净利率——这就是为什么财报里常有「汇兑损益」这一行。</p>
+
+  <h2><span class="secno">4</span>贸易摩擦的经济逻辑</h2>
+  <p>当一国加征关税,另一国往往反制,双方互相加码,就是<em>贸易摩擦</em>(Trade Friction)。它的剧本几乎是固定的:第一轮,本国生产者获益、消费者受损;第二轮,对方反制,本国出口行业遭殃;第三轮,双方供应链开始绕路——转口、第三国设厂、近岸外包,企业为「政策风险」支付永久的重组成本。用博弈论看,这是一个典型的囚徒困境:各自占优的选择(加税保护),合起来是双方更差的结果。</p>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例 · 2018 年以来的中美经贸摩擦(示意描述,中立视角)</p>
+    <p>2018 年起,美国依据其国内「301 条款」调查结果,对自中国进口的商品分批加征关税,涉及规模达数千亿美元量级(约数,示意);中国随后对自美进口商品采取反制措施,关税在多个清单上往返调整,并伴随多轮谈判与阶段性协议,过程延续多年、几度反复。</p>
+    <p>公开研究的一般结论(量级示意):关税成本大部分由美国进口商与消费者承担;部分中国出口企业利润承压,一些订单与产能转向越南、墨西哥等地;两国企业都为合规与供应链重构付出了额外成本。双方政府的立场各自成立——一方称在纠正不公平贸易、保护本国产业与就业,另一方称在捍卫自由贸易规则与自身发展权。</p>
+    <p class="case-learn"><b>这一课的教训:</b>政治逻辑看得见「保住的岗位」,经济账却记着「分散的消费者损失 + 无谓损失 + 反制成本」。全球化企业学到的另一课是:<b>关税与地缘政策,和汇率一样,是必须写进供应链设计的一等变量。</b></p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>关税 Tariff</dt><dd>对进口商品征收的税,直接抬高国内售价并压缩进口量。</dd>
+      <dt>世界价格 World Price</dt><dd>商品在国际市场上的价格;小国假设下国内价格由它决定。</dd>
+      <dt>消费者剩余 Consumer Surplus</dt><dd>消费者愿意支付的价格与实际支付价格之差的加总;关税使其缩水。</dd>
+      <dt>生产者剩余 Producer Surplus</dt><dd>厂商实际售价与最低接受价之差的加总;关税使其扩大。</dd>
+      <dt>无谓损失 Deadweight Loss</dt><dd>关税下谁也没有得到的净福利损失,表现为供需图上的两个三角形。</dd>
+      <dt>直接标价法 Direct Quotation</dt><dd>以本币表示 1 单位外币的汇率标价方法,数值上升即本币贬值。</dd>
+      <dt>升值与贬值 Appreciation &amp; Depreciation</dt><dd>本币购买力相对外币增强或减弱;方向决定进出口谁受益。</dd>
+      <dt>贸易摩擦 Trade Friction</dt><dd>互相加征关税与非关税壁垒的对抗循环,常导致双方福利双降。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>关税把财富从分散的消费者转移给生产者与政府,并在转移中蒸发掉一块无谓损失;汇率则是同一枚硬币的价格面——出口的逆风就是进口的顺风。政策会变,但这两笔账的算法不变。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "小国对某种进口品征收关税,其他条件不变,短期内国内价格与进口量会怎么变?",
+        "options": ["价格下降,进口量同步上升", "价格不变,进口量明显下降", "价格上升,进口量相应下降", "价格上升,进口量同步上升"],
+        "answer": 2,
+        "explain": "小国是世界价格的接受者:国内价格被抬到 Pw+t;更高价格让国内供给增加、需求减少,两头的夹击使进口量收缩。" },
+      { "q": "关税造成的「无谓损失」指的是什么?",
+        "options": ["没有人得到补偿的净福利损失", "政府从关税拿到的收入总额", "外国出口商利润减少的部分", "国内厂商新增利润的那部分"],
+        "answer": 0,
+        "explain": "消费者损失分三块:生产者获益、政府收入、以及<b>谁也没拿到的两个三角形</b>——低效率国内生产对便宜进口的替代,以及被高价劝退的消费。前者是转移,后者才是净损失。" },
+      { "q": "人民币对美元升值(如 7.2 → 6.9),最可能的结果是?",
+        "options": ["中国出口商品以美元计更便宜", "中国进口的芯片与铁矿更贵了", "中国赴美留学的成本明显上升", "中国出口商品以美元计更昂贵"],
+        "answer": 3,
+        "explain": "升值=同样美元换回的人民币变少:出口商美元收入折本币缩水,商品以美元计更贵,出口承压;反过来进口品与留学费用更便宜,进口方受益。" },
+      { "q": "两国互征关税、层层加码(贸易摩擦),经济学上最典型的总体结果是?",
+        "options": ["两国政府收入增加,整体福利上升", "两国整体福利通常双双下降", "只有征税国受损,对方国受益", "两国消费者都买到更多便宜商品"],
+        "answer": 1,
+        "explain": "这是典型的囚徒困境:各自「占优」的保护选择,合起来把双方推入更差的结局——无谓损失、反制伤害与供应链绕路的长期成本,通常远超政府关税收入(示意,总体判断)。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>延伸阅读</h2>
+    <ul>
+      <li>《国际经济学:理论与政策》克鲁格曼、奥布斯菲尔德 · 中国人民大学出版社(建议读:贸易政策工具与关税的福利分析部分)</li>
+      <li>《国际商务:环境与运作》查尔斯·希尔 · 机械工业出版社(建议读:国际贸易与政府政策部分)</li>
+      <li>可搜索关键词:Deadweight Loss of a Tariff、直接标价法、贸易摩擦 301 条款</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-comparative-advantage.html"><span class="pager-label">上一课</span><span class="pager-title">比较优势:为什么要贸易</span></a>
+    <a class="next" href="0003-market-entry-modes.html"><span class="pager-label">下一课</span><span class="pager-title">进入模式:跨国经营的阶梯</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「我的公司进口原料、出口成品,人民币贬值对我整体是利还是弊?」——追问是学习的一部分。</div>
+    <p>国际商务 · 第 2 课 · 关税与汇率 | 交互:关税福利模拟器 + 升贬值方向图 · 案例数字为示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  if (!window.Viz) return;
+  var controls = document.getElementById("tariff-controls");
+  var chartBox = document.getElementById("tariff-chart");
+  var readout = document.getElementById("tariff-readout");
+  if (!controls || !chartBox || !readout) return;
+
+  var ax = Viz.axes(chartBox, {
+    w: 640, h: 410, margin: { t: 24, r: 24, b: 50, l: 60 },
+    xDomain: [0, 140], yDomain: [0, 12],
+    xLabel: "数量 Q(万件,示意)", yLabel: "价格 P(元/件)",
+    xTicks: 7, yTicks: 6
+  });
+  var g = ax.svg, X = ax.x, Y = ax.y;
+
+  function Qd(p) { return 120 - 8 * p; }
+  function Qs(p) { return 20 + 6 * p; }
+  var PW = 4;
+
+  /* 静态元素:供给、需求、无贸易均衡、世界价格线 */
+  Viz.line(g, [[X(Qs(0.6)), Y(0.6)], [X(Qs(11)), Y(11)]], { color: "#15803d", width: 3 });
+  Viz.line(g, [[X(Qd(2.2)), Y(2.2)], [X(Qd(11)), Y(11)]], { color: "#1d4ed8", width: 3 });
+  Viz.label(g, X(Qs(11)) + 6, Y(11) + 2, "S 本国供给", { size: 11.5, color: "#15803d" });
+  Viz.label(g, X(Qd(11)) - 4, Y(11) + 16, "D 本国需求", { size: 11.5, color: "#1d4ed8", anchor: "end" });
+  var pA = 100 / 14, qA = Qd(pA);
+  Viz.dot(g, X(qA), Y(pA), { fill: "#1c1917", r: 5 });
+  Viz.label(g, X(qA) + 8, Y(pA) - 10, "无贸易均衡", { size: 11.5 });
+  var pwLine = Viz.svgEl("line", {
+    x1: X(0), x2: X(140), y1: Y(PW), y2: Y(PW),
+    stroke: "#78716c", "stroke-width": 2, "stroke-dasharray": "6 6"
+  });
+  g.appendChild(pwLine);
+  Viz.label(g, X(1.5), Y(PW) + 18, "世界价格 Pw = 4", { size: 12, color: "#78716c" });
+
+  /* 动态元素:含关税价格线、四块福利区域、标注 */
+  var ptLine = Viz.svgEl("line", { x1: X(0), x2: X(140), y1: Y(PW), y2: Y(PW), stroke: "#b91c1c", "stroke-width": 2.2 });
+  g.appendChild(ptLine);
+  var ptLab = Viz.label(g, X(1.5), Y(PW) - 10, "", { size: 12, color: "#b91c1c" });
+  var psArea = Viz.svgEl("path", { fill: "#15803d", opacity: 0.22 });
+  var revArea = Viz.svgEl("path", { fill: "#b45309", opacity: 0.30 });
+  var dwl1 = Viz.svgEl("path", { fill: "#b91c1c", opacity: 0.38 });
+  var dwl2 = Viz.svgEl("path", { fill: "#b91c1c", opacity: 0.38 });
+  g.appendChild(psArea); g.appendChild(revArea); g.appendChild(dwl1); g.appendChild(dwl2);
+  var revLab = Viz.label(g, 0, 0, "", { size: 11, anchor: "middle", fill: "#7c2d12" });
+  var dwlLab1 = Viz.label(g, 0, 0, "", { size: 10.5, anchor: "middle", fill: "#b91c1c" });
+  var dwlLab2 = Viz.label(g, 0, 0, "", { size: 10.5, anchor: "middle", fill: "#b91c1c" });
+  var impLab = Viz.label(g, 0, 0, "进口量 M", { size: 11, anchor: "middle", color: "#57534e" });
+
+  function poly(pts) {
+    return pts.map(function (p, i) { return (i ? "L" : "M") + p[0].toFixed(1) + " " + p[1].toFixed(1); }).join(" ") + " Z";
+  }
+  function show(el, on) { el.style.display = on ? "" : "none"; }
+
+  function render(t) {
+    var pt = PW + t;
+    var qs0 = Qs(PW), qs1 = Qs(pt), qd0 = Qd(PW), qd1 = Qd(pt);
+    show(ptLine, t > 0.01); show(ptLab, t > 0.01);
+    ptLine.setAttribute("y1", Y(pt)); ptLine.setAttribute("y2", Y(pt));
+    ptLab.setAttribute("y", Y(pt) - 8);
+    ptLab.textContent = "含关税价格 Pt = " + pt.toFixed(1);
+
+    var on = t > 0.01;
+    [psArea, revArea, dwl1, dwl2].forEach(function (e) { show(e, on); });
+    if (on) {
+      psArea.setAttribute("d", poly([[X(0), Y(PW)], [X(qs0), Y(PW)], [X(qs1), Y(pt)], [X(0), Y(pt)]]));
+      revArea.setAttribute("d", poly([[X(qs1), Y(PW)], [X(qd1), Y(PW)], [X(qd1), Y(pt)], [X(qs1), Y(pt)]]));
+      dwl1.setAttribute("d", poly([[X(qs0), Y(PW)], [X(qs1), Y(PW)], [X(qs1), Y(pt)]]));
+      dwl2.setAttribute("d", poly([[X(qd1), Y(PW)], [X(qd0), Y(PW)], [X(qd1), Y(pt)]]));
+    }
+    show(impLab, true);
+    impLab.setAttribute("x", X((qs1 + qd1) / 2));
+    impLab.setAttribute("y", Y(pt) - 8);
+    impLab.textContent = "进口量 M = " + Math.max(0, Math.round(qd1 - qs1));
+
+    var rectW = X(qd1) - X(qs1);
+    show(revLab, on && rectW > 52);
+    revLab.setAttribute("x", X((qs1 + qd1) / 2));
+    revLab.setAttribute("y", (Y(PW) + Y(pt)) / 2 + 4);
+    revLab.textContent = "关税收入 t×M";
+    show(dwlLab1, t >= 0.3); show(dwlLab2, t >= 0.3);
+    dwlLab1.setAttribute("x", X((qs0 + qs1) / 2));
+    dwlLab1.setAttribute("y", (Y(PW) + Y(pt)) / 2 + 3);
+    dwlLab1.textContent = "无谓损失";
+    dwlLab2.setAttribute("x", X((qd0 + qd1) / 2));
+    dwlLab2.setAttribute("y", (Y(PW) + Y(pt)) / 2 + 3);
+    dwlLab2.textContent = "无谓损失";
+
+    var cs = 88 * t - 4 * t * t;      // 消费者损失
+    var ps = 44 * t + 3 * t * t;      // 生产者获益
+    var rev = t * (44 - 14 * t);      // 政府关税收入
+    var dwl = 7 * t * t;              // 无谓损失
+    if (t <= 0.01) {
+      readout.innerHTML = "关税 t = <b>0</b>(自由贸易):国内价格 = 世界价格 <b>4.0</b> 元,进口 <b>44</b> 万件。消费者剩余最大、无税收也无扭曲;国内厂商直面国际竞争,压力最大。向右拖动滑块开始征税。";
+    } else {
+      readout.innerHTML =
+        "关税 t = <b>" + t.toFixed(1) + "</b> 元/件 → 国内价格 = <b>" + pt.toFixed(1) + "</b> 元,进口量 = <b>" + Math.max(0, Math.round(qd1 - qs1)) + "</b> 万件(自由贸易时 44)。<br>" +
+        "消费者损失 <b style='color:#b91c1c'>" + Math.round(cs) + "</b> = 生产者获益 <b style='color:#15803d'>" + Math.round(ps) + "</b> + 关税收入 <b style='color:#b45309'>" + Math.round(rev) + "</b> + 无谓损失 <b style='color:#b91c1c'>" + Math.round(dwl) + "</b>(福利单位,示意)<br>" +
+        "等式永远成立:财富只是被转移,却有一块被<b>凭空蒸发</b>——那一块不属于任何人。";
+    }
+  }
+
+  var sl = Viz.slider(controls, {
+    label: "关税 t(元/件)", min: 0, max: 2.5, step: 0.1, value: 0,
+    format: function (v) { return v.toFixed(1) + " 元"; }
+  });
+  sl.onChange(render);
+  render(0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>会计等式:企业的语言 · 会计学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  #scale-sim .tx-btns{display:flex;flex-wrap:wrap;gap:.6rem;padding:.8rem 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin:.6rem 0;}
+  #scale-sim .tx-btns button{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--accent);background:#fff;
+    border:1.5px solid color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:999px;padding:.42rem 1.05rem;cursor:pointer;transition:all .15s ease;}
+  #scale-sim .tx-btns button:hover{background:var(--accent);color:var(--accent-ink);}
+  #scale-sim .tx-btns button.ghost{color:var(--ink-soft);border-color:var(--line);}
+  #scale-svg{margin:.3rem 0 .1rem;}
+  #sc-msg{min-height:1.6rem;font-size:.9rem;color:var(--ink-soft);margin:.4rem 0 0;}
+  #sc-msg.err{color:var(--bad);font-weight:700;}
+  #sc-beam{transform-box:view-box;transform-origin:340px 64px;transition:transform .45s cubic-bezier(.34,1.56,.64,1);}
+  .plate-l,.plate-r{transition:transform .35s ease;}
+  .acct rect{transition:opacity .35s ease;}
+  .acct-hot rect{opacity:.15 !important;}
+  .acct-hot text{fill:var(--accent) !important;font-weight:800 !important;}
+  .bal-ok{color:var(--good);font-weight:800;}
+</style>
+</head>
+<body class="branch-accounting">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">会计学</a><span class="crumb-sep">/</span>
+  <span>会计等式:企业的语言</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">会计学 · LESSON 1</p>
+  <h1>会计等式:企业的语言</h1>
+  <p class="lead">会计常被称为「企业的语言」(the language of business),而这门语言的第一句话只有六个字:资产 = 负债 + 所有者权益。这一课我们不背科目表,只建立一种直觉——任何交易都同时有两面,天平永远水平。</p>
+
+  <h2><span class="secno">1</span>为什么先学一个等式</h2>
+  <p>面对任何一家公司,商业世界永远在问三个问题:<b>它有什么?欠了什么?真正属于股东的还剩多少?</b>银行放贷前问,投资人入股前问,老板自己月底也要问。会计等式(Accounting Equation)把这三个问题压缩成一行恒等式——它不是计算公式,而是一条永远成立的「宪法」。</p>
+  <div class="concept">
+    <div class="concept-title">会计等式 Accounting Equation</div>
+    <p style="margin:.2rem 0 .6rem"><b>资产(Assets)= 负债(Liabilities)+ 所有者权益(Owners' Equity)</b></p>
+    <p style="margin:0;font-size:.95rem;color:var(--ink-soft)">资产是公司控制的经济资源:现金、存货、设备、客户欠的账款;负债是欠别人的:银行借款、拖欠供应商的货款;所有者权益是资产减去负债后的<em>剩余</em>,又叫净资产。权益像一个余额,被动地被等式两边推着走——先算清资产和负债,权益自动就出来了。</p>
+  </div>
+  <div class="callout note"><span class="callout-label">同义词速查</span> 所有者权益 = 股东权益 = 净资产 = 账面价值(Book Value),四个词说的是同一个东西,考试与年报里会混用。</div>
+
+  <h2><span class="secno">2</span>会计主体:先给「公司」画一条线</h2>
+  <p>用等式记账之前,先要回答「给谁记账」。会计主体(Accounting Entity)指的是记账的边界:是<b>这家公司</b>,不是老板个人,也不是老板娘的私房钱。公司账上的每一块钱,都必须能追溯到一笔公司层面的交易。</p>
+  <p>为什么强调这件事?因为新创企业最常见的病就是「公私混账」:老板的个人卡刷公司开销,公司的钱付私人旅游。一旦混用,报表就失去了意义——你说不清公司到底赚没赚钱,融资尽调与纳税申报都会陷入泥潭。</p>
+  <div class="callout warn"><span class="callout-label">注意</span> 老板自掏腰包给公司垫钱,只要留存凭证,反而是正规的「股东借款给公司」;乱的不是钱的来源,而是账的边界。</div>
+
+  <h2><span class="secno">3</span>复式记账:每笔交易都有两面</h2>
+  <p>等式最漂亮的推论是:<b>不存在只影响一个地方的交易</b>。每笔交易要么让等式两侧同增同减,要么让同一侧内部一增一减——这就是复式记账(Double-Entry Bookkeeping)。写成账簿语言,就是借贷记账法:「借」(Debit)与「贷」(Credit)不是日常说的借钱贷款,只是左与右的方位记号,口诀是「有借必有贷,借贷必相等」。日记账(Journal)就是按时间顺序逐笔登记这些双面记录的账簿。</p>
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>示例交易</th><th>左侧:资产</th><th>右侧:负债 + 权益</th><th>天平如何保持</th></tr></thead>
+    <tbody>
+      <tr><td>银行借款 100 万</td><td>银行存款 +100</td><td>银行借款 +100</td><td>两侧同增</td></tr>
+      <tr><td>股东注资 50 万</td><td>银行存款 +50</td><td>实收资本 +50</td><td>两侧同增</td></tr>
+      <tr><td>现金购设备 30 万</td><td>现金 −30、设备 +30</td><td>不变</td><td>同侧一增一减</td></tr>
+      <tr><td>赊购原料 20 万</td><td>存货 +20</td><td>应付账款 +20</td><td>两侧同增</td></tr>
+      <tr><td>归还借款 10 万</td><td>银行存款 −10</td><td>银行借款 −10</td><td>两侧同减</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>看最后一列:不管哪种组合,天平两端的<b>总重量</b>永远相等。审计师查账时翻的,本质上是「每一笔的天平是否两边都记了」。</p>
+
+  <h2><span class="secno">4</span>亲手试:交易天平</h2>
+  <p>点击下面的示例交易按钮,观察天平两端如何<b>同时</b>变化:被影响的科目会高亮,金额会滚动,横梁轻轻晃动后回到水平。累积几笔后,读一读自动生成的日记账。</p>
+  <div class="sim" id="scale-sim">
+    <div class="sim-title">交易天平 · 每笔交易的两面</div>
+    <div class="tx-btns">
+      <button data-tx="loan">银行借款 100 万</button>
+      <button data-tx="cap">股东注资 50 万</button>
+      <button data-tx="equip">现金购设备 30 万</button>
+      <button data-tx="inv">赊购原料 20 万</button>
+      <button data-tx="reset" class="ghost">↺ 重置天平</button>
+    </div>
+    <div id="scale-svg"></div>
+    <p class="sim-readout">资产 <b id="bal-l">0</b> 万 = 负债 <b id="bal-d">0</b> 万 + 所有者权益 <b id="bal-e">0</b> 万 <span class="bal-ok">✓ 天平始终水平</span></p>
+    <p id="sc-msg">点击上方任一交易按钮开始记录。</p>
+    <div class="table-wrap">
+    <table class="compact" id="journal">
+      <thead><tr><th>#</th><th>业务</th><th>借方科目</th><th>贷方科目</th><th>金额(万)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    </div>
+  </div>
+
+  <h2><span class="secno">5</span>案例:柠檬水摊的第一周</h2>
+  <div class="case">
+    <div class="case-title">一个柠檬水摊的第一周日记账(数字为教学示意)</div>
+    <p>《世界上最简单的会计书》用柠檬水摊讲完整套账,我们借它复现一遍。假设你决定创业卖柠檬水:</p>
+    <ul class="timeline">
+      <li><b>第 1 天 · 注资 200 元。</b>你把私房钱投入摊位:借「现金」200,贷「实收资本」200——资产与权益同增,天平右端从此有了你的份额。</li>
+      <li><b>第 1 天 · 向家人借款 100 元。</b>借「现金」100,贷「借款」100——天平两端又同时加码,但右端加的是负债:这部分将来要还。</li>
+      <li><b>第 2 天 · 现金购原料 80 元。</b>柠檬与糖还没卖出去,仍是你的资产:借「存货」80,贷「现金」80——资产内部换了个形态,总额不变。</li>
+      <li><b>第 3 天 · 收入 150 元,用掉原料 60 元。</b>两笔记录:借「现金」150 贷「收入」150;借「成本」60 贷「存货」60。收入与成本的差 90 元,周末会滚进权益里的「留存收益」。</li>
+      <li><b>第 5 天 · 归还借款 50 元。</b>借「借款」50,贷「现金」50——两侧同减,负债越还越薄。</li>
+    </ul>
+    <p><b>周末盘点:</b>现金 320 元(200+100−80+150−50)+ 存货 20 元 = 资产 340 元;负债只剩借款 50 元;权益 = 实收资本 200 + 本周利润 90 = 290 元。<b>340 = 50 + 290</b>,天平闭合。</p>
+    <p class="case-learn"><b>这个案例教我们:</b>「赚了 90 元」和「现金变多了」是两回事——利润是收入减成本算出来的,现金只是资产的一种形态。这个裂缝,正是下一课三大报表要正式处理的问题。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>会计等式 Accounting Equation</dt><dd>资产 = 负债 + 所有者权益,永远成立的恒等式。</dd>
+      <dt>资产 Assets</dt><dd>公司控制的经济资源:现金、存货、设备、应收款项等。</dd>
+      <dt>负债 Liabilities</dt><dd>对外承担的偿还义务:借款、应付款项等。</dd>
+      <dt>所有者权益 Owners' Equity</dt><dd>资产减负债后的剩余,归股东所有,又称净资产。</dd>
+      <dt>会计主体 Accounting Entity</dt><dd>记账的边界:记「这家公司」的账,而非老板个人的账。</dd>
+      <dt>复式记账 Double-Entry</dt><dd>每笔交易同时在两处记录,保持等式平衡。</dd>
+      <dt>借 / 贷 Debit / Credit</dt><dd>记账的左右方位记号,并非日常的借钱与贷款。</dd>
+      <dt>日记账 Journal</dt><dd>按时间顺序逐笔登记交易的原始账簿。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    资产 = 负债 + 所有者权益是一条不能违反的宪法。任何交易都同时打击等式两侧(或同侧两处),所以天平永远水平——这不是巧合,而是复式记账的设计本身。
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "公司用银行存款 50 万元购入一台设备,这笔交易对会计等式的影响是?",
+      "options": ["资产与负债同时增加五十万元", "资产与权益同时减少五十万元", "资产内部一增一减,总额保持不变", "资产总额增加,权益同步减少"],
+      "answer": 2,
+      "explain": "现金(资产)减少 50 万、设备(资产)增加 50 万,只是资产的形态互换,总资产与右侧都不变,天平依旧平衡。" },
+    { "q": "股东向公司投入现金 100 万元,正确的记账方向是?",
+      "options": ["借:银行存款;贷:实收资本", "借:实收资本;贷:银行存款", "借:银行存款;贷:营业收入", "借:固定资产;贷:应付账款"],
+      "answer": 0,
+      "explain": "公司收到现金,资产增加记借;股东投入使权益增加,实收资本记贷。方向反了就把「注资」记成了「撤资」。" },
+    { "q": "老板用个人银行卡支付全家旅游费用,不能记入公司账簿,最准确的理由是?",
+      "options": ["旅游支出金额太小,达不到入账门槛", "公司是独立会计主体,家事与经营无关", "没有取得正式发票,所以暂时不能入账", "个人消费应等到年底一次性冲抵权益"],
+      "answer": 1,
+      "explain": "关键不是金额或发票,而是主体边界:这笔交易不属于「这家公司」的经营活动。会计主体划错,报表整体失真。" },
+    { "q": "复式记账要求每笔交易同时记录两处,它的根本目的是?",
+      "options": ["让账簿篇幅翻倍,方便留档备查", "便于区分收入类科目与费用类科目", "帮助公司在报税时少缴一部分所得税", "让会计等式两侧始终保持相等"],
+      "answer": 3,
+      "explain": "双重记录互相校验:任何一侧漏记、错记,等式立即不平衡——复式记账的天平本身就是最古老的查错机制。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>延伸阅读</h2>
+    <ul>
+      <li>《世界上最简单的会计书》达雷尔·穆利斯 · 机械工业出版社(建议读:开篇至中段,跟着柠檬水摊记第一本账)</li>
+      <li>《会计学:企业决策的基础》约翰·怀尔德(John Wild)等 · 机械工业出版社(建议读:第 1–2 章「会计在商业决策中的作用」与「分析并记录交易」)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">上一课</span><span class="pager-title">会计学 · 分支导学</span></a>
+    <a class="next" href="0002-three-statements.html"><span class="pager-label">下一课</span><span class="pager-title">三大报表:公司的成绩单</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师——比如「借款 100 万为什么不算我的利润」「借和贷到底怎么分左右」,或者出一道交易让你判断天平怎么动。</div>
+    <p>本课数字均为教学示意 · 会计学 · 第 1 课 / 共 4 课</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var host = document.getElementById("scale-svg");
+  if (!host) return;
+  var svg = Viz.svgEl("svg", { viewBox: "0 0 680 300", role: "img", "aria-label": "交易天平示意图" });
+  svg.style.cssText = "width:100%;height:auto;display:block";
+
+  /* 横梁与支柱 */
+  var beam = Viz.svgEl("g", { id: "sc-beam" });
+  beam.appendChild(Viz.svgEl("line", { x1: 110, y1: 64, x2: 570, y2: 64, stroke: "#1c1917", "stroke-width": 6, "stroke-linecap": "round" }));
+  beam.appendChild(Viz.svgEl("circle", { cx: 110, cy: 64, r: 5, fill: "#1c1917" }));
+  beam.appendChild(Viz.svgEl("circle", { cx: 570, cy: 64, r: 5, fill: "#1c1917" }));
+  svg.appendChild(beam);
+  svg.appendChild(Viz.svgEl("line", { x1: 340, y1: 64, x2: 340, y2: 150, stroke: "#c9c1b2", "stroke-width": 8, "stroke-linecap": "round" }));
+  svg.appendChild(Viz.svgEl("circle", { cx: 340, cy: 64, r: 8, fill: "#1d4ed8" }));
+  svg.appendChild(Viz.svgEl("rect", { x: 278, y: 150, width: 124, height: 12, rx: 6, fill: "#c9c1b2" }));
+  var motto = Viz.svgEl("text", { x: 340, y: 186, "text-anchor": "middle", "font-size": 12, fill: "#a8a29e", "font-weight": 700 });
+  motto.textContent = "有借必有贷 · 借贷必相等";
+  svg.appendChild(motto);
+
+  /* 科目余额 */
+  var ACC = {
+    cash:  { side: "L", label: "银行存款", v: 0 },
+    equip: { side: "L", label: "设备",     v: 0 },
+    inv:   { side: "L", label: "原料存货", v: 0 },
+    loan:  { side: "R", label: "银行借款", v: 0 },
+    ap:    { side: "R", label: "应付账款", v: 0 },
+    cap:   { side: "R", label: "实收资本", v: 0 }
+  };
+  var PLATES = { L: { cx: 110, title: "资产 · 万元" }, R: { cx: 570, title: "负债 + 权益 · 万元" } };
+  var totEls = {};
+
+  function buildPlate(side) {
+    var p = PLATES[side];
+    var w = 190, x = p.cx - w / 2, y = 96, h = 192;
+    var g = Viz.svgEl("g", { "class": side === "L" ? "plate-l" : "plate-r" });
+    g.appendChild(Viz.svgEl("line", { x1: p.cx, y1: 66, x2: x + 18, y2: y, stroke: "#a8a29e", "stroke-width": 1.5 }));
+    g.appendChild(Viz.svgEl("line", { x1: p.cx, y1: 66, x2: x + w - 18, y2: y, stroke: "#a8a29e", "stroke-width": 1.5 }));
+    g.appendChild(Viz.svgEl("rect", { x: x, y: y, width: w, height: h, rx: 12, fill: "#ffffff", stroke: "#e7e0d3", "stroke-width": 1.5 }));
+    var hd = Viz.svgEl("text", { x: p.cx, y: y + 24, "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#1d4ed8" });
+    hd.textContent = p.title;
+    g.appendChild(hd);
+    g.appendChild(Viz.svgEl("line", { x1: x + 10, y1: y + 34, x2: x + w - 10, y2: y + 34, stroke: "#e7e0d3", "stroke-width": 1 }));
+    svg.appendChild(g);
+    /* 合计行 */
+    g.appendChild(Viz.svgEl("line", { x1: x + 10, y1: y + 150, x2: x + w - 10, y2: y + 150, stroke: "#e7e0d3", "stroke-width": 1 }));
+    var tl = Viz.svgEl("text", { x: x + 16, y: y + 172, "font-size": 12.5, "font-weight": 800, fill: "#1c1917" });
+    tl.textContent = side === "L" ? "资产合计" : "负债 + 权益合计";
+    g.appendChild(tl);
+    var tv = Viz.svgEl("text", { x: x + w - 16, y: y + 172, "font-size": 12.5, "font-weight": 800, fill: "#1d4ed8", "text-anchor": "end" });
+    tv.textContent = "0";
+    g.appendChild(tv);
+    totEls[side] = tv;
+    return { g: g, x: x, y: y, w: w };
+  }
+
+  function buildRows(plate, keys) {
+    keys.forEach(function (k, i) {
+      var a = ACC[k];
+      var y = plate.y + 56 + i * 27;
+      var row = Viz.svgEl("g", { "class": "acct" });
+      row.appendChild(Viz.svgEl("rect", { x: plate.x + 8, y: y - 16, width: plate.w - 16, height: 23, rx: 6, fill: "#1d4ed8", opacity: 0 }));
+      var nm = Viz.svgEl("text", { x: plate.x + 16, y: y, "font-size": 12.5, fill: "#1c1917" });
+      nm.textContent = a.label;
+      row.appendChild(nm);
+      var amt = Viz.svgEl("text", { x: plate.x + plate.w - 16, y: y, "font-size": 12.5, "font-weight": 700, fill: "#1c1917", "text-anchor": "end" });
+      amt.textContent = "0";
+      row.appendChild(amt);
+      svg.appendChild(row);
+      a.g = row; a.amtEl = amt; a.timer = null;
+    });
+  }
+
+  var pL = buildPlate("L"), pR = buildPlate("R");
+  buildRows(pL, ["cash", "equip", "inv"]);
+  buildRows(pR, ["loan", "ap", "cap"]);
+  host.appendChild(svg);
+
+  /* 交易定义(dr/cr 为各科目增减,借记科目与贷记科目用于日记账) */
+  var TXS = {
+    loan:  { name: "银行借款 100 万", dr: { cash: 100 },  cr: { loan: 100 }, drTxt: "银行存款", crTxt: "银行借款", amt: 100 },
+    cap:   { name: "股东注资 50 万",  dr: { cash: 50 },   cr: { cap: 50 },   drTxt: "银行存款", crTxt: "实收资本", amt: 50 },
+    equip: { name: "现金购设备 30 万", dr: { equip: 30 }, cr: { cash: -30 }, drTxt: "设备",     crTxt: "银行存款", amt: 30 },
+    inv:   { name: "赊购原料 20 万",  dr: { inv: 20 },   cr: { ap: 20 },    drTxt: "原料存货", crTxt: "应付账款", amt: 20 }
+  };
+  var fmt = function (x) { return Math.round(x).toLocaleString("en-US"); };
+  var msgEl = document.getElementById("sc-msg");
+  function msg(text, err) { msgEl.textContent = text; msgEl.className = err ? "err" : ""; }
+
+  function totals() {
+    var l = ACC.cash.v + ACC.equip.v + ACC.inv.v;
+    var d = ACC.loan.v + ACC.ap.v;
+    var e = ACC.cap.v;
+    document.getElementById("bal-l").textContent = fmt(l);
+    document.getElementById("bal-d").textContent = fmt(d);
+    document.getElementById("bal-e").textContent = fmt(e);
+    totEls.L.textContent = fmt(l);
+    totEls.R.textContent = fmt(d + e);
+  }
+
+  function tilt() {
+    beam.style.transform = "rotate(-2deg)";
+    pL.g.style.transform = "translateY(5px)";
+    pR.g.style.transform = "translateY(5px)";
+    setTimeout(function () {
+      beam.style.transform = "rotate(0deg)";
+      pL.g.style.transform = "translateY(0)";
+      pR.g.style.transform = "translateY(0)";
+    }, 280);
+  }
+
+  var seq = 0;
+  function journalRow(tx) {
+    var tb = document.querySelector("#journal tbody");
+    var tr = document.createElement("tr");
+    var cells = [String(++seq), tx.name, tx.drTxt, tx.crTxt, fmt(tx.amt)];
+    cells.forEach(function (c) {
+      var td = document.createElement("td");
+      td.textContent = c;
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  }
+
+  function apply(key) {
+    var tx = TXS[key];
+    var deltas = {};
+    Object.keys(tx.dr).forEach(function (k) { deltas[k] = (deltas[k] || 0) + tx.dr[k]; });
+    Object.keys(tx.cr).forEach(function (k) { deltas[k] = (deltas[k] || 0) + tx.cr[k]; });
+    if (ACC.cash.v + (deltas.cash || 0) < 0) {
+      msg("现金不足——先「银行借款」或「股东注资」,天平不允许现金为负。", true);
+      return;
+    }
+    msg("已记录第 " + (seq + 1) + " 笔:" + tx.name + " → 借:" + tx.drTxt + ",贷:" + tx.crTxt + ",金额 " + tx.amt + " 万。");
+    Object.keys(deltas).forEach(function (k) {
+      var a = ACC[k], from = a.v;
+      a.v += deltas[k];
+      Viz.countUp(a.amtEl, a.v, { from: from, dur: 650, format: fmt });
+      a.g.classList.add("acct-hot");
+      clearTimeout(a.timer);
+      a.timer = setTimeout(function () { a.g.classList.remove("acct-hot"); }, 1600);
+    });
+    tilt(); totals(); journalRow(tx);
+  }
+
+  function reset() {
+    Object.keys(ACC).forEach(function (k) {
+      var a = ACC[k];
+      a.v = 0; a.amtEl.textContent = "0";
+      a.g.classList.remove("acct-hot");
+      clearTimeout(a.timer);
+    });
+    seq = 0;
+    document.querySelector("#journal tbody").innerHTML = "";
+    totals();
+    msg("天平已归零。点击任一交易按钮重新开始。");
+  }
+
+  document.querySelectorAll("#scale-sim [data-tx]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var k = b.getAttribute("data-tx");
+      if (k === "reset") reset(); else apply(k);
+    });
+  });
+  totals();
+})();
+</script>
+</body>
+</html>

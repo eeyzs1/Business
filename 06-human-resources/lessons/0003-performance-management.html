@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>绩效管理:KPI 与 OKR · 人力资源管理</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .smart-progress { font-size: .85rem; font-weight: 700; color: var(--accent); margin-bottom: .5rem; font-variant-numeric: tabular-nums; }
+  .smart-goal {
+    background: var(--paper-deep); border-left: 4px solid var(--accent); border-radius: 10px;
+    padding: 1rem 1.15rem; font-size: 1.02rem; line-height: 1.7;
+  }
+  .smart-chips { display: flex; gap: .45rem; margin-top: .85rem; flex-wrap: wrap; }
+  .smart-chips .chip {
+    font-family: var(--sans); font-weight: 800; font-size: .8rem; border-radius: 999px;
+    padding: .12rem .8rem; border: 1.5px solid var(--line); background: #fff; color: var(--ink-faint);
+  }
+  .smart-chips .chip.ok { color: var(--good); border-color: #bbf7d0; background: #f0fdf4; }
+  .smart-chips .chip.miss { color: var(--bad); border-color: #fecaca; background: #fef2f2; text-decoration: line-through; }
+  .smart-actions { display: flex; gap: .8rem; margin-top: .9rem; flex-wrap: wrap; }
+  .smart-btn {
+    font-family: var(--sans); font-size: .97rem; font-weight: 700; cursor: pointer;
+    border-radius: 999px; padding: .55rem 1.35rem; border: 2px solid var(--line); background: #fff; color: var(--ink);
+    transition: all .15s ease;
+  }
+  .smart-btn.pass:hover:not(:disabled) { border-color: var(--good); background: #f0fdf4; }
+  .smart-btn.fail:hover:not(:disabled) { border-color: var(--bad); background: #fef2f2; }
+  .smart-btn:disabled { opacity: .4; cursor: default; }
+  .smart-feedback {
+    margin-top: .9rem; font-size: .93rem; color: var(--ink-soft); line-height: 1.75;
+    background: var(--paper-deep); border-radius: 8px; padding: .75rem .95rem;
+  }
+  .smart-feedback b { color: var(--accent); }
+  .smart-meta { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
+  .smart-score { font-size: .95rem; font-weight: 700; color: var(--accent); }
+  .smart-next {
+    margin-left: auto; background: var(--accent); color: var(--accent-ink); border: none; border-radius: 999px;
+    padding: .45rem 1.3rem; font-weight: 700; font-size: .92rem; cursor: pointer; font-family: var(--sans);
+  }
+  .smart-next:disabled { opacity: .35; cursor: default; }
+  .flip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .9rem; margin: 1.4rem 0; }
+  .flip-dim { font-size: .8rem; font-weight: 800; color: var(--ink-soft); letter-spacing: .06em; margin-bottom: .4rem; }
+  .flip-card { position: relative; height: 168px; cursor: pointer; perspective: 900px; }
+  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform .55s ease; transform-style: preserve-3d; }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 12px; padding: .85rem .95rem; box-shadow: var(--shadow); font-size: .86rem; line-height: 1.65;
+  }
+  .flip-face .flip-badge {
+    display: inline-block; font-weight: 800; font-size: .74rem; letter-spacing: .1em;
+    border-radius: 999px; padding: .08rem .7rem; margin-bottom: .4rem; color: #fff;
+  }
+  .flip-front { background: #fff; border: 1px solid var(--line); }
+  .flip-front .flip-badge { background: #7c3aed; }
+  .flip-back { background: var(--ink); color: #f5f5f4; transform: rotateY(180deg); border: 1px solid var(--ink); }
+  .flip-back .flip-badge { background: var(--accent); color: #fff; }
+  .flip-hint { font-size: .7rem; color: var(--ink-faint); position: absolute; bottom: .6rem; right: .75rem; }
+  @media print {
+    .flip-card { height: auto; perspective: none; }
+    .flip-inner { transform: none !important; transition: none; }
+    .flip-face { position: static; backface-visibility: visible; -webkit-backface-visibility: visible; margin-bottom: .4rem; }
+    .flip-back { transform: none; background: #fff; color: var(--ink); border: 1px dashed var(--line); }
+  }
+</style>
+</head>
+<body class="branch-hr">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">人力资源管理</a><span class="crumb-sep">/</span>
+  <span>绩效管理</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">人力资源管理 · Lesson 3</p>
+  <h1>绩效管理:KPI 与 OKR</h1>
+  <p class="lead">目标不一致,是组织里最昂贵的隐形成本:一百个人都很努力,方向却各自偏了十度。这一课讲清绩效管理的完整循环,拆开两套主流工具——考核型的 KPI 与对齐型的 OKR——并给出把目标写合格的第一道工序:SMART。</p>
+
+  <h2><span class="secno">1</span>绩效管理是一个循环,不是一个分数</h2>
+  <p>最常见的误解,是把绩效管理(Performance Management)等同于「年底打分排名」。实际上打分只是循环中的一环:<em>目标设定</em> → <em>过程辅导</em> → <em>评估</em> → <em>反馈</em>,四步走完再进入下一轮。评估的产出如果不是「下一步怎么改进」,循环就断了——那不叫绩效管理,只叫绩效考核。</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 640 200" role="img" aria-label="绩效管理循环:目标设定、过程辅导、评估、反馈,循环往复" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#be185d"></path>
+          </marker>
+        </defs>
+        <rect x="26" y="56" width="118" height="56" rx="12" fill="#881337"></rect>
+        <text x="85" y="80" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">① 目标设定</text>
+        <text x="85" y="100" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)">对齐方向 · SMART</text>
+        <line x1="146" y1="84" x2="176" y2="84" stroke="#be185d" stroke-width="2.5" marker-end="url(#arr)"></line>
+        <rect x="178" y="56" width="118" height="56" rx="12" fill="#9d174d"></rect>
+        <text x="237" y="80" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">② 过程辅导</text>
+        <text x="237" y="100" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)">持续反馈 · 纠偏</text>
+        <line x1="298" y1="84" x2="328" y2="84" stroke="#be185d" stroke-width="2.5" marker-end="url(#arr)"></line>
+        <rect x="330" y="56" width="118" height="56" rx="12" fill="#be185d"></rect>
+        <text x="389" y="80" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">③ 评估</text>
+        <text x="389" y="100" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)">衡量 · 校准尺度</text>
+        <line x1="450" y1="84" x2="480" y2="84" stroke="#be185d" stroke-width="2.5" marker-end="url(#arr)"></line>
+        <rect x="482" y="56" width="118" height="56" rx="12" fill="#db2777"></rect>
+        <text x="541" y="80" text-anchor="middle" font-size="15" font-weight="800" fill="#fff">④ 反馈</text>
+        <text x="541" y="100" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.85)">面谈 · 下一步改进</text>
+        <path d="M541,116 C541,170 85,170 85,118" fill="none" stroke="#be185d" stroke-width="2" stroke-dasharray="7 6" marker-end="url(#arr)"></path>
+        <text x="313" y="182" text-anchor="middle" font-size="11.5" fill="#a8a29e">反馈的产出是下一轮目标——循环转动,绩效才被「管理」</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 绩效管理循环:目标 → 辅导 → 评估 → 反馈。四个环节缺一环,「管理」就退化成「打分」。</figcaption>
+  </figure>
+  <div class="concept">
+    <div class="concept-title">概念:绩效管理 · Performance Management</div>
+    <p style="margin:.2rem 0 0">通过「定目标—陪过程—评结果—给反馈」的持续循环,让个人努力与组织方向保持一致、并让人变得更强的管理系统。它管理的是<b>绩效</b>,不是「人」;它的终点是改进,不是分数。</p>
+  </div>
+
+  <h2><span class="secno">2</span>SMART:先把一条目标写合格</h2>
+  <p>无论用 KPI 还是 OKR,第一条目标写不合格,后面全白搭。检验工具是 SMART 五问:<em>具体</em>(Specific,说清做什么)、<em>可衡量</em>(Measurable,有数字与指标)、<em>可实现</em>(Achievable,跳一跳够得着)、<em>相关</em>(Relevant,服务于更大的目标)、<em>有时限</em>(Time-bound,有截止日)。下面六条目标陈述,你来当体检医生。</p>
+
+  <div class="sim" data-reveal id="smart-sim">
+    <div class="sim-title">交互 · 目标体检器:这条目标 SMART 合格吗?</div>
+    <div class="smart-progress" id="smProg">第 1 / 6 条</div>
+    <div class="smart-goal" id="smGoal">正在加载目标……</div>
+    <div class="smart-chips" id="smChips"></div>
+    <div class="smart-actions">
+      <button type="button" class="smart-btn pass" id="smPass">✓ SMART 合格</button>
+      <button type="button" class="smart-btn fail" id="smFail">✗ 不合格</button>
+    </div>
+    <div class="smart-feedback" id="smFb" hidden></div>
+    <div class="smart-meta">
+      <span class="smart-score" id="smScore">已判对 0 条</span>
+      <button type="button" class="smart-next" id="smNext" disabled>下一条 →</button>
+    </div>
+  </div>
+
+  <h2><span class="secno">3</span>KPI 与 OKR:考核型与对齐型</h2>
+  <p>目标合格之后,选哪套工具来承载?先看定义:<em>KPI</em>(Key Performance Indicator,关键绩效指标)自上而下从战略层层分解到岗位,强调「定了就应该完成」,常与考核、涨薪直接挂钩,适合结果明确、路径成熟的业务——良率、差错率、留存率天然是 KPI。<em>OKR</em>(Objectives and Key Results,目标与关键结果)由一个有雄心的目标 O 与若干可衡量的关键结果 KR 组成,强调公开透明、上下对齐;目标通常定得激进——「完成七成已属优秀」是常见说法(示意),因此多数实践<b>不把 OKR 与涨薪直接机械挂钩</b>,否则没人敢报有野心的目标。它的血统可以追溯到德鲁克的目标管理(MBO,Management by Objectives),经英特尔流传到谷歌后发扬光大(示意)。</p>
+  <p>点击下面四张卡片,在 KPI 视角与 OKR 视角之间翻转对比:</p>
+
+  <div class="flip-grid" data-reveal id="flipGrid">
+    <div>
+      <div class="flip-dim">① 目标从哪里来</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="翻转卡片:目标从哪里来">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><span class="flip-badge">KPI 视角</span><br>自上而下:公司指标层层分解到部门、岗位,层层承接、层层加压。<span class="flip-hint">点击翻转 ↔</span></div>
+          <div class="flip-face flip-back"><span class="flip-badge">OKR 视角</span><br>上下对齐:除承接上级外,个人与团队可自主提案,全员公开、互相看见。<span class="flip-hint">点击翻回 ↔</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flip-dim">② 目标定多高</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="翻转卡片:目标定多高">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><span class="flip-badge">KPI 视角</span><br>跳一跳够得着:定了就要完成,未达标即扣分,求稳怕漏。<span class="flip-hint">点击翻转 ↔</span></div>
+          <div class="flip-face flip-back"><span class="flip-badge">OKR 视角</span><br>挑战性目标:完成约七成即优秀(示意),鼓励报「不舒服的目标」试上限。<span class="flip-hint">点击翻回 ↔</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flip-dim">③ 与薪酬什么关系</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="翻转卡片:与薪酬什么关系">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><span class="flip-badge">KPI 视角</span><br>常与考核、涨薪直接挂钩:分数即奖金系数,利益驱动明确。<span class="flip-hint">点击翻转 ↔</span></div>
+          <div class="flip-face flip-back"><span class="flip-badge">OKR 视角</span><br>通常不直接挂钩(常见做法):避免「怕完不成而故意定低」的博弈。<span class="flip-hint">点击翻回 ↔</span></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="flip-dim">④ 适合什么场景</div>
+      <div class="flip-card" tabindex="0" role="button" aria-label="翻转卡片:适合什么场景">
+        <div class="flip-inner">
+          <div class="flip-face flip-front"><span class="flip-badge">KPI 视角</span><br>成熟稳态业务:结果清晰、路径已知,要的是守住底线与效率。<span class="flip-hint">点击翻转 ↔</span></div>
+          <div class="flip-face flip-back"><span class="flip-badge">OKR 视角</span><br>探索创新业务:路径未知、需要跨部门对齐,要的是聚焦与试错。<span class="flip-hint">点击翻回 ↔</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout note">
+    <span class="callout-label">实践中怎么选</span>
+    <p style="margin:.3rem 0 0">不是二选一:财务底线与成熟流程用 <b>KPI</b> 守住,创新方向与跨部门协同用 <b>OKR</b> 对齐——不少公司两套并行:KPI 管考核,OKR 管方向。</p>
+  </div>
+
+  <h2><span class="secno">4</span>持续反馈 vs 年度考核</h2>
+  <p>年度考核有两个先天缺陷:一是<b>反馈迟到十一个月</b>——错误早已定型,改进的最佳窗口早就关了;二是记忆的<em>近因效应</em>(Recency Effect):年底打分时,「最近一两个月的表现」会挤掉全年的样子。所以现代实践把重心移向<em>持续反馈</em>(Continuous Feedback):高频、简短、面向改进——每周或双周的一对一沟通(1:1)、即时的认可与纠偏、季度小结;年度评估退化为「阶段小结 + 校准」。校准(Calibration)指多位管理者交叉对齐评分尺度,防止「手松手紧」的部门间不可比。</p>
+  <div class="callout tip">
+    <span class="callout-label">一条实用规则</span>
+    <p style="margin:.3rem 0 0">反馈的半衰期以「天」计:事情发生后越早谈,改进的杠杆越大;拖到年终,就只剩情绪,没有信息。</p>
+  </div>
+
+  <h2><span class="secno">5</span>案例:谷歌与字节跳动的 OKR</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">两家公司的「对齐」实验</p>
+    <p><b>谷歌</b>(示意描述):OKR 于 1999 年前后由投资人约翰·杜尔(John Doerr)带入当时还年轻的谷歌,此后成为全员机制:每个人的 OKR 在内网公开可查,任何人都能看到同事本季度的目标;鼓励设定「不舒服的」挑战目标,且普遍不与绩效评级机械挂钩——挂钩了,就没人敢把目标写在纸面上。<b>字节跳动</b>(示意描述,基于公开报道的通行做法):以双月为节奏刷新 OKR,目标与进展写在协同文档里全员透明,配合「Context, not Control」(给上下文,而非控制)的理念,让成千上万人的方向快速对齐——信息透明本身就是管理手段。</p>
+    <p class="case-learn"><b>这一课的教训:</b>OKR 的价值不在那张表格,而在「透明」二字:当所有人都能看见彼此的目标,对齐就从「层层传达」变成「主动查表」;而「不与涨薪机械挂钩」保护的,恰恰是敢定高目标的勇气。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>绩效管理 Performance Management</dt><dd>定目标—陪过程—评结果—给反馈的持续循环,目的在对齐与改进。</dd>
+      <dt>关键绩效指标 KPI</dt><dd>Key Performance Indicator,自上而下分解、常与考核挂钩的稳态指标。</dd>
+      <dt>目标与关键结果 OKR</dt><dd>Objectives and Key Results,挑战性目标加可衡量路标,强调透明对齐。</dd>
+      <dt>SMART 原则</dt><dd>合格目标的五项检验:具体、可衡量、可实现、相关、有时限。</dd>
+      <dt>关键结果 Key Result</dt><dd>OKR 中用来检验目标是否达成的可衡量刻度。</dd>
+      <dt>持续反馈 Continuous Feedback</dt><dd>高频、简短、面向改进的日常反馈,替代迟到的年度评判。</dd>
+      <dt>近因效应 Recency Effect</dt><dd>评估时最近的表现挤掉全周期表现的记忆偏差。</dd>
+      <dt>绩效校准 Calibration</dt><dd>多位管理者交叉对齐评分尺度,消除宽严不一。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>绩效管理是「目标—辅导—评估—反馈」的循环,不是年底的一张分数单。KPI 用考核守住成熟业务,OKR 用透明对齐探索业务——后者通常不与涨薪直接挂钩。先把目标写 SMART,再谈工具;反馈越及时,杠杆越大。</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">随堂测验 · 检索练习</div>
+    <script type="application/json">
+    [
+      { "q": "关于 KPI 与 OKR 的区别,下列说法最接近通行实践的是?",
+        "options": ["KPI 只能用于政府与公益组织,企业必须采用 OKR", "KPI 必须全员公开,而 OKR 必须严格保密归档", "OKR 每天都要更新一次,KPI 每年才允许更新一次", "KPI 常与考核薪酬挂钩,OKR 通常不直接机械挂钩"],
+        "answer": 3,
+        "explain": "通行实践(示意):KPI 考核型、与薪酬强相关;OKR 对齐型、鼓励挑战,若与涨薪机械挂钩,员工就不敢报高目标。两者都是企业工具,OKR 恰恰强调公开透明。" },
+      { "q": "目标「尽快优化结算流程」最大的问题是什么?",
+        "options": ["结算流程属于财务部门职权,其他部门一律无权优化", "「尽快」「优化」皆模糊,缺可衡量指标,也缺明确时限", "这个目标实在太容易实现,根本起不到任何激励作用", "违反了法律对结算周期作出的统一强制性规定"],
+        "answer": 1,
+        "explain": "按 SMART 检验:缺 M(优化到什么程度算优化?从几天到几天?)与 T(「尽快」是多快?)。改写示例:年底前把结算平均耗时从约五天降到两天以内。" },
+      { "q": "OKR 中的「关键结果」(Key Result)承担什么作用?",
+        "options": ["用可衡量的结果,检验目标到底有没有达成", "列出每位员工每天必须打卡上班的具体时间", "记录各个部门在下个季度里的预算明细清单", "说明公司在注册登记时确定的股权比例结构"],
+        "answer": 0,
+        "explain": "KR 是 O 的<b>刻度</b>:目标是方向,关键结果回答「走到哪算到」。没有可衡量的 KR,OKR 就退化为口号;打卡、预算、股权与它无关。" },
+      { "q": "关于持续反馈与年度考核的关系,更合理的做法是?",
+        "options": ["年初定完目标全年不再沟通,年底直接给出评分", "全面取消考核与记录,只凭同事之间的私下印象", "平时高频辅导与反馈,年度评估作为阶段小结", "把反馈工作全部外包,由第三方按月提交报告"],
+        "answer": 2,
+        "explain": "年度考核的两大缺陷是<b>反馈迟到</b>与<b>近因效应</b>;持续反馈把纠偏放进日常,年度评估退化为小结与校准。全年不沟通、完全取消记录、外包反馈,都丢掉了「管理」本身。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>延伸阅读</h2>
+    <ul>
+      <li>《这就是 OKR》约翰·杜尔 · 中信出版社(建议读:前半部分,聚焦、对齐、追踪、挑战四大作用)</li>
+      <li>《管理的实践》彼得·德鲁克 · 机械工业出版社(建议读:「目标管理与自我控制」一章,OKR 的思想源头)</li>
+      <li>《重新定义团队:谷歌如何工作》拉斯洛·博克 · 中信出版社(建议读:绩效与反馈相关章节,谷歌的实践细节)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-recruiting-and-selection.html"><span class="pager-label">上一课</span><span class="pager-title">招聘与选拔</span></a>
+    <a class="next" href="0004-compensation-and-incentives.html"><span class="pager-label">下一课</span><span class="pager-title">薪酬与激励</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「帮我用 SMART 改写这条目标」「我的部门适合 KPI 还是 OKR?」——追问是学习的一部分。</div>
+    <p>人力资源管理 · 第 3 课 · 绩效管理 | 交互:目标体检器 + KPI/OKR 翻转卡 · 案例为示意描述</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var items = [
+    { t: "「提升客户满意度。」",
+      ok: false, miss: ["S", "M", "T"],
+      why: "「提升」是方向,不是目标:提升哪个指标?从多少到多少?什么时候完成?——缺 S(做什么算提升)、M(用什么衡量)、T(何时截止)。" },
+    { t: "「在第三季度末前,把客户满意度 NPS 得分从 40 分提升到 55 分。」",
+      ok: true, miss: [],
+      why: "五项齐备:指标具体(S)、40→55 分可衡量(M)、幅度现实可行(A)、直接服务于客户体验(R)、季度末为截止日(T)。" },
+    { t: "「让所有员工都成为行业顶尖专家。」",
+      ok: false, miss: ["A", "M"],
+      why: "「所有」加「顶尖」,既不可衡量(M)也基本不可实现(A)。目标若永远达不到,只会摧毁目标本身的严肃性——挑战要激进,但要落在可能性的边界之内。" },
+    { t: "「尽快优化结算流程。」",
+      ok: false, miss: ["M", "T"],
+      why: "「尽快」是多快?「优化」到什么程度算优化?缺 M 与 T。改写示例:年底前把结算平均耗时从约五天降到两天以内。" },
+    { t: "「为了提升专业影响力,本季度每周发布 1 篇技术文章,季末累计 13 篇。」",
+      ok: true, miss: [],
+      why: "动作具体(S)、频率与数量可衡量(M)、每周一篇可实现(A)、服务于专业影响力(R)、季末累计是明确的期限(T)——一条合格的目标长这样。" },
+    { t: "「今年把官网访问量提高 10 倍,预算为零,人手不变。」",
+      ok: false, miss: ["A"],
+      why: "10 倍可衡量,也有期限,但在零投入的约束下大概率不可实现(A)——目标变成了口号。要么给资源,要么把倍数降到现实区间。" }
+  ];
+  var letters = [["S", "具体 Specific"], ["M", "可衡量 Measurable"], ["A", "可实现 Achievable"], ["R", "相关 Relevant"], ["T", "有时限 Time-bound"]];
+  var i = 0, score = 0, answered = false;
+  var goalEl = document.getElementById("smGoal");
+  var chipsEl = document.getElementById("smChips");
+  var fbEl = document.getElementById("smFb");
+  var progEl = document.getElementById("smProg");
+  var scoreEl = document.getElementById("smScore");
+  var nextEl = document.getElementById("smNext");
+  var passBtn = document.getElementById("smPass");
+  var failBtn = document.getElementById("smFail");
+  if (!goalEl || !passBtn || !failBtn) return;
+
+  function render() {
+    answered = false;
+    var item = items[i];
+    goalEl.textContent = item.t;
+    progEl.textContent = "第 " + (i + 1) + " / " + items.length + " 条";
+    chipsEl.innerHTML = "";
+    letters.forEach(function (l) {
+      var c = document.createElement("span");
+      c.className = "chip";
+      c.textContent = l[0] + " · " + l[1];
+      chipsEl.appendChild(c);
+    });
+    fbEl.hidden = true;
+    passBtn.disabled = false;
+    failBtn.disabled = false;
+    nextEl.disabled = true;
+    nextEl.textContent = i === items.length - 1 ? "查看结果 →" : "下一条 →";
+  }
+  function choose(saidOk) {
+    if (answered) return;
+    answered = true;
+    var item = items[i];
+    var right = saidOk === item.ok;
+    if (right) score++;
+    var chips = chipsEl.querySelectorAll(".chip");
+    letters.forEach(function (l, j) {
+      chips[j].classList.remove("ok", "miss");
+      chips[j].classList.add(item.miss.indexOf(l[0]) >= 0 ? "miss" : "ok");
+    });
+    var verdict = item.ok
+      ? "这是<b>合格的目标</b>,SMART 五项齐备"
+      : "这条目标<b>不合格</b>,缺 " + item.miss.join("、");
+    fbEl.innerHTML = (right ? "<b>✓ 判断正确。</b>" : "<b>✗ 再想想。</b>") + verdict + "。" + item.why;
+    fbEl.hidden = false;
+    scoreEl.textContent = "已判对 " + score + " 条";
+    passBtn.disabled = true;
+    failBtn.disabled = true;
+    nextEl.disabled = false;
+  }
+  function finish() {
+    progEl.textContent = "体检完成";
+    goalEl.textContent = "六条目标体检完:判对 " + score + " / " + items.length +
+      (score >= 4 ? "。写目标时先过一遍五问:做什么、多少、可能吗、为什么、什么时候。"
+                  : "。常见病只有三种:模糊(缺 S)、无刻度(缺 M)、无期限(缺 T)——写完先自查这三处。");
+    chipsEl.innerHTML = "";
+    fbEl.hidden = true;
+    passBtn.disabled = true;
+    failBtn.disabled = true;
+    nextEl.disabled = false;
+    nextEl.textContent = "↻ 再来一遍";
+  }
+  passBtn.addEventListener("click", function () { choose(true); });
+  failBtn.addEventListener("click", function () { choose(false); });
+  nextEl.addEventListener("click", function () {
+    if (nextEl.textContent.indexOf("再来") >= 0) { i = 0; score = 0; scoreEl.textContent = "已判对 0 条"; render(); return; }
+    if (i < items.length - 1) { i++; render(); } else { finish(); }
+  });
+  render();
+
+  document.querySelectorAll(".flip-card").forEach(function (card) {
+    card.addEventListener("click", function () { card.classList.toggle("flipped"); });
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault();
+        card.classList.toggle("flipped");
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

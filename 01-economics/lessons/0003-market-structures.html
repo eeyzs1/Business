@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>市场结构:从完全竞争到垄断 · 经济学基础</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .spectrum { display: grid; grid-template-columns: repeat(4, 1fr); gap: .45rem; margin: .4rem 0 .9rem; }
+  .spec-cell { text-align: center; border: 1.5px solid var(--line); border-radius: 10px; padding: .45rem .3rem; background: #fff; transition: all .2s ease; }
+  .spec-cell b { display: block; font-size: .92rem; }
+  .spec-cell span { font-size: .74rem; color: var(--ink-faint); }
+  .spec-cell.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, #fff); }
+  .spec-cell.on b { color: var(--accent); }
+  @media (max-width: 560px) { .spectrum { grid-template-columns: repeat(2, 1fr); } }
+  .dims { display: grid; gap: .55rem; margin: .9rem 0 .4rem; }
+  .dim { display: grid; grid-template-columns: 5.4rem 1fr; gap: .15rem .8rem; align-items: center; }
+  .dim-name { font-weight: 700; font-size: .9rem; color: var(--ink-soft); }
+  .meter { height: 10px; border-radius: 999px; background: var(--paper-deep); overflow: hidden; }
+  .meter i { display: block; height: 100%; width: 0; border-radius: 999px; background: var(--accent); transition: width .3s ease; }
+  .dim-txt { grid-column: 2; font-size: .84rem; color: var(--ink-soft); }
+</style>
+</head>
+<body class="branch-economics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">经济学基础</a><span class="crumb-sep">/</span>
+  <span>市场结构</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">经济学基础 · Lesson 3</p>
+  <h1>市场结构:从完全竞争到垄断</h1>
+  <p class="lead">为什么菜贩无法给青菜定「品牌价」,而 iPhone 敢卖上万元?为什么可乐两巨头打了一百年广告战,却很少真打价格战?答案不在产品本身,而在市场结构——你所处的竞争环境,早已写好了你能赚多少钱。</p>
+
+  <h2><span class="secno">1</span>市场结构:竞争的「段位表」</h2>
+  <p>商业战略的第一问不是「我怎么打」,而是「战场长什么样」。同一个行业里,<a href="0002-price-elasticity.html">第 2 课</a>说的「弹性」决定了你面对的顾客有多容易跑,而<em>市场结构</em>(Market Structure)决定了你有多少对手、产品能不能做出差异、新玩家能不能进来、你有没有定价权。经济学按四个维度把市场排成一条光谱:<em>完全竞争</em>(Perfect Competition)→<em>垄断竞争</em>(Monopolistic Competition)→<em>寡头垄断</em>(Oligopoly)→<em>完全垄断</em>(Monopoly)。</p>
+
+  <div class="table-wrap" data-reveal>
+    <table class="compact">
+      <thead>
+        <tr><th>维度</th><th>完全竞争</th><th>垄断竞争</th><th>寡头垄断</th><th>完全垄断</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>企业数量</b></td><td>极多</td><td>很多</td><td>少数几家</td><td>一家</td></tr>
+        <tr><td><b>产品差异</b></td><td>完全同质</td><td>有差异(品牌/风味)</td><td>同质或有差异</td><td>独有,无相近替代</td></tr>
+        <tr><td><b>进入壁垒</b></td><td>几乎没有</td><td>较低</td><td>高</td><td>极高</td></tr>
+        <tr><td><b>定价能力</b></td><td>没有</td><td>弱</td><td>较强(相互牵制)</td><td>最强</td></tr>
+        <tr><td><b>典型例子</b></td><td>菜市场、农产品</td><td>餐饮、日化</td><td>可乐、民航</td><td>电网、微信</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="secno">2</span>在光谱上走一遍:模拟器</h2>
+  <p>拖动滑块,从「无数小企业」一路滑向「一家独大」。四维雷达图与下方的维度卡片会实时变化——注意观察:越往右走,<em>进入壁垒</em>(Entry Barriers)与<em>定价能力</em>如何一起抬升。</p>
+
+  <div class="sim">
+    <div class="sim-title">模拟器 · 市场结构光谱:从无数小企业到一家独大</div>
+    <div class="spectrum" id="ms-spec">
+      <div class="spec-cell on"><b>完全竞争</b><span>无数小企业</span></div>
+      <div class="spec-cell"><b>垄断竞争</b><span>很多家,各具特色</span></div>
+      <div class="spec-cell"><b>寡头垄断</b><span>少数几家对峙</span></div>
+      <div class="spec-cell"><b>完全垄断</b><span>一家独大</span></div>
+    </div>
+    <div class="sim-controls" id="ms-controls"></div>
+    <div id="ms-radar"></div>
+    <div class="dims">
+      <div class="dim"><span class="dim-name">企业数量</span><div class="meter"><i id="ms-firms"></i></div><span class="dim-txt" id="ms-firms-t"></span></div>
+      <div class="dim"><span class="dim-name">产品差异化</span><div class="meter"><i id="ms-diff"></i></div><span class="dim-txt" id="ms-diff-t"></span></div>
+      <div class="dim"><span class="dim-name">进入壁垒</span><div class="meter"><i id="ms-barrier"></i></div><span class="dim-txt" id="ms-barrier-t"></span></div>
+      <div class="dim"><span class="dim-name">定价能力</span><div class="meter"><i id="ms-power"></i></div><span class="dim-txt" id="ms-power-t"></span></div>
+    </div>
+    <p class="sim-readout" id="ms-readout">正在加载模拟器……</p>
+    <p style="font-size:.87rem;color:var(--ink-faint);margin:.4rem 0 0">雷达图与评分(1-5)为教学示意,帮助记忆方向,并非精确测量。</p>
+  </div>
+
+  <div class="concept">
+    <div class="concept-title">价格接受者 · Price Taker</div>
+    <p style="margin:.2rem 0 0">完全竞争市场里的企业:份额太小,定价只能随行就市——菜市场里你把青菜涨价五成,顾客转身去隔壁摊。长期看,竞争会把经济利润压到趋近于零。</p>
+  </div>
+  <div class="concept">
+    <div class="concept-title">价格制定者 · Price Maker</div>
+    <p style="margin:.2rem 0 0">垄断(以及部分寡头)企业:面对整条向下倾斜的需求曲线,可以「先定价、再定产量」。它没有对手,却仍受两件事约束:需求定律(定太贵买的人少)与政府监管/反垄断。</p>
+  </div>
+  <p>支撑定价权的是<em>进入壁垒</em>:规模经济、专利与牌照、品牌与转换成本、网络效应——用户越多越有用的产品(社交、支付)会自然滑向赢家通吃。壁垒越高,利润越能长期维持;没有壁垒的高利润,就是在给未来的进入者发请柬。</p>
+
+  <h2><span class="secno">3</span>案例:三个市场,三种命运</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">菜市场、可乐双寡头与国家电网</p>
+    <p><b>菜市场(近完全竞争):</b>几十个摊位卖几乎一样的蔬菜,信息透明、进出自由。单个摊主是价格接受者,讨价还价的空间只有几毛钱;靠的是凌晨进货的眼光和摊位位置,而非定价权。</p>
+    <p><b>可乐双寡头:</b>可口可乐与百事在全球碳酸饮料市场合计占约七成量级(示意),相互依存、彼此盯防:一家降价,另一家必然跟进,价格战两败俱伤,于是战场转向广告、赞助与渠道——这正是寡头的典型策略互动。</p>
+    <p><b>国家电网与微信(垄断):</b>输电网络重资产、重复铺设不经济,是教科书式的<em>自然垄断</em>(Natural Monopoly),因此受政府严格定价监管;微信凭借网络效应在熟人社交领域一家独大,产品免费,却在支付、广告、小程序生态上拥有巨大定价与规则制定权——也因此持续面对反垄断的目光。</p>
+    <p class="case-learn"><b>这一课的教训:</b>结构决定命运——你的定价权,等于「顾客找不到替代品的程度」。企业战略的许多努力(品牌、专利、生态),本质上都是在把自己从光谱左端搬向右端。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>完全竞争 Perfect Competition</dt><dd>企业极多、产品同质、自由进出,企业是价格接受者。</dd>
+      <dt>垄断竞争 Monopolistic Competition</dt><dd>企业很多但产品有差异,靠差异获得小幅定价权。</dd>
+      <dt>寡头垄断 Oligopoly</dt><dd>少数几家大企业相互依存,决策相互牵制的市场。</dd>
+      <dt>完全垄断 Monopoly</dt><dd>一家企业独占市场,产品无相近替代品。</dd>
+      <dt>进入壁垒 Entry Barriers</dt><dd>阻碍新企业进入市场的因素:规模经济、专利、牌照、品牌、网络效应等。</dd>
+      <dt>价格接受者 Price Taker</dt><dd>没有定价能力、只能按市场价格成交的企业。</dd>
+      <dt>价格制定者 Price Maker</dt><dd>能够自主定价、再决定产量的企业。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>利润的天花板由市场结构决定:对手越多、壁垒越低,定价权越小。竞争战略的本质,就是把自己从「价格接受者」的格子,搬进「价格制定者」的格子。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "菜市场上几十个摊位卖几乎一样的蔬菜。单个摊主把价格抬高五成,最可能发生什么?",
+        "options": ["顾客毫不在意,照常来购买", "摊主获得更高总收入", "所有摊位立刻跟进涨价", "顾客转向隔壁摊位,销量大减"],
+        "answer": 3,
+        "explain": "同质产品 + 无数替代卖家 = <b>完全竞争</b>,单个摊主是价格接受者:一涨价,顾客立刻流向隔壁。提价权不在他手里。" },
+      { "q": "可口可乐与百事长期广告大战,却很少真打价格战。这更接近哪种市场结构的行为?",
+        "options": ["完全竞争,人人随行就市", "寡头垄断,相互依存策略互动", "完全垄断,一家独占市场", "垄断竞争,企业数以千计"],
+        "answer": 1,
+        "explain": "寡头的要害是<b>相互依存</b>:降价必被跟进,两败俱伤;于是竞争转向广告与差异化。完全竞争没有策略互动,垄断则没有对手。" },
+      { "q": "微信在熟人社交领域的地位,最接近哪种结构与定价能力?",
+        "options": ["完全垄断,近似价格制定者", "完全竞争,只能接受市价", "寡头垄断,与对手轮流定价", "垄断竞争,靠差异细分市场"],
+        "answer": 0,
+        "explain": "网络效应(好友都在用)构筑了极高壁垒,微信近乎<b>一家独大</b>:即使产品免费,它在生态与规则上拥有价格制定者般的话语权,也因此面临反垄断约束。" },
+      { "q": "进入壁垒的高低,如何影响一个行业的高利润能否长期维持?",
+        "options": ["壁垒越低,新进入者越多,利润被摊薄", "壁垒高低与利润没有稳定关系", "壁垒越高,新对手越难进入,利润越稳", "壁垒越高利润越低,守成成本更高"],
+        "answer": 2,
+        "explain": "没有壁垒的高利润会招来新进入者,竞争把利润压薄;壁垒(专利、网络效应、规模经济)挡住进入者,垄断利润才能<b>长期存续</b>——这也是战略学反复研究壁垒的原因。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">4</span>延伸阅读</h2>
+    <ul>
+      <li>《经济学原理(第 8 版):微观经济学分册》曼昆 · 北京大学出版社(建议读:第 14-17 章,竞争市场、垄断、垄断竞争与寡头)</li>
+      <li>《竞争战略》迈克尔·波特 · 华夏出版社(建议读:第 1 章「产业结构分析」)</li>
+      <li>可搜索关键词:Porter Five Forces、自然垄断 Natural Monopoly</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-price-elasticity.html"><span class="pager-label">上一课</span><span class="pager-title">弹性:为什么涨价不一定多赚钱</span></a>
+    <a class="next" href="0004-macroeconomics.html"><span class="pager-label">下一课</span><span class="pager-title">宏观经济:GDP、通胀与利率</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「我所在的行业算哪种结构?」或「网络效应为什么容易赢家通吃?」——追问是学习的一部分。</div>
+    <p>经济学基础 · 第 3 课 · 市场结构 | 交互:结构光谱滑块 × 四维雷达 × 维度卡片 · 案例数字为示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  if (!window.Viz) return;
+  var DATA = [
+    { name: "完全竞争", en: "Perfect Competition", firms: 5, diff: 1, barrier: 1, power: 1,
+      desc: "买卖双方都是价格接受者:产品同质、进出自由,长期经济利润被竞争抹平,只能靠效率与成本赚钱。",
+      ex: "菜市场、大宗农产品、股票交易所" },
+    { name: "垄断竞争", en: "Monopolistic Competition", firms: 4, diff: 4, barrier: 2, power: 2,
+      desc: "企业很多但各具特色,靠品牌、口味、位置获得小幅定价权;利润不断吸引模仿者进场,又被一点点摊薄。",
+      ex: "餐饮店、奶茶品牌、洗发水" },
+    { name: "寡头垄断", en: "Oligopoly", firms: 2, diff: 3, barrier: 4, power: 4,
+      desc: "少数几家大厂相互盯防:一家降价,其余立刻跟进;决策相互牵制,常以广告战、差异化代替价格战。",
+      ex: "可乐(可口可乐/百事)、民航、通信运营商" },
+    { name: "完全垄断", en: "Monopoly", firms: 1, diff: 3, barrier: 5, power: 5,
+      desc: "一家独占整个市场,近似价格制定者;若无监管可限产提价获取垄断利润,也最容易被反垄断盯上。",
+      ex: "国家电网(输电)、微信(熟人社交)" }
+  ];
+  var DIMS = [
+    ["firms", ["极多,数不清的小买家小卖家", "很多,各有细分人群", "少数几家,彼此盯防", "仅此一家"]],
+    ["diff", ["完全同质,毫无差别", "差异就是卖点(品牌/风味)", "同质或有差异,看行业", "独有产品,无相近替代"]],
+    ["barrier", ["几乎为零,随进随出", "较低,盘个店就能入场", "高:规模、牌照、渠道", "极高:牌照、专利、网络效应"]],
+    ["power", ["无,只能接受市价", "弱,小幅溢价", "较强,但受对手牵制", "最强,近似价格制定者"]]
+  ];
+  var radarBox = document.getElementById("ms-radar");
+  var readout = document.getElementById("ms-readout");
+  var controls = document.getElementById("ms-controls");
+  var specCells = document.querySelectorAll("#ms-spec .spec-cell");
+  if (!radarBox || !readout || !controls || !specCells.length) return;
+
+  var W = 440, H = 330, cx = 220, cy = 168, R = 105;
+  var svg = Viz.svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img", style: "width:100%;height:auto;display:block" });
+  var AXES = [
+    { name: "企业数量", angle: -Math.PI / 2 },
+    { name: "产品差异化", angle: 0 },
+    { name: "进入壁垒", angle: Math.PI / 2 },
+    { name: "定价能力", angle: Math.PI }
+  ];
+  function pt(axis, v) {
+    var r = R * v / 5;
+    return [cx + Math.cos(axis.angle) * r, cy + Math.sin(axis.angle) * r];
+  }
+  for (var k = 1; k <= 5; k++) {
+    var ring = AXES.map(function (a) { var p = pt(a, k); return p[0].toFixed(1) + "," + p[1].toFixed(1); }).join(" ");
+    svg.appendChild(Viz.svgEl("polygon", { points: ring, fill: "none", stroke: "#e7e0d3", "stroke-width": 1 }));
+  }
+  AXES.forEach(function (a) {
+    var p = pt(a, 5);
+    svg.appendChild(Viz.svgEl("line", { x1: cx, y1: cy, x2: p[0].toFixed(1), y2: p[1].toFixed(1), stroke: "#e7e0d3", "stroke-width": 1.2 }));
+  });
+  var labelPos = [
+    [cx, cy - R - 12, "middle"], [cx + R + 14, cy + 4, "start"],
+    [cx, cy + R + 20, "middle"], [cx - R - 14, cy + 4, "end"]
+  ];
+  AXES.forEach(function (a, i) {
+    var t = Viz.svgEl("text", { x: labelPos[i][0], y: labelPos[i][1], "text-anchor": labelPos[i][2], "font-size": 12.5, "font-weight": 700, fill: "#57534e" });
+    t.textContent = a.name;
+    svg.appendChild(t);
+  });
+  var poly = Viz.svgEl("polygon", { fill: "#0e7490", opacity: "0.25", stroke: "#0e7490", "stroke-width": 2.5 });
+  svg.appendChild(poly);
+  var vdots = AXES.map(function () {
+    var c = Viz.svgEl("circle", { r: 4.5, fill: "#0e7490", stroke: "#fff", "stroke-width": 1.5 });
+    svg.appendChild(c);
+    return c;
+  });
+  radarBox.appendChild(svg);
+
+  function apply(i) {
+    var s = DATA[i];
+    var vals = [s.firms, s.diff, s.barrier, s.power];
+    poly.setAttribute("points", AXES.map(function (a, j) {
+      var p = pt(a, vals[j]);
+      return p[0].toFixed(1) + "," + p[1].toFixed(1);
+    }).join(" "));
+    vdots.forEach(function (c, j) {
+      var p = pt(AXES[j], vals[j]);
+      c.setAttribute("cx", p[0].toFixed(1)); c.setAttribute("cy", p[1].toFixed(1));
+    });
+    DIMS.forEach(function (dim, j) {
+      var bar = document.getElementById("ms-" + dim[0]);
+      var txt = document.getElementById("ms-" + dim[0] + "-t");
+      if (bar) bar.style.width = (vals[j] * 20) + "%";
+      if (txt) txt.textContent = dim[1][i];
+    });
+    readout.innerHTML = "<b>" + s.name + "(" + s.en + ")</b> —— " + s.desc + "典型市场:" + s.ex + "。";
+    specCells.forEach(function (c, j) { c.classList.toggle("on", j === i); });
+  }
+
+  var sl = Viz.slider(controls, {
+    label: "从无数小企业拖到一家独大", min: 0, max: 3, step: 1, value: 0,
+    format: function (v) { return DATA[Math.round(v)].name; }
+  });
+  sl.onChange(function (v) { apply(Math.round(v)); });
+  apply(0);
+})();
+</script>
+</body>
+</html>

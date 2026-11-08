@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公司治理:代理问题 · 商业伦理与法律</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .gov-node { cursor: pointer; }
+  .gov-node rect { fill: #fff; stroke: #c9c1b2; stroke-width: 1.6; transition: all .15s ease; }
+  .gov-node:hover rect { stroke: var(--accent); }
+  .gov-node.active rect { stroke: var(--accent); stroke-width: 3; fill: #f4f4f5; }
+  .gov-node text { pointer-events: none; }
+  .gov-node .gn-title { font-size: 16px; font-weight: 800; fill: #1c1917; }
+  .gov-node .gn-sub { font-size: 10.5px; fill: #78716c; }
+  .gov-line { stroke: #c9c1b2; stroke-width: 1.8; fill: none; transition: all .15s ease; }
+  .gov-line.dash { stroke-dasharray: 6 5; }
+  .gov-line.hl { stroke: var(--accent); stroke-width: 3.2; }
+  .gov-lbl { font-size: 11.5px; font-weight: 700; fill: #78716c; }
+  .gov-hint { font-size: 12px; fill: #a8a29e; font-weight: 700; }
+  .gov-info {
+    margin-top: 1rem; background: var(--paper-deep); border-radius: 10px;
+    padding: 1rem 1.15rem; font-size: .93rem; color: var(--ink-soft); line-height: 1.85;
+  }
+  .gov-info h4 { margin: 0 0 .4rem; font-size: 1rem; font-family: var(--serif); }
+  .gov-info p { margin: 0 0 .5rem; }
+  .gov-info p:last-child { margin-bottom: 0; }
+  .gov-info b { color: var(--ink); }
+  .gov-info .gi-k { color: var(--accent); font-weight: 800; }
+  .alert-card { border: 1.5px solid var(--line); border-radius: 10px; background: #fff; padding: .95rem 1.1rem; margin-bottom: .9rem; }
+  .alert-card .al-title { font-weight: 800; color: var(--ink); margin-bottom: .3rem; }
+  .alert-card .al-title::before { content: "🚨 "; }
+  .alert-card p { font-size: .93rem; color: var(--ink-soft); margin: 0 0 .7rem; line-height: 1.8; }
+  .al-opts { display: flex; flex-wrap: wrap; gap: .55rem; }
+  .al-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 600; cursor: pointer;
+    border: 1.5px solid var(--line); background: var(--paper); color: var(--ink);
+    border-radius: 999px; padding: .4rem .95rem; transition: all .15s ease;
+  }
+  .al-btn:hover:not(:disabled) { border-color: var(--accent); }
+  .al-btn.picked { border-color: var(--accent); box-shadow: inset 3px 0 0 var(--accent); background: #fafafa; }
+  .al-btn:disabled { cursor: default; opacity: .75; }
+  .al-fb { margin-top: .75rem; font-size: .9rem; color: var(--ink-soft); background: var(--paper-deep); border-radius: 8px; padding: .75rem .95rem; line-height: 1.8; }
+  .al-fb b { color: var(--ink); }
+</style>
+</head>
+<body class="branch-law-ethics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">商业伦理与法律</a><span class="crumb-sep">/</span>
+  <span>公司治理:代理问题</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">商业伦理与法律 · LESSON 3</p>
+  <h1>公司治理:代理问题</h1>
+  <p class="lead">现代公司有一个与生俱来的裂缝:出钱的人不干活,干活的人不出钱。<em>公司治理(Corporate Governance)</em>就是围绕这条裂缝展开的制度设计——让替你管钱的人不敢乱来、愿意好好干。看懂它,你就看懂了董事会、独立董事、信息披露这些新闻热词到底在防什么。</p>
+
+  <div class="callout warn">
+    <span class="callout-label">课前必读</span>
+    本课讨论的治理机构设置为<b>教学示意,不构成法律建议</b>:不同国家地区、不同公司形态下的法定机关与职权存在差异,以现行法规与公司章程为准。
+  </div>
+
+  <h2><span class="secno">1</span>分离生出问题:委托代理</h2>
+  <p>小面馆里老板亲自掌勺,不存在「谁替谁操心」。但当公司做大、上市,股东分散成成千上万人,<em>所有权与经营权分离</em>(Separation of Ownership and Control)就发生了:股东出钱并享有剩余收益,经理人(Management)掌管日常经营。经济学把这对关系称为<em>委托代理关系</em>(Principal–Agent):股东是委托人,经理人是代理人。</p>
+  <p>裂缝出在两处。一是<em>信息不对称</em>(Information Asymmetry):经理人比任何人都清楚公司真实的经营状况——库存是不是积压、回款是不是困难、费用花在了哪里。二是<em>道德风险</em>(Moral Hazard):在监督不到的角落,代理人可能偷懒、铺张、追逐个人声望——豪华办公室、不划算的并购、临近退休时的短期冲量。注意:多数经理人并不存心作恶,但制度若不设防,<em>好人也会在灰色地带慢慢漂移</em>。</p>
+  <div class="concept">
+    <div class="concept-title">定义 · 代理成本(Agency Cost)</div>
+    <p style="margin:.2rem 0 .5rem">詹森与麦克林在经典论文中把委托人为「驯服」代理人付出的全部代价称为代理成本,大体包括三块:</p>
+    <p style="margin:0">① <b>监督成本</b>——审计、董事会、信息披露制度的建设与运转;② <b>约束成本</b>——代理人自证清白的成本,比如层层审批与合规流程;③ <b>剩余损失</b>——即便如此仍有利益不一致造成的价值损耗。公司治理的全部意义,就是让这三块总成本<b>小于</b>它换来的代理收益(专业化经营的价值)。</p>
+  </div>
+
+  <h2><span class="secno">2</span>治理工具箱:把权力关进程序的笼子</h2>
+  <p>既然不能指望人人自律,就把「难以作恶」设计进结构里。主流治理工具可以按「谁制衡谁」排成一张表:</p>
+  <div class="table-wrap" data-reveal>
+    <table>
+      <thead><tr><th>治理工具</th><th>怎么运作</th><th>制衡什么</th></tr></thead>
+      <tbody>
+        <tr><td><b>股东大会</b>(Shareholders' Meeting)</td><td>选举董事、监事,审议重大事项</td><td>给「所有权」保留最终话语权:用手投票,或用脚投票</td></tr>
+        <tr><td><b>董事会</b>(Board of Directors)</td><td>对股东会负责,聘任考核经理层,决策重大经营事项</td><td>在股东与经理人之间加装一层问责</td></tr>
+        <tr><td><b>独立董事</b>(Independent Director)</td><td>不在公司任职、与经营层无重大利害关系的外部董事</td><td>以「局外人」身份审关联交易、把关关键决策</td></tr>
+        <tr><td><b>监事会</b>(Supervisory Board)</td><td>专门监督机构,检查财务、监督董事与高管履职</td><td>从旁边盯着决策者与执行者</td></tr>
+        <tr><td><b>信息披露</b>(Information Disclosure)</td><td>定期报告与重大事项公告,违规担责</td><td>压缩信息不对称,让市场与监管看得见</td></tr>
+        <tr><td><b>股权激励</b>(Equity Incentive)</td><td>期权/限制性股票把经理人变成股东</td><td>把「为你干」变成「为自己干」,从利益上对齐</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>别忘了另一条战线:<em>中小股东保护</em>。大股东与中小股东之间同样存在代理冲突——通过关联交易、资金占用等方式「掏空」上市公司的案例屡见披露(示意)。制度上的应对包括累积投票、关联股东回避表决、独立董事发表意见、监管问询与诉讼救济等(示意)。一句话:治理不仅要防「经理人偷懒」,也要防「大股东伸手」。</p>
+
+  <h2><span class="secno">3</span>动手看:治理结构与三类代理冲突</h2>
+  <div class="sim" data-reveal>
+    <div class="sim-title">治理结构图 · 点击节点,看它制衡谁、被谁制衡</div>
+    <div class="figure-body" style="padding:.4rem 0 0">
+      <svg viewBox="0 0 660 430" role="img" aria-label="公司治理结构示意图:股东大会选举董事会,董事会聘任经理层;监事会与审计委员会分别监督">
+        <defs>
+          <marker id="garr" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#a8a29e"/></marker>
+        </defs>
+        <!-- 连接线 -->
+        <g id="gov-lines">
+          <line class="gov-line" data-nodes="shm board" x1="360" y1="70" x2="360" y2="156" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="shm board" x="368" y="112">选任 · 授权</text>
+          <line class="gov-line" data-nodes="shm board" x1="310" y1="158" x2="310" y2="74" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="shm board" x="302" y="130" text-anchor="end">负责 · 报告</text>
+          <line class="gov-line" data-nodes="board mgmt" x1="360" y1="212" x2="360" y2="298" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="board mgmt" x="368" y="254">聘任 · 考核</text>
+          <line class="gov-line" data-nodes="board mgmt" x1="310" y1="300" x2="310" y2="216" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="board mgmt" x="302" y="272" text-anchor="end">报告 · 请示</text>
+          <line class="gov-line dash" data-nodes="sup board" x1="505" y1="185" x2="421" y2="185" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="sup board" x="463" y="172" text-anchor="middle">监督</text>
+          <path class="gov-line dash" data-nodes="sup mgmt" d="M575,212 L575,327 L421,327" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="sup mgmt" x="560" y="272" text-anchor="end">监督高管</text>
+          <line class="gov-line" data-nodes="audit board" x1="165" y1="185" x2="249" y2="185" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="audit board" x="207" y="172" text-anchor="middle">下设</text>
+          <path class="gov-line dash" data-nodes="audit mgmt" d="M90,212 L90,327 L249,327" marker-end="url(#garr)"/>
+          <text class="gov-lbl" data-nodes="audit mgmt" x="100" y="272">核查财报 · 问询</text>
+        </g>
+        <!-- 节点 -->
+        <g class="gov-node" data-key="shm">
+          <rect x="255" y="16" width="160" height="54" rx="10"/>
+          <text class="gn-title" x="335" y="40" text-anchor="middle">股东大会</text>
+          <text class="gn-sub" x="335" y="58" text-anchor="middle">最高权力机构</text>
+        </g>
+        <g class="gov-node" data-key="board">
+          <rect x="255" y="158" width="160" height="54" rx="10"/>
+          <text class="gn-title" x="335" y="182" text-anchor="middle">董事会</text>
+          <text class="gn-sub" x="335" y="200" text-anchor="middle">经营决策 · 对股东会负责</text>
+        </g>
+        <g class="gov-node" data-key="mgmt">
+          <rect x="255" y="300" width="160" height="54" rx="10"/>
+          <text class="gn-title" x="335" y="324" text-anchor="middle">经理层</text>
+          <text class="gn-sub" x="335" y="342" text-anchor="middle">日常经营 · 执行</text>
+        </g>
+        <g class="gov-node" data-key="sup">
+          <rect x="505" y="158" width="140" height="54" rx="10"/>
+          <text class="gn-title" x="575" y="182" text-anchor="middle">监事会</text>
+          <text class="gn-sub" x="575" y="200" text-anchor="middle">专门监督机构</text>
+        </g>
+        <g class="gov-node" data-key="audit">
+          <rect x="15" y="158" width="150" height="54" rx="10"/>
+          <text class="gn-title" x="90" y="182" text-anchor="middle">审计委员会</text>
+          <text class="gn-sub" x="90" y="200" text-anchor="middle">董事会下设 · 独立董事为主</text>
+        </g>
+        <text class="gov-hint" x="335" y="405" text-anchor="middle">👆 点击任一节点:实线是权力与授权,虚线是监督与核查</text>
+      </svg>
+    </div>
+    <div class="gov-info" id="gov-info">
+      <h4>从这里开始</h4>
+      <p>这是一张典型的「三会一层」治理结构示意(不同公司形态与法域存在差异)。点击图中任一节点,看它的职能、<b>它制衡谁</b>、又<b>被谁制衡</b>。</p>
+    </div>
+  </div>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">代理问题警报 · 三张情景卡,判断冲突类型</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .9rem">三类经典代理冲突:① 股东 vs 经理人;② 大股东 vs 中小股东;③ 股东 vs 债权人。逐张判断下面三张警报卡属于哪一类。</p>
+    <div id="alert-list"></div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例:伯克希尔·哈撒韦的董事会文化——用信任对冲流程(示意描述)</p>
+    <p>伯克希尔·哈撒韦(Berkshire Hathaway)提供了一个反常规的治理样本。公开资料显示,这家控股集团的总部长期只有约二十余名员工(约值),却管理着数十家子公司;巴菲特本人在多封致股东信中反复强调:总部几乎不制定子公司业务流程,把经营决策交还给子公司的经理人。</p>
+    <p>它靠什么压低代理成本?第一,<b>利益深度绑定</b>:巴菲特家族的绝大部分财富就是伯克希尔股票——掌舵人自己就是最大的「委托人」,吃自己的饭、担自己的险。第二,<b>董事会长期由熟悉业务、与公司利益攸关的人组成</b>,开会谈的是实质问题而非走程序(示意描述)。第三,<b>选对人再放手</b>:子公司经理人多为行业老兵,信任与授权替代了厚厚的审批手册,人员长期稳定。</p>
+    <p>但要注意它的前提:这套「轻流程、重信任」之所以成立,是因为最终问责人(巴菲特)本人可靠、专业且利益一致——对绝大多数所有权分散的上市公司来说,无法复制这种人格化的信任,还是要回到「制度先行」:董事会、独立董事、审计与披露,一样都不能省。</p>
+    <p class="case-learn"><b>这一案例的看点:</b>治理的终点不是把流程堆到最厚,而是让<b>激励与信任对齐</b>——能用利益对齐解决的,别用流程硬堵;流程要防的,是无法对齐的那部分人性。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>委托代理问题(Principal–Agent Problem)</dt><dd>委托人(股东)与代理人(经理人)目标不一致且信息不对称时,代理人可能损害委托人利益。</dd>
+      <dt>信息不对称(Information Asymmetry)</dt><dd>交易或委托关系的一方掌握比另一方更多的关键信息。</dd>
+      <dt>道德风险(Moral Hazard)</dt><dd>在监督不到的角落,代理人采取不利于委托人的行为,如偷懒、铺张、过度冒险。</dd>
+      <dt>代理成本(Agency Cost)</dt><dd>监督成本、约束成本与剩余损失之和,由利益不一致引起(詹森与麦克林)。</dd>
+      <dt>独立董事(Independent Director)</dt><dd>不在公司任职、与经营层无重大利害关系的董事,对关联交易等事项发表独立意见。</dd>
+      <dt>监事会(Supervisory Board)</dt><dd>专门监督机构:检查公司财务,监督董事与高级管理人员履职。</dd>
+      <dt>信息披露(Information Disclosure)</dt><dd>定期报告与重大事项公告制度,用透明度压缩信息不对称。</dd>
+      <dt>关联交易(Related-Party Transaction)</dt><dd>公司与关联方之间的交易,是利益输送与「掏空」的高发通道。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>两权分离必然产生代理问题:信息不对称给机会,目标不一致给动机。治理的全部设计——三会一层、披露、激励——只为让「替你管钱的人」不敢乱来、愿意好好干。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "现代大公司「所有权与经营权分离」,由此产生的最典型问题是:",
+        "options": ["经理人可能利用信息优势损害股东利益", "股东大会从此失去修改章程的权利", "公司必须永久聘用同一位总经理", "债权人自动获得董事会的表决席位"],
+        "answer": 0,
+        "explain": "两权分离=委托代理关系:经理人(代理人)掌握信息优势,若目标与股东不一致又缺乏制衡,就可能偷懒、铺张、过度冒险——这正是公司治理要解决的核心问题。章程修改权仍属股东大会,债权人并不因此进入董事会。" },
+      { "q": "上市公司在董事会中设独立董事、下设审计委员会,这样做的主要目的是:",
+        "options": ["降低公司产品线的单位制造成本", "增加注册资本以满足监管的下限要求", "以相对独立的监督来制衡经理层与财报质量", "保证控股股东在表决中永远占据多数席位"],
+        "answer": 2,
+        "explain": "独立董事与审计委员会的价值在「独立性」:由局外人审关联交易、把关财务报告与外部审计,制衡经理人(以及大股东)的信息优势。它不直接降成本,也不为任何一方「保席位」。" },
+      { "q": "控股股东推动上市公司长期以明显高于市价的价格,向其本人控制的另一家企业采购原料。这一安排中,利益受损最直接的是:",
+        "options": ["控股股东自身的银行信用额度", "中小股东与上市公司本身", "供应商所在地的税收收入", "独立董事个人的市场声誉"],
+        "answer": 1,
+        "explain": "高价关联采购把上市公司的利润转移进控股股东的私人口袋——这是「大股东 vs 中小股东」的代理冲突,俗称「掏空」(Tunneling):掏的是全体股东共享的公司利益。" },
+      { "q": "按詹森与麦克林「代理成本」的概念,以下哪项支出属于代理成本?",
+        "options": ["公司为扩大产能而投入的设备购置开支", "公司按市场价格采购原材料支付的货款", "公司向长期合作客户支付的销售返点", "股东为监督管理层而承担的审计与董事会费用"],
+        "answer": 3,
+        "explain": "代理成本=监督成本(审计、董事会)+ 约束成本 + 剩余损失,源于利益不一致。设备购置、原料采购与销售返点都是正常经营支出,只有「为了让代理人守规矩」花的钱,才叫代理成本。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《公司理财》(第 11 版)罗斯、威斯特菲尔德、杰富 · 机械工业出版社(建议读:第 1 章关于代理问题与公司控制的部分)</li>
+      <li>《巴菲特致股东的信》沃伦·巴菲特著,劳伦斯·坎宁安编 · 机械工业出版社(建议读:公司治理与经理人信任相关书信,治理文化的第一手材料)</li>
+      <li>可搜索:委托代理理论 / 詹森与麦克林 1976 / 累积投票制(顺着本课任一关键词往下挖)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-contracts-101.html"><span class="pager-label">上一课</span><span class="pager-title">合同:商业的粘合剂</span></a>
+    <a class="next" href="0004-ethics-and-esg.html"><span class="pager-label">下一课</span><span class="pager-title">商业伦理与 ESG</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我用代理问题框架分析一家我熟悉的公司?」「再出几张代理警报卡让我练?」——拿真实的公司新闻练眼力,这一课才立体。</div>
+    <p>商业伦理与法律 · 第 3 课 · 治理结构为教学示意,不构成法律建议;案例据公开资料与示意描述整理。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- 治理结构图:点击节点展开 ---------- */
+  var NODES = {
+    shm: {
+      name: "股东大会(Shareholders' Meeting)",
+      role: "公司的权力机构:选举和更换董事、监事,审议批准利润分配、增资、合并分立、章程修改等重大事项。",
+      checks: "制衡谁——董事会与监事会都由它产生:干得不好可以换届「用手投票」,也可以卖出股票「用脚投票」,用股价给治理打分。",
+      checked: "被谁制衡——议事规则受法律法规与章程约束;控股股东不得滥用表决权损害公司及中小股东利益,重大关联事项设有回避与保护机制(示意)。"
+    },
+    board: {
+      name: "董事会(Board of Directors)",
+      role: "对股东大会负责:聘任与考核经理层,决定经营计划与投资方案;下设审计、薪酬等专门委员会,独立董事在其中担纲。",
+      checks: "制衡谁——直接制衡经理层:聘免、考核、定薪,重大经营事项必须回到董事会决策,防止经理层自定规矩。",
+      checked: "被谁制衡——由股东大会选举并可被更换;监事会监督其履职;上市公司还须依法披露信息,接受市场与监管的审视。"
+    },
+    mgmt: {
+      name: "经理层(Management)",
+      role: "负责日常经营、执行董事会决议,是「代理人」的实体:直接经手钱、人、业务,信息优势最大。",
+      checks: "制衡谁——掌握执行细节与真实信息,若缺乏制衡,最容易发生在职消费、盲目扩张、报表粉饰等代理问题。",
+      checked: "被谁制衡——董事会聘免与考核;监事会监督;审计委员会核查财报;信息披露让外部看得见;股权激励把利益绑到同一条船上。"
+    },
+    sup: {
+      name: "监事会(Supervisory Board)",
+      role: "专门监督机构:检查公司财务,监督董事、高级管理人员履职行为,可对违规者提出质询与罢免建议(示意)。",
+      checks: "制衡谁——董事与高管:列席董事会、检查财务、对损害公司利益的行为提出纠正要求。",
+      checked: "被谁制衡——成员由股东大会选举、对股东大会负责;监督须按法定程序进行,不能越权直接插手经营决策。"
+    },
+    audit: {
+      name: "审计委员会(Audit Committee)",
+      role: "董事会下设的专门委员会,多以独立董事为主:把关财务报告、主导外部审计师选聘、监督内部控制(示意)。",
+      checks: "制衡谁——经理层的财务报告行为:财报先过这道关,审计师的沟通由它牵头,让「数字」不敢随手写。",
+      checked: "被谁制衡——由董事会设立并对董事会报告,最终向股东大会负责;独立董事的任职资格与独立性受监管规则约束。"
+    }
+  };
+
+  var infoEl = document.getElementById("gov-info");
+  var svgNodes = document.querySelectorAll(".gov-node");
+  var svgLines = document.querySelectorAll("#gov-lines [data-nodes]");
+
+  if (svgNodes.length && infoEl) {
+    svgNodes.forEach(function (n) {
+      n.addEventListener("click", function () {
+        var key = n.getAttribute("data-key");
+        var d = NODES[key];
+        if (!d) return;
+        svgNodes.forEach(function (x) { x.classList.toggle("active", x === n); });
+        svgLines.forEach(function (l) {
+          var keys = (l.getAttribute("data-nodes") || "").split(" ");
+          l.classList.toggle("hl", keys.indexOf(key) >= 0);
+        });
+        infoEl.innerHTML =
+          "<h4>" + d.name + "</h4>" +
+          "<p><span class='gi-k'>职能:</span>" + d.role + "</p>" +
+          "<p><span class='gi-k'>它制衡谁:</span>" + d.checks + "</p>" +
+          "<p><span class='gi-k'>被谁制衡:</span>" + d.checked + "</p>";
+      });
+    });
+  }
+
+  /* ---------- 代理问题警报 ---------- */
+  var ALERTS = [
+    {
+      title: "警报一 · 豪华总部与连环并购",
+      body: "CEO 力主兴建远超需要的总部大楼,并连续发起三笔与主业无关的收购:每一笔都让公司规模变大、CEO 掌管的预算与头衔更多,但测算回报都很勉强(示意)。",
+      opts: ["股东 vs 经理人", "大股东 vs 中小股东", "股东 vs 债权人"],
+      answer: 0,
+      why: "受益的是掌握经营权的经理人——帝国建造(Empire Building)与在职消费;埋单的是承担经营结果的股东。这是最经典的委托代理冲突:信息不对称之下,经理人在为自己做大,而不是为股东做好。"
+    },
+    {
+      title: "警报二 · 高价关联采购",
+      body: "控股股东提议:上市公司长期以明显高于市场的价格,向其个人控制的另一家非上市公司采购核心原料(示意)。",
+      opts: ["股东 vs 经理人", "大股东 vs 中小股东", "股东 vs 债权人"],
+      answer: 1,
+      why: "利益从上市公司(进而从全体中小股东)流向控股股东的私人口袋——大股东 vs 中小股东的冲突,多经由关联交易、资金占用、违规担保等通道实现,俗称「掏空」(Tunneling)。治理上的解法:关联股东回避表决、独立董事发表意见、信息披露与监管问询。"
+    },
+    {
+      title: "警报三 · 激进举债豪赌",
+      body: "股东主导下,公司大举借债投入高风险项目:项目成了,收益大头归股东;败了,大部分损失由放贷的银行承担(示意)。",
+      opts: ["股东 vs 经理人", "大股东 vs 中小股东", "股东 vs 债权人"],
+      answer: 2,
+      why: "收益归自己、风险转嫁他人——有限责任让股东天然偏好「拿别人的钱赌」:这是股东与债权人之间的代理冲突。债权人应对的方式包括限制性条款、提高利率、要求担保(示意)。"
+    }
+  ];
+
+  var alertList = document.getElementById("alert-list");
+
+  if (alertList) {
+    ALERTS.forEach(function (a) {
+      var card = document.createElement("div");
+      card.className = "alert-card";
+      var t = document.createElement("div");
+      t.className = "al-title";
+      t.textContent = a.title;
+      var p = document.createElement("p");
+      p.textContent = a.body;
+      var opts = document.createElement("div");
+      opts.className = "al-opts";
+      var fb = document.createElement("div");
+      fb.className = "al-fb";
+      fb.hidden = true;
+      a.opts.forEach(function (label, i) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "al-btn";
+        b.textContent = label;
+        b.addEventListener("click", function () {
+          opts.querySelectorAll(".al-btn").forEach(function (x) { x.disabled = true; });
+          b.classList.add("picked");
+          fb.innerHTML = (i === a.answer ? "<b>✓ 判断正确。</b>" : "<b>✗ 再想想。</b>正确类型是「" + a.opts[a.answer] + "」。") + a.why;
+          fb.hidden = false;
+        });
+        opts.appendChild(b);
+      });
+      card.appendChild(t);
+      card.appendChild(p);
+      card.appendChild(opts);
+      card.appendChild(fb);
+      alertList.appendChild(card);
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>相关不是因果 · 商业分析</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .det-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: .9rem 1.05rem; margin: .7rem 0; }
+  .det-card h3 { margin: 0 0 .3rem; font-size: 1rem; }
+  .det-card p { font-size: .92rem; margin: .2rem 0 .4rem; color: var(--ink-soft); }
+  .det-card .det-q { font-weight: 700; color: var(--ink); }
+  .det-opts { display: flex; flex-wrap: wrap; gap: .5rem; margin: .5rem 0 .2rem; }
+  .det-opt {
+    font-family: var(--sans); font-size: .9rem; border: 1.5px solid var(--line); background: var(--paper);
+    color: var(--ink); border-radius: 999px; padding: .35rem 1rem; cursor: pointer; transition: all .15s ease;
+  }
+  .det-opt:hover { border-color: var(--accent); }
+  .det-opt.ok { border-color: var(--good); background: #f0fdf4; color: var(--good); font-weight: 700; }
+  .det-opt.bad { border-color: var(--bad); background: #fef2f2; color: var(--bad); }
+  .det-opt:disabled { cursor: default; opacity: .92; }
+  .det-reveal { font-size: .9rem; color: var(--ink-soft); background: var(--paper-deep); border-radius: 8px; padding: .6rem .85rem; margin-top: .55rem; line-height: 1.7; }
+  .det-reveal b { color: var(--accent); }
+  .btn-primary {
+    background: var(--accent); color: #fff; border: none; border-radius: 999px;
+    padding: .45rem 1.25rem; font-weight: 700; font-size: .92rem; cursor: pointer; font-family: var(--sans);
+  }
+  .btn-ghost {
+    background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); border-radius: 999px;
+    padding: .42rem 1.15rem; font-weight: 700; font-size: .92rem; cursor: pointer; font-family: var(--sans);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .ab-tag { display: inline-block; min-width: 4.2rem; text-align: center; color: #fff; font-weight: 800; font-size: .82rem; border-radius: 999px; padding: .22rem .6rem; }
+  .ab-row { display: flex; align-items: center; gap: .7rem; margin-top: .6rem; font-size: .95rem; font-variant-numeric: tabular-nums; }
+  .ab-num { color: var(--ink); font-weight: 700; }
+  .ab-bar { height: 10px; border-radius: 999px; background: var(--paper-deep); overflow: hidden; margin: .3rem 0 .5rem; }
+  .ab-bar > span { display: block; height: 100%; border-radius: 999px; transition: width .4s ease; }
+</style>
+</head>
+<body class="branch-analytics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">商业分析</a><span class="crumb-sep">/</span>
+  <span>相关不是因果</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">商业分析 · Lesson 3</p>
+  <h1>相关不是因果</h1>
+  <p class="lead">冰淇淋卖得越好的月份,溺水事故越多——要不要禁售冰淇淋?相关(Correlation)是数据世界里最容易观察到、也最容易误用的关系:营销预算翻倍后销量涨了,功劳到底归谁?本课给「一起动」装上三级过滤器,把它升级成「谁导致谁」的严肃判断——这是数据驱动决策里最贵的一道关卡。</p>
+
+  <h2><span class="secno">1</span>相关系数:数字之间的吸引力</h2>
+  <div class="concept">
+    <div class="concept-title">概念卡 · 相关系数(Correlation Coefficient)</div>
+    <p>通常指皮尔逊相关系数 r,度量两个变量<strong>线性同向变化</strong>的程度,取值 −1 到 1:越接近 1,同向越紧;越接近 −1,反向越紧;接近 0,线性关系弱。它只描述「一起动」,从不回答「谁带动谁」。两个变量相关,常见三种解释:A 导致 B;B 导致 A;或者存在第三个变量 C 同时导致 A 和 B——C 就是<strong>混杂变量(Confounder)</strong>。由 C 制造的假相关叫<strong>伪相关(Spurious Correlation)</strong>。</p>
+  </div>
+
+  <h2><span class="secno">2</span>伪相关侦探:找出躲在背后的 C</h2>
+  <p>下面三组「惊人相关」都是统计课上的经典教学示例(数字口径为示意)。每案选出你认为最可能的混杂变量,立刻揭晓:</p>
+
+  <div class="sim">
+    <div class="sim-title">伪相关侦探 · 三案连破(教学示例)</div>
+    <div id="detWrap"></div>
+    <p class="sim-readout" id="detScore">已破 0 / 3 案 · 命中 0 个</p>
+  </div>
+
+  <h2><span class="secno">3</span>从相关到因果:三级台阶</h2>
+  <p>想把「相关」升级为「因果」,至少要连过三关:</p>
+  <ol class="steps">
+    <li data-reveal><strong>排除混杂。</strong>分组或统计控制掉可疑的 C 之后,相关还站得住吗?控制年龄后,鞋码与阅读成绩的相关就消失了。</li>
+    <li data-reveal><strong>时序合理。</strong>因必须先于果:广告投放在前、销量上涨在后,才有资格谈因果;顺序颠倒只能是巧合或反向因果。</li>
+    <li data-reveal><strong>机制说得通。</strong>存在一条讲得通的传导链条——为什么橙色按钮更可信?说不出机制的高相关,先当线索,别当结论。</li>
+  </ol>
+  <p>三关全过依然可能出错,所以商业世界的金标准是<strong>随机对照实验(Randomized Controlled Trial,RCT)</strong>:把人群随机分成两组,只改一个变量。随机化同时抹平了已知与未知的混杂。互联网把 RCT 做成了日常操作——<strong>A/B 测试(A/B Testing)</strong>:一部分用户看 A 版本,另一部分看 B 版本,比较最终指标。</p>
+
+  <div class="sim">
+    <div class="sim-title">A/B 测试模拟器:蓝按钮还是橙按钮?</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">某电商想把「立即购买」按钮从蓝色(A)换成橙色(B)。模拟器内置了两个<b>你看不到的真实转化率(差别不大)</b>,每投一波流量,系统按真实概率随机生成订单。样本攒得越多,判断越清晰:</p>
+    <div class="sim-controls">
+      <div id="abSize"></div>
+      <button type="button" class="btn-primary" id="abGo">投放一波 →</button>
+      <button type="button" class="btn-ghost" id="abReset">重置</button>
+    </div>
+    <div class="ab-row"><span class="ab-tag" style="background:#1d4ed8">A · 蓝</span><span class="ab-num" id="rowA">尚未投放</span></div>
+    <div class="ab-bar"><span id="fillA" style="background:#1d4ed8;width:0%"></span></div>
+    <div class="ab-row"><span class="ab-tag" style="background:#ea580c">B · 橙</span><span class="ab-num" id="rowB">尚未投放</span></div>
+    <div class="ab-bar"><span id="fillB" style="background:#ea580c;width:0%"></span></div>
+    <p class="sim-readout" id="abDelta"></p>
+    <p class="sim-readout" id="abVerdict"></p>
+  </div>
+
+  <div class="callout warn"><span class="callout-label">实验纪律</span><br>同时只改一个变量(单一变量原则);样本量先算好再开测,不要「天天看一眼、一显著就停」——反复偷看(Peeking)会大幅推高假阳性;评估看最终业务指标,别只看点击率。</div>
+
+  <h2><span class="secno">4</span>幸存者偏差:没回来的飞机</h2>
+  <p>二战时,统计学家瓦尔德(Abraham Wald)研究返航轰炸机的弹孔分布,却建议加固<strong>没有弹孔</strong>的部位——因为击中那些部位的飞机根本没能返航。这就是<strong>幸存者偏差(Survivorship Bias)</strong>:只统计「活下来」的样本,结论必然偏乐观。商业版随处可见:只调研老用户的满意度,永远不知道流失者为何离开;只研究成功企业的「共性」,可能只是幸存者在替运气发言。</p>
+
+  <div class="case">
+    <div class="case-title">案例 · Bing 的蓝色链接:一次教科书级 A/B 测试</div>
+    <p>电商场景里最诱人的实验是「改按钮颜色提升转化」。微软 Bing 曾公开分享:对搜索结果链接的蓝色色值做多版本 A/B 测试,胜出的那种「更蓝的蓝」据报道带来了每年约 8000 万美元的增量广告收入(公开演讲口径,示意)。关键不是颜色玄学,而是流程纪律:<strong>单一变量</strong>(只改色值)、<strong>随机分流</strong>(系统随机分配用户)、<strong>足够样本</strong>(跑满预定周期)、<strong>最终指标</strong>(看总体收入而非一时点击)。反面教材长这样:「周五上了橙按钮,周末销量涨 10%,所以橙按钮有效」——没有对照组,促销、天气、发薪日全都可能混进来,这正是第 1 课说的「拆解假设」没做。</p>
+    <div class="case-learn"><b>学到什么:</b>任何改版主张先过四问:能随机分流吗?只改了一个变量吗?样本够吗?最终指标是什么?做不到实验,就退回「分组对比 + 排除混杂 + 找机制」的观察法,并明说结论的置信度。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>相关系数 Correlation Coefficient</dt><dd>度量两变量线性同向变化程度的指标 r,取值 −1 至 1,只描述共变不指明方向。</dd>
+      <dt>伪相关 Spurious Correlation</dt><dd>由第三方因素或巧合造成的表面相关,撤掉混杂即消失。</dd>
+      <dt>混杂变量 Confounder</dt><dd>同时影响两个变量的第三因素,是「相关→因果」的第一嫌疑犯。</dd>
+      <dt>随机对照实验 RCT</dt><dd>随机分组、单变量对照的实验设计,因果推断的金标准。</dd>
+      <dt>A/B 测试 A/B Testing</dt><dd>互联网版 RCT:随机分流用户体验两个版本,比较最终指标。</dd>
+      <dt>统计显著性 Significance</dt><dd>差异超出噪声所能解释的范围,商业判断常用简化 2σ 规则。</dd>
+      <dt>幸存者偏差 Survivorship Bias</dt><dd>只统计幸存样本导致的系统性偏乐观,如只调研未流失用户。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>相关只是线索,不是判决:因果要过三关——<b>排除混杂、时序、机制</b>;能做实验就做实验,A/B 是商业世界的金标准;做判断前,先问问没回来的飞机。</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "横向比较各城市发现:教堂数量与酒吧数量高度相关。最可能的混杂变量是:",
+      "options": ["居民的平均饮酒量", "教堂决定酒吧营业时长", "城市人口总规模", "当地气候的寒冷程度"],
+      "answer": 2,
+      "explain": "大城市人口多,教堂与酒吧的<b>绝对数量</b>自然都多——规模同时驱动两者。换成人均口径再算,相关大概率消失。规模类混杂在商业数据里随处可见。" },
+    { "q": "以下哪条证据最有可能支持「A 导致 B」的因果判断?",
+      "options": ["随机分流且只改一个变量的实验", "两者相关系数高达零点九", "两者过去十年同步增长", "多位行业专家认可这一解释"],
+      "answer": 0,
+      "explain": "相关系数再高也只是「一起动」;同步增长与专家背书都排除不了混杂与时序问题。随机对照实验通过随机化抹平已知与未知混杂,才是金标准。" },
+    { "q": "某团队「同时改了按钮颜色、文案与页面布局」做 A/B 测试,这违反了:",
+      "options": ["样本量充足原则", "指标可观测原则", "随机分流原则", "单一变量原则"],
+      "answer": 3,
+      "explain": "一次实验同时改三个变量,即使指标涨了也无法归因给谁。A/B 测试必须守住<b>单一变量原则</b>:一次只检验一个改动,其余保持不变。" },
+    { "q": "产品团队只用「留存一年以上的老用户」数据评估产品体验,最主要的风险是:",
+      "options": ["样本量过小导致方差过大", "幸存者偏差:流失用户没被统计", "均值被极端值拉高失真", "相关系数被压缩接近于零"],
+      "answer": 1,
+      "explain": "老用户是「活下来的样本」,他们天然更满意;流失者的抱怨恰恰藏在数据之外。这与瓦尔德看返航飞机的弹孔是同一个偏差。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《统计数据会说谎》达莱尔·哈夫(建议读:相关与因果误用的相关章节)</li>
+      <li>《赤裸裸的统计学》查尔斯·惠伦 · 中信出版社(建议读:相关性与因果推断的相关章节)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-descriptive-stats.html"><span class="pager-label">上一课</span><span class="pager-title">描述统计:别被平均数骗了</span></a>
+    <a class="next" href="0004-kpi-dashboard.html"><span class="pager-label">下一课</span><span class="pager-title">商业智能与仪表盘</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我设计一个 A/B 测试方案」「我发现的这组相关,可能有什么混杂变量?」——拿真实的业务改动来练因果三关。</div>
+    <p>商业分析 · 第 3 课 · 共 4 课 · 案例与数字均为教学示意</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- 模拟一:伪相关侦探 ---- */
+  var CASES = [
+    { title: "案一 · 冰淇淋销量 ↑↑ 溺水事故",
+      desc: "统计逐月数据:冰淇淋卖得越好的月份,溺水事故也越多,两者同涨同落(经典课堂案例,教学示例)。",
+      q: "最可能的混杂变量是:",
+      opts: ["当地气温与季节", "泳池救生员数量", "居民的平均年龄"],
+      ans: 0,
+      explain: "夏天气温高 → 更多的人买冰淇淋,同时更多的人下水游泳 → 溺水增多。气温同时驱动两者;控制季节后,销量与事故的相关消失。" },
+    { title: "案二 · 儿童鞋码 ↑↑ 阅读成绩",
+      desc: "统计一群 4-12 岁儿童:鞋码越大,阅读测验分数越高(经典课堂案例,教学示例)。",
+      q: "最可能的混杂变量是:",
+      opts: ["家庭藏书数量", "儿童的年龄", "学校离家远近"],
+      ans: 1,
+      explain: "年龄越大 → 脚越大,同时 → 阅读能力越强。把年龄控制住,鞋码与成绩的相关立即消失。这是混杂变量的教科书案例。" },
+    { title: "案三 · 教堂数量 ↑↑ 酒吧数量",
+      desc: "横向比较各城市:教堂越多的地方,酒吧也越多(经典课堂案例,教学示例)。",
+      q: "最可能的混杂变量是:",
+      opts: ["城市人口总规模", "居民平均收入", "当地气候冷暖"],
+      ans: 0,
+      explain: "大城市人口多,教堂和酒吧的绝对数量都多;换成人均口径,相关消失。规模类混杂在商业里比比皆是:大店铺什么都「多」。" }
+  ];
+  var detWrap = document.getElementById("detWrap");
+  var detScore = document.getElementById("detScore");
+  var score = 0, doneCount = 0;
+  CASES.forEach(function (c) {
+    var card = document.createElement("div");
+    card.className = "det-card";
+    var h = document.createElement("h3"); h.textContent = c.title; card.appendChild(h);
+    var d = document.createElement("p"); d.textContent = c.desc; card.appendChild(d);
+    var q = document.createElement("p"); q.className = "det-q"; q.textContent = c.q; card.appendChild(q);
+    var opts = document.createElement("div"); opts.className = "det-opts";
+    c.opts.forEach(function (o, oi) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "det-opt"; b.textContent = o;
+      b.addEventListener("click", function () {
+        if (card.getAttribute("data-done")) return;
+        card.setAttribute("data-done", "1"); doneCount++;
+        var correct = oi === c.ans;
+        if (correct) score++;
+        Array.prototype.forEach.call(opts.children, function (bb, i) {
+          bb.disabled = true;
+          if (i === c.ans) bb.classList.add("ok");
+        });
+        if (!correct) b.classList.add("bad");
+        var r = document.createElement("div");
+        r.className = "det-reveal";
+        r.innerHTML = (correct ? "<b>✓ 抓到了。</b> " : "<b>✗ 不是它。</b> ") + c.explain;
+        card.appendChild(r);
+        var tail = doneCount === 3 ? " —— 侦探小结:遇到惊人相关,先找同时影响两者的第三个变量 C。" : "";
+        detScore.innerHTML = "已破 " + doneCount + " / 3 案 · 命中 <b>" + score + "</b> 个" + tail;
+      });
+      opts.appendChild(b);
+    });
+    card.appendChild(opts);
+    detWrap.appendChild(card);
+  });
+
+  /* ---- 模拟二:A/B 测试模拟器 ---- */
+  var PA = 0.040, PB = 0.050; // 内置真实转化率(示意,用户不可见)
+  var nA = 0, cA = 0, nB = 0, cB = 0;
+  var slider = Viz.slider(document.getElementById("abSize"),
+    { label: "每波每组访客", min: 200, max: 5000, step: 100, value: 1000, format: function (v) { return v + " 人"; } });
+  function binom(n, p) { var c = 0; for (var i = 0; i < n; i++) if (Math.random() < p) c++; return c; }
+  function pct(x) { return (x * 100).toFixed(2) + "%"; }
+  function barW(r) { return Math.max(2, Math.min(100, r / 0.08 * 100)); }
+  function render() {
+    var pA = nA ? cA / nA : 0, pB = nB ? cB / nB : 0;
+    document.getElementById("rowA").textContent = nA ? "访客 " + nA.toLocaleString() + " · 转化 " + cA + " 单 · 转化率 " + pct(pA) : "尚未投放";
+    document.getElementById("rowB").textContent = nB ? "访客 " + nB.toLocaleString() + " · 转化 " + cB + " 单 · 转化率 " + pct(pB) : "尚未投放";
+    document.getElementById("fillA").style.width = barW(pA) + "%";
+    document.getElementById("fillB").style.width = barW(pB) + "%";
+    var d = pB - pA, z = 0;
+    if (nA > 0 && nB > 0) {
+      var se = Math.sqrt(pA * (1 - pA) / nA + pB * (1 - pB) / nB);
+      z = d / se;
+    }
+    document.getElementById("abDelta").innerHTML = nA
+      ? "Δ(B − A) = <b>" + (d >= 0 ? "+" : "") + (d * 100).toFixed(2) + " 个百分点</b> · 简化显著性 z ≈ <b>" + z.toFixed(2) + "</b>"
+      : "";
+    var v;
+    if (nA === 0) v = "还没有数据——点「投放一波」,让样本开口说话。";
+    else if (nA < 800) v = "样本尚少:当前差距<b>大概率是噪声</b>,先别下结论,继续加量。";
+    else if (z >= 2) v = "✅ <b>差异越过简化显著线(≥2σ)</b>:目前版本 B 领先。留意:真实差距其实很小——小差异需要大样本才看得清。";
+    else if (z <= -2) v = "⚠️ 目前<b>版本 A 反超</b>?多次投放中出现这种「反转」,多半是噪声与反复偷看的把戏,再投几波看看。";
+    else v = "差距仍在<b>噪声范围</b>内:继续积累样本,或接受「两者无实质差异」。";
+    document.getElementById("abVerdict").innerHTML = v;
+  }
+  document.getElementById("abGo").addEventListener("click", function () {
+    var n = slider.get();
+    nA += n; nB += n;
+    cA += binom(n, PA); cB += binom(n, PB);
+    render();
+  });
+  document.getElementById("abReset").addEventListener("click", function () {
+    nA = cA = nB = cB = 0; render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>融资与股权 · 创业学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .eq-wrap { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+  @media (min-width: 720px) { .eq-wrap { grid-template-columns: 300px 1fr; align-items: start; } }
+  .legend { display: grid; gap: .3rem; margin: .4rem 0 .8rem; }
+  .legend .lg-row { display: flex; align-items: center; gap: .55rem; font-size: .9rem; }
+  .legend .lg-swatch { width: 13px; height: 13px; border-radius: 4px; flex: none; }
+  .legend .lg-name { color: var(--ink-soft); }
+  .legend .lg-val { margin-left: auto; font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .round-blk { border: 1px dashed var(--line); border-radius: 10px; padding: .1rem .9rem .4rem; margin: .7rem 0; }
+  .round-head { font-weight: 800; font-size: .92rem; margin: .55rem 0 .1rem; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+  .round-pct { font-size: .8rem; font-weight: 700; color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, #fff);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line)); border-radius: 999px; padding: .06rem .65rem; }
+  .warn-line { color: var(--bad); font-weight: 700; }
+</style>
+</head>
+<body class="branch-entrepreneurship">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">创业学</a><span class="crumb-sep">/</span>
+  <span>融资与股权</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">创业学 · Lesson 4</p>
+  <h1>融资与股权</h1>
+  <p class="lead">验证有了结论、计划写成了文件,最后一课谈钱:钱从哪来,以及用什么换。股权融资卖的是未来——这一课把融资阶梯与股权稀释(Dilution)的算术讲透,让你在第一次见投资人之前,就知道每一块钱的真实价格。</p>
+
+  <h2><span class="secno">1</span>股权是最贵的钱</h2>
+  <p>创业者常以为「拿到融资」是成绩,其实那只是换了一种贵法:贷款还的是利息,股权让出的是<strong>对未来的分红与投票权</strong>。天使轮让出去的 15%,如果公司最终值一百亿,那就是十五亿。所以融资的第一条原则不是「能拿多少拿多少」,而是:<em>每一轮钱,都必须买到一个清晰的里程碑</em>——否则不如不融。</p>
+
+  <h2><span class="secno">2</span>融资阶梯:从 3F 到 IPO</h2>
+  <ul class="timeline">
+    <li><b>自有资金与 3F</b>(Founder、Family、Friends:自己、家人、朋友)——验证想法期,金额量级十万到百万元(示意)。条款最随和,但人情成本最高:散伙时最容易伤的是这一轮的出资人。</li>
+    <li><b>天使投资(Angel Investor)</b>——赌人与产品雏形,金额量级百万元级(示意),常出让约 10%–20%(示意)。多为个人出资,决策快,能带来早期资源。</li>
+    <li><b>风险投资(Venture Capital, VC)A/B/C 轮</b>——验证了产品-市场匹配后的加速期,金额量级千万到亿元级(示意),每轮出让约 15%–25%(示意)。机构化运作,条款复杂,追求几倍回报退出。</li>
+    <li><b>私募股权(Private Equity, PE)与成长期</b>——成熟业务的扩张、并购或重整,更看重现金流确定性而非可能性。</li>
+    <li><b>首次公开募股(Initial Public Offering, IPO)</b>——挂牌公开市场,早期股东与投资人获得流动性退出通道,同时接受最严格的信息披露。</li>
+  </ul>
+
+  <h2><span class="secno">3</span>稀释的算术:一条除法</h2>
+  <div class="formula">新投资人占比 = 融资金额 ÷ 投后估值(Post-money Valuation)</div>
+  <p>投后估值指<b>本轮融资到账之后</b>公司的整体估值。比如天使轮融 500 万元、投后估值 4,000 万元,新投资人占比 = 500 ÷ 4,000 = <b>12.5%</b>;这 12.5% 不凭空多出来,而是所有老股东按比例让出——创始人若原持股 100%,融资后即剩 87.5%。此后每一轮都重复同样的除法,<strong>持股比例逐轮相乘地缩小</strong>。</p>
+
+  <h2><span class="secno">4</span>动手:股权稀释模拟器</h2>
+  <div class="sim">
+    <div class="sim-title">模拟器:四轮融资后,创始人还剩多少?</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">拖动每一轮的「融资额」与「投后估值」滑块,右侧饼图实时动画。默认值是一条典型路径:预留 10% 员工期权,四轮之后创始人持股恰好落在三到四成区间。</p>
+    <div class="eq-wrap">
+      <div>
+        <div class="round-blk" style="border-style:solid">
+          <p class="round-head">开始前 · 员工期权池 <span class="round-pct" id="poolPct">占 10%</span></p>
+          <div class="sim-controls"><div id="poolCtrl"></div></div>
+        </div>
+        <div class="round-blk">
+          <p class="round-head">第 1 轮 · 天使轮 <span class="round-pct" id="rp0"></span></p>
+          <div class="sim-controls"><div id="r0amt"></div><div id="r0post"></div></div>
+        </div>
+        <div class="round-blk">
+          <p class="round-head">第 2 轮 · A 轮 <span class="round-pct" id="rp1"></span></p>
+          <div class="sim-controls"><div id="r1amt"></div><div id="r1post"></div></div>
+        </div>
+        <div class="round-blk">
+          <p class="round-head">第 3 轮 · B 轮 <span class="round-pct" id="rp2"></span></p>
+          <div class="sim-controls"><div id="r2amt"></div><div id="r2post"></div></div>
+        </div>
+        <div class="round-blk">
+          <p class="round-head">第 4 轮 · C 轮 <span class="round-pct" id="rp3"></span></p>
+          <div class="sim-controls"><div id="r3amt"></div><div id="r3post"></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="figure-body" style="padding:.2rem 0 0">
+          <svg viewBox="0 0 340 340" role="img" style="width:100%;max-width:340px;height:auto;display:block;margin:0 auto" aria-label="股权结构饼图">
+            <g id="eqSlices"></g>
+            <text x="170" y="160" text-anchor="middle" font-size="14" font-weight="700" fill="#78716c">创始人</text>
+            <text x="170" y="196" text-anchor="middle" font-size="30" font-weight="800" fill="#0f766e" id="eqFounder">--</text>
+          </svg>
+        </div>
+        <div class="legend" id="eqLegend"></div>
+        <p class="sim-readout" id="eqReadout"></p>
+        <p id="eqWarns" style="font-size:.88rem;line-height:1.7;margin:.2rem 0 0"></p>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="secno">5</span>稀释之外:守住控制权</h2>
+  <p>持股被稀释到三四成并不必然失控,因为<strong>股权 ≠ 投票权</strong>。两种常见保护:<strong>AB 股(同股不同权,Dual-class Share)</strong>——创始人持有的 B 类股每股投票权是普通股的数倍,Google、Meta 以及京东、小米等众多科技公司都采用这类结构(公开披露的事实,倍数各异);<strong>一致行动人协议</strong>——几位创始股东约定投票时绑定行动,把分散的票捆成一捆。此外,董事会席位、重大事项一票否决权等条款,同样在决定「谁说了算」。这一课只需要记住:比例是算术,控制是设计。</p>
+
+  <div class="case">
+    <div class="case-title">案例 · 一家公司的四轮融资推演(纯示意计算)</div>
+    <p>假设一家虚构公司按「典型节奏」走完四轮:设立时创始人持股 100%,先预留 10% 员工期权池;此后每轮融资均按「融资金额 ÷ 投后估值」出让:</p>
+    <div class="table-wrap">
+      <table class="compact">
+        <thead><tr><th>轮次</th><th>融资额</th><th>投后估值</th><th>本轮出让</th><th>创始人持股</th></tr></thead>
+        <tbody>
+          <tr><td>期权池设立</td><td>—</td><td>—</td><td>员工 10%</td><td>100% → 90%</td></tr>
+          <tr><td>天使轮</td><td>500 万</td><td>4,000 万</td><td>12.5%</td><td>90% → 约 78.8%</td></tr>
+          <tr><td>A 轮</td><td>3,000 万</td><td>1.5 亿</td><td>20%</td><td>约 78.8% → 63.0%</td></tr>
+          <tr><td>B 轮</td><td>1 亿</td><td>5 亿</td><td>20%</td><td>63.0% → 50.4%</td></tr>
+          <tr><td>C 轮</td><td>2.5 亿</td><td>10 亿</td><td>25%</td><td>50.4% → 约 37.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>四轮下来,创始人从 100% 稀释到约 38%——这是教科书式的演变区间(约 30%–40%)。关键在于怎么解读:<em>38% 的十亿,远大于 100% 的零</em>。每一轮融资若都真实买到了增长里程碑,稀释就是放大器;若钱花完了里程碑没到,稀释才变成单纯的损失。</p>
+    <div class="case-learn"><b>学到什么:</b>稀释不可怕,「为估值虚高接受苛刻条款」和「出让过多导致无股可让、动力受损」才可怕。把每一轮出让压在合理区间,并用 AB 股等安排守住控制权。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>3F 融资 Founder/Family/Friends</dt><dd>自有资金加亲友出资的最早阶段融资,条款随和但人情成本高。</dd>
+      <dt>天使投资 Angel Investment</dt><dd>个人投资者对产品雏形阶段的早期投资,常出让约 10%–20%(示意)。</dd>
+      <dt>风险投资 Venture Capital</dt><dd>以机构基金为主、追求高倍数退出的成长期股权投资。</dd>
+      <dt>投后估值 Post-money Valuation</dt><dd>本轮融资到账之后的公司整体估值,等于投前估值加本轮融资额。</dd>
+      <dt>股权稀释 Dilution</dt><dd>新股东进入导致老股东持股比例按同比例下降的过程。</dd>
+      <dt>期权池 Option Pool</dt><dd>预留给未来员工的股份,通常在融资前设立并由老股东让出。</dd>
+      <dt>AB 股 Dual-class Share</dt><dd>同股不同权结构:创始人股的每股投票权高于普通股,以小股权保控制权。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>新股东占比 = <b>融资额 ÷ 投后估值</b>,老股东同比例稀释;持股从 100% 让到三四成是常态,前提是每轮都买到里程碑;比例是算术,<b>控制是设计</b>。</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "A 轮融资 2,000 万元,投后估值 1 亿元。新投资人占比与此前持股 70% 的创始团队稀释后的持股分别为:",
+      "options": ["新投资人占 25%,创始团队稀释后持股约 52%", "新投资人占 16%,创始团队稀释后持股约 60%", "新投资人占 20%,创始团队稀释后持股 56%", "新投资人占 20%,创始团队稀释后持股 50%"],
+      "answer": 2,
+      "explain": "2,000 万 ÷ 1 亿 = <b>20%</b>;创始团队按剩余的 80% 同比例稀释:70% × 80% = <b>56%</b>。注意稀释是乘法,不是简单地减去 20 个点。" },
+    { "q": "「投后估值(Post-money Valuation)」的准确含义是:",
+      "options": ["本轮融资到账之后的公司整体估值", "本轮融资到账之前的公司整体估值", "投资人对公司三年之后市值的预期", "公司上市首日收盘的总市值"],
+      "answer": 0,
+      "explain": "投后 = 投前 + 本轮融资额。分清两者是稀释算术的前提:同样的融资额,按投前口径算出的出让比例更高,签条款前务必看清用的是哪个口径。" },
+    { "q": "四轮融资后创始人持股降到约三分之一,「AB 股」安排的作用是:",
+      "options": ["保证创始人获得更高比例的年度现金分红", "让创始人自动在董事会中取得多数席位", "防止早期投资人折价把老股转让给竞争者", "让创始人以较少股权仍掌握多数投票权"],
+      "answer": 3,
+      "explain": "AB 股的核心是<b>股权与投票权分离</b>:创始人持有的高投票权股票,使其在经济利益被稀释的同时仍握住决策权。分红、董事会席位、老股转让是另外三件不同的事。" },
+    { "q": "关于 3F 融资(自有资金、家人、朋友),以下说法最准确的是:",
+      "options": ["3F 资金通常规模最大,足以支撑公司发展到 B 轮", "3F 资金成本低但关系风险高,应约定退出规则", "3F 融资不需要任何协议,基于口头信任更高效", "3F 属于机构化融资,需要按 VC 条款做尽职调查"],
+      "answer": 1,
+      "explain": "3F 的钱利率低、条款松,但一旦生意失败,损失会直接砸在关系上。哪怕亲人之间,也建议白纸黑字写清金额、股权与退出规则——保护的是关系本身。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《从0到1:开启商业与未来的秘密》彼得·蒂尔 · 中信出版社(建议读:关于风险投资幂律法则的章节)</li>
+      <li>《公司理财》斯蒂芬·罗斯、伦道夫·威斯特菲尔德等 · 机械工业出版社(建议读:资本结构与股权融资章节)</li>
+      <li>《精益创业:新创企业的成长思维》埃里克·莱斯 · 中信出版社(建议读:关于何时该融资、该融多少的讨论)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-business-plan.html"><span class="pager-label">上一课</span><span class="pager-title">商业计划书:想清楚再出发</span></a>
+    <a class="next" href="../../10-business-analytics/index.html"><span class="pager-label">下一课 · 进入下一分支</span><span class="pager-title">10 商业分析:用数据讲商业故事</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我按四轮默认值推演我的股权表」「期权池设 15% 还是 10% 更合理?」——把模拟器拖到自己的数字上,才算学会了这条除法。</div>
+    <p>创业学 · 第 4 课 · 案例为纯示意推演,比例区间均为行业常见量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var META = [
+    { name: "创始人", color: "#0f766e" },
+    { name: "员工期权", color: "#94a3b8" },
+    { name: "天使轮", color: "#f59e0b" },
+    { name: "A 轮", color: "#0ea5e9" },
+    { name: "B 轮", color: "#8b5cf6" },
+    { name: "C 轮", color: "#e11d48" }
+  ];
+  var CFG = [
+    { amt: { min: 100, max: 2000, step: 50, val: 500 }, post: { min: 1000, max: 10000, step: 100, val: 4000 } },
+    { amt: { min: 500, max: 6000, step: 100, val: 3000 }, post: { min: 3000, max: 30000, step: 500, val: 15000 } },
+    { amt: { min: 2000, max: 20000, step: 500, val: 10000 }, post: { min: 10000, max: 100000, step: 5000, val: 50000 } },
+    { amt: { min: 5000, max: 50000, step: 1000, val: 25000 }, post: { min: 30000, max: 200000, step: 5000, val: 100000 } }
+  ];
+
+  var slicesG = document.getElementById("eqSlices");
+  var paths = [];
+  META.forEach(function (m) {
+    var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    p.setAttribute("fill", m.color);
+    p.setAttribute("stroke", "#ffffff");
+    p.setAttribute("stroke-width", "2");
+    slicesG.appendChild(p);
+    paths.push(p);
+  });
+
+  var legend = document.getElementById("eqLegend");
+  var legVals = [];
+  META.forEach(function (m, i) {
+    var row = document.createElement("div");
+    row.className = "lg-row";
+    row.innerHTML = '<span class="lg-swatch" style="background:' + m.color + '"></span>' +
+      '<span class="lg-name">' + m.name + '</span><span class="lg-val" id="lg' + i + '">–</span>';
+    legend.appendChild(row);
+    legVals.push(row.querySelector(".lg-val"));
+  });
+
+  function mkSlider(id, cfg, label, format) {
+    var s = Viz.slider(document.getElementById(id), {
+      label: label, min: cfg.min, max: cfg.max, step: cfg.step, value: cfg.val, format: format
+    });
+    s.onChange(function () { recompute(); });
+    return s;
+  }
+  var wan = function (v) { return v.toLocaleString("zh-CN") + " 万"; };
+  var poolS = Viz.slider(document.getElementById("poolCtrl"), {
+    label: "期权池比例", min: 0, max: 20, step: 1, value: 10, format: function (v) { return v + "%"; }
+  });
+  poolS.onChange(function () { recompute(); });
+  var amtS = [], postS = [];
+  CFG.forEach(function (r, i) {
+    amtS.push(mkSlider("r" + i + "amt", r.amt, "融资额", wan));
+    postS.push(mkSlider("r" + i + "post", r.post, "投后估值", wan));
+  });
+
+  function polar(cx, cy, r, a) {
+    var t = (a - 90) * Math.PI / 180;
+    return (cx + r * Math.cos(t)).toFixed(2) + " " + (cy + r * Math.sin(t)).toFixed(2);
+  }
+  function slicePath(a0, a1) {
+    if (a1 - a0 < 0.4) return "";
+    var r1 = 130, r0 = 78, cx = 170, cy = 170;
+    if (a1 - a0 >= 359.6) {
+      return "M" + polar(cx, cy, r1, 0) + " A" + r1 + " " + r1 + " 0 1 1 " + polar(cx, cy, r1, 180) +
+        " A" + r1 + " " + r1 + " 0 1 1 " + polar(cx, cy, r1, 0) +
+        " M" + polar(cx, cy, r0, 0) + " A" + r0 + " " + r0 + " 0 1 0 " + polar(cx, cy, r0, 180) +
+        " A" + r0 + " " + r0 + " 0 1 0 " + polar(cx, cy, r0, 0);
+    }
+    var large = a1 - a0 > 180 ? 1 : 0;
+    return "M" + polar(cx, cy, r1, a0) +
+      " A" + r1 + " " + r1 + " 0 " + large + " 1 " + polar(cx, cy, r1, a1) +
+      " L" + polar(cx, cy, r0, a1) +
+      " A" + r0 + " " + r0 + " 0 " + large + " 0 " + polar(cx, cy, r0, a0) + " Z";
+  }
+
+  var cur = [0, 0, 0, 0, 0, 0];
+  var animId = null;
+  function drawPie(vals) {
+    var acc = 0;
+    vals.forEach(function (v, i) {
+      var span = v / 100 * 360;
+      paths[i].setAttribute("d", slicePath(acc, acc + span));
+      acc += span;
+    });
+  }
+  function animateTo(target) {
+    if (animId) cancelAnimationFrame(animId);
+    var from = cur.slice();
+    var t0 = null, dur = 550;
+    function frame(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      for (var i = 0; i < 6; i++) cur[i] = from[i] + (target[i] - from[i]) * e;
+      drawPie(cur);
+      if (p < 1) animId = requestAnimationFrame(frame);
+    }
+    animId = requestAnimationFrame(frame);
+  }
+
+  function recompute() {
+    var pool = poolS.get();
+    var stakes = [100 - pool, pool, 0, 0, 0, 0];
+    var warns = [];
+    var ratios = [];
+    CFG.forEach(function (r, i) {
+      var amt = amtS[i].get(), post = postS[i].get();
+      var raw = amt / post;
+      var ratio = Math.min(raw, 0.9);
+      if (raw >= 1) warns.push("第 " + (i + 1) + " 轮融资额已不低于投后估值,示意按 90% 上限计算——现实中这是极端条款");
+      else if (raw > 0.4) warns.push("第 " + (i + 1) + " 轮出让约 " + (raw * 100).toFixed(0) + "%,单轮偏多,警惕过度稀释");
+      ratios.push(ratio);
+      for (var k = 0; k < 6; k++) stakes[k] *= (1 - ratio);
+      stakes[2 + i] = ratio * 100;
+    });
+    var founder = stakes[0];
+    if (founder < 25) warns.push("创始人仅剩约 " + founder.toFixed(1) + "%,低于四分之一——常见的动力与谈判力警戒线");
+    else if (founder < 33.34) warns.push("创始人已低于三分之一,注意用 AB 股或一致行动人安排守住控制权");
+
+    document.getElementById("poolPct").textContent = "占 " + pool + "%";
+    ratios.forEach(function (ratio, i) {
+      document.getElementById("rp" + i).textContent = "出让 " + (ratio * 100).toFixed(1) + "%";
+    });
+    stakes.forEach(function (v, i) {
+      legVals[i].textContent = v.toFixed(1) + "%";
+    });
+    document.getElementById("eqFounder").textContent = founder.toFixed(1) + "%";
+    document.getElementById("eqReadout").innerHTML =
+      "四轮之后,创始人持股 <b>" + founder.toFixed(1) + "%</b>;投资人与员工合计持有其余 <b>" +
+      (100 - founder).toFixed(1) + "%</b>(示意)。稀释是乘法,每让一轮,剩下的都按比例再缩一次。";
+    var warnsEl = document.getElementById("eqWarns");
+    warnsEl.innerHTML = warns.length
+      ? warns.map(function (w) { return '<span class="warn-line">⚠ ' + w + "</span>"; }).join("<br>")
+      : '<span style="color:var(--good);font-weight:700">✓ 当前结构落在常见区间:单轮出让不超 25%,创始人仍在 1/3 以上</span>';
+    animateTo(stakes);
+  }
+
+  recompute();
+})();
+</script>
+</body>
+</html>

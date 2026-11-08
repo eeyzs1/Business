@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>精益创业:构建-衡量-学习 · 创业学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  #bmlDot { transition: transform .85s cubic-bezier(.45,.05,.55,.95); }
+  .bmlnode { cursor: pointer; }
+  .bmlnode:hover circle { stroke-width: 4; }
+  #bmlCard { border-left: 4px solid var(--accent); background: var(--paper-deep); border-radius: 10px; padding: .8rem 1.05rem; margin-top: .7rem; transition: opacity .25s ease; }
+  #bmlCard .bq-t { font-weight: 800; color: var(--accent); font-size: .92rem; letter-spacing: .04em; }
+  #bmlCard .bq-q { font-weight: 700; margin: .25rem 0 .2rem; }
+  #bmlCard .bq-h { font-size: .88rem; color: var(--ink-soft); margin: 0; line-height: 1.7; }
+  .hbtn { font-family: var(--sans); font-size: .9rem; font-weight: 700; border-radius: 999px; padding: .45rem 1.3rem; cursor: pointer; border: none; }
+  .hbtn-go { background: var(--accent); color: var(--accent-ink); }
+  .hbtn-ghost { background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); }
+  .hbtn:disabled { opacity: .4; cursor: default; }
+  #mvpText { background: var(--paper-deep); border-radius: 10px; padding: 1rem 1.15rem; font-size: 1.02rem; line-height: 1.8; margin: .6rem 0 .8rem; min-height: 5.2em; }
+  #mvpFeed { display: none; border-radius: 10px; padding: .8rem 1.05rem; font-size: .93rem; line-height: 1.75; margin: .8rem 0; }
+  #mvpFeed.ok { display: block; background: #f0fdf4; border: 1.5px solid var(--good); }
+  #mvpFeed.no { display: block; background: #fef2f2; border: 1.5px solid var(--bad); }
+  #mvpFeed b.v { font-size: .95rem; }
+</style>
+</head>
+<body class="branch-entrepreneurship">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">创业学</a><span class="crumb-sep">/</span>
+  <span>精益创业:构建-衡量-学习</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">创业学 · Lesson 2</p>
+  <h1>精益创业:构建-衡量-学习</h1>
+  <p class="lead">上一课我们找到了最危险假设;这一课解决下一个问题:用什么流程去验证它?精益创业(Lean Startup)给出的答案是——把「开发产品」改造成「做实验」,让每一次努力都变成一次学习,并让学习循环转得尽可能快。</p>
+
+  <h2><span class="secno">1</span>为什么大公司的打法在新创企业里会失灵</h2>
+  <p>成熟公司的管理工具——年度计划、瀑布式开发、部门考核——都建立在同一个前提上:<em>市场是确定的,执行是关键</em>。而新创企业恰恰活在前提的反面:顾客是谁、产品是什么、价格该多少,统统未知。在这种极端不确定性下,按部就班地把计划执行得再漂亮,也可能优雅地走向错误答案。</p>
+  <p>埃里克·莱斯(Eric Ries)由此提出精益创业:新创企业要管理的不是执行进度,而是<strong>学习速度</strong>——用尽可能短的时间、尽可能低的成本,搞清楚「什么该做、什么不该做」。整个方法论被压缩成一个循环。</p>
+
+  <h2><span class="secno">2</span>循环:构建-衡量-学习</h2>
+  <div class="concept">
+    <div class="concept-title">概念卡 · Build-Measure-Learn 循环</div>
+    <p><strong>构建(Build)</strong>:围绕最危险假设,做出最小的实验载体。<strong>衡量(Measure)</strong>:用事先定好的指标,观察实验结果。<strong>学习(Learn)</strong>:根据证据决定坚持、调整还是转型,然后进入下一圈。三步首尾相接,转得越快,单位时间内的认知越多,烧掉的 runway(跑道,即剩余现金能支撑的时间)就越值钱。</p>
+  </div>
+  <p>这个循环最反直觉的地方在于:<em>它看似从「构建」开始,实际是从「学习」倒推的</em>。先想清楚「我想学到什么」,再决定「用什么指标衡量」,最后才决定「做什么东西」。很多人先做产品再想指标,循环就转反了。</p>
+
+  <h2><span class="secno">3</span>动手 1:让循环转起来</h2>
+  <div class="sim">
+    <div class="sim-title">BML 循环动画:每一站的关键问题</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">点「播放」看循环转动;每到一站,弹出该阶段必须回答的关键问题。也可以点节点直接跳转。</p>
+    <div class="figure-body" style="padding:.2rem 0 0">
+      <svg viewBox="0 0 640 300" role="img" style="width:100%;height:auto;display:block" aria-label="构建-衡量-学习循环">
+        <defs>
+          <marker id="arrw" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#0f766e"/>
+          </marker>
+        </defs>
+        <path d="M175,152 Q210,55 267,106" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round" marker-end="url(#arrw)" opacity=".55"/>
+        <path d="M368,104 Q430,55 462,151" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round" marker-end="url(#arrw)" opacity=".55"/>
+        <path d="M462,179 Q320,292 178,179" fill="none" stroke="#0f766e" stroke-width="3" stroke-linecap="round" marker-end="url(#arrw)" opacity=".55"/>
+        <g class="bmlnode" id="bn0" transform="translate(130,175)">
+          <circle r="48" fill="#fff" stroke="#0f766e" stroke-width="3"/>
+          <text y="-2" text-anchor="middle" font-size="17" font-weight="800" fill="#1c1917">构建</text>
+          <text y="20" text-anchor="middle" font-size="11.5" font-weight="700" fill="#78716c">Build</text>
+        </g>
+        <g class="bmlnode" id="bn1" transform="translate(320,80)">
+          <circle r="48" fill="#fff" stroke="#0f766e" stroke-width="3"/>
+          <text y="-2" text-anchor="middle" font-size="17" font-weight="800" fill="#1c1917">衡量</text>
+          <text y="20" text-anchor="middle" font-size="11.5" font-weight="700" fill="#78716c">Measure</text>
+        </g>
+        <g class="bmlnode" id="bn2" transform="translate(510,175)">
+          <circle r="48" fill="#fff" stroke="#0f766e" stroke-width="3"/>
+          <text y="-2" text-anchor="middle" font-size="17" font-weight="800" fill="#1c1917">学习</text>
+          <text y="20" text-anchor="middle" font-size="11.5" font-weight="700" fill="#78716c">Learn</text>
+        </g>
+        <g id="bmlDot" style="transform:translate(130px,175px)">
+          <circle r="11" fill="#0f766e" stroke="#fff" stroke-width="3"/>
+          <circle r="3.5" fill="#fff"/>
+        </g>
+      </svg>
+    </div>
+    <p style="margin:.5rem 0 .1rem">
+      <button type="button" class="hbtn hbtn-go" id="bmlPlay">▶ 播放循环</button>
+      <button type="button" class="hbtn hbtn-ghost" id="bmlStep">⏭ 单步前进</button>
+      <span style="font-size:.86rem;color:var(--ink-faint);margin-left:.4rem">已完成 <b id="bmlLoops" style="color:var(--accent)">0</b> 圈</span>
+    </p>
+    <div id="bmlCard">
+      <div class="bq-t" id="bmlStage">第 1 站 · 构建 BUILD</div>
+      <p class="bq-q" id="bmlQ">我们最想验证哪个假设?做什么东西能最快检验它?</p>
+      <p class="bq-h" id="bmlHint">只做与最危险假设相关的最小实验——一支视频、一个落地页、一段人肉服务,都算数。</p>
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>MVP:最小可行产品</h2>
+  <div class="concept">
+    <div class="concept-title">概念卡 · 最小可行产品(Minimum Viable Product, MVP)</div>
+    <p>MVP 是<strong>能带来所需要的学习的最小实验载体</strong>——注意,它不是「粗糙版的最终产品」,更不是「功能删减版的完整产品」。「可行」二字衡量的是它能否验证假设,而不是能否日常使用。常见的三种形态:<strong>演示型</strong>(一支视频讲清方案,看多少人排队)、<strong>人肉型</strong>(前台是网站,后台全是人工操作,即「绿野仙踪」式 Wizard of Oz)、<strong>落地页型</strong>(只卖一个承诺,预售收钱)。</p>
+  </div>
+  <p>判断一个东西是不是合格 MVP,只问一句:<em>它能不能用最小的代价,换来对最危险假设的判断?</em>能,哪怕它简陋到只有一个页面、一段人工流程,也是 MVP;不能,哪怕代码写了十万行,也只是昂贵的自我安慰。</p>
+
+  <h2><span class="secno">5</span>动手 2:MVP 判断游戏</h2>
+  <div class="sim">
+    <div class="sim-title">判断游戏:这五个方案是合格的 MVP 吗?</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)" id="mvpProg">第 1 / 5 张</p>
+    <div id="mvpText"></div>
+    <p style="margin:.4rem 0">
+      <button type="button" class="hbtn hbtn-go" id="mvpYes">✔ 是合格 MVP</button>
+      <button type="button" class="hbtn hbtn-ghost" id="mvpNo">✘ 不是</button>
+      <button type="button" class="hbtn hbtn-go" id="mvpNext" style="display:none">下一张 →</button>
+      <button type="button" class="hbtn hbtn-ghost" id="mvpRestart" style="display:none">↻ 再玩一次</button>
+    </p>
+    <div id="mvpFeed"></div>
+    <div class="callout note" id="mvpDone" style="display:none">
+      <span class="callout-label">游戏结束</span>
+      五张卡片你判断对了 <b id="mvpScore">0</b>/5。口诀只有一句:<b>能不能用最小代价,换来对最危险假设的判断。</b>能,就是 MVP。
+    </div>
+  </div>
+
+  <h2><span class="secno">6</span>转型还是坚持:先换一把对的尺子</h2>
+  <p>循环转到「学习」一站,只有三个出口:<strong>坚持(Persevere)</strong>——证据支持假设,加速踩油门;<strong>调整</strong>——局部修改产品或定价,继续循环;<strong>转型(Pivot)</strong>——保留已经学到的东西,改变战略的某一根支柱:换一批客户(客户细分转型)、解决另一个问题(问题转型)、换一条触达渠道(渠道转型)。</p>
+  <p>而决定走哪个出口,必须先有一把对的尺子。<strong>虚荣指标(Vanity Metrics)</strong>只会涨不会跌、让你自我感觉良好却无法指导行动:累计注册数、总下载量、公众号阅读总数。<strong>可执行指标(Actionable Metrics)</strong>能定位问题、支持决策:次周留存率、付费转化率、活跃用户占比。一条经验法则:<em>如果这个数字变好了,你依然不知道该做什么,它就是虚荣指标。</em></p>
+  <div class="callout warn"><span class="callout-label">最坏的组合</span> 用虚荣指标说服自己「数据在涨」,于是把转型一拖再拖——runway 就在「再给三个月」里耗光了。</div>
+
+  <div class="case">
+    <div class="case-title">案例 · Dropbox:一支视频换来的答案</div>
+    <p>2008 年前后,德鲁·休斯顿(Drew Houston)在做文件同步工具 Dropbox。问题在于:同步功能「没演示就没感觉」,而产品开发又异常繁琐。他没有闷头开发,而是先发布了一支约 3 分钟的演示视频,完整演示「文件放进文件夹、另一台电脑上自动出现」的核心场景。视频在技术社区走红后,候补名单一夜之间从约五千人涨到约七万五千人(《精益创业》一书中的回忆,示意量级)。</p>
+    <p>注意这个实验的结构:视频是「构建」,候补名单增速是「衡量」,「同步需求真实存在、值得继续开发」是「学习」。整圈循环没有写一行同步代码,却完成了对新事业最关键的一次验证。</p>
+    <div class="case-learn"><b>学到什么:</b>MVP 的好坏不看功能多少,只看能否换来关键学习。视频是 MVP,麦片盒是 MVP,上门拍照的周末也是 MVP——它们都回答了各自项目里最危险的那个假设。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>精益创业 Lean Startup</dt><dd>在极端不确定性下以学习速度为核心的新创企业管理方法论。</dd>
+      <dt>BML 循环 Build-Measure-Learn</dt><dd>构建-衡量-学习的反馈循环,方向上由「想学什么」倒推「做什么」。</dd>
+      <dt>最小可行产品 MVP</dt><dd>能带来所需要学习的最小实验载体,不是粗糙版最终产品。</dd>
+      <dt>绿野仙踪 Wizard of Oz</dt><dd>前台看似自动化、后台由人工顶替的实验形态。</dd>
+      <dt>转型 Pivot</dt><dd>保留已学到的东西,改变战略中某一根支柱的结构性调整。</dd>
+      <dt>虚荣指标 Vanity Metrics</dt><dd>只涨不跌、无法指导行动的数字,如累计注册量。</dd>
+      <dt>可执行指标 Actionable Metrics</dt><dd>能定位问题、支持决策的指标,如留存率与付费转化率。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>精益创业把产品开发改造成实验流水线:<b>构建-衡量-学习</b>循环转得越快,认知越便宜;MVP 是换学习的最小筹码;转型与否,只听可执行指标的。</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "MVP(最小可行产品)的准确定义是:",
+      "options": ["面向种子用户的、缺陷较多的早期完整产品", "功能砍到最少、但架构按百万用户设计的产品", "能用最小代价换来对关键假设之判断的实验载体", "先上线一半功能、剩余功能等用户反馈再补的半成品"],
+      "answer": 2,
+      "explain": "「可行」衡量的是<b>验证假设的能力</b>,不是日常可用性,更不是完整性。一支演示视频、一段人肉服务都可以是 MVP;它不是粗糙版或删减版的最终产品。" },
+    { "q": "Dropbox 的 3 分钟演示视频让候补名单暴涨。按 BML 循环拆解,暴涨的名单最直接对应哪个环节的价值?",
+      "options": ["衡量环节——名单增速为「需求真实存在」提供了硬证据", "学习环节——团队据此决定转型去服务企业客户市场", "构建环节——视频本身就是日后正式产品的一部分", "转型环节——团队从个人市场转向了开发者市场"],
+      "answer": 0,
+      "explain": "视频是构建,名单暴涨是被衡量的结果,而它验证了「用户真的为同步问题痛苦」这一假设——衡量产出的证据直接喂养了学习。没有开发一行同步代码,循环已经完整转了一圈。" },
+    { "q": "以下哪一个是典型的「虚荣指标」?",
+      "options": ["次周留存率:本周回访用户占上周新增的比例", "付费转化率:访问者中完成第一笔订单的比例", "净推荐值:老用户向朋友推荐产品的意愿水平", "累计下载量:上线以来下载总数,只增不减"],
+      "answer": 3,
+      "explain": "累计类数字天然只涨不跌,涨了也不知道该做什么;留存、转化、推荐意愿都能定位问题、支持决策。检验口诀:数字变好了,你知道下一步该干什么吗?" },
+    { "q": "决定「转型(Pivot)还是坚持」时,最合理的依据是:",
+      "options": ["账上资金的消耗速度,快见底就应当立刻转型", "循环学习中积累的证据,核心假设被系统性证伪", "团队士气的走向,士气持续低迷就该转型", "竞争对手的动向,对手转型了我就跟着转"],
+      "answer": 1,
+      "explain": "转型的触发条件是「经过多轮循环,核心假设仍被证据系统性证伪」;资金、士气、对手都只是背景变量。靠情绪或跟风转型,只会把已积累的学习清零重来。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《精益创业:新创企业的成长思维》埃里克·莱斯 · 中信出版社(建议读:「开发—测量—认知」循环相关章节)</li>
+      <li>《从0到1:开启商业与未来的秘密》彼得·蒂尔 · 中信出版社(建议读:关于「每个成功企业都不相同」的章节)</li>
+      <li>《创业维艰:如何完成比难更难的事》本·霍洛维茨 · 中信出版社(建议读:关于裁员与低谷的章节)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-opportunity-and-validation.html"><span class="pager-label">上一课</span><span class="pager-title">机会识别与验证</span></a>
+    <a class="next" href="0003-business-plan.html"><span class="pager-label">下一课</span><span class="pager-title">商业计划书:想清楚再出发</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我把我的项目拆成 BML 三步」「我这个指标算虚荣指标吗?」——用真实项目走一圈循环,胜过读十遍定义。</div>
+    <p>创业学 · 第 2 课 · 案例为真实公司,数字为示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---------- 交互 1:BML 循环动画 ---------- */
+  var NODES = [
+    { stage: "第 1 站 · 构建 BUILD", q: "我们最想验证哪个假设?做什么东西能最快检验它?", hint: "只做与最危险假设相关的最小实验——一支视频、一个落地页、一段人肉服务,都算数。" },
+    { stage: "第 2 站 · 衡量 MEASURE", q: "哪个指标能证明假设成立?基线值与目标值各是多少?", hint: "动手前就定好可执行指标和判断标准,避免事后挑一个对自己有利的数字。" },
+    { stage: "第 3 站 · 学习 LEARN", q: "证据支持坚持、调整,还是转型?下一圈验证哪个新假设?", hint: "只看学习证据做决定——沉没成本、面子与士气,都不该出现在这一站。" }
+  ];
+  var POS = [[130, 175], [320, 80], [510, 175]];
+  var NAMES = ["构建", "衡量", "学习"];
+  var idx = 0, loops = 0, timer = null;
+  var dot = document.getElementById("bmlDot");
+  var nodeGs = [document.getElementById("bn0"), document.getElementById("bn1"), document.getElementById("bn2")];
+  var card = document.getElementById("bmlCard");
+
+  function render() {
+    nodeGs.forEach(function (g, i) {
+      var c = g.querySelector("circle");
+      var t1 = g.querySelectorAll("text")[0];
+      if (i === idx) {
+        c.setAttribute("fill", "#0f766e"); c.setAttribute("stroke", "#0f766e");
+        t1.setAttribute("fill", "#ffffff"); t1.setAttribute("y", "6");
+        g.querySelectorAll("text")[1].setAttribute("fill", "#ccfbf1");
+      } else {
+        c.setAttribute("fill", "#ffffff"); c.setAttribute("stroke", "#0f766e");
+        t1.setAttribute("fill", "#1c1917"); t1.setAttribute("y", "-2");
+        g.querySelectorAll("text")[1].setAttribute("fill", "#78716c");
+      }
+    });
+    dot.style.transform = "translate(" + POS[idx][0] + "px," + POS[idx][1] + "px)";
+    card.style.opacity = 0;
+    setTimeout(function () {
+      document.getElementById("bmlStage").textContent = NODES[idx].stage;
+      document.getElementById("bmlQ").textContent = NODES[idx].q;
+      document.getElementById("bmlHint").textContent = NODES[idx].hint;
+      card.style.opacity = 1;
+    }, 160);
+  }
+
+  function step() {
+    idx = (idx + 1) % 3;
+    if (idx === 0) {
+      loops++;
+      document.getElementById("bmlLoops").textContent = loops;
+    }
+    render();
+  }
+  function pause() {
+    if (timer) { clearInterval(timer); timer = null; }
+    document.getElementById("bmlPlay").textContent = "▶ 播放循环";
+  }
+
+  document.getElementById("bmlPlay").addEventListener("click", function () {
+    if (timer) { pause(); return; }
+    step();
+    timer = setInterval(step, 2600);
+    this.textContent = "⏸ 暂停";
+  });
+  document.getElementById("bmlStep").addEventListener("click", function () { pause(); step(); });
+  nodeGs.forEach(function (g, i) {
+    g.addEventListener("click", function () { pause(); idx = i; render(); });
+  });
+  render();
+
+  /* ---------- 交互 2:MVP 判断游戏 ---------- */
+  var CARDS = [
+    { text: "「文件同步功能还没开发,先发布一支 3 分钟演示视频,把核心场景讲清楚,看候补名单会不会暴涨。」",
+      is: true, why: "以近乎零的开发成本,直接验证「用户是否真的为这个问题痛苦」——演示型 MVP 的教科书打法。" },
+    { text: "「规划里一共 20 个功能,先花六个月全部开发完再上线,给用户留下功能齐全的第一印象。」",
+      is: false, why: "把验证推迟到最贵的时点:六个月后才知道有没有人要。MVP 追求的是学习最快,不是第一印象最完美。" },
+    { text: "「在小区微信群里人工帮邻居凑单买水果,记账全用表格,先看复购率和能加价的空间。」",
+      is: true, why: "典型的绿野仙踪式 MVP:后台全靠人肉,前台却足以验证「邻居愿不愿意反复付费」这个关键假设。" },
+    { text: "「上线一个只有 Logo 和『敬请期待』四个字的官网,既不留邮箱,也没有任何行动入口。」",
+      is: false, why: "不收集任何可衡量的行为信号,连一个假设都没验证——它不是 MVP,只是一张电子海报。" },
+    { text: "「向 500 人发放问卷,问『如果有这样一款产品,你会用吗?』,统计回答『会』的人数比例。」",
+      is: false, why: "问卷问的是口头态度,效力连落地页都不如(上一课的排序);它是一次访谈,不是产品实验。" }
+  ];
+  var mvpIdx = 0, mvpScore = 0, mvpAnswered = false;
+  var mvpText = document.getElementById("mvpText");
+  var mvpProg = document.getElementById("mvpProg");
+  var mvpFeed = document.getElementById("mvpFeed");
+  var bYes = document.getElementById("mvpYes"), bNo = document.getElementById("mvpNo");
+  var bNext = document.getElementById("mvpNext"), bRestart = document.getElementById("mvpRestart");
+
+  function mvpShow() {
+    mvpAnswered = false;
+    mvpFeed.className = ""; mvpFeed.style.display = "none";
+    mvpProg.textContent = "第 " + (mvpIdx + 1) + " / " + CARDS.length + " 张";
+    mvpText.textContent = CARDS[mvpIdx].text;
+    bYes.disabled = false; bNo.disabled = false; bNext.style.display = "none";
+  }
+  function mvpJudge(userSaidYes) {
+    if (mvpAnswered) return;
+    mvpAnswered = true;
+    bYes.disabled = true; bNo.disabled = true;
+    var cardItem = CARDS[mvpIdx];
+    var right = userSaidYes === cardItem.is;
+    if (right) mvpScore++;
+    mvpFeed.className = right ? "ok" : "no";
+    mvpFeed.innerHTML = "<b class='v'>" + (right ? "✓ 判断正确。" : "✗ 再想想。") + "</b>参考答案:这<b>" +
+      (cardItem.is ? "是" : "不是") + "</b>合格的 MVP。" + cardItem.why;
+    if (mvpIdx < CARDS.length - 1) bNext.style.display = "inline-block";
+    else {
+      bRestart.style.display = "inline-block";
+      document.getElementById("mvpDone").style.display = "block";
+      Viz.countUp(document.getElementById("mvpScore"), mvpScore, { from: 0, dur: 700, format: function (x) { return String(Math.round(x)); } });
+    }
+  }
+  bYes.addEventListener("click", function () { mvpJudge(true); });
+  bNo.addEventListener("click", function () { mvpJudge(false); });
+  bNext.addEventListener("click", function () { mvpIdx++; mvpShow(); });
+  bRestart.addEventListener("click", function () {
+    mvpIdx = 0; mvpScore = 0;
+    bRestart.style.display = "none";
+    document.getElementById("mvpDone").style.display = "none";
+    mvpShow();
+  });
+  mvpShow();
+})();
+</script>
+</body>
+</html>

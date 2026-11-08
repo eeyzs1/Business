@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>薪酬与激励 · 人力资源管理</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .scn-row { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin: .5rem 0; }
+  .scn-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 700; cursor: pointer;
+    border-radius: 999px; padding: .4rem 1.05rem; border: 2px solid var(--line); background: #fff; color: var(--ink-soft);
+    transition: all .15s ease;
+  }
+  .scn-btn:hover { border-color: var(--accent); }
+  .scn-btn.active { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .preset-label { font-size: .85rem; color: var(--ink-soft); font-weight: 700; }
+  #payChart { margin-top: .6rem; }
+  .pay-note { font-size: .88rem; color: var(--ink-faint); margin-top: .6rem; }
+</style>
+</head>
+<body class="branch-hr">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">人力资源管理</a><span class="crumb-sep">/</span>
+  <span>薪酬与激励</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">人力资源管理 · Lesson 4</p>
+  <h1>薪酬与激励</h1>
+  <p class="lead">钱不是唯一的激励,但一个糟糕的薪酬结构足以摧毁其他所有激励。这一课拆开「给钱」的设计逻辑:3P 付酬、总报酬、固浮比与股权激励——目标只有一个,让员工既安心,又上进。</p>
+
+  <h2><span class="secno">1</span>薪酬设计要同时回答三个问题</h2>
+  <p>无论公司大小,员工对薪酬的抱怨永远来自三个方向:<b>对内公平吗</b>(干同样的活,拿得差多少)?<b>对外有竞争力吗</b>(和市场上比,吃亏了吗)?<b>对这个人有激励吗</b>(干多干少、干好干坏,收入有没有区别)?这三个问题对应薪酬设计的经典框架——<em>3P 付酬</em>:为<b>岗位</b>(Position,岗位本身的价值)、为<b>绩效</b>(Performance,产出的结果)、为<b>能力</b>(Person,知识技能的稀缺性)付钱。多数岗位的工资,是三者的加权组合——只是不同岗位权重不同:生产线重岗位,销售重绩效,研发重能力。</p>
+  <div class="concept">
+    <div class="concept-title">概念:3P 付酬 · Pay for Position / Performance / Person</div>
+    <p style="margin:.2rem 0 0">岗位定带宽(这个岗位值多少钱),绩效定带宽内的位置(干得好往上靠),能力定稀缺溢价(别人替代不了的技能值加价)。三种逻辑互相补充,只按任何单一维度付酬都会失衡。</p>
+  </div>
+
+  <h2><span class="secno">2</span>总报酬与固浮比:安心与上进的旋钮</h2>
+  <p>员工拿到的远不止月薪。把视野放宽,就是<em>总报酬</em>(Total Rewards)的视角:</p>
+  <div class="formula">总报酬 = 固定现金 + 浮动现金 + 福利 + 成长与体验</div>
+  <p>固定部分买「安心」,浮动部分买「上进」,福利与成长买「归属与未来」。其中最重要的旋钮是<em>固浮比</em>(固定与浮动的比例):<b>销售岗</b>产出可量化、业绩因人而异,通常低固定、高浮动——让收入随业绩大幅波动,干得好的上不封顶;<b>职能岗</b>产出协同、难以逐月量化,通常高固定、低浮动——以稳为主,靠成长与认可驱动。没有标准答案,只有与「产出可量化程度」和「人才风险偏好」的匹配。下面的模拟器让你亲手转这个旋钮。</p>
+
+  <div class="sim" data-reveal id="pay-sim">
+    <div class="sim-title">交互 · 固浮比模拟器:高激励的另一面是高风险</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .6rem">假设某岗位<b>目标月总报酬 2.0 万元(示意)</b>:固定部分旱涝保收;浮动部分与业绩挂钩——好年景可拿 1.2 倍(上限,示意),差年景只拿 0.3 倍(示意)。拖动滑块、切换情景,观察员工收入的柱状对比:</p>
+    <div class="sim-controls" id="payControls"></div>
+    <div class="scn-row" id="payScenarios">
+      <span class="preset-label">情景:</span>
+      <button type="button" class="scn-btn active" data-m="compare">并排对比</button>
+      <button type="button" class="scn-btn" data-m="good">只看 好年景</button>
+      <button type="button" class="scn-btn" data-m="bad">只看 差年景</button>
+    </div>
+    <div class="scn-row" id="payPresets">
+      <span class="preset-label">岗位预设:</span>
+      <button type="button" class="scn-btn" data-fix="50">销售岗(固 50%)</button>
+      <button type="button" class="scn-btn" data-fix="70">均衡型(固 70%)</button>
+      <button type="button" class="scn-btn" data-fix="90">职能岗(固 90%)</button>
+    </div>
+    <div id="payChart"></div>
+    <p class="sim-readout" id="payReadout">正在加载模拟器……</p>
+    <p class="pay-note">数字均为教学示意,不构成任何薪酬建议;实际浮动系数、封顶与保底由各公司政策决定。</p>
+  </div>
+
+  <h2><span class="secno">3</span>内部公平与外部竞争</h2>
+  <p>「对内公平」靠<em>岗位价值评估</em>(Job Evaluation):对职责范围、复杂度、影响与任职资格等要素打分(如要素计点法,示意),把岗位排进职级序列,同级同带宽。这背后的心理学直觉是:员工对「不公」的敏感,远超对「多少」的敏感——参照对象一变,同样的工资就换了一种心情(亚当斯公平理论,详见 05 管理学分支)。「对外竞争」靠<em>市场分位</em>(Pay Percentile):拿薪酬调研数据对标,锚 P50(市场中位)是「跟随」策略,锚 P75 以上是「领先」策略,为关键稀缺岗位付溢价是常见做法(示意)。两者的张力在于:内部讲级差,外部讲行情——常见解法是总量看市场、结构看级差,并接受「稀缺岗位例外」。</p>
+
+  <h2><span class="secno">4</span>股权与期权:让员工分享剩余</h2>
+  <p>工资买劳动,股权买「像老板一样思考」:把员工的收益与公司的长期剩余绑定。<em>期权</em>(Stock Option)的标准机制(示意):约定行权价,分四年逐步<em>归属</em>(Vesting),常设一年「悬崖期」(Cliff)——未归属就离职,期权作废,因此也被戏称为「金手铐」(Golden Handcuffs)。代价同样明显:公司不成,期权归零。所以健康的设计里,股权是「上限的放大器」,不能替代「底线的保障」——全部拿期权抵工资,等于让员工承担创业级风险,却只拿打工人的一票。</p>
+
+  <h2><span class="secno">5</span>案例:华为虚拟受限股与初创公司期权</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">两种「分享剩余」的方式</p>
+    <p><b>华为</b>(示意描述):长期实行员工持股计划,员工持有的是「虚拟受限股」——享有分红与增值收益,但不具备完整股东权利、不能对外转让,离职时由公司回购。其逻辑是让「奋斗者」分享公司成长的果实,把个人收益与长期业绩深度绑定。<b>初创公司</b>(示意描述):现金有限,便用期权补足总报酬——较低的固定工资,加上一份四年归属的期权。它天然筛选「愿意用确定性换可能性」的人:公司增值,早期成员获得远超现金的回报;公司失败,期权归零,只剩下那份较低的工资。</p>
+    <p class="case-learn"><b>这一课的教训:</b>两者的共性是「用未来的剩余,换取今天的投入」;差别在于华为分享的是已验证的现金流,初创分享的是未验证的可能性——确定性越高,「金手铐」才越贵。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>3P 付酬</dt><dd>按岗位(Position)、绩效(Performance)、能力(Person)三种逻辑组合定薪的框架。</dd>
+      <dt>总报酬 Total Rewards</dt><dd>固定现金、浮动现金、福利与成长体验的全部回报组合。</dd>
+      <dt>固浮比</dt><dd>固定薪酬与浮动薪酬的比例,调节「安心」与「上进」的核心旋钮。</dd>
+      <dt>岗位价值评估 Job Evaluation</dt><dd>按职责、复杂度等要素为岗位打分排序,支撑内部公平。</dd>
+      <dt>市场分位 Pay Percentile</dt><dd>薪酬在市场数据中的位置,如 P50 中位、P75 领先(示意)。</dd>
+      <dt>股权激励 Equity Incentive</dt><dd>让员工以股权类工具分享公司长期剩余的安排。</dd>
+      <dt>股票期权 Stock Option</dt><dd>按约定行权价在未来购买股份的权利,常分四年归属。</dd>
+      <dt>归属期 Vesting</dt><dd>期权逐步到手的时间表;未归属离职即失效,俗称金手铐。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>薪酬设计同时回答三个问题:对内公平(岗位价值)、对外竞争(市场分位)、对人有激励(绩效与能力)。固浮比是激励与风险的同源旋钮:低固定高浮动,买来冲劲也买来波动。股权用未来的剩余换今天的投入——它是上限的放大器,不是底线的替代品。</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">随堂测验 · 检索练习</div>
+    <script type="application/json">
+    [
+      { "q": "3P 付酬中的「岗位(Position)」维度,主要指按什么付酬?",
+        "options": ["按员工的星座属相与生辰八字确定薪酬包", "按岗位本身的价值(职责与影响)确定带宽", "按员工当月在内部论坛的发帖热度发放奖金", "按员工户籍所在城市的生活成本逐月发补贴"],
+        "answer": 1,
+        "explain": "岗位付酬看的是<b>岗位本身值多少</b>:职责范围、复杂度与影响,通常由岗位价值评估定级定带宽。生活成本补贴是另一种独立实践,不属于 3P 中的「岗位」维度。" },
+      { "q": "销售岗位的固浮比通常比行政职能岗更「低固定、高浮动」,主要原因是?",
+        "options": ["因为销售岗位的招聘流程通常比职能岗更漫长", "因为行政职能岗位从来不需要任何绩效的管理", "因为法律禁止向职能部门发放任何浮动性奖金", "因为销售产出更易量化,浮动与业绩挂钩激励更强"],
+        "answer": 3,
+        "explain": "固浮比的核心变量是<b>产出可量化程度</b>:销售的业绩高度可量化且因人而异,高浮动把收入与产出直接挂钩;职能岗产出协同、难逐月量化,以固定为主。法律并无禁止职能发奖金之说。" },
+      { "q": "「内部公平」与「外部竞争」分别主要依靠哪两组做法?",
+        "options": ["员工互相打分排名次,与老板单独秘密定薪", "按照工龄长短排队,与按照学历高低排队", "岗位价值评估定级,与对照市场分位定薪", "举办年度涨薪评比,与季度降薪的评比仪式"],
+        "answer": 2,
+        "explain": "内部公平靠<b>岗位价值评估</b>(同一把尺子量所有岗位),外部竞争靠<b>市场分位</b>对标(跟 P50 还是 P75,示意)。工龄、学历只是参考变量,秘密定薪与降薪评比更谈不上机制。" },
+      { "q": "公司用期权而非全部现金来支付部分薪酬,最主要的逻辑是什么?",
+        "options": ["让员工分享公司成长的收益,绑定长期利益", "因为现金会被银行冻结,期权结算不受任何监管", "因为期权没有行权价,员工稳赚不赔且零风险", "因为员工一旦签署期权协议,终身不得换雇主"],
+        "answer": 0,
+        "explain": "期权把员工收益与公司长期增值绑定,换来「像老板一样思考」;但它有行权价、有归属期,公司不成则归零——是<b>上限的放大器,不是零风险的福利</b>,更不能限制人身自由。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>延伸阅读</h2>
+    <ul>
+      <li>《驱动力》丹尼尔·平克 · 中国人民大学出版社(建议读:自主、专精、目的三要素,内驱与外励的边界)</li>
+      <li>《重新定义团队:谷歌如何工作》拉斯洛·博克 · 中信出版社(建议读:薪酬相关章节,「不公平薪酬」的理念)</li>
+      <li>《联盟:互联网时代的人才关系》里德·霍夫曼 · 中信出版社(建议读:后半部分,用股权思维重构雇佣关系)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-performance-management.html"><span class="pager-label">上一课</span><span class="pager-title">绩效管理:KPI 与 OKR</span></a>
+    <a class="next" href="../../07-operations-supply-chain/index.html"><span class="pager-label">下一课 · 进入下一分支</span><span class="pager-title">运营与供应链</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「我们初创公司现金流紧张,固浮比怎么定?」「帮我算算期权稀释的影响」——追问是学习的一部分。</div>
+    <p>人力资源管理 · 第 4 课 · 薪酬与激励 | 交互:固浮比模拟器 · 全部数字为教学示意,不构成薪酬建议</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var host = document.getElementById("payChart");
+  var readout = document.getElementById("payReadout");
+  var controls = document.getElementById("payControls");
+  if (!host || !readout || !controls || !window.Viz) return;
+
+  var TC = 20000, GOOD_K = 1.2, BAD_K = 0.3, YMAX = 25000;
+  var mode = "compare";
+
+  var slider = Viz.slider(controls, {
+    label: "固定部分占比", min: 40, max: 95, step: 5, value: 70,
+    format: function (v) { return v + "% 固定"; }
+  });
+
+  function calc(pct) {
+    var fixed = TC * pct / 100, pool = TC - fixed;
+    return { pct: pct, fixed: fixed, pool: pool,
+      bad: fixed + pool * BAD_K, good: fixed + pool * GOOD_K };
+  }
+  function yuan(v) { return v.toLocaleString("zh-CN") + " 元/月"; }
+  function wan(v) {
+    var s = (v / 10000).toFixed(2).replace(/0$/, "");
+    return s + " 万";
+  }
+
+  function draw(c) {
+    host.innerHTML = "";
+    var W = 640, H = 350, m = { t: 40, r: 26, b: 52, l: 70 };
+    var ih = H - m.t - m.b, iw = W - m.l - m.r;
+    var Y = Viz.scale(0, YMAX, m.t + ih, m.t);
+    var svg = Viz.svgEl("svg", { viewBox: "0 0 " + W + " " + H, role: "img",
+      style: "width:100%;height:auto;display:block" });
+
+    for (var g = 0; g <= 5; g++) {
+      var vy = 5000 * g;
+      svg.appendChild(Viz.svgEl("line", { x1: m.l, x2: m.l + iw, y1: Y(vy), y2: Y(vy),
+        stroke: "#ece6da", "stroke-width": 1 }));
+      var gl = Viz.svgEl("text", { x: m.l - 8, y: Y(vy) + 4, "text-anchor": "end", "font-size": 11, fill: "#a8a29e" });
+      gl.textContent = vy === 0 ? "0" : vy / 10000 + " 万";
+      svg.appendChild(gl);
+    }
+
+    var scen = mode === "compare" ? ["bad", "good"] : [mode];
+    var names = { bad: "差年景(浮动×" + BAD_K + ")", good: "好年景(浮动×" + GOOD_K + ")" };
+    var varFill = { bad: "#f9a8d4", good: "#be185d" };
+    var slot = iw / scen.length, bw = Math.min(130, slot * 0.56);
+
+    scen.forEach(function (key, idx) {
+      var total = key === "good" ? c.good : c.bad;
+      var varPart = total - c.fixed;
+      var cx = m.l + slot * (idx + 0.5);
+      var x0 = cx - bw / 2;
+      var yFixed = Y(c.fixed), yTotal = Y(total), yBase = m.t + ih;
+      var rectF = Viz.svgEl("rect", { x: x0, y: yFixed, width: bw, height: yBase - yFixed, rx: 5, fill: "#57534e" });
+      var rectV = Viz.svgEl("rect", { x: x0, y: yTotal, width: bw, height: yFixed - yTotal, rx: 5, fill: varFill[key] });
+      rectF.appendChild(Viz.svgEl("animate", { attributeName: "opacity", from: "0", to: "1", dur: "0.4s", fill: "freeze" }));
+      rectV.appendChild(Viz.svgEl("animate", { attributeName: "opacity", from: "0", to: "1", dur: "0.4s", begin: "0.1s", fill: "freeze" }));
+      svg.appendChild(rectF);
+      svg.appendChild(rectV);
+      function inside(yTop, yBot, text) {
+        if (yBot - yTop < 34) return;
+        var t = Viz.svgEl("text", { x: cx, y: (yTop + yBot) / 2 + 4, "text-anchor": "middle", "font-size": 11, "font-weight": 700, fill: "#fff" });
+        t.textContent = text;
+        svg.appendChild(t);
+      }
+      inside(yTotal, yFixed, "浮动 " + wan(varPart));
+      inside(yFixed, yBase, "固定 " + wan(c.fixed));
+      var top = Viz.svgEl("text", { x: cx, y: yTotal - 8, "text-anchor": "middle", "font-size": 12.5, "font-weight": 800, fill: "#1c1917" });
+      top.textContent = "合计 " + wan(total);
+      svg.appendChild(top);
+      var xl = Viz.svgEl("text", { x: cx, y: yBase + 20, "text-anchor": "middle", "font-size": 12, fill: "#78716c" });
+      xl.textContent = names[key];
+      svg.appendChild(xl);
+    });
+
+    svg.appendChild(Viz.svgEl("line", { x1: m.l, x2: m.l + iw, y1: m.t + ih, y2: m.t + ih, stroke: "#c9c1b2", "stroke-width": 1.5 }));
+    svg.appendChild(Viz.svgEl("line", { x1: m.l, x2: m.l + iw, y1: Y(TC), y2: Y(TC),
+      stroke: "#1c1917", "stroke-width": 1.4, "stroke-dasharray": "7 6", opacity: 0.55 }));
+    var tl = Viz.svgEl("text", { x: m.l + iw, y: Y(TC) - 7, "text-anchor": "end", "font-size": 11.5, "font-weight": 700, fill: "#57534e" });
+    tl.textContent = "目标总报酬 2.0 万(示意)";
+    svg.appendChild(tl);
+
+    var legend = [["#57534e", "固定"], ["#be185d", "浮动·好年景"], ["#f9a8d4", "浮动·差年景"]];
+    legend.forEach(function (lg, idx) {
+      var lx = m.l + idx * 118;
+      svg.appendChild(Viz.svgEl("rect", { x: lx, y: 16, width: 13, height: 13, rx: 3, fill: lg[0] }));
+      var lt = Viz.svgEl("text", { x: lx + 19, y: 27, "font-size": 11.5, fill: "#57534e" });
+      lt.textContent = lg[1];
+      svg.appendChild(lt);
+    });
+    host.appendChild(svg);
+  }
+
+  function update(c) {
+    draw(c);
+    var spread = Math.round((c.good - c.bad) / c.good * 100);
+    var verdict;
+    if (c.pct <= 55) {
+      verdict = "低固定高浮动的<b>销售型结构</b>:上限诱人,差年景收入明显缩水——它筛选的是能扛收入波动的人,也要求业绩真的可量化。";
+    } else if (c.pct >= 85) {
+      verdict = "高固定低浮动的<b>职能型结构</b>:确定性高、激励偏弱,适合产出难以逐月量化的岗位,靠成长与认可补足驱动。";
+    } else {
+      verdict = "介于两者之间的<b>均衡结构</b>:以稳为主、保留业绩弹性,是多数岗位的常见起点。";
+    }
+    readout.innerHTML =
+      "确定性收入(旱涝保收):<b>" + yuan(c.fixed) + "</b> · " +
+      "上限收入(好年景):<b>" + yuan(c.good) + "</b> · " +
+      "差年景收入:<b>" + yuan(c.bad) + "</b> · " +
+      "上下波动约 <b>" + spread + "%</b><br>" + verdict;
+  }
+
+  slider.onChange(function (v) { update(calc(v)); });
+  document.querySelectorAll("#payScenarios .scn-btn").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("#payScenarios .scn-btn").forEach(function (x) { x.classList.remove("active"); });
+      b.classList.add("active");
+      mode = b.getAttribute("data-m");
+      update(calc(slider.get()));
+    });
+  });
+  document.querySelectorAll("#payPresets .scn-btn").forEach(function (b) {
+    b.addEventListener("click", function () {
+      slider.set(parseFloat(b.getAttribute("data-fix")));
+    });
+  });
+  update(calc(slider.get()));
+})();
+</script>
+</body>
+</html>

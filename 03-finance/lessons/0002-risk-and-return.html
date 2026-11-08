@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>风险与收益 · 金融学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+</style>
+</head>
+<body class="branch-finance">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">金融学</a><span class="crumb-sep">/</span>
+  <span>风险与收益</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">金融学 · LESSON 2</p>
+  <h1>风险与收益</h1>
+  <p class="lead">投资的世界里只有两种货币:收益与风险。只报收益不提风险的推销,等于只报价格不报重量。学会同时读这两个数字,并懂得把它们「搭配着买」,才算真正入门。</p>
+
+  <h2><span class="secno">1</span>收益与风险:一枚硬币的两面</h2>
+  <p><em>收益率(Return)</em>衡量你赚了多少:(期末价值 − 期初投入 + 期间分红)÷ 期初投入。而金融学里「风险」最常用的度量是<em>波动率(Volatility)</em>,即收益率的标准差(Standard Deviation)——它回答的不是「能亏多少」,而是<strong>「结果有多不听话」</strong>:波动越大,最好与最坏年份的差距越大。</p>
+  <div class="concept">
+    <div class="concept-title">一个直觉</div>
+    <p>比较两只基金,不能只看平均年化。平均 8%、波动 4% 的产品,与平均 8%、波动 25% 的产品,长期复利结果可能相差很大——后者要先从深坑里爬出来,才能继续滚雪球。</p>
+  </div>
+
+  <h2><span class="secno">2</span>风险溢价:为波动开出的价格</h2>
+  <p>长期看,股票的整体收益高于国债。高出的部分叫<em>风险溢价(Risk Premium)</em>:市场为「愿意承受波动的人」支付的报酬。起点是<em>无风险利率(Risk-free Rate)</em>,通常用短期国债利率近似。记住这条食物链:<strong>无风险利率是地板,各类资产按波动大小在其上加价</strong>。可轻易消除的风险,没人会付溢价——这就引出本课的主角。</p>
+
+  <h2><span class="secno">3</span>分散投资:唯一免费的午餐</h2>
+  <p>把股票和债券按权重 w 与 (1−w) 组合,组合的预期收益是两者加权平均;但组合的波动率取决于<em>相关系数(Correlation Coefficient, ρ)</em>:</p>
+  <div class="formula">σ<sub>p</sub><sup>2</sup> = w<sup>2</sup>σ<sub>股</sub><sup>2</sup> + (1−w)<sup>2</sup>σ<sub>债</sub><sup>2</sup> + 2w(1−w)ρσ<sub>股</sub>σ<sub>债</sub></div>
+  <p>只要 ρ &lt; 1(两类资产不是同涨同跌的完美复制品),组合的风险就<strong>低于</strong>风险的加权平均,而预期收益并不打折。少掉的波动没有牺牲收益——所以马科维茨称<em>分散化(Diversification)</em>是「<strong>唯一免费的午餐</strong>」。</p>
+
+  <div class="sim" id="pt-sim">
+    <div class="sim-title">两资产组合模拟器:这份「午餐」有多大?</div>
+    <div class="sim-controls" id="pt-controls"></div>
+    <p class="sim-readout">
+      当前组合:预期收益 <b id="pt-ret">—</b> · 波动率 <b id="pt-risk">—</b>
+      | 若完全不分散(风险简单加权):<span id="pt-avg">—</span>
+      · 分散化帮你省下波动 <b id="pt-save">—</b>
+    </p>
+    <div id="pt-chart" aria-label="两资产组合风险收益图"></div>
+    <p style="font-size:.85rem;color:var(--ink-soft);margin:.6rem 0 0">
+      假设(示意):股票收益 8%、波动 20%;债券 3%、5%。灰虚线是 ρ=1(毫无分散效果)的加权风险,绿实线是当前 ρ 下的可行线,脉冲点是你的配置,空心点是「不分散」的假想位置。把 ρ 拉到 −1 再拉到 1.0,看曲线弯直、午餐消失。
+    </p>
+  </div>
+
+  <h2><span class="secno">4</span>系统性风险 vs 非系统性风险</h2>
+  <p>分散化能消除的只是<em>非系统性风险(Unsystematic Risk)</em>:个别公司特有的问题——造假、火灾、明星产品失败。而加息、衰退、地缘冲突影响所有资产,是<em>系统性风险(Systematic Risk)</em>,再多的分散也无济于事。持股只数增加,组合波动下降并迅速逼近一条「地板」:</p>
+  <figure class="figure">
+    <div class="figure-body"><div id="div-chart"></div></div>
+    <figcaption class="figure-caption"><b>图 1</b> 随着持股只数增加,总波动率先快速下降、随后趋平:跌不到地板之下的那部分,就是系统性风险(示意参数:个股特质波动约 25%,地板约 15%)。</figcaption>
+  </figure>
+  <p>这也解释了第 2 节的食物链:只有承担<strong>无法分散的系统性风险</strong>,才配得到风险溢价;个股的特有风险,市场不付钱。</p>
+
+  <h2><span class="secno">5</span>案例:为什么指数基金长期跑赢大多数人的选股</h2>
+  <div class="case">
+    <p class="case-title">一只「什么都不挑」的基金</p>
+    <p>1976 年,约翰·博格(John Bogle)在先锋集团(Vanguard)推出面向普通投资者的第一只指数基金,买入市场一揽子股票、几乎不做主动挑选。当时被讥为「平庸者的选择」,如今指数基金已是全球最大的投资工具之一。</p>
+    <p>两件常被引用的证据(示意):巴菲特的「十年赌局」——他押注一只标普 500 指数基金,十年后跑赢对冲基金经理挑出的一篮子基金;标普每年的 SPIVA 报告——约 15 年维度,大多数主动股票基金跑输自己的基准。</p>
+    <p>原因并不神秘:千万投资者的信息已「搅拌」进价格,主动选股还要付研究与交易成本;指数基金用近乎完全的分散化加极低成本,稳稳拿到市场收益。多数人输在费用与运气,不是输给指数的聪明。</p>
+    <p class="case-learn"><b>学到什么</b>分散化消除个股风险、成本侵蚀复利、系统性风险才有溢价——本课三个概念在指数基金身上合而为一。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>收益率(Return)</dt><dd>投入与产出的比率,含分红与价差。</dd>
+      <dt>波动率(Volatility)</dt><dd>收益率的标准差,衡量结果的不确定性。</dd>
+      <dt>无风险利率(Risk-free Rate)</dt><dd>近似以短期国债利率充当的收益起点。</dd>
+      <dt>风险溢价(Risk Premium)</dt><dd>为承担风险而超出无风险利率的补偿。</dd>
+      <dt>相关系数(ρ)</dt><dd>两类资产同涨同跌的程度,取值 −1 到 1。</dd>
+      <dt>分散化(Diversification)</dt><dd>组合多类资产以降低非系统性风险。</dd>
+      <dt>系统性风险(Systematic Risk)</dt><dd>全市场共担、无法分散的风险。</dd>
+      <dt>非系统性风险(Unsystematic Risk)</dt><dd>个别公司特有、可被分散掉的风险。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>风险不只是「亏钱的可能」,而是结果的波动,用波动率度量。收益必须与风险一起报价:只有系统性风险才能赚到溢价。<strong>分散化是唯一免费的午餐</strong>——不牺牲预期收益,就能削掉个股风险。</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">自查测验</div>
+    <script type="application/json">
+    [
+      {
+        "q": "在投资学里,衡量一项资产「风险」最常用的指标是什么?",
+        "options": [
+          "波动率:收益率偏离平均的幅度",
+          "期望值:长期平均能赚到的收益率",
+          "相关系数:两类资产同涨同跌程度",
+          "换手率:一段时间筹码易手的频率"
+        ],
+        "answer": 0,
+        "explain": "波动率(收益率的标准差)度量结果的不确定性,是金融学里风险的默认度量;期望值衡量收益,相关系数描述联动,换手率衡量交易活跃度,都不是风险本身。"
+      },
+      {
+        "q": "为什么说分散投资是「唯一免费的午餐」?",
+        "options": [
+          "能提高每项资产本身的预期收益率",
+          "能把组合面对的一切风险全消除",
+          "相关小于 1 时风险低于加权平均",
+          "能保证组合在任何年份都不亏钱"
+        ],
+        "answer": 2,
+        "explain": "当相关系数小于 1,组合波动率低于各资产波动率的加权平均,而预期收益仍等于加权平均——少掉的风险没有付出收益代价,故称免费。它不能提高收益,也消不掉系统性风险,更不保证不亏。"
+      },
+      {
+        "q": "下列哪种风险,原则上可以通过持有足够多的不同股票来基本消除?",
+        "options": [
+          "加息周期里全市场估值下移",
+          "某家公司财务造假暴雷的风险",
+          "衰退导致所有行业利润下滑",
+          "汇率波动影响海外资产价值"
+        ],
+        "answer": 1,
+        "explain": "个别公司造假是个股特有风险,分散到足够多的公司后基本被抵消;其余三项影响整个市场,属于系统性风险,无法靠多买几只股票消除。"
+      },
+      {
+        "q": "股票的长期预期收益通常高于国债,高出的这部分补偿叫什么?",
+        "options": ["名义利率", "实际利率", "期限利差", "风险溢价"],
+        "answer": 3,
+        "explain": "超出无风险利率(近似国债利率)的那部分预期回报,就是风险溢价——市场为承担股票波动支付的报酬。期限利差衡量的是期限长短差异,不是风险差异。"
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《投资学》滋维·博迪 等 · 机械工业出版社(建议读:第 5 章「风险与收益入门及历史情境」、第 7 章「最优风险资产组合」)</li>
+      <li>《漫步华尔街》伯顿·马尔基尔 · 机械工业出版社(关于市场有效性与指数化投资的部分)</li>
+      <li>可搜索关键词:Markowitz portfolio theory · SPIVA report</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-time-value-of-money.html"><span class="pager-label">← 上一课</span><span class="pager-title">货币的时间价值</span></a>
+    <a class="next" href="0003-npv-and-irr.html"><span class="pager-label">下一课 →</span><span class="pager-title">NPV:一个项目值不值得投</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>比如「我的存款加基金,相关系数大概算多少?」——回到对话里直接问你的 AI 老师,把本课模型套到你自己的持仓上。</div>
+    <p>金融学 · 第 2 课 · 风险与收益 | 下一课:把时间价值与风险溢价装进同一台机器——NPV 投资决策。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- 两资产组合模拟器 ---- */
+  var muS = 8, sgS = 20, muB = 3, sgB = 5; // 示意参数:%
+  var controls = document.getElementById("pt-controls");
+  var chartBox = document.getElementById("pt-chart");
+
+  var sW = Viz.slider(controls, { label: "股票权重", min: 0, max: 100, step: 5, value: 50, format: function (v) { return v + "%"; } });
+  var sRho = Viz.slider(controls, { label: "相关系数 ρ", min: -1, max: 1, step: 0.1, value: 0, format: function (v) { return v.toFixed(1); } });
+
+  function port(w, rho) {
+    var v = w * w * sgS * sgS + (1 - w) * (1 - w) * sgB * sgB + 2 * w * (1 - w) * rho * sgS * sgB;
+    return [w * muS + (1 - w) * muB, Math.sqrt(Math.max(v, 0))];
+  }
+
+  var ax = Viz.axes(chartBox, {
+    w: 640, h: 420, margin: { t: 20, r: 26, b: 48, l: 56 },
+    xDomain: [0, 22], yDomain: [0, 10],
+    xLabel: "风险:波动率(%)", yLabel: "预期收益(%)",
+    xTicks: 6, yTicks: 5,
+    xFormat: function (v) { return v + "%"; },
+    yFormat: function (v) { return v + "%"; }
+  });
+  var gDyn = Viz.svgEl("g", {});
+  ax.svg.appendChild(gDyn);
+
+  function render() {
+    var w = sW.get() / 100, rho = sRho.get();
+    var p = port(w, rho), pnd = port(w, 1);
+    document.getElementById("pt-ret").textContent = p[0].toFixed(1) + "%";
+    document.getElementById("pt-risk").textContent = p[1].toFixed(1) + "%";
+    document.getElementById("pt-avg").textContent = pnd[1].toFixed(1) + "%";
+    document.getElementById("pt-save").textContent = (pnd[1] - p[1]).toFixed(1) + " 个百分点";
+
+    while (gDyn.firstChild) gDyn.removeChild(gDyn.firstChild);
+    var curve = [], line = [];
+    for (var i = 0; i <= 40; i++) {
+      var t = i / 40;
+      curve.push([ax.x(port(t, rho)[1]), ax.y(port(t, rho)[0])]);
+      line.push([ax.x(port(t, 1)[1]), ax.y(port(t, 1)[0])]);
+    }
+    Viz.line(gDyn, line, { color: "#c9c1b2", width: 2, dash: "6 6" });
+    Viz.line(gDyn, curve, { color: "#047857", width: 3 });
+    Viz.dot(gDyn, ax.x(sgS), ax.y(muS), { fill: "#1c1917", r: 5 });
+    Viz.label(gDyn, ax.x(sgS) + 8, ax.y(muS) - 8, "股票 100%", { size: 12 });
+    Viz.dot(gDyn, ax.x(sgB), ax.y(muB), { fill: "#1c1917", r: 5 });
+    Viz.label(gDyn, ax.x(sgB) - 8, ax.y(muB) + 20, "债券 100%", { size: 12, anchor: "end" });
+    if (pnd[1] - p[1] > 0.4) {
+      Viz.line(gDyn, [[ax.x(pnd[1]), ax.y(p[0])], [ax.x(p[1]), ax.y(p[0])]], { color: "#b91c1c", width: 2, dash: "4 4" });
+      Viz.label(gDyn, (ax.x(pnd[1]) + ax.x(p[1])) / 2, ax.y(p[0]) + 18, "省下的风险", { size: 11.5, color: "#b91c1c", anchor: "middle" });
+      Viz.dot(gDyn, ax.x(pnd[1]), ax.y(p[0]), { fill: "#e7e0d3", r: 5 });
+    }
+    Viz.dot(gDyn, ax.x(p[1]), ax.y(p[0]), { fill: "#047857", r: 8, pulse: true });
+    Viz.label(gDyn, ax.x(p[1]), ax.y(p[0]) - 18, "你的组合", { size: 12.5, color: "#047857", anchor: "middle" });
+  }
+  [sW, sRho].forEach(function (s) { s.onChange(render); });
+  render();
+
+  /* ---- 图 1:持股只数与总波动 ---- */
+  var box = document.getElementById("div-chart");
+  var sys = 15, idio = 25;
+  var ax2 = Viz.axes(box, {
+    w: 640, h: 340, margin: { t: 16, r: 22, b: 46, l: 54 },
+    xDomain: [1, 40], yDomain: [0, 32],
+    xLabel: "组合中的股票只数(只)", yLabel: "组合波动率(%)",
+    xTicks: 8, yTicks: 4,
+    yFormat: function (v) { return v + "%"; }
+  });
+  ax2.plot(function (svg, x, y) {
+    var pts = [];
+    for (var n = 1; n <= 40; n++) pts.push([x(n), y(Math.sqrt(sys * sys + idio * idio / n))]);
+    Viz.line(svg, pts, { color: "#047857", width: 3 });
+    Viz.line(svg, [[x(1), y(sys)], [x(40), y(sys)]], { color: "#b91c1c", width: 2, dash: "6 5" });
+    Viz.label(svg, x(22), y(sys) - 10, "系统性风险地板(约 15%,示意)", { color: "#b91c1c", size: 12 });
+    var n20 = Math.sqrt(sys * sys + idio * idio / 20);
+    Viz.dot(svg, x(20), y(n20), { fill: "#047857", r: 5 });
+    Viz.label(svg, x(20) + 8, y(n20) - 12, "约 20 只:已接近地板", { size: 12 });
+    Viz.label(svg, x(1.5), y(Math.sqrt(sys * sys + idio * idio)) - 12, "单只股票", { size: 12 });
+  });
+})();
+</script>
+</body>
+</html>

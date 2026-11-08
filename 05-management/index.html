@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>管理学 · Business 通识课程库</title>
+<link rel="stylesheet" href="../assets/course.css">
+<style>
+  .branch-hero { padding: 2.6rem 0 .6rem; }
+  .branch-hero .hero-kicker {
+    font-size: .8rem; font-weight: 800; letter-spacing: .28em; color: var(--accent);
+    text-transform: uppercase; margin-bottom: .6rem;
+  }
+  .branch-hero h1 { font-size: 2.5rem; margin: 0 0 .5rem; }
+  .branch-hero .hero-sub { color: var(--ink-soft); font-size: 1.08rem; max-width: 40rem; }
+  .rel-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin: 1.4rem 0; }
+  .rel-card {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: .95rem 1.1rem; font-size: .9rem; color: var(--ink-soft); line-height: 1.75;
+  }
+  .rel-card b { display: block; color: var(--ink); font-size: .97rem; margin-bottom: .2rem; }
+  .rel-card .rel-tag {
+    display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: .12em;
+    color: var(--accent); border: 1.5px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    border-radius: 999px; padding: .05rem .6rem; margin-bottom: .45rem;
+  }
+  .status-pill {
+    display: inline-block; font-size: .78rem; font-weight: 700; border-radius: 999px; padding: .12rem .7rem; white-space: nowrap;
+  }
+  .status-pill.done { color: var(--good); background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .status-pill.todo { color: var(--ink-soft); background: var(--paper-deep); border: 1px solid var(--line); }
+</style>
+</head>
+<body class="branch-management">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../index.html">总览</a><span class="crumb-sep">/</span>
+  <span>管理学</span>
+  <span class="progress">4 节交互课 · 约 2.5 小时</span>
+</div></nav>
+
+<main class="container">
+  <header class="branch-hero">
+    <p class="hero-kicker">Business · Branch 05 · Management</p>
+    <h1>管理学</h1>
+    <p class="hero-sub">通过他人拿结果的学问。一个人勤奋就够了,一群人勤奋还需要管理:定方向、分好工、点燃人、盯偏差——这门分支把管理者的工作拆成看得懂、练得会的四块拼图。</p>
+  </header>
+
+  <h2><span class="secno">1</span>子分支全景</h2>
+  <p>管理学是一个大屋子。本分支的 4 节课优先覆盖最常被用到、也最能迁移到任何行业的四块地基;其余子分支标注为进阶待学,学完本分支后可按需扩展。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>子分支</th><th>核心问题</th><th>本分支状态</th></tr></thead>
+      <tbody>
+        <tr><td><b>管理四大职能</b>(计划·组织·领导·控制)</td><td>管理者的工作到底由什么构成?四项职能如何咬合成闭环?</td><td><span class="status-pill done">已覆盖 · 第 1 课</span></td></tr>
+        <tr><td><b>决策科学</b>(理性与偏差)</td><td>为什么聪明人也会做出糟糕决定?如何识别并拦截系统性偏差?</td><td><span class="status-pill done">已覆盖 · 第 2 课</span></td></tr>
+        <tr><td><b>组织行为学</b>·激励</td><td>人们为什么愿意努力?钱、认可、成长分别在哪个环节起作用?</td><td><span class="status-pill done">已覆盖 · 第 3 课</span></td></tr>
+        <tr><td><b>领导力与团队</b></td><td>一群人如何变成一个团队?领导风格要不要随人而变?</td><td><span class="status-pill done">已覆盖 · 第 4 课</span></td></tr>
+        <tr><td><b>变革管理</b>(组织变革与文化)</td><td>组织为什么会抗拒变化?如何推动人心所系的转型?</td><td><span class="status-pill todo">进阶待学 · 建议先修完本分支</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.88rem;color:var(--ink-faint)">进阶线索:变革管理可延伸阅读约翰·科特《领导变革》;组织文化可读埃德加·沙因《组织文化与领导力》。</p>
+
+  <h2><span class="secno">2</span>学习路径:为什么按这个顺序</h2>
+  <div class="path-box" data-reveal>
+    <h3>由「事」到「人」,由框架到技艺</h3>
+    <p class="path-steps">
+      第 1 课 <b>四大职能</b> <span class="arrow">→</span> 第 2 课 <b>决策</b> <span class="arrow">→</span> 第 3 课 <b>激励</b> <span class="arrow">→</span> 第 4 课 <b>团队与领导</b>
+    </p>
+    <p style="font-size:.9rem;color:var(--ink-soft);margin:.4rem 0 0">先拿到管理工作的<b>全景骨架</b>(四大职能);再进入管理者最日常、也最容易出错的活动——<b>决策</b>,看清大脑的系统性偏差;然后把镜头推近到「人」的内部——<b>动机从哪里来</b>;最后把个体拼成整体——<b>团队如何演化、领导如何因人而异</b>。四课串起来,恰好是「定方向 → 做判断 → 点燃人 → 带队伍」的完整链条。</p>
+  </div>
+
+  <h2><span class="secno">3</span>课程列表</h2>
+  <ul class="lesson-list">
+    <li data-reveal><a href="lessons/0001-four-functions.html">
+      <span>
+        <span class="ll-title">管理是什么:四大职能</span>
+        <span class="ll-sub">计划 → 组织 → 领导 → 控制的闭环;效率与效能之辨;明茨伯格的管理者角色。交互:POLC 循环转轮。</span>
+      </span>
+    </a></li>
+    <li data-reveal><a href="lessons/0002-decision-biases.html">
+      <span>
+        <span class="ll-title">决策:理性与偏差</span>
+        <span class="ll-sub">有限理性与满意解;锚定、确认偏误、沉没成本、损失厌恶。交互:偏差实验室(三个迷你实验)。</span>
+      </span>
+    </a></li>
+    <li data-reveal><a href="lessons/0003-motivation-theories.html">
+      <span>
+        <span class="ll-title">激励:人们为什么愿意努力</span>
+        <span class="ll-sub">马斯洛五层、赫茨伯格双因素、期望理论三环链条。交互:双因素分拣游戏 + 期望链条开关。</span>
+      </span>
+    </a></li>
+    <li data-reveal><a href="lessons/0004-team-and-leadership.html">
+      <span>
+        <span class="ll-title">团队与领导力</span>
+        <span class="ll-sub">塔克曼五阶段;任务与关系行为;情境领导四风格;领导 vs 管理。交互:情境领导矩阵模拟器。</span>
+      </span>
+    </a></li>
+  </ul>
+
+  <h2><span class="secno">4</span>与其他分支的关系</h2>
+  <div class="rel-cards" data-reveal>
+    <div class="rel-card">
+      <span class="rel-tag">前置</span>
+      <b>无硬性前置</b>
+      本分支自成一格,零基础可直接学。若已看过 01 经济学(理解权衡)或 04 营销(理解顾客),案例体会会更深,但完全不必需。
+    </div>
+    <div class="rel-card">
+      <span class="rel-tag">后续</span>
+      <b>06 人力资源管理</b>
+      本课第 3 课讲「人为什么愿意干」,06 分支深入「怎么选人、育人、考核、付薪」——把「人」这件事拆到职能与制度层。
+    </div>
+    <div class="rel-card">
+      <span class="rel-tag">后续</span>
+      <b>08 战略管理</b>
+      本分支的「计划」职能停留在部门与目标层;08 分支升维到公司层:定位、五力、竞争优势——回答「往哪里去」。
+    </div>
+    <div class="rel-card">
+      <span class="rel-tag">相邻</span>
+      <b>07 运营与供应链</b>
+      本分支的「控制」讲衡量与纠偏的原理;07 分支把控制落地到流程、质量与供应链的工程细节。
+    </div>
+  </div>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「给我举一个我所在行业的四大职能例子」「用我的团队演练一下情境领导」——把概念翻译成你自己的场景,才算真的学会。</div>
+    <p>管理学 · Business 通识课程库 · 案例数字均为示意量级,详见各课标注。</p>
+  </footer>
+</main>
+
+<script src="../assets/viz.js"></script>
+</body>
+</html>

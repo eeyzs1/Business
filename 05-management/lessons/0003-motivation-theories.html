@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>激励:人们为什么愿意努力 · 管理学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .btn-primary{background:var(--accent);color:#fff;border:none;border-radius:999px;padding:.5rem 1.15rem;font-weight:700;cursor:pointer;font-family:var(--sans);font-size:.9rem}
+  .btn-ghost{background:#fff;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:.45rem 1rem;font-weight:700;cursor:pointer;font-family:var(--sans);font-size:.88rem}
+  .btn-primary:disabled{opacity:.45;cursor:default}
+  .lab-p{font-size:.93rem;color:var(--ink-soft);margin-bottom:.8rem}
+  .lab-fb{margin-top:.9rem;font-size:.92rem;background:var(--paper-deep);border-radius:8px;padding:.85rem 1rem;color:var(--ink-soft);line-height:1.8}
+  .lab-fb b{color:var(--accent)}
+  .lab-fb.good{background:#f0fdf4}
+  .lab-fb.bad{background:#fef2f2}
+  .scorebar{display:flex;align-items:center;gap:1.1rem;flex-wrap:wrap;font-size:.9rem;color:var(--ink-soft);padding:.5rem 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin:.5rem 0}
+  .scorebar b{color:var(--accent)}
+  .tf-pool{display:flex;flex-wrap:wrap;gap:.55rem;min-height:2.4rem;margin:.6rem 0}
+  .tf-card{font-family:var(--sans);font-size:.9rem;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:.35rem .9rem;cursor:pointer;transition:all .15s ease}
+  .tf-card:hover{border-color:var(--accent)}
+  .tf-card.sel{border-color:var(--accent);background:#f5f0ff;font-weight:700;box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent)}
+  .tf-buckets{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:.8rem 0}
+  @media(max-width:560px){.tf-buckets{grid-template-columns:1fr}}
+  .tf-bucket{background:var(--paper-deep);border-radius:10px;padding:.7rem .85rem}
+  .tf-bh{font-weight:800;font-size:.95rem;margin-bottom:.2rem}
+  .tf-bh span{display:block;font-weight:400;font-size:.76rem;color:var(--ink-faint);margin-bottom:.5rem}
+  .tf-bucket ul{margin:.4rem 0 .7rem;padding-left:0;list-style:none;font-size:.85rem;line-height:1.7}
+  .tf-bucket li{padding-left:1.5rem;position:relative}
+  .tf-bucket li.ok::before{content:"✓";position:absolute;left:.2rem;color:var(--good);font-weight:800}
+  .tf-bucket li.no::before{content:"✗";position:absolute;left:.2rem;color:var(--bad);font-weight:800}
+  .ex-chain{display:flex;align-items:center;justify-content:center;gap:.45rem;flex-wrap:wrap;margin:.9rem 0 .5rem}
+  .ex-node{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:.5rem .8rem;text-align:center;font-size:.9rem;font-weight:700;min-width:5.2rem;box-shadow:var(--shadow)}
+  .ex-node i{display:block;font-style:normal;font-weight:400;font-size:.72rem;color:var(--ink-faint)}
+  .ex-link{display:flex;flex-direction:column;align-items:center;gap:.15rem;min-width:7.6rem}
+  .ex-toggle{border:none;border-radius:999px;padding:.3rem .8rem;font-size:.8rem;font-weight:800;cursor:pointer;font-family:var(--sans);transition:all .2s ease}
+  .ex-toggle.on{background:var(--good);color:#fff}
+  .ex-toggle.off{background:#fef2f2;color:var(--bad);border:1.5px dashed var(--bad)}
+  .ex-link small{font-size:.7rem;color:var(--ink-faint);text-align:center;line-height:1.4}
+  .ex-link .ex-wire{font-size:1.1rem;font-weight:800;color:var(--good)}
+  .ex-link .ex-wire.broken{color:var(--bad);text-decoration:line-through}
+  .ex-meter{height:14px;border-radius:999px;background:var(--line);overflow:hidden;flex:1;min-width:150px}
+  .ex-meter span{display:block;height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .35s ease,background .35s ease}
+  .ex-meter-wrap{display:flex;align-items:center;gap:1rem;margin:.9rem 0 .3rem}
+  .ex-readout{font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;font-size:.95rem;white-space:nowrap}
+  .maslow-fig{display:flex;justify-content:center;padding:.6rem 0}
+</style>
+</head>
+<body class="branch-management">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">管理学</a><span class="crumb-sep">/</span>
+  <span>激励:人们为什么愿意努力</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">管理学 · LESSON 3</p>
+  <h1>激励:人们为什么愿意努力</h1>
+  <p class="lead">同样的岗位、同样的薪水,有人自愿把事做到极致,有人给钱也只想躺平。激励(Motivation)是管理中最神秘也最值钱的一环——这一课拆开三个经典理论,你会看到钱、认可、成长分别在哪个齿轮上起作用。</p>
+
+  <h2><span class="secno">1</span>马斯洛:需求是分层的</h2>
+  <p>心理学家马斯洛(Abraham Maslow)提出<em>需求层次理论</em>(Hierarchy of Needs):人的需求像金字塔一样分层排列,低层被大致满足后,高层需求才成为行为的主导动力。放到职场,每一层都有对应的「管理语言」:</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body maslow-fig">
+      <svg viewBox="0 0 560 300" role="img" aria-label="马斯洛需求层次金字塔">
+        <g font-size="13" font-weight="700">
+          <polygon points="230,14 258,68 202,68" fill="#ddd6fe"/>
+          <polygon points="196,76 264,76 290,130 170,130" fill="#c4b5fd"/>
+          <polygon points="164,138 296,138 322,192 138,192" fill="#a78bfa"/>
+          <polygon points="132,200 328,200 354,254 106,254" fill="#8b5cf6"/>
+          <polygon points="100,262 360,262 386,292 74,292" fill="#7c3aed"/>
+          <text x="230" y="52" text-anchor="middle" fill="#fff">自我实现</text>
+          <text x="230" y="106" text-anchor="middle" fill="#fff">尊重需求</text>
+          <text x="230" y="168" text-anchor="middle" fill="#fff">社交(归属)需求</text>
+          <text x="230" y="230" text-anchor="middle" fill="#fff">安全需求</text>
+          <text x="230" y="281" text-anchor="middle" fill="#fff" font-size="12.5">生理需求</text>
+        </g>
+        <g font-size="11.5" fill="#57534e">
+          <text x="394" y="60">发挥潜能、成长</text>
+          <text x="394" y="114">被认可、有地位</text>
+          <text x="394" y="176">团队归属、友谊</text>
+          <text x="394" y="238">职位安全、社保</text>
+          <text x="394" y="288">薪水、休息、工作条件</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 马斯洛需求层次(职场对照,示意)。低层大致满足后,高层才成为主要动力来源。</figcaption>
+  </figure>
+  <p>使用时记住两点:其一,层级是主导关系而非严格顺序——有人收入不错仍渴望归属,有人在动荡中反而爆发创造;其二,它提醒管理者诊断「这个人现在缺什么」:对担心裁员的人谈情怀,对渴望成长的人只发奖金,都是给药不对症。</p>
+
+  <h2><span class="secno">2</span>赫茨伯格:满意与不满意不是一回事</h2>
+  <p>赫茨伯格(Frederick Herzberg)发现一个反直觉的事实:让员工「消除不满」的因素,和让员工「产生投入」的因素,是<b>两批不同的东西</b>。这就是<em>双因素理论</em>(Two-Factor Theory):</p>
+  <div class="concept">
+    <div class="concept-title">定义 · 双因素</div>
+    <p style="margin:0"><strong>保健因素</strong>(Hygiene Factors):薪水、公司政策、工作条件、人际关系、安全感。缺失会引发不满,但补齐只能到达「没有不满」,并不会点燃热情——像止痛药,不治病根也不提神。<br>
+    <strong>激励因素</strong>(Motivators):成就感、认可、工作本身的意义、责任、晋升与成长。它们才真正驱动投入——像点火器,点燃的是「愿意」。</p>
+  </div>
+  <p>一句话版本:<strong>加薪治病,成就点火。</strong>所以涨薪之后的常见剧情是:抱怨消失了,积极性并没有上升。下面这个分拣游戏,测你能不能把两桶分清楚:</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">双因素分拣游戏:把 12 个职场因素扔进正确的桶</div>
+    <p class="lab-p">先点一张卡片选中,再点「扔进保健桶 / 激励桶」。扔完即判分并解释——分数不重要,判错的条目才是本课最值钱的部分。</p>
+    <div class="scorebar">
+      <span>得分:<b id="tf-score">0</b></span><span>已分:<b id="tf-done">0</b> / 12</span>
+      <button type="button" class="btn-ghost" id="tf-reset" style="margin-left:auto">↻ 重玩</button>
+    </div>
+    <div class="tf-pool" id="tf-pool"></div>
+    <div class="tf-buckets">
+      <div class="tf-bucket" id="tf-bucket-h">
+        <div class="tf-bh">🧯 保健因素桶<span>没有它 → 不满;补齐 → 只是「没有不满」</span></div>
+        <ul id="tf-list-h"></ul>
+        <button type="button" class="btn-primary" data-put="H">扔进保健桶</button>
+      </div>
+      <div class="tf-bucket" id="tf-bucket-m">
+        <div class="tf-bh">🔥 激励因素桶<span>有它 → 投入;没有 → 也未必不满,只是没劲</span></div>
+        <ul id="tf-list-m"></ul>
+        <button type="button" class="btn-primary" data-put="M">扔进激励桶</button>
+      </div>
+    </div>
+    <div class="lab-fb" id="tf-fb">点一张卡片开始 →</div>
+  </div>
+
+  <h2><span class="secno">3</span>期望理论:三环相乘,断一环归零</h2>
+  <p>弗鲁姆(Victor Vroom)的<em>期望理论</em>(Expectancy Theory)把「愿意努力」拆成一条乘法链条——注意是<strong>乘法不是加法</strong>,任何一环为零,结果就是零:</p>
+  <div class="formula">激励力 M = 期望 E × 工具性 I × 效价 V</div>
+  <ul class="steps">
+    <li><b>期望 E(Expectancy):努力 → 绩效。</b>「我拼了能不能达标?」目标过高、资源不足,答案是零。</li>
+    <li><b>工具性 I(Instrumentality):绩效 → 奖赏。</b>「达标了,奖励真的会兑现给我吗?」考核与激励脱钩,答案是零。</li>
+    <li><b>效价 V(Valence):奖赏 → 我在乎。</b>「给的奖励是我想要的吗?」对求成长的人只发钱、对要养家的人只画饼,答案是零。</li>
+  </ul>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">期望链条演示:亲手断掉一环试试</div>
+    <div class="ex-chain">
+      <div class="ex-node">💪 努力<i>我打算拼一把</i></div>
+      <div class="ex-link" id="lnk-E"><span class="ex-wire">—✕—</span><button type="button" class="ex-toggle on" data-k="E">E 期望 · 通</button><small>努力能换来绩效吗?</small></div>
+      <div class="ex-node">🎯 绩效<i>我达到了标准</i></div>
+      <div class="ex-link" id="lnk-I"><span class="ex-wire">—✕—</span><button type="button" class="ex-toggle on" data-k="I">I 工具性 · 通</button><small>绩效能兑现奖赏吗?</small></div>
+      <div class="ex-node">🏅 奖赏<i>组织给了兑现</i></div>
+      <div class="ex-link" id="lnk-V"><span class="ex-wire">—✕—</span><button type="button" class="ex-toggle on" data-k="V">V 效价 · 通</button><small>这个奖赏我在乎吗?</small></div>
+      <div class="ex-node">🔥 动力<i>激励力 M</i></div>
+    </div>
+    <div class="ex-meter-wrap">
+      <div class="ex-meter"><span id="ex-fill"></span></div>
+      <div class="ex-readout" id="ex-read"></div>
+    </div>
+    <div class="lab-fb" id="ex-fb"></div>
+  </div>
+
+  <h2><span class="secno">4</span>内在动机:小心奖赏的副作用</h2>
+  <p>还有一股力量不靠外部奖赏驱动,叫<em>内在动机</em>(Intrinsic Motivation):为事情本身——好奇、乐趣、意义——而做。它与外部奖赏并非简单叠加。心理学家莱珀等人 1973 年的经典研究(示意)发现:原本爱画画的孩子,一旦因为画画得到物质奖励、之后奖励停止,画画时间反而比从未受奖的孩子更短——外部理由挤占了内部理由,这叫<em>过度理由效应</em>(Overjustification Effect)。</p>
+  <div class="callout tip">
+    <span class="callout-label">管理提示</span> 奖励要奖「行为与成长」(认可进步、给更大舞台),慎用奖励去「收买」本来就热爱的事;对创造性工作尤其如此——钱给少了不行,但只靠钱,买不来热爱。
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例:海底捞的一线免单权(示意)</p>
+    <p>公开出版的《海底捞你学不会》等资料描述过一个细节(示意):海底捞的一线服务员拥有一定的免单、送菜权限——顾客不满意时,不必层层请示,现场就能拍板补救。按常理,免单是「损失」,授权给最基层似乎是风险;但海底捞的逻辑是:让最接近顾客的人掌握服务决策权。</p>
+    <p>用本课的透镜看,这一招同时击中三个理论点:对一线员工,<b>信任与拍板权是激励因素</b>(责任与认可,点燃「这是我的店」的投入),而不是单纯的保健条件;对顾客,补救不需要等待,体验闭环在现场完成;对组织,决策权下沉换来了服务速度。与许多连锁企业「服务员无权、层层上报」的对照,恰好说明:激励设计的关键常常不在薪酬表里,而在权责结构里。</p>
+    <p class="case-learn"><b>这一案例的看点:</b>免单授权的本质是把「保健式的流程管控」换成「激励式的信任授予」。它同时提醒边界——授权要配培训与复盘,否则信任会变成失控(第 4 课的情境领导正好接上这个话题)。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>激励(Motivation)</dt><dd>引发、维持行为并使其指向目标的内在心理过程。</dd>
+      <dt>需求层次理论(Hierarchy of Needs)</dt><dd>马斯洛提出:生理、安全、社交、尊重、自我实现五层需求依次主导行为。</dd>
+      <dt>保健因素(Hygiene Factors)</dt><dd>赫茨伯格双因素之一:缺失引发不满,补齐只达「没有不满」。</dd>
+      <dt>激励因素(Motivators)</dt><dd>双因素之二:成就、认可、责任、成长等,真正驱动投入。</dd>
+      <dt>期望理论(Expectancy Theory)</dt><dd>弗鲁姆提出:激励力 = 期望 × 工具性 × 效价,三环相乘。</dd>
+      <dt>工具性(Instrumentality)</dt><dd>绩效能兑现奖赏的主观概率——「做到了,组织认不认」。</dd>
+      <dt>效价(Valence)</dt><dd>奖赏在个体心中的价值——「给的,我在乎吗」。</dd>
+      <dt>过度理由效应(Overjustification Effect)</dt><dd>外部奖赏挤占内在理由,导致原有兴趣下降。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>保健因素治病,激励因素点火——涨薪消除不满,成就点燃投入。期望理论三环相乘:努力能达标、达标能兑现、兑现的我在乎,断一环则动力归零。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "公司全员涨薪之后,员工的不满明显减少,但积极性并没有上升。按赫茨伯格的解释,薪水属于:",
+        "options": ["保健因素", "激励因素", "效价变量", "期望链条"],
+        "answer": 0,
+        "explain": "薪水是典型保健因素:不足引发不满,补齐只到达「没有不满」,不产生投入感。想提升积极性,需要成就、认可、责任、成长这类激励因素——即「加薪治病,成就点火」。" },
+      { "q": "员工相信努力工作一定能达标,但他观察到:达标的人也从未拿到过承诺的奖励。按期望理论,链条断在:",
+        "options": ["期望(努力→绩效)", "效价(奖赏→在乎)", "反馈(绩效→成长)", "工具性(绩效→奖赏)"],
+        "answer": 3,
+        "explain": "他相信「努力→绩效」这一环通(期望没问题),但「绩效→奖赏」兑现不了——这是工具性断裂。乘法链条里这一环为零,激励力整体归零。" },
+      { "q": "海底捞给一线服务员免单授权,为什么能起到激励作用?最贴切的解释是:",
+        "options": ["改善了门店的工作条件", "赋予责任与信任,激发投入", "提高了职位的稳定安全感", "补齐了缺失的保健类因素"],
+        "answer": 1,
+        "explain": "免单权给到的是拍板的责任与被信任的认可,直接对应赫茨伯格的激励因素(责任、认可),点燃「这是我的店」的投入。工作条件、安全感则属于保健因素,与授权的机制不同。" },
+      { "q": "双因素分拣:「获得认可(被看见、被肯定)」应放入哪一桶?",
+        "options": ["保健因素", "中性因素", "激励因素", "外部因素"],
+        "answer": 2,
+        "explain": "认可满足的是尊重需求,是点燃投入的点火器之一,归激励因素。对照记忆:消除抱怨的是保健(政策、条件、薪水),产生热情的是激励(成就、认可、责任、成长)。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《组织行为学》(第 16 版)斯蒂芬·罗宾斯、蒂莫西·贾奇 · 中国人民大学出版社(建议读:动机章节,三大理论的教材级展开)</li>
+      <li>《动机与人格》亚伯拉罕·马斯洛 · 中国人民大学出版社(建议读:需求层次原始论述,理解「主导需求」的概念)</li>
+      <li>《管理的实践》彼得·德鲁克 · 机械工业出版社(建议读:目标管理与自我控制一章,把激励接到目标上)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-decision-biases.html"><span class="pager-label">上一课</span><span class="pager-title">决策:理性与偏差</span></a>
+    <a class="next" href="0004-team-and-leadership.html"><span class="pager-label">下一课</span><span class="pager-title">团队与领导力</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我诊断我团队里一个『给钱也没劲』的人断在哪一环」「用我的岗位重玩一次双因素分拣」——理论对到人身上才有用。</div>
+    <p>管理学 · 第 3 课 · 案例均为公开资料的示意描述,不构成任何精确数据。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- 双因素分拣 ---------- */
+  var FACTORS = [
+    { n: "薪水水平", t: "H", w: "薪水不足引发强烈不满;涨薪的满足感又会迅速回落——典型保健因素。" },
+    { n: "公司政策与流程", t: "H", w: "繁琐审批是头号抱怨来源;理顺只是消除不满,不会点燃热情。" },
+    { n: "办公环境与设备", t: "H", w: "工位太吵立刻招致抱怨;环境变好也只是「还行」,不构成动力。" },
+    { n: "同事与团队关系", t: "H", w: "关系差让人想逃离;相处融洽是底线而非引擎,归入保健。" },
+    { n: "职位安全感", t: "H", w: "担心裁员无法安心工作;安全感补齐只是回到零点。" },
+    { n: "头衔与地位", t: "H", w: "头衔的满足感很快被视作理所当然,属于保健类。" },
+    { n: "成就感", t: "M", w: "攻克难题本身的愉悦,是最直接的点火器之一。" },
+    { n: "获得认可", t: "M", w: "被看见、被肯定满足尊重需求,带来持续投入。" },
+    { n: "工作本身有意义", t: "M", w: "觉得事情重要且值得做,是最稳定的内在引擎。" },
+    { n: "责任与授权", t: "M", w: "被信任、能拍板,让人把工作当成「自己的事」。" },
+    { n: "晋升机会", t: "M", w: "看得见的成长通道,让人愿意为未来投资努力。" },
+    { n: "成长与技能提升", t: "M", w: "能力增长本身就是回报,驱动长期投入。" }
+  ];
+  var pool = document.getElementById("tf-pool"),
+      listH = document.getElementById("tf-list-h"),
+      listM = document.getElementById("tf-list-m"),
+      fb = document.getElementById("tf-fb"),
+      scoreEl = document.getElementById("tf-score"),
+      doneEl = document.getElementById("tf-done"),
+      resetBtn = document.getElementById("tf-reset");
+  if (!pool) return;
+  var selected = null, score = 0, done = 0, remaining = [];
+
+  function shuffle(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+  function renderPool() {
+    pool.innerHTML = "";
+    remaining.forEach(function (idx) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "tf-card"; b.textContent = FACTORS[idx].n;
+      b.setAttribute("data-idx", idx);
+      b.addEventListener("click", function () {
+        pool.querySelectorAll(".tf-card").forEach(function (x) { x.classList.remove("sel"); });
+        selected = idx;
+        b.classList.add("sel");
+        fb.className = "lab-fb";
+        fb.textContent = "已选中「" + FACTORS[idx].n + "」——现在点一个桶扔进去。";
+      });
+      pool.appendChild(b);
+    });
+    if (!remaining.length) pool.innerHTML = "<span style='font-size:.88rem;color:var(--ink-faint)'>卡片已分完 ↑ 看看总结,然后可以点「重玩」</span>";
+  }
+  function reset() {
+    score = 0; done = 0; selected = null;
+    remaining = shuffle(FACTORS.map(function (_, i) { return i; }));
+    listH.innerHTML = ""; listM.innerHTML = "";
+    scoreEl.textContent = "0"; doneEl.textContent = "0";
+    fb.className = "lab-fb"; fb.textContent = "点一张卡片开始 →";
+    renderPool();
+  }
+  document.querySelectorAll(".tf-bucket .btn-primary[data-put]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (selected === null) {
+        fb.className = "lab-fb";
+        fb.textContent = "先点一张卡片选中它,再点桶 →";
+        return;
+      }
+      var idx = selected, fact = FACTORS[idx], put = btn.getAttribute("data-put");
+      var ok = put === fact.t;
+      if (ok) score++;
+      done++;
+      selected = null;
+      var li = document.createElement("li");
+      li.className = ok ? "ok" : "no";
+      li.textContent = fact.n + (ok ? "" : "(应为" + (fact.t === "H" ? "保健" : "激励") + "因素)");
+      (put === "H" ? listH : listM).appendChild(li);
+      remaining = remaining.filter(function (x) { return x !== idx; });
+      scoreEl.textContent = score; doneEl.textContent = done;
+      fb.className = "lab-fb " + (ok ? "good" : "bad");
+      fb.innerHTML = (ok ? "<b>✓ 正确!</b>" : "<b>✗ 分错了。</b>") + "<b>" + fact.n + "</b>是" +
+        (fact.t === "H" ? "保健" : "激励") + "因素——" + fact.w;
+      renderPool();
+      if (done === FACTORS.length) {
+        fb.className = "lab-fb " + (score >= 10 ? "good" : "");
+        fb.innerHTML = "<b>完成!</b>得分 <b>" + score + " / " + FACTORS.length + "</b>。<br>" +
+          "收尾口诀:<b>加薪治病,成就点火。</b>保健因素决定「有没有不满」,激励因素决定「有没有热情」——两个桶的钱,要花在两种病上。错过的条目请回到上面的卡片解释里再看一眼。";
+      }
+    });
+  });
+  resetBtn.addEventListener("click", reset);
+  reset();
+
+  /* ---------- 期望链条 ---------- */
+  var VALS = { E: 0.8, I: 0.9, V: 0.7 };
+  var STATES = { E: true, I: true, V: true };
+  var BREAK_MSG = {
+    E: "断在<b>期望</b>:「再怎么努力也达不到标准」——目标过高或资源不足,人直接放弃努力。",
+    I: "断在<b>工具性</b>:「做到了也轮不到我」——绩效与奖赏脱钩、承诺不兑现,努力失去意义。",
+    V: "断在<b>效价</b>:「给的奖赏我不在乎」——对要养家的人谈情怀,对求成长的人只发奖金。"
+  };
+  function updChain() {
+    var m = (STATES.E ? VALS.E : 0) * (STATES.I ? VALS.I : 0) * (STATES.V ? VALS.V : 0);
+    var fill = document.getElementById("ex-fill"),
+        read = document.getElementById("ex-read"),
+        exFb = document.getElementById("ex-fb");
+    fill.style.width = (m * 100).toFixed(0) + "%";
+    fill.style.background = m > 0 ? "var(--accent)" : "var(--bad)";
+    ["E", "I", "V"].forEach(function (k) {
+      var lnk = document.getElementById("lnk-" + k),
+          btn = lnk.querySelector(".ex-toggle"),
+          wire = lnk.querySelector(".ex-wire");
+      btn.className = "ex-toggle " + (STATES[k] ? "on" : "off");
+      btn.textContent = (k === "E" ? "E 期望" : k === "I" ? "I 工具性" : "V 效价") + (STATES[k] ? " · 通" : " · 断");
+      wire.className = "ex-wire" + (STATES[k] ? "" : " broken");
+    });
+    if (m > 0) {
+      read.textContent = "M = 0.8 × 0.9 × 0.7 ≈ 0.50";
+      exFb.className = "lab-fb good";
+      exFb.innerHTML = "三环皆通:<b>值得的努力 + 可信的兑现 + 在乎的奖赏</b>,动力走满(示意值,满格为 1)。点断任何一环试试。";
+    } else {
+      var broken = ["E", "I", "V"].filter(function (k) { return !STATES[k]; });
+      read.textContent = "M = 0";
+      exFb.className = "lab-fb bad";
+      exFb.innerHTML = BREAK_MSG[broken[0]] + (broken.length > 1 ? "(还有 " + (broken.length - 1) + " 处断裂)" : "") +
+        "<br>乘法链条的残酷之处:<b>断任一环,激励力直接归零</b>——另外两环做得再好也救不回来。诊断下属「没劲」,先查断在哪一环。";
+    }
+  }
+  document.querySelectorAll(".ex-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var k = btn.getAttribute("data-k");
+      STATES[k] = !STATES[k];
+      updChain();
+    });
+  });
+  updChain();
+})();
+</script>
+</body>
+</html>

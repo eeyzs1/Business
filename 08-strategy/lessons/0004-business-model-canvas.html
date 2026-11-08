@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>商业模式画布 · 战略管理</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label { display: block; }
+  .sim-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 700; cursor: pointer;
+    border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+    color: var(--accent); background: #fff; border-radius: 999px; padding: .35rem 1.05rem;
+    transition: all .15s ease;
+  }
+  .sim-btn:hover { background: color-mix(in srgb, var(--accent) 10%, #fff); }
+  .sim-btn.ghost { color: var(--ink-soft); border-color: var(--line); }
+  /* ---- 画布实验室 ---- */
+  .bmc-legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .82rem; margin: .4rem 0 .8rem; color: var(--ink-soft); }
+  .bmc-legend .sw { display: inline-block; width: 1em; height: 1em; border-radius: 3px; vertical-align: -2px; margin-right: .35em; }
+  .bmc-canvas {
+    display: grid; gap: 6px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-areas:
+      "kp ka vp cr cs"
+      "kp kr vp ch cs"
+      "cost cost rev rev rev";
+  }
+  .bmc-cell {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: .55rem .65rem; cursor: pointer; min-height: 118px;
+    transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+  }
+  .bmc-cell[data-wing="cost"] { border-top: 3px solid #b91c1c; }
+  .bmc-cell[data-wing="value"] { border-top: 3px solid #0e7490; }
+  .bmc-cell:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow); }
+  .bmc-cell.active { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 40%, transparent); }
+  .bmc-cell h4 { margin: 0 0 .3rem; font-family: var(--sans); font-size: .84rem; font-weight: 800; color: var(--ink); line-height: 1.4; }
+  .bmc-cell h4 .bmc-en { display: block; font-size: .62rem; font-weight: 600; color: var(--ink-faint); letter-spacing: .02em; }
+  .bmc-content { font-size: .76rem; line-height: 1.6; color: var(--ink-faint); font-style: italic; }
+  .bmc-content.filled { color: var(--ink); font-style: normal; animation: bmcIn .45s ease; }
+  @keyframes bmcIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .bmc-cell.wing-flash { animation: wingPulse 1s ease 1; }
+  @keyframes wingPulse {
+    40% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--wing, #999) 35%, transparent); transform: scale(1.03); }
+  }
+  .bmc-kp { grid-area: kp; } .bmc-ka { grid-area: ka; } .bmc-kr { grid-area: kr; }
+  .bmc-vp { grid-area: vp; } .bmc-cr { grid-area: cr; } .bmc-ch { grid-area: ch; }
+  .bmc-cs { grid-area: cs; } .bmc-cost { grid-area: cost; min-height: 92px; } .bmc-rev { grid-area: rev; min-height: 92px; }
+  @media (max-width: 640px) {
+    .bmc-canvas {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "vp vp"
+        "cs cs"
+        "ch cr"
+        "ka kr"
+        "kp kp"
+        "rev rev"
+        "cost cost";
+    }
+    .bmc-cell { min-height: 92px; }
+  }
+  .bmc-panel { border: 1px solid var(--line); background: #fff; border-radius: 12px; box-shadow: var(--shadow); padding: 1rem 1.2rem; margin-top: 1rem; }
+  .bmc-panel h4 { margin: 0 0 .4rem; font-size: .95rem; }
+  .bmc-panel ul { margin: .2rem 0 .6rem; padding-left: 1.2rem; font-size: .9rem; color: var(--ink-soft); line-height: 1.8; }
+  .bmc-panel p { font-size: .88rem; line-height: 1.7; margin: 0 0 .35rem; }
+  .bmc-good b { color: var(--good); }
+  .bmc-bad b { color: var(--bad); }
+  .bmc-panel p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body class="branch-strategy">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">战略管理</a><span class="crumb-sep">/</span>
+  <span>商业模式画布</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">战略管理 · Lesson 4</p>
+  <h1>商业模式画布</h1>
+  <p class="lead">同样是「让大家看上好内容」,卖影碟、开电影院、做流媒体订阅是三种完全不同的生意。战略定位回答「凭什么赢」,<strong>商业模式</strong>(Business Model)回答<em>价值如何变成现金、现金如何再变回价值</em>。这一课教你用一页九格的<strong>商业模式画布</strong>(Business Model Canvas)拆解任何一门生意——包括你自己的。</p>
+
+  <h2><span class="secno">1</span>九个格子:一页纸装下一门生意</h2>
+  <p>画布由奥斯特瓦德(Alexander Osterwalder)与皮尼厄(Yves Pigneur)在《商业模式新生代》中提出,把任何商业模式拆成九个积木块:</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>区块</th><th>三块积木</th><th>一句话自问</th></tr></thead>
+      <tbody>
+        <tr><td><b>客户侧</b></td><td>客户细分(Customer Segments)、渠道通路(Channels)、客户关系(Customer Relationships)</td><td>为谁服务?怎么触达?怎么维系?</td></tr>
+        <tr><td><b>价值核心</b></td><td>价值主张(Value Proposition)</td><td>帮客户完成什么任务、解什么痛?</td></tr>
+        <tr><td><b>效率侧</b></td><td>关键业务(Key Activities)、核心资源(Key Resources)、重要伙伴(Key Partners)</td><td>靠什么人、事、资产把承诺兑现?</td></tr>
+        <tr><td><b>钱</b></td><td>收入来源(Revenue Streams)、成本结构(Cost Structure)</td><td>谁付钱、怎么付?什么最烧钱?</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="concept">
+    <div class="concept-title">概念卡 · 商业模式</div>
+    <p style="margin:.2rem 0 0">一家企业<strong>创造价值、传递价值并获取价值</strong>的基本原理。它不是战略:战略选择打哪场仗,商业模式决定这场仗的后勤系统——粮草从哪来、伤兵怎么治、打下来的城怎么收税。</p>
+  </div>
+
+  <h2><span class="secno">2</span>左效率,右价值:画布的物理学</h2>
+  <p>把画布左右对折,能看到一条清晰的分界线。<strong>右翼(价值侧)</strong>——客户细分、价值主张、渠道、客户关系、收入来源——回答「为谁创造什么价值、如何送达、如何收钱」;<strong>左翼(效率侧)</strong>——重要伙伴、关键业务、核心资源、成本结构——回答「靠什么基础设施,把这件事高效地做出来」。</p>
+  <p>两翼的分工决定了生意的天花板与地板:右翼定<strong>收入上限</strong>(顾客愿意为一单位价值付多少钱),左翼定<strong>成本下限</strong>(交付一单位价值最少花多少钱)。利润就活在这两条线之间。右翼再华丽、左翼撑不住,是赔本赚吆喝;左翼再精悍、右翼立不住,是无人问津的省钱机器。</p>
+
+  <h2><span class="secno">3</span>用画布讲故事:四步走完一门生意</h2>
+  <ol class="steps">
+    <li><b>为谁:</b>先圈客户细分——不是「所有人」,而是具体的、可以想象出脸孔的人群。</li>
+    <li><b>提供什么:</b>价值主张——帮他们完成什么任务、缓解什么痛点、创造什么收益。</li>
+    <li><b>怎么送达:</b>渠道通路与客户关系——他们从哪知道你、在哪买、买完之后凭什么留下。</li>
+    <li><b>怎么赚钱:</b>收入来源与成本结构——谁付钱、多久付一次,以及钱主要烧在哪个格子里。</li>
+  </ol>
+  <p>这个顺序就是向投资人、向新员工介绍一门生意的正确叙事顺序——从右到左,再到底部的钱。填反了(先讲自己多努力、资产多牛),听的人通常毫无感觉。</p>
+
+  <div class="sim">
+    <div class="sim-title">商业模式画布实验室</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .6rem"><b>点击任意一格</b>,下方侧栏展开这一格的关键问题与好坏示例;点击<b>「一键填入 Netflix」</b>,九格将依次填入订阅制流媒体的示意画法,并高亮左(成本/效率)、右(价值)两翼的联动。</p>
+    <div class="bmc-legend">
+      <span><span class="sw" style="background:#b91c1c"></span>左翼 · 效率侧(成本)</span>
+      <span><span class="sw" style="background:#0e7490"></span>右翼 · 价值侧(需求)</span>
+    </div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin:.2rem 0 .9rem">
+      <button type="button" class="sim-btn" id="bmc-fill">一键填入 Netflix 订阅制(示意)</button>
+      <button type="button" class="sim-btn ghost" id="bmc-clear">清空画布</button>
+    </div>
+    <div class="bmc-canvas" id="bmc-canvas">
+      <div class="bmc-cell bmc-kp" data-key="kp" data-wing="cost">
+        <h4>重要伙伴<span class="bmc-en">Key Partners</span></h4>
+        <div class="bmc-content" id="bmc-c-kp">待填 · 点击本格</div>
+      </div>
+      <div class="bmc-cell bmc-ka" data-key="ka" data-wing="cost">
+        <h4>关键业务<span class="bmc-en">Key Activities</span></h4>
+        <div class="bmc-content" id="bmc-c-ka">待填 · 点击本格</div>
+      </div>
+      <div class="bmc-cell bmc-kr" data-key="kr" data-wing="cost">
+        <h4>核心资源<span class="bmc-en">Key Resources</span></h4>
+        <div class="bmc-content" id="bmc-c-kr">待填 · 点击本格</div>
+      </div>
+      <div class="bmc-cell bmc-vp" data-key="vp" data-wing="value">
+        <h4>价值主张<span class="bmc-en">Value Proposition</span></h4>
+        <div class="bmc-content" id="bmc-c-vp">待填 · 点击本格</div>
+      </div>
+      <div class="bmc-cell bmc-cr" data-key="cr" data-wing="value">
+        <h4>客户关系<span class="bmc-en">Customer Relationships</span></h4>
+        <div class="bmc-content" id="bmc-c-cr">待填 · 点击本格</div>
+      </div>
+      <div class="bmc-cell bmc-ch" data-key="ch" data-wing="value">
+        <h4>渠道通路<span class="bmc-en">Channels</span></h4>
+        <div class="bmc-content" id="bmc-c-ch">待填 · 点击本格</div>
+      </div>
+      <div class="bmc-cell bmc-cs" data-key="cs" data-wing="value">
+        <h4>客户细分<span class="bmc-en">Customer Segments</span></h4>
+        <div class="bmc-content" id="bmc-c-cs">待填 · 点击本格</div>
+      </div>
+      <div class="bmc-cell bmc-cost" data-key="cost" data-wing="cost">
+        <h4>成本结构<span class="bmc-en">Cost Structure</span></h4>
+        <div class="bmc-content" id="bmc-c-cost">待填 · 点击本格</div>
+      </div>
+      <div class="bmc-cell bmc-rev" data-key="rev" data-wing="value">
+        <h4>收入来源<span class="bmc-en">Revenue Streams</span></h4>
+        <div class="bmc-content" id="bmc-c-rev">待填 · 点击本格</div>
+      </div>
+    </div>
+    <div class="bmc-panel">
+      <h4 id="bmc-panel-title">画布侧栏</h4>
+      <div id="bmc-panel-body"><p style="color:var(--ink-faint)">点击画布中任意一格,这里会展开该格的关键问题、好的写法与常见败笔。</p></div>
+    </div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例 · Netflix:一张画布的三次重画</p>
+    <ul class="timeline">
+      <li><b>约 1997–2000 · DVD 邮寄订阅:</b>客户是嫌录像店逾期费烦人的影迷;价值主张是「月费无限租、无逾期费」;渠道是邮政信箱;收入是按月订阅——注意,颠覆从一开始就写在「收入来源」这格里,而不是碟片本身。</li>
+      <li><b>约 2007 · 流媒体上线:</b>渠道从邮政变成互联网与终端 App,边际交付成本骤降;客户关系从「等碟片」变成「算法推荐即关系」;成本结构从物流仓储转向带宽与版权授权。</li>
+      <li><b>约 2013 至今 · 原创内容:</b>核心资源从「租来的版权」换成「自制的独家内容库」,重要伙伴变成制作公司与创作者;收入仍是订阅,但价值主张升级为「只此一家的剧集」——护城河(上一课)被浇筑进「核心资源」格。</li>
+    </ul>
+    <p class="case-learn"><b>这一课的要点:</b>Netflix 的每一次跃迁都不是单格优化,而是渠道、收入、资源、成本四格的<b>整体重画</b>(以上年份与描述为公开信息的示意)。商业模式不是战略,但没有一套收得到钱的模式,再好的战略也只是宣言。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>商业模式 Business Model</dt><dd>企业创造、传递并获取价值的基本原理,回答价值如何变成现金。</dd>
+      <dt>商业模式画布 Business Model Canvas</dt><dd>九格一页的工具,把任何商业模式拆成可讨论、可重画的积木。</dd>
+      <dt>价值主张 Value Proposition</dt><dd>为客户完成的任务、缓解的痛点与创造的收益的组合。</dd>
+      <dt>客户细分 Customer Segments</dt><dd>企业选择服务的人群或组织;「所有人」等于没有细分。</dd>
+      <dt>渠道通路 Channels</dt><dd>客户接触、评估、购买并获得价值的全部触点。</dd>
+      <dt>收入来源 Revenue Streams</dt><dd>企业从各客户细分收回的现金,含一次性与经常性。</dd>
+      <dt>经常性收入 Recurring Revenue</dt><dd>按订阅或续约持续流入的收入,是订阅制模式的命脉。</dd>
+      <dt>成本结构 Cost Structure</dt><dd>商业模式运转的全部成本及其固定与可变的构成。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>画布九格,右翼定价值与收入上限,左翼定成本与效率下限,利润活在两翼之间。用「为谁→提供什么→怎么送达→怎么赚钱」讲故事;生意跃迁靠整张画布重画,而不是单格修补。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      {
+        "q": "商业模式画布的「左翼」(伙伴、业务、资源、成本)主要回答的问题是:",
+        "options": ["为谁创造价值,如何触达", "提供什么独特价值主张", "如何收费并形成持续收入", "靠什么把事情高效做出来"],
+        "answer": 3,
+        "explain": "左翼是<b>效率侧</b>:基础设施与成本结构,决定交付一单位价值的最低成本。右翼才是价值与收入的地盘。"
+      },
+      {
+        "q": "填写「客户细分」这一格时,最典型的败笔是:",
+        "options": ["按使用场景区分两类客群", "写所有人都是目标客户", "只描述最重要的付费客群", "列出愿意付费的家庭用户"],
+        "answer": 1,
+        "explain": "「所有人都是我们的客户」= 没有取舍 = 没有定位(第 1 课的老朋友)。客户细分必须具体到能想象出脸孔,并明确放弃谁。"
+      },
+      {
+        "q": "Netflix 早期以「月费无限租、无逾期费」取代按片付费,这直接重塑了画布的哪一格?",
+        "options": ["重要伙伴", "客户关系", "收入来源", "成本结构"],
+        "answer": 2,
+        "explain": "从按次交易变成按月订阅——<b>收入来源</b>从一次性收入变成经常性收入,这是整个商业模式创新的支点(示意)。"
+      },
+      {
+        "q": "用画布向别人介绍一门生意时,正确的叙事顺序是:",
+        "options": ["为谁 → 提供什么 → 怎么送达 → 怎么赚钱", "怎么赚钱 → 为谁 → 提供什么 → 怎么送达", "提供什么 → 怎么赚钱 → 为谁 → 怎么送达", "怎么送达 → 提供什么 → 怎么赚钱 → 为谁"],
+        "answer": 0,
+        "explain": "先人(客户细分)再事(价值主张),然后是触达(渠道与关系),最后落到钱(收入与成本)。先讲自己资产多牛,听者通常毫无感觉。"
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《商业模式新生代》亚历山大·奥斯特瓦德、伊夫·皮尼厄 · 机械工业出版社(建议读:第 1–2 章,画布原文)</li>
+      <li>《价值主张设计》奥斯特瓦德、皮尼厄等 · 机械工业出版社(建议读:第 1 章,把右翼做深)</li>
+      <li>《好战略,坏战略》理查德·鲁梅尔特 · 中信出版社(建议读:第 4 章,战略与行动的连接)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-competitive-advantage.html"><span class="pager-label">← 上一课</span><span class="pager-title">竞争优势:成本领先与差异化</span></a>
+    <a class="next" href="../../09-entrepreneurship/index.html"><span class="pager-label">下一课 →</span><span class="pager-title">分支导学:创业学(把战略用于新事业)</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「把你熟悉的某家公司填进九格画布,帮我看看哪里最弱?」——拿画布拆一家你每天在用的公司,这一课立刻就活了。</div>
+    <p>战略管理 · 第 4 课 · Netflix 案例为公开信息的示意描述,画布内容为教学示意。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+  var canvasEl = document.getElementById("bmc-canvas");
+  var panelTitle = document.getElementById("bmc-panel-title");
+  var panelBody = document.getElementById("bmc-panel-body");
+  var btnFill = document.getElementById("bmc-fill");
+  var btnClear = document.getElementById("bmc-clear");
+  if (!canvasEl || !panelBody) return;
+
+  var BMC = {
+    cs: {
+      name: "客户细分", en: "Customer Segments", wing: "value",
+      q: ["我们在为谁创造价值?谁是最重要的付费客户?", "哪些客群我们明确不服务?"],
+      good: "聚焦到能想象出脸孔的客群,例如「追剧的大众家庭用户」。",
+      bad: "「所有人都是我们的客户」——等于没有客户。",
+      netflix: "追剧的大众用户与家庭;全球各市场做本地化运营"
+    },
+    vp: {
+      name: "价值主张", en: "Value Proposition", wing: "value",
+      q: ["我们帮客户完成什么任务、缓解什么痛点?", "客户凭什么选我们而不是替代品?"],
+      good: "具体可感知:海量内容随时看、无广告打断、按月可取消(示意)。",
+      bad: "「高品质、优服务、低价格」全都要——互相打架的口号。",
+      netflix: "海量内容随时看、无广告打断、随时可取消;自制剧独家"
+    },
+    ch: {
+      name: "渠道通路", en: "Channels", wing: "value",
+      q: ["客户从哪里知道、评估并购买我们?", "我们如何把价值交付到客户手上?"],
+      good: "顺着客户习惯铺全触点:官网 App、设备内置、应用商店。",
+      bad: "只管卖不管交付——渠道在付钱之后断了。",
+      netflix: "官网与 App;智能电视与机顶盒内置;应用商店分发"
+    },
+    cr: {
+      name: "客户关系", en: "Customer Relationships", wing: "value",
+      q: ["每类客户期望什么关系:自助、专属还是社区?", "如何获取、留存并让客户带客户?"],
+      good: "自助开通取消 + 算法个性化推荐,关系长在产品里(示意)。",
+      bad: "一次性买卖,没有留存机制,每月重新获客。",
+      netflix: "自助开通与取消;个性化推荐;热门剧集的社交话题"
+    },
+    rev: {
+      name: "收入来源", en: "Revenue Streams", wing: "value",
+      q: ["客户现在为什么付钱?最愿意为什么付钱?", "收入是一次性还是经常性?定价怎么分层?"],
+      good: "与价值主张咬合的经常性收入:按月订阅、按档分层(示意)。",
+      bad: "只靠单次卖断,获客成本吃光利润。",
+      netflix: "按月订阅费,按画质与同时屏幕数分档(示意)"
+    },
+    kr: {
+      name: "核心资源", en: "Key Resources", wing: "cost",
+      q: ["我们的价值主张最离不开哪几样资产?", "这些资产对手拿得到吗(护城河)?"],
+      good: "难以模仿的组合:内容库 + 推荐算法 + 品牌(示意)。",
+      bad: "罗列一堆设备与办公场地,看不出壁垒。",
+      netflix: "版权与自制内容库;推荐算法与观看数据;全球品牌"
+    },
+    ka: {
+      name: "关键业务", en: "Key Activities", wing: "cost",
+      q: ["必须把哪几件事做到世界级,模式才成立?", "哪些事做到及格就够?"],
+      good: "与价值主张直接挂钩:内容投资与自制、平台运维(示意)。",
+      bad: "什么都想自己做,关键的事反而不及格。",
+      netflix: "内容投资与自制;平台技术与推荐系统;本地化与获客"
+    },
+    kp: {
+      name: "重要伙伴", en: "Key Partners", wing: "cost",
+      q: ["哪些关键环节我们不做、交给伙伴?", "哪些伙伴掌握了我们的命脉?"],
+      good: "互补分工:版权方与制作公司、设备与运营商、云服务(示意)。",
+      bad: "命脉环节完全依赖单一伙伴,议价权旁落。",
+      netflix: "版权方与制作公司;设备厂商与运营商;云与支付服务商"
+    },
+    cost: {
+      name: "成本结构", en: "Cost Structure", wing: "cost",
+      q: ["模式里最大头的成本是什么?固定还是可变?", "规模变大后,哪项成本先下降?"],
+      good: "结构清晰且知道杠杆在哪:内容投资为大头,用户越多摊得越薄(示意)。",
+      bad: "只知道总成本,说不清驱动因素。",
+      netflix: "内容投资为大头(示意);技术与带宽;获客营销"
+    }
+  };
+  var ORDER = ["cs", "vp", "ch", "cr", "rev", "kr", "ka", "kp", "cost"];
+  var timers = [];
+  var fillRun = 0;
+
+  function select(key) {
+    var d = BMC[key];
+    if (!d) return;
+    canvasEl.querySelectorAll(".bmc-cell").forEach(function (c) {
+      c.classList.toggle("active", c.dataset.key === key);
+    });
+    panelTitle.textContent = d.name + " · " + d.en + "(" + (d.wing === "cost" ? "左翼 · 效率" : "右翼 · 价值") + ")";
+    var html = "<ul>" + d.q.map(function (q) { return "<li>" + q + "</li>"; }).join("") + "</ul>";
+    html += "<p class='bmc-good'><b>✔ 好的写法:</b>" + d.good + "</p>";
+    html += "<p class='bmc-bad'><b>✘ 常见败笔:</b>" + d.bad + "</p>";
+    panelBody.innerHTML = html;
+  }
+
+  canvasEl.querySelectorAll(".bmc-cell").forEach(function (cell) {
+    cell.addEventListener("click", function () { select(cell.dataset.key); });
+  });
+
+  function flashWing(wing, done) {
+    canvasEl.querySelectorAll('.bmc-cell[data-wing="' + wing + '"]').forEach(function (c) {
+      c.classList.remove("wing-flash");
+      void c.offsetWidth;
+      c.style.setProperty("--wing", wing === "cost" ? "#b91c1c" : "#0e7490");
+      c.classList.add("wing-flash");
+    });
+    setTimeout(done, 1050);
+  }
+
+  btnFill.addEventListener("click", function () {
+    timers.forEach(clearTimeout);
+    timers = [];
+    var run = ++fillRun;
+    ORDER.forEach(function (k, i) {
+      timers.push(setTimeout(function () {
+        if (run !== fillRun) return;
+        var el = document.getElementById("bmc-c-" + k);
+        if (!el) return;
+        el.textContent = BMC[k].netflix;
+        el.classList.remove("filled");
+        void el.offsetWidth;
+        el.classList.add("filled");
+        select(k);
+      }, i * 150));
+    });
+    timers.push(setTimeout(function () {
+      if (run !== fillRun) return;
+      flashWing("cost", function () {
+        if (run !== fillRun) return;
+        flashWing("value", function () {
+          if (run !== fillRun) return;
+          panelTitle.textContent = "两翼联动解读:左翼撑住成本,右翼撑住价值";
+          panelBody.innerHTML =
+            "<p>左翼(伙伴 / 业务 / 资源 / 成本)决定这门生意<b>做不做得起</b>;右翼(细分 / 价值 / 渠道 / 关系 / 收入)决定这门生意<b>值不值得做</b>。</p>" +
+            "<p>订阅制的魔法在于把两翼接成循环:右翼的月费为左翼的内容投资供血,内容又回头加深右翼的留存与推荐(示意)。</p>";
+          canvasEl.querySelectorAll(".bmc-cell").forEach(function (c) { c.classList.remove("active"); });
+        });
+      });
+    }, ORDER.length * 150 + 400));
+  });
+
+  btnClear.addEventListener("click", function () {
+    fillRun++;
+    canvasEl.querySelectorAll(".bmc-content").forEach(function (el) {
+      el.textContent = "待填 · 点击本格";
+      el.classList.remove("filled");
+    });
+    canvasEl.querySelectorAll(".bmc-cell").forEach(function (c) {
+      c.classList.remove("active", "wing-flash");
+    });
+    panelTitle.textContent = "画布侧栏";
+    panelBody.innerHTML = "<p style='color:var(--ink-faint)'>点击画布中任意一格,这里会展开该格的关键问题、好的写法与常见败笔。</p>";
+  });
+
+  select("vp");
+})();
+</script>
+</body>
+</html>

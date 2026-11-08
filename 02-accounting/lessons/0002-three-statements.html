@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三大报表:公司的成绩单 · 会计学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  #tri-sim .tri-btns{display:flex;flex-wrap:wrap;gap:.6rem;padding:.8rem 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin:.6rem 0;}
+  #tri-sim .tri-btns button{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--accent);background:#fff;
+    border:1.5px solid color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:999px;padding:.42rem 1.05rem;cursor:pointer;transition:all .15s ease;}
+  #tri-sim .tri-btns button:hover{background:var(--accent);color:var(--accent-ink);}
+  #tri-sim .tri-btns button.ghost{color:var(--ink-soft);border-color:var(--line);}
+  .tri-wrap{position:relative;display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:1.1rem;align-items:start;}
+  @media (max-width:760px){ .tri-wrap{grid-template-columns:1fr;} }
+  #tri-links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3;}
+  .stmt{position:relative;z-index:2;background:rgba(255,255,255,.9);border:1.5px solid var(--line);border-radius:10px;padding:.7rem .8rem;}
+  .stmt .stmt-title{font-weight:800;color:var(--accent);font-size:.98rem;margin-bottom:.1rem;}
+  .stmt .stmt-sub{font-size:.76rem;color:var(--ink-faint);margin-bottom:.45rem;}
+  .stmt .stmt-h{font-size:.76rem;font-weight:800;letter-spacing:.1em;color:var(--ink-faint);margin:.4rem 0 .15rem;}
+  .stmt-line{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;padding:.22rem .45rem;border-radius:6px;font-size:.92rem;transition:opacity .3s ease,background .3s ease;}
+  .stmt-line .delta{color:var(--accent);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .stmt-line.hit{background:color-mix(in srgb,var(--accent) 12%,#fff);box-shadow:inset 3px 0 0 var(--accent);}
+  .stmt-line.dim{opacity:.35;}
+  .stmt-line.mute{color:var(--ink-faint);font-style:italic;}
+  .stmt-line.mute.hit{color:var(--accent);}
+  #tri-note{font-size:.93rem;color:var(--ink);background:var(--paper-deep);border-radius:8px;padding:.75rem .95rem;margin-top:.9rem;line-height:1.75;}
+</style>
+</head>
+<body class="branch-accounting">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">会计学</a><span class="crumb-sep">/</span>
+  <span>三大报表:公司的成绩单</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">会计学 · LESSON 2</p>
+  <h1>三大报表:公司的成绩单</h1>
+  <p class="lead">每年公司要交一份「成绩单」,但它其实由三张表组成,各自回答不同的问题:这段时间赚了吗?此刻家底如何?现金到底进出了多少?这一课的关键,是看懂三张表如何互相咬合——以及为什么「赚了钱」不等于「收到钱」。</p>
+
+  <h2><span class="secno">1</span>三张报表,三种时间观</h2>
+  <p>把三张表想成三种镜头,记忆就不再混乱:</p>
+  <div class="concept">
+    <div class="concept-title">一个比喻记住三张表</div>
+    <p style="margin:.2rem 0 .4rem"><b>利润表(Income Statement)是录像</b>——记录一段时期(一个月、一个季度、一年)的收支表演;<b>资产负债表(Balance Sheet)是照片</b>——定格某个时点(如 12 月 31 日)的家底;<b>现金流量表(Statement of Cash Flows)是水流</b>——追踪真金白银流进流出管道的每一滴。</p>
+    <p style="margin:0;font-size:.95rem;color:var(--ink-soft)">录像告诉你「经营得好不好」,照片告诉你「厚不厚实」,水流告诉你「会不会渴死」。三张表合起来,才是一份完整的成绩单。</p>
+  </div>
+  <p>现金流量表内部再分三段:经营活动(主业收支)、投资活动(买建资产)、筹资活动(借钱与还钱)。一家健康成长的公司,通常希望经营段自己就是净流入——不靠输血也能活。</p>
+
+  <h2><span class="secno">2</span>勾稽:三张表如何互相咬合</h2>
+  <p>三张表不是三座孤岛,它们之间有固定的通道,会计上叫勾稽关系(Articulation)。最重要的一条:</p>
+  <div class="formula">期末留存收益(Retained Earnings)= 期初留存收益 + 净利润(Net Income)− 对股东的分红</div>
+  <p>也就是说,利润表算出的净利润,期末经由「留存收益」这个科目<b>流进</b>资产负债表的所有者权益——上一课柠檬水摊的 90 元利润,正是这样滚进权益的。另一条通道在现金流量表:它的期末现金余额,必须等于资产负债表上的货币资金。两张表像两个扣件,把利润表夹在中间。</p>
+  <div class="callout warn"><span class="callout-label">利润 ≠ 现金</span> 利润表按权责发生制(Accrual Basis)记账:收入在「赚到」时确认,不是在「收到钱」时。赊销让利润先涨而现金不动;折旧(Depreciation)反过来,让利润变少而现金一分未出。两个方向的裂缝,都要靠现金流量表补上。</div>
+
+  <h2><span class="secno">3</span>亲手试:三表联动</h2>
+  <p>点击左侧交易按钮,追踪这笔账在三张表中的旅行路线:被波及的行会高亮并标出变动方向,动画连线画出勾稽通道。特别注意那些「不亮」的表——它们和被点亮的部分同样重要。</p>
+  <div class="sim" id="tri-sim">
+    <div class="sim-title">三表联动 · 一笔交易流过三张报表</div>
+    <div class="tri-btns">
+      <button data-flow="credit">赊销 50 万</button>
+      <button data-flow="dep">计提折旧 10 万</button>
+      <button data-flow="repay">偿还贷款本金 20 万</button>
+      <button id="tri-reset" class="ghost">✕ 清除高亮</button>
+    </div>
+    <div class="tri-wrap" id="tri-wrap">
+      <svg id="tri-links" aria-hidden="true"></svg>
+      <div class="stmt">
+        <div class="stmt-title">利润表</div>
+        <div class="stmt-sub">录像 · 一段时期</div>
+        <div class="stmt-line" data-id="is-rev"><span>营业收入</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="is-cogs"><span>营业成本</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="is-dep"><span>折旧费用</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="is-ni"><span>净利润</span><i class="delta"></i></div>
+        <div class="stmt-line mute" data-id="is-none"><span>本笔不进利润表</span><i class="delta"></i></div>
+      </div>
+      <div class="stmt">
+        <div class="stmt-title">资产负债表</div>
+        <div class="stmt-sub">照片 · 某一时点</div>
+        <div class="stmt-h">资 产</div>
+        <div class="stmt-line" data-id="bs-cash"><span>货币资金</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="bs-ar"><span>应收账款</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="bs-fa"><span>固定资产(净值)</span><i class="delta"></i></div>
+        <div class="stmt-h">负 债</div>
+        <div class="stmt-line" data-id="bs-loan"><span>银行借款</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="bs-ap"><span>应付账款</span><i class="delta"></i></div>
+        <div class="stmt-h">所有者权益</div>
+        <div class="stmt-line" data-id="bs-cap"><span>实收资本</span><i class="delta"></i></div>
+        <div class="stmt-line" data-id="bs-re"><span>留存收益</span><i class="delta"></i></div>
+      </div>
+      <div class="stmt">
+        <div class="stmt-title">现金流量表</div>
+        <div class="stmt-sub">水流 · 一段时期</div>
+        <div class="stmt-h">经 营</div>
+        <div class="stmt-line" data-id="cf-op"><span>销售商品收现</span><i class="delta"></i></div>
+        <div class="stmt-h">投 资</div>
+        <div class="stmt-line" data-id="cf-inv"><span>购建长期资产</span><i class="delta"></i></div>
+        <div class="stmt-h">筹 资</div>
+        <div class="stmt-line" data-id="cf-fin"><span>偿还借款本金</span><i class="delta"></i></div>
+        <div class="stmt-line mute" data-id="cf-none"><span>本笔无现金流动</span><i class="delta"></i></div>
+      </div>
+    </div>
+    <div id="tri-note">点击上方任一交易按钮,看这笔账如何流经三张报表。</div>
+  </div>
+  <p>三条路线的共同点:<b>没有一笔交易只碰一张表。</b>赊销同时改写利润表与资产负债表;折旧同时改写利润表与固定资产净值;还款同时改写现金流量表与资产负债表的两侧。三表是一个联动的系统,不是三份独立文件。</p>
+
+  <h2><span class="secno">4</span>案例:一家奶茶店的月度三表</h2>
+  <div class="case">
+    <div class="case-title">「初雪奶茶」开店第四个月的简化三表(单位:万元,数字为示意)</div>
+    <p>这家小店前三个月累计亏损 1.6 万(装修与开业促销拖累),本月迎来首次盈利。三张表这样同时记录这一个月:</p>
+    <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>利润表(本月)</th><th>金额</th><th>现金流量表(本月)</th><th>金额</th></tr></thead>
+      <tbody>
+        <tr><td>营业收入(其中 1.0 万为赊销给企业客户)</td><td>12.0</td><td>经营:销售收现(12.0 − 1.0 赊销)</td><td>+11.0</td></tr>
+        <tr><td>原料成本</td><td>4.8</td><td>经营:支付原料、人工与租金</td><td>−8.4</td></tr>
+        <tr><td>人工与租金</td><td>3.6</td><td>经营净流入</td><td><b>+2.6</b></td></tr>
+        <tr><td>折旧(制冰机等)</td><td>0.6</td><td>筹资:归还开业借款本金</td><td>−1.0</td></tr>
+        <tr><td><b>净利润</b>(净利率 25%)</td><td><b>3.0</b></td><td><b>现金净增加</b>(月初 2.0 → 月末 3.6)</td><td><b>+1.6</b></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><b>月末资产负债表:</b>货币资金 3.6 + 应收账款 1.0 + 原料存货 0.8 + 设备净值 5.4(原值 6.0 − 累计折旧 0.6)= 资产 10.8;负债 = 借款 5.0(6.0 − 本月还款 1.0)+ 应付账款 0.4 = 5.4;权益 = 实收资本 4.0 + 留存收益 1.4(上月 −1.6 + 本月净利 3.0)= 5.4。<b>10.8 = 5.4 + 5.4</b>,照片与录像严丝合缝。</p>
+    <p class="case-learn"><b>这个案例教我们:</b>本月净利润 3.0 万,经营现金净流入却只有 2.6 万——差 0.4 万 = 赊销占用的 1.0 万 − 无需现金的折旧 0.6 万。利润与现金是两把不同的尺子:只用其中一把,创业者会被另一把 surprise。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>利润表 Income Statement</dt><dd>记录一段时期收入、费用与利润的「录像」。</dd>
+      <dt>资产负债表 Balance Sheet</dt><dd>定格某一时点资产、负债与权益的「照片」。</dd>
+      <dt>现金流量表 Statement of Cash Flows</dt><dd>按经营、投资、筹资三段追踪现金进出的「水流」。</dd>
+      <dt>勾稽关系 Articulation</dt><dd>报表之间固定可核对的数量通道,如净利润流入留存收益。</dd>
+      <dt>净利润 Net Income</dt><dd>收入扣除全部费用与税后的最终利润。</dd>
+      <dt>留存收益 Retained Earnings</dt><dd>历年累积、未分配给股东的利润,权益的组成部分。</dd>
+      <dt>权责发生制 Accrual Basis</dt><dd>收入费用按「发生」而非「收付现金」确认的记账基础。</dd>
+      <dt>折旧 Depreciation</dt><dd>设备等长期资产的成本在使用年限内逐期分摊的费用。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    利润表是录像、资产负债表是照片、现金流量表是水流;净利润经留存收益流进资产负债表,期末现金则必须与报表对上。三表联动,<b>利润 ≠ 现金</b>。
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "公司当月赊销 100 万元、货款未收,当月现金流量表如何体现?",
+      "options": ["经营活动现金流入增加一百万元", "不产生任何现金流入,利润却在增加", "筹资活动现金流入增加一百万元", "投资活动现金流入增加一百万元"],
+      "answer": 1,
+      "explain": "权责发生制下赊销即刻确认收入、推高利润;但现金没进公司账户,现金流量表纹丝不动——利润与现金的第一条裂缝。" },
+    { "q": "「利润表是录像,资产负债表是照片」,这句话的意思是?",
+      "options": ["利润表管一段时期,资产负债表管某一时点", "利润表数据精确,资产负债表数据靠估计", "利润表只能按年编,资产负债表只能按日编", "两表依据完全不同,彼此之间没有勾稽"],
+      "answer": 0,
+      "explain": "录像覆盖一段时期(如一个季度),照片定格一个时点(如季度末最后一天)。时间观不同,回答的问题也不同。" },
+    { "q": "期末净利润 80 万元暂不向股东分配,它经由哪条通道进入资产负债表?",
+      "options": ["增加负债科目中的应付账款", "直接增加资产科目中的存货", "增加权益科目中的留存收益", "冲减权益科目中的实收资本"],
+      "answer": 2,
+      "explain": "未分配的净利润滚入留存收益:期末留存收益 = 期初 + 净利润 − 分红。这是利润表与资产负债表之间最主要的勾稽通道。" },
+    { "q": "计提折旧 20 万元,对三张报表的正确影响是?",
+      "options": ["现金立即减少,三张表同时变小", "只有现金流量表发生变动的金额", "利润表不受影响,负债增加二十万", "费用增加利润变少,现金却没有流出"],
+      "answer": 3,
+      "explain": "折旧是典型的非现金费用:利润表费用增加、净利润变少;固定资产净值与留存收益同减;现金流量表不动。这也是折旧日后要「加回」的原因。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>延伸阅读</h2>
+    <ul>
+      <li>《世界上最简单的会计书》达雷尔·穆利斯 · 机械工业出版社(建议读:中段,利润表与资产负债表两线并行的章节)</li>
+      <li>《会计学:企业决策的基础》约翰·怀尔德(John Wild)等 · 机械工业出版社(建议读:第 1 章报表总览与「完成会计循环」「现金流量表」相关章节)</li>
+      <li>词条延伸:<a href="https://zh.wikipedia.org/wiki/财务报表">财务报表 — 维基百科</a></li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-accounting-equation.html"><span class="pager-label">上一课</span><span class="pager-title">会计等式:企业的语言</span></a>
+    <a class="next" href="0003-reading-statements.html"><span class="pager-label">下一课</span><span class="pager-title">读懂报表:结构与方法</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师——比如「为什么还款不进利润表」「现金流量表的三段怎么区分」,或让它再编一笔交易让你追踪三表路线。</div>
+    <p>本课数字均为教学示意 · 会计学 · 第 2 课 / 共 4 课</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var wrap = document.getElementById("tri-wrap");
+  var svg = document.getElementById("tri-links");
+  var note = document.getElementById("tri-note");
+  if (!wrap || !svg) return;
+  var noteDefault = "点击上方任一交易按钮,看这笔账如何流经三张报表。";
+  var current = null;
+
+  var FLOWS = {
+    credit: {
+      hits: ["is-rev", "is-ni", "bs-ar", "bs-re", "cf-none"],
+      deltas: { "is-rev": "+50", "is-ni": "+50", "bs-ar": "+50", "bs-re": "+50" },
+      links: [["is-rev", "bs-ar"], ["is-ni", "bs-re"]],
+      note: "<b>赊销 50 万(货款未收):</b>利润表上收入与净利润各 +50;资产负债表上应收账款 +50(资产)、留存收益 +50(权益)——净利润正是经由留存收益流进资产负债表;现金流量表纹丝不动。账面赚了 50 万,口袋里一分没多:<b>利润 ≠ 现金</b>。"
+    },
+    dep: {
+      hits: ["is-dep", "is-ni", "bs-fa", "bs-re", "cf-none"],
+      deltas: { "is-dep": "+10", "is-ni": "−10", "bs-fa": "−10", "bs-re": "−10" },
+      links: [["is-dep", "bs-fa"], ["is-ni", "bs-re"]],
+      note: "<b>计提折旧 10 万:</b>折旧是「非现金费用」——利润表多一笔费用、净利润变少;资产负债表上固定资产净值与留存收益同减 10 万;现金流量表完全不动,没有一分钱离开公司。所以分析现金流时,折旧会被「加回」净利润。"
+    },
+    repay: {
+      hits: ["cf-fin", "bs-cash", "bs-loan", "is-none"],
+      deltas: { "cf-fin": "−20", "bs-cash": "−20", "bs-loan": "−20" },
+      links: [["cf-fin", "bs-cash"], ["bs-cash", "bs-loan"]],
+      note: "<b>偿还贷款本金 20 万:</b>现金流量表筹资活动流出 20;资产负债表上货币资金与银行借款同减 20——等式两侧同时变小、依然平衡;利润表不受影响,因为<b>本金不是费用,利息才是</b>。还款让公司变「薄」但不影响利润。"
+    }
+  };
+
+  function lineEl(id) { return wrap.querySelector('[data-id="' + id + '"]'); }
+  function allLines() { return wrap.querySelectorAll(".stmt-line"); }
+
+  function clearFx() {
+    allLines().forEach(function (l) {
+      l.classList.remove("hit", "dim");
+      var d = l.querySelector(".delta");
+      if (d) d.textContent = "";
+    });
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+  }
+
+  function drawLink(aId, bId) {
+    var ea = lineEl(aId), eb = lineEl(bId);
+    if (!ea || !eb) return;
+    var rw = wrap.getBoundingClientRect();
+    var ra = ea.getBoundingClientRect(), rb = eb.getBoundingClientRect();
+    svg.setAttribute("viewBox", "0 0 " + rw.width + " " + rw.height);
+    svg.setAttribute("width", rw.width);
+    svg.setAttribute("height", rw.height);
+    var ca = { x: ra.left + ra.width / 2, y: ra.top + ra.height / 2 };
+    var cb = { x: rb.left + rb.width / 2, y: rb.top + rb.height / 2 };
+    var ax = ca.x, ay = ca.y, bx = cb.x, by = cb.y;
+    if (Math.abs(cb.x - ca.x) >= Math.abs(cb.y - ca.y)) {
+      ax = cb.x > ca.x ? ra.right : ra.left;
+      bx = cb.x > ca.x ? rb.left : rb.right;
+    } else {
+      ay = cb.y > ca.y ? ra.bottom : ra.top;
+      by = cb.y > ca.y ? rb.top : rb.bottom;
+    }
+    ax -= rw.left; ay -= rw.top; bx -= rw.left; by -= rw.top;
+    var mx = (ax + bx) / 2;
+    var p = Viz.svgEl("path", { d: "M " + ax + " " + ay + " C " + mx + " " + ay + ", " + bx + " " + by + ", " + bx + " " + by, fill: "none" });
+    p.style.stroke = "var(--accent)";
+    p.style.strokeWidth = "2.5";
+    p.style.strokeLinecap = "round";
+    p.style.opacity = ".85";
+    svg.appendChild(p);
+    var len = p.getTotalLength();
+    p.style.strokeDasharray = String(len);
+    p.style.strokeDashoffset = String(len);
+    p.style.transition = "stroke-dashoffset .7s ease";
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () { p.style.strokeDashoffset = "0"; });
+    });
+    [[ax, ay], [bx, by]].forEach(function (pt) {
+      var c = Viz.svgEl("circle", { cx: pt[0], cy: pt[1], r: 4 });
+      c.style.fill = "var(--accent)";
+      svg.appendChild(c);
+    });
+  }
+
+  function run(key) {
+    var f = FLOWS[key];
+    if (!f) return;
+    current = key;
+    clearFx();
+    var hits = {};
+    f.hits.forEach(function (h) { hits[h] = true; });
+    allLines().forEach(function (l) {
+      var id = l.getAttribute("data-id");
+      if (hits[id]) {
+        l.classList.add("hit");
+        var d = l.querySelector(".delta");
+        if (d && f.deltas[id]) d.textContent = f.deltas[id];
+      } else {
+        l.classList.add("dim");
+      }
+    });
+    f.links.forEach(function (pr) { drawLink(pr[0], pr[1]); });
+    note.innerHTML = f.note;
+  }
+
+  document.querySelectorAll("#tri-sim [data-flow]").forEach(function (b) {
+    b.addEventListener("click", function () { run(b.getAttribute("data-flow")); });
+  });
+  var rb = document.getElementById("tri-reset");
+  if (rb) rb.addEventListener("click", function () {
+    current = null;
+    clearFx();
+    note.innerHTML = noteDefault;
+  });
+  window.addEventListener("resize", function () { if (current) run(current); });
+})();
+</script>
+</body>
+</html>

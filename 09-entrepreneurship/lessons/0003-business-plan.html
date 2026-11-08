@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>商业计划书:想清楚再出发 · 创业学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .slot-block { margin: .85rem 0; }
+  .slot-block .slot-label { font-size: .88rem; font-weight: 800; color: var(--ink-soft); letter-spacing: .04em; margin-bottom: .35rem; }
+  .slot-block .slot-label b { color: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chip { font-family: var(--sans); font-size: .85rem; font-weight: 700; color: var(--ink-soft);
+    background: #fff; border: 1.5px solid var(--line); border-radius: 999px; padding: .32rem 1rem;
+    cursor: pointer; transition: all .15s ease; }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, #fff); color: var(--accent); }
+  .pitch-out { font-family: var(--serif); font-size: 1.08rem; line-height: 2; background: var(--paper-deep);
+    border-radius: var(--radius); padding: 1rem 1.2rem; margin: 1rem 0 .4rem; }
+  .pitch-out .ph { color: var(--ink-faint); }
+  .pitch-out b { color: var(--accent); }
+  .pitch-note { font-size: .88rem; margin: .3rem 0 .6rem; }
+  .pitch-note.good { color: var(--good); font-weight: 700; }
+  .pitch-note.warn { color: var(--bad); font-weight: 700; }
+  .pitch-note.none { color: var(--ink-faint); }
+  .hbtn { font-family: var(--sans); font-size: .88rem; font-weight: 700; border-radius: 999px; padding: .42rem 1.2rem; cursor: pointer; border: none; }
+  .hbtn-go { background: var(--accent); color: var(--accent-ink); }
+  .hbtn-ghost { background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); }
+  .ex-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: .85rem 1.05rem; margin: .6rem 0; }
+  .ex-card .ex-tag { font-size: .76rem; font-weight: 800; letter-spacing: .08em; color: var(--accent); }
+  .ex-card p { margin: .3rem 0 0; font-size: .93rem; color: var(--ink-soft); line-height: 1.8; }
+  .ex-card p b { color: var(--ink); }
+</style>
+</head>
+<body class="branch-entrepreneurship">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">创业学</a><span class="crumb-sep">/</span>
+  <span>商业计划书:想清楚再出发</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">创业学 · Lesson 3</p>
+  <h1>商业计划书:想清楚再出发</h1>
+  <p class="lead">验证有结论之后,你需要把它变成一份别人看得懂的文件——说服投资人、对齐合伙人,也逼自己把含糊处全部摊开。这一课拆解商业计划书(Business Plan,简称 BP)的读者、标准结构,以及最浓缩的形态:30 秒电梯陈述。</p>
+
+  <h2><span class="secno">1</span>BP 给谁看:三种读者,三副面孔</h2>
+  <p>创业圈流行「别写 BP」,因为<em>计划赶不上变化,几十页的文件三周就过期</em>。这话只对了一半:BP 的价值从来不在预测准确性,而在<strong>写作过程强迫你想清楚</strong>。同一份底稿,对着三种读者要换三副面孔:</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>读者</th><th>他最想确认什么</th><th>你该突出的重点</th></tr></thead>
+      <tbody>
+        <tr><td><b>投资人</b></td><td>这事够大吗?凭什么是你?风险与回报对等吗?</td><td>问题之大、增长路径、团队匹配、融多少钱办成什么事</td></tr>
+        <tr><td><b>合伙人 / 核心候选人</b></td><td>方向可信吗?我的位置与回报是什么?</td><td>愿景、分工、股权安排、决策规则</td></tr>
+        <tr><td><b>自己</b></td><td>哪些环节我其实没想通?</td><td>假设清单与被证伪的风险点——这一版只对你诚实</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="callout tip"><span class="callout-label">练习</span> 给自己写的那一版,每个论断后面标注:这是「已验证」还是「我认为」。标满「我认为」的那几行,就是你下一轮 MVP 该做的事。</div>
+
+  <h2><span class="secno">2</span>标准结构:八块拼图</h2>
+  <p>不同投资机构的模板略有差异,但骨架高度一致。读的时候不妨换到桌子另一边——<em>投资人翻到每一页时,脑子里都带着一个疑问</em>:</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>#</th><th>模块</th><th>投资人翻到这页在想什么</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><b>问题 Problem</b></td><td>这是谁的多痛的问题?你凭什么比别人先发现?</td></tr>
+        <tr><td>2</td><td><b>方案 Solution</b></td><td>比现有做法好十倍在哪里?凭什么是你做得出来?</td></tr>
+        <tr><td>3</td><td><b>市场规模 Market</b></td><td>自下而上算得出的第一桶金有多大,而不是行业总盘</td></tr>
+        <tr><td>4</td><td><b>商业模式 Business Model</b></td><td>谁付钱、怎么收、毛利结构与复购逻辑</td></tr>
+        <tr><td>5</td><td><b>竞争 Competition</b></td><td>替代品是谁?大厂顺手做掉你怎么办?</td></tr>
+        <tr><td>6</td><td><b>团队 Team</b></td><td>这支队伍与这个问题,凭什么天作之合?</td></tr>
+        <tr><td>7</td><td><b>财务 Financials</b></td><td>关键假设驱动的推演是否自洽(不是精确预言)</td></tr>
+        <tr><td>8</td><td><b>融资需求 The Ask</b></td><td>要多少钱、出让多少、换来哪些里程碑</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>注意顺序的用意:前两页先让读者认同「问题真、方案妙」,团队与财务才有被评价的语境。一开场就夸团队,是新手最常犯的排版错误。</p>
+
+  <h2><span class="secno">3</span>电梯陈述:把八块压缩成一句话</h2>
+  <div class="formula">我们为【目标客户】解决【痛点】,通过【方案】,<br>不同于【替代品】的【关键差异】</div>
+  <p>电梯陈述(Elevator Pitch)得名于一个场景:你在电梯里遇到投资人,只有三十秒。这句话之所以有效,是因为它逼你同时回答 BP 里最关键的四块:市场、问题、方案、竞争。其中最容易被忽略的是<strong>替代品(Alternatives)</strong>——不说「和谁比」,听的人就无法给你的生意定位。</p>
+
+  <h2><span class="secno">4</span>动手:电梯陈述生成器</h2>
+  <div class="sim">
+    <div class="sim-title">生成器:拼出你的 30 秒陈述</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">五个空槽各点选一个词,实时生成一句电梯陈述。试试「一键填入示例」,再试试「随机打乱」——体会五个槽必须指向<b>同一门生意</b>才算数。</p>
+    <div id="pitchSlots"></div>
+    <p style="margin:.6rem 0">
+      <button type="button" class="hbtn hbtn-go" id="pitchDemo">一键填入示例</button>
+      <button type="button" class="hbtn hbtn-ghost" id="pitchShuffle">🎲 随机打乱</button>
+    </p>
+    <div class="pitch-out" id="pitchOut"></div>
+    <p class="pitch-note none" id="pitchNote"></p>
+    <h3 style="margin:1.2rem 0 .3rem">三个真实风格范例对照</h3>
+    <p style="font-size:.85rem;color:var(--ink-faint);margin:.1rem 0 .5rem">以下为按公开报道整理的「风格示意」,非公司原文引用。</p>
+    <div class="ex-card"><span class="ex-tag">爱彼迎风格 · 2008 年前后</span>
+      <p>我们为<b>预算有限的旅行者</b>解决<b>住宿贵且体验千篇一律</b>的痛点,通过<b>住进当地人家的空余房间</b>,不同于<b>千篇一律的连锁经济型酒店</b>的<b>单调标准间</b>,给你更便宜、也更地道的本地体验。</p>
+    </div>
+    <div class="ex-card"><span class="ex-tag">小米风格 · 2010 年前后</span>
+      <p>我们为<b>追求性价比的年轻用户</b>解决<b>旗舰手机太贵</b>的痛点,通过<b>线上直销、高配低价</b>,不同于<b>层层加价的线下渠道</b>的<b>渠道溢价</b>,把同级配置卖到一半的价钱。</p>
+    </div>
+    <div class="ex-card"><span class="ex-tag">滴滴风格 · 2012 年前后</span>
+      <p>我们为<b>赶时间的城市通勤者</b>解决<b>雨天打不到车</b>的痛点,通过<b>手机一键连接附近空车</b>,不同于<b>站在路边招手碰运气</b>的<b>不确定性</b>,几分钟内确定有车来接。</p>
+    </div>
+  </div>
+
+  <div class="case">
+    <div class="case-title">案例 · 一页纸计划:把写 BP 从论文变成白板</div>
+    <p>早期团队真正需要的往往不是 40 页的文件,而是一张能钉在墙上、随时涂改的假设清单。「一页纸计划」的代表是 Lean Canvas:阿什·莫里亚(Ash Maurya)把奥斯特瓦德的商业模式画布(见 08 战略分支第 4 课)稍作改造,九个格子——问题、客户细分、独特价值主张、解决方案、渠道、收入、成本、关键指标、门槛优势——让创始人在白板上花二十分钟就能把一门生意的假设全部摊开,并与合伙人逐格对齐。</p>
+    <p>「写下来」的价值连巨头都在用:亚马逊长期以约六页的叙事备忘录(Narrative Memo)替代会议 PPT——因为写完整句子会暴露思考的漏洞,而动画转场不会。一页纸计划正是同一个逻辑的创业版:<strong>文档越短,含糊越无处藏身</strong>。</p>
+    <div class="case-learn"><b>学到什么:</b>计划的价值在写作过程,文件只是副产物。先用一页纸对齐假设,再用八块结构扩写成对外版本——顺序反了,就变成「为写而写」。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>商业计划书 Business Plan</dt><dd>系统陈述问题、方案、市场、模式、竞争、团队、财务与融资需求的文件。</dd>
+      <dt>电梯陈述 Elevator Pitch</dt><dd>约 30 秒内讲清一门生意的浓缩表述,按「客户-痛点-方案-对比-差异」展开。</dd>
+      <dt>执行摘要 Executive Summary</dt><dd>BP 开头一两页的浓缩版,多数投资人只读这一部分。</dd>
+      <dt>一页纸计划 Lean Canvas</dt><dd>把商业模式假设浓缩为一页九格的白板工具,便于快速对齐与迭代。</dd>
+      <dt>替代品 Alternatives</dt><dd>顾客在缺少你的产品时会采用的其他做法,陈述中用于定位的参照系。</dd>
+      <dt>融资需求 The Ask</dt><dd>本轮拟融资金额、出让比例与资金用途里程碑。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>BP 本质是<b>思考的记录</b>:八块结构回答「生意是否自洽」,电梯陈述回答「三十秒能不能讲明白」。先一页纸对齐假设,再扩写成文。</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "BP 的「市场规模」一页,「这个市场上千亿,我们只要拿下 1% 就很可观」这类表述的主要问题是:",
+      "options": ["目标定得过于保守,投资人会认为增长空间不足", "自上而下摊派份额,没有说明如何触达与获取客户", "引用的口径太大,超出了天使轮估值可以承受的范围", "缺少对竞争对手的对照,无法证明份额能够被守住"],
+      "answer": 1,
+      "explain": "可信的市场规模要<b>自下而上</b>算:目标客户数 × 可触达渠道 × 客单价。「拿下 1%」回避了获客路径,等于把最难的问题藏进了一个百分比里。" },
+    { "q": "标准八块结构里,「团队」通常放在问题、方案、市场之后而非开头,最合理的解释是:",
+      "options": ["团队信息投资人早已从简历渠道掌握,无需前置展示", "团队强弱对早期投资价值影响有限,所以放在最末", "篇幅所限团队一页最占纸面,只能压缩到最后展示", "先让读者认同问题与机会,团队优劣才有被评价的语境"],
+      "answer": 3,
+      "explain": "结构即论证顺序:先确立「问题真、方案妙、市场大」,读者才会带着「这事需要什么样的人」来看团队——这时团队页才是加分项,而不是空洞的自夸。" },
+    { "q": "电梯陈述公式中「不同于【替代品】」这一环的作用是:",
+      "options": ["用对比凸显差异,让外行三秒内给你的生意定位", "承认对手的存在,以免投资人认定你不尊重同行", "列举对手的短板,证明整个行业都不值得再投资", "表明领先对手的幅度,方便在后续轮次抬高估值"],
+      "answer": 0,
+      "explain": "不说「和谁比」,听的人就无法定位你——「介于 X 和 Y 之间」是最快被理解的方式。参照系一清晰,关键差异才有落点,这也是 BP 竞争页的浓缩版。" },
+    { "q": "关于「BP 给谁看」,以下理解最准确的是:",
+      "options": ["BP 本质上是写给投资人的文件,自己想清楚靠执行摘要", "BP 只需要准备一版,投资人、合伙人与自己可以通用", "读者不同侧重不同,给自己那版的重点是逼自己想通", "BP 属于法律文件,一经各方签署即产生约束效力"],
+      "answer": 2,
+      "explain": "三种读者三种面孔:投资人要回报叙事,合伙人要分工与愿景,自己要<b>假设清单与诚实</b>。把对外版本直接当成自己的思考替代品,是「为写而写」的开始。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《商业模式新生代》亚历山大·奥斯特瓦德、伊夫·皮尼厄 · 机械工业出版社(建议读:画布九格逐一展开的章节)</li>
+      <li>《从0到1:开启商业与未来的秘密》彼得·蒂尔 · 中信出版社(建议读:关于清晰陈述垄断优势的章节)</li>
+      <li>《精益创业:新创企业的成长思维》埃里克·莱斯 · 中信出版社(建议读:小批量与「跳出去」的章节)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-lean-startup.html"><span class="pager-label">上一课</span><span class="pager-title">精益创业:构建-衡量-学习</span></a>
+    <a class="next" href="0004-funding-and-equity.html"><span class="pager-label">下一课</span><span class="pager-title">融资与股权</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我按八块结构过一遍我的项目」「听听我这段电梯陈述,哪里最弱?」——被追问三次的陈述,才经得起电梯里那三十秒。</div>
+    <p>创业学 · 第 3 课 · 案例为真实公司,范例为风格示意</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var SLOTS = [
+    { label: "目标客户", opts: ["预算有限的年轻旅行者", "写字楼里的咖啡刚需白领", "想带父母看病的上班族", "县城里的小店店主"] },
+    { label: "痛点", opts: ["住宿又贵、体验还千篇一律", "楼下买杯咖啡要排十分钟队", "挂个专家号要凌晨去排队", "进一次货要跑两小时大巴"] },
+    { label: "方案", opts: ["住进当地人家的空余房间", "好咖啡按周配送到工位", "一键代办预约与陪诊", "平台下单、次日直达的县城集配"] },
+    { label: "替代品", opts: ["千篇一律的连锁经济型酒店", "排队取餐的外卖咖啡窗口", "自己凌晨去抢号的侥幸", "每月两趟的省城进货大巴"] },
+    { label: "关键差异", opts: ["更便宜、也更地道的本地体验", "每周现磨、单杯成本还降三成", "约到号再付费、更省心", "次日达、先售后款不压钱"] }
+  ];
+  var state = [-1, -1, -1, -1, -1];
+  var wrap = document.getElementById("pitchSlots");
+  var out = document.getElementById("pitchOut");
+  var note = document.getElementById("pitchNote");
+
+  SLOTS.forEach(function (slot, i) {
+    var block = document.createElement("div");
+    block.className = "slot-block";
+    var lab = document.createElement("p");
+    lab.className = "slot-label";
+    lab.innerHTML = "第 " + (i + 1) + " 槽 · <b>" + slot.label + "</b>";
+    var chips = document.createElement("div");
+    chips.className = "chips";
+    slot.opts.forEach(function (opt, j) {
+      var c = document.createElement("button");
+      c.type = "button";
+      c.className = "chip";
+      c.textContent = opt;
+      c.addEventListener("click", function () {
+        state[i] = state[i] === j ? -1 : j;
+        render();
+      });
+      chips.appendChild(c);
+    });
+    block.appendChild(lab);
+    block.appendChild(chips);
+    wrap.appendChild(block);
+  });
+
+  function seg(i) {
+    if (state[i] < 0) return '<span class="ph">【待选择:' + SLOTS[i].label + "】</span>";
+    return "<b>" + SLOTS[i].opts[state[i]] + "</b>";
+  }
+
+  function render() {
+    Array.prototype.forEach.call(wrap.querySelectorAll(".slot-block"), function (block, i) {
+      Array.prototype.forEach.call(block.querySelectorAll(".chip"), function (c, j) {
+        c.classList.toggle("on", state[i] === j);
+      });
+    });
+    out.innerHTML = "我们为" + seg(0) + "解决" + seg(1) + ",通过" + seg(2) + ",不同于" + seg(3) + "的" + seg(4) + "。";
+    var filled = state.filter(function (s) { return s >= 0; }).length;
+    if (filled < 5) {
+      note.className = "pitch-note none";
+      note.textContent = "已填 " + filled + "/5 槽——填满后自动检查五段是否指向同一门生意。";
+      return;
+    }
+    var same = state.every(function (s) { return s === state[0]; });
+    if (same) {
+      note.className = "pitch-note good";
+      note.textContent = "✓ 五个空槽指向同一门生意,陈述逻辑自洽——这就是一句合格的电梯陈述。";
+    } else {
+      note.className = "pitch-note warn";
+      note.textContent = "⚠ 五段拼起来像两门生意:检查客户、痛点与差异是否指向同一批人。随机打乱后就是这个效果。";
+    }
+  }
+
+  document.getElementById("pitchDemo").addEventListener("click", function () {
+    var biz = Math.floor(Math.random() * 4);
+    for (var i = 0; i < 5; i++) state[i] = biz;
+    render();
+  });
+  document.getElementById("pitchShuffle").addEventListener("click", function () {
+    for (var i = 0; i < 5; i++) state[i] = Math.floor(Math.random() * 4);
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

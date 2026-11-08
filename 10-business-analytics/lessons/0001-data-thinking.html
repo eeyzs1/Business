@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据思维:从问题到数据 · 商业分析</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .stage-detail { background: var(--paper-deep); border-radius: 10px; padding: .9rem 1.1rem; margin-top: .8rem; min-height: 7.5rem; }
+  .stage-detail h3 { margin: .1rem 0 .5rem; font-size: 1.02rem; }
+  .stage-detail p { font-size: .92rem; margin: .35rem 0; color: var(--ink-soft); }
+  .stage-detail b { color: var(--accent); }
+  .pipe-hint { font-size: .85rem; color: var(--ink-faint); margin: .4rem 0 .8rem; }
+</style>
+</head>
+<body class="branch-analytics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">商业分析</a><span class="crumb-sep">/</span>
+  <span>数据思维:从问题到数据</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">商业分析 · Lesson 1</p>
+  <h1>数据思维:从问题到数据</h1>
+  <p class="lead">打开一张几十万行的表格,新手的第一反应是「从哪下手」,老手的第一反应是「要回答什么问题」。商业世界从不缺数据:收银机、客户管理系统、广告后台每天都在自动记录,缺的是把数据变成决策的思维流程。本课把这条流程交给你——它比任何工具都保值。</p>
+
+  <h2><span class="secno">1</span>分析五步:从业务问题到推动决策</h2>
+  <p>数据分析(Data Analysis)在商业里的终点从来不是图表,而是决策。一条完整的分析流水线(Pipeline)分五步:<strong>业务问题 → 拆解假设 → 取数 → 分析 → 推动决策</strong>。点击下面管道图的每个阶段,看它做什么、容易错在哪、产出什么:</p>
+
+  <div class="sim">
+    <div class="sim-title">分析流水线:点击任一阶段,展开详情卡</div>
+    <div id="pipeWrap"></div>
+    <p class="pipe-hint">五个阶段首尾相接:前一阶段的产出物,就是后一阶段的输入。</p>
+    <div class="stage-detail" id="stageCard"></div>
+  </div>
+
+  <p>五步里最贵的错误发生在两端:第 1 步问题定义错了,后面越精确越白费;第 5 步结论不推动决策,分析就只是「完成了作业」。中间三步是手艺,两端是责任心。</p>
+
+  <h2><span class="secno">2</span>好问题的标准:可行动、有归属</h2>
+  <div class="concept" data-reveal>
+    <div class="concept-title">概念卡 · 什么是好的分析问题</div>
+    <p>两把尺子:<strong>可行动性(Actionability)</strong>——答案的不同取值会指向不同的动作;若无论答案是 A 还是 B 你都什么都不做,这不是问题,是好奇心。<strong>归属(Ownership)</strong>——有明确的人对这个问题的答案负责、有权限推动后续动作。反例:「用户为什么不留下来?」(太宽,无人负责);正例:「新用户 7 日留存率(7-Day Retention)环比下降 3 个百分点,主要流失在注册后哪一步?」(指标、范围、基准、期限俱全,产品负责人认领)。</p>
+  </div>
+  <p>「为什么」类的问题要改写成「哪种解释被数据支持」——因为「为什么」无法直接回答,只能拆成若干条可检验的假设(Hypothesis),让数据来淘汰它们。</p>
+
+  <h2><span class="secno">3</span>指标与维度:数据的两条坐标</h2>
+  <p>指标(Metric)是「算出来的数」,回答<strong>多少</strong>:销售额、转化率、留存率;维度(Dimension)是「切分的角度」,回答<strong>从哪看</strong>:区域、渠道、品类、时间。同一个指标沿不同维度切片,问题就从「总销售额降了」变成「华东区线上渠道的乳制品降了」——这正是第 4 课「维度下钻」的雏形。</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>类型</th><th>例子</th><th>回答的问题</th></tr></thead>
+    <tbody>
+      <tr><td>指标</td><td>月销售额、转化率、7 日留存率</td><td>多少?比率与趋势如何?</td></tr>
+      <tr><td>维度</td><td>华东区、线上渠道、乳制品、3 月</td><td>从哪个切面看?和谁比?</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout note"><span class="callout-label">数据素养的排序</span><br>数据素养(Data Literacy)= <strong>会提问 &gt; 会工具</strong>。Excel、SQL、Python 每几年换一茬,「把业务疑虑翻译成数据问题」的能力永远稀缺。面试官问「你会什么工具」时,真正想问的是「你能不能从一片混沌里问出对的问题」。</div>
+
+  <h2><span class="secno">4</span>示范拆解:「销售额下降了,怎么分析」</h2>
+  <p>用五步流程走一遍这个最常见的问题(数字为课堂示意)。向下滚动,逐条展开:</p>
+  <ol class="steps">
+    <li data-reveal><strong>定义问题。</strong>全店月销售额环比下降约 12%(示意),范围限定线上渠道,观察期近 8 周。产出:一句话问题定义 + 认领人。</li>
+    <li data-reveal><strong>拆解假设。</strong>销售额 = 客流 × 转化率 × 客单价,三条候选解释:竞品促销分流了客流、畅销品缺货压低转化、高客单品类促销减少拉低客单价。</li>
+    <li data-reveal><strong>取数。</strong>调出 8 周分品类、分日的三项指标与促销日历;统一「含税销售额」口径,核对缺失日。</li>
+    <li data-reveal><strong>分析。</strong>客流基本持平,客单价降约 8%,其中高客单品类销量降幅最大、且与缺货记录重合——缺货假设成立(示意)。</li>
+    <li data-reveal><strong>推动决策。</strong>高客单品类补货优先级上调,上线每周缺货告警,两周后复盘指标。分析到此才闭环。</li>
+  </ol>
+
+  <div class="case">
+    <div class="case-title">案例 · 7-Eleven:把「假设-执行-验证」开进每家便利店</div>
+    <p>便利店每天要回答上千个小问题:今天多订几个饭团?货架第二层摆什么?7-Eleven 的单品管理(Item-by-Item Management)把每个 SKU(Stock Keeping Unit,最小库存单位)当作一条假设:订货是假设,卖完是验证,卖断与报废是误差信号。在铃木敏文的推动下,这套循环配合信息系统与温控物流,让门店用「假设-执行-验证」而非纯经验拍板订货(公开资料综述,示意)。选址同理:不靠「感觉」,先量化商圈客流、客层构成与竞品分布,再回答「这家店为谁而开」。</p>
+    <div class="case-learn"><b>学到什么:</b>数据思维不是技术,而是一种工作习惯——把大焦虑拆成小而具体、可被数据推翻的假设,让循环快起来。问题定义清楚了,第 2 课的统计工具才有的放矢。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>指标 Metric</dt><dd>由数据计算出来、回答「多少」的量,如销售额、转化率、留存率。</dd>
+      <dt>维度 Dimension</dt><dd>切分与观察指标的角度,如区域、渠道、品类、时间。</dd>
+      <dt>可行动性 Actionability</dt><dd>好问题的标准之一:答案的不同取值会指向不同的动作。</dd>
+      <dt>归属 Ownership</dt><dd>好问题的标准之一:有明确负责人认领并有权推动后续动作。</dd>
+      <dt>假设 Hypothesis</dt><dd>对问题的候选解释,必须写成可被数据检验、可被推翻的形式。</dd>
+      <dt>数据素养 Data Literacy</dt><dd>把业务疑虑翻译成数据问题、并批判性读懂结论的能力。</dd>
+      <dt>单品管理 Item Management</dt><dd>以 SKU 为单位「假设-执行-验证」的订货与货架管理循环。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>先问对问题,再谈数据:问题要<b>可行动、有归属</b>;流程五步走——问题→假设→取数→分析→决策,缺一环就是半成品;会提问的人,永远比只会工具的人值钱。</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "老板说「下季度华东区销售为什么没达标」,作为分析问题,最需要先补上的是:",
+      "options": ["导出更长时间的历史数据", "升级到更高级的图表工具", "明确指标口径范围与期限", "找一份行业平均数据做参照"],
+      "answer": 2,
+      "explain": "好问题 = 指标 × 范围 × 基准 × 期限 + 认领人。口径不先定义清楚,后面的取数与分析都无从校验,工具再高级也是白费。" },
+    { "q": "五步流水线中,「把模糊的焦虑翻译成若干条可检验的候选解释」发生在:",
+      "options": ["第二步:拆解假设", "第一步:定义业务问题", "第三步:取数", "第四步:分析"],
+      "answer": 0,
+      "explain": "拆解假设阶段的任务就是把「为什么」改写成多条可被数据淘汰的候选解释,并排好优先级;定义问题在前,取数与分析在其后。" },
+    { "q": "以下哪个问题最符合「可行动」的标准?",
+      "options": ["我们的用户到底是谁呢", "为什么大家不爱我们的产品", "数据能不能告诉我们一切呢", "新客首单转化率降三成,卡在哪步"],
+      "answer": 3,
+      "explain": "可行动性的检验:答案的不同取值会指向不同动作。转化率降三成、追问卡在哪一步的问题,答案直接决定改什么;其余三个要么太宽,要么是纯好奇。" },
+    { "q": "关于数据素养,更接近本课观点的说法是:",
+      "options": ["熟练使用五种以上分析工具", "能把业务疑虑翻译成数据问题", "掌握全部统计公式与推导", "会背诵常见业务指标的口径"],
+      "answer": 1,
+      "explain": "数据素养 = 会提问 &gt; 会工具。工具几年一换,而「把业务疑虑翻译成指标、维度与可检验假设」的能力长期稀缺,也是分析流程的起点。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《数据化决策》道格拉斯·W. 哈伯德 · 世界图书出版公司(建议读:澄清决策问题与量化方法的相关章节)</li>
+      <li>《赤裸裸的统计学》查尔斯·惠伦 · 中信出版社(建议读:统计思维如何服务决策的相关章节)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">上一课</span><span class="pager-title">分支导学 · 商业分析</span></a>
+    <a class="next" href="0002-descriptive-stats.html"><span class="pager-label">下一课</span><span class="pager-title">描述统计:别被平均数骗了</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我把我手头的业务问题改写成可行动的分析问题」「我的指标该按哪些维度切」——拿自己的业务练五步流水线,效果最好。</div>
+    <p>商业分析 · 第 1 课 · 共 4 课 · 案例与数字均为教学示意</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var STAGES = [
+    { name: "业务问题", en: "Problem",
+      what: "把模糊的焦虑翻译成可回答的问题:哪个指标、什么范围、相对哪个基准、看哪个时间段。",
+      err: "问题太宽(「我们为什么不赚钱?」)或太窄(直接要一张表),后面越精确越白费。",
+      out: "一句话问题定义:指标 × 范围 × 基准 × 期限,并写明谁负责。" },
+    { name: "拆解假设", en: "Hypothesis",
+      what: "把问题拆成若干条可被数据检验的候选解释,按可能性与影响排优先级。",
+      err: "只带着一个解释开跑、先入为主;拆出的假设与任何行动都对不上号。",
+      out: "一张尽量不重不漏的假设清单,标注优先级与检验方法。" },
+    { name: "取数", en: "Data",
+      what: "确定口径与来源,拉取、清洗、核对数据;口径宁可先吵清楚,再动手。",
+      err: "口径不统一(含税/不含税、去重/不去重)、样本有偏、直接沿用别人给的表不核对。",
+      out: "一份可信的数据集 + 一段口径说明,让结论可复现。" },
+    { name: "分析", en: "Analysis",
+      what: "用描述统计、对比与下钻检验假设:哪条成立?幅度多大?证据够不够硬?",
+      err: "把相关当因果、只看平均值、只看总量不分组(下一课与第三课逐个拆解这些坑)。",
+      out: "结论与证据:哪个假设被支持、量级多大、置信程度如何。" },
+    { name: "推动决策", en: "Decision",
+      what: "把结论翻译成动作选项:做什么、谁负责、何时复盘,并跟进落地效果。",
+      err: "报告写完没人读;只给结论不给行动;做完不追踪,错误下次原样重演。",
+      out: "决策结论 + 行动清单(负责人/期限)+ 复盘日期。" }
+  ];
+  var wrap = document.getElementById("pipeWrap");
+  var card = document.getElementById("stageCard");
+  var svg = Viz.svgEl("svg", {
+    viewBox: "0 0 680 136", role: "img",
+    style: "width:100%;height:auto;display:block"
+  });
+  wrap.appendChild(svg);
+  var items = [];
+
+  STAGES.forEach(function (s, i) {
+    var x = 12 + i * 133;
+    var g = Viz.svgEl("g", { style: "cursor:pointer" });
+    var rect = Viz.svgEl("rect", {
+      x: x, y: 36, width: 112, height: 66, rx: 12,
+      fill: "#fff", stroke: "#e7e0d3", "stroke-width": 2
+    });
+    g.appendChild(rect);
+    Viz.label(g, x + 56, 26, "0" + (i + 1), { anchor: "middle", size: 12, color: "#a8a29e", weight: 800 });
+    var nm = Viz.label(g, x + 56, 65, s.name, { anchor: "middle", size: 15, color: "#1c1917", weight: 800 });
+    var en = Viz.label(g, x + 56, 87, s.en, { anchor: "middle", size: 11, color: "#a8a29e", weight: 600 });
+    svg.appendChild(g);
+    if (i < STAGES.length - 1) {
+      var ax = x + 116;
+      svg.appendChild(Viz.svgEl("line", { x1: ax, x2: ax + 11, y1: 69, y2: 69, stroke: "#c9c1b2", "stroke-width": 2.5 }));
+      svg.appendChild(Viz.svgEl("polygon", { points: (ax + 11) + ",64 " + (ax + 11) + ",74 " + (ax + 18) + ",69", fill: "#c9c1b2" }));
+    }
+    g.addEventListener("click", function () { select(i); });
+    items.push({ rect: rect, nm: nm, en: en });
+  });
+
+  function select(i) {
+    items.forEach(function (it, j) {
+      var on = j === i;
+      it.rect.setAttribute("fill", on ? "var(--accent)" : "#fff");
+      it.rect.setAttribute("stroke", on ? "var(--accent)" : "#e7e0d3");
+      it.nm.setAttribute("fill", on ? "#fff" : "#1c1917");
+      it.en.setAttribute("fill", on ? "#e0e7ff" : "#a8a29e");
+    });
+    var s = STAGES[i];
+    card.innerHTML = "<h3>第 " + (i + 1) + " 步 · " + s.name + "(" + s.en + ")</h3>" +
+      "<p><b>做什么:</b>" + s.what + "</p>" +
+      "<p><b>常见错误:</b>" + s.err + "</p>" +
+      "<p><b>产出物:</b>" + s.out + "</p>";
+  }
+  select(0);
+})();
+</script>
+</body>
+</html>

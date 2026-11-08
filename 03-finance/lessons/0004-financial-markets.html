@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金融市场:钱的地图 · 金融学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  #finmap { background: #fff; border-radius: 10px; }
+  #finmap .edge { stroke: #d6d3d1; stroke-width: 2.5; fill: none; transition: opacity .25s, stroke-width .25s; }
+  #finmap .edge.hl { stroke: #047857; stroke-width: 4; stroke-dasharray: 10 8; animation: finflow .7s linear infinite; }
+  #finmap .edge.dim { opacity: .18; }
+  #finmap .node { transition: opacity .25s; }
+  #finmap .node.dim { opacity: .22; }
+  #finmap .node rect { fill: #fff; stroke: #e7e0d3; stroke-width: 1.5; transition: all .25s; }
+  #finmap .node.hl rect { stroke: #047857; stroke-width: 2.5; fill: #e8f6f0; }
+  #finmap .ntitle { font-size: 14px; font-weight: 800; fill: #1c1917; text-anchor: middle; }
+  #finmap .nsub { font-size: 10.5px; fill: #78716c; text-anchor: middle; }
+  #finmap .elabel { font-size: 11px; fill: #78716c; font-weight: 700; }
+  @keyframes finflow { to { stroke-dashoffset: -36; } }
+  #finmap-btns { display: flex; flex-wrap: wrap; gap: .55rem; margin: .5rem 0 .9rem; }
+  .path-btn {
+    border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 999px; padding: .38rem .9rem; font-size: .9rem; font-weight: 600;
+    cursor: pointer; font-family: var(--sans); transition: all .15s;
+  }
+  .path-btn:hover { border-color: var(--accent); }
+  .path-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  #finmap-caption {
+    background: var(--paper-deep); border-radius: 10px; padding: .85rem 1.05rem;
+    font-size: .95rem; line-height: 1.8; margin: .9rem 0 0; min-height: 3.4em;
+  }
+</style>
+</head>
+<body class="branch-finance">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">金融学</a><span class="crumb-sep">/</span>
+  <span>金融市场:钱的地图</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">金融学 · LESSON 4</p>
+  <h1>金融市场:钱的地图</h1>
+  <p class="lead">钱不会自己流动:一端是「有钱没项目」的储蓄者,另一端是「有项目没钱」的企业,金融体系就是连接两端的管道网。看懂这张地图,就看懂利率为何牵动所有人,也看懂一家公司从贷款到上市的旅程。</p>
+
+  <h2><span class="secno">1</span>金融体系解决什么问题</h2>
+  <p>没有金融体系,储户不知道把钱借给谁,企业也凑不齐小额存款。它做两件事:搬运——把零散储蓄聚成大额资本;处理信息不对称——银行替你审查借款人,股市用价格汇总千万人的判断;代价是中介要赚「过路费」:利差、佣金、管理费。</p>
+
+  <h2><span class="secno">2</span>直接融资 vs 间接融资</h2>
+  <div class="concept">
+    <div class="concept-title">两条主干道</div>
+    <p><em>间接融资(Indirect Finance)</em>:储户把钱交给银行,银行再贷给企业;双方互不见面,银行赚利差、担风险、替储户盯企业。</p>
+    <p><em>直接融资(Direct Finance)</em>:企业发行股票或债券,投资者直接出资(常由投行承销);投资者自担风险,也省下大部分利差。</p>
+  </div>
+  <p>银行擅长评估不透明的中小企业,市场擅长给透明的大公司定价;一国的体系常是两者混合。</p>
+
+  <h2><span class="secno">3</span>市场的几张「分类卡」</h2>
+  <p>按期限分:一年以内、解决短期周转的叫<em>货币市场(Money Market)</em>(拆借、短期国债、票据);股票与中长期债券属于<em>资本市场(Capital Market)</em>。按属性分,股与债是「所有权」与「债权」之别:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>维度</th><th>股票(Stock)</th><th>债券(Bond)</th></tr></thead>
+    <tbody>
+      <tr><td>你的身份</td><td>股东:公司的所有者之一</td><td>债权人:公司的「债主」</td></tr>
+      <tr><td>收益方式</td><td>分红与价差,上不封顶</td><td>约定利息,按时优先偿付</td></tr>
+      <tr><td>风险高低</td><td>较高,波动大</td><td>相对较低,但有违约风险</td></tr>
+      <tr><td>期限</td><td>永续(除非回购、退市)</td><td>有明确到期日</td></tr>
+      <tr><td>破产清偿顺序</td><td>排在最后</td><td>优先于股东</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>按新旧分</strong>:证券<strong>首次发行</strong>、资金真正进入企业的,是<em>一级市场(Primary Market)</em>;之后证券在投资者间转手的,是<em>二级市场(Secondary Market)</em>。二级市场不直接给企业供血,却提供<em>流动性(Liquidity)</em>——正因为随时能卖,你才愿意买。</p>
+
+  <h2><span class="secno">4</span>交互:金融体系地图</h2>
+  <div class="sim" id="finmap-sim">
+    <div class="sim-title">金融体系地图:点亮一条资金链路</div>
+    <div id="finmap-btns"></div>
+    <div id="finmap"></div>
+    <p id="finmap-caption">点按上方任一按钮,对应的资金链路会亮起来并流动,其余部分退为灰色。</p>
+  </div>
+
+  <h2><span class="secno">5</span>利率:资金的价格</h2>
+  <p>管道网络里的「水价」就是利率:它平衡储蓄与投资的总量,也把资金分配到不同用途。传导是双向的——央行调政策利率,银行资金成本与贷款利率随之变化,企业投资意愿再作反应(见路径⑤);经济过热也会反过来推高市场利率。第 1 课的贴现率、第 2 课的无风险利率,都从这条链路取数——<strong>利率是前两课所有公式的接头</strong>。</p>
+
+  <h2><span class="secno">6</span>案例:一家公司从贷款到 IPO 的融资旅程</h2>
+  <div class="case">
+    <p class="case-title">宁德时代(CATL):沿着地图一路向东</p>
+    <p>以动力电池巨头宁德时代为例(公开报道的约数,示意):</p>
+    <ul class="timeline">
+      <li><b>2011 年 · 创立与股权融资</b>创始团队携早期资本自立门户——初创期没有抵押物,只能用股权换钱。</li>
+      <li><b>成长期 · 银行贷款与债券</b>订单扩张要建厂,设备与订单成了「信用」,银行贷款与发债先后登场。</li>
+      <li><b>2018 年 6 月 · 创业板 IPO</b>在深交所上市,募资约 50 多亿元(一级市场);资金进入企业,早期股东获得退出通道。</li>
+      <li><b>上市后 · 多工具组合</b>再融资、债券、授信随取随用——公司越成熟,直接融资比重越高、成本越低。</li>
+    </ul>
+    <p class="case-learn"><b>学到什么</b>公司融资像爬梯子:先用股权,再用债权,最后敲开公开市场之门——地图上的每个节点,它都走过。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>间接融资(Indirect Finance)</dt><dd>资金经银行等中介流向企业。</dd>
+      <dt>直接融资(Direct Finance)</dt><dd>资金经证券市场直达企业。</dd>
+      <dt>货币市场(Money Market)</dt><dd>一年以内的短期资金融通市场。</dd>
+      <dt>资本市场(Capital Market)</dt><dd>股票与中长期债券的融资市场。</dd>
+      <dt>一级市场(Primary Market)</dt><dd>证券首次发行、资金进入企业。</dd>
+      <dt>二级市场(Secondary Market)</dt><dd>已发行证券在投资者间转手。</dd>
+      <dt>首次公开募股(IPO)</dt><dd>公司首次向公众发行股票上市。</dd>
+      <dt>流动性(Liquidity)</dt><dd>资产快速以合理价格变现。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>金融体系把储蓄变成投资:银行走间接融资,市场走直接融资;一级市场供血,二级市场供流动性。<strong>利率是资金的价格</strong>,串起央行、银行、企业与居民。</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">自查测验</div>
+    <script type="application/json">
+    [
+      {
+        "q": "企业公开发行债券融资,属于直接融资还是间接融资?",
+        "options": [
+          "间接融资:资金先存入银行再由银行放贷",
+          "直接融资:投资者买债,资金直达企业",
+          "间接融资:债券必须由商业银行代为承销",
+          "直接融资:企业把股权让渡给债券持有人"
+        ],
+        "answer": 1,
+        "explain": "发债是典型的直接融资:投资者直接持有企业债权,资金经市场进入企业,不经银行;持债人并不取得股权。"
+      },
+      {
+        "q": "期限在一年以内、主要满足短期资金周转的市场叫什么?",
+        "options": ["货币市场", "资本市场", "一级市场", "二级市场"],
+        "answer": 0,
+        "explain": "一年以内是货币市场(拆借、短期国债、票据),一年以上是资本市场(股票、中长期债券);一级/二级按发行新旧分,与期限无关。"
+      },
+      {
+        "q": "某公司 IPO 后股票在二级市场被大量交易、股价大涨。这段时间公司账上会新增资金吗?",
+        "options": [
+          "会新增:成交金额按比例划入公司账户",
+          "会新增:交易所把部分佣金返还公司",
+          "会新增:承销商必须分成认购款给公司",
+          "不会新增:资金只在投资者之间转手"
+        ],
+        "answer": 3,
+        "explain": "二级市场是投资者间的转手:买方付钱给卖方,公司分文不取。公司拿钱只在一级市场发行那一刻;二级市场贡献的是流动性与定价。"
+      },
+      {
+        "q": "中央银行下调政策利率后,最可能出现的传导链条是?",
+        "options": [
+          "储户利息收入增加,银行吸储更多,放贷扩大",
+          "存款准备金率上升,可贷资金变少,信贷收缩",
+          "银行资金成本下降,贷款利率下调,投资意愿增强",
+          "股票交易印花税下调,换手率上升,利润增加"
+        ],
+        "answer": 2,
+        "explain": "政策利率下调压低银行资金成本,银行随之下调贷款利率,企业借款变便宜、投资意愿上升;其余三项方向相反或混入了别的工具。"
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《投资学》滋维·博迪 等 · 机械工业出版社(建议读:第 1 章「投资环境」、第 2 章「资产类别与金融工具」)</li>
+      <li>《货币金融学》弗雷德里克·米什金 · 中国人民大学出版社(建议读:第 2 章「金融体系概览」)</li>
+      <li>可搜索关键词:直接融资与间接融资 · 利率传导机制</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-npv-and-irr.html"><span class="pager-label">← 上一课</span><span class="pager-title">NPV:一个项目值不值得投</span></a>
+    <a class="next" href="../../04-marketing/index.html"><span class="pager-label">下一课 · 进入下一分支 →</span><span class="pager-title">04 市场营销</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>比如「降息了,我的房贷和基金会怎么变?」——回到对话里直接问你的 AI 老师,把这张地图接到你自己的钱包上。</div>
+    <p>金融学 · 第 4 课(本分支完)| 下一站:04 市场营销——产品定完价,还得卖出去。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- 金融体系地图:节点 + 路径高亮 ---- */
+  var box = document.getElementById("finmap");
+  var cap = document.getElementById("finmap-caption");
+  var btns = document.getElementById("finmap-btns");
+
+  var svg = Viz.svgEl("svg", { viewBox: "0 0 760 430", role: "img", "aria-label": "金融体系资金流向图", style: "width:100%;height:auto;display:block" });
+  var defs = Viz.svgEl("defs");
+  [["arr", "#c9c1b2"], ["arrhl", "#047857"]].forEach(function (p) {
+    var mk = Viz.svgEl("marker", { id: p[0], viewBox: "0 0 10 10", refX: "8.5", refY: "5", markerWidth: "6.5", markerHeight: "6.5", orient: "auto" });
+    mk.appendChild(Viz.svgEl("path", { d: "M 0 0 L 10 5 L 0 10 z", fill: p[1] }));
+    defs.appendChild(mk);
+  });
+  svg.appendChild(defs);
+
+  var NODES = {
+    sav:   { x: 20,  y: 176, w: 150, h: 60, t: "储户与投资者", s: "手里有多余的钱" },
+    bank:  { x: 245, y: 176, w: 130, h: 60, t: "商业银行", s: "间接融资的中介" },
+    cb:    { x: 245, y: 36,  w: 130, h: 52, t: "中央银行", s: "利率政策源头" },
+    stock: { x: 470, y: 66,  w: 140, h: 58, t: "股票市场", s: "发行 + 交易" },
+    bond:  { x: 470, y: 288, w: 140, h: 58, t: "债券市场", s: "发行 + 交易" },
+    firm:  { x: 655, y: 176, w: 85,  h: 60, t: "企业", s: "需要钱" }
+  };
+
+  var EDGES = [
+    { id: "dep",  d: "M 172 196 L 241 196", label: ["存款", 206, 186, "middle"] },
+    { id: "loan", d: "M 377 196 L 651 196", label: ["贷款", 510, 186, "middle"] },
+    { id: "ret",  d: "M 697 238 C 697 404, 95 404, 95 240", label: ["还本付息 · 分红派息", 396, 398, "middle"] },
+    { id: "pol",  d: "M 310 90 L 310 174", label: ["政策利率", 320, 140, "start"] },
+    { id: "bs",   d: "M 158 172 C 250 92, 390 82, 466 92", label: ["买股票", 296, 92, "middle"] },
+    { id: "bb",   d: "M 158 240 C 250 320, 390 330, 466 320", label: ["买债券", 296, 332, "middle"] },
+    { id: "ipo",  d: "M 610 104 C 660 118, 682 148, 696 174", label: ["IPO 募资", 636, 130, "start"] },
+    { id: "bd",   d: "M 610 308 C 660 294, 682 264, 696 238", label: ["发债募资", 636, 296, "start"] },
+    { id: "sec",  d: "M 55 174 C 18 116, 152 104, 126 170", label: ["二级市场:投资者间转手", 88, 96, "middle"] }
+  ];
+
+  var edgeEls = {};
+  EDGES.forEach(function (e) {
+    var p = Viz.svgEl("path", { "class": "edge", d: e.d, "marker-end": "url(#arr)" });
+    svg.appendChild(p);
+    edgeEls[e.id] = p;
+  });
+  EDGES.forEach(function (e) {
+    var t = Viz.svgEl("text", { x: e.label[1], y: e.label[2], "text-anchor": e.label[3], "class": "elabel" });
+    t.textContent = e.label[0];
+    svg.appendChild(t);
+  });
+  var nodeEls = {};
+  Object.keys(NODES).forEach(function (id) {
+    var n = NODES[id];
+    var g = Viz.svgEl("g", { "class": "node" });
+    g.appendChild(Viz.svgEl("rect", { x: n.x, y: n.y, width: n.w, height: n.h, rx: 12 }));
+    var t1 = Viz.svgEl("text", { x: n.x + n.w / 2, y: n.y + n.h / 2 - 3, "class": "ntitle" });
+    t1.textContent = n.t;
+    var t2 = Viz.svgEl("text", { x: n.x + n.w / 2, y: n.y + n.h / 2 + 15, "class": "nsub" });
+    t2.textContent = n.s;
+    g.appendChild(t1); g.appendChild(t2);
+    svg.appendChild(g);
+    nodeEls[id] = g;
+  });
+  box.appendChild(svg);
+
+  var DEFAULT_CAP = "点按上方任一按钮,对应的资金链路会亮起来并流动,其余部分退为灰色。";
+  var PATHS = [
+    { key: "bank", name: "① 银行贷款 · 间接融资", edges: ["dep", "loan", "ret"], nodes: ["sav", "bank", "firm"],
+      cap: "<b>储户</b>把钱存入<b>银行</b> → 银行审贷后放款给<b>企业</b> → 企业还本付息,银行留下利差,再付储户利息。供需双方互不见面,银行替储户承担「挑企业、盯企业」的成本——间接融资。" },
+    { key: "bond", name: "② 发行债券 · 直接融资", edges: ["bb", "bd", "ret"], nodes: ["sav", "bond", "firm"],
+      cap: "<b>企业</b>在<b>债券市场</b>公开发行债券 → <b>投资者</b>直接认购,资金经承销进入企业 → 到期还本付息。没有银行赚利差,但违约风险由投资者自担——直接融资。" },
+    { key: "ipo", name: "③ IPO 股票 · 直接融资", edges: ["bs", "ipo", "ret"], nodes: ["sav", "stock", "firm"],
+      cap: "<b>企业</b>首次公开募股(IPO),在<b>股票市场</b>发行新股 → <b>投资者</b>申购,资金扣除承销费后进入企业(一级市场)→ 企业让渡股权,日后以分红回报股东。" },
+    { key: "sec", name: "④ 二级市场 · 转手交易", edges: ["sec"], nodes: ["sav"],
+      cap: "新股发行后,股票在<b>投资者之间</b>不断转手:卖出者拿钱、买入者拿票,资金并不进入企业。但正是「随时能卖」的流动性,让一级市场的发行成为可能。" },
+    { key: "pol", name: "⑤ 央行降息 · 利率传导", edges: ["pol", "loan"], nodes: ["cb", "bank", "firm"],
+      cap: "<b>中央银行</b>下调政策利率 → 银行资金成本下降 → <b>贷款</b>利率下调 → <b>企业</b>借钱变便宜、投资意愿上升——利率这条价格线,把央行、银行与实体连成一体。" }
+  ];
+
+  var btnEls = [];
+  PATHS.forEach(function (p) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "path-btn";
+    b.textContent = p.name;
+    b.addEventListener("click", function () { apply(p); setActive(p.key); });
+    btns.appendChild(b);
+    btnEls.push([b, p.key]);
+  });
+  var rb = document.createElement("button");
+  rb.type = "button";
+  rb.className = "path-btn";
+  rb.textContent = "∘ 重置";
+  rb.addEventListener("click", function () { apply(null); setActive(null); });
+  btns.appendChild(rb);
+
+  function setActive(key) {
+    btnEls.forEach(function (be) { be[0].classList.toggle("active", be[1] === key); });
+    rb.classList.toggle("active", key === null);
+  }
+  function apply(p) {
+    EDGES.forEach(function (e) {
+      var on = !!p && p.edges.indexOf(e.id) >= 0;
+      var el = edgeEls[e.id];
+      el.classList.toggle("hl", on);
+      el.classList.toggle("dim", !!p && !on);
+      el.setAttribute("marker-end", on ? "url(#arrhl)" : "url(#arr)");
+    });
+    Object.keys(nodeEls).forEach(function (id) {
+      var on = !!p && p.nodes.indexOf(id) >= 0;
+      nodeEls[id].classList.toggle("hl", on);
+      nodeEls[id].classList.toggle("dim", !!p && !on);
+    });
+    cap.innerHTML = p ? p.cap : DEFAULT_CAP;
+  }
+  apply(null);
+  setActive(null);
+})();
+</script>
+</body>
+</html>

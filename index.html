@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business 通识课程库 · 总览</title>
+<link rel="stylesheet" href="assets/course.css">
+<style>
+  .home-hero { text-align: center; padding: 3.2rem 0 1.4rem; }
+  .home-hero .home-kicker {
+    font-size: .8rem; font-weight: 800; letter-spacing: .3em; color: var(--accent);
+    text-transform: uppercase; margin-bottom: .6rem;
+  }
+  .home-hero h1 { font-size: 2.6rem; margin: 0 0 .5rem; }
+  .home-hero .home-sub { color: var(--ink-soft); font-size: 1.06rem; max-width: 38rem; margin: 0 auto; }
+  .home-badges { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin: 1.2rem 0 0; }
+  .home-badges span {
+    font-size: .8rem; font-weight: 700; color: var(--ink-soft);
+    border: 1.5px solid var(--line); background: #fff; border-radius: 999px; padding: .2rem .85rem;
+  }
+  .method-strip {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;
+  }
+  .method-strip .m {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: .9rem 1.05rem; font-size: .88rem; color: var(--ink-soft); line-height: 1.7; box-shadow: var(--shadow);
+  }
+  .method-strip .m b { display: block; color: var(--ink); font-size: .95rem; margin-bottom: .15rem; }
+  .method-strip .m b::before { content: "→ "; color: var(--accent); }
+</style>
+</head>
+<body class="branch-home">
+<nav class="lesson-nav"><div class="inner">
+  <span class="tag">BUSINESS</span><span>通识课程库 · 总览</span>
+  <span class="progress">12 个主分支 · 48 节交互课</span>
+</div></nav>
+
+<main class="container container-wide">
+  <header class="home-hero">
+    <p class="home-kicker">Interactive Business Curriculum</p>
+    <h1>Business 通识课程库</h1>
+    <p class="home-sub">看懂商业世界的 12 块拼图。每一课只讲一个概念,配交互模拟、真实案例与即时反馈测验——离线可用,从任何一块拼图开始。</p>
+    <div class="home-badges">
+      <span>🖱 拖得动的供给曲线</span><span>📈 拨得出的复利曲线</span><span>✍️ 答完即评的测验</span><span>📱 离线浏览</span>
+    </div>
+  </header>
+
+  <section class="method-strip" data-reveal>
+    <div class="m"><b>一课一概念</b>每课 30-45 分钟,只攻一个概念,尊重工作记忆的极限。</div>
+    <div class="m"><b>交互优先</b>概念尽量用动画与模拟器表达,先"玩"明白,再读文字。</div>
+    <div class="m"><b>检索练习</b>每课配即时反馈测验;答错的解析比答对更有价值。</div>
+    <div class="m"><b>教师在线</b>任何疑问,回到与 AI 的对话里直接问,直到真正懂。</div>
+  </section>
+
+  <h2 style="margin-top:2.6rem">主分支全景</h2>
+  <p style="color:var(--ink-soft)">对应商学院课程体系的 12 个主干。每张卡片是一个分支文件夹:内含导学页(子分支全景 + 学习路径)与 4 节交互课。</p>
+
+  <div class="branch-grid">
+    <a class="branch-card" href="01-economics/index.html" style="--card-accent:#0e7490">
+      <div class="bc-no">BRANCH 01 · ECONOMICS</div>
+      <div class="bc-name">经济学基础</div>
+      <div class="bc-desc">一切商业决策的底层操作系统:资源稀缺下如何做选择。供给与需求、弹性、市场结构、GDP 与通胀。</div>
+      <div class="bc-meta">子分支:微观 / 宏观 · 4 课</div>
+    </a>
+    <a class="branch-card" href="02-accounting/index.html" style="--card-accent:#1d4ed8">
+      <div class="bc-no">BRANCH 02 · ACCOUNTING</div>
+      <div class="bc-name">会计学</div>
+      <div class="bc-desc">企业的语言。会计等式、三大报表、财务比率分析——读懂生意的体检报告。</div>
+      <div class="bc-meta">子分支:财务会计 / 管理会计 / 审计 · 4 课</div>
+    </a>
+    <a class="branch-card" href="03-finance/index.html" style="--card-accent:#047857">
+      <div class="bc-no">BRANCH 03 · FINANCE</div>
+      <div class="bc-name">金融学</div>
+      <div class="bc-desc">钱的时间与价格。货币时间价值、风险与收益、NPV 投资决策、金融市场地图。</div>
+      <div class="bc-meta">子分支:公司金融 / 投资学 / 风险管理 · 4 课</div>
+    </a>
+    <a class="branch-card" href="04-marketing/index.html" style="--card-accent:#ea580c">
+      <div class="bc-no">BRANCH 04 · MARKETING</div>
+      <div class="bc-name">市场营销</div>
+      <div class="bc-desc">创造并留住顾客的科学。价值主张、STP、4P 组合、数字营销与转化漏斗。</div>
+      <div class="bc-meta">子分支:消费者行为 / 品牌 / 数字营销 · 4 课</div>
+    </a>
+    <a class="branch-card" href="05-management/index.html" style="--card-accent:#7c3aed">
+      <div class="bc-no">BRANCH 05 · MANAGEMENT</div>
+      <div class="bc-name">管理学</div>
+      <div class="bc-desc">通过他人拿结果的学问。四大职能、决策偏差、激励理论、团队与领导力。</div>
+      <div class="bc-meta">子分支:组织行为 / 决策 / 领导力 · 4 课</div>
+    </a>
+    <a class="branch-card" href="06-human-resources/index.html" style="--card-accent:#be185d">
+      <div class="bc-no">BRANCH 06 · HUMAN RESOURCES</div>
+      <div class="bc-name">人力资源管理</div>
+      <div class="bc-desc">把人当作最重要的资产。员工全生命周期、招聘选拔、绩效 OKR/KPI、薪酬激励。</div>
+      <div class="bc-meta">子分支:招聘 / 绩效 / 薪酬 / 组织发展 · 4 课</div>
+    </a>
+    <a class="branch-card" href="07-operations-supply-chain/index.html" style="--card-accent:#b45309">
+      <div class="bc-no">BRANCH 07 · OPERATIONS &amp; SUPPLY CHAIN</div>
+      <div class="bc-name">运营与供应链</div>
+      <div class="bc-desc">把承诺变成交付的引擎。流程与瓶颈、质量与精益、牛鞭效应与供应链协同。</div>
+      <div class="bc-meta">子分支:生产 / 质量 / 供应链 / 项目管理 · 4 课</div>
+    </a>
+    <a class="branch-card" href="08-strategy/index.html" style="--card-accent:#9f1239">
+      <div class="bc-no">BRANCH 08 · STRATEGY</div>
+      <div class="bc-name">战略管理</div>
+      <div class="bc-desc">选择不做什么。定位地图、五力模型、竞争优势、商业模式画布。</div>
+      <div class="bc-meta">子分支:竞争战略 / 商业模式 / 公司战略 · 4 课</div>
+    </a>
+    <a class="branch-card" href="09-entrepreneurship/index.html" style="--card-accent:#0f766e">
+      <div class="bc-no">BRANCH 09 · ENTREPRENEURSHIP</div>
+      <div class="bc-name">创业学</div>
+      <div class="bc-desc">从 0 到 1 的方法论。机会识别与验证、精益创业循环、商业计划、融资与股权。</div>
+      <div class="bc-meta">子分支:机会验证 / 精益创业 / 融资 · 4 课</div>
+    </a>
+    <a class="branch-card" href="10-business-analytics/index.html" style="--card-accent:#4338ca">
+      <div class="bc-no">BRANCH 10 · BUSINESS ANALYTICS</div>
+      <div class="bc-name">商业分析</div>
+      <div class="bc-desc">用数据讲商业故事。数据思维、统计与可视化、相关 vs 因果、决策仪表盘。</div>
+      <div class="bc-meta">子分支:统计分析 / 商业智能 / 因果推断 · 4 课</div>
+    </a>
+    <a class="branch-card" href="11-international-business/index.html" style="--card-accent:#0369a1">
+      <div class="bc-no">BRANCH 11 · INTERNATIONAL BUSINESS</div>
+      <div class="bc-name">国际商务</div>
+      <div class="bc-desc">跨越边境做生意。比较优势、贸易实务、进入模式阶梯、跨文化维度。</div>
+      <div class="bc-meta">子分支:国际贸易 / 跨国经营 / 跨文化 · 4 课</div>
+    </a>
+    <a class="branch-card" href="12-business-law-ethics/index.html" style="--card-accent:#52525b">
+      <div class="bc-no">BRANCH 12 · LAW &amp; ETHICS</div>
+      <div class="bc-name">商业伦理与法律</div>
+      <div class="bc-desc">商业的底线与护栏。公司形态、合同要素、公司治理与代理问题、ESG。</div>
+      <div class="bc-meta">子分支:商法 / 公司治理 / ESG · 4 课</div>
+    </a>
+  </div>
+
+  <h2>推荐学习路径</h2>
+  <div class="path-box" data-reveal>
+    <h3>路径 A · 系统通识(推荐)</h3>
+    <p class="path-steps">01 经济学 <span class="arrow">→</span> 02 会计 <span class="arrow">→</span> 03 金融 <span class="arrow">→</span> 04 营销 <span class="arrow">→</span> 05 管理 <span class="arrow">→</span> 08 战略 <span class="arrow">→</span> 07 运营 <span class="arrow">→</span> 06 HR <span class="arrow">→</span> 10 分析 <span class="arrow">→</span> 11 国际 <span class="arrow">→</span> 12 伦理法律 <span class="arrow">→</span> 09 创业(总复习)</p>
+    <p style="font-size:.88rem;color:var(--ink-faint);margin:0">先建立"钱从哪来、账怎么算"的底层,再学"怎么卖、怎么管",最后综合应用。</p>
+  </div>
+  <div class="path-box" data-reveal>
+    <h3>路径 B · 管理者速成</h3>
+    <p class="path-steps">05 管理学 <span class="arrow">→</span> 08 战略 <span class="arrow">→</span> 02 会计 <span class="arrow">→</span> 06 HR <span class="arrow">→</span> 07 运营 <span class="arrow">→</span> 10 分析</p>
+    <p style="font-size:.88rem;color:var(--ink-faint);margin:0">先懂"通过他人拿结果",再补上决策所需的财务与数据语言。</p>
+  </div>
+  <div class="path-box" data-reveal>
+    <h3>路径 C · 创业者速成</h3>
+    <p class="path-steps">09 创业 <span class="arrow">→</span> 08 战略 <span class="arrow">→</span> 04 营销 <span class="arrow">→</span> 03 金融 <span class="arrow">→</span> 07 运营 <span class="arrow">→</span> 12 伦理法律</p>
+    <p style="font-size:.88rem;color:var(--ink-faint);margin:0">从验证想法开始,依次解决定位、获客、找钱、交付、合规。</p>
+  </div>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>你的老师在线。</b>不知道从哪开始?回到对话里告诉我你的背景和目标(比如"我在制造业做技术,想转管理"),我会为你定制路线、讲解概念、出变式题。</div>
+    <p>教材方法论:<a href="https://www.skills.sh/mattpocock/skills/teach">teach 教学技能</a> · 课程库由 AI 教师生成,案例数字均为示意量级。</p>
+  </footer>
+</main>
+
+<script src="assets/viz.js"></script>
+</body>
+</html>

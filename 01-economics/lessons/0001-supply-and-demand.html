@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>供给与需求:价格如何形成 · 经济学基础</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+</style>
+</head>
+<body class="branch-economics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">经济学基础</a><span class="crumb-sep">/</span>
+  <span>供给与需求</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">经济学基础 · Lesson 1</p>
+  <h1>供给与需求:价格如何形成</h1>
+  <p class="lead">同一瓶水,便利店卖 2 元,演唱会场内卖 10 元,沙漠里可以救命——价格不是成本决定的,而是供需决定的。这一课教你画出商业世界里最有力的一张图,并亲手把价格拖离均衡,看市场如何自我修复。</p>
+
+  <h2><span class="secno">1</span>为什么你的第一个商业模型是供需图</h2>
+  <p>假设你要开一家奶茶店,马上要回答三个问题:这杯奶茶定价 12 元还是 15 元?隔壁新开一家店会抢走多少客人?原料涨价了要不要跟着涨?这些问题看似琐碎,答案却都藏在同一张图里:<em>供给与需求曲线</em>(Supply and Demand Curves)。它是经济学家留给商业世界最锋利的工具——任何一个市场,无论奶茶、房产、劳动力还是演唱会门票,价格与成交量都由这两条线的交点决定。</p>
+  <div class="concept">
+    <div class="concept-title">概念的起点:稀缺</div>
+    <p style="margin:.2rem 0 0"><em>稀缺</em>(Scarcity)指资源有限而欲望无限。价格不是「成本加上利润」的产物,而是稀缺程度的信号灯:越稀缺,价格越高;越充裕,价格越低。理解了这一点,你就理解了为什么沙漠里的水比河边贵——不是水变了,是稀缺变了。</p>
+  </div>
+
+  <h2><span class="secno">2</span>两条定律:买方与卖方各自的脾气</h2>
+  <div class="concept">
+    <div class="concept-title">需求定律 · Law of Demand</div>
+    <p style="margin:.2rem 0 0"><em>其他条件不变</em>(Ceteris Paribus)时,价格上升,需求量下降。原因有二:<em>替代效应</em>(贵了就换别的)与<em>收入效应</em>(贵了就显得手头紧)。注意区分:价格变动让买点「沿曲线滑动」;收入、口味、替代品价格的变化才让整条需求曲线「平移」。</p>
+  </div>
+  <div class="concept">
+    <div class="concept-title">供给定律 · Law of Supply</div>
+    <p style="margin:.2rem 0 0">其他条件不变时,价格上升,供给量增加。价格是卖家进场的号角:利润越高,越多生产者愿意投入这个市场。同理,成本、技术、预期的变化会让整条供给曲线平移——技术进步通常使供给曲线右移(同样价格下愿意卖更多)。</p>
+  </div>
+  <p>把两条曲线放进同一张图:需求曲线从左上向右下倾斜,供给曲线从左下向右上倾斜,它们必定相交。这个交点,就是市场的方向盘。</p>
+
+  <h2><span class="secno">3</span>均衡:市场自动寻找的那个点</h2>
+  <p>两条曲线的交点给出<em>均衡价格</em>(Equilibrium Price)与<em>均衡数量</em>(Equilibrium Quantity):在这个价格上,买者想买的数量恰好等于卖者想卖的数量,谁也不用改变行为。市场有一种奇特的自我修复能力——价格一旦偏离均衡,<em>过剩</em>(Surplus)或<em>短缺</em>(Shortage)就会立刻出现,并把价格推回去。下面的模拟器让你亲眼看到这台「自动稳定器」如何工作。</p>
+
+  <div class="sim">
+    <div class="sim-title">模拟器 · 把价格拖离均衡,看市场怎么反应</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">按住图中虚线上的圆形手柄<b>上下拖动</b>(鼠标或手指皆可):拖到均衡价之上,红色区域显示「过剩 → 降价压力」;拖到之下,绿色区域显示「短缺 → 涨价压力」;实时读数会告诉你过剩/短缺有多少。</p>
+    <div id="sd-chart"></div>
+    <p class="sim-readout" id="sd-readout">正在加载模拟器……</p>
+  </div>
+
+  <ol class="steps">
+    <li><b>价格高于均衡</b>:供给量 &gt; 需求量 → 出现过剩,卖不掉的库存逼卖家互相压价 → 价格下行。</li>
+    <li><b>价格低于均衡</b>:需求量 &gt; 供给量 → 出现短缺,买不到的买者加价抢购 → 价格上行。</li>
+    <li><b>价格恰在均衡</b>:过剩与短缺都为零,既无涨价也无降价的压力,市场「静止」。</li>
+  </ol>
+  <p>亚当·斯密(Adam Smith)称之为<em>「看不见的手」</em>(Invisible Hand):没有任何人指挥,价格同时完成三件事——传递稀缺信息、激励供给、配给需求。这就是<em>价格机制</em>(Price Mechanism)配置资源的含义:价格上涨,一边告诉买家「省着用、找替代」,一边告诉卖家「多生产、快来赚」,资源自动流向最被需要的地方。</p>
+
+  <h2><span class="secno">4</span>案例:演唱会门票为何总被秒空</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">黄牛党的经济学:票价压在均衡之下</p>
+    <p>热门歌手巡演,「开票即秒空」与「黄牛加价数倍」总是同时出现,而官方票价却常年明显低于市场水平。用供需图看:场馆座位几乎固定(供给曲线近乎垂直),官方票价被压在均衡价之下,需求量远大于供给量——于是出现大额短缺。短缺不以「涨价」的形式出现,就一定以「排队、抢票软件、黄牛」的形式出现;黄牛赚的,正是官方定价与均衡价之间的差价(示意:票面 680 元的内场票被炒到数千元的报道并不罕见)。主办方的对策——实名制、限购、抽签——打击的是转售,而不是短缺本身;动态定价(像机票那样随需求调价)能挤出黄牛空间,却常被歌迷批评「吃相难看」。</p>
+    <p class="case-learn"><b>这一课的教训:</b>把价格压在均衡之下,短缺不会消失,只会换一副面孔;谁能按官方价买到票,谁就白拿了这份差价补贴。均衡价是「让市场出清的价」,它不等于任何人心中的「公平价」。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>需求定律 Law of Demand</dt><dd>其他条件不变,价格上升则需求量下降。</dd>
+      <dt>供给定律 Law of Supply</dt><dd>其他条件不变,价格上升则供给量增加。</dd>
+      <dt>其他条件不变 Ceteris Paribus</dt><dd>分析单一因素时,暂假定其余因素都不动的思维约定。</dd>
+      <dt>均衡价格 Equilibrium Price</dt><dd>使供给量与需求量恰好相等的价格。</dd>
+      <dt>均衡数量 Equilibrium Quantity</dt><dd>在均衡价格上成交的数量。</dd>
+      <dt>过剩 Surplus</dt><dd>价格高于均衡时,供给量超出需求量的部分(超额供给)。</dd>
+      <dt>短缺 Shortage</dt><dd>价格低于均衡时,需求量超出供给量的部分(超额需求)。</dd>
+      <dt>价格机制 Price Mechanism</dt><dd>价格涨落自动传递信号、激励行为、配置资源的过程。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>价格由供需共同决定,不由成本单独决定;偏离均衡的价格必然制造过剩或短缺,并自动产生把它推回均衡的压力。价格是信号,不只是数字——读懂它,就读懂了市场在喊什么。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "某城市共享单车数量不变,暴雨天出行需求大增。按供需分析,短期内最可能出现什么?",
+        "options": ["均衡价格下降,均衡数量减少", "均衡价格下降,均衡数量增加", "均衡价格上升,均衡数量增加", "均衡价格上升,均衡数量减少"],
+        "answer": 2,
+        "explain": "需求大增 = 需求曲线右移,沿既定供给曲线移动,均衡价格与数量<b>同时上升</b>。记住「需求变动(整线移动)」与「需求量变动(沿线上移动)」的区别。" },
+      { "q": "价格被人为压到均衡之下(如限价门票),市场会出现什么,又如何表现?",
+        "options": ["出现短缺,排队抢购与转售随之涌现", "出现过剩,卖方被迫竞相降价促销", "供求正好相等,市场自动恢复平静", "需求曲线左移,直至短缺完全消失"],
+        "answer": 0,
+        "explain": "低于均衡的价格制造<b>短缺</b>:想买的人远多于票,排队、秒杀、黄牛都是短缺的化身。短缺本身不会让需求曲线左移,只会产生涨价压力。" },
+      { "q": "演唱会门票官方定价明显低于市场均衡价,黄牛加价转售仍有人买。这说明什么?",
+        "options": ["官方票价高于均衡价,出现过剩", "黄牛抬高了整条供给曲线", "该演唱会需求价格弹性必然大于一", "官方票价低于均衡价,存在短缺"],
+        "answer": 3,
+        "explain": "黄牛价之所以「卖得掉」,是因为它更接近<b>均衡价</b>——官方价与均衡价之间的缺口,就是黄牛的利润空间。这与弹性大小无必然关系。" },
+      { "q": "「价格机制配置资源」的意思,下面哪个表述最准确?",
+        "options": ["政府按计划把商品分配给最需要的人", "价格涨落传递稀缺信号,引导生产和消费自动调整", "大企业按成本加成统一定价销售商品", "商家按广告投放量决定生产多少产品"],
+        "answer": 1,
+        "explain": "价格机制的核心是<b>信号 + 激励</b>:涨价同时告诉买家节约、告诉卖家增产,无需中央指挥。计划分配、成本加成、广告驱动都不是价格机制。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>延伸阅读</h2>
+    <ul>
+      <li>《经济学原理(第 8 版):微观经济学分册》曼昆 · 北京大学出版社(建议读:第 4 章「供给与需求的市场力量」)</li>
+      <li>《薛兆丰经济学讲义》薛兆丰 · 中信出版社(建议读:稀缺与价格相关章节)</li>
+      <li>可搜索关键词:价格上限 Price Ceiling、租金管制 Rent Control</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">上一课</span><span class="pager-title">分支导学 · 经济学基础</span></a>
+    <a class="next" href="0002-price-elasticity.html"><span class="pager-label">下一课</span><span class="pager-title">弹性:为什么涨价不一定多赚钱</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「能不能用我家楼下包子铺再讲一遍均衡?」或「黄牛为什么屡禁不止?」——追问是学习的一部分。</div>
+    <p>经济学基础 · 第 1 课 · 供给与需求 | 交互:可拖动价格线的供需图 · 案例数字为示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var host = document.getElementById("sd-chart");
+  var readout = document.getElementById("sd-readout");
+  if (!host || !readout || !window.Viz) return;
+
+  function qd(p) { return 100 - 8 * p; }
+  function qs(p) { return 20 + 8 * p; }
+  var PE = 5, QE = 60;
+
+  var ax = Viz.axes(host, {
+    w: 640, h: 450, margin: { t: 26, r: 22, b: 50, l: 60 },
+    xDomain: [0, 100], yDomain: [0, 10],
+    xLabel: "数量 Q(千张/周,示意)", yLabel: "价格 P(元,示意)",
+    xTicks: 5, yTicks: 5
+  });
+  var svg = ax.svg, X = ax.x, Y = ax.y;
+
+  var surplusArea = Viz.svgEl("path", { d: "", fill: "#b91c1c", opacity: "0.13", stroke: "none" });
+  var shortageArea = Viz.svgEl("path", { d: "", fill: "#15803d", opacity: "0.13", stroke: "none" });
+  svg.appendChild(surplusArea);
+  svg.appendChild(shortageArea);
+
+  Viz.line(svg, [[X(QE), Y(PE)], [X(QE), Y(0)]], { color: "#c9c1b2", width: 1.2, dash: "4 5" });
+  Viz.line(svg, [[X(0), Y(PE)], [X(QE), Y(PE)]], { color: "#c9c1b2", width: 1.2, dash: "4 5" });
+  Viz.line(svg, [[X(qd(10)), Y(10)], [X(qd(0)), Y(0)]], { color: "#2563eb", width: 3.5 });
+  Viz.line(svg, [[X(qs(0)), Y(0)], [X(qs(10)), Y(10)]], { color: "#b45309", width: 3.5 });
+  Viz.label(svg, X(qd(10)) + 8, Y(10) + 18, "需求 D", { color: "#2563eb", size: 13 });
+  Viz.label(svg, X(qs(10)) - 8, Y(10) + 18, "供给 S", { color: "#b45309", size: 13, anchor: "end" });
+  Viz.dot(svg, X(QE), Y(PE), { fill: "#1c1917", r: 6, pulse: true });
+  Viz.label(svg, X(QE) + 10, Y(PE) - 12, "均衡点 E(P≈5,Q≈60)", { size: 12.5 });
+
+  var g = Viz.svgEl("g", {});
+  var hit = Viz.svgEl("rect", { x: X(0), y: 0, width: X(100) - X(0), height: 36, fill: "transparent" });
+  var guideD = Viz.svgEl("line", { stroke: "#94a3b8", "stroke-width": 1.3, "stroke-dasharray": "3 5" });
+  var guideS = Viz.svgEl("line", { stroke: "#94a3b8", "stroke-width": 1.3, "stroke-dasharray": "3 5" });
+  var dotD = Viz.svgEl("circle", { r: 5.5, fill: "#2563eb", stroke: "#fff", "stroke-width": 2 });
+  var dotS = Viz.svgEl("circle", { r: 5.5, fill: "#b45309", stroke: "#fff", "stroke-width": 2 });
+  var pline = Viz.svgEl("line", { x1: X(0), x2: X(100), stroke: "#0e7490", "stroke-width": 2.4, "stroke-dasharray": "8 6" });
+  var handle = Viz.svgEl("circle", { cx: X(78), r: 10, fill: "#0e7490", stroke: "#fff", "stroke-width": 2.5 });
+  var hLabel = Viz.svgEl("text", { x: X(78), "text-anchor": "middle", "font-size": 10, "font-weight": 800, fill: "#fff" });
+  hLabel.textContent = "↕";
+  var tag = Viz.svgEl("text", { x: X(0) + 8, "font-size": 12.5, "font-weight": 800, fill: "#0e7490" });
+  var status = Viz.svgEl("text", { x: X(QE), "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#1c1917" });
+  g.appendChild(hit); g.appendChild(guideD); g.appendChild(guideS);
+  g.appendChild(dotD); g.appendChild(dotS); g.appendChild(pline);
+  g.appendChild(handle); g.appendChild(hLabel); g.appendChild(tag); g.appendChild(status);
+  svg.appendChild(g);
+
+  function update(p) {
+    var d = qd(p), s = qs(p), y = Y(p);
+    pline.setAttribute("y1", y); pline.setAttribute("y2", y);
+    hit.setAttribute("y", y - 18);
+    handle.setAttribute("cy", y); hLabel.setAttribute("y", y + 3.5);
+    tag.setAttribute("y", y - 10);
+    tag.textContent = "P≈" + p.toFixed(1) + " 元";
+    guideD.setAttribute("x1", X(d)); guideD.setAttribute("x2", X(d));
+    guideD.setAttribute("y1", y); guideD.setAttribute("y2", Y(0));
+    guideS.setAttribute("x1", X(s)); guideS.setAttribute("x2", X(s));
+    guideS.setAttribute("y1", y); guideS.setAttribute("y2", Y(0));
+    dotD.setAttribute("cx", X(d)); dotD.setAttribute("cy", y);
+    dotS.setAttribute("cx", X(s)); dotS.setAttribute("cy", y);
+    var gap = Math.abs(Math.round(s - d));
+
+    if (Math.abs(p - PE) <= 0.04) {
+      surplusArea.setAttribute("d", ""); shortageArea.setAttribute("d", "");
+      status.setAttribute("y", y - 12); status.setAttribute("fill", "#1c1917");
+      status.textContent = "均衡:既无过剩,也无短缺";
+      readout.innerHTML = "价格 <b>P≈" + p.toFixed(1) + " 元</b>,恰好等于均衡价 5 元:需求量 ≈ 供给量 ≈ <b>60</b>,买者想买的正好等于卖者想卖的,价格没有移动的理由。";
+    } else if (p > PE) {
+      surplusArea.setAttribute("d", "M" + X(d).toFixed(1) + " " + y.toFixed(1) +
+        " L" + X(QE).toFixed(1) + " " + Y(PE).toFixed(1) +
+        " L" + X(s).toFixed(1) + " " + y.toFixed(1) + " Z");
+      shortageArea.setAttribute("d", "");
+      status.setAttribute("y", y + 30); status.setAttribute("fill", "#b91c1c");
+      status.textContent = "过剩 " + gap + " · ↓ 降价压力";
+      readout.innerHTML = "价格 <b>P≈" + p.toFixed(1) + " 元</b>,高于均衡价 5 元:需求量≈<b>" + Math.round(d) + "</b>,供给量≈<b>" + Math.round(s) + "</b>,<b style='color:#b91c1c'>过剩 " + gap + "</b>——卖不掉的卖家互相压价,价格被推回均衡(降价压力)。";
+    } else {
+      shortageArea.setAttribute("d", "M" + X(s).toFixed(1) + " " + y.toFixed(1) +
+        " L" + X(QE).toFixed(1) + " " + Y(PE).toFixed(1) +
+        " L" + X(d).toFixed(1) + " " + y.toFixed(1) + " Z");
+      surplusArea.setAttribute("d", "");
+      status.setAttribute("y", y - 26); status.setAttribute("fill", "#15803d");
+      status.textContent = "短缺 " + gap + " · ↑ 涨价压力";
+      readout.innerHTML = "价格 <b>P≈" + p.toFixed(1) + " 元</b>,低于均衡价 5 元:需求量≈<b>" + Math.round(d) + "</b>,供给量≈<b>" + Math.round(s) + "</b>,<b style='color:#15803d'>短缺 " + gap + "</b>——买不到的买者加价抢购,价格被推回均衡(涨价压力)。";
+    }
+  }
+
+  Viz.draggable(svg, g, function (pt) {
+    var p = Y.invert(pt.y);
+    update(Math.max(0.5, Math.min(9.5, p)));
+  });
+  update(8);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>读懂报表:结构与方法 · 会计学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  #pl-sim .pl-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:1.2rem;align-items:start;}
+  @media (max-width:720px){ #pl-sim .pl-grid{grid-template-columns:1fr;} }
+  .pl-rows{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;}
+  button.pl-row{display:grid;grid-template-columns:1fr auto auto;gap:.8rem;align-items:baseline;width:100%;text-align:left;
+    background:#fff;border:0;border-bottom:1px solid var(--line);padding:.5rem .85rem;font:inherit;font-size:.95rem;cursor:pointer;transition:background .2s ease;}
+  button.pl-row:last-child{border-bottom:0;}
+  button.pl-row .amt{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap;}
+  button.pl-row .pct{color:var(--ink-soft);font-size:.84rem;font-variant-numeric:tabular-nums;min-width:3.2em;text-align:right;}
+  button.pl-row.subtotal{background:var(--paper-deep);font-weight:800;}
+  button.pl-row:hover{background:color-mix(in srgb,var(--accent) 7%,#fff);}
+  button.pl-row.active{background:color-mix(in srgb,var(--accent) 12%,#fff);box-shadow:inset 4px 0 0 var(--accent);}
+  .pl-panel{border:1.5px dashed color-mix(in srgb,var(--accent) 40%,var(--line));border-radius:10px;padding:1rem 1.15rem;background:#fff;}
+  .pl-step{display:inline-block;font-size:.74rem;font-weight:800;color:var(--accent-ink);background:var(--accent);border-radius:999px;padding:.1em .75em;margin-bottom:.5rem;letter-spacing:.06em;}
+  .pl-panel h4{margin:.05rem 0 .55rem;font-family:var(--serif);font-size:1.08rem;}
+  .pl-panel p{font-size:.93rem;margin:0 0 .65rem;}
+  .pl-panel .pl-read{color:var(--ink-soft);}
+  .pl-hint{font-size:.85rem;color:var(--ink-faint);margin:.6rem 0 0;}
+</style>
+</head>
+<body class="branch-accounting">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">会计学</a><span class="crumb-sep">/</span>
+  <span>读懂报表:结构与方法</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">会计学 · LESSON 3</p>
+  <h1>读懂报表:结构与方法</h1>
+  <p class="lead">会「读」报表的人,不是把数字从头念到尾,而是按结构下钻:先看蛋糕多大,再看每层切走多少。这一课给你一张简化利润表,逐行点亮「这一行在说什么、该怎么读」,再补上同比与环比两把参照尺。</p>
+
+  <h2><span class="secno">1</span>读表先读结构:谁付钱、钱去哪</h2>
+  <p>同一张利润表,数字会随规模变,但<b>结构</b>暴露的是生意本身的形状。收入结构(Revenue Mix)回答「钱从谁口袋来」:按产品线、按地区、按客户类型拆开,你会看到公司真正的依靠;成本结构(Cost Structure)回答「钱流向谁口袋去」:原料、人工、租金、营销各占几成,哪些随销量变动(变动成本),哪些雷打不动(固定成本)。</p>
+  <div class="concept">
+    <div class="concept-title">为什么结构比数字重要</div>
+    <p style="margin:.2rem 0 0;font-size:.95rem;color:var(--ink-soft)">一家公司收入从 100 亿涨到 120 亿,是喜是忧?如果增量全部来自一场赔本促销,结构会先于利润「变脸」。数字是结果,结构是病因——这也是为什么分析师总在报表里先翻<b>分部数据</b>。</p>
+  </div>
+
+  <h2><span class="secno">2</span>三层利润:像剥洋葱一样读</h2>
+  <p>利润表从上到下不是流水账,而是三层递进的「剥离」:</p>
+  <div class="formula">毛利润(Gross Profit)= 营业收入 − 营业成本</div>
+  <div class="formula">营业利润(Operating Profit)= 毛利润 − 期间费用(Period Expenses)</div>
+  <div class="formula">净利润(Net Income)= 营业利润 − 财务费用、税等</div>
+  <p>三层各管一段:<b>毛利率</b>衡量产品本身值不值钱(定价权);<b>营业利润率</b>衡量把生意管得好不好(费用控制);<b>净利率</b>是层层剥离后最终落进口袋的比例。哪一层「突然塌陷」,问题就出在哪一层——毛利塌是产品失宠,营业利润塌是费用失控,净利塌则常是利息或税负突变。</p>
+
+  <h2><span class="secno">3</span>亲手试:逐行点亮利润表</h2>
+  <p>下面是一张虚构连锁餐饮公司「示例餐饮」的简化年度利润表(单位:亿元,数字为示意)。点击或悬停任意一行,右侧面板会告诉你这一行<b>是什么、先看还是后看、和谁比</b>。建议自上而下按步骤点亮一遍。</p>
+  <div class="sim" id="pl-sim">
+    <div class="sim-title">利润表解剖台 · 每一行都在回答一个问题</div>
+    <div class="pl-grid">
+      <div>
+        <div class="pl-rows">
+          <button class="pl-row" data-k="rev"><span>营业收入</span><span class="amt">120.0</span><span class="pct">100%</span></button>
+          <button class="pl-row" data-k="cogs"><span>营业成本</span><span class="amt">66.0</span><span class="pct">55%</span></button>
+          <button class="pl-row subtotal" data-k="gp"><span>毛利润</span><span class="amt">54.0</span><span class="pct">45%</span></button>
+          <button class="pl-row" data-k="sell"><span>销售费用</span><span class="amt">18.0</span><span class="pct">15%</span></button>
+          <button class="pl-row" data-k="adm"><span>管理·研发费用</span><span class="amt">12.0</span><span class="pct">10%</span></button>
+          <button class="pl-row subtotal" data-k="op"><span>营业利润</span><span class="amt">24.0</span><span class="pct">20%</span></button>
+          <button class="pl-row" data-k="tax"><span>所得税费用</span><span class="amt">4.8</span><span class="pct">4%</span></button>
+          <button class="pl-row subtotal" data-k="ni"><span>净利润</span><span class="amt">19.2</span><span class="pct">16%</span></button>
+        </div>
+        <p class="pl-hint">占收入比 = 该行 ÷ 营业收入。阅读顺序见右侧步骤标签:①收入 → ②毛利 → ③营业利润 → ④净利润,再回头细看费用细项。</p>
+      </div>
+      <div class="pl-panel" id="pl-panel">
+        <span class="pl-step" id="pl-step"></span>
+        <h4 id="pl-name"></h4>
+        <p id="pl-mean"></p>
+        <p class="pl-read" id="pl-read"></p>
+      </div>
+    </div>
+  </div>
+  <div class="callout tip"><span class="callout-label">五步读表口诀</span> ①收入看规模与增速;②毛利看产品力;③营业利润看管理效率;④净利看最终落袋;⑤回头细看费用结构的变化趋势。打印或复习时,按这五步复述即可。</div>
+
+  <h2><span class="secno">4</span>同比与环比:给数字找参照系</h2>
+  <p>单期数字没有语境,「涨了 12%」必须回答「跟谁比」。同比(Year-over-Year,YoY)与今年<b>去年同期</b>比,消除了季节性——冷饮冬天本来就淡;环比(Seq.,与上一期比)反映最新动能——拐点最先出现在这里。两把尺子要一起用:环比连涨而同比仍跌,可能是复苏的早期信号。</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body" id="yoy-bars"></div>
+    <figcaption class="figure-caption"><b>图 1</b> 某公司八个季度营业收入(单位:亿元,数字为示意)。灰色为去年,蓝色为今年。24Q3 的同比 = 110 ÷ 95 − 1 ≈ <b>+16%</b>(跨年同季比);环比 = 110 ÷ 96 − 1 ≈ <b>+15%</b>(相邻季比)。注意 23Q4 与 24Q2 的回落——只看环比会误判为衰退,同比告诉我们这可能是季节波动。</figcaption>
+  </figure>
+
+  <h2><span class="secno">5</span>案例:90% 与 20% 的两种生意</h2>
+  <div class="case">
+    <div class="case-title">高端白酒 vs 平价超市:毛利率的两个世界(量级为约数、示意)</div>
+    <p>把两家你听过的公司放进同一张表:高端白酒企业(如贵州茅台)的毛利率长期在<b>约 90%</b> 上下,而平价超市(如沃尔玛、永辉一类零售商)通常只有<b>约 20%</b>(均为约数,示意量级)。差距为什么这么大?</p>
+    <p>白酒:原料是粮食与包装,成本占比极低,品牌与稀缺性撑起定价权——<b>厚利慢销</b>,毛利率是它的商业模式本身。超市:卖的是别人的品牌商品,价格透明、竞争激烈,只能靠规模与周转赚辛苦钱——<b>薄利多销</b>,毛利率低不代表生意差,代表生意的钱在「转得快」上。</p>
+    <p class="case-learn"><b>这个案例教我们:</b>脱离商业模式谈利润率都是耍流氓。看到 20% 的毛利率先别皱眉,要问的是「周转有多快」——这正是下一课财务比率与杜邦分解要回答的问题。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>收入结构 Revenue Mix</dt><dd>收入按产品、地区、客户等维度拆分后的构成。</dd>
+      <dt>成本结构 Cost Structure</dt><dd>各项成本占收入的比重,含变动成本与固定成本。</dd>
+      <dt>毛利润 Gross Profit</dt><dd>收入减营业成本,衡量产品层面的盈利能力。</dd>
+      <dt>期间费用 Period Expenses</dt><dd>销售、管理、研发等当期费用,不直接随单品结转。</dd>
+      <dt>营业利润 Operating Profit</dt><dd>毛利减期间费用,反映主业经营成果。</dd>
+      <dt>同比 Year-over-Year</dt><dd>与去年同期相比,消除季节性的参照尺。</dd>
+      <dt>环比 Sequential</dt><dd>与相邻上一期相比,反映最新动能的参照尺。</dd>
+      <dt>净利率 Net Profit Margin</dt><dd>净利润 ÷ 营业收入,最终落袋比例。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    读表按结构下钻:先收入规模与增速,再毛利、营业利润、净利三层利润,最后细看费用结构;横向比较用同比与环比两把尺。毛利率是商业模式的指纹,没有语境的高低都是误读。
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "关于同比与环比的区别,下面说法正确的是?",
+      "options": ["同比是与上一期相比,环比是与去年同期相比", "同比是与去年同期相比,环比是与上一期相比", "同比看的是累计金额,环比看的是当期金额", "同比用于收入类指标,环比只能用于利润"],
+      "answer": 1,
+      "explain": "同比跨年对齐同季(消季节性),环比贴着相邻期(看动能)。记混方向会把季节性回落误判为衰退。" },
+    { "q": "毛利率约 90% 与约 20% 的两门生意(量级示意),最可能的组合是?",
+      "options": ["平价超市与高端白酒,顺序对应", "芯片代工与海运船队,顺序对应", "高端白酒与平价超市,顺序对应", "连锁健身房与连锁药房,顺序对应"],
+      "answer": 2,
+      "explain": "高端白酒原料成本低、定价权强,毛利率约 90%(约数);超市卖标准化商品,靠周转赚钱,毛利率约 20%(约数)。数字是商业模式的结果。" },
+    { "q": "从毛利润走到营业利润,中间主要扣掉了什么?",
+      "options": ["销售、管理、研发等期间费用", "原材料成本以及直接人工成本", "缴纳的企业所得税以及股东分红", "购建厂房设备的资本性支出"],
+      "answer": 0,
+      "explain": "毛利减去期间费用(销售/管理/研发等)得营业利润;原料与人工已在营业成本里扣过;所得税在营业利润之后;资本性支出根本不进利润表,而是折旧分期进入。" },
+    { "q": "拿到一份利润表,结构性读法的第一步通常是?",
+      "options": ["直接翻到附注里查看会计政策细节", "先看每股净资产与股息率的高低", "从管理层讨论里读战略方向的变化", "先看收入规模与增速,再逐层下探"],
+      "answer": 3,
+      "explain": "收入是所有下层数字的分母与源头:蛋糕多大、增长多快先定基调,再看毛利与费用结构是否支撑这个增长。附注与管理层讨论是后续验证工具。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2><span class="secno">6</span>延伸阅读</h2>
+    <ul>
+      <li>《会计学:企业决策的基础》约翰·怀尔德(John Wild)等 · 机械工业出版社(建议读:利润表与「财务报表分析」相关章节,含共同比报表)</li>
+      <li>《世界上最简单的会计书》达雷尔·穆利斯 · 机械工业出版社(建议读:后段,利润表逐行拆解的章节)</li>
+      <li>词条延伸:<a href="https://zh.wikipedia.org/wiki/损益表">损益表 — 维基百科</a></li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-three-statements.html"><span class="pager-label">上一课</span><span class="pager-title">三大报表:公司的成绩单</span></a>
+    <a class="next" href="0004-financial-ratios.html"><span class="pager-label">下一课</span><span class="pager-title">财务比率:给公司做体检</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师——比如「为什么折旧不算期间费用」「毛利率高就一定好吗」,或让它用两家真实公司带你练一遍五步读表法。</div>
+    <p>本课数字均为教学示意 · 会计学 · 第 3 课 / 共 4 课</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- 图 1:八个季度营收柱状图(示意)---- */
+  var barsHost = document.getElementById("yoy-bars");
+  if (barsHost && window.Viz) {
+    var data = [
+      { label: "23Q1", value: 80, color: "#d6cfc2" },
+      { label: "23Q2", value: 88, color: "#d6cfc2" },
+      { label: "23Q3", value: 95, color: "#d6cfc2" },
+      { label: "23Q4", value: 90, color: "#d6cfc2" },
+      { label: "24Q1", value: 86, color: "#1d4ed8" },
+      { label: "24Q2", value: 96, color: "#1d4ed8" },
+      { label: "24Q3", value: 110, color: "#1d4ed8" },
+      { label: "24Q4", value: 105, color: "#1d4ed8" }
+    ];
+    Viz.bars(barsHost, data, { w: 640, h: 300, max: 125 });
+  }
+
+  /* ---- 交互:利润表逐行解读 ---- */
+  var PL = {
+    rev: { step: "第 1 步 · 先看蛋糕多大", name: "营业收入",
+      mean: "一段时间卖出的商品与服务总额,是下方所有数字的分母和源头。",
+      read: "先看规模与增速:增速是同比还是环比?是否跑赢行业?收入停滞时,下层利润率再漂亮也难持续。" },
+    cogs: { step: "细看 · 结构项", name: "营业成本",
+      mean: "与收入直接对应的成本:原料、进货、直接人工,卖多少结转多少。",
+      read: "健康状态下它与收入同向波动;用 1 − 毛利率可反推占比,占比逐年抬升,要警惕议价权流失。" },
+    gp: { step: "第 2 步 · 产品力", name: "毛利润(45%)",
+      mean: "收入减营业成本,衡量「产品本身」值不值钱、定价权有多硬。",
+      read: "毛利率是最稳定的商业模式指纹:45% 在餐饮业属优秀,在软件业却偏低——跨行业比较务必小心。" },
+    sell: { step: "细看 · 结构项", name: "销售费用",
+      mean: "为把货卖出去花的钱:门店租金、广告投放、促销、销售提成。",
+      read: "看占收入比的趋势:扩张期上升正常;收入稳住了它还攀升,说明获客越来越贵。" },
+    adm: { step: "细看 · 结构项", name: "管理·研发费用",
+      mean: "行政开支、管理人员薪酬与研发投入等支撑性费用。",
+      read: "通常随规模缓慢增长;若收入没涨它先翻倍,组织可能在「虚胖」;研发占比则要看行业属性。" },
+    op: { step: "第 3 步 · 管理效率", name: "营业利润(20%)",
+      mean: "毛利减去期间费用后的经营成果,剔除融资与税负,最能反映主业竞争力。",
+      read: "营业利润率 = 营业利润 ÷ 收入。同业对比用它比用净利率更「干净」,因为利息与税常与经营无关。" },
+    tax: { step: "细看 · 结构项", name: "所得税费用",
+      mean: "按税前利润缴纳的企业所得税(本表按约 20% 税率示意)。",
+      read: "有效税率与名义税率差异明显时,去附注找原因:税收优惠、递延税项或一次性事项。" },
+    ni: { step: "第 4 步 · 最终落袋", name: "净利润(16%)",
+      mean: "归属股东的最终利润,三层剥离后的「落袋数」。",
+      read: "净利率 = 净利润 ÷ 收入;与营业利润率之差,揭示利息与税负的重量。持续为负就要追问现金还能烧多久。" }
+  };
+  var rows = document.querySelectorAll(".pl-row");
+  if (!rows.length) return;
+  var stepEl = document.getElementById("pl-step");
+  var nameEl = document.getElementById("pl-name");
+  var meanEl = document.getElementById("pl-mean");
+  var readEl = document.getElementById("pl-read");
+
+  function setRow(k) {
+    var d = PL[k];
+    if (!d) return;
+    stepEl.textContent = d.step;
+    nameEl.textContent = d.name;
+    meanEl.textContent = d.mean;
+    readEl.textContent = "读法:" + d.read;
+    rows.forEach(function (r) { r.classList.toggle("active", r.getAttribute("data-k") === k); });
+  }
+  rows.forEach(function (r) {
+    var k = r.getAttribute("data-k");
+    r.addEventListener("click", function () { setRow(k); });
+    r.addEventListener("mouseenter", function () { setRow(k); });
+    r.addEventListener("focus", function () { setRow(k); });
+  });
+  setRow("rev");
+})();
+</script>
+</body>
+</html>

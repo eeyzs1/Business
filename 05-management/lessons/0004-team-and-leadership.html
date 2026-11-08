@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>团队与领导力 · 管理学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .lab-fb{margin-top:.9rem;font-size:.92rem;background:var(--paper-deep);border-radius:8px;padding:.85rem 1rem;color:var(--ink-soft);line-height:1.8}
+  .lab-fb b{color:var(--accent)}
+  .tuck-strip{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0 .4rem}
+  .tuck-btn{font-family:var(--sans);font-size:.86rem;font-weight:700;border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:.35rem .85rem;cursor:pointer;transition:all .15s ease}
+  .tuck-btn:hover{border-color:var(--accent)}
+  .tuck-btn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .tuck-btn small{font-weight:400;opacity:.75;margin-left:.25rem}
+  #tuck-svg .tuck-dot{cursor:pointer}
+  .sl-layout{display:grid;grid-template-columns:minmax(280px,1.25fr) 1fr;gap:1.2rem;align-items:start;margin-top:.5rem}
+  @media(max-width:760px){.sl-layout{grid-template-columns:1fr}}
+  .sl-readbox{background:var(--paper-deep);border-radius:10px;padding:.9rem 1.05rem;font-size:.93rem;line-height:1.8}
+  .sl-readbox .sl-rec{font-size:1.02rem;font-weight:800;color:var(--accent);margin-bottom:.3rem}
+  .sl-readbox .sl-tip{font-size:.8rem;color:var(--ink-faint);margin-top:.6rem;border-top:1px dashed var(--line);padding-top:.5rem}
+  #sl-dot{transition:transform .18s ease}
+  #sl-chart svg text{font-family:var(--sans)}
+</style>
+</head>
+<body class="branch-management">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">管理学</a><span class="crumb-sep">/</span>
+  <span>团队与领导力</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">管理学 · LESSON 4</p>
+  <h1>团队与领导力</h1>
+  <p class="lead">把五个人放进一个会议室,你得到的是五个各自表演的人,还是一个团队?这一课讲两件事:团队如何随时间演化,以及领导风格为什么不该千人一面——最后用一个矩阵模拟器,练「看人下菜式」的领导。</p>
+
+  <h2><span class="secno">1</span>从一群人到一个团队:塔克曼五阶段</h2>
+  <p>心理学家塔克曼(Bruce Tuckman)1965 年观察了大量小群体后提出:几乎所有团队都会依次经历四个阶段,1977 年又补上第五个。这就是沿用至今的<em>塔克曼五阶段</em>(Tuckman's Stages):形成(Forming)→ 风暴(Storming)→ 规范(Norming)→ 成熟(Performing)→ 解散(Adjourning)。</p>
+  <p>最容易判断失误的是「风暴期」:冲突公开化看起来像坏消息,但它是团队走向真实的必经之路——没有吵出来的分歧,就不会有真正被遵守的规则。管理者的任务不是消灭冲突,而是给它立规矩。</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">五阶段曲线:点一点,看看每个阶段发生了什么</div>
+    <div id="tuck-svg"></div>
+    <div class="tuck-strip" id="tuck-strip"></div>
+    <div class="lab-fb" id="tuck-fb"></div>
+  </div>
+
+  <h2><span class="secno">2</span>领导行为的两把标尺:任务与关系</h2>
+  <p>分析任何一个领导动作,都可以放到两把标尺上量:<em>任务行为</em>(Task Behavior)——布置什么、怎么做、何时完成,方向是「把事推进」;<em>关系行为</em>(Relationship Behavior)——倾听、鼓励、支持、参与决策,方向是「把人接住」。</p>
+  <p>两把标尺没有谁高谁低,只有配比问题。对生手只讲关怀、不教方法,是温柔的耽误;对老手事事叮嘱,是令人窒息的不信任。<strong>配比的依据是什么?</strong>——下属的准备度。这就是情境领导的出发点。</p>
+
+  <h2><span class="secno">3</span>情境领导:风格跟着准备度走</h2>
+  <div class="concept">
+    <div class="concept-title">定义 · 情境领导</div>
+    <p style="margin:0">赫塞(Paul Hersey)与布兰查德(Ken Blanchard)在 1960 年代末提出<em>情境领导</em>(Situational Leadership):<strong>没有最好的领导风格,只有最匹配下属准备度的风格</strong>。准备度由两个维度构成——<b>能力</b>(会做吗)与<b>意愿</b>(想做吗),两两组合出四种画像、对应四种风格:指示、教练、支持、授权。</p>
+  </div>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">情境领导矩阵模拟器:拨动「能力 × 意愿」,看推荐风格实时变化</div>
+    <div class="sim-controls" id="sl-controls"></div>
+    <div class="sl-layout">
+      <div id="sl-chart"></div>
+      <div class="sl-readbox" id="sl-read"></div>
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>领导 vs 管理:不是对手,是搭档</h2>
+  <p>学到这里容易产生错觉:「领导比管理高级」。科特(John Kotter)的经典澄清是:两者解决的是不同的问题——<strong>管理应对复杂性,带来秩序;领导应对变革,带来运动</strong>。组织两者都缺一不可:</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th></th><th>管理(Management)</th><th>领导(Leadership)</th></tr></thead>
+      <tbody>
+        <tr><td><b>应对对象</b></td><td>复杂性:让复杂的人事变得可靠</td><td>变革:把人带向从未去过的地方</td></tr>
+        <tr><td><b>核心动作</b></td><td>计划预算 → 组织配备 → 控制纠偏</td><td>确立方向 → 联盟人心 → 激励鼓舞</td></tr>
+        <tr><td><b>产出结果</b></td><td>可预期:秩序、一致、按时交付</td><td>可期待:变化、热情、主动尝试</td></tr>
+        <tr><td><b>失衡的样子</b></td><td>只有管理:官僚、僵化、没人冲锋</td><td>只有领导:煽动、混乱、没人收尾</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>一句流传很广的话可作为记忆钩子:管理者把事做对,领导者做对的事。回看第 1 课:效率与效能、四大职能,在这里再次汇合。</p>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例:一个新项目组的 12 周(示意)</p>
+    <p>以下是一个综合常见项目现象的<b>示意</b>案例,用来把五阶段与情境领导串成一条时间线。某互联网公司组建五人跨职能小组「青苗组」,目标 12 周上线一项新功能:</p>
+    <ul class="timeline">
+      <li><b>第 1–2 周 · 形成期</b> — 例会上人人客气,没人主动认领模糊地带,事事等组长拍板。组长用<b>指示 + 教练</b>:把任务拆到人、讲清验收标准,并逐一了解成员的擅长与顾虑。</li>
+      <li><b>第 3–5 周 · 风暴期</b> — 技术选型之争公开化,两位骨干当众翻脸,一人威胁退出。组长没有和稀泥,而是立下决策规则:「数据说话,谁负责谁拍板」,让冲突在规则内吵完。</li>
+      <li><b>第 6–8 周 · 规范期</b> — 站会、代码互评、互相备份成了默认动作,成员开始私下对齐而不事事上报。组长转向<b>支持式</b>:多问「需要什么」,少下指令。</li>
+      <li><b>第 9–12 周 · 成熟期</b> — 小组自行重排了优先级,提前上线(示意)。组长进入<b>授权</b>:只约里程碑检查,其余放手。</li>
+      <li><b>上线后 · 解散期</b> — 庆功与复盘之后成员奔赴新项目。组长逐一面谈:这次你长了什么本事、下一站想去哪——团队散了,人留住了。</li>
+    </ul>
+    <p class="case-learn"><b>这一案例的看点:</b>领导风格不是组长的「性格」,而是随团队阶段与成员准备度<b>逐格切换</b>的变量。同一支队伍、同一个领导,第 2 周的紧和第 12 周的松,不是前后不一,而是情境变了。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>塔克曼五阶段(Tuckman's Stages)</dt><dd>团队发展的五阶段模型:形成、风暴、规范、成熟、解散。</dd>
+      <dt>任务行为(Task Behavior)</dt><dd>围绕把事推进的行为:布置目标、示范方法、检查进度。</dd>
+      <dt>关系行为(Relationship Behavior)</dt><dd>围绕把人接住的行为:倾听、鼓励、支持、参与决策。</dd>
+      <dt>情境领导(Situational Leadership)</dt><dd>赫塞与布兰查德提出:按下属准备度切换指示、教练、支持、授权四种风格。</dd>
+      <dt>准备度(Readiness)</dt><dd>下属在特定任务上的能力与意愿的组合,决定匹配的领导风格。</dd>
+      <dt>授权(Delegation)</dt><dd>把决策权与责任下移给有能力的下属,只约定目标与检查点。</dd>
+      <dt>领导力(Leadership)</dt><dd>影响他人自愿追随、共同朝目标努力的能力;与管理互为补充。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>团队要走过形成、风暴、规范、成熟才到高产,风暴不是事故而是必经之路。领导风格跟着下属的「能力 × 意愿」切换:四象限,四种配比。管理带来秩序,领导带来变革——组织两者都需要。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "新团队第一次复盘会,人人客气、只说场面话,没人指出流程里的明显问题。该团队最可能处于:",
+        "options": ["规范期(Norming)", "成熟期(Performing)", "形成期(Forming)", "解散期(Adjourning)"],
+        "answer": 2,
+        "explain": "客气、试探、回避冲突、依赖上级给指令,是形成期的典型画像。真正的分歧还没被吵出来——那是下一站风暴期的事。规范期的标志是默契与规则已在,问题会被直接摆出来。" },
+      { "q": "资深工程师老周技术过硬,最近因晋升落选而明显消沉,布置任务都敷衍。最匹配的领导风格是:",
+        "options": ["支持型:多倾听、给认可", "指示型:细化步骤盯进度", "授权型:完全放手不干预", "教练型:边教方法边鼓励"],
+        "answer": 0,
+        "explain": "高能力 + 低意愿 → 支持式(S3):问题不在「会不会」而在「想不想」,应少指挥、多倾听,一起找意愿滑坡的原因,用认可和参与感重建动力。继续盯步骤或干脆放手,都会把人推得更远。" },
+      { "q": "「管理者把事做对,领导者做对的事。」按科特的观点,这句话强调的是:",
+        "options": ["领导高于管理,应尽快转型", "管理与领导相互对立", "领导是管理的执行环节", "管理与领导互补,缺一不可"],
+        "answer": 3,
+        "explain": "科特的澄清:管理应对复杂性、带来秩序与可预期;领导应对变革、带来方向与热情。只有管理的组织僵化,只有领导的组织混乱——两者是互补的搭档,不是对手。" },
+      { "q": "项目组里两位骨干因方案分歧当众激烈争吵,会后各有拉帮结派的苗头。作为负责人,较妥当的做法是:",
+        "options": ["维持表面和气,避免冲突", "引导冲突摆上桌并定规则", "尽快拆散团队重新组队", "直接授权,让团队自我调节"],
+        "answer": 1,
+        "explain": "这是风暴期的标准场景:冲突公开化不是事故,而是走向规范的必经之路。管理者的任务是给冲突立规矩——比如「数据说话、谁负责谁拍板」——让分歧在规则内吵完。和稀泥与放任都会让风暴转入地下。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《组织行为学》(第 16 版)斯蒂芬·罗宾斯、蒂莫西·贾奇 · 中国人民大学出版社(建议读:团队与领导章节,五阶段与领导理论的教材表述)</li>
+      <li>《领导梯队》拉姆·查兰、斯蒂芬·德罗特 · 机械工业出版社(建议读:从管理自我到管理他人的转身一章)</li>
+      <li>《卓有成效的管理者》彼得·德鲁克 · 机械工业出版社(建议读:「我能贡献什么」一章,理解领导与贡献的关系)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-motivation-theories.html"><span class="pager-label">上一课</span><span class="pager-title">激励:人们为什么愿意努力</span></a>
+    <a class="next" href="../../06-human-resources/index.html"><span class="pager-label">下一课 · 进入下一分支</span><span class="pager-title">06 人力资源管理</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「帮我判断我团队现在处于哪个阶段」「拿我带的两个人各演练一遍情境领导」——用自己的队伍练,这一课才算落地。</div>
+    <p>管理学 · 第 4 课 · 案例为综合常见项目现象的示意描述,不代表任何具体团队。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+  if (!window.Viz) return;
+
+  /* ---------- 塔克曼五阶段 ---------- */
+  var STAGES = [
+    { n: "形成期", en: "Forming", x: 55, y: 150,
+      feat: "客气、试探,依赖负责人给指令;分歧被礼貌地藏起来。",
+      act: "多给结构与信息:讲清目标、角色与边界,一对一了解每个人。",
+      style: "偏指示、教练(示意)" },
+    { n: "风暴期", en: "Storming", x: 170, y: 180,
+      feat: "观点与个性碰撞,冲突公开化;有人消极观望,有人想退出。",
+      act: "让冲突摆上桌面并立下决策规则——不和稀泥,也不拉偏架。",
+      style: "教练:边听边定规则(示意)" },
+    { n: "规范期", en: "Norming", x: 300, y: 110,
+      feat: "形成默契与工作规范,信任建立,沟通成本明显下降。",
+      act: "巩固规则,开始授权与互相反馈;庆祝小的里程碑。",
+      style: "支持(示意)" },
+    { n: "成熟期", en: "Performing", x: 430, y: 45,
+      feat: "角色灵活互补,能量投向任务本身,产出达到峰值。",
+      act: "授权与结果管理:只约定目标与检查点,过程放手。",
+      style: "授权(示意)" },
+    { n: "解散期", en: "Adjourning", x: 545, y: 150,
+      feat: "任务完成、团队拆分,情绪混合:成就与失落并存。",
+      act: "复盘与庆祝,沉淀经验文档;关注每位成员的去向与成长。",
+      style: "回到支持(示意)" }
+  ];
+  var tuckBox = document.getElementById("tuck-svg"),
+      tuckStrip = document.getElementById("tuck-strip"),
+      tuckFb = document.getElementById("tuck-fb");
+  if (tuckBox) {
+    var NS = "http://www.w3.org/2000/svg";
+    function E(tag, attrs) {
+      var e = document.createElementNS(NS, tag);
+      if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+    var svg = E("svg", { viewBox: "0 0 620 235", role: "img", style: "width:100%;height:auto;display:block" });
+    var curve = E("path", {
+      d: "M55 150 C 105 172 130 190 170 180 C 222 168 268 124 300 110 C 345 93 395 48 430 45 C 475 42 522 112 545 150",
+      fill: "none", stroke: "#c4b5fd", "stroke-width": 4, "stroke-linecap": "round"
+    });
+    svg.appendChild(curve);
+    svg.appendChild(E("text", { x: 20, y: 30, "font-size": 12, fill: "#a8a29e", "font-weight": "700" })).textContent = "↑ 团队效能";
+    svg.appendChild(E("text", { x: 585, y: 225, "font-size": 12, fill: "#a8a29e", "font-weight": "700" })).textContent = "时间 →";
+
+    var dots = [];
+    STAGES.forEach(function (st, i) {
+      var g = E("g", { "class": "tuck-dot" });
+      var halo = E("circle", { cx: st.x, cy: st.y, r: 15, fill: "#7c3aed", opacity: "0" });
+      var c = E("circle", { cx: st.x, cy: st.y, r: 8, fill: "#a78bfa", stroke: "#fff", "stroke-width": "2" });
+      var t1 = E("text", {
+        x: st.x, y: st.y + (i === 1 ? 40 : -26), "text-anchor": "middle",
+        "font-size": "13.5", "font-weight": "800", fill: "#57534e"
+      });
+      t1.textContent = st.n;
+      var t2 = E("text", {
+        x: st.x, y: st.y + (i === 1 ? 55 : -12), "text-anchor": "middle",
+        "font-size": "10.5", fill: "#a8a29e"
+      });
+      t2.textContent = st.en;
+      g.appendChild(halo); g.appendChild(c); g.appendChild(t1); g.appendChild(t2);
+      g.addEventListener("click", function () { setStage(i); });
+      svg.appendChild(g);
+      dots.push({ g: g, halo: halo, c: c });
+    });
+    tuckBox.appendChild(svg);
+
+    STAGES.forEach(function (st, i) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "tuck-btn";
+      b.innerHTML = st.n + "<small>" + st.en + "</small>";
+      b.addEventListener("click", function () { setStage(i); });
+      tuckStrip.appendChild(b);
+    });
+
+    var stageBtns = tuckStrip.querySelectorAll(".tuck-btn");
+    window.setStage = function (i) {
+      var st = STAGES[i];
+      dots.forEach(function (d, j) {
+        d.halo.setAttribute("opacity", j === i ? "0.22" : "0");
+        d.c.setAttribute("fill", j === i ? "#7c3aed" : "#a78bfa");
+        d.c.setAttribute("r", j === i ? 10 : 8);
+      });
+      stageBtns.forEach(function (b, j) { b.classList.toggle("on", j === i); });
+      tuckFb.innerHTML = "<b>" + (i + 1) + " / 5 · " + st.n + "(" + st.en + ")</b><br>" +
+        "<b>典型特征:</b>" + st.feat + "<br><b>管理者动作:</b>" + st.act +
+        "<br><b>风格参照:</b>" + st.style;
+    };
+    setStage(0);
+  }
+
+  /* ---------- 情境领导矩阵模拟器 ---------- */
+  var ctrl = document.getElementById("sl-controls"),
+      chartBox = document.getElementById("sl-chart"),
+      readBox = document.getElementById("sl-read");
+  if (!ctrl || !chartBox) return;
+
+  var fmt = function (v) {
+    return v === 0 ? "低" : v === 10 ? "高" : "";
+  };
+  var ch = Viz.axes(chartBox, {
+    w: 560, h: 470, margin: { t: 16, r: 16, b: 52, l: 64 },
+    xDomain: [0, 10], yDomain: [0, 10],
+    xLabel: "下属的能力 →", yLabel: "下属的意愿 →",
+    xTicks: 2, yTicks: 2, xFormat: fmt, yFormat: fmt
+  });
+
+  var QUADS = [
+    { name: "教练", code: "S2 · R2", x0: 0, x1: 5, y0: 5, y1: 10,
+      match: function (a, w) { return a < 5 && w >= 5; },
+      advice: "解释为什么、示范怎么做,多肯定小进步;决策权仍在你手里。" },
+    { name: "授权", code: "S4 · R4", x0: 5, x1: 10, y0: 5, y1: 10,
+      match: function (a, w) { return a >= 5 && w >= 5; },
+      advice: "交出决策权:只约定目标与检查点,过程放手,让成果说话。" },
+    { name: "指示", code: "S1 · R1", x0: 0, x1: 5, y0: 0, y1: 5,
+      match: function (a, w) { return a < 5 && w < 5; },
+      advice: "明确指令:做什么、怎么做、何时完成;小步示范、密集检查。" },
+    { name: "支持", code: "S3 · R3", x0: 5, x1: 10, y0: 0, y1: 5,
+      match: function (a, w) { return a >= 5 && w < 5; },
+      advice: "少指挥、多倾听:一起找意愿滑坡的原因,给认可与选择权。" }
+  ];
+  var quadEls = QUADS.map(function (q) {
+    var rect = Viz.svgEl("rect", {
+      x: ch.x(q.x0), y: ch.y(q.y1),
+      width: ch.x(q.x1) - ch.x(q.x0), height: ch.y(q.y0) - ch.y(q.y1),
+      fill: "#efebf7", stroke: "#fff", "stroke-width": 2.5
+    });
+    ch.svg.appendChild(rect);
+    var cx = (ch.x(q.x0) + ch.x(q.x1)) / 2, cy = (ch.y(q.y0) + ch.y(q.y1)) / 2;
+    var t1 = Viz.label(ch.svg, cx, cy - 8, q.name, { size: 22, weight: 800, anchor: "middle", color: "#7c3aed" });
+    var t2 = Viz.label(ch.svg, cx, cy + 14, q.code, { size: 12, weight: 700, anchor: "middle", color: "#8a7fb8" });
+    return { rect: rect, t1: t1, t2: t2 };
+  });
+
+  var dotG = Viz.svgEl("g", { id: "sl-dot" });
+  var dotC = Viz.svgEl("circle", { cx: 0, cy: 0, r: 9, fill: "#1c1917", stroke: "#fff", "stroke-width": 3 });
+  dotC.appendChild(Viz.svgEl("animate", { attributeName: "r", values: "9;12;9", dur: "2s", repeatCount: "indefinite" }));
+  dotG.appendChild(dotC);
+  ch.svg.appendChild(dotG);
+
+  function upd(a, w) {
+    var active = 0;
+    QUADS.forEach(function (q, i) { if (q.match(a, w)) active = i; });
+    quadEls.forEach(function (e, i) {
+      var on = i === active;
+      e.rect.setAttribute("fill", on ? "#7c3aed" : "#efebf7");
+      e.t1.setAttribute("fill", on ? "#ffffff" : "#7c3aed");
+      e.t2.setAttribute("fill", on ? "#efe9dd" : "#8a7fb8");
+    });
+    dotG.style.transform = "translate(" + ch.x(a).toFixed(1) + "px," + ch.y(w).toFixed(1) + "px)";
+    var q = QUADS[active];
+    readBox.innerHTML =
+      '<div class="sl-rec">推荐:' + q.name + "式(" + q.code + ")</div>" +
+      "<b>下属画像:</b>能力 " + a + " / 10 · 意愿 " + w + " / 10<br>" +
+      "<b>操作建议:</b>" + q.advice +
+      '<div class="sl-tip">边界以 5 为界(示意)。能力与意愿是连续谱,风格应随人、随任务渐变——同一个人在不同任务上也可能落在不同象限。</div>';
+  }
+
+  var sA = Viz.slider(ctrl, { label: "下属的能力", min: 0, max: 10, step: 1, value: 3, format: function (v) { return v + " / 10"; } });
+  var sW = Viz.slider(ctrl, { label: "下属的意愿", min: 0, max: 10, step: 1, value: 8, format: function (v) { return v + " / 10"; } });
+  sA.onChange(function (v) { upd(v, sW.get()); });
+  sW.onChange(function (v) { upd(sA.get(), v); });
+  upd(sA.get(), sW.get());
+})();
+</script>
+</body>
+</html>

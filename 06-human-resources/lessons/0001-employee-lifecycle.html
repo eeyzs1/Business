@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR 全景:员工生命周期 · 人力资源管理</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .ring-wrap { position: relative; max-width: 640px; margin: 0 auto; }
+  .ring-wrap svg { display: block; width: 100%; height: auto; }
+  .lifecycle-seg { cursor: pointer; transition: opacity .25s ease; }
+  .ring-card {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 46%; background: #fff; border: 2px solid var(--accent);
+    border-radius: 16px; box-shadow: var(--shadow); padding: .75rem .9rem;
+    font-size: .78rem; line-height: 1.6; text-align: left;
+  }
+  .ring-card .rc-stage { font-family: var(--serif); font-weight: 700; font-size: .98rem; color: var(--ink); margin-bottom: .35rem; }
+  .ring-card .rc-stage small { display: block; font-family: var(--sans); font-weight: 800; font-size: .64rem; color: var(--accent); letter-spacing: .14em; }
+  .ring-card .rc-row { margin-bottom: .32rem; }
+  .ring-card .rc-k {
+    display: inline-block; font-weight: 800; font-size: .66rem; color: #fff;
+    background: var(--accent); border-radius: 4px; padding: 0 .38em; margin-right: .35em;
+  }
+  .ring-card .rc-link { margin-top: .4rem; padding-top: .4rem; border-top: 1px dashed var(--line); font-size: .68rem; color: var(--ink-soft); }
+  .ring-card .rc-link b { color: var(--accent); }
+  @media (max-width: 600px) {
+    .ring-card { width: 54%; font-size: .6rem; padding: .5rem .6rem; }
+    .ring-card .rc-stage { font-size: .8rem; }
+  }
+</style>
+</head>
+<body class="branch-hr">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">人力资源管理</a><span class="crumb-sep">/</span>
+  <span>员工生命周期</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">人力资源管理 · Lesson 1</p>
+  <h1>HR 全景:员工生命周期</h1>
+  <p class="lead">公司的战略再漂亮,也要靠一个一个具体的人去落地。这一课用「员工生命周期」这条环形主线,把 HR 的全部工作装进一张地图:人从哪里来、如何成长、为什么离开——以及离开之后,故事并没有结束。</p>
+
+  <h2><span class="secno">1</span>为什么每个人都该懂一点 HR</h2>
+  <p>即使你不在 HR 部门工作,只要开始带人,你就已经在做 HR 的事:面试、定目标、给反馈、谈薪、留人。管理学奠基人德鲁克(Peter Drucker)把管理定义为「通过他人完成工作」——那么「人怎么进、怎么长、怎么留」就是管理者的主业,而不是某个职能部门的手续。反过来说,选错一个人的代价,远不止浪费的猎头费:一个错的人在关键岗位上,损失的是机会、时间与团队士气(管理咨询中常见的估算是:岗位错配的综合成本可达该岗位年薪的数倍,量级示意)。</p>
+  <p>有了生命周期这张地图,你在任何组织里都能快速定位人才问题的病灶:出在<b>入口</b>(没人来、来错了人)、<b>过程</b>(人来了却长不大、对不齐),还是<b>出口</b>(走得不体面、口碑崩塌)。</p>
+  <div class="concept">
+    <div class="concept-title">概念:员工生命周期 · Employee Lifecycle</div>
+    <p style="margin:.2rem 0 0">一名员工与一家组织发生完整关系的全过程,通常划分为六个阶段:<em>吸引</em>(Attract)→ <em>招聘</em>(Recruit)→ <em>入职引导</em>(Onboarding)→ <em>发展</em>(Develop)→ <em>保留</em>(Retain)→ <em>离职与校友</em>(Exit &amp; Alumni)。注意它不是一条直线,而是一个闭环:离职体验回流为雇主口碑,又成为下一轮「吸引」的起点。</p>
+  </div>
+
+  <h2><span class="secno">2</span>环形主线:六个阶段各做什么、错什么</h2>
+  <p>点击下面圆环上的任意阶段:中心卡片会展开该阶段「HR 做什么 / 关键指标 / 常见错误」;当前阶段的<b>左右相邻两个阶段会变淡</b>,提示环节之间的衔接——上一个阶段交来什么,下一个阶段等着什么。顺时针读,就是一名员工在这家公司的完整旅程。</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">交互 · 员工生命周期环形图</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">例:点击「入职」,你会看到它的关键指标是 <b>90 天留存率</b>;变淡的两侧提示你——招聘阶段的承诺要由入职兑现,而融入之后,员工马上会问「我在这里怎么成长」。</p>
+    <div class="ring-wrap" id="ringWrap">
+      <svg id="ringSvg" viewBox="0 0 560 560" role="img" aria-label="员工生命周期环形图:吸引、招聘、入职、发展、保留、离职六个阶段首尾相接"></svg>
+      <div class="ring-card" id="ringCard">
+        <div class="rc-stage" id="rcStage"></div>
+        <div class="rc-row"><span class="rc-k">HR 做什么</span><span id="rcWhat"></span></div>
+        <div class="rc-row"><span class="rc-k">关键指标</span><span id="rcMetric"></span></div>
+        <div class="rc-row"><span class="rc-k">常见错误</span><span id="rcMiss"></span></div>
+        <div class="rc-link" id="rcLink"></div>
+      </div>
+    </div>
+  </div>
+
+  <p>这张环上最容易忽视的,是两端的连接处。<b>入职引导</b>(Onboarding)常被压缩成「第一天办手续」,但研究与实践普遍认为,入职后的头 90 天决定了新人是融入还是流失(示意);<b>离职</b>则最容易被当成「关系的终点」——事实上,一位被体面对待的前员工,会变成雇主口碑的放大器,甚至几年后以「回旋镖员工」(Boomerang Employee)的身份带着新经验回来。</p>
+
+  <h2><span class="secno">3</span>从「人事行政」到「战略伙伴」</h2>
+  <p>沿着历史看,HR 部门的角色走过三步:<em>人事行政</em>(Personnel Administration)阶段,管档案、发工资、办手续,是纯粹的行政支持;<em>人力资源管理</em>阶段,把「选、育、用、留」变成一套有方法的专业系统;<em>战略伙伴</em>(Strategic Partner)阶段,人才战略参与业务战略——先回答「未来三年业务需要什么样的人」,再回答「今天怎么招、怎么留」。</p>
+  <p>人力资源大师戴维·尤里奇(Dave Ulrich)在《人力资源转型》中提出:HR 的价值不在于做了多少活动,而在于交付了什么成果。业界后来把这一思想操作化为「三支柱」模型(示意):<em>专家中心</em>(COE,Center of Expertise)制定政策与方法,是「大脑」;<em>人力资源业务伙伴</em>(HRBP,HR Business Partner)嵌入业务团队贴身陪伴决策,是「伙伴」;<em>共享服务中心</em>(SSC,Shared Service Center)把事务性工作集中化、标准化、数字化,是「工厂」。本课只需记住一句话:HR 的本质不是「管人」,而是提升组织「用人取胜」的能力。</p>
+  <div class="table-wrap">
+    <table class="compact">
+      <thead><tr><th>支柱</th><th>干什么</th><th>一句话记忆</th></tr></thead>
+      <tbody>
+        <tr><td><b>COE</b> 专家中心</td><td>设计薪酬、绩效、招聘等专业政策与方法</td><td>出政策的「大脑」</td></tr>
+        <tr><td><b>HRBP</b> 业务伙伴</td><td>嵌入业务部门,翻译业务问题为人才方案</td><td>贴身陪跑的「伙伴」</td></tr>
+        <tr><td><b>SSC</b> 共享服务中心</td><td>集中处理入离职、薪酬发放等事务性工作</td><td>规模化的「工厂」</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2><span class="secno">4</span>案例:谷歌的 People Operations</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">把「人」当工程问题:谷歌人事运营</p>
+    <p>谷歌把自己的 HR 部门命名为 <em>People Operations</em>(人事运营,而非传统的人事部门),并由前人力资源高级副总裁拉斯洛·博克(Laszlo Bock)在《重新定义团队》中系统阐述了这套理念:像工程师对待产品一样,用数据、实验与证据来做关于人的决策(以下为示意描述)。<em>招聘</em>上,用结构化的多维评分替代面试官「感觉不错」的整体印象;<em>管理</em>上,一项管理实践要不要推广,先做小范围对照实验再下结论;连「哪类面试题有预测力」这样的问题,也拿内部数据反复检验。这套做法传递的信号是:人的决策可以被设计、被测量、被持续改进——而不是只能靠直觉与运气。</p>
+    <p class="case-learn"><b>这一课的教训:</b>「People Operations」这个名字本身就是宣言——把「人」当作可以用工程方法持续优化的系统来经营。你不需要成为谷歌,但可以借用同一个问题句式:我们的每个 HR 决策,依据的是证据,还是印象?</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>员工生命周期 Employee Lifecycle</dt><dd>员工与组织关系的完整旅程:吸引→招聘→入职→发展→保留→离职,首尾闭环。</dd>
+      <dt>入职引导 Onboarding</dt><dd>帮助新员工融入组织、角色与文化的最初流程;90 天留存率是其关键指标。</dd>
+      <dt>员工价值主张 EVP</dt><dd>Employer Value Proposition,雇主向人才承诺的独特工作回报,吸引阶段的底层资产。</dd>
+      <dt>战略伙伴 Strategic Partner</dt><dd>HR 角色演进的最高阶:人才战略参与业务战略,而非仅做行政支持。</dd>
+      <dt>专家中心 COE</dt><dd>Center of Expertise,三支柱之一:制定专业政策与方法的中央大脑。</dd>
+      <dt>人力资源业务伙伴 HRBP</dt><dd>HR Business Partner,三支柱之一:嵌入业务团队、贴身解决人才问题的通才。</dd>
+      <dt>共享服务中心 SSC</dt><dd>Shared Service Center,三支柱之一:集中处理事务性工作以提升效率与一致性。</dd>
+      <dt>回旋镖员工 Boomerang Employee</dt><dd>离职后再次回流的前员工;好的离职体验是校友网络与回流的基础。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>员工生命周期把 HR 的散点工作串成闭环:吸引、招聘、入职、发展、保留、离职,环环相扣,断一环则满盘皆漏。HR 已从人事行政演进为战略伙伴,COE、HRBP、SSC 是它的三种组织形态。今天如何送人离开,决定明天谁能被吸引而来。</p>
+  </div>
+
+  <div class="quiz">
+    <div class="quiz-head">随堂测验 · 检索练习</div>
+    <script type="application/json">
+    [
+      { "q": "关于 HR 部门角色的演进,下列说法最准确的是?",
+        "options": ["HR 的本质始终是发薪、社保等事务性的行政工作", "HR 正从人事行政转向支撑战略的人才与组织伙伴", "HR 的核心职责是替业务部门做全部的人员决策", "HR 是唯一有权直接拍板公司战略方向的职能部门"],
+        "answer": 1,
+        "explain": "事务性工作仍是基础(常由 SSC 承接),但现代 HR 还要回答「业务需要什么样的人、组织怎么设计」,扮演<b>战略伙伴</b>角色。替业务做全部决策、直接拍板战略,都越界了。" },
+      { "q": "员工生命周期六个阶段的正确顺序是?",
+        "options": ["招聘→吸引→保留→入职→发展→离职", "吸引→入职→招聘→发展→离职→保留", "吸引→招聘→入职→发展→保留→离职", "招聘→发展→吸引→离职→入职→保留"],
+        "answer": 2,
+        "explain": "先被<b>吸引</b>(知道并向往),再经历<b>招聘</b>(被选中),然后<b>入职</b>融入、<b>发展</b>成长、被<b>保留</b>,最后<b>离职</b>成为校友——离职口碑又回流为下一次吸引,构成闭环。" },
+      { "q": "一家公司把工资发放、入离职手续等重复性事务集中到一个团队,统一高效处理。这对应尤里奇三支柱中的?",
+        "options": ["专家中心(COE),为公司设计统一的政策与方法", "人力资源业务伙伴(HRBP),嵌入业务贴身陪伴", "首席财务官(CFO)办公室,统筹预算与核算", "共享服务中心(SSC),集中高效处理事务工作"],
+        "answer": 3,
+        "explain": "三支柱分工:COE 出政策(大脑)、HRBP 陪业务(伙伴)、SSC 办事务(工厂)。把标准化、重复性的事务集中规模化处理,正是 <b>SSC</b> 的定义。" },
+      { "q": "某公司新员工在入职 90 天内的流失明显偏高。最应优先检查生命周期中的哪个环节?",
+        "options": ["入职引导(Onboarding)环节,90 天留存正是其关键指标", "离职与校友环节,员工走之后再做挽留为时不晚", "品牌吸引环节,只要广告投得多新人流失自然就少", "发展环节,把老员工的年度培训学时再往上拉满"],
+        "answer": 0,
+        "explain": "90 天留存率与上手时间是<b>入职引导</b>的核心指标:第一天有没有人管、文化有没有融入、30-60-90 天计划是否清晰,都在这个窗口暴露。离职后挽留、加大广告、堆培训学时,都没打在病灶上。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>延伸阅读</h2>
+    <ul>
+      <li>《人力资源转型》戴维·尤里奇(建议读:开篇「HR 的新角色」部分——四种角色与三支柱的思想源头)</li>
+      <li>《重新定义团队:谷歌如何工作》拉斯洛·博克 · 中信出版社(建议读:前两章,谷歌如何把 HR 当成工程问题)</li>
+      <li>《联盟:互联网时代的人才关系》里德·霍夫曼 · 中信出版社(建议读:前半部分,把雇佣关系改造成结盟关系)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">上一课</span><span class="pager-title">分支导学 · 人力资源管理</span></a>
+    <a class="next" href="0002-recruiting-and-selection.html"><span class="pager-label">下一课</span><span class="pager-title">招聘与选拔</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「我们公司新人 90 天流失高,该先查入职还是招聘?」「用我待过的公司拆一遍六个阶段」——追问是学习的一部分。</div>
+    <p>人力资源管理 · 第 1 课 · 员工生命周期 | 交互:生命周期环形图 · 案例数字为示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var stages = [
+    { no: "01", name: "吸引", en: "Attract",
+      what: "雇主品牌与员工价值主张(EVP)建设、招聘营销、内推运营",
+      metric: "简历投递量、Offer 接受率(约值)",
+      miss: "宣传与真实体验脱节;只谈钱不谈成长",
+      from: "离职校友的口碑,是吸引的起点",
+      to: "画像与人才池在这里变成真实投递" },
+    { no: "02", name: "招聘", en: "Recruit",
+      what: "人才画像、渠道运营、结构化面试与测评、Offer 谈判",
+      metric: "招聘周期(约天数)、渠道转化率",
+      miss: "凭感觉面;急招时悄悄降低标准",
+      from: "吸引塑造的预期,由面试体验验证",
+      to: "面试中的承诺,要靠入职来兑现" },
+    { no: "03", name: "入职", en: "Onboarding",
+      what: "入职引导:设备权限、伙伴(Buddy)制、30-60-90 天计划",
+      metric: "90 天留存率、上手时间(约周数)",
+      miss: "第一天没人管;只办手续不融文化",
+      from: "Offer 里的承诺在这里首次兑现",
+      to: "融入之后,才谈得上成长" },
+    { no: "04", name: "发展", en: "Develop",
+      what: "培训、导师制、职业双通道、绩效辅导、继任计划",
+      metric: "内部晋升比例、技能覆盖率(约)",
+      miss: "培训与业务两张皮;学完不用",
+      from: "员工稳定后,成长成为第一诉求",
+      to: "看得见的成长,是保留的第一引力" },
+    { no: "05", name: "保留", en: "Retain",
+      what: "薪酬激励、认可文化、敬业度管理、关键人才保留计划",
+      metric: "自愿离职率(约%)、敬业度/eNPS",
+      miss: "只在离职时才谈心;用加钱解决一切",
+      from: "发展受阻,往往就是流失的开始",
+      to: "留不住时,体面地进入离职环节" },
+    { no: "06", name: "离职", en: "Exit & Alumni",
+      what: "离职面谈、知识交接、校友网络与「回旋镖员工」运营",
+      metric: "面谈完成率、校友回流比例(约)",
+      miss: "离职即翻脸;不交接知识、关上回流门",
+      from: "离职原因是最真实的组织体检",
+      to: "好的离职体验,回流为雇主口碑" }
+  ];
+  var palette = ["#f43f5e", "#ec4899", "#db2777", "#be185d", "#9d174d", "#881337"];
+
+  var svg = document.getElementById("ringSvg");
+  var wrap = document.getElementById("ringWrap");
+  if (!svg || !wrap) return;
+
+  var CX = 280, CY = 280, R0 = 176, R1 = 254, N = 6, GAP = 5;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  function polar(r, deg) {
+    var rad = (deg - 90) * Math.PI / 180;
+    return [CX + r * Math.cos(rad), CY + r * Math.sin(rad)];
+  }
+  function segPath(a0, a1) {
+    var p0 = polar(R1, a0), p1 = polar(R1, a1);
+    var p2 = polar(R0, a1), p3 = polar(R0, a0);
+    return "M" + p0[0].toFixed(1) + " " + p0[1].toFixed(1) +
+      " A" + R1 + " " + R1 + " 0 0 1 " + p1[0].toFixed(1) + " " + p1[1].toFixed(1) +
+      " L" + p2[0].toFixed(1) + " " + p2[1].toFixed(1) +
+      " A" + R0 + " " + R0 + " 0 0 0 " + p3[0].toFixed(1) + " " + p3[1].toFixed(1) + " Z";
+  }
+
+  svg.appendChild(el("circle", { cx: CX, cy: CY, r: R0 - 8, fill: "#fff", stroke: "#e7e0d3", "stroke-width": 1.5 }));
+
+  var segEls = [];
+  stages.forEach(function (s, k) {
+    var a0 = k * 60 + GAP, a1 = (k + 1) * 60 - GAP;
+    var p = el("path", { d: segPath(a0, a1), fill: palette[k], stroke: "#fff", "stroke-width": 2, "class": "lifecycle-seg" });
+    p.appendChild(el("title", { text: "第" + s.no + "阶段 · " + s.name }));
+    p.addEventListener("click", function () { select(k); });
+    svg.appendChild(p);
+    segEls.push(p);
+    var mid = (a0 + a1) / 2, pos = polar((R0 + R1) / 2, mid);
+    var no = el("text", { x: pos[0], y: pos[1] - 20, "text-anchor": "middle", "font-size": 11, "font-weight": 800, fill: "rgba(255,255,255,.85)" });
+    no.textContent = s.no;
+    svg.appendChild(no);
+    var t = el("text", { x: pos[0], y: pos[1] + 8, "text-anchor": "middle", "font-size": 23, "font-weight": 800, fill: "#fff", "pointer-events": "none" });
+    t.textContent = s.name;
+    svg.appendChild(t);
+  });
+
+  var rcStage = document.getElementById("rcStage");
+  var rcWhat = document.getElementById("rcWhat");
+  var rcMetric = document.getElementById("rcMetric");
+  var rcMiss = document.getElementById("rcMiss");
+  var rcLink = document.getElementById("rcLink");
+
+  function select(k) {
+    var prev = (k + 5) % 6, next = (k + 1) % 6;
+    segEls.forEach(function (p, j) {
+      if (j === k) {
+        p.setAttribute("opacity", "1");
+        p.setAttribute("stroke", "#fff");
+        p.setAttribute("stroke-width", "3.5");
+        p.removeAttribute("stroke-dasharray");
+      } else if (j === prev || j === next) {
+        p.setAttribute("opacity", "0.5");
+        p.setAttribute("stroke", "#fff");
+        p.setAttribute("stroke-width", "2.5");
+        p.setAttribute("stroke-dasharray", "7 5");
+      } else {
+        p.setAttribute("opacity", "0.22");
+        p.setAttribute("stroke", "#fff");
+        p.setAttribute("stroke-width", "1.5");
+        p.removeAttribute("stroke-dasharray");
+      }
+    });
+    var s = stages[k];
+    rcStage.innerHTML = s.no + " " + s.name + " <small>" + s.en + "</small>";
+    rcWhat.textContent = s.what;
+    rcMetric.textContent = s.metric;
+    rcMiss.textContent = s.miss;
+    rcLink.innerHTML = "<b>承上 · " + stages[prev].name + "</b>:" + s.from +
+      "<br><b>启下 · " + stages[next].name + "</b>:" + s.to;
+  }
+  select(0);
+})();
+</script>
+</body>
+</html>

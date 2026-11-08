@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宏观经济:GDP、通胀与利率 · 经济学基础</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label, .pager .pager-title { display: block; }
+  .flow-svg .node rect { fill: #fff; stroke: #0e7490; stroke-width: 2; }
+  .flow-svg .node text { font-weight: 800; font-size: 14px; fill: #1c1917; text-anchor: middle; }
+  .flow-svg .node .sub { font-weight: 400; font-size: 10.5px; fill: #57534e; }
+  .flow-svg .fl { fill: none; stroke-width: 2.4; stroke-dasharray: 8 7; animation: flowmove 1.4s linear infinite; }
+  .flow-svg .flb { font-size: 11.5px; font-weight: 700; fill: #57534e; }
+  .flow-svg .c2 .fl { stroke: #2563eb; }
+  .flow-svg .c3 .fl { stroke: #b45309; }
+  .flow-svg .c5 .fl { stroke: #047857; }
+  .flow-svg .c3, .flow-svg .c5 { display: none; }
+  .flow-svg[data-mode="3"] .c3 { display: block; }
+  .flow-svg[data-mode="5"] .c3, .flow-svg[data-mode="5"] .c5 { display: block; }
+  @keyframes flowmove { to { stroke-dashoffset: -60; } }
+  .mode-btn { border: 1.5px solid var(--line); background: #fff; border-radius: 999px; padding: .3rem .95rem;
+    font-size: .88rem; cursor: pointer; font-family: var(--sans); color: var(--ink-soft); transition: all .15s ease; }
+  .mode-btn:hover { border-color: var(--accent); }
+  .mode-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .steps.chain li { display: none; }
+  .steps.chain li.on { display: block; animation: fadein .45s ease; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body class="branch-economics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">经济学基础</a><span class="crumb-sep">/</span>
+  <span>宏观经济</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">经济学基础 · Lesson 4</p>
+  <h1>宏观经济:GDP、通胀与利率</h1>
+  <p class="lead">前三课看一件商品、一家企业;这一课把镜头拉到最远,看整个国家:一年生产了多少(GDP)、钱变得多快(通胀)、多少人没工作(失业),以及央行按下「加息」按钮后,这一切如何连锁反应——那是财经新闻的头版逻辑。</p>
+
+  <h2><span class="secno">1</span>GDP:给一年产出算总账</h2>
+  <p><em>国内生产总值</em>(Gross Domestic Product, GDP)衡量一个经济体在一段时期内生产的所有<em>最终</em>商品与服务的市场价值。两个关键词:「最终」——中间品不计入,避免重复计算(面包里的面粉只算一次);「地域」——在一国境内生产即计入,不论厂主是谁。最常用的是<em>支出法</em>(Expenditure Approach):把全社会花掉的钱按四类加总。</p>
+  <div class="formula">
+    GDP = C + I + G + NX
+  </div>
+  <p><em>消费</em>(Consumption, C)是家庭开销;<em>投资</em>(Investment, I)是企业买设备、建厂房、囤库存(注意:买股票不是投资,只是资产换手);<em>政府购买</em>(Government Purchases, G)是政府为产出付的钱;<em>净出口</em>(Net Exports, NX)= 出口 − 进口。四块此消彼长,合成总产出。</p>
+
+  <figure class="figure">
+    <div class="figure-body"><div id="gdp-bars"></div></div>
+    <figcaption class="figure-caption"><b>图 1</b> 支出法 GDP 的构成(示意比例,并非任一经济体的真实数据;发达经济体 C 常占六成上下,净出口可正可负)</figcaption>
+  </figure>
+
+  <div class="callout warn">
+    <span class="callout-label">常见误计</span>
+    <p style="margin:.3rem 0 0">① 二手房成交款:资产转移,不是新产出(中介服务费计入);② 失业救济金等<em>转移支付</em>:没有对应产出,不计入 G;③ 买卖股票:金融交易,不是投资 I。三者都让「钱动了」,但 GDP 纹丝不动。</p>
+  </div>
+
+  <h2><span class="secno">2</span>通胀与失业:经济的体温计</h2>
+  <p><em>消费者物价指数</em>(Consumer Price Index, CPI)跟踪一篮子消费品与服务的平均价格;CPI 同比上涨,即<em>通货膨胀</em>(Inflation)。成因粗分三类:需求拉动(钱太多、抢购)、成本推动(原料工资涨价)、货币超发。通胀侵蚀购买力,是「钱的摩擦力」。<em>失业率</em>(Unemployment Rate)= 失业人数 ÷ 劳动力(就业者 + 正在找工作的人),退出劳动力市场的人不在分母里。短期里通胀与失业常呈<em>此消彼长</em>的跷跷板关系(菲利普斯曲线,示意),这让政策制定者总是左右为难。</p>
+
+  <h2><span class="secno">3</span>利率:经济的总闸门</h2>
+  <p>整个经济体是一张环环相扣的资金网:<em>经济循环流量图</em>(Circular Flow Diagram)把家庭、企业、政府、银行(金融)、国外五个部门连成闭环——你的支出是别人的收入,别人的投资又是未来的供给。而<em>中央银行</em>(Central Bank)的政策利率,是这张网上所有借贷的总闸门。</p>
+
+  <div class="sim">
+    <div class="sim-title">模拟器 · 经济循环流量图:逐层点亮五个部门</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .6rem">箭头流动方向即资金流向。先看最简的两部门循环,再逐级加入政府与银行、国外,观察一张完整的宏观经济网如何织成。</p>
+    <div class="sim-controls">
+      <label>逐级展开:</label>
+      <button type="button" class="mode-btn active" data-mode="2">① 两部门(家庭↔企业)</button>
+      <button type="button" class="mode-btn" data-mode="3">② 三部门(+政府)</button>
+      <button type="button" class="mode-btn" data-mode="5">③ 五部门(+银行·国外)</button>
+    </div>
+    <svg id="flow-svg" class="flow-svg" data-mode="2" viewBox="0 0 640 470" role="img" style="width:100%;height:auto;display:block" aria-label="经济循环流量图:家庭、企业、政府、银行、国外五部门之间的资金流动">
+      <g class="c2">
+        <path class="fl" d="M 250,196 C 285,140 355,140 390,196"/>
+        <text class="flb" x="320" y="150" text-anchor="middle">消费支出 C</text>
+      </g>
+      <g class="c2">
+        <path class="fl" d="M 390,240 C 355,296 285,296 250,240"/>
+        <text class="flb" x="320" y="292" text-anchor="middle">要素收入(工资·利润)</text>
+      </g>
+      <g class="c3">
+        <path class="fl" d="M 195,190 C 200,130 225,85 262,68"/>
+        <text class="flb" x="180" y="118" text-anchor="end">税收 T</text>
+      </g>
+      <g class="c3">
+        <path class="fl" d="M 378,68 C 415,85 440,130 445,190"/>
+        <text class="flb" x="458" y="118" text-anchor="start">政府购买 G</text>
+      </g>
+      <g class="c5">
+        <path class="fl" d="M 150,246 C 105,285 100,330 122,358"/>
+        <text class="flb" x="86" y="308" text-anchor="middle">储蓄 S</text>
+      </g>
+      <g class="c5">
+        <path class="fl" d="M 175,375 C 300,362 415,300 440,250"/>
+        <text class="flb" x="300" y="380" text-anchor="middle">投资 I</text>
+      </g>
+      <g class="c5">
+        <path class="fl" d="M 252,236 C 330,270 420,315 460,358"/>
+        <text class="flb" x="398" y="288" text-anchor="start">进口(钱流出)</text>
+      </g>
+      <g class="c5">
+        <path class="fl" d="M 505,358 C 545,300 530,262 497,244"/>
+        <text class="flb" x="548" y="300" text-anchor="end">出口(钱流入)</text>
+      </g>
+      <g class="node"><rect x="140" y="192" width="112" height="52" rx="12"/><text x="196" y="214">家庭</text><text class="sub" x="196" y="232">提供要素 · 消费</text></g>
+      <g class="node"><rect x="388" y="192" width="112" height="52" rx="12"/><text x="444" y="214">企业</text><text class="sub" x="444" y="232">生产商品与服务</text></g>
+      <g class="node"><rect x="262" y="42" width="116" height="52" rx="12"/><text x="320" y="64">政府</text><text class="sub" x="320" y="82">收税 · 购买 · 转移支付</text></g>
+      <g class="node"><rect x="66" y="358" width="112" height="52" rx="12"/><text x="122" y="380">银行(金融)</text><text class="sub" x="122" y="398">收储蓄 · 放贷款</text></g>
+      <g class="node"><rect x="452" y="358" width="112" height="52" rx="12"/><text x="508" y="380">国外</text><text class="sub" x="508" y="398">出口伙伴 · 进口来源</text></g>
+    </svg>
+  </div>
+
+  <p>有了这张图,「加息」就不再抽象:央行上调<em>政策利率</em>(Policy Rate),商业银行的资金「批发价」变贵,贷款「零售价」跟着上调,全网的资金流速放慢。点开下面的传导链,一步步看冲击如何传递。</p>
+
+  <div class="sim">
+    <div class="sim-title">模拟器 · 按下加息按钮:传导链分步展开</div>
+    <ol class="steps chain" id="chain">
+      <li><b>央行上调政策利率</b>(如联邦基金利率、再贷款利率)——资金的「批发价」变贵。</li>
+      <li><b>商业银行跟进上调存贷款利率</b>——企业与家庭面对的「零售价」变贵。</li>
+      <li><b>借贷意愿下降</b>:企业少借债扩产(I↓),家庭少贷款买房买车、少透支消费(C↓)。</li>
+      <li><b>总需求降温</b>:商品与服务不再抢手,企业提价动力减弱,扩产与招聘更谨慎。</li>
+      <li><b>通胀压力缓解</b>——通常滞后半年到一年以上才充分显现(示意),代价常是增长与就业放缓。</li>
+    </ol>
+    <div class="sim-controls">
+      <button type="button" class="mode-btn" id="chain-btn">下一步 →</button>
+      <span id="chain-hint" style="font-size:.88rem;color:var(--ink-faint)">还剩 5 步</span>
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>案例:2022-2023 全球通胀与加息周期</h2>
+  <div class="case" data-reveal>
+    <p class="case-title">美联储的「踩刹车」</p>
+    <p>2021 年起,疫后需求反弹、供应链受阻、能源与食品价格冲击叠加,全球通胀飙升:美国 CPI 同比涨幅在 2022 年年中一度达到约 9%(约四十年高位,示意量级)。美联储的应对正是教科书式的传导链:自 2022 年 3 月起连续加息十余次,把联邦基金利率从约 0-0.25% 一路上调到约 5.25%-5.5%(2023 年 7 月后维持,示意量级)。房贷、车贷、信用卡利率随之走高,楼市与耐用品消费明显降温,通胀到 2023 年回落至约 3-4% 区间(示意量级),代价是市场对衰退与就业的持续担忧。</p>
+    <p class="case-learn"><b>这一课的教训:</b>货币政策对付通胀的机制只有一个——抬高资金价格,冷却总需求;它起效慢、有滞后,而且几乎必然付出增长与就业的代价。看财经新闻时,把「加息 25 个基点」放回传导链上,它才不是一句黑话。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>国内生产总值 GDP</dt><dd>一段时期内一国境内生产的全部最终商品与服务的市场价值。</dd>
+      <dt>支出法 Expenditure Approach</dt><dd>按 C+I+G+NX 四类支出加总核算 GDP 的方法。</dd>
+      <dt>消费者物价指数 CPI</dt><dd>衡量一篮子消费品与服务平均价格变化的指数。</dd>
+      <dt>通货膨胀 Inflation</dt><dd>物价总水平持续上涨、货币购买力下降的现象。</dd>
+      <dt>失业率 Unemployment Rate</dt><dd>失业人数占劳动力(就业者与求职者之和)的比例。</dd>
+      <dt>政策利率 Policy Rate</dt><dd>央行调控商业银行资金成本的基准利率。</dd>
+      <dt>经济循环流量图 Circular Flow Diagram</dt><dd>刻画各部门之间支出与收入循环流转的宏观示意图。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>宏观经济是一张环环相扣的网:你的支出是别人的收入(GDP = C+I+G+NX),央行的利率是全网借贷的总闸门。加息=踩刹车:冷却总需求,压住通胀,付出增长的代价。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "用支出法核算 GDP,下列哪一项应计入?",
+        "options": ["企业新建厂房的设备投资", "二手房成交时的全部房款", "政府发放的失业救济金", "家庭买入股票的委托支出"],
+        "answer": 0,
+        "explain": "新建厂房是当年的新产出,计入 <b>I(投资)</b>。二手房款是资产转移、救济金是<b>转移支付</b>、买股票是金融交易——三笔钱都动了,GDP 却不动。" },
+      { "q": "央行上调政策利率后,最直接的一环传导是什么?",
+        "options": ["利率下降,借贷扩张,总需求过热", "股市上涨,财富增加,消费上升", "存贷款利率上升,借贷与投资消费降温", "本币贬值,出口激增,顺差扩大"],
+        "answer": 2,
+        "explain": "传导链的第一环是<b>批发价 → 零售价</b>:政策利率抬高银行资金成本,存贷款利率随之上升,企业与家庭的借贷意愿下降,I 与 C 一起降温。" },
+      { "q": "统计部门公布「CPI 同比上涨 3%」,正确的理解是什么?",
+        "options": ["所有商品价格都上涨了 3%", "一篮子消费品与服务的平均价格较上年上涨约 3%", "居民的实际购买力比上年提高了 3%", "GDP 的实际增速同步加快了 3%"],
+        "answer": 1,
+        "explain": "CPI 是<b>一篮子</b>商品与服务的平均涨幅:有的涨得多、有的在跌;它衡量物价,不等于购买力提升,更不等于 GDP 增长。" },
+      { "q": "关于通胀与失业的短期关系,经济学通常怎样描述?",
+        "options": ["两者之间不存在任何稳定关联", "两者必然同方向同幅度变化", "通胀越高,失业必然同比例越高", "短期内两者常呈此消彼长的跷跷板"],
+        "answer": 3,
+        "explain": "菲利普斯曲线(示意)刻画短期权衡:压通胀常要忍受更高的失业,保就业常要忍受更高的通胀——这正是 2022-2023 年各国央行的两难。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>延伸阅读</h2>
+    <ul>
+      <li>《经济学原理(第 8 版):宏观经济学分册》曼昆 · 北京大学出版社(建议读:第 23 章「一国收入的衡量」、第 24 章「生活费用的衡量」)</li>
+      <li>《经济学(第 19 版)》萨缪尔森、诺德豪斯 · 商务印书馆(建议读:宏观部分「货币政策与总需求」相关章节)</li>
+      <li>可搜索关键词:Federal Funds Rate、Phillips Curve</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-market-structures.html"><span class="pager-label">上一课</span><span class="pager-title">市场结构:从完全竞争到垄断</span></a>
+    <a class="next" href="../../02-accounting/index.html"><span class="pager-label">下一分支</span><span class="pager-title">会计学 · Branch 02</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师,例如:「美联储加息为什么会影响我的房贷利率?」或「CPI 里都有什么?」——追问是学习的一部分。</div>
+    <p>经济学基础 · 第 4 课 · 宏观经济 | 交互:五部门循环流量图(动画)+ 加息传导链分步揭示 · 案例数字均为公开报道的约数,示意量级</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var box = document.getElementById("gdp-bars");
+  if (box && window.Viz) {
+    Viz.bars(box, [
+      { label: "消费 C", value: 55 },
+      { label: "投资 I", value: 25 },
+      { label: "政府购买 G", value: 15 },
+      { label: "净出口 NX", value: 5 }
+    ], { max: 70, h: 300, color: "#0e7490", valueFormat: function (v) { return v + "%"; } });
+  }
+})();
+
+(function () {
+  var flow = document.getElementById("flow-svg");
+  var btns = document.querySelectorAll(".mode-btn[data-mode]");
+  if (!flow || !btns.length) return;
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      flow.setAttribute("data-mode", b.getAttribute("data-mode"));
+      btns.forEach(function (x) { x.classList.toggle("active", x === b); });
+    });
+  });
+})();
+
+(function () {
+  var steps = document.querySelectorAll("#chain li");
+  var btn = document.getElementById("chain-btn");
+  var hint = document.getElementById("chain-hint");
+  if (!steps.length || !btn) return;
+  var i = 0;
+  function refresh() {
+    btn.textContent = i >= steps.length ? "↻ 重新演示" : "下一步 →";
+    if (hint) hint.textContent = i >= steps.length
+      ? "传导完成——试着不看屏幕,用自己的话复述这条链"
+      : "还剩 " + (steps.length - i) + " 步";
+  }
+  btn.addEventListener("click", function () {
+    if (i >= steps.length) {
+      steps.forEach(function (li) { li.classList.remove("on"); });
+      i = 0;
+    }
+    if (i < steps.length) { steps[i].classList.add("on"); i++; }
+    refresh();
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>

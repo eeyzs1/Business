@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>竞争优势:成本领先与差异化 · 战略管理</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pager .pager-label { display: block; }
+  .sim-btn {
+    font-family: var(--sans); font-size: .88rem; font-weight: 700; cursor: pointer;
+    border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+    color: var(--accent); background: #fff; border-radius: 999px; padding: .35rem 1.05rem;
+    transition: all .15s ease;
+  }
+  .sim-btn:hover { background: color-mix(in srgb, var(--accent) 10%, #fff); }
+  /* ---- 护城河翻牌 ---- */
+  .moat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .9rem; margin: 1.2rem 0; }
+  .moat-card { background: none; border: none; padding: 0; margin: 0; cursor: pointer; perspective: 900px; font-family: inherit; text-align: left; }
+  .moat-inner { position: relative; width: 100%; height: 232px; transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2, .7, .3, 1); }
+  .moat-card.flipped .moat-inner { transform: rotateY(180deg); }
+  .moat-face {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border-radius: 12px; border: 1px solid var(--line); box-shadow: var(--shadow);
+    padding: .85rem .95rem; background: #fff; overflow: hidden;
+  }
+  .moat-front { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; }
+  .moat-front .mi { font-size: 1.9rem; line-height: 1; }
+  .moat-front .mn { font-family: var(--serif); font-weight: 700; font-size: 1.06rem; }
+  .moat-front .me { font-size: .72rem; color: var(--ink-faint); letter-spacing: .04em; text-align: center; }
+  .moat-front .hint {
+    font-size: .74rem; color: var(--accent); margin-top: .55rem;
+    border: 1px dashed color-mix(in srgb, var(--accent) 45%, var(--line)); border-radius: 999px; padding: .08rem .7rem;
+  }
+  .moat-back {
+    transform: rotateY(180deg); font-size: .8rem; line-height: 1.62;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 8%, #fff), #fff);
+    overflow: auto;
+  }
+  .moat-back p { margin: 0 0 .5em; }
+  .moat-back b { color: var(--accent); }
+  .moat-card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 12px; }
+  @media print {
+    .moat-inner { position: static; height: auto; transform: none !important; }
+    .moat-face { position: static; backface-visibility: visible; -webkit-backface-visibility: visible; }
+    .moat-back { transform: none; margin-top: .5rem; }
+  }
+  /* ---- 双路径动画 ---- */
+  .path-caption {
+    font-size: .93rem; line-height: 1.75; background: var(--paper-deep);
+    border-radius: 10px; padding: .7rem .95rem; margin: .8rem 0 0; min-height: 3.2em;
+  }
+  .path-meta { display: flex; align-items: center; gap: .9rem; margin-top: .8rem; flex-wrap: wrap; }
+  .path-step { font-size: .9rem; font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body class="branch-strategy">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">战略管理</a><span class="crumb-sep">/</span>
+  <span>竞争优势</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">战略管理 · Lesson 3</p>
+  <h1>竞争优势:成本领先与差异化</h1>
+  <p class="lead">上一课看过行业牌桌,这一课回到自己手里的牌:在一个行业里,<em>凭什么一直赢?</em>一次靠运气,两次靠风口;十年不变地赚钱,背后一定有某种对手学不去、绕不开的结构性优势。这一课给你两件工具:波特的<strong>三大通用战略</strong>(Generic Strategies)帮你选路线,<strong>VRIO</strong> 与<strong>护城河</strong>(Moat)帮你检查路线守不守得住。</p>
+
+  <h2><span class="secno">1</span>三条通用战略,和「夹在中间」的陷阱</h2>
+  <p>波特认为,业务层的进攻路线本质上只有三条——区别在于你把优势建在<b>成本</b>上还是<b>独特性</b>上,以及瞄准<b>全行业</b>还是<b>细分市场</b>:</p>
+  <figure class="figure">
+    <div class="figure-body">
+      <svg viewBox="0 0 640 340" role="img" style="width:100%;height:auto;display:block" aria-label="三大通用战略矩阵">
+        <g>
+          <rect x="130" y="40" width="240" height="120" rx="10" fill="#efff9f2" stroke="#15803d" stroke-width="1.5"></rect>
+          <text x="250" y="86" text-anchor="middle" font-size="15.5" font-weight="800" fill="#15803d">成本领先</text>
+          <text x="250" y="108" text-anchor="middle" font-size="11.5" fill="#57534e">Cost Leadership · 全行业</text>
+          <text x="250" y="130" text-anchor="middle" font-size="10.5" fill="#a8a29e">规模、流程、纪律 → 最低单位成本</text>
+          <rect x="390" y="40" width="240" height="120" rx="10" fill="#fdf2f4" stroke="#9f1239" stroke-width="1.5"></rect>
+          <text x="510" y="86" text-anchor="middle" font-size="15.5" font-weight="800" fill="#9f1239">差异化</text>
+          <text x="510" y="108" text-anchor="middle" font-size="11.5" fill="#57534e">Differentiation · 全行业</text>
+          <text x="510" y="130" text-anchor="middle" font-size="10.5" fill="#a8a29e">品牌、体验、技术 → 溢价能力</text>
+          <rect x="130" y="180" width="240" height="120" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="250" y="226" text-anchor="middle" font-size="15.5" font-weight="800" fill="#57534e">聚焦成本</text>
+          <text x="250" y="248" text-anchor="middle" font-size="11.5" fill="#57534e">Focus · 细分市场</text>
+          <text x="250" y="270" text-anchor="middle" font-size="10.5" fill="#a8a29e">只服务一个缝隙,把成本做穿</text>
+          <rect x="390" y="180" width="240" height="120" rx="10" fill="#fff" stroke="#d6cfc2" stroke-width="1.5"></rect>
+          <text x="510" y="226" text-anchor="middle" font-size="15.5" font-weight="800" fill="#57534e">聚焦差异化</text>
+          <text x="510" y="248" text-anchor="middle" font-size="11.5" fill="#57534e">Focus · 细分市场</text>
+          <text x="510" y="270" text-anchor="middle" font-size="10.5" fill="#a8a29e">为一个缝隙做到无可替代</text>
+          <text x="118" y="104" text-anchor="end" font-size="12.5" font-weight="700" fill="#1c1917">成本优势</text>
+          <text x="118" y="244" text-anchor="end" font-size="12.5" font-weight="700" fill="#1c1917">独特性优势</text>
+          <text x="250" y="322" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c1917">目标市场:全行业</text>
+          <text x="510" y="322" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1c1917">目标市场:细分(聚焦)</text>
+          <text x="118" y="64" text-anchor="end" font-size="10.5" fill="#a8a29e">优势来源</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 通用战略矩阵(示意):两条轴——优势来源 × 目标市场。波特的警告:最危险的位置不在任何一个格子里,而在格子之间的灰色地带。</figcaption>
+  </figure>
+  <div class="callout warn"><span class="callout-label">危险信号</span><strong>夹在中间</strong>(Stuck in the Middle):成本不是最低、价值不是最高,两头不靠。这与第 1 课的「既要又要」是同一个病:第 2 课的 U 形曲线谷底,画的就是它。</div>
+
+  <h2><span class="secno">2</span>VRIO:优势的体检表</h2>
+  <p>宣称自己有优势容易,验货要靠框架。<strong>VRIO</strong> 四问层层递进,一问不过,后面的都不用看:</p>
+  <ol class="steps">
+    <li><strong>价值(Value)</strong>:它帮顾客创造价值、或帮公司捕捉价值吗?——不达标,只是负担。</li>
+    <li><strong>稀缺(Rarity)</strong>:对手是不是人手一份?——人人都有,只能算入场券,带来均势而非优势。</li>
+    <li><strong>难模仿(Inimitability)</strong>:对手学要付出多大代价、多少时间?——历史、因果模糊、社会复杂,都让模仿昂贵。</li>
+    <li><strong>组织(Organization)</strong>:公司的结构、流程与激励,有没有把这个资源真正用起来?——好资源配上坏组织,照样浪费。</li>
+  </ol>
+  <p>四个都过关,才是<strong>持续竞争优势</strong>(Sustained Competitive Advantage);只过前两关,优势是暂时的,红利期等于对手的学习期。</p>
+
+  <h2><span class="secno">3</span>护城河的五种来源</h2>
+  <p>巴菲特把持续优势比作城堡外的<strong>护城河</strong>(Economic Moat):河越宽,城堡越守得住。晨星的分析师帕特·多尔西把河分成几条支流——下面的拼图里,点击卡片翻转,看看每类护城河「是什么、谁在用、怎么被侵蚀」。记住:护城河会干涸,没有一劳永逸。</p>
+
+  <div class="sim">
+    <div class="sim-title">护城河拼图:点击卡片翻转</div>
+    <div class="moat-grid">
+      <div class="moat-card" tabindex="0" role="button" aria-label="规模经济护城河,点击翻转">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">🏭</span><span class="mn">规模经济</span><span class="me">Economies of Scale</span><span class="hint">点击翻转</span></div>
+          <div class="moat-face moat-back">
+            <p><b>是什么:</b>产量越大,固定成本摊得越薄,单位成本随之下滑。</p>
+            <p><b>典型案例:</b>大型零售与物流网络靠巨量订单压低进货与履约成本(示意)。</p>
+            <p><b>如何被侵蚀:</b>市场饱和、技术换代重置产能,小市场里的「局部规模」反超。</p>
+          </div>
+        </div>
+      </div>
+      <div class="moat-card" tabindex="0" role="button" aria-label="网络效应护城河,点击翻转">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">🕸️</span><span class="mn">网络效应</span><span class="me">Network Effects</span><span class="hint">点击翻转</span></div>
+          <div class="moat-face moat-back">
+            <p><b>是什么:</b>每多一个用户都让产品对其他用户更有价值,赢家通吃。</p>
+            <p><b>典型案例:</b>社交通讯与双边交易平台——买家越多卖家越多,滚雪球(示意)。</p>
+            <p><b>如何被侵蚀:</b>多归属(用户同时装几个 App)、细分市场被逐一击破、代际迁移。</p>
+          </div>
+        </div>
+      </div>
+      <div class="moat-card" tabindex="0" role="button" aria-label="转换成本护城河,点击翻转">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">🔗</span><span class="mn">转换成本</span><span class="me">Switching Costs</span><span class="hint">点击翻转</span></div>
+          <div class="moat-face moat-back">
+            <p><b>是什么:</b>换到竞品要付出金钱、时间、数据与学习成本,客户于是留下。</p>
+            <p><b>典型案例:</b>企业软件嵌入工作流后,迁移牵动全公司培训与数据(示意)。</p>
+            <p><b>如何被侵蚀:</b>数据可迁移、接口标准化、新世代用户没有历史包袱。</p>
+          </div>
+        </div>
+      </div>
+      <div class="moat-card" tabindex="0" role="button" aria-label="无形资产护城河,点击翻转">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">👑</span><span class="mn">无形资产</span><span class="me">Intangible Assets</span><span class="hint">点击翻转</span></div>
+          <div class="moat-face moat-back">
+            <p><b>是什么:</b>品牌心智、专利与牌照——法律或认知层面的独家许可。</p>
+            <p><b>典型案例:</b>百年消费品品牌、芯片设计专利、金融与电信牌照(示意)。</p>
+            <p><b>如何被侵蚀:</b>品牌老化失宠、专利到期、监管开放牌照。</p>
+          </div>
+        </div>
+      </div>
+      <div class="moat-card" tabindex="0" role="button" aria-label="成本优势护城河,点击翻转">
+        <div class="moat-inner">
+          <div class="moat-face moat-front"><span class="mi">⚙️</span><span class="mn">成本优势</span><span class="me">Cost Advantages</span><span class="hint">点击翻转</span></div>
+          <div class="moat-face moat-back">
+            <p><b>是什么:</b>更好的流程、区位或学习曲线,把单位成本做到行业最低。</p>
+            <p><b>典型案例:</b>低价航司的点对点快速过站流程;制造端的持续改善(示意)。</p>
+            <p><b>如何被侵蚀:</b>流程被抄袭、要素价格上涨、更低成本区位的对手进场。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sim">
+    <div class="sim-title">双战略路径动画:成本线 vs 价值线</div>
+    <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">同一张图上,青色是<strong>成本领先者</strong>的单位成本,玫红是<strong>差异化者</strong>顾客的愿付价格,灰色虚线是行业平均价格(全部为示意指数)。点击「下一步」,看两条路线如何先后越过盈亏线,殊途同归。</p>
+    <div class="figure-body" id="path-chart" style="padding:.2rem 0 0"></div>
+    <div class="path-meta">
+      <button type="button" class="sim-btn" id="path-btn">下一步 ▸</button>
+      <span class="path-step">进度 <span id="path-step">1 / 6</span></span>
+    </div>
+    <p class="path-caption" id="path-caption"></p>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例 · 宜家与苹果:两条护城河的教科书</p>
+    <p><strong>宜家(IKEA)</strong>走成本领先:家具自己设计、平板包装压缩运费、顾客自行提货组装、门店开在地价更低的郊区、同一套全球产品线放大采购规模。每个环节都在回答同一个问题——「还能把成本再挤掉一点吗?」省下的每一克朗都变成「大多数人买得起的好设计」这句价值主张(示意描述)。</p>
+    <p><strong>苹果(Apple)</strong>走差异化:品牌与设计让顾客愿付溢价;软硬件一体的生态让设备、数据与服务互相咬合,换门的隐性成本极高;自研芯片进一步拉开体验差距。它从不参与「谁更便宜」的战争,只参与「谁更好」的战争(示意描述)。</p>
+    <p class="case-learn"><b>这一课的要点:</b>两条路线没有高下,致命的是在中间摇摆。用 VRIO 检查你最得意的那项资产——它稀缺吗?难学吗?组织真的在用它赚钱吗?三个问题里有任何一个含糊,你看到的可能只是护城河的倒影。</p>
+  </div>
+
+  <div class="glossary" data-reveal>
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>成本领先 Cost Leadership</dt><dd>以行业最低的单位成本取得优势的通用战略,靠规模、流程与纪律支撑。</dd>
+      <dt>差异化 Differentiation</dt><dd>以独特价值换取溢价的通用战略,靠品牌、体验、技术或生态支撑。</dd>
+      <dt>聚焦 Focus</dt><dd>只服务一个细分市场,并在其中做成本领先或差异化的通用战略。</dd>
+      <dt>夹在中间 Stuck in the Middle</dt><dd>成本不最低、价值不最高的尴尬处境;波特认为它长期必然失利。</dd>
+      <dt>VRIO 框架</dt><dd>以价值、稀缺、难模仿、组织四问检验资源能否带来持续竞争优势。</dd>
+      <dt>经济护城河 Economic Moat</dt><dd>保护利润不被竞争侵蚀的结构性优势,常见来源有五类。</dd>
+      <dt>转换成本 Switching Costs</dt><dd>客户改用竞品需付出的金钱、时间、数据与学习代价。</dd>
+      <dt>网络效应 Network Effects</dt><dd>用户增长本身提升产品价值的正反馈,常导致赢家通吃。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway" data-reveal>
+    <div class="takeaway-title">关键要点</div>
+    <p>赢的路线只有三条:成本领先、差异化、聚焦——最危险的是夹在中间。优势要过 VRIO 四关才算数;护城河有五种来源,且都会干涸,需要持续加深。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      {
+        "q": "某企业软件的客户年流失率极低,主要因为更换系统要牵动数据迁移与全员再培训。这属于哪类护城河?",
+        "options": ["网络效应", "转换成本", "规模经济", "无形资产"],
+        "answer": 1,
+        "explain": "换系统的钱、时间与学习代价让客户留下来——这是<b>转换成本</b>。注意与网络效应区分:它并不是「用户越多产品越好用」。"
+      },
+      {
+        "q": "按波特的理论,同时追求更低成本与更豪华服务、两头不靠的企业,处于什么状态?",
+        "options": ["成本领先", "差异化", "聚焦细分", "夹在中间"],
+        "answer": 3,
+        "explain": "<b>夹在中间</b>(Stuck in the Middle):成本不是最低、价值不是最高。它与第 1 课的「既要又要」、U 形曲线的谷底是同一个病灶。"
+      },
+      {
+        "q": "用 VRIO 框架检验一项资源时,第一个该问的问题是:",
+        "options": ["是否为顾客创造价值", "是否足够稀缺难得", "是否难以被模仿", "组织能否用好它"],
+        "answer": 0,
+        "explain": "V 是门槛:先问<b>价值</b>——不为顾客或公司创造价值的资源,连讨论资格都没有。稀缺与难模仿在其后才依次抬高优势的持久性。"
+      },
+      {
+        "q": "用某个通讯工具的人越多,新用户就越离不开它。这种护城河是:",
+        "options": ["转换成本", "成本优势", "网络效应", "品牌资产"],
+        "answer": 2,
+        "explain": "用户增长本身提升产品价值——这是<b>网络效应</b>的典型特征,常见于社交通讯与双边平台,容易滚成赢家通吃(示意)。"
+      },
+      {
+        "q": "宜家让顾客自行提货组装、门店开在郊区、平板包装压缩运费。这组安排的核心意图是:",
+        "options": ["系统性压低成本,支撑低价定位", "提升服务的专业度与响应速度", "强化高端品牌形象与溢价能力", "增加门店停留时长与体验深度"],
+        "answer": 0,
+        "explain": "整组活动都在回答同一个问题——「还能把成本再挤掉一点吗?」省下的钱全部投进低价,这正是<b>成本领先</b>路线的活动系统(示意)。"
+      }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《竞争优势》迈克尔·波特 · 华夏出版社(建议读:第 1–2 章)</li>
+      <li>《竞争战略》迈克尔·波特 · 华夏出版社(建议读:第 2 章「基本竞争战略」)</li>
+      <li>《巴菲特的护城河》帕特·多尔西 · 中信出版社(建议读:第 1–3 章,护城河来源的投资视角清单)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-five-forces.html"><span class="pager-label">← 上一课</span><span class="pager-title">五力模型:行业的钱好不好赚</span></a>
+    <a class="next" href="0004-business-model-canvas.html"><span class="pager-label">下一课 →</span><span class="pager-title">商业模式画布</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「用 VRIO 帮我体检一下我们公司最自豪的资源?」「我们算夹在中间吗?」——把框架对准自己的公司,答案常常扎心但有用。</div>
+    <p>战略管理 · 第 3 课 · 案例为公司公开业务模式的示意描述。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---- 护城河翻牌 ---- */
+  document.querySelectorAll(".moat-card").forEach(function (card) {
+    function flip() { card.classList.toggle("flipped"); }
+    card.addEventListener("click", flip);
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault(); flip();
+      }
+    });
+  });
+
+  /* ---- 双战略路径动画 ---- */
+  var box = document.getElementById("path-chart");
+  var btn = document.getElementById("path-btn");
+  var capEl = document.getElementById("path-caption");
+  var stepEl = document.getElementById("path-step");
+  if (!box || !btn || !window.Viz) return;
+
+  function costCurve(x) { return 70 * Math.exp(-0.18 * x) + 22; }
+  function valueCurve(x) { return 38 + 34 * (1 - Math.exp(-0.2 * x)); }
+  var PRICE = 55;
+
+  var axes = Viz.axes(box, {
+    w: 640, h: 360, margin: { t: 26, r: 138, b: 52, l: 56 },
+    xDomain: [0, 10], yDomain: [0, 100],
+    xLabel: "累计规模 / 时间 →", yLabel: "单位成本 / 愿付价格(指数)",
+    xTicks: 5, yTicks: 4
+  });
+
+  function curvePts(fn) {
+    var a = [];
+    for (var i = 0; i <= 40; i++) {
+      var x = i / 4;
+      a.push([axes.x(x), axes.y(fn(x))]);
+    }
+    return a;
+  }
+  var costGuide = Viz.line(axes.svg, curvePts(costCurve), { color: "#0e7490", width: 2, dash: "5 5" });
+  costGuide.setAttribute("opacity", "0.35");
+  var valueGuide = Viz.line(axes.svg, curvePts(valueCurve), { color: "#9f1239", width: 2, dash: "5 5" });
+  valueGuide.setAttribute("opacity", "0.35");
+
+  axes.svg.appendChild(Viz.svgEl("line", {
+    x1: axes.x(0), x2: axes.x(10), y1: axes.y(PRICE), y2: axes.y(PRICE),
+    stroke: "#a8a29e", "stroke-width": 2, "stroke-dasharray": "8 6"
+  }));
+  Viz.label(axes.svg, axes.x(0) + 4, axes.y(PRICE) - 7, "行业平均价格(示意)", { size: 11.5, color: "#a8a29e" });
+  Viz.label(axes.svg, axes.x(10) + 8, axes.y(costCurve(10)) + 4, "成本领先者 · 单位成本", { size: 11.5, color: "#0e7490" });
+  Viz.label(axes.svg, axes.x(10) + 8, axes.y(valueCurve(10)) + 4, "差异化者 · 愿付价格", { size: 11.5, color: "#9f1239" });
+
+  var STEPS = [
+    "起点:两条线都处在不利一侧——成本领先者的单位成本高于行业均价,差异化者的愿付价格低于行业均价(示意)。",
+    "成本领先路径:规模采购、标准化与学习曲线,推动单位成本沿曲线快速下移。",
+    "成本线跌破行业均价:可以用低价争夺价格敏感客群,同时保住毛利——成本护城河成立。",
+    "差异化路径:品牌、体验与生态,把顾客的愿付价格一路抬升。",
+    "价值线越过行业均价:不必参与价格战,用溢价换利润——差异化护城河成立。",
+    "殊途同归:利润 = 愿付价格 − 单位成本。两条路都通向更宽的差距,危险的是停在中间——成本不够低、价值也不够高。"
+  ];
+  var step = 0;
+  var dyn = Viz.svgEl("g");
+  axes.svg.appendChild(dyn);
+
+  function render() {
+    while (dyn.firstChild) dyn.removeChild(dyn.firstChild);
+    var xmax = step * 2;
+    if (xmax > 0) {
+      function seg(fn) {
+        var a = [];
+        for (var i = 0; i <= 20; i++) {
+          var x = xmax * i / 20;
+          a.push([axes.x(x), axes.y(fn(x))]);
+        }
+        return a;
+      }
+      Viz.line(dyn, seg(costCurve), { color: "#0e7490", width: 3.5 });
+      Viz.line(dyn, seg(valueCurve), { color: "#9f1239", width: 3.5 });
+      Viz.dot(dyn, axes.x(xmax), axes.y(costCurve(xmax)), { r: 6, fill: "#0e7490", pulse: step < STEPS.length - 1 });
+      Viz.dot(dyn, axes.x(xmax), axes.y(valueCurve(xmax)), { r: 6, fill: "#9f1239", pulse: step < STEPS.length - 1 });
+    }
+    capEl.textContent = STEPS[step];
+    stepEl.textContent = (step + 1) + " / " + STEPS.length;
+    btn.textContent = step >= STEPS.length - 1 ? "重置 ↻" : "下一步 ▸";
+  }
+
+  btn.addEventListener("click", function () {
+    step = step >= STEPS.length - 1 ? 0 : step + 1;
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

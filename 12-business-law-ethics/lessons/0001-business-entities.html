@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>公司的法律形态 · 商业伦理与法律</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .scen-tabs { display: flex; flex-wrap: wrap; gap: .55rem; margin: .4rem 0 .8rem; }
+  .scen-tab {
+    font-family: var(--sans); font-size: .9rem; font-weight: 700; cursor: pointer;
+    border: 1.5px solid var(--line); background: var(--paper); color: var(--ink);
+    border-radius: 999px; padding: .4rem 1rem; transition: all .15s ease;
+  }
+  .scen-tab:hover { border-color: var(--accent); }
+  .scen-tab.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .scen-tab .done-mark { color: var(--good); font-weight: 800; }
+  .scen-tab.on .done-mark { color: #bbf7d0; }
+  .scen-desc {
+    background: var(--paper-deep); border-radius: 10px; padding: .8rem 1rem;
+    font-size: .95rem; color: var(--ink-soft); margin-bottom: .9rem; line-height: 1.8;
+  }
+  .scen-desc b { color: var(--ink); }
+  .form-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .6rem; margin: .8rem 0; }
+  .form-btn {
+    font-family: var(--sans); font-size: .93rem; font-weight: 600; cursor: pointer;
+    border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 10px; padding: .6rem .7rem; transition: all .15s ease; line-height: 1.5;
+  }
+  .form-btn small { display: block; color: var(--ink-faint); font-weight: 400; font-size: .78rem; }
+  .form-btn:hover:not(:disabled) { border-color: var(--accent); transform: translateY(-2px); }
+  .form-btn.picked { border-color: var(--accent); box-shadow: inset 4px 0 0 var(--accent); background: #fafafa; }
+  .form-btn:disabled { cursor: default; opacity: .75; }
+  .ent-fb {
+    margin-top: .9rem; font-size: .93rem; background: var(--paper-deep); border-radius: 10px;
+    padding: .9rem 1.05rem; color: var(--ink-soft); line-height: 1.85;
+  }
+  .ent-fb b { color: var(--ink); }
+  .ent-fb .verdict { display: inline-block; font-weight: 800; margin-right: .35rem; }
+  .ent-fb .verdict.v-best { color: var(--good); }
+  .ent-fb .verdict.v-ok { color: #b45309; }
+  .ent-fb .verdict.v-bad { color: var(--bad); }
+  .ent-tried { font-size: .85rem; color: var(--ink-faint); margin-top: .6rem; }
+</style>
+</head>
+<body class="branch-law-ethics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">商业伦理与法律</a><span class="crumb-sep">/</span>
+  <span>公司的法律形态</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">商业伦理与法律 · LESSON 1</p>
+  <h1>公司的法律形态</h1>
+  <p class="lead">做生意的第一件事不是找客户,而是回答一个问题:<em>这门生意以什么身份存在?</em>法律形态决定了谁对债务负责、钱从哪里来、股权能不能动、税怎么算——它是创业者签下的第一份、也是最容易被忽视的「默认合同」。这一课让你亲手替三个创业情景「定身份」。</p>
+
+  <div class="callout warn">
+    <span class="callout-label">课前必读</span>
+    本课为<b>教学内容示意,不构成法律建议</b>。各形态的登记条件、税收政策随法规修订而变化,落地决策请咨询执业律师与税务师。
+  </div>
+
+  <h2><span class="secno">1</span>选形态,就是选一整套默认规则</h2>
+  <p>很多人以为「注册成什么」只是填表时的一个勾选项。其实法律形态(Legal Form / Business Entity)是一整套<em>默认规则包</em>:债务追到谁头上、利润怎么分、外人能不能投资、股份转让要不要别人点头、税务机关怎么向你征税——每一项都由形态预先写死。你没在协议里写明的事,法律替你「默认」了;而默认规则未必是你想要的。</p>
+  <p>四种主流形态可以排成一条光谱:光谱左端是<b>个体工商户</b>(Individual Business)——设立最简单、责任无限;右端是<b>股份有限公司</b>(Joint-Stock Company)——结构最重、融资能力最强;中间是<b>合伙企业</b>(Partnership)与<b>有限责任公司</b>(Limited Liability Company, LLC)。越往右,「责任隔离」与「融资能力」越强,「设立成本与合规负担」也越重。天下没有免费的责任隔离。</p>
+  <div class="concept">
+    <div class="concept-title">定义 · 法人与有限责任</div>
+    <p style="margin:.2rem 0 .5rem"><b>法人</b>(Legal Person)是法律拟制的「人」:公司以自己的名义拥有财产、签订合同、起诉应诉——与创办者的个人财产相互独立。由此引出本课最重要的概念:</p>
+    <p style="margin:0"><em>有限责任</em>(Limited Liability):公司欠债,股东(Limited Partner / Shareholder 视形态而定)原则上<em>以认缴的出资为限</em>承担责任,个人房产、存款不在追偿范围内。反过来,个体工商户与普通合伙人对经营债务承担<b>无限责任</b>,普通合伙人之间还承担<b>无限连带责任</b>(Joint and Several Liability)——债主可以找其中任何一个人要全部欠款。</p>
+  </div>
+  <p>有限责任不是万无一失的防火墙:挪用公司财产、公私账户不分、抽逃出资等情形下,法院可以「刺破公司面纱」(<em>法人人格否认</em>,Piercing the Corporate Veil),让股东个人兜底。有限责任保护的是「守规矩的股东」,不是「把公司当钱包的股东」。</p>
+
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 640 300" role="img" aria-label="有限责任防火墙示意图">
+        <defs>
+          <marker id="arr1" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#78716c"/></marker>
+        </defs>
+        <rect x="30" y="70" width="150" height="110" rx="12" fill="#fff" stroke="#c9c1b2" stroke-width="1.6"/>
+        <text x="105" y="105" text-anchor="middle" font-size="15" font-weight="800" fill="#1c1917">股东个人</text>
+        <text x="105" y="130" text-anchor="middle" font-size="12" fill="#57534e">房子 · 存款</text>
+        <text x="105" y="150" text-anchor="middle" font-size="12" fill="#57534e">其他个人财产</text>
+        <rect x="245" y="70" width="150" height="110" rx="12" fill="#f4f4f5" stroke="#52525b" stroke-width="2.4"/>
+        <text x="320" y="100" text-anchor="middle" font-size="15" font-weight="800" fill="#1c1917">公司</text>
+        <text x="320" y="123" text-anchor="middle" font-size="12" fill="#57534e">独立法人财产</text>
+        <text x="320" y="143" text-anchor="middle" font-size="12" fill="#57534e">独立签合同 · 独立应诉</text>
+        <rect x="460" y="70" width="150" height="110" rx="12" fill="#fff" stroke="#c9c1b2" stroke-width="1.6"/>
+        <text x="535" y="105" text-anchor="middle" font-size="15" font-weight="800" fill="#1c1917">债权人</text>
+        <text x="535" y="130" text-anchor="middle" font-size="12" fill="#57534e">供应商 · 银行</text>
+        <text x="535" y="150" text-anchor="middle" font-size="12" fill="#57534e">员工 · 税务</text>
+        <line x1="180" y1="125" x2="243" y2="125" stroke="#78716c" stroke-width="2" marker-end="url(#arr1)"/>
+        <text x="211" y="112" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="700">出资</text>
+        <line x1="395" y1="125" x2="458" y2="125" stroke="#78716c" stroke-width="2" marker-end="url(#arr1)"/>
+        <text x="426" y="112" text-anchor="middle" font-size="11.5" fill="#57534e" font-weight="700">经营负债</text>
+        <line x1="212" y1="66" x2="212" y2="186" stroke="#b91c1c" stroke-width="2.2" stroke-dasharray="7 5"/>
+        <line x1="428" y1="66" x2="428" y2="186" stroke="#15803d" stroke-width="2.2" stroke-dasharray="7 5"/>
+        <text x="212" y="212" text-anchor="middle" font-size="12" font-weight="800" fill="#b91c1c">有限责任墙:追偿止于出资</text>
+        <text x="428" y="212" text-anchor="middle" font-size="12" font-weight="800" fill="#15803d">以公司财产为限清偿</text>
+        <text x="320" y="248" text-anchor="middle" font-size="12.5" fill="#57534e">例外:公私不分、抽逃出资等,可「刺破公司面纱」追到股东个人(教学示意)</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 有限责任的防火墙:债权人只能拿走公司财产,原则上够不着股东的个人财产——这是公司制形态送给出资人最值钱的一份礼物。</figcaption>
+  </figure>
+
+  <h2><span class="secno">2</span>四种形态粗对比:责任、融资、转让、税负</h2>
+  <p>下表是四个维度的<em>定性</em>对比——记住方向即可,不必背条文。特别提醒:税负一栏只讲「结构上的繁简」,不给任何具体税率,因为税率随税种、地区与政策频繁变化。</p>
+  <div class="table-wrap" data-reveal>
+    <table class="compact">
+      <thead><tr><th>形态</th><th>债务责任</th><th>融资通道</th><th>份额 / 股权转让</th><th>税负与合规(定性)</th></tr></thead>
+      <tbody>
+        <tr><td><b>个体工商户</b></td><td>经营者无限责任</td><td>自有资金、借贷</td><td>无股权概念,随经营者本人</td><td>结构最简单,合规要求最低</td></tr>
+        <tr><td><b>普通合伙</b>(General Partnership)</td><td>合伙人无限连带</td><td>合伙人出资</td><td>需经合伙人同意,约束强</td><td>「先分后税」,所得穿透到合伙人(示意)</td></tr>
+        <tr><td><b>有限合伙</b>(Limited Partnership)</td><td>普通合伙人无限,有限合伙人以出资为限</td><td>GP + LP 共同出资</td><td>LP 份额转让相对灵活</td><td>同上穿透;常作持股平台(示意)</td></tr>
+        <tr><td><b>有限责任公司</b>(LLC)</td><td>股东以出资为限</td><td>股权融资、银行贷款</td><td>受章程约束,相对受限</td><td>公司层面纳税,分红到个人再纳一道(结构上存在「双重」一层,示意)</td></tr>
+        <tr><td><b>股份有限公司</b></td><td>股东以出资为限</td><td>可公开发行股份(满足条件时)</td><td>股份转让相对自由</td><td>同左,但信息披露与治理要求最高</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>读表的方法比读表本身重要:先问「这门生意最坏会亏到谁」,再问「这门生意最需要什么」——是要便宜灵活,还是要能装下投资人的钱。下面动手练。</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">形态选择器 · 三个创业情景,你来定身份</div>
+    <p class="scen-desc" style="margin-bottom:.6rem;font-size:.93rem;color:var(--ink-soft)">逐个打开情景,为它选择一种法律形态,立刻看到裁决与理由。三个情景都试过,「形态=规则包」这句话就长在手上了。</p>
+    <div class="scen-tabs" id="ent-tabs"></div>
+    <div class="scen-desc" id="ent-desc"></div>
+    <div class="form-opts" id="ent-forms"></div>
+    <div class="ent-fb" id="ent-fb" hidden></div>
+    <div class="ent-tried" id="ent-tried">已试 0 / 3 个情景</div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例:为什么科技初创几乎都是「有限公司 + 有限合伙持股平台」</p>
+    <p>翻开任何一家拿过机构投资的科技公司(示意描述,不指名具体公司):融资主体几乎清一色是<em>有限责任公司</em>——因为投资人要的是「可计算的风险」:投一笔钱,占一个比例,最坏亏完这笔钱,绝追不到自己头上。这个法律外壳同时装得下增资扩股、员工期权与投资人的治理条款。</p>
+    <p>更有意思的是第二层:员工的股权激励通常<em>不直接</em>发给员工,而是装进一个<b>有限合伙企业</b>——员工作有限合伙人(LP)持有份额、分享升值,而普通合伙人(GP)由创始人或其控制的公司担任。<em>表决权集中在 GP 手里</em>:几十名员工不进股东名册,公司开股东会不必人人签字,控制权不因激励而稀释;员工则以出资为限、只享经济收益。一层结构解决两个问题:有限公司负责「敢投」,有限合伙负责「能管」。</p>
+    <p class="case-learn"><b>这一案例的看点:</b>形态选择不是登记表格,而是<strong>设计责任与权力的分配结构</strong>——谁担风险、谁拿回报、谁做决定,三件事可以在不同层级用不同形态分开安排。这是创业者第一次真正的「顶层设计」。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>法人(Legal Person)</dt><dd>法律拟制的独立主体:以自己的名义拥有财产、订立合同、承担债务,与出资人个人财产分离。</dd>
+      <dt>有限责任(Limited Liability)</dt><dd>股东以认缴出资为限对公司债务承担责任,个人财产原则上不被追及。</dd>
+      <dt>无限连带责任(Joint and Several Liability)</dt><dd>普通合伙人之间对合伙债务共担,债权人可向任一合伙人追偿全部欠款。</dd>
+      <dt>普通合伙(General Partnership)</dt><dd>全体合伙人均承担无限连带责任的合伙形态,靠合伙协议约定分工与分配。</dd>
+      <dt>有限合伙(Limited Partnership)</dt><dd>由普通合伙人(GP)执掌经营并担无限责任、有限合伙人(LP)以出资为限的合伙形态,常用作持股平台。</dd>
+      <dt>法人人格否认(Piercing the Corporate Veil)</dt><dd>股东滥用法人独立地位、公私不分时,法院可「刺破面纱」,令股东对公司债务承担责任。</dd>
+      <dt>个体工商户(Individual Business)</dt><dd>以个人或家庭为单位经营的登记形态,设立最简,经营者承担无限责任。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>选形态就是选默认规则:责任、融资、转让、税负一揽子打包。有限责任保护守规矩的出资人;想要融资能力,就得付出治理与合规的成本。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "三位好友各出一笔钱合开餐馆,注册为普通合伙企业。这一形态下最大的特点是:",
+        "options": ["企业取得独立法人资格", "合伙人对合伙债务承担无限连带责任", "各合伙人只以出资额为限担责", "企业必须向社会公开发行股票"],
+        "answer": 1,
+        "explain": "普通合伙企业不具有法人资格,全体合伙人对合伙债务承担<b>无限连带责任</b>——债主可以找任何一位合伙人要全部欠款。「以出资为限」是有限合伙中的 LP 与公司股东的责任规则;公开发行股票则是股份有限公司的事。" },
+      { "q": "科技公司常用「有限公司主体 + 有限合伙持股平台」双层结构。把员工股权装进有限合伙平台,主要目的是:",
+        "options": ["让员工直接参与公司日常经营", "为公司省下为员工参保的义务", "让员工以出资为限承担公司债务", "让创始 GP 集中行使表决权不稀释控制"],
+        "answer": 3,
+        "explain": "员工做有限合伙人(LP)只分享经济收益;表决权集中在普通合伙人(GP,通常是创始人)。这样员工不进股东名册、不稀释控制权,激励照发、决策照快。<b>省社保义务是违法的</b>,与持股平台无关。" },
+      { "q": "「有限责任」的准确含义是:",
+        "options": ["股东以认缴出资为限对公司债务担责", "公司只对经书面确认的债务担责", "股东只在公司宣告盈利后才开始担责", "公司的经营年限由股东会随时限定"],
+        "answer": 0,
+        "explain": "有限责任限制的是<b>股东</b>的责任范围:以认缴出资为限。公司自身仍要以全部财产对<b>全部</b>债务负责;股东责任与公司盈利与否、经营年限都没有关系。" },
+      { "q": "朋友问:「我准备开一家楼下小面馆,要不要直接注册成股份有限公司?」最合理的回答是:",
+        "options": ["要,股份公司听起来气派,也方便挂牌", "要,股份公司对股东人数不设上限", "不必,股份公司设立与治理成本高,小店用不上", "不要,面馆依法不得登记为任何公司"],
+        "answer": 2,
+        "explain": "股份有限公司的设立门槛、治理结构(股东大会、董事会、监事会)与信息披露要求是各形态中最重的,价值在于支撑大规模募资——小面馆既用不上,也养不起。个体户或小规模公司才是匹配的形态。注意面馆<b>可以</b>登记为公司,只是不必要。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《从0到1》彼得·蒂尔 · 中信出版社(建议读:股权与团队章节,理解早期公司结构的真实权衡)</li>
+      <li>《公司理财》(第 11 版)罗斯、威斯特菲尔德、杰富 · 机械工业出版社(建议读:第 1 章「公司制企业与财务目标」,公司形态与代理问题的教材表述)</li>
+      <li>可搜索:公司章程范本 / 有限合伙持股平台 / 一致行动人协议(读完本课再看这些实务关键词,会顺利很多)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html"><span class="pager-label">上一课</span><span class="pager-title">分支导学 · 商业伦理与法律</span></a>
+    <a class="next" href="0002-contracts-101.html"><span class="pager-label">下一课</span><span class="pager-title">合同:商业的粘合剂</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「我的情况是……该选什么形态?」「有限合伙持股平台再展开讲讲?」——把你自己的生意带进来问,这一课才算学完。</div>
+    <p>商业伦理与法律 · 第 1 课 · 法律内容为教学示意,不构成法律建议;税负对比仅为定性方向,不含具体税率。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var FORMS = [
+    { name: "个体工商户", sub: "最轻 · 无限责任" },
+    { name: "合伙企业", sub: "协议治理 · 连带/穿透" },
+    { name: "有限责任公司", sub: "出资为限 · 股权融资" },
+    { name: "股份有限公司", sub: "最重 · 可公开募资" }
+  ];
+
+  var SCEN = [
+    {
+      tab: "情景一 · 路边小店",
+      desc: "<b>路边小店。</b>夫妻俩盘下一间早餐铺:本钱不多,雇两三个帮手,图的是灵活、成本低、当天见现金,暂时没有扩张计划。",
+      best: 0,
+      verdict: {
+        0: ["v-best", "推荐。", "设立几乎零门槛,经营与记账最简单,是小本生意的默认形态。代价是经营者对店铺债务承担无限责任——店面小、风险可控时,这个代价可以接受。"],
+        1: ["v-ok", "可行但多余。", "合伙结构是为「多人共同出资经营」准备的;一个人开店用不上合伙协议,反而多一层登记与算账成本。"],
+        2: ["v-ok", "可行,属「升级选项」。", "能隔离家庭财产风险,但公司要建账、按期申报,维持成本对一间早餐铺偏重——等生意做大再升级不迟。"],
+        3: ["v-bad", "不合适。", "股份公司的设立门槛、三会治理与信息披露要求是全部形态里最重的,小店完全用不上——好比给自行车装航空仪表盘。"]
+      }
+    },
+    {
+      tab: "情景二 · 兄弟合伙",
+      desc: "<b>兄弟合伙开店。</b>两兄弟各出一半钱开一家火锅食材店,都参与经营;姨妈也想出一笔钱,但不参与干活,只希望每年分红。",
+      best: 1,
+      verdict: {
+        0: ["v-ok", "可行但埋雷。", "登记只能落在一个人名下,另一人的出资与分红没有法定载体,全靠信任运转——拆伙、负债、家庭变故时极易翻脸。"],
+        1: ["v-best", "推荐。", "出资、分工、分配、退出全部写进合伙协议:参与的兄弟做普通合伙人(GP),只出钱的姨妈做有限合伙人(LP),以出资为限。前提要记住:普通合伙人对债务负无限连带责任,所以合伙协议就是「合伙的婚前协议」,丑话必须写在前头。"],
+        2: ["v-ok", "可行,稳妥升级。", "兄弟做股东、姨妈做小股东,人人以出资为限,家庭财产隔了一道墙;配套需要章程与股东协议,成本略高一层。"],
+        3: ["v-bad", "不合适。", "一家食材店用不上等额股份、公开募资与三会治理那套重结构,成本收益完全不匹配。"]
+      }
+    },
+    {
+      tab: "情景三 · 科技初创",
+      desc: "<b>打算融资的科技初创。</b>两名创始人做出了一款原型产品,准备未来两年引入天使与 A、B 轮投资人,并预留员工期权池,规模会快速扩张。",
+      best: 2,
+      verdict: {
+        0: ["v-bad", "不合适。", "无限责任 + 没有股权概念,发不出期权也装不进投资人,机构投资基本无门。"],
+        1: ["v-ok", "方向反了。", "有限合伙多用作<b>员工持股平台</b>,而不是融资主体本身;普通合伙人还要对公司债务担无限责任,创始人不会把自己放进去。"],
+        2: ["v-best", "推荐。", "股权融资的标配外壳:股东以出资为限,增资扩股、期权池、投资人要的治理条款都装得下。配套动作是把员工期权放进有限合伙平台,创始人任 GP 集中表决权(见案例)。"],
+        3: ["v-ok", "可行但非首选。", "等额股份、转让自由,利于大规模募资,但设立与治理成本高——通常临近上市才整体改制为股份公司,早期用它属于过度设计。"]
+      }
+    }
+  ];
+
+  var tabsEl = document.getElementById("ent-tabs"),
+      descEl = document.getElementById("ent-desc"),
+      formsEl = document.getElementById("ent-forms"),
+      fbEl = document.getElementById("ent-fb"),
+      triedEl = document.getElementById("ent-tried");
+
+  if (!tabsEl) return;
+
+  var cur = 0, tried = {};
+
+  SCEN.forEach(function (s, i) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "scen-tab";
+    b.innerHTML = s.tab + ' <span class="done-mark" hidden>✓</span>';
+    b.addEventListener("click", function () { show(i); });
+    tabsEl.appendChild(b);
+  });
+
+  function show(i) {
+    cur = i;
+    var s = SCEN[i];
+    tabsEl.querySelectorAll(".scen-tab").forEach(function (t, j) {
+      t.classList.toggle("on", j === i);
+    });
+    descEl.innerHTML = s.desc;
+    fbEl.hidden = true;
+    formsEl.innerHTML = "";
+    FORMS.forEach(function (f, k) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "form-btn";
+      b.innerHTML = f.name + "<small>" + f.sub + "</small>";
+      b.addEventListener("click", function () { pick(k, b); });
+      formsEl.appendChild(b);
+    });
+  }
+
+  function pick(k, btn) {
+    var s = SCEN[cur];
+    formsEl.querySelectorAll(".form-btn").forEach(function (x) { x.disabled = true; });
+    btn.classList.add("picked");
+    var v = s.verdict[k];
+    fbEl.innerHTML = '你为该情景选择了 <b>' + FORMS[k].name + '</b> —— <span class="verdict ' + v[0] + '">' + v[1] + '</span>' + v[2] +
+      (k === s.best ? "" : '<br><span style="font-size:.85rem;color:var(--ink-faint)">本情景的参考推荐:' + FORMS[s.best].name + '。</span>');
+    fbEl.hidden = false;
+    if (!tried[cur]) {
+      tried[cur] = true;
+      var done = tabsEl.querySelectorAll(".scen-tab")[cur];
+      done.querySelector(".done-mark").hidden = false;
+      var n = Object.keys(tried).length;
+      triedEl.textContent = "已试 " + n + " / 3 个情景" + (n === 3 ? " · 三个情景都试完了,回头看看对比表,规律自然浮现" : "");
+    }
+  }
+
+  show(0);
+})();
+</script>
+</body>
+</html>

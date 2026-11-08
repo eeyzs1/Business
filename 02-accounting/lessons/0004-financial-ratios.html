@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>财务比率:给公司做体检 · 会计学</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  #roe-sim .presets{display:flex;flex-wrap:wrap;gap:.6rem;padding:.8rem 0;border-top:1px dashed var(--line);border-bottom:1px dashed var(--line);margin:.6rem 0;}
+  #roe-sim .presets button{font-family:var(--sans);font-size:.9rem;font-weight:700;color:var(--accent);background:#fff;
+    border:1.5px solid color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:999px;padding:.4rem 1rem;cursor:pointer;transition:all .15s ease;}
+  #roe-sim .presets button:hover{background:var(--accent);color:var(--accent-ink);}
+  #roe-sim .presets button.warnp{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 40%,var(--line));}
+  #roe-formula{font-family:var(--serif);font-size:1.08rem;text-align:center;background:var(--paper-deep);border-radius:10px;padding:.65rem 1rem;margin:.7rem 0;font-variant-numeric:tabular-nums;}
+  #roe-formula b{color:var(--accent);}
+  #roe-big{text-align:center;font-family:var(--sans);font-size:2.5rem;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.2;margin:.2rem 0;}
+  #roe-big small{font-size:.9rem;color:var(--ink-soft);font-weight:700;display:block;letter-spacing:.15em;}
+  @keyframes roe-pop{0%{transform:scale(.94);}60%{transform:scale(1.05);}100%{transform:scale(1);}}
+  #roe-big.pop{animation:roe-pop .45s ease;}
+  #roe-flag{text-align:center;font-size:.9rem;color:var(--ink-soft);min-height:1.7rem;margin:.2rem 0 .4rem;}
+  #roe-flag .warn{color:var(--bad);font-weight:800;}
+  #roe-bars{margin-top:.3rem;}
+  .roe-cap{font-size:.85rem;color:var(--ink-faint);text-align:center;margin:.3rem 0 0;}
+</style>
+</head>
+<body class="branch-accounting">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">会计学</a><span class="crumb-sep">/</span>
+  <span>财务比率:给公司做体检</span>
+  <span class="progress">第 4 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">会计学 · LESSON 4</p>
+  <h1>财务比率:给公司做体检</h1>
+  <p class="lead">「净利润 50 亿」是好消息吗? Depends——资产 200 亿还是 5000 亿,答案天差地别。比率(Ratio)把绝对数变成可比数,像体检指标一样给公司量血压、验血脂。压轴登场的是杜邦分解:一个乘法式,把股东回报拆成三种完全不同的赚钱路径。</p>
+
+  <h2><span class="secno">1</span>为什么用比率:绝对数没有语境</h2>
+  <p>财务比率(Financial Ratios)的思想很简单:把报表上的两个数字相除,消去规模的影响。营收千亿的公司和营收十亿的公司没法直接比,但「每 1 元资产一年能榨出多少净利」人人可比。常用比率按体检项目分三族:</p>
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>体检项</th><th>比率</th><th>算法</th><th>在问什么</th></tr></thead>
+    <tbody>
+      <tr><td rowspan="2"><b>偿债 · 血压</b></td><td>流动比率(Current Ratio)</td><td>流动资产 ÷ 流动负债</td><td>一年内到期的债,还得上吗?</td></tr>
+      <tr><td>资产负债率(Debt-to-Assets)</td><td>总负债 ÷ 总资产</td><td>家底里有几成是借来的?</td></tr>
+      <tr><td rowspan="3"><b>盈利 · 血脂</b></td><td>毛利率(Gross Margin)</td><td>毛利润 ÷ 营业收入</td><td>产品本身值钱吗?</td></tr>
+      <tr><td>净利率(Net Profit Margin)</td><td>净利润 ÷ 营业收入</td><td>每卖 1 元落袋几毛?</td></tr>
+      <tr><td>净资产收益率(ROE)</td><td>净利润 ÷ 股东权益</td><td>股东每投 1 元赚回多少?</td></tr>
+      <tr><td rowspan="2"><b>营运 · 心率</b></td><td>存货周转率(Inventory Turnover)</td><td>营业成本 ÷ 平均存货</td><td>货架上资金一年转几圈?</td></tr>
+      <tr><td>应收周转率(Receivables Turnover)</td><td>营业收入 ÷ 平均应收</td><td>赊出去的账多久收得回?</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="callout note"><span class="callout-label">比率的天条</span> 比率只在<b>同业、同期、同口径</b>下才有意义:流动比率 0.9 对超市可能正常(现金回款极快),对重资产房企就是警报。先问「跟谁比」,再谈高低。</div>
+
+  <h2><span class="secno">2</span>杜邦分解:一张乘法地图</h2>
+  <p>三族比率里最著名的一次综合,是杜邦分析(DuPont Analysis)——把净资产收益率(Return on Equity, ROE)拆成三个因子的乘积:</p>
+  <div class="formula">ROE = 净利率 × 总资产周转率(Asset Turnover)× 权益乘数(Equity Multiplier)</div>
+  <p>三个因子对应三种赚钱姿势:<b>卖什么价</b>(每 1 元收入的利润)、<b>转多快</b>(每 1 元资产一年带来几元收入)、<b>借多少</b>(资产里权益占几成的倒数)。妙处在于:三条路殊途同归,ROE 相同的两家公司,商业模式可能截然相反——这正是上一课「90% vs 20% 毛利率」谜题的答案。</p>
+
+  <h2><span class="secno">3</span>亲手试:比率体检器</h2>
+  <p>拖动三个滑块,或点击预设模式,看 ROE 如何被实时合成。试着回答:只用高杠杆把 ROE「撑」上去,和靠周转率「赚」上去,风险一样吗?</p>
+  <div class="sim" id="roe-sim">
+    <div class="sim-title">杜邦体检器 · ROE = 净利率 × 周转 × 杠杆</div>
+    <div class="sim-controls" id="roe-controls"></div>
+    <div class="presets">
+      <button data-p="mall">超市模式(示意)</button>
+      <button data-p="liquor">白酒模式(示意)</button>
+      <button data-p="balanced">均衡制造(示意)</button>
+      <button data-p="risk" class="warnp">高杠杆陷阱(示意)</button>
+    </div>
+    <div id="roe-formula">ROE = 8.0% × 1.20 × 2.0 = <b>19.2%</b></div>
+    <div id="roe-big"><small>ROE · 股东回报率</small><span id="roe-num">19.2%</span></div>
+    <p id="roe-flag">均衡型:三条腿都不极端,多数制造业形态(示意)。</p>
+    <div id="roe-bars"></div>
+    <p class="roe-cap">条形长度按各因子自身量程归一(示意);第四条为三者相乘合成的 ROE。</p>
+  </div>
+
+  <h2><span class="secno">4</span>案例:两条完全不同的高 ROE 之路</h2>
+  <div class="case">
+    <div class="case-title">沃尔玛式周转 vs 茅台式毛利(量级为约数、示意)</div>
+    <p>用杜邦分解看两种典型生意(数字均为约数、示意):<b>平价超市</b>(沃尔玛是标杆)净利率约 2%–3%,薄得像纸;但货架一年周转约 2–3 次,再加适度杠杆,ROE 常年能达到两位数。<b>高端白酒</b>(贵州茅台是标杆)净利率约 30% 以上,存货却要在窖里躺若干年、周转极慢,好在几乎不需要借债,ROE 同样常年可观。</p>
+    <p>对比画面感极强:一家是把 2% 的利润乘上飞快的周转,一家是把 30% 的利润乘上缓慢的周转——<b>两条完全不同的路,都能通向体面的股东回报</b>。第三条路是加杠杆:权益乘数一抬,ROE 立刻「好看」,但利润表上同样被放大的还有利息负担——潮水退去时,高杠杆公司最先搁浅。</p>
+    <p class="case-learn"><b>这个案例教我们:</b>看到高 ROE 先别鼓掌,做一次杜邦分解,问清它是「赚出来的」「转出来的」还是「借出来的」。三种来源,风险含金量完全不同。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>财务比率 Financial Ratio</dt><dd>两个报表数字相除得到的可比指标。</dd>
+      <dt>流动比率 Current Ratio</dt><dd>流动资产 ÷ 流动负债,衡量短期偿债能力。</dd>
+      <dt>资产负债率 Debt-to-Assets</dt><dd>总负债 ÷ 总资产,衡量长期杠杆水平。</dd>
+      <dt>净利率 Net Profit Margin</dt><dd>净利润 ÷ 营业收入,每元收入的落袋比例。</dd>
+      <dt>总资产周转率 Asset Turnover</dt><dd>营业收入 ÷ 平均总资产,资产一年转几圈。</dd>
+      <dt>权益乘数 Equity Multiplier</dt><dd>总资产 ÷ 股东权益,杠杆的度量衡。</dd>
+      <dt>杜邦分析 DuPont Analysis</dt><dd>把 ROE 拆为净利率 × 周转率 × 权益乘数的框架。</dd>
+      <dt>净资产收益率 ROE</dt><dd>净利润 ÷ 股东权益,股东每投入 1 元的年回报。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    比率把绝对数变成可比数,分偿债、盈利、营运三族看;杜邦分解告诉我们 ROE = 净利率 × 周转 × 杠杆。薄利多销与厚利慢销都能赢,高 ROE 要先问来源——尤其是杠杆。
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "杜邦分解中,ROE 等于下面哪三项的乘积?",
+      "options": ["净利率 × 总资产周转率 × 权益乘数", "毛利率 × 流动比率 × 资产负债率", "净利率 × 存货周转率 × 利息保障倍数", "毛利率 × 应收周转率 × 权益乘数"],
+      "answer": 0,
+      "explain": "ROE = 净利率 × 总资产周转率 × 权益乘数,分别对应盈利能力、运营效率与杠杆水平——三个因子,三种赚钱姿势。" },
+    { "q": "超市「薄利多销」模式在杜邦三因子上的典型特征是?",
+      "options": ["净利率很高,周转率很低,靠品牌溢价", "三项因子全面领先,没有任何明显短板", "净利率很低,周转率很高,靠规模走量", "净利率很低,周转率也低,主要依靠加杠杆"],
+      "answer": 2,
+      "explain": "超市毛利薄但货架与库存飞快轮转,用高周转放大低净利率;若靠低利率×低周转×高杠杆,则更像「高杠杆陷阱」(示意)。" },
+    { "q": "某公司流动比率约 0.8(流动资产 ÷ 流动负债),最可能说明什么?",
+      "options": ["资产远大于负债,公司的偿债能力非常强", "流动资产小于流动负债,短期偿债有压力", "公司现金极为充裕,短期之内无处可用", "公司完全没有负债,全部依靠权益来融资"],
+      "answer": 1,
+      "explain": "流动比率小于 1 意味着一年内要还的债多于一年内能变现的资产,短期偿债承压;但也要结合业态看——现销回款极快的零售商可能常年如此(结合上一课的天条:先问跟谁比)。" },
+    { "q": "两家净利率与周转率几乎相同的公司,ROE 差异主要来自哪里?",
+      "options": ["适用的会计准则以及审计机构不同", "成立年限的长短以及员工人数多少", "所处行业的景气周期与政策环境", "权益乘数不同,也就是杠杆水平不同"],
+      "answer": 3,
+      "explain": "杜邦式子中前两项相同,ROE 只随第三项变动:权益乘数越高,杠杆越高,同样的经营成果被更小的权益基数放大——回报更高,偿债风险也更高。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2><span class="secno">5</span>延伸阅读</h2>
+    <ul>
+      <li>《会计学:企业决策的基础》约翰·怀尔德(John Wild)等 · 机械工业出版社(建议读:「财务报表分析」相关章节,比率分析与杜邦分解)</li>
+      <li>《世界上最简单的会计书》达雷尔·穆利斯 · 机械工业出版社(建议读:结尾部分,从单一摊位走向比率视角的过渡)</li>
+      <li>可搜索关键词:杜邦分解 DuPont Analysis · Investopedia(<a href="https://www.investopedia.com">investopedia.com</a>)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0003-reading-statements.html"><span class="pager-label">上一课</span><span class="pager-title">读懂报表:结构与方法</span></a>
+    <a class="next" href="../../03-finance/index.html"><span class="pager-label">下一课 · 下一分支</span><span class="pager-title">金融学:报表是估值的原料</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师——比如「权益乘数 2 是不是就是两倍杠杆」「ROE 高为什么可能危险」,或让它用一家你熟悉的公司陪你做一次杜邦拆解。</div>
+    <p>本课数字均为教学示意 · 会计学 · 第 4 课 / 共 4 课</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  var ctl = document.getElementById("roe-controls");
+  var formula = document.getElementById("roe-formula");
+  var numEl = document.getElementById("roe-num");
+  var flag = document.getElementById("roe-flag");
+  var barsHost = document.getElementById("roe-bars");
+  var bigBox = document.getElementById("roe-big");
+  if (!ctl || !window.Viz) return;
+
+  var sM = Viz.slider(ctl, { label: "净利率", min: 1, max: 40, step: 0.5, value: 8, format: function (v) { return v.toFixed(1) + "%"; } });
+  var sT = Viz.slider(ctl, { label: "总资产周转率", min: 0.1, max: 3, step: 0.05, value: 1.2, format: function (v) { return v.toFixed(2) + " 次"; } });
+  var sE = Viz.slider(ctl, { label: "权益乘数", min: 1, max: 4, step: 0.1, value: 2, format: function (v) { return v.toFixed(1) + " ×"; } });
+
+  var PRESETS = {
+    mall:     { m: 2.5, t: 2.6, e: 2.2 },
+    liquor:   { m: 32,  t: 0.45, e: 1.4 },
+    balanced: { m: 8,   t: 1.2, e: 2 },
+    risk:     { m: 2,   t: 0.4, e: 4 }
+  };
+
+  function judge(v) {
+    var notes = [];
+    if (v.m >= 25) notes.push("高利润型:定价权强,像高端品牌(示意)");
+    if (v.t >= 1.8) notes.push("高周转型:薄利多销,像商超零售(示意)");
+    if (v.m < 5 && v.t < 1) notes.push('<span class="warn">⚠ 低利低周转:两头不占,模式堪忧(示意)</span>');
+    if (v.e >= 3) notes.push('<span class="warn">⚠ 高杠杆:收益与亏损同时被放大,偿债风险上升</span>');
+    if (!notes.length) notes.push("均衡型:三条腿都不极端,多数制造业形态(示意)");
+    return notes.join(" · ");
+  }
+
+  function drawBars(v, roe) {
+    barsHost.innerHTML = "";
+    var rows = [
+      { label: "净利率", val: v.m, max: 40, txt: v.m.toFixed(1) + "%", hero: false },
+      { label: "总资产周转率", val: v.t, max: 3, txt: v.t.toFixed(2) + " 次/年", hero: false },
+      { label: "权益乘数", val: v.e, max: 4, txt: v.e.toFixed(1) + " ×", hero: false },
+      { label: "ROE(三者乘积)", val: roe, max: 48, txt: roe.toFixed(1) + "%", hero: true }
+    ];
+    var svg = Viz.svgEl("svg", { viewBox: "0 0 640 216", role: "img" });
+    svg.style.cssText = "width:100%;height:auto;display:block";
+    rows.forEach(function (r, i) {
+      var y = 14 + i * 50;
+      var lb = Viz.svgEl("text", { x: 6, y: y + 17, "font-size": 13, "font-weight": 700, fill: "#57534e" });
+      lb.textContent = r.label;
+      svg.appendChild(lb);
+      svg.appendChild(Viz.svgEl("rect", { x: 158, y: y, width: 382, height: 16, rx: 8, fill: "#ece6da" }));
+      var w = Math.max(5, r.val / r.max * 382);
+      svg.appendChild(Viz.svgEl("rect", { x: 158, y: y, width: w, height: 16, rx: 8, fill: r.hero ? "#1d4ed8" : "#9db6f5" }));
+      var vt = Viz.svgEl("text", { x: 550, y: y + 13, "font-size": 12.5, "font-weight": 800, fill: r.hero ? "#1d4ed8" : "#1c1917" });
+      vt.textContent = r.txt;
+      svg.appendChild(vt);
+    });
+    barsHost.appendChild(svg);
+  }
+
+  function recompute(pop) {
+    var v = { m: sM.get(), t: sT.get(), e: sE.get() };
+    var roe = v.m / 100 * v.t * v.e * 100;
+    numEl.textContent = roe.toFixed(1) + "%";
+    if (pop) {
+      bigBox.classList.remove("pop");
+      void bigBox.offsetWidth;
+      bigBox.classList.add("pop");
+    }
+    formula.innerHTML = "ROE = " + v.m.toFixed(1) + "% × " + v.t.toFixed(2) + " × " + v.e.toFixed(1) + " = <b>" + roe.toFixed(1) + "%</b>";
+    flag.innerHTML = judge(v);
+    drawBars(v, roe);
+  }
+
+  [sM, sT, sE].forEach(function (s) { s.onChange(function () { recompute(false); }); });
+
+  document.querySelectorAll("#roe-sim [data-p]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var p = PRESETS[b.getAttribute("data-p")];
+      if (!p) return;
+      sM.set(p.m); sT.set(p.t); sE.set(p.e);
+      recompute(true);
+    });
+  });
+
+  recompute(false);
+})();
+</script>
+</body>
+</html>

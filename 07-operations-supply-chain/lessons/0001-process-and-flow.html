@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>运营的本质:流程 · 运营与供应链</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .ro-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:.6rem; margin:.9rem 0; }
+  .ro-chip { background:var(--paper-deep); border-radius:10px; padding:.55rem .85rem; font-size:.9rem; line-height:1.6; }
+  .ro-chip small { display:block; color:var(--ink-faint); font-size:.78rem; letter-spacing:.05em; }
+  .ro-chip b { font-variant-numeric:tabular-nums; font-size:1.05rem; color:var(--accent); }
+  .sim-btn { background:var(--paper-deep); border:1.5px solid var(--line); border-radius:999px; padding:.38rem 1rem;
+    font-weight:700; font-size:.88rem; cursor:pointer; color:var(--ink); font-family:var(--sans); }
+  .sim-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .sim-btn.primary { background:var(--accent); color:var(--accent-ink); border-color:var(--accent); }
+</style>
+</head>
+<body class="branch-operations">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">运营与供应链</a><span class="crumb-sep">/</span>
+  <span>运营的本质:流程</span>
+  <span class="progress">第 1 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">运营与供应链 · LESSON 1</p>
+  <h1>运营的本质:流程</h1>
+  <p class="lead">同样卖一杯奶茶,有的店让你三分钟拿到手,有的店让你等二十分钟。差别不在咖啡师的手速,而在<em>流程</em>。这一课教你把任何生意拆成一张流程图,并用三个指标看穿它的快与慢。</p>
+
+  <h2><span class="secno">1</span>运营:把投入变成产出的学问</h2>
+  <p>无论是奶茶店、汽车厂还是医院,任何组织都在做同一件事:把一批投入(Input)——原料、人力、设备、信息——经过<em>转化(Transformation)</em>,变成顾客愿意付钱的产出(Output)。研究如何把这件事做得又快、又省、又稳的学问,就是<em>运营管理(Operations Management)</em>。</p>
+  <div class="concept">
+    <div class="concept-title">运营系统三要素</div>
+    <p style="margin-bottom:0"><b>投入</b>:原料、人、机器、能源、信息;<b>转化</b>:改变形态(制造)、改变位置(物流)、改变状态(医疗、教育)、存储(仓储);<b>产出</b>:产品与服务,外加谁都不想要的两样副产品——库存与排队。运营管理的全部功夫,就在于让转化尽量直接,让副产品尽量少。</p>
+  </div>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 760 200" role="img" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="ar1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#b45309"></path>
+          </marker>
+        </defs>
+        <rect x="20" y="55" width="150" height="80" rx="12" fill="#f2ede3" stroke="#d6cdbd"></rect>
+        <text x="95" y="85" text-anchor="middle" font-size="14" font-weight="800" fill="#1c1917">投入</text>
+        <text x="95" y="108" text-anchor="middle" font-size="11" fill="#78716c">原料·人·设备·信息</text>
+        <line x1="176" y1="95" x2="212" y2="95" stroke="#b45309" stroke-width="3" marker-end="url(#ar1)"></line>
+        <rect x="218" y="40" width="200" height="110" rx="14" fill="#fff" stroke="#b45309" stroke-width="2.5"></rect>
+        <text x="318" y="78" text-anchor="middle" font-size="15" font-weight="800" fill="#b45309">转 化</text>
+        <text x="318" y="102" text-anchor="middle" font-size="11" fill="#78716c">制造 / 物流 / 服务</text>
+        <text x="318" y="122" text-anchor="middle" font-size="11" fill="#78716c">增值发生在这里</text>
+        <line x1="424" y1="95" x2="460" y2="95" stroke="#b45309" stroke-width="3" marker-end="url(#ar1)"></line>
+        <rect x="466" y="55" width="150" height="80" rx="12" fill="#f2ede3" stroke="#d6cdbd"></rect>
+        <text x="541" y="85" text-anchor="middle" font-size="14" font-weight="800" fill="#1c1917">产出</text>
+        <text x="541" y="108" text-anchor="middle" font-size="11" fill="#78716c">产品·服务·体验</text>
+        <text x="652" y="88" font-size="11" fill="#b91c1c" font-weight="700">副产品:</text>
+        <text x="652" y="106" font-size="11" fill="#b91c1c">库存与排队</text>
+        <text x="380" y="185" text-anchor="middle" font-size="11.5" fill="#a8a29e">运营管理 = 让这条链路又快、又省、又稳</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 运营系统:投入 → 转化 → 产出。顾客只为右边的产出付钱,但成本常常藏在中间与左边的副产品里。</figcaption>
+  </figure>
+
+  <h2><span class="secno">2</span>流程图:运营的 X 光片</h2>
+  <p><em>流程(Process)</em>是为创造产出而串联起来的一系列活动。看懂一家企业最快的方式,不是读它的年报,而是画它的流程图。图上有两种基本符号:<em>活动(Activity)</em>——真正干活、让东西变样的环节(圆圈);<em>库存(Inventory)</em>——任何两个活动之间停下来等待的东西(三角)。原料堆、排队的人群、待处理的订单,都是库存。</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 760 250" role="img" style="width:100%;height:auto;display:block">
+        <defs>
+          <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L7,3 L0,6 Z" fill="#a8a29e"></path>
+          </marker>
+        </defs>
+        <text x="24" y="94" font-size="12.5" fill="#57534e" font-weight="700">顾客到达</text>
+        <line x1="86" y1="88" x2="118" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <path d="M156,68 L178,108 L134,108 Z" fill="#f2ede3" stroke="#c9c1b2" stroke-width="1.5"></path>
+        <line x1="184" y1="88" x2="206" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <circle cx="248" cy="88" r="34" fill="#fff" stroke="#b45309" stroke-width="2.5"></circle>
+        <text x="248" y="93" text-anchor="middle" font-size="13.5" font-weight="800" fill="#1c1917">点单</text>
+        <line x1="286" y1="88" x2="308" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <path d="M346,68 L368,108 L324,108 Z" fill="#f2ede3" stroke="#c9c1b2" stroke-width="1.5"></path>
+        <line x1="374" y1="88" x2="396" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <circle cx="438" cy="88" r="34" fill="#fef2f2" stroke="#b91c1c" stroke-width="3"></circle>
+        <text x="438" y="93" text-anchor="middle" font-size="13.5" font-weight="800" fill="#b91c1c">制作</text>
+        <text x="438" y="148" text-anchor="middle" font-size="11.5" fill="#b91c1c" font-weight="700">瓶颈:最慢的一环</text>
+        <line x1="476" y1="88" x2="498" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <path d="M536,68 L558,108 L514,108 Z" fill="#f2ede3" stroke="#c9c1b2" stroke-width="1.5"></path>
+        <line x1="564" y1="88" x2="586" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <circle cx="628" cy="88" r="34" fill="#fff" stroke="#b45309" stroke-width="2.5"></circle>
+        <text x="628" y="93" text-anchor="middle" font-size="13.5" font-weight="800" fill="#1c1917">取餐</text>
+        <line x1="666" y1="88" x2="700" y2="88" stroke="#a8a29e" stroke-width="2" marker-end="url(#ar2)"></line>
+        <text x="702" y="93" font-size="12" fill="#57534e" font-weight="700">离开</text>
+        <path d="M470,196 L596,196" stroke="#b91c1c" stroke-width="1.6" marker-start="url(#ar2)" marker-end="url(#ar2)" opacity="0"></path>
+        <text x="110" y="200" font-size="12" fill="#78716c"><tspan font-weight="800" fill="#b45309">○ 活动</tspan> 真正干活的环节</text>
+        <text x="110" y="222" font-size="12" fill="#78716c"><tspan font-weight="800" fill="#b45309">△ 库存</tspan> 活动之间等待的人与物</text>
+        <text x="400" y="200" font-size="12" fill="#78716c"><tspan font-weight="800" fill="#b91c1c">红圈 瓶颈</tspan> 最慢的活动,决定整条线的节拍</text>
+        <text x="400" y="222" font-size="12" fill="#78716c"><tspan font-weight="800" fill="#57534e">周期时间</tspan> 相邻两杯完成之间的间隔</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 2</b> 奶茶店流程图(示意):三个活动、三处库存。流程图一画出来,「顾客到底在等什么」就无处遁形。</figcaption>
+  </figure>
+  <p>图 2 还藏着两个关键指标。<em>周期时间(Cycle Time)</em>是流程每完成一件产出所需的间隔——整条线的周期时间等于<em>最慢活动</em>的周期时间,这个最慢环节叫<em>瓶颈(Bottleneck)</em>。而一件产品从进入流程到离开所经历的全部时间(含等待),叫<em>流程时间(Flow Time)</em>:它几乎总是远大于真正干活的时间,剩下的全是排队。</p>
+
+  <h2><span class="secno">3</span>产能、吞吐量与利特尔法则</h2>
+  <p>三个词很容易混:<em>产能(Capacity)</em>是流程「最多能做多快」,等于瓶颈的速度;<em>吞吐量(Throughput)</em>是流程「实际做了多快」,受需求与供应共同限制,永远不会超过产能;<em>在制品(Work in Process, WIP)</em>是此刻流程内部停留的件数——排队的人、半成品、待取的订单都算。</p>
+  <p>这三者之间有一座惊人的桥:<em>利特尔法则(Little's Law)</em>。</p>
+  <div class="formula">L = λ × W<div style="font-size:.82rem;font-family:var(--sans);margin-top:.5rem;color:var(--ink-soft)">在制品数量 L = 有效到达率 λ × 平均停留时间 W</div></div>
+  <p>直觉版:把流程想成一根水管,λ 是每秒注入的水量,W 是每滴水在管内停留的秒数,两者相乘,正好是管里存着的水量。它最反直觉的推论是:<b>想要「快」(缩短 W),要么减少在制品 L,要么提高 λ——在 λ 不变时,往系统里塞更多在制品,只会让每件东西等得更久</b>。「越催越慢」不是玄学,是排队论的必然。</p>
+
+  <div class="sim" id="tea-sim">
+    <div class="sim-title">交互实验 · 奶茶店三站流程模拟器</div>
+    <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:.4rem">顾客到店后依次经过「点单 → 制作 → 取餐」三站(杯子图标会沿流程流动)。拖动滑块调整客流与每站速度,观察:<b>吞吐量由谁决定?排队在哪里堆积?L = λ × W 成立吗?</b></p>
+    <div class="sim-controls" id="tea-controls"></div>
+    <div style="display:flex;gap:.6rem;flex-wrap:wrap;padding:.5rem 0">
+      <button class="sim-btn primary" id="tea-toggle" type="button">⏸ 暂停</button>
+      <button class="sim-btn" id="tea-reset" type="button">↺ 重置</button>
+    </div>
+    <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden">
+      <svg id="tea-svg" viewBox="0 0 760 300" role="img" style="width:100%;height:auto;display:block"></svg>
+    </div>
+    <div class="ro-grid">
+      <div class="ro-chip"><small>系统产能(理论 = 最慢站)</small><b id="ro-cap">9</b> 杯/分</div>
+      <div class="ro-chip"><small>实测吞吐量</small><b id="ro-thr">—</b> 杯/分</div>
+      <div class="ro-chip"><small>平均在制 L(店内逗留)</small><b id="ro-L">0</b> 杯</div>
+      <div class="ro-chip"><small>平均停留 W(进门→离店)</small><b id="ro-W">0</b> 分</div>
+      <div class="ro-chip"><small>验证 λ×W vs L</small><b id="ro-check" style="font-size:.95rem">统计中…</b></div>
+      <div class="ro-chip"><small>因排满而流失的顾客</small><b id="ro-lost" style="color:var(--bad)">0</b> 位</div>
+    </div>
+    <div class="callout warn" style="margin-bottom:0"><span class="callout-label">试这三件事</span>
+      ① 把「制作」速度调到最低——杯子立刻在它面前堆积,吞吐量被钉死在制作速度上;② 把客流调到高于产能——队伍无限变长,顾客开始流失;<em>需求超过产能时,排队不是意外,是数学</em>;③ 任意稳定状态下看最后一块牌子:λ×W 与 L 总是几乎相等,这就是利特尔法则在实时验算。
+    </div>
+  </div>
+
+  <h2><span class="secno">4</span>案例:流水线与一个人的吧台</h2>
+  <div class="case">
+    <div class="case-title">麦当劳的分工 vs 精品咖啡馆的一人全包</div>
+    <p>同样是「把咖啡饮料交给顾客」,两家选择了截然不同的流程。麦当劳自 20 世纪 50 年代的「快速服务系统」起就把出品拆成极细的分工:有人专管点单收银、有人专管饮料机、有人专管出餐配餐,每个动作都被标准化到「新手两小时上手」,单个订单的周期时间被压到几十秒(示意量级),高峰期吞吐量极高——代价是设备投入与柔性:菜单大改一次,整条流程都要跟着动。</p>
+    <p>而在一家精品咖啡馆,同一位咖啡师包办问候、研磨、手冲、拉花、收杯,一杯要等数分钟(示意)。吞吐量低得多,但每位顾客拿到的是「这一杯」的差异与手艺——顾客排队买的就是这个过程本身。</p>
+    <div class="case-learn"><b>运营课</b>:没有更好的流程,只有更匹配竞争战略的流程。快餐用分工换吞吐量与低价,精品店用低吞吐换溢价与体验;流程本身不分高下,<b>与你要赢得的东西错位</b>才是错误。(案例细节为示意描述,量级仅供参考)</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>运营管理 Operations Management</dt><dd>对投入→转化→产出系统进行设计、运行与改进,以又快、又省、又稳地创造价值。</dd>
+      <dt>流程 Process</dt><dd>为创造产出而串联起来的一组活动及其之间的库存。</dd>
+      <dt>活动 / 库存 Activity / Inventory</dt><dd>流程图中:活动是真正干活的环节;库存是活动之间等待的人与物,包括排队。</dd>
+      <dt>瓶颈 Bottleneck</dt><dd>流程中最慢的环节,决定整条线的周期时间与产能上限。</dd>
+      <dt>产能 / 吞吐量 Capacity / Throughput</dt><dd>产能是「最多能做多快」(=瓶颈速度);吞吐量是「实际做了多快」,不超过产能。</dd>
+      <dt>周期时间 Cycle Time</dt><dd>流程每完成一件产出的时间间隔,等于瓶颈的周期时间。</dd>
+      <dt>在制品 WIP</dt><dd>某时刻停留在流程内部的件数:排队的人、半成品、待处理订单的总和。</dd>
+      <dt>利特尔法则 Little's Law</dt><dd>L = λ × W:在制品数 = 有效到达率 × 平均停留时间;多塞在制品只会让一切更慢。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    任何生意都是投入→转化→产出,而流程图是它的 X 光片:<strong>吞吐量由瓶颈决定,等待由在制品堆积</strong>,而 L = λ × W 把两者永远锁在一起。想让顾客更快拿到东西?要么提速瓶颈,要么少塞在制品——别再催了。
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "奶茶店三站速度分别为 20、12、25 杯/分,顾客以 18 杯/分持续到达。运行一段时间后,系统吞吐量约等于?",
+      "options": ["12 杯/分,由最慢站决定", "18 杯/分,由到达量决定", "20 杯/分,由第一站决定", "25 杯/分,由最快站决定"],
+      "answer": 0,
+      "explain": "吞吐量被瓶颈(制作站 12 杯/分)封顶;到达 18 > 12 的部分只会变成越来越长的队伍,不会变成产出。" },
+    { "q": "把制作站从 12 提速到 16 杯/分(其余不变),系统吞吐量会?",
+      "options": ["下降到 10 杯/分左右", "暴涨到 30 杯/分以上", "上升到约 16 杯/分", "完全保持 12 杯/分"],
+      "answer": 2,
+      "explain": "提速后三站为 20/16/25,最慢的仍是制作站(16 杯/分),瓶颈未变、只是更快,系统吞吐量随之升到 16。瓶颈提速多少,产出就涨多少——这正是下一课的主题。" },
+    { "q": "某咖啡馆高峰期店内平均有 15 位顾客(含排队),每人从进门到离开平均停留 25 分钟。顾客到达率约为?",
+      "options": ["每分钟 0.25 人", "每分钟 0.6 人", "每分钟 3.75 人", "每分钟 15 人"],
+      "answer": 1,
+      "explain": "利特尔法则 λ = L ÷ W = 15 ÷ 25 = 0.6 人/分钟。3.75 是把乘除弄反的结果——那等于 L×W÷100 的巧合数字,别被它骗了。" },
+    { "q": "麦当劳把一杯饮料的出品拆给多位员工分工完成,最主要的经济目的是?",
+      "options": ["提高每杯饮料的售价与毛利", "减少门店雇用的员工总数", "让产品更适合拍照与分享", "缩短周期时间、提高吞吐量"],
+      "answer": 3,
+      "explain": "分工把长串活动变成并行小段,单件周期时间大幅缩短,单位时间通过的顾客(吞吐量)随之上升——这是流程设计服务竞争战略的经典案例。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul class="timeline">
+      <li><b>《运营管理》(Operations Management)</b>威廉·史蒂文森(William Stevenson)· 机械工业出版社(建议读:流程分析与约束管理相关章节)——本分支的教科书级地图。</li>
+      <li><b>《目标》(The Goal)</b>艾利·高德拉特(Eliyahu Goldratt)· 以小说讲约束理论的经典(建议读:前三分之一,工厂厂长如何发现瓶颈)——第 2 课的完整前传。</li>
+      <li><b>《学习观察》(Learning to See)</b>迈克·罗瑟 &amp; 约翰·舒克 · 价值流图入门小册子,教你亲手画出图 2 那样的流程图(可搜索关键词:价值流图 VSM)。</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="../index.html">
+      <div class="pager-label">← 上一课 · 返回导学</div>
+      <div class="pager-title">运营与供应链 · 分支导学</div>
+    </a>
+    <a class="next" href="0002-bottleneck-and-toc.html">
+      <div class="pager-label">下一课 →</div>
+      <div class="pager-title">瓶颈与约束理论:谁决定系统产出</div>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师——比如「为什么我把取餐速度调快,队伍反而排到了制作站?」把你观察到的现象丢给老师,直到真正想通。</div>
+    <p>运营与供应链 · 第 1/4 课 · 课程库由 AI 教师生成,案例数字均为示意量级。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+/* ===== 奶茶店三站流程模拟器 ===== */
+(function () {
+  "use strict";
+  var svg = document.getElementById("tea-svg");
+  if (!svg || !window.Viz) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  function clear(g) { while (g.firstChild) g.removeChild(g.firstChild); }
+
+  var NAMES = ["点单", "制作", "取餐"];
+  var BW = 120, BY = 168, BH = 62;
+  var BX = [130, 340, 550], CX = [190, 400, 610];
+  var LINE = BY + BH / 2;
+
+  var rates = [16, 9, 14];
+  var lam = 12;
+
+  function freshState() {
+    return {
+      t: 0, acc: 0, q: [[], [], []],
+      st: [{ b: null, s0: 0, s1: 0 }, { b: null, s0: 0, s1: 0 }, { b: null, s0: 0, s1: 0 }],
+      tr: [], done: 0, lost: 0, Lint: 0, Wsum: 0, Wn: 0
+    };
+  }
+  var S = freshState();
+
+  var gFlow = el("g"), gSt = el("g"), gDyn = el("g");
+  svg.appendChild(gFlow); svg.appendChild(gSt); svg.appendChild(gDyn);
+
+  /* 流动线与出入口 */
+  gFlow.appendChild(el("line", { x1: 24, y1: LINE, x2: 736, y2: LINE, stroke: "#e7e0d3", "stroke-width": 10, "stroke-linecap": "round" }));
+  gFlow.appendChild(el("text", { x: 30, y: LINE - 26, "font-size": 12.5, fill: "#a8a29e", "font-weight": 700, text: "到店 →" }));
+  gFlow.appendChild(el("text", { x: 736, y: LINE - 26, "font-size": 12.5, fill: "#a8a29e", "font-weight": 700, "text-anchor": "end", text: "→ 离店" }));
+
+  function drawStations() {
+    clear(gSt);
+    var min = Math.min(rates[0], rates[1], rates[2]);
+    for (var i = 0; i < 3; i++) {
+      var isBn = rates[i] === min;
+      if (i < 2) {
+        gSt.appendChild(el("line", { x1: BX[i] + BW + 4, y1: LINE, x2: BX[i + 1] - 10, y2: LINE, stroke: "#c9c1b2", "stroke-width": 2 }));
+        gSt.appendChild(el("path", { d: "M" + (BX[i + 1] - 16) + "," + (LINE - 5) + " L" + (BX[i + 1] - 8) + "," + LINE + " L" + (BX[i + 1] - 16) + "," + (LINE + 5) + " Z", fill: "#c9c1b2" }));
+      }
+      gSt.appendChild(el("rect", { x: BX[i], y: BY, width: BW, height: BH, rx: 12, fill: isBn ? "#fef2f2" : "#fff", stroke: isBn ? "#b91c1c" : "#d6cdbd", "stroke-width": isBn ? 2.5 : 1.5 }));
+      gSt.appendChild(el("text", { x: BX[i] + 10, y: BY + 23, "font-size": 13.5, "font-weight": 800, fill: "#1c1917", text: (i + 1) + " · " + NAMES[i] }));
+      gSt.appendChild(el("text", { x: BX[i] + 10, y: BY + 41, "font-size": 11, fill: "#78716c", text: rates[i] + " 杯/分" }));
+      gSt.appendChild(el("text", { x: BX[i] + 10, y: BY + 55, "font-size": 10.5, fill: isBn ? "#b91c1c" : "#a8a29e", text: isBn ? "瓶颈 · 决定产能" : "有富余" }));
+    }
+    var bi = rates.indexOf(min);
+    gSt.appendChild(el("rect", { x: CX[bi] - 26, y: BY - 74, width: 52, height: 20, rx: 10, fill: "#b91c1c" }));
+    gSt.appendChild(el("text", { x: CX[bi], y: BY - 60, "text-anchor": "middle", "font-size": 11.5, "font-weight": 800, fill: "#fff", text: "瓶颈" }));
+  }
+
+  function cup(color) {
+    var g = el("g");
+    g.appendChild(el("path", { d: "M-8,-9 L8,-9 L5.5,9 L-5.5,9 Z", fill: color, stroke: "#fff", "stroke-width": 1 }));
+    g.appendChild(el("line", { x1: -8.5, y1: -9, x2: 8.5, y2: -9, stroke: color, "stroke-width": 3 }));
+    return g;
+  }
+
+  function step(dt) {
+    S.t += dt;
+    S.acc += lam / 60 * dt;
+    while (S.acc >= 1) {
+      S.acc -= 1;
+      if (S.q[0].length >= 60) S.lost++;
+      else S.q[0].push({ born: S.t });
+    }
+    for (var i = 0; i < 3; i++) {
+      if (S.st[i].b && S.t >= S.st[i].s1) {
+        var it = S.st[i].b; S.st[i].b = null;
+        if (i < 2) S.tr.push({ it: it, x0: BX[i] + BW, x1: BX[i + 1], t0: S.t, t1: S.t + 0.45, q: i + 1 });
+        else {
+          S.tr.push({ it: it, x0: BX[2] + BW, x1: 732, t0: S.t, t1: S.t + 0.45, q: 3 });
+          S.done++; S.Wsum += S.t - it.born; S.Wn++;
+        }
+      }
+      if (!S.st[i].b && S.q[i].length) {
+        var it2 = S.q[i].shift();
+        S.st[i].b = it2; S.st[i].s0 = S.t; S.st[i].s1 = S.t + 60 / rates[i];
+      }
+    }
+    var keep = [];
+    S.tr.forEach(function (t2) {
+      if (S.t >= t2.t1) { if (t2.q < 3) S.q[t2.q].push(t2.it); }
+      else keep.push(t2);
+    });
+    S.tr = keep;
+    var inSys = S.q[0].length + S.q[1].length + S.q[2].length + S.tr.length +
+      (S.st[0].b ? 1 : 0) + (S.st[1].b ? 1 : 0) + (S.st[2].b ? 1 : 0);
+    S.Lint += inSys * dt;
+  }
+
+  function render() {
+    clear(gDyn);
+    var worst = Math.max(S.q[0].length, S.q[1].length, S.q[2].length);
+    for (var i = 0; i < 3; i++) {
+      var n = S.q[i].length;
+      if (n >= 6 && n === worst && n >= Math.max(6, 0)) {
+        gDyn.appendChild(el("rect", { x: CX[i] - 148, y: BY - 52, width: 196, height: 42, rx: 10, fill: "#fef2f2", stroke: "#b91c1c", "stroke-dasharray": "5 4", "stroke-width": 1.5 }));
+        gDyn.appendChild(el("text", { x: CX[i] - 138, y: BY - 36, "font-size": 11.5, "font-weight": 800, fill: "#b91c1c", text: "堆积 " + n + " 杯" }));
+      }
+      var show = Math.min(n, 8);
+      for (var k = 0; k < show; k++) {
+        var c = cup("#b45309");
+        c.setAttribute("transform", "translate(" + (CX[i] + 44 - k * 23) + "," + (BY - 27) + ")");
+        gDyn.appendChild(c);
+      }
+      if (n > 8) gDyn.appendChild(el("text", { x: CX[i] + 44 - 8 * 23 - 4, y: BY - 23, "font-size": 12, "font-weight": 800, fill: "#b91c1c", "text-anchor": "end", text: "×" + n }));
+    }
+    for (i = 0; i < 3; i++) {
+      var st = S.st[i];
+      if (st.b) {
+        var c2 = cup("#15803d");
+        c2.setAttribute("transform", "translate(" + (BX[i] + BW - 26) + "," + (LINE + 2) + ")");
+        gDyn.appendChild(c2);
+        var p = Math.max(0, Math.min(1, (S.t - st.s0) / (st.s1 - st.s0)));
+        gDyn.appendChild(el("rect", { x: BX[i] + 5, y: BY + BH - 11, width: (BW - 10) * p, height: 5, rx: 2.5, fill: "#15803d" }));
+      }
+    }
+    S.tr.forEach(function (t2) {
+      var p = Math.max(0, Math.min(1, (S.t - t2.t0) / (t2.t1 - t2.t0)));
+      var c3 = cup("#b45309");
+      c3.setAttribute("transform", "translate(" + (t2.x0 + (t2.x1 - t2.x0) * p) + "," + (LINE + 2) + ")");
+      gDyn.appendChild(c3);
+    });
+  }
+
+  var $ = function (id) { return document.getElementById(id); };
+  function updateReadout() {
+    var min = Math.min(rates[0], rates[1], rates[2]);
+    $("ro-cap").textContent = min;
+    var mins = S.t / 60;
+    if (mins >= 1) {
+      var thr = S.done / mins;
+      $("ro-thr").textContent = thr.toFixed(1);
+      var L = S.Lint / S.t, W = S.Wn ? S.Wsum / S.Wn : 0;
+      $("ro-L").textContent = L.toFixed(1);
+      $("ro-W").textContent = W.toFixed(1);
+      if (mins >= 2 && W > 0) $("ro-check").textContent = "λ×W=" + (thr * W).toFixed(1) + " ≈ L=" + L.toFixed(1) + " ✓";
+      else $("ro-check").textContent = "统计中…";
+    }
+    $("ro-lost").textContent = S.lost;
+  }
+
+  /* 控件 */
+  var controls = $("tea-controls");
+  var sLam = Viz.slider(controls, { label: "到店客流 λ", min: 3, max: 20, step: 1, value: lam, format: function (v) { return v + " 杯/分"; } });
+  sLam.onChange(function (v) { lam = v; });
+  var sR = [];
+  for (var i = 0; i < 3; i++) {
+    (function (idx) {
+      var s = Viz.slider(controls, { label: NAMES[idx] + "速度", min: 5, max: 25, step: 1, value: rates[idx], format: function (v) { return v + " 杯/分"; } });
+      s.onChange(function (v) { rates[idx] = v; drawStations(); });
+      sR.push(s);
+    })(i);
+  }
+
+  var running = true, lastTs = null, frame = 0, SPEED = 14;
+  $("tea-toggle").addEventListener("click", function () {
+    running = !running;
+    this.textContent = running ? "⏸ 暂停" : "▶ 继续";
+  });
+  $("tea-reset").addEventListener("click", function () {
+    S = freshState();
+    $("ro-thr").textContent = "—"; $("ro-L").textContent = "0";
+    $("ro-W").textContent = "0"; $("ro-check").textContent = "统计中…";
+    updateReadout();
+  });
+
+  function loop(ts) {
+    if (lastTs == null) lastTs = ts;
+    var dtr = Math.min(0.05, (ts - lastTs) / 1000);
+    lastTs = ts;
+    if (running) {
+      var dt = dtr * SPEED;
+      while (dt > 0) { var d = Math.min(0.1, dt); step(d); dt -= d; }
+    }
+    render();
+    if (++frame % 10 === 0) updateReadout();
+    requestAnimationFrame(loop);
+  }
+  drawStations();
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

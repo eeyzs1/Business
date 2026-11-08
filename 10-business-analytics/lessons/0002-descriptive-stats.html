@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>描述统计:别被平均数骗了 · 商业分析</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .mg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: .6rem; }
+  @media (max-width: 560px) { .mg-grid { grid-template-columns: 1fr; } }
+  .mg-col-title { font-size: .8rem; font-weight: 800; color: var(--ink-soft); letter-spacing: .08em; margin-bottom: .45rem; }
+  .mg-col { display: flex; flex-direction: column; gap: .55rem; }
+  .mg-item {
+    font-family: var(--sans); font-size: .93rem; text-align: left; line-height: 1.5;
+    border: 1.5px solid var(--line); background: #fff; color: var(--ink);
+    border-radius: 10px; padding: .55rem .9rem; cursor: pointer; transition: all .15s ease;
+  }
+  .mg-item:hover { border-color: var(--accent); }
+  .mg-item.sel { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, #fff); font-weight: 700; }
+  .mg-item.ok { border-color: var(--good); background: #f0fdf4; color: var(--good); font-weight: 700; pointer-events: none; }
+  .mg-item.bad { border-color: var(--bad); background: #fef2f2; }
+</style>
+</head>
+<body class="branch-analytics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">商业分析</a><span class="crumb-sep">/</span>
+  <span>描述统计:别被平均数骗了</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">商业分析 · Lesson 2</p>
+  <h1>描述统计:别被平均数骗了</h1>
+  <p class="lead">招聘启事写「平均月薪 2.5 万」,你入职后发现一半人不到 1.5 万——没人撒谎,是均值在替极端值说话。第 1 课的分析五步走到「分析」这一站,第一道工序就是用少数几个数字概括一大堆数据。本课教你三个不被数字忽悠的基本功:分清均值与中位数、感受波动大小、选对图表。</p>
+
+  <h2><span class="secno">1</span>均值 vs 中位数:谁被极端值绑架</h2>
+  <div class="concept">
+    <div class="concept-title">概念卡 · 均值与中位数</div>
+    <p><strong>均值(Mean)</strong>= 总和 ÷ 个数,每一个数都参与计算,所以对极端值(Outlier)极其敏感;<strong>中位数(Median)</strong>= 排序后位于正中的那个数,只看位置不看大小,所以稳健(Robust)。收入、房价、客单价这类「少数极大值拖着长尾」的<strong>右偏分布(Right-Skewed Distribution)</strong>,必然均值 &gt; 中位数——「平均工资总比你的工资高」,一半是心理作用,一半是数学必然。</p>
+  </div>
+
+  <div class="sim">
+    <div class="sim-title">「比尔·盖茨走进酒吧」模拟器(示意)</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">酒吧里坐着 9 位普通顾客(灰点),进门第 10 位是可拖动的极端顾客(橙点)。<b>按住橙点左右拖动</b>,看均值线(红实线)与中位数线(绿虚线)如何分道扬镳:</p>
+    <div class="figure-body" style="padding:.6rem 0 .2rem" id="barWrap"></div>
+    <p class="sim-readout" id="barReadout"></p>
+    <p style="font-size:.83rem;color:var(--ink-faint);margin:.5rem 0 0">9 位顾客收入取 6-20 万元区间、极端顾客可拖到约 2900 万元,均为课堂示意,不代表真实收入分布。</p>
+  </div>
+
+  <h2><span class="secno">2</span>波动的直觉:方差与标准差</h2>
+  <p>光知道「中间在哪」不够,还要知道「数据有多散」。方差(Variance)衡量每个点偏离均值的距离平方的平均;它的平方根——标准差(Standard Deviation,SD)——单位与原数据相同,更好解释:<strong>SD 越大,数据越散,「下一位走进来的顾客」越难预测</strong>。想象两家门店日均客流都是 800 人:一家天天在 780-820 之间,另一家在 300-1300 之间横跳(示意)——均值完全一样,备货与排班策略却天差地别。均值告诉你去哪,标准差告诉你有多危险。</p>
+
+  <h2><span class="secno">3</span>合并的陷阱:辛普森悖论</h2>
+  <div class="callout warn">
+    <span class="callout-label">一句话预警 · 辛普森悖论(Simpson's Paradox)</span><br>
+    把分组数据合并成总量,结论可能反转:某 App 的付费转化率在 iOS 与安卓用户上分别都低于竞品,合并后反而更高(经典教学示例)。原因多为各组样本量悬殊。对策:先分组看、再合并看,两个结论打架时,信分组。
+  </div>
+
+  <h2><span class="secno">4</span>图表选对,结论不歪</h2>
+  <p>口诀先背下来:<strong>趋势用折线(Line Chart)、对比用柱状图(Bar Chart)、构成用饼图(Pie Chart,少用,块数超过三块就难读)、关系用散点图(Scatter Plot)</strong>。下面把四个分析任务与四种图表连一连:</p>
+
+  <div class="sim">
+    <div class="sim-title">连连看:这个任务用什么图?</div>
+    <p style="font-size:.93rem;color:var(--ink-soft)">先点左边一个分析任务,再点右边你认为最合适的图表类型;配对正确会锁定为绿色。</p>
+    <div class="mg-grid">
+      <div><div class="mg-col-title">分析任务</div><div class="mg-col" id="mgLeft"></div></div>
+      <div><div class="mg-col-title">图表类型</div><div class="mg-col" id="mgRight"></div></div>
+    </div>
+    <p class="sim-readout" id="mgStatus">已配对 0 / 4</p>
+  </div>
+
+  <p>选对了图,还要防图「说谎」。最常见的骗术是<strong>截断坐标轴(Truncated Axis)</strong>:把纵轴起点从 0 抬高,微小的差异就会被放大成惊涛骇浪:</p>
+
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg viewBox="0 0 640 236" role="img" style="width:100%;height:auto;display:block">
+        <text x="160" y="20" text-anchor="middle" font-size="13" font-weight="800" fill="#57534e">纵轴从 0 开始</text>
+        <line x1="60" y1="40" x2="60" y2="192" stroke="#c9c1b2" stroke-width="1.5"/>
+        <line x1="60" y1="192" x2="300" y2="192" stroke="#c9c1b2" stroke-width="1.5"/>
+        <rect x="95" y="52" width="70" height="140" rx="6" fill="#a8a29e"/>
+        <rect x="195" y="46" width="70" height="146" rx="6" fill="#4338ca"/>
+        <text x="130" y="44" text-anchor="middle" font-size="12" font-weight="700" fill="#57534e">100</text>
+        <text x="230" y="38" text-anchor="middle" font-size="12" font-weight="700" fill="#57534e">104</text>
+        <text x="130" y="210" text-anchor="middle" font-size="12" fill="#78716c">上月</text>
+        <text x="230" y="210" text-anchor="middle" font-size="12" fill="#78716c">本月</text>
+        <text x="170" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="#15803d">4% 的增长看起来就是 4%</text>
+        <text x="480" y="20" text-anchor="middle" font-size="13" font-weight="800" fill="#57534e">纵轴从 95 开始(截断)</text>
+        <line x1="380" y1="40" x2="380" y2="192" stroke="#c9c1b2" stroke-width="1.5"/>
+        <line x1="380" y1="192" x2="620" y2="192" stroke="#c9c1b2" stroke-width="1.5"/>
+        <rect x="415" y="122" width="70" height="70" rx="6" fill="#a8a29e"/>
+        <rect x="515" y="66" width="70" height="126" rx="6" fill="#4338ca"/>
+        <text x="450" y="114" text-anchor="middle" font-size="12" font-weight="700" fill="#57534e">100</text>
+        <text x="550" y="58" text-anchor="middle" font-size="12" font-weight="700" fill="#57534e">104</text>
+        <text x="450" y="210" text-anchor="middle" font-size="12" fill="#78716c">上月</text>
+        <text x="550" y="210" text-anchor="middle" font-size="12" fill="#78716c">本月</text>
+        <line x1="373" y1="168" x2="387" y2="176" stroke="#b91c1c" stroke-width="2"/>
+        <line x1="373" y1="178" x2="387" y2="186" stroke="#b91c1c" stroke-width="2"/>
+        <text x="500" y="230" text-anchor="middle" font-size="12" font-weight="700" fill="#b91c1c">同样的 4% 看起来像翻倍</text>
+      </svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> 同一组数据(上月 100 → 本月 104,示意):左图从 0 画起,坦坦荡荡;右图纵轴截断到 95,差异被视觉放大。见到「气势惊人」的柱图,先看纵轴起点。</figcaption>
+  </figure>
+
+  <div class="case">
+    <div class="case-title">案例 · 「人均年薪百万」的互联网大厂员工?</div>
+    <p>财报季常出这样的标题:用腾讯控股年报的雇员相关开支除以员工总数,得出「人均年薪约 80 万-100 万元」(公开报道口径,示意)。算式没错,错在口径:把高管薪酬、股权激励与十几万普通员工的薪酬加总再除以人数,得到的是<strong>均值</strong>;而薪酬分布严重右偏,均值必然被头部拉高,「一半员工拿不到的数」——中位数——远低于它。这也是为什么统计部门与招聘平台近年越来越强调公布「中位数工资」口径(示意)。读懂任何一个统计数字前,先问三句:这是什么口径?是均值还是中位数?数据里有没有极端值?</p>
+    <div class="case-learn"><b>学到什么:</b>右偏数据(收入、房价、时长)先看中位数;「人均 XX」的新闻标题,默认怀疑它被极端值抬高了。数字没骗人,是概括方式在替谁说话。</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>均值 Mean</dt><dd>总和除以个数;每个值都参与,对极端值极其敏感。</dd>
+      <dt>中位数 Median</dt><dd>排序后居中的值;只看位置,对极端值稳健。</dd>
+      <dt>极端值 Outlier</dt><dd>显著偏离整体的少数观测值,能绑架均值却动不了中位数。</dd>
+      <dt>标准差 Standard Deviation</dt><dd>方差的平方根,衡量数据围绕均值的离散程度,单位与原数据相同。</dd>
+      <dt>右偏分布 Right Skew</dt><dd>少数极大值拖出右侧长尾的分布,此时均值大于中位数。</dd>
+      <dt>辛普森悖论 Simpson's Paradox</dt><dd>分组结论与合并结论方向相反的统计现象,多因各组样本量悬殊。</dd>
+      <dt>截断坐标轴 Truncated Axis</dt><dd>纵轴不从 0 开始的画法,会视觉放大微小差异,常见误导手法。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>右偏数据先看<b>中位数</b>,波动看<b>标准差</b>;图表按目的选——趋势线、对比柱、构成饼少用、关系散点;见到惊人的图,先查坐标轴起点。这三招是下一课「相关不是因果」的安检门。</p>
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "公司公布「平均月薪 3 万」,而多数员工月薪不足 1.5 万,最可能的解释是:",
+      "options": ["工资数据录入时出错", "少数高薪者拉高了均值", "中位数被四舍五入抬高", "样本量太小方差趋零"],
+      "answer": 1,
+      "explain": "薪酬分布右偏,少数高薪极端值参与均值计算,把均值拉到中位数之上;数据没有错,是<b>概括方式</b>替极端值说话。" },
+    { "q": "以下哪个场景,最适合用中位数代表「典型值」?",
+      "options": ["十款产品销量全在均值附近", "正态分布的质检误差数据", "对称分布的考试成绩", "严重右偏的全员薪酬数据"],
+      "answer": 3,
+      "explain": "分布对称时均值与中位数几乎重合,用谁都行;只有右偏(或左偏)时两者明显分离,中位数才更代表「典型的一半人在哪」。" },
+    { "q": "想看「广告投放金额」与「新增注册量」之间的关系,首选:",
+      "options": ["散点图", "饼图", "折线图", "雷达图"],
+      "answer": 0,
+      "explain": "两个连续变量的关系用散点图,一眼看出是同向、反向还是一团乱;折线只适合时间趋势,饼图只适合构成,雷达图适合多指标综合对比。" },
+    { "q": "一张柱图纵轴从 95 画起,两根柱子一高一矮、差距吓人。它最可能的问题是:",
+      "options": ["数据来源不够权威", "样本分组口径不一", "纵轴截断放大差异", "横轴单位选择错误"],
+      "answer": 2,
+      "explain": "纵轴不从 0 开始属于<b>截断坐标轴</b>:4% 的真实差异可以被画成近乎翻倍。看到夸张的柱图,先检查纵轴起点。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《赤裸裸的统计学》查尔斯·惠伦 · 中信出版社(建议读:描述统计与中心趋势相关章节)</li>
+      <li>《统计数据会说谎》达莱尔·哈夫(建议读:图形与坐标轴如何夸大差异的相关章节)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-data-thinking.html"><span class="pager-label">上一课</span><span class="pager-title">数据思维:从问题到数据</span></a>
+    <a class="next" href="0003-correlation-vs-causation.html"><span class="pager-label">下一课</span><span class="pager-title">相关不是因果</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「我的业务该看均值还是中位数?」「帮我看看这张图表有没有误导」——拿你手头的报表来过一遍安检。</div>
+    <p>商业分析 · 第 2 课 · 共 4 课 · 案例与数字均为教学示意</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  /* ---- 模拟一:比尔·盖茨走进酒吧 ---- */
+  var normal = [6, 8, 9, 10, 11, 12, 13, 15, 20];
+  var bill = 45;
+  var wrap = document.getElementById("barWrap");
+  var readout = document.getElementById("barReadout");
+  var chart = Viz.axes(wrap, {
+    w: 640, h: 380, margin: { t: 36, r: 24, b: 54, l: 60 },
+    xDomain: [0, 3000], yDomain: [0, 11], xTicks: 6, yTicks: 0,
+    xLabel: "月收入(万元,示意)"
+  });
+  normal.forEach(function (v, i) {
+    Viz.dot(chart.svg, chart.x(v), chart.y(i + 1), { r: 6, fill: "#a8a29e" });
+  });
+  var meanLine = Viz.svgEl("line", { y1: chart.m.t, y2: chart.m.t + chart.ih, stroke: "#b91c1c", "stroke-width": 3 });
+  var medLine = Viz.svgEl("line", { y1: chart.m.t, y2: chart.m.t + chart.ih, stroke: "#15803d", "stroke-width": 2.5, "stroke-dasharray": "7 5" });
+  chart.svg.appendChild(meanLine);
+  chart.svg.appendChild(medLine);
+  var billDot = Viz.dot(chart.svg, chart.x(bill), chart.y(10), { r: 9, fill: "#4338ca", pulse: true });
+  var billLab = Viz.label(chart.svg, chart.x(bill) + 14, chart.y(10) + 4, "极端顾客(按住拖动)", { size: 11.5, color: "#4338ca" });
+  var meanLab = Viz.label(chart.svg, chart.m.l + chart.iw - 6, chart.m.t + 14, "", { anchor: "end", size: 12.5, color: "#b91c1c" });
+  var medLab = Viz.label(chart.svg, chart.m.l + 8, chart.m.t + 14, "", { size: 12.5, color: "#15803d" });
+
+  function stats() {
+    var arr = normal.concat([bill]);
+    var sum = 0;
+    arr.forEach(function (v) { sum += v; });
+    var s = arr.slice().sort(function (a, b) { return a - b; });
+    return { mean: sum / arr.length, median: (s[4] + s[5]) / 2 };
+  }
+  function render() {
+    var st = stats();
+    var mx = chart.x(st.mean), mdx = chart.x(st.median);
+    meanLine.setAttribute("x1", mx); meanLine.setAttribute("x2", mx);
+    medLine.setAttribute("x1", mdx); medLine.setAttribute("x2", mdx);
+    meanLab.textContent = "均值 " + st.mean.toFixed(1) + " 万";
+    medLab.textContent = "中位数 " + st.median.toFixed(1) + " 万";
+    var bx = chart.x(bill);
+    billDot.setAttribute("cx", bx);
+    if (bill > 2200) { billLab.setAttribute("x", bx - 16); billLab.setAttribute("text-anchor", "end"); }
+    else { billLab.setAttribute("x", bx + 16); billLab.setAttribute("text-anchor", "start"); }
+    var gap = (st.mean / st.median - 1) * 100;
+    var msg = gap < 25
+      ? "极端顾客还站在门口:均值与中位数相安无事。把他往右拖试试。"
+      : "极端顾客进门了:均值被拉高 <b>+" + Math.round(gap) + "%</b>,中位数几乎不动——「被平均」的数学原理就在这里。";
+    readout.innerHTML = "均值 <b>" + st.mean.toFixed(1) + " 万</b> · 中位数 <b>" + st.median.toFixed(1) +
+      " 万</b> · 均值高出中位数 <b>+" + gap.toFixed(0) + "%</b><br>" + msg;
+  }
+  Viz.draggable(chart.svg, billDot, function (p) {
+    bill = Math.max(30, Math.min(2900, chart.x.invert(p.x)));
+    render();
+  });
+  render();
+
+  /* ---- 模拟二:图表类型连连看 ---- */
+  var PAIRS = [
+    { t: "近 12 个月销售额走势", k: "line", why: "时间趋势 → 折线图最擅长表达顺序与变化。" },
+    { t: "五个区域销售额对比", k: "bar", why: "类别对比 → 柱状图一眼比出高矮。" },
+    { t: "各品类收入占比", k: "pie", why: "构成 → 饼图可用,但块数超过三块就难读,柱状图常常更清楚。" },
+    { t: "广告费与销量关系", k: "scatter", why: "两变量关系 → 散点图看出相关形态与异常点。" }
+  ];
+  var TYPES = [
+    { k: "bar", n: "柱状图" }, { k: "pie", n: "饼图" },
+    { k: "line", n: "折线图" }, { k: "scatter", n: "散点图" }
+  ];
+  var leftBox = document.getElementById("mgLeft");
+  var rightBox = document.getElementById("mgRight");
+  var mgStatus = document.getElementById("mgStatus");
+  var selBtn = null, selKey = null, matched = 0;
+  var leftBtns = [];
+
+  PAIRS.forEach(function (p) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "mg-item"; b.textContent = p.t;
+    b.addEventListener("click", function () {
+      if (b.classList.contains("ok")) return;
+      leftBtns.forEach(function (x) { x.classList.remove("sel"); });
+      b.classList.add("sel"); selBtn = b; selKey = p.k;
+    });
+    leftBtns.push(b); leftBox.appendChild(b);
+  });
+  TYPES.forEach(function (tp) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "mg-item"; b.textContent = tp.n;
+    b.addEventListener("click", function () {
+      if (b.classList.contains("ok")) return;
+      if (!selBtn) { mgStatus.textContent = "先在左边选一个分析任务,再来配图表。"; return; }
+      if (tp.k === selKey) {
+        b.classList.add("ok"); selBtn.classList.add("ok"); selBtn.classList.remove("sel");
+        matched++;
+        if (matched === 4) {
+          mgStatus.innerHTML = "🎉 全部配对成功!口诀:<b>趋势用线、对比用柱、构成用饼(少用)、关系用散点</b>。";
+        } else {
+          mgStatus.textContent = "✓ " + PAIRS.filter(function (x) { return x.k === tp.k; })[0].why + " 已配对 " + matched + " / 4。";
+        }
+      } else {
+        b.classList.add("bad"); selBtn.classList.add("bad");
+        setTimeout(function () { b.classList.remove("bad"); selBtn.classList.remove("bad"); }, 700);
+        mgStatus.textContent = "✗ 不匹配。想想这个任务的目的是趋势、对比、构成还是关系?";
+      }
+      selBtn = null; selKey = null;
+    });
+    rightBox.appendChild(b);
+  });
+})();
+</script>
+</body>
+</html>

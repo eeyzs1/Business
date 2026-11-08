@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>质量与精益 · 运营与供应链</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .pdca-seg { cursor:pointer; stroke:#fff; stroke-width:2; transition:filter .2s ease, stroke .2s ease; }
+  .pdca-seg:hover, .pdca-seg.active { filter:brightness(1.15); stroke:#1c1917; stroke-width:2.5; }
+  .pdca-panel { min-height:5.2em; background:var(--paper-deep); border-radius:10px; padding:.8rem 1rem;
+    font-size:.93rem; color:var(--ink-soft); line-height:1.75; }
+  .pdca-panel b { color:var(--accent); }
+  .waste-checklist { display:grid; grid-template-columns:repeat(auto-fill,minmax(148px,1fr)); gap:.5rem; padding:0; margin:.9rem 0 0; list-style:none; }
+  .waste-checklist li { font-size:.88rem; background:var(--paper); border:1.5px solid var(--line); border-radius:8px;
+    padding:.35rem .65rem; color:var(--ink-soft); }
+  .waste-checklist li.found { border-color:var(--good); color:var(--good); font-weight:700; background:#f0fdf4; }
+  .wz { cursor:pointer; }
+  .wz:hover .wz-frame { stroke:var(--accent); }
+  .sim-btn { background:var(--paper-deep); border:1.5px solid var(--line); border-radius:999px; padding:.38rem 1rem;
+    font-weight:700; font-size:.88rem; cursor:pointer; color:var(--ink); font-family:var(--sans); }
+  .sim-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .wz-msg { border-radius:10px; padding:.65rem .95rem; font-size:.93rem; line-height:1.7; margin-top:.7rem; }
+  .wz-msg.good { background:#f0fdf4; border:1px solid var(--good); color:var(--ink); }
+  .wz-msg.note { background:var(--paper-deep); border:1px solid var(--line); color:var(--ink-soft); }
+  .wz-msg b { color:var(--accent); }
+</style>
+</head>
+<body class="branch-operations">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">运营与供应链</a><span class="crumb-sep">/</span>
+  <span>质量与精益</span>
+  <span class="progress">第 3 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">运营与供应链 · LESSON 3</p>
+  <h1>质量与精益</h1>
+  <p class="lead">前两课解决了「快」:找到瓶颈,聚焦发力。这一课解决「好」和「省」:质量到底该靠检验还是靠预防?丰田为什么说,工厂里九成的事都在浪费?答案是一套可以每天转的改进飞轮。</p>
+
+  <h2><span class="secno">1</span>质量是免费的:一笔防患于未然的账</h2>
+  <p>传统观念认为质量与成本是对头:想要更好,就得花更多钱检验。质量管理大师克罗斯比(Philip Crosby)在《质量免费》中提出相反的结论:<em>质量是免费的(Quality is Free)</em>——真正昂贵的是<em>不合格质量成本(Cost of Poor Quality)</em>。财务上把质量成本分四类:</p>
+  <ul class="timeline">
+    <li><b>预防成本</b>:培训、流程设计、防错装置(Poka-yoke)——让缺陷根本不发生;</li>
+    <li><b>鉴定成本</b>:检验、测试、抽检——把已经发生的缺陷挑出来;</li>
+    <li><b>内部失败成本</b>:报废、返工、停线——缺陷出厂前被发现的代价;</li>
+    <li><b>外部失败成本</b>:退货、召回、诉讼、商誉——缺陷到了顾客手里的代价。</li>
+  </ul>
+  <p>四类成本的重心越靠后越贵。经验法则「1-10-100」说:设计阶段花 1 元能预防的缺陷,生产中要花 10 元纠正,流到市场上要花 100 元赔偿(量级示意)。所以「质量免费」的含义是:<em>把资源从后端的检验与救火,挪到前端的预防</em>——投入略增,失败成本大降,总账反而更省。这也呼应第 2 课:库存会把缺陷藏起来,越早拦截越便宜。</p>
+
+  <h2><span class="secno">2</span>PDCA:让改进转起来的飞轮</h2>
+  <p>质量改进怎么才能不停地下沉、不靠一阵风运动?统计质量管理之父戴明(W. Edwards Deming)把改进总结成一个可以无限旋转的循环——<em>PDCA 循环(Plan-Do-Check-Act)</em>,也叫戴明环。它把「改好一次」变成「每天转一圈、标准抬一寸」的机制。</p>
+  <figure class="figure" data-reveal>
+    <div class="figure-body">
+      <svg id="pdca-svg" viewBox="0 0 380 310" role="img" style="width:100%;max-width:400px;height:auto;display:block;margin:0 auto"></svg>
+    </div>
+    <figcaption class="figure-caption"><b>图 1</b> PDCA 循环:把鼠标移到(或点按)任一象限看它的任务。指针旋转的方向,就是标准不断抬升的方向。</figcaption>
+  </figure>
+  <div class="pdca-panel" id="pdca-panel"><b>把鼠标移到或点按任一象限</b>,看这一步在做什么。改进不是一次冲刺,而是这样一圈圈转出来的——转得越多次,标准越高。</div>
+  <ol class="steps">
+    <li><b>计划 Plan</b>:界定问题、找根因、定一个小而可测的改进实验——五问「为什么」通常在这一步。</li>
+    <li><b>执行 Do</b>:小范围试点,同时忠实记录数据,别急着全面铺开。</li>
+    <li><b>检查 Check</b>:拿数据对照预期:有效吗?偏到哪去了?最常被跳过、也最值钱的一步。</li>
+    <li><b>处理 Act</b>:有效的固化为新标准,无效的带着教训回到 Plan——循环永不停止。</li>
+  </ol>
+
+  <h2><span class="secno">3</span>精益:把浪费连根拔起</h2>
+  <p>战后丰田的大野耐一在车间里悟出一个朴素标准:顾客只为<em>增值(Value-adding)</em>的活动付钱——改变形态、改变位置、改变信息;其余一切皆是<em>浪费(Waste,日语 Muda)</em>。他总结出<em>七大浪费(Seven Wastes)</em>,后成为<em>精益生产(Lean Production)</em>的共同语言:</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>浪费</th><th>一句话识别</th><th>典型现场</th></tr></thead>
+    <tbody>
+      <tr><td>① 过量生产</td><td>做得比下一环节需要的更多、更早、更快</td><td>成品堆满仓库(万恶之首)</td></tr>
+      <tr><td>② 等待</td><td>人等料、机等人、活等批</td><td>工位前长时间无活可干</td></tr>
+      <tr><td>③ 搬运</td><td>物料在厂内长途旅行却不增值</td><td>叉车横穿整个车间</td></tr>
+      <tr><td>④ 过度加工</td><td>比顾客要求的精度更高、工序更多</td><td>无关紧要的表面抛光两遍</td></tr>
+      <tr><td>⑤ 库存</td><td>任何超过一步所需的停留</td><td>原料、半成品层层堆积</td></tr>
+      <tr><td>⑥ 动作</td><td>弯腰、转身、翻找——不增值的人体动作</td><td>工具放在三米外的柜子里</td></tr>
+      <tr><td>⑦ 缺陷</td><td>返工、报废、召回</td><td>返工台永远满员</td></tr>
+    </tbody>
+  </table></div>
+  <p>消灭浪费的引擎是两个配套机制。一是<em>准时制(Just-in-Time, JIT)</em>:只在需要的时候、按需要的量,生产与搬运需要的东西——用<em>看板(Kanban)</em>作为「后工序向前工序取货」的拉动信号,让过量生产在物理上发生不了。二是<em>持续改善(Kaizen)</em>:全员、每天、小步的改进,正是 PDCA 在车间里的日常形态。至于<em>六西格玛(Six Sigma)</em>,则是通用电气等公司在千年之交推行的统计质量管理方法:用 DMAIC 五步把缺陷率压到百万分之几点四的目标水平——思路与 PDCA 同源,工具更重统计。</p>
+  <div class="callout tip"><span class="callout-label">一个提醒</span>精益不等于「零库存」的莽撞:没有稳定的质量与可靠的供应商,硬砍库存只会断线。精益是「先稳后快」——先用质量把波动压下去,再一层层抽掉库存这层「缓冲垫」。</div>
+
+  <h2><span class="secno">4</span>交互实验:车间找茬,七处浪费藏在哪</h2>
+  <div class="sim" id="wz-sim">
+    <div class="sim-title">交互实验 · 七大浪费找茬图</div>
+    <p style="font-size:.92rem;color:var(--ink-soft);margin-bottom:.4rem">下面是一间工厂的平面场景(示意),藏着七大浪费的全部七处现场,还有<b>两处不是浪费的「必要活动」</b>。点击你认为有浪费的区块标红判分;点到必要活动不扣分,但要读懂为什么。</p>
+    <div style="background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden">
+      <svg id="wz-svg" viewBox="0 0 760 420" role="img" style="width:100%;height:auto;display:block"></svg>
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.8rem">
+      <span style="font-weight:800;font-size:1.05rem">已找到 <b id="wz-score" style="color:var(--accent)">0</b> / 7</span>
+      <button class="sim-btn" id="wz-reset" type="button">↺ 重新找一遍</button>
+    </div>
+    <ul class="waste-checklist" id="wz-checklist">
+      <li data-key="overproduction">☐ 过量生产</li>
+      <li data-key="waiting">☐ 等待</li>
+      <li data-key="transport">☐ 搬运</li>
+      <li data-key="overprocessing">☐ 过度加工</li>
+      <li data-key="inventory">☐ 库存</li>
+      <li data-key="motion">☐ 动作</li>
+      <li data-key="defect">☐ 缺陷</li>
+    </ul>
+    <div class="wz-msg note" id="wz-msg">点击场景中的任意区块开始。提示:先想「顾客会为这个动作付钱吗?」</div>
+  </div>
+
+  <h2><span class="secno">5</span>案例:一根可以停下整条产线的绳子</h2>
+  <div class="case">
+    <div class="case-title">丰田的安灯绳(Andon Cord)</div>
+    <p>在丰田的总装线上,每个工位上方都有一条<em>安灯(Andon)</em>绳。任何一名一线工人,只要发现自己工位出现异常——缺件、错装、扭矩不对——都可以立刻拉绳:头顶的安灯牌亮起,音乐提示,班组长在节拍时间内赶到;若问题没能及时解决,<b>整条产线就会停下来</b>。一条每分钟产出约一辆车(量级示意)的产线,停一分钟都是看得见的钱,丰田却把「叫停权」交给最基层的工人。</p>
+    <p>逻辑正是本课的两条主线合流:其一,质量要在<em>源头</em>拦截——缺陷流到下一站,返工成本翻倍,流到顾客手里就是召回(1-10-100);其二,「停线」是最响亮的改善警报——每一次安灯都是一次 PDCA 的 P,问题被当场暴露、归零,而不是藏在层层库存里过夜。</p>
+    <div class="case-learn"><b>运营课</b>:把「发现问题」的权力与激励交给离问题最近的人,用小停线换大召回——这与许多工厂「产线绝不能停、问题下班再说」的做法恰好相反,而后者正是缺陷与库存互相掩护的温床。(案例为公开资料整理的示意描述)</div>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语</h3>
+    <dl>
+      <dt>PDCA 循环</dt><dd>Plan-Do-Check-Act,戴明环:计划→执行→检查→处理的持续改进循环。</dd>
+      <dt>质量成本 Cost of Quality</dt><dd>预防、鉴定、内部失败、外部失败四类成本;重心越靠后越昂贵。</dd>
+      <dt>七大浪费 Seven Wastes</dt><dd>过量生产、等待、搬运、过度加工、库存、动作、缺陷——顾客不愿付费的一切消耗。</dd>
+      <dt>准时制 JIT</dt><dd>Just-in-Time:只在需要的时候、按需要的量生产与搬运,用拉动信号代替推动式排产。</dd>
+      <dt>看板 Kanban</dt><dd>后工序向前工序传递取货与生产指令的可视化卡片,拉动式系统的信号载体。</dd>
+      <dt>持续改善 Kaizen</dt><dd>全员参与、小步快跑、永不停歇的日常改进,PDCA 的车间形态。</dd>
+      <dt>安灯 Andon</dt><dd>可视化的异常报警系统;安灯绳赋予一线工人叫停产线的权力。</dd>
+      <dt>六西格玛 Six Sigma</dt><dd>以统计工具(DMAIC)将缺陷率压至百万分之几点四目标水平的质量管理方法。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    质量不在检验室里,而在源头与预防——<strong>缺陷流得越远,账单越贵</strong>。精益把一切顾客不付费的活动视为浪费,用 JIT 掐断过量生产、用 Kaizen 每天转一圈 PDCA。记住:库存是问题的遮羞布,安灯绳是问题的探照灯。
+  </div>
+
+  <div class="quiz"><script type="application/json">
+  [
+    { "q": "「质量是免费的」这句话的核心含义是?",
+      "options": ["质检环节不必再花钱投入", "顾客其实并不在乎小缺陷", "预防的投入远小于失败的代价", "六西格玛能消灭一切波动"],
+      "answer": 2,
+      "explain": "质量当然要花钱,但克罗斯比说的是总账:把资源前移到预防,失败成本(返工、召回、商誉)的下降远超预防投入。省掉预防去赌运气,才是最贵的方案。" },
+    { "q": "七大浪费中,「过量生产」常被列为万恶之首,原因是?",
+      "options": ["它会成倍放大另外六种浪费", "它会直接拉低产品的出厂售价", "它只发生在传统的汽车行业里", "它最容易被自动化设备所解决"],
+      "answer": 0,
+      "explain": "多生产的东西要搬运、要存放(库存)、要人打理(动作、等待),缺陷也被批量藏起来——一条过量生产线会同时喂养其余六种浪费。" },
+    { "q": "丰田安灯绳的设计中,最「反直觉」的一点是?",
+      "options": ["返工由专门班组独立完成", "质量目标由总部统一来设定", "缺陷记录每周才汇总并上报", "一线工人可叫停整条产线"],
+      "answer": 3,
+      "explain": "把停线权交给最基层、离问题最近的人,用小停线换大召回。多数工厂恰恰相反:产线绝不能停,结果缺陷与库存互相掩护,问题越流越远。" },
+    { "q": "PDCA 循环里,「检查(C)」紧跟在「执行(D)」之后,它的任务是?",
+      "options": ["立即制定下一轮改善的计划", "用数据验证措施是否有效", "把有效做法固化为新标准", "加大投入把试点全面铺开"],
+      "answer": 1,
+      "explain": "Check 拿试点数据对照 Plan 的预期:有效才进入 Act 固化,无效就带着教训回到 Plan。跳过 C 直接铺开,是把「感觉有效」当成「真的有效」。" }
+  ]
+  </script></div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul class="timeline">
+      <li><b>《丰田生产方式》</b>大野耐一 · 中国铁道出版社(建议读:看板与准时制各章)——七大浪费与 JIT 的一手出处,篇幅不长,几乎是宣言书。</li>
+      <li><b>《精益思想》(Lean Thinking)</b>詹姆斯·沃麦克 &amp; 丹尼尔·琼斯 · 机械工业出版社(建议读:价值与价值流两章)——把丰田经验提炼为五原则:价值→价值流→流动→拉动→尽善尽美。</li>
+      <li><b>《质量免费》(Quality is Free)</b>菲利普·克罗斯比(Philip Crosby)(建议读:质量成本与预防章)——本课第一节的原典;可另搜索:戴明《走出危机》。</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0002-bottleneck-and-toc.html">
+      <div class="pager-label">← 上一课</div>
+      <div class="pager-title">瓶颈与约束理论</div>
+    </a>
+    <a class="next" href="0004-supply-chain-bullwhip.html">
+      <div class="pager-label">下一课 →</div>
+      <div class="pager-title">供应链与牛鞭效应</div>
+    </a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师——比如「我们是办公室流程不是工厂,七大浪费还适用吗?」老师可以帮你把找茬图换成你公司的办公场景。</div>
+    <p>运营与供应链 · 第 3/4 课 · 课程库由 AI 教师生成,案例数字均为示意量级。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+/* ===== PDCA 旋转环 ===== */
+(function () {
+  "use strict";
+  var svg = document.getElementById("pdca-svg");
+  var panel = document.getElementById("pdca-panel");
+  if (!svg || !panel) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  var CXc = 190, CYc = 158, R1 = 60, R2 = 120;
+  function pt(r, a) { var rad = a * Math.PI / 180; return [CXc + r * Math.cos(rad), CYc + r * Math.sin(rad)]; }
+  var QUADS = [
+    { key: "P", a0: 225, a1: 315, color: "#92400e", name: "计划 Plan",
+      text: "界定问题、分析根因,设计一个小而可测的改进实验:改什么、怎么衡量、预期达到什么。" },
+    { key: "D", a0: -45, a1: 45, color: "#b45309", name: "执行 Do",
+      text: "小范围试点执行方案,同时忠实记录过程数据——忍住全面铺开的冲动,先让子弹飞一小段。" },
+    { key: "C", a0: 45, a1: 135, color: "#d97706", name: "检查 Check",
+      text: "拿数据对照计划预期:有效?无效?偏到哪去了?这是最常被跳过、也最值钱的一步。" },
+    { key: "A", a0: 135, a1: 225, color: "#f59e0b", name: "处理 Act",
+      text: "有效的做法固化为新标准;无效的带着教训回到 Plan。每转一圈,标准就抬高一寸。" }
+  ];
+  var DEFAULT = "<b>把鼠标移到或点按任一象限</b>,看这一步在做什么。改进不是一次冲刺,而是这样一圈圈转出来的——转得越多次,标准越高。";
+  QUADS.forEach(function (q) {
+    var p0 = pt(R2, q.a0), p1 = pt(R2, q.a1), p2 = pt(R1, q.a1), p3 = pt(R1, q.a0);
+    var d = "M" + p0[0].toFixed(1) + "," + p0[1].toFixed(1) +
+      " A" + R2 + "," + R2 + " 0 0 1 " + p1[0].toFixed(1) + "," + p1[1].toFixed(1) +
+      " L" + p2[0].toFixed(1) + "," + p2[1].toFixed(1) +
+      " A" + R1 + "," + R1 + " 0 0 0 " + p3[0].toFixed(1) + "," + p3[1].toFixed(1) + " Z";
+    var path = el("path", { d: d, fill: q.color, "class": "pdca-seg" });
+    path.addEventListener("mouseenter", function () {
+      panel.innerHTML = "<b>" + q.key + " · " + q.name + "</b> — " + q.text;
+    });
+    path.addEventListener("mouseleave", function () { panel.innerHTML = DEFAULT; });
+    path.addEventListener("click", function () { panel.innerHTML = "<b>" + q.key + " · " + q.name + "</b> — " + q.text; });
+    svg.appendChild(path);
+    var mid = (q.a0 + q.a1) / 2, lr = (R1 + R2) / 2;
+    var c = pt(lr, mid);
+    svg.appendChild(el("text", { x: c[0], y: c[1] + 2, "text-anchor": "middle", "font-size": 30, "font-weight": 800, fill: "#fff", text: q.key }));
+    svg.appendChild(el("text", { x: c[0], y: c[1] + 24, "text-anchor": "middle", "font-size": 13.5, "font-weight": 700, fill: "#fff", text: q.name.split(" ")[0] }));
+  });
+  /* 中心旋转指针 */
+  var needle = el("g");
+  needle.appendChild(el("line", { x1: CXc, y1: CYc, x2: CXc, y2: CYc - R1 + 14, stroke: "#1c1917", "stroke-width": 3, "stroke-linecap": "round" }));
+  needle.appendChild(el("path", { d: "M" + (CXc - 7) + "," + (CYc - R1 + 22) + " L" + (CXc + 7) + "," + (CYc - R1 + 22) + " L" + CXc + "," + (CYc - R1 + 8) + " Z", fill: "#1c1917" }));
+  needle.appendChild(el("circle", { cx: CXc, cy: CYc, r: 7, fill: "#1c1917" }));
+  var anim = el("animateTransform", { attributeName: "transform", type: "rotate", from: "0 " + CXc + " " + CYc, to: "360 " + CXc + " " + CYc, dur: "14s", repeatCount: "indefinite" });
+  needle.appendChild(anim);
+  svg.appendChild(needle);
+  svg.appendChild(el("text", { x: CXc, y: CYc + 26, "text-anchor": "middle", "font-size": 10.5, fill: "#a8a29e", text: "标准随循环抬升" }));
+})();
+
+/* ===== 七大浪费找茬图 ===== */
+(function () {
+  "use strict";
+  var svg = document.getElementById("wz-svg");
+  if (!svg) return;
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs) {
+    var e = document.createElementNS(NS, tag);
+    if (attrs) for (var k in attrs) {
+      if (k === "text") e.textContent = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    return e;
+  }
+  function person(g, x, y, color) {
+    g.appendChild(el("circle", { cx: x, cy: y, r: 8, fill: color }));
+    g.appendChild(el("path", { d: "M" + (x - 9) + "," + (y + 26) + " Q" + x + "," + (y + 6) + " " + (x + 9) + "," + (y + 26) + " Z", fill: color, opacity: .85 }));
+  }
+  function box(g, x, y, w, h, fill) {
+    g.appendChild(el("rect", { x: x, y: y, width: w, height: h, rx: 2, fill: fill || "#e7e0d3", stroke: "#c9c1b2" }));
+  }
+  var ZONES = [
+    { key: "overproduction", x: 16, y: 20, w: 173, h: 130, cap: "成品堆放区", type: "waste", name: "过量生产",
+      msg: "成品堆满了仓库——做得比卖得快,占资金、占地,还把滞销风险批量生产出来。过量生产是万恶之首,其余六种浪费几乎都被它放大。",
+      draw: function (g, z) {
+        for (var r = 0; r < 2; r++) for (var c = 0; c < 5; c++) box(g, z.x + 22 + c * 27, z.y + 26 + r * 22, 22, 17);
+        box(g, z.x + 22, z.y + 70, 132, 17);
+        g.appendChild(el("text", { x: z.x + 88, y: z.y + 102, "text-anchor": "middle", "font-size": 11, fill: "#a8a29e", text: "还在继续入库……" }));
+      } },
+    { key: "transport", x: 201, y: 20, w: 173, h: 130, cap: "叉车通道", type: "waste", name: "搬运",
+      msg: "物料在厂内长途旅行:从最东侧仓库搬到最西侧工位。搬运不改变产品分毫,只是布局不佳与批量思维的账单。",
+      draw: function (g, z) {
+        g.appendChild(el("line", { x1: z.x + 8, y1: z.y + 88, x2: z.x + z.w - 8, y2: z.y + 88, stroke: "#c9c1b2", "stroke-width": 3 }));
+        g.appendChild(el("path", { d: "M" + (z.x + 10) + "," + (z.y + 60) + " L" + (z.x + 160) + "," + (z.y + 60), stroke: "#b45309", "stroke-width": 2, "stroke-dasharray": "7 5", fill: "none" }));
+        g.appendChild(el("path", { d: "M" + (z.x + 152) + "," + (z.y + 54) + " L" + (z.x + 164) + "," + (z.y + 60) + " L" + (z.x + 152) + "," + (z.y + 66) + " Z", fill: "#b45309" }));
+        box(g, z.x + 22, z.y + 34, 26, 20);
+        box(g, z.x + 20, z.y + 26, 30, 10, "#d6cdbd");
+        g.appendChild(el("rect", { x: z.x + 96, y: z.y + 64, width: 26, height: 16, rx: 3, fill: "#57534e" }));
+        g.appendChild(el("circle", { cx: z.x + 102, cy: z.y + 84, r: 5, fill: "#1c1917" }));
+        g.appendChild(el("circle", { cx: z.x + 116, cy: z.y + 84, r: 5, fill: "#1c1917" }));
+        g.appendChild(el("line", { x1: z.x + 122, y1: z.y + 48, x2: z.x + 122, y2: z.y + 78, stroke: "#57534e", "stroke-width": 3 }));
+        g.appendChild(el("line", { x1: z.x + 124, y1: z.y + 62, x2: z.x + 146, y2: z.y + 62, stroke: "#b45309", "stroke-width": 3 }));
+      } },
+    { key: "inventory", x: 386, y: 20, w: 173, h: 130, cap: "原料仓库", type: "waste", name: "库存",
+      msg: "原料堆到天花板。库存是「以备万一」的缓冲垫,也是最贵的遮羞布:压资金、占场地,更把流程问题(慢、不稳、缺陷)全部盖在水下。",
+      draw: function (g, z) {
+        for (var c = 0; c < 4; c++) for (var r = 0; r < 3; r++) box(g, z.x + 20 + c * 36, z.y + 24 + r * 22, 30, 17);
+        g.appendChild(el("text", { x: z.x + 86, y: z.y + 102, "text-anchor": "middle", "font-size": 11, fill: "#a8a29e", text: "三个月用量(示意)" }));
+      } },
+    { key: "ok-maint", x: 571, y: 20, w: 173, h: 130, cap: "设备保养点", type: "ok", name: "必要活动",
+      msg: "预防性维护花小钱防大停机,属于必要的投资,不在七大浪费之列——把它砍掉,省下的是小钱,换来的是第 1 课里最贵的失败成本。",
+      draw: function (g, z) {
+        g.appendChild(el("circle", { cx: z.x + 52, cy: z.y + 52, r: 18, fill: "none", stroke: "#15803d", "stroke-width": 3 }));
+        for (var a = 0; a < 8; a++) {
+          var rad = a * Math.PI / 4;
+          g.appendChild(el("line", { x1: z.x + 52 + 22 * Math.cos(rad), y1: z.y + 52 + 22 * Math.sin(rad), x2: z.x + 52 + 30 * Math.cos(rad), y2: z.y + 52 + 30 * Math.sin(rad), stroke: "#15803d", "stroke-width": 3 }));
+        }
+        g.appendChild(el("rect", { x: z.x + 92, y: z.y + 38, width: 40, height: 32, rx: 4, fill: "#fff", stroke: "#15803d", "stroke-width": 2 }));
+        g.appendChild(el("text", { x: z.x + 112, y: z.y + 60, "text-anchor": "middle", "font-size": 13, "font-weight": 800, fill: "#15803d", text: "保" }));
+      } },
+    { key: "waiting", x: 16, y: 162, w: 173, h: 130, cap: "工位 · 等料", type: "waste", name: "等待",
+      msg: "人等料、机等人、活等批:工位空转,时间——一种无法库存、无法返工的产能——正在白白流走。等待多半源于上游不稳与批量思维。",
+      draw: function (g, z) {
+        person(g, z.x + 50, z.y + 42, "#57534e");
+        g.appendChild(el("circle", { cx: z.x + 115, cy: z.y + 48, r: 22, fill: "none", stroke: "#b45309", "stroke-width": 3 }));
+        g.appendChild(el("line", { x1: z.x + 115, y1: z.y + 48, x2: z.x + 115, y2: z.y + 32, stroke: "#b45309", "stroke-width": 2.5, "stroke-linecap": "round" }));
+        g.appendChild(el("line", { x1: z.x + 115, y1: z.y + 48, x2: z.x + 127, y2: z.y + 52, stroke: "#b45309", "stroke-width": 2.5, "stroke-linecap": "round" }));
+      } },
+    { key: "overprocessing", x: 201, y: 162, w: 173, h: 130, cap: "工位 · 两遍工序", type: "waste", name: "过度加工",
+      msg: "同一道抛光做两遍,「以防万一」。顾客只按规格付钱:比规格更光的那一遍,是纯成本。过度加工常伪装成「工匠精神」。",
+      draw: function (g, z) {
+        g.appendChild(el("circle", { cx: z.x + 62, cy: z.y + 52, r: 22, fill: "none", stroke: "#b45309", "stroke-width": 3 }));
+        for (var a = 0; a < 6; a++) {
+          var rad = a * Math.PI / 3;
+          g.appendChild(el("line", { x1: z.x + 62 + 26 * Math.cos(rad), y1: z.y + 52 + 26 * Math.sin(rad), x2: z.x + 62 + 36 * Math.cos(rad), y2: z.y + 52 + 36 * Math.sin(rad), stroke: "#b45309", "stroke-width": 4 }));
+        }
+        g.appendChild(el("text", { x: z.x + 118, y: z.y + 62, "font-size": 26, "font-weight": 800, fill: "#b91c1c", text: "×2" }));
+        g.appendChild(el("text", { x: z.x + 86, y: z.y + 102, "text-anchor": "middle", "font-size": 11, fill: "#a8a29e", text: "第二遍:防万一" }));
+      } },
+    { key: "motion", x: 386, y: 162, w: 173, h: 130, cap: "工位 · 取工具", type: "waste", name: "动作",
+      msg: "工具柜在三米外,工人每小时往返十二次(示意)。弯腰、转身、翻找不改变产品,只消耗人。动作浪费的解药往往只是重新摆一次工位。",
+      draw: function (g, z) {
+        person(g, z.x + 40, z.y + 48, "#57534e");
+        box(g, z.x + 122, z.y + 38, 34, 26, "#d6cdbd");
+        g.appendChild(el("text", { x: z.x + 139, y: z.y + 56, "text-anchor": "middle", "font-size": 10, "font-weight": 700, fill: "#57534e", text: "工具" }));
+        g.appendChild(el("path", { d: "M" + (z.x + 52) + "," + (z.y + 44) + " Q" + (z.x + 82) + "," + (z.y + 18) + " " + (z.x + 120) + "," + (z.y + 44), stroke: "#b91c1c", "stroke-width": 2, fill: "none", "stroke-dasharray": "5 4" }));
+        g.appendChild(el("path", { d: "M" + (z.x + 52) + "," + (z.y + 56) + " Q" + (z.x + 82) + "," + (z.y + 80) + " " + (z.x + 120) + "," + (z.y + 56), stroke: "#b91c1c", "stroke-width": 2, fill: "none", "stroke-dasharray": "5 4" }));
+      } },
+    { key: "defect", x: 571, y: 162, w: 173, h: 130, cap: "检验返工台", type: "waste", name: "缺陷",
+      msg: "返工台永远满员:检出、返修、报废。缺陷是单价最高的浪费——它吞掉前面所有环节的劳动,还可能变成外部失败成本(退货、召回)。",
+      draw: function (g, z) {
+        g.appendChild(el("line", { x1: z.x + 20, y1: z.y + 74, x2: z.x + 90, y2: z.y + 74, stroke: "#57534e", "stroke-width": 4 }));
+        box(g, z.x + 34, z.y + 50, 30, 22, "#fef2f2");
+        g.appendChild(el("path", { d: "M" + (z.x + 36) + "," + (z.y + 52) + " L" + (z.x + 62) + "," + (z.y + 70) + " M" + (z.x + 62) + "," + (z.y + 52) + " L" + (z.x + 36) + "," + (z.y + 70), stroke: "#b91c1c", "stroke-width": 2.5 }));
+        g.appendChild(el("path", { d: "M" + (z.x + 104) + "," + (z.y + 40) + " L" + (z.x + 142) + "," + (z.y + 40) + " L" + (z.x + 136) + "," + (z.y + 76) + " L" + (z.x + 110) + "," + (z.y + 76) + " Z", fill: "#f2ede3", stroke: "#b91c1c", "stroke-width": 2 }));
+        g.appendChild(el("circle", { cx: z.x + 118, cy: z.y + 56, r: 4, fill: "#b91c1c" }));
+        g.appendChild(el("circle", { cx: z.x + 130, cy: z.y + 62, r: 4, fill: "#b91c1c" }));
+      } },
+    { key: "ok-training", x: 190, y: 304, w: 380, h: 92, cap: "培训角(全员每日改善会)", type: "ok", name: "必要活动",
+      msg: "培训与改善会是投资于人的能力,属于增值性支持活动,不是浪费——恰是 PDCA 与 Kaizen 的发生地。把这类活动当成本砍掉,浪费反而会疯长。",
+      draw: function (g, z) {
+        person(g, z.x + 70, z.y + 32, "#15803d");
+        person(g, z.x + 120, z.y + 36, "#57534e");
+        person(g, z.x + 168, z.y + 32, "#57534e");
+        g.appendChild(el("rect", { x: z.x + 220, y: z.y + 30, width: 70, height: 22, rx: 4, fill: "#fff", stroke: "#15803d", "stroke-width": 2 }));
+        g.appendChild(el("text", { x: z.x + 255, y: z.y + 46, "text-anchor": "middle", "font-size": 11, "font-weight": 700, fill: "#15803d", text: "改善板" }));
+        g.appendChild(el("circle", { cx: z.x + 330, cy: z.y + 30, r: 12, fill: "none", stroke: "#15803d", "stroke-width": 2 }));
+        g.appendChild(el("path", { d: "M" + (z.x + 324) + "," + (z.y + 42) + " L" + (z.x + 336) + "," + (z.y + 42), stroke: "#15803d", "stroke-width": 2 }));
+      } }
+  ];
+  var score = 0, found = {};
+  var msgBox = document.getElementById("wz-msg"), scoreBox = document.getElementById("wz-score");
+  ZONES.forEach(function (z) {
+    var g = el("g", { "class": "wz" });
+    g.appendChild(el("rect", { x: z.x, y: z.y, width: z.w, height: z.h, rx: 10, fill: "#fff", stroke: "#d6cdbd", "stroke-width": 1.5, "class": "wz-frame" }));
+    z.draw(g, z);
+    g.appendChild(el("text", { x: z.x + z.w / 2, y: z.y + z.h - 10, "text-anchor": "middle", "font-size": 11.5, "font-weight": 700, fill: "#78716c", text: z.cap }));
+    g.addEventListener("click", function () { resolve(z, g); });
+    svg.appendChild(g);
+    z.node = g;
+  });
+  function resolve(z, g) {
+    if (found[z.key]) return;
+    found[z.key] = true;
+    var badge = el("g");
+    if (z.type === "waste") {
+      score++; scoreBox.textContent = score;
+      g.querySelector(".wz-frame").setAttribute("stroke", "#b91c1c");
+      g.querySelector(".wz-frame").setAttribute("stroke-width", 2.5);
+      var li = document.querySelector('#wz-checklist li[data-key="' + z.key + '"]');
+      if (li) { li.classList.add("found"); li.textContent = "✓ " + z.name; }
+      var bw = Math.max(z.name.length * 13 + 18, 66);
+      badge.appendChild(el("rect", { x: z.x + z.w / 2 - bw / 2, y: z.y - 2, width: bw, height: 22, rx: 11, fill: "#b91c1c" }));
+      badge.appendChild(el("text", { x: z.x + z.w / 2, y: z.y + 14, "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#fff", text: z.name }));
+      msgBox.className = "wz-msg good";
+      msgBox.innerHTML = "<b>✓ 找到「" + z.name + "」(" + score + "/7)</b> — " + z.msg;
+      if (score === 7) {
+        msgBox.innerHTML = "<b>🎉 七处浪费全部找到!</b> 记住这套眼睛:顾客不付钱的活动,要么删掉,要么压缩,要么变成必要投资。两处「必要活动」也别误伤——精益砍的是浪费,不是能力。" ;
+      }
+    } else {
+      g.querySelector(".wz-frame").setAttribute("stroke", "#15803d");
+      g.querySelector(".wz-frame").setAttribute("stroke-width", 2.5);
+      badge.appendChild(el("rect", { x: z.x + z.w / 2 - 42, y: z.y - 2, width: 84, height: 22, rx: 11, fill: "#15803d" }));
+      badge.appendChild(el("text", { x: z.x + z.w / 2, y: z.y + 14, "text-anchor": "middle", "font-size": 12, "font-weight": 800, fill: "#fff", text: z.name }));
+      msgBox.className = "wz-msg note";
+      msgBox.innerHTML = "<b>这里不是浪费。</b>" + z.msg;
+    }
+    g.appendChild(badge);
+    z.badge = badge;
+  }
+  document.getElementById("wz-reset").addEventListener("click", function () {
+    score = 0; found = {};
+    scoreBox.textContent = "0";
+    msgBox.className = "wz-msg note";
+    msgBox.textContent = "点击场景中的任意区块开始。提示:先想「顾客会为这个动作付钱吗?」";
+    document.querySelectorAll("#wz-checklist li").forEach(function (li, i) {
+      li.classList.remove("found");
+      li.textContent = "☐ " + ["过量生产", "等待", "搬运", "过度加工", "库存", "动作", "缺陷"][i];
+    });
+    ZONES.forEach(function (z) {
+      if (z.badge) { z.badge.remove(); z.badge = null; }
+      var f = z.node.querySelector(".wz-frame");
+      f.setAttribute("stroke", "#d6cdbd");
+      f.setAttribute("stroke-width", 1.5);
+    });
+  });
+})();
+</script>
+</body>
+</html>

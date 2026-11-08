@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>合同:商业的粘合剂 · 商业伦理与法律</title>
+<link rel="stylesheet" href="../../assets/course.css">
+<style>
+  .clause {
+    border: 1.5px solid var(--line); border-radius: 10px; background: #fff;
+    padding: .75rem 1rem; margin-bottom: .7rem; cursor: pointer; transition: all .15s ease;
+  }
+  .clause:hover:not(.locked) { border-color: var(--accent); transform: translateX(3px); }
+  .clause .clause-head { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin-bottom: .3rem; }
+  .clause .clause-no { font-weight: 800; color: var(--accent); font-size: .9rem; }
+  .clause .clause-tag {
+    font-size: .72rem; font-weight: 800; letter-spacing: .08em; border-radius: 999px; padding: .05rem .6rem;
+  }
+  .clause .clause-tag.t-must { color: var(--bad); border: 1.5px solid color-mix(in srgb, var(--bad) 45%, #fff); }
+  .clause .clause-tag.t-opt  { color: var(--ink-faint); border: 1.5px solid var(--line); }
+  .clause .clause-text { font-size: .92rem; color: var(--ink-soft); line-height: 1.75; }
+  .clause.locked { cursor: default; }
+  .clause.hit-mine { border-color: var(--bad); background: #fef2f2; box-shadow: inset 4px 0 0 var(--bad); }
+  .clause.hit-safe { border-color: var(--good); background: #f0fdf4; box-shadow: inset 4px 0 0 var(--good); }
+  .clause .clause-why { display: none; font-size: .88rem; margin-top: .5rem; padding-top: .5rem; border-top: 1px dashed var(--line); color: var(--ink-soft); line-height: 1.8; }
+  .clause.hit-mine .clause-why, .clause.hit-safe .clause-why { display: block; }
+  .clause .clause-why b { color: var(--ink); }
+  .contract-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .6rem; margin: .3rem 0 .9rem; }
+  .contract-head .ch-title { font-weight: 800; color: var(--accent); font-size: .95rem; }
+  .mine-score { font-size: .9rem; font-weight: 700; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .mine-score b { color: var(--bad); }
+  .btn-primary {
+    background: var(--accent); color: #fff; border: none; border-radius: 999px;
+    padding: .45rem 1.2rem; font-weight: 700; cursor: pointer; font-family: var(--sans); font-size: .9rem;
+  }
+  .btn-ghost {
+    background: #fff; color: var(--ink-soft); border: 1.5px solid var(--line); border-radius: 999px;
+    padding: .4rem 1.1rem; font-weight: 700; cursor: pointer; font-family: var(--sans); font-size: .88rem;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .mine-summary {
+    margin-top: .9rem; font-size: .93rem; background: var(--paper-deep); border-radius: 10px;
+    padding: .9rem 1.05rem; color: var(--ink-soft); line-height: 1.85;
+  }
+  .mine-summary b { color: var(--ink); }
+</style>
+</head>
+<body class="branch-law-ethics">
+<nav class="lesson-nav"><div class="inner">
+  <a href="../../index.html">总览</a><span class="crumb-sep">/</span>
+  <a href="../index.html">商业伦理与法律</a><span class="crumb-sep">/</span>
+  <span>合同:商业的粘合剂</span>
+  <span class="progress">第 2 课 · 共 4 课</span>
+</div></nav>
+
+<main class="container">
+  <p class="hero-eyebrow">商业伦理与法律 · LESSON 2</p>
+  <h1>合同:商业的粘合剂</h1>
+  <p class="lead">每一门生意都是一堆承诺:交什么、多少钱、什么时候给、出了岔子怎么办。合同(Contract)就是把承诺变成<em>可执行约定</em>的技术——它不贵,却决定了翻脸时你手里有没有牌。这一课学合同如何成立、如何审查,然后亲手在一份埋了雷的采购合同里找茬。</p>
+
+  <div class="callout warn">
+    <span class="callout-label">课前必读</span>
+    本课及找茬练习均为<b>教学内容示意,不构成法律建议</b>;合同文本为教学虚构,重要交易请交由执业律师起草与审查。
+  </div>
+
+  <h2><span class="secno">1</span>合同如何成立:要约、承诺与对价</h2>
+  <p>合同生效不需要盖上红章才「算数」——它的骨架只有两个动作。<em>要约</em>(Offer)是一方发出的、内容具体确定、表明一经接受即受约束的意思表示:一张写明品名、数量、价格的订货单就是要约。商家橱窗里标价陈列的商品、挂在网店的商品页,通常视为<em>要约邀请</em>(Invitation to Offer)——邀请你来出价。另一方无条件地接受,即为<em>承诺</em>(Acceptance):<b>承诺生效时,合同原则上成立</b>。回函说「同意全部条件,下周发货」是承诺;回函说「价格可以,但要改为货到 60 天付款」则构成新要约——谈判就是在要约与反要约之间来回传球。</p>
+  <div class="concept">
+    <div class="concept-title">定义 · 对价与「为什么承诺会被强制执行」</div>
+    <p style="margin:0"><em>对价</em>(Consideration)是英美法概念:双方各让渡一点什么——钱换货、服务换佣金——交换性正是合同受法律保护的经济理由。大陆法系(含中国法)不使用这个词,但精神相通:权利义务要对得上,「白给的承诺」与「单方恩惠」通常不按合同处理。理解这一点你就明白:合同法保护的不是「说到做到」的美德,而是<b>可以被信赖的交易结构</b>——正因为承诺能被强制执行,陌生人之间才敢先发货后收款。</p>
+  </div>
+  <p>顺带纠正一个常见误解:口头约定原则上也能成立合同(法律要求书面形式的除外,示意)——问题从来不是「无效」,而是<em>举证</em>(Burden of Proof)困难:闹上法庭时,没有文字的东西等于不存在。所以「写下来」的意义主要是<b>留证据、定预期、省吵架</b>。</p>
+
+  <h2><span class="secno">2</span>合同的一生:从谈判到违约救济</h2>
+  <ul class="timeline">
+    <li><b>谈判:</b>摸底、报价、来回还价——此时通常尚无合同,但恶意磋商、泄密可能承担缔约上的责任(示意)。</li>
+    <li><b>起草:</b>把谈拢的条件写成条款;谁执笔,谁就先定调——措辞即利益。</li>
+    <li><b>签署:</b>核对签约主体与授权:公章、签字人身份、日期,一样都不能想当然。</li>
+    <li><b>履行:</b>交货、验收、开票、付款;履约过程中的往来函件、签证单、聊天记录都是证据链的一环。</li>
+    <li><b>变更:</b>改数量、延期、换规格——变更最好用书面补充协议「锁」住,口头变更=回到举证困境。</li>
+    <li><b>违约救济:</b>要求继续履行、采取补救措施、赔偿损失或按约定支付<em>违约金</em>(Liquidated Damages);救济条款是合同的「牙齿」。</li>
+  </ul>
+
+  <h2><span class="secno">3</span>审查五看:像律师一样翻合同</h2>
+  <p>拿到任何一份合同,专业的人都会先过这五道关,顺序有讲究——从「跟谁做」到「出了事怎么办」:</p>
+  <div class="table-wrap" data-reveal>
+    <table>
+      <thead><tr><th>五看</th><th>看什么</th><th>常见的雷</th></tr></thead>
+      <tbody>
+        <tr><td><b>一看 主体资格</b></td><td>对方是不是有权签约的法人/组织?签字人有无授权?</td><td>跟「项目部」「筹备组」这类内设机构签约;印章与名称对不上</td></tr>
+        <tr><td><b>二看 标的与质量</b></td><td>交什么、多少、什么标准、怎么验收?</td><td>只有品名没有标准;验收期限与异议期缺失</td></tr>
+        <tr><td><b>三看 价款与支付</b></td><td>单价是否锁定、含不含税、付款节点与天数?</td><td>「按市场价结算」;「验收后付款」没有天数</td></tr>
+        <tr><td><b>四看 违约责任</b></td><td>迟延、质量不合格、泄密各怎么赔?</td><td>只有「友好协商」四个字,违约零成本</td></tr>
+        <tr><td><b>五看 争议解决</b></td><td>诉讼管辖法院 or 仲裁机构?适用哪里的法?</td><td>「依法解决」——没说去哪儿解决,纠纷后先抢管辖</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>前四看决定「赚不赚、亏不亏」,第五看决定「翻脸时在哪打、打多久、多贵」。很多生意人跳过第五看,直到收不到货款才发现:对方的法院在两千公里外(示意)。</p>
+
+  <div class="sim" data-reveal>
+    <div class="sim-title">合同找茬器 · 一份埋了三处雷的采购合同</div>
+    <p class="scen-desc" style="margin-bottom:.7rem;font-size:.93rem;color:var(--ink-soft)">甲方「宏图建设集团」向乙方「晨光建材」采购水泥。下面 8 条条款里埋着 <b>3 处雷</b>(均能对应「五看」里的某一看)与 5 条过关条款。点击你认为<b>有风险</b>的条款:点中雷立刻拆解;点到安全条款会告诉你它为什么安全。把 3 处雷全找出来。</p>
+    <div class="contract-head">
+      <span class="ch-title">📄 《水泥采购合同》(教学虚构 · 示意)</span>
+      <span class="mine-score" id="mine-score">找到雷:<b>0</b> / 3 · 误报:0</span>
+    </div>
+    <div id="clause-list"></div>
+    <div class="mine-summary" id="mine-summary" hidden></div>
+    <div style="margin-top:.9rem;display:flex;gap:.7rem;flex-wrap:wrap">
+      <button type="button" class="btn-ghost" id="mine-reset">↻ 换一张重找</button>
+    </div>
+  </div>
+
+  <div class="case" data-reveal>
+    <p class="case-title">案例:口头「兄弟式合作」翻车的典型路径(示意描述)</p>
+    <p>商业纠纷里有一类高度雷同的剧本,主角常是多年的同学或战友(以下为典型路径的示意描述,不指特定公司):</p>
+    <ul class="timeline">
+      <li><b>酒桌起点:</b>一句「一起干,赚了六四分」,没有书面协议,全凭交情。</li>
+      <li><b>蜜月期:</b>生意靠信任运转;转账备注混乱,「借款」「进货」「分红」混在一个账户里。</li>
+      <li><b>裂缝:</b>一方投入设备与专利,另一方掌握客户资源,对「贡献怎么折算」各有各的账。</li>
+      <li><b>市场变脸:</b>行情转差,分成停发;微信聊天记录成了唯一的「合同」。</li>
+      <li><b>对簿公堂:</b>口头合伙关系要靠转账流水、证人证言去拼,举证极难,审理周期以年计(示意)。</li>
+      <li><b>复盘:</b>当初一份收费有限的书面协议,本可以提前锁定九成的争议点(示意)。</li>
+    </ul>
+    <p class="case-learn"><b>这一案例的看点:</b>合同的意义不是「准备打官司」,而是<b>不打官司</b>——把丑话写在前头,恰恰是对关系的保护:朋友之间最难开口的条件,让一份文件替你们说。</p>
+  </div>
+
+  <div class="glossary">
+    <h3>本课术语表</h3>
+    <dl>
+      <dt>要约(Offer)</dt><dd>内容具体确定、表明经接受即受约束的意思表示,如写明品名数量价格的订货单。</dd>
+      <dt>要约邀请(Invitation to Offer)</dt><dd>邀请对方向自己发出要约,如价目表、橱窗陈列、招标公告。</dd>
+      <dt>承诺(Acceptance)</dt><dd>受要约人无条件接受要约;承诺生效时合同原则上成立。</dd>
+      <dt>对价(Consideration)</dt><dd>英美法概念:双方互相让渡的利益,交换性是合同获得强制执行力的基础。</dd>
+      <dt>违约金(Liquidated Damages)</dt><dd>事先约定的违约赔偿数额或计算方法,让违约有明确价格。</dd>
+      <dt>诉讼管辖(Jurisdiction)</dt><dd>约定由哪个法院审理纠纷;未约定时按法定规则确定,常引发管辖争夺。</dd>
+      <dt>仲裁(Arbitration)</dt><dd>约定将争议交由仲裁机构一裁终局,通常更快、不公开,但须双方有仲裁协议。</dd>
+      <dt>举证(Burden of Proof)</dt><dd>主张事实者负责证明;口头约定之所以危险,正在于难以举证。</dd>
+    </dl>
+  </div>
+
+  <div class="takeaway">
+    <div class="takeaway-title">关键要点</div>
+    <p>要约加承诺,合同即立;能不能执行、执行得痛快不痛快,取决于事前条款。审查五看按顺序过:主体、标的、价款、违约、争议——合同不是防备对方,是防备翻脸时的自己。</p>
+  </div>
+
+  <div class="quiz">
+    <script type="application/json">
+    [
+      { "q": "甲公司发来订货单,乙公司回函:「同意贵司订单全部条件,下周安排发货。」按要约—承诺框架,这封回函的法律性质是:",
+        "options": ["新要约,还需甲方再确认一次", "要约邀请,仅供参考不生约束", "承诺,双方合同关系原则上成立", "缔约过失,甲方可主张赔偿损失"],
+        "answer": 2,
+        "explain": "订货单内容具体确定,是要约;回函<b>无条件接受全部条件</b>,是承诺——承诺生效时合同原则上成立。若回函改了价格或账期,才构成「新要约」,要等对方承诺。" },
+      { "q": "审查一份采购合同时发现:付款条款只写「货到验收后付款」,没有写具体天数。按「审查五看」,这个问题主要出在哪一关?",
+        "options": ["价款与支付", "主体资格", "争议解决", "标的与质量"],
+        "answer": 0,
+        "explain": "付款节点没有天数,「验收后」可以拖到无限远——这是<b>价款与支付</b>一关最典型的雷。主体看的是对方身份,标的看的是货与标准,争议解决看的是出了事去哪儿说理,都对不上号。" },
+      { "q": "合同争议条款写:「如发生争议,双方依法通过法律途径解决」,再无其他约定。这颗雷的风险在于:",
+        "options": ["合同因此自始不发生法律效力", "对方可据此主张免除付款义务", "主管部门有权直接撤销这份合同", "未约定管辖或仲裁,纠纷后先抢管辖成本高"],
+        "answer": 3,
+        "explain": "「依法解决」是句正确的废话:没有约定<b>诉讼管辖法院或仲裁机构</b>,纠纷发生后双方往往先为「在谁的主场打官司」争执一番,时间与费用凭空多出一截。合同效力、付款义务都不因此当然受影响。" },
+      { "q": "「兄弟式合作」口头约定供货分成,一年后对账各执一词、闹上法庭。这一案例最核心的教训是:",
+        "options": ["生意再小也必须先办抵押登记", "关键权利义务要落成书面,口头约定举证极难", "只要转账记录完整即可替代合同", "合作之前应当先共同注册新公司"],
+        "answer": 1,
+        "explain": "口头合同原则上也能成立,难在<b>举证</b>:分成比例、贡献折算、变更过程全凭记忆与聊天记录,法庭上各说各话。转账流水只能证明钱动过,证明不了「为什么动、按什么规则动」;注册公司是形式选择,不是信任的替代品。" }
+    ]
+    </script>
+  </div>
+
+  <section id="further">
+    <h2>延伸阅读</h2>
+    <ul>
+      <li>《谈判力》罗杰·费希尔、威廉·尤里 · 中信出版社(建议读:把人与问题分开、立场与利益两章,谈判阶段的经典方法论)</li>
+      <li>《合同法研究》王利明 · 中国人民大学出版社(建议读:合同成立与违约责任部分,教材级的体系表述)</li>
+      <li>可搜索:民法典合同编 / 合同审查清单 / 违约金调整规则(把本课五看对照实务清单过一遍)</li>
+    </ul>
+  </section>
+
+  <nav class="pager">
+    <a href="0001-business-entities.html"><span class="pager-label">上一课</span><span class="pager-title">公司的法律形态</span></a>
+    <a class="next" href="0003-corporate-governance.html"><span class="pager-label">下一课</span><span class="pager-title">公司治理:代理问题</span></a>
+  </nav>
+
+  <footer class="lesson-footer">
+    <div class="ask-teacher"><b>有疑问?</b>回到对话里直接问你的 AI 老师:「贴一段我手里的合同,帮我用五看过一遍?」「再编一份埋雷合同让我练手?」——用真合同练,五看才不会忘。</div>
+    <p>商业伦理与法律 · 第 2 课 · 合同文本为教学虚构示意,不构成法律建议。</p>
+  </footer>
+</main>
+
+<script src="../../assets/viz.js"></script>
+<script src="../../assets/quiz.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var CLAUSES = [
+    { no: "第一条", tag: "必备", title: "合同主体",
+      text: "甲方(买方):宏图建设集团第一项目部;乙方(卖方):晨光建材有限公司。",
+      mine: true,
+      why: "<b>雷 1 · 主体错配。</b>「第一项目部」通常只是企业的内设机构,一般不具备独立法人资格、不能独立承担民事责任——货款追偿时,你可能找不到一个能担责的「甲方」。五看第一看就是它:查签约主体的法人资格、名称与印章是否一致、签字人有无授权。<br><b>改法:</b>由具有法人资格的「宏图建设集团有限公司」签约,或由集团公司出具明确授权并加盖法人印章。" },
+    { no: "第二条", tag: "必备", title: "标的与质量",
+      text: "乙方向甲方供应 P.O 42.5 水泥约 500 吨,质量符合相应国家标准,以到货抽检结果为验收依据。",
+      mine: false,
+      why: "过关条款:品名、数量、执行标准、验收依据四要素齐全——这正是「标的与质量」一关的合格样子。" },
+    { no: "第三条", tag: "必备", title: "价款与支付",
+      text: "含税单价按每批次订单锁定;货到验收合格后 30 日内,甲方以银行转账方式支付该批次货款。",
+      mine: false,
+      why: "过关条款:单价锁定、是否含税说清、付款节点带天数、支付方式明确——四点齐了,「按市场价、验收后付款」式的含糊全部避开。" },
+    { no: "第四条", tag: "必备", title: "交付与验收",
+      text: "乙方分批送货至甲方指定工地;甲方应在到货后 3 日内完成验收,逾期未提出书面异议的,视为该批次合格。",
+      mine: false,
+      why: "过关条款:交付地点、验收期限、异议方式与「视为合格」的后果都写明了。期限条款的要点不在长,而在<b>有</b>。" },
+    { no: "第五条", tag: "必备", title: "违约责任",
+      text: "双方应本着诚实信用原则履行本合同;如一方违约,双方应友好协商解决。",
+      mine: true,
+      why: "<b>雷 2 · 无违约金。</b>整条没有延迟交货怎么罚、延迟付款怎么算、质量不合格怎么赔——违约成本为零,「友好协商」不是救济,是拖延的委婉说法。违约责任是合同的牙齿:牙齿没长,条款再漂亮也咬不动人。<br><b>改法:</b>逐项定价——每逾期一日按该批次货款的一定比例支付违约金;质量不合格的包退包换并承担检验与损失费用(比例以实际谈判为准,示意)。" },
+    { no: "第六条", tag: "可选", title: "保密条款",
+      text: "双方对本合同价格条款及交换的技术资料承担为期两年的保密义务,法律法规另有规定的除外。",
+      mine: false,
+      why: "过关的可选条款:保密范围、期限、例外都说清了。它属于「可选」类——不写合同仍完整,但在长期供货关系里值得写。" },
+    { no: "第七条", tag: "必备", title: "争议解决",
+      text: "如协商不成,双方依法通过法律途径解决。",
+      mine: true,
+      why: "<b>雷 3 · 管辖未约定。</b>「法律途径」没说是诉讼还是仲裁、也没说哪个法院——纠纷发生后,双方往往先为「在谁的主场打官司」拉锯,时间与差旅成本凭空翻倍。第五看就是补这一格。<br><b>改法:</b>写明「向甲方所在地有管辖权的人民法院起诉」或「提交某仲裁机构仲裁」(二选一,按谈判地位与成本取舍)。" },
+    { no: "第八条", tag: "可选", title: "生效与其他",
+      text: "本合同自双方盖章之日起生效,一式两份,具有同等效力。",
+      mine: false,
+      why: "过关的通用条款:生效时点与份数清楚。它解决「合同什么时候开始算数」,属于格式尾巴,但别小看「盖章之日」——它与违约金起算日直接挂钩。" }
+  ];
+
+  var listEl = document.getElementById("clause-list"),
+      scoreEl = document.getElementById("mine-score"),
+      sumEl = document.getElementById("mine-summary"),
+      resetBtn = document.getElementById("mine-reset");
+
+  if (!listEl) return;
+
+  var found = 0, wrong = 0, clicked = {};
+
+  function build() {
+    listEl.innerHTML = "";
+    CLAUSES.forEach(function (c, i) {
+      var d = document.createElement("div");
+      d.className = "clause";
+      d.innerHTML =
+        '<div class="clause-head"><span class="clause-no">' + c.no + " · " + c.title + "</span>" +
+        '<span class="clause-tag ' + (c.tag === "必备" ? "t-must" : "t-opt") + '">' + (c.tag === "必备" ? "必备条款" : "可选条款") + "</span></div>" +
+        '<div class="clause-text">' + c.text + '</div><div class="clause-why"></div>';
+      d.addEventListener("click", function () {
+        if (clicked[i]) return;
+        clicked[i] = true;
+        d.classList.add("locked", c.mine ? "hit-mine" : "hit-safe");
+        var why = d.querySelector(".clause-why");
+        if (c.mine) {
+          found++;
+          why.innerHTML = "🧨 <b>拆中了!</b>" + c.why;
+        } else {
+          wrong++;
+          why.innerHTML = "✅ 这条是安全的。" + c.why;
+        }
+        scoreEl.innerHTML = "找到雷:<b>" + found + "</b> / 3 · 误报:" + wrong;
+        if (found === 3) {
+          sumEl.innerHTML = "<b>三处雷全部拆除!</b>误报 " + wrong + " 次。回头看:主体错配对应<b>一看 主体资格</b>,无违约金对应<b>四看 违约责任</b>,管辖未约定对应<b>五看 争议解决</b>——五看不是清单,是雷区地图。" +
+            (wrong === 0 ? "零误报,你已经具备律师般的眼力。" : "误报不要紧:把安全条款的判据也读一遍,下次判断会更快。");
+          sumEl.hidden = false;
+        }
+      });
+      listEl.appendChild(d);
+    });
+  }
+
+  build();
+
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      found = 0; wrong = 0; clicked = {};
+      scoreEl.innerHTML = "找到雷:<b>0</b> / 3 · 误报:0";
+      sumEl.hidden = true;
+      build();
+    });
+  }
+})();
+</script>
+</body>
+</html>

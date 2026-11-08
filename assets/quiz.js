@@ -16,6 +16,35 @@
 (function () {
   "use strict";
 
+  /* ---- 学习进度持久化(localStorage,可选能力,不可用时静默降级)---- */
+  var KEY_PREFIX = "biz-quiz:";
+
+  function storage() {
+    try { return window.localStorage; } catch (e) { return null; }
+  }
+  function quizKey() {
+    // 取 pathname 末三段(branch/lessons/file.html),课程库整体移动/换盘也不丢进度
+    var m = location.pathname.match(/([^\/]+\/lessons\/[^\/]+\.html)$/i);
+    try {
+      return KEY_PREFIX + decodeURIComponent(m ? m[1] : location.pathname);
+    } catch (e) {
+      return KEY_PREFIX + (m ? m[1] : location.pathname);
+    }
+  }
+  function readRecord() {
+    var s = storage();
+    if (!s) return null;
+    try {
+      var v = JSON.parse(s.getItem(quizKey()));
+      return v && typeof v.best === "number" ? v : null;
+    } catch (e) { return null; }
+  }
+  function writeRecord(rec) {
+    var s = storage();
+    if (!s) return;
+    try { s.setItem(quizKey(), JSON.stringify(rec)); } catch (e) { /* 隐私模式/配额:忽略 */ }
+  }
+
   function el(tag, cls, html) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -51,8 +80,11 @@
     explainEl.style.display = "none";
     var metaEl = el("div", "quiz-meta");
     var scoreEl = el("span", "quiz-score");
+    var historyEl = el("span", "quiz-history");
     var nextBtn = el("button", "quiz-next", "下一题 →");
     nextBtn.type = "button";
+
+    var record = readRecord();
 
     box.appendChild(bar);
     box.appendChild(qEl);
@@ -60,6 +92,7 @@
     box.appendChild(explainEl);
     box.appendChild(metaEl);
     metaEl.appendChild(scoreEl);
+    metaEl.appendChild(historyEl);
     metaEl.appendChild(nextBtn);
 
     nextBtn.addEventListener("click", function () {
@@ -92,6 +125,7 @@
         optsEl.appendChild(b);
       });
       scoreEl.textContent = "得分 " + score + " / " + total;
+      historyEl.textContent = record ? "历史最好 " + record.best + " / " + record.total : "";
       barFill.style.width = (idx / total * 100) + "%";
     }
 
@@ -131,6 +165,12 @@
         "最终成绩:<b>" + score + " / " + total + "</b>(" + pct + " 分)—— " + comment;
       nextBtn.disabled = false;
       nextBtn.textContent = "↻ 再试一次";
+      record = {
+        best: Math.max(record ? record.best : 0, score),
+        last: score, total: total, at: Date.now()
+      };
+      writeRecord(record);
+      historyEl.textContent = "历史最好 " + record.best + " / " + record.total;
       qEl.appendChild(el("p", "", "✍️ <b>检索练习</b>:关闭页面之前,试着不看解析,用自己的话把本课最核心的概念讲一遍——这比再看一遍课文更能巩固记忆。"));
       qEl.firstChild.style.cssText = "font-size:.92rem;color:var(--ink-soft);background:var(--paper-deep);border-radius:8px;padding:.7rem .95rem;";
     }

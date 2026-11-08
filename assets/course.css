@@ -76,7 +76,9 @@ h2 .secno, h3 .secno { color: var(--accent); margin-right: .4em; font-family: va
 /* ---- 顶部导航 --------------------------------------------- */
 .lesson-nav {
   position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 247, 242, .88); /* 兜底:不支持 color-mix 的浏览器 */
   background: color-mix(in srgb, var(--paper) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
   font-size: .86rem;
@@ -118,7 +120,9 @@ h2 .secno, h3 .secno { color: var(--accent); margin-right: .4em; font-family: va
 .concept .concept-title::before { content: "◆"; font-size: .8em; }
 
 .case {
+  background: #fff; /* 兜底:不支持 color-mix 的浏览器 */
   background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 7%, #fff), #fff);
+  border: 1px solid var(--line); /* 兜底 */
   border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line));
   border-radius: var(--radius); padding: 1.15rem 1.35rem; margin: 1.8rem 0;
 }
@@ -128,7 +132,9 @@ h2 .secno, h3 .secno { color: var(--accent); margin-right: .4em; font-family: va
 }
 .case .case-title::before { content: "📌"; font-size: 1em; }
 .case .case-learn {
-  margin-top: .8rem; padding-top: .7rem; border-top: 1px dashed color-mix(in srgb, var(--accent) 35%, var(--line));
+  margin-top: .8rem; padding-top: .7rem;
+  border-top: 1px dashed var(--line); /* 兜底 */
+  border-top: 1px dashed color-mix(in srgb, var(--accent) 35%, var(--line));
   font-size: .93rem; color: var(--ink-soft);
 }
 .case .case-learn b { color: var(--accent); }
@@ -236,7 +242,9 @@ table.compact { font-size: .87rem; }
 .timeline { list-style: none; margin: 1.6rem 0; padding: 0; position: relative; }
 .timeline::before {
   content: ""; position: absolute; left: .55rem; top: .4rem; bottom: .4rem;
-  width: 3px; border-radius: 3px; background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 30%, var(--line)));
+  width: 3px; border-radius: 3px;
+  background: var(--accent); /* 兜底 */
+  background: linear-gradient(var(--accent), color-mix(in srgb, var(--accent) 30%, var(--line)));
 }
 .timeline li { position: relative; padding: 0 0 1.1rem 2.1rem; }
 .timeline li::before {
@@ -260,7 +268,9 @@ table.compact { font-size: .87rem; }
 
 /* ---- 测验组件(配合 quiz.js)-------------------------------- */
 .quiz {
-  background: #fff; border: 1.5px solid color-mix(in srgb, var(--accent) 35%, var(--line));
+  background: #fff;
+  border: 1.5px solid var(--line); /* 兜底 */
+  border: 1.5px solid color-mix(in srgb, var(--accent) 35%, var(--line));
   border-radius: var(--radius); box-shadow: var(--shadow);
   padding: 1.3rem 1.5rem; margin: 2.2rem 0;
 }
@@ -309,6 +319,7 @@ table.compact { font-size: .87rem; }
   padding: .85rem 1.1rem; display: block; transition: transform .15s ease, border-color .15s ease;
 }
 .pager a:hover { transform: translateY(-2px); border-color: var(--accent); }
+.pager .pager-label, .pager .pager-title { display: block; }
 .pager .pager-label { font-size: .78rem; color: var(--ink-faint); letter-spacing: .12em; }
 .pager .pager-title { font-weight: 700; font-size: .95rem; }
 .pager .next { text-align: right; }
@@ -320,6 +331,7 @@ table.compact { font-size: .87rem; }
   font-size: .88rem; color: var(--ink-soft); line-height: 1.75;
 }
 .lesson-footer .ask-teacher {
+  background: #fff; /* 兜底 */
   background: color-mix(in srgb, var(--accent) 8%, #fff);
   border: 1px dashed var(--accent); border-radius: 10px;
   padding: .8rem 1.05rem; margin-bottom: 1rem;
@@ -352,6 +364,7 @@ table.compact { font-size: .87rem; }
   content: "第 " counter(lesson, decimal-leading-zero) " 课";
   font-family: var(--sans); font-size: .78rem; font-weight: 800; color: var(--accent);
   letter-spacing: .08em; white-space: nowrap; align-self: center;
+  border: 1.5px solid var(--accent); /* 兜底 */
   border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
   border-radius: 999px; padding: .15rem .6rem;
 }
@@ -367,18 +380,24 @@ table.compact { font-size: .87rem; }
 .path-box .path-steps b { color: var(--ink); }
 .path-box .path-steps .arrow { color: var(--accent); font-weight: 800; padding: 0 .25em; }
 
+/* ---- 学习进度徽章(quiz.js 写入 localStorage,progress.js 渲染)---- */
+.lesson-list .ll-done {
+  margin-left: auto; align-self: center; white-space: nowrap;
+  font-size: .74rem; font-weight: 800; color: var(--good);
+  background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 999px; padding: .08rem .6rem;
+}
+.branch-card .bc-progress {
+  font-size: .78rem; font-weight: 700; color: var(--good); margin-top: .4rem;
+}
+.quiz .quiz-history { font-size: .82rem; color: var(--ink-faint); font-weight: 600; }
+
 /* ---- 动画 -------------------------------------------------- */
 [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 [data-reveal].visible { opacity: 1; transform: none; }
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 @keyframes pulse-soft { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
-@keyframes draw { to { stroke-dashoffset: 0; } }
 .anim-float { animation: floaty 3.2s ease-in-out infinite; }
 .anim-pulse { animation: pulse-soft 2.2s ease-in-out infinite; }
-svg .draw-path {
-  stroke-dasharray: var(--len, 600); stroke-dashoffset: var(--len, 600);
-  animation: draw 1.6s ease-out forwards;
-}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   [data-reveal] { opacity: 1; transform: none; }

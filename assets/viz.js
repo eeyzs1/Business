@@ -46,8 +46,7 @@
     var y = Viz.scale(yd[0], yd[1], m.t + ih, m.t); // y 轴向下为正,翻转
 
     // 网格与刻度
-    var gridColor = "#ece6da", tickLen = 5;
-    (opts.yTicks || 5).toString;
+    var gridColor = "#ece6da";
     var ny = opts.yTicks || 5, nx = opts.xTicks || 5;
     for (var i = 0; i <= ny; i++) {
       var vy = yd[0] + (yd[1] - yd[0]) * i / ny;
@@ -107,12 +106,6 @@
       "stroke-width": opts.width || 3,
       "stroke-linecap": "round", "stroke-linejoin": "round"
     }, opts.dash ? { "stroke-dasharray": opts.dash } : {}));
-    if (opts.animate) {
-      var len = path.getTotalLength ? 0 : 0; // path 未挂载前无法测长,用估算
-      path.style.strokeDasharray = opts.dash || "1000";
-      path.style.strokeDashoffset = opts.dash ? path.style.strokeDasharray : "1000";
-      path.style.animation = "draw 1.4s ease-out forwards";
-    }
     g.appendChild(path);
     return path;
   };
@@ -207,21 +200,32 @@
     input.step = opts.step || 1; input.value = opts.value;
     var out = document.createElement("output");
     var cbs = [];
+    var rafPending = false;
     function fmt(v) { return opts.format ? opts.format(v) : v; }
-    function update() {
-      out.textContent = fmt(parseFloat(input.value));
+    function currentVal() { return parseFloat(input.value); }
+    function fire() {
+      rafPending = false;
+      // 帧时刻重读输入值,保证回调永远拿到最新状态
+      var v = currentVal();
+      cbs.forEach(function (cb) { cb(v); });
+    }
+    // immediate=true 时同步触发回调(set() 保持同步语义);
+    // 拖动产生的 input 事件按帧合并,避免高频全量重绘。
+    function update(immediate) {
+      out.textContent = fmt(currentVal());
       var pct = (input.value - opts.min) / (opts.max - opts.min) * 100;
       input.style.setProperty("--fill", pct + "%");
-      cbs.forEach(function (cb) { cb(parseFloat(input.value)); });
+      if (immediate || typeof requestAnimationFrame !== "function") { fire(); return; }
+      if (!rafPending) { rafPending = true; requestAnimationFrame(fire); }
     }
-    input.addEventListener("input", update);
+    input.addEventListener("input", function () { update(false); });
     wrap.appendChild(name); wrap.appendChild(input); wrap.appendChild(out);
     container.appendChild(wrap);
-    update();
+    update(true);
     return {
       el: wrap,
       get: function () { return parseFloat(input.value); },
-      set: function (v) { input.value = v; update(); },
+      set: function (v) { input.value = v; update(true); },
       onChange: function (cb) { cbs.push(cb); }
     };
   };

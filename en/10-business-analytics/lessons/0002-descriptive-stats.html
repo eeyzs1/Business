@@ -38,12 +38,13 @@
   <h2><span class="secno">1</span>Mean vs Median: Which One Gets Hijacked by Outliers</h2>
   <div class="concept">
     <div class="concept-title">Concept Card · Mean and Median</div>
-    <p>The <strong>mean</strong> = sum ÷ count; every value participates in the calculation, so it is extremely sensitive to outliers. The <strong>median</strong> = the middle value after sorting; it looks only at position, not magnitude, so it is robust. Income, home prices, and order values come from <strong>right-skewed distributions</strong> whose long tail is dragged out by a few huge values — and there the mean is necessarily greater than the median. “The average wage is always higher than yours” is half psychology and half mathematical necessity.</p>
+    <p>The <strong>mean</strong> = sum ÷ count; every value participates in the calculation, so it is extremely sensitive to outliers. The <strong>median</strong> = the middle value after sorting; it looks only at position, not magnitude, so it is robust. Income, home prices, and order values come from <strong>right-skewed distributions</strong> whose long tail is dragged out by a few huge values — the mean is often higher than the median. A few very high incomes can raise the mean, but that does not imply that every individual earns less than it.</p>
   </div>
 
   <div class="sim">
     <div class="sim-title">“Bill Gates Walks Into a Bar” Simulator (illustrative)</div>
     <p style="font-size:.93rem;color:var(--ink-soft)">Nine ordinary customers (gray dots) are sitting in the bar; the 10th through the door is a draggable outlier customer (blue dot). <b>Press the blue dot and drag it left or right</b>, and watch how the mean line (solid red) and the median line (dashed green) go their separate ways:</p>
+    <div class="sim-controls" id="bar-controls"></div>
     <div class="figure-body" style="padding:.6rem 0 .2rem" id="barWrap"></div>
     <p class="sim-readout" id="barReadout"></p>
     <p style="font-size:.83rem;color:var(--ink-faint);margin:.5rem 0 0">The nine customers’ incomes sit in the ¥60,000–200,000 range and the outlier customer can be dragged to about ¥29,000,000 — all classroom illustrations, not a real income distribution.</p>
@@ -55,7 +56,7 @@
   <h2><span class="secno">3</span>The Aggregation Trap: Simpson’s Paradox</h2>
   <div class="callout warn">
     <span class="callout-label">One-Line Warning · Simpson’s Paradox</span><br>
-    Merging grouped data into one total can flip the conclusion: an app’s paying conversion rate can be lower than a competitor’s on both iOS and Android separately, yet higher once pooled (a classic teaching example). The cause is usually wildly unequal group sizes. The countermove: look grouped first, then pooled — and when the two conclusions fight, trust the grouped one.
+    Merging grouped data into one total can flip the conclusion: an app’s paying conversion rate can be lower than a competitor’s on both iOS and Android separately, yet higher once pooled (a classic teaching example). Different user mixes give the groups different weights. Inspect both views and first decide whether you want overall performance or performance under comparable conditions. For a causal question, also check whether the grouping variable is a confounder; neither table automatically takes priority.
   </div>
 
   <h2><span class="secno">4</span>Pick the Right Chart, Keep the Conclusion Straight</h2>
@@ -117,7 +118,7 @@
       <dt>Outlier</dt><dd>A few observations far from the rest; they can hijack the mean but cannot move the median.</dd>
       <dt>Standard Deviation</dt><dd>The square root of the variance; measures spread around the mean in the data’s own units.</dd>
       <dt>Right Skew</dt><dd>A distribution with a long right tail dragged out by a few huge values; the mean exceeds the median.</dd>
-      <dt>Simpson’s Paradox</dt><dd>Grouped and pooled conclusions point in opposite directions, usually because group sizes are wildly unequal.</dd>
+      <dt>Simpson’s Paradox</dt><dd>An association reverses direction between grouped and pooled data; interpretation requires group weights and causal context.</dd>
       <dt>Truncated Axis</dt><dd>A y-axis that does not start at 0; visually magnifies small differences — a common misleading device.</dd>
     </dl>
   </div>
@@ -218,9 +219,11 @@
     readout.innerHTML = "Mean <b>" + st.mean.toFixed(1) + " ×¥10k</b> · Median <b>" + st.median.toFixed(1) +
       " ×¥10k</b> · mean sits <b>+" + gap.toFixed(0) + "%</b> above the median<br>" + msg;
   }
+  var incomeSlider = Viz.slider(document.getElementById("bar-controls"),
+    { label: "Outlier income (¥10,000s)", min: 30, max: 2900, step: 5, value: bill });
+  incomeSlider.onChange(function (v) { bill = v; render(); });
   Viz.draggable(chart.svg, billDot, function (p) {
-    bill = Math.max(30, Math.min(2900, chart.x.invert(p.x)));
-    render();
+    incomeSlider.set(Math.max(30, Math.min(2900, chart.x.invert(p.x))));
   });
   render();
 
@@ -266,8 +269,9 @@
           mgStatus.textContent = "✓ " + PAIRS.filter(function (x) { return x.k === tp.k; })[0].why + " Matched " + matched + " / 4.";
         }
       } else {
-        b.classList.add("bad"); selBtn.classList.add("bad");
-        setTimeout(function () { b.classList.remove("bad"); selBtn.classList.remove("bad"); }, 700);
+        var wrongTask = selBtn;
+        b.classList.add("bad"); wrongTask.classList.add("bad");
+        setTimeout(function () { b.classList.remove("bad"); wrongTask.classList.remove("bad"); }, 700);
         mgStatus.textContent = "✗ Not a match. Is this task about trend, comparison, composition, or relationship?";
       }
       selBtn = null; selKey = null;

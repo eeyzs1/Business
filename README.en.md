@@ -62,7 +62,10 @@ Business/
 ├── tools/
 │   ├── check.py             ← automated self-check for the Chinese pages
 │   ├── check_en.py          ← self-check for the en/ mirror
-│   └── audit_en.py          ← page-by-page zh↔en structural comparison
+│   ├── audit_en.py          ← page-by-page translation comparison
+│   ├── html_checks.py       ← shared HTML-link and quiz-schema validation
+│   ├── tests/              ← validator regression tests (standard library only)
+│   └── test_browser.py     ← offline-page, mobile-layout, and interaction regressions
 ├── assets/                  # shared design system & components (used by both languages)
 │   ├── course.css           # unified styling (paper feel · Tufte style)
 │   ├── quiz.js              # quiz component (instant feedback + scores auto-saved)
@@ -91,6 +94,35 @@ Note: the English pages live one directory deeper, so they reference the shared 
 5. Record important insights in `learning-records/` (just ask the AI teacher).
 
 > Maintenance note: after adding or editing lessons in the Chinese edition, run `python tools/check.py` for a full self-check (live links, complete components, quiz standards, pager chain; zero dependencies; it skips the en/ mirror automatically). Validate the English mirror with `python tools/check_en.py`, and compare the two editions page by page with `python tools/audit_en.py` (quiz answer indices, ids, links).
+
+## Maintenance and Verification
+
+Run these checks from the repository root with Python 3.8+:
+
+```sh
+python tools/check.py
+python tools/check_en.py
+python tools/audit_en.py
+python -m unittest discover -s tools/tests -v
+```
+
+Static validation covers cross-page anchors, language-switch destinations, quiz schemas, offline resources, and page components. After editing shared scripts, styles, or interactive lessons, also run the browser regressions with Python 3.9+:
+
+```sh
+python -m pip install -r tools/requirements-dev.txt
+python -m playwright install chromium
+python tools/test_browser.py
+```
+
+The browser suite opens all 122 local pages, checks mobile layouts and slider boundaries, and exercises quiz retries, saved scores, English UI text, IRR, chart matching, drag coordinates, keyboard controls, and printing. On Windows with Chrome installed, set `$env:BUSINESS_BROWSER_CHANNEL='chrome'` in PowerShell before running the suite to use Chrome without downloading Chromium. Test dependencies are only for development; the course remains usable offline. GitHub runs these checks through `.github/workflows/checks.yml` after a push or pull request.
+
+Both languages share each lesson's best score. Records live in the current browser's local storage and are not written to `learning-records/`. Clearing browser data, switching browsers, or changing the site's origin affects those records. Cross-page storage for double-clicked files depends on the browser. If badges do not carry across pages, start a local server from the repository root and open `http://127.0.0.1:8000/`:
+
+```sh
+python -m http.server 8000 --bind 127.0.0.1
+```
+
+The local server needs no internet connection. The supply-demand chart, positioning map, and outlier simulator also support sliders and arrow keys. A quiz score measures the current attempt; retest after a few days to check retention.
 
 ## Methodology Acknowledgment
 

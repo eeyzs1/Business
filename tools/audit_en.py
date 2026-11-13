@@ -9,6 +9,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from html_checks import quiz_errors
 
 ROOT = Path(__file__).resolve().parent.parent
 ERRS, CHECKS = 0, 0
@@ -36,6 +37,9 @@ def quiz_data(text):
             data = json.loads(q)
         except ValueError:
             out.append(("PARSE_FAIL", None))
+            continue
+        if quiz_errors(data):
+            out.append(("SCHEMA_FAIL", None))
             continue
         out.append(([item.get("answer") for item in data],
                     [len(item.get("options", [])) for item in data]))
@@ -75,8 +79,6 @@ def audit_pair(zh: Path, en: Path):
         zn, enn = len(re.findall(f"<{tag}[ >]", z)), len(re.findall(f"<{tag}[ >]", e))
         if zn != enn:
             err(f"{rel}: <{tag}> count {zn} -> {enn}")
-    for cls in ("concept-title", "case-title", "sim-title", "data-reveal", "quiz-q|\"q\""):
-        pass
     zn = len(re.findall(r'class="concept', z)); enn = len(re.findall(r'class="concept', e))
     if zn != enn:
         err(f"{rel}: concept-card count {zn} -> {enn}")
@@ -89,6 +91,8 @@ def audit_pair(zh: Path, en: Path):
 
 
 def main():
+    global ERRS, CHECKS
+    ERRS = CHECKS = 0
     pairs = [(ROOT / "index.html", ROOT / "en" / "index.html")]
     for br in sorted(p for p in ROOT.iterdir() if p.is_dir() and re.match(r"^\d\d-", p.name)):
         pairs.append((br / "index.html", ROOT / "en" / br.name / "index.html"))
@@ -96,6 +100,9 @@ def main():
             pairs.append((lp, ROOT / "en" / br.name / "lessons" / lp.name))
     print(f"Comparing {len(pairs)} page pairs (zh -> en) ...")
     for zh, en in pairs:
+        if not zh.is_file():
+            err(f"{zh.as_posix()}: MISSING")
+            continue
         if not en.exists():
             err(f"{en.as_posix()}: MISSING")
             continue

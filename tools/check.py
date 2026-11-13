@@ -22,6 +22,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from html_checks import check_common, quiz_errors
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -62,6 +63,7 @@ def check_page(page: Path):
     text = page.read_text(encoding="utf-8")
     is_lesson = "lessons" in page.parts
     branch = next((p for p in page.parts if re.match(r"^\d\d-", p)), None)
+    check_common(page, ROOT, lambda msg: err(rel, msg), lambda msg: warn(rel, msg), LINK_WHITELIST)
 
     # ---- 基础头 ----
     if 'lang="zh-CN"' not in text:
@@ -88,28 +90,7 @@ def check_page(page: Path):
 
     # ---- id 完整性 ----
     ids = re.findall(r'id="([^"]+)"', text)
-    for i in sorted(set(ids)):
-        if ids.count(i) > 1:
-            err(rel, f"重复 id: {i}")
     idset = set(ids)
-
-    # ---- 链接与资源 ----
-    for attr in ("href", "src"):
-        for url in re.findall(attr + r'="([^"]+)"', text):
-            if url.startswith(("http://", "https://")):
-                if attr == "src" or url.endswith((".css", ".js")):
-                    err(rel, f"外部资源依赖({attr}): {url}")
-                elif not any(w in url for w in LINK_WHITELIST):
-                    warn(rel, f"外链不在白名单: {url}")
-                continue
-            if url.startswith(("mailto:", "data:", "#")):
-                frag = url[1:]
-                if url.startswith("#") and frag and frag not in idset:
-                    err(rel, f"页内锚点 #{frag} 无对应 id")
-                continue
-            target = (page.parent / url.split("#")[0]).resolve()
-            if not target.exists():
-                err(rel, f"死链 {attr}={url}")
 
     # ---- 引入路径 ----
     if is_lesson:
@@ -150,8 +131,9 @@ def check_page(page: Path):
         try:
             data = json.loads(q)
         except ValueError as e:
-            err(rel, f"quiz JSON 解析失败: {e}")
             continue
+        if quiz_errors(data):
+            continue  # Shared checks already reported the schema errors.
         if not (3 <= len(data) <= 5):
             warn(rel, f"quiz 题数={len(data)}(规范 3-5)")
         for qi, item in enumerate(data):
@@ -219,10 +201,12 @@ def check_pager(page: Path, j: int, n: int, prev_name: str, next_href: str, is_l
 
 
 def main():
+    global ERRS, WARNS, INFOS
+    ERRS = WARNS = INFOS = 0
     only = sys.argv[1] if len(sys.argv) > 1 else None
 
     pages = [p for p in sorted(ROOT.rglob("*.html"))
-             if "en" not in p.parts  # 英文镜像由 tools/check_en.py 校验
+             if "en" not in p.relative_to(ROOT).parts  # 英文镜像由 tools/check_en.py 校验
              if not only or any(only in part for part in p.parts)]
     if only and not pages:
         print(f"未找到与 {only!r} 匹配的页面")
@@ -231,6 +215,10 @@ def main():
     print("=" * 68)
     print("Business 课程库自检")
     print("=" * 68)
+    expected_indexes = [ROOT / "index.html"] + [ROOT / branch / "index.html" for branch in BRANCH_CLASS]
+    for index in expected_indexes:
+        if (not only or only in index.parent.name) and not index.is_file():
+            err(index.relative_to(ROOT), "缺少必需的索引页")
     for page in pages:
         check_page(page)
 
@@ -241,7 +229,7 @@ def main():
             continue
         lessons = sorted((ROOT / br / "lessons").glob("*.html"))
         if len(lessons) != 4:
-            warn(br, f"课程数为 {len(lessons)}(应为 4)")
+            err(br, f"课程数为 {len(lessons)}(应为 4)")
         for j, lp in enumerate(lessons):
             if j == 0:
                 prev_name = "../index.html"

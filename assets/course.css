@@ -60,6 +60,8 @@ a:hover { text-decoration: underline; }
 strong { font-weight: 700; }
 em { font-style: normal; color: var(--accent); font-weight: 600; } /* 教材中的重点词 */
 img, svg { max-width: 100%; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+[tabindex="-1"] { scroll-margin-top: 6rem; }
 
 h1, h2, h3, h4 {
   font-family: var(--serif);
@@ -67,6 +69,7 @@ h1, h2, h3, h4 {
   color: var(--ink);
   margin: 2.2em 0 .6em;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 h1 { font-size: 2.1rem; margin-top: .4em; letter-spacing: .01em; }
 h2 { font-size: 1.45rem; border-bottom: 2px solid var(--line); padding-bottom: .25em; }
@@ -182,8 +185,8 @@ h2 .secno, h3 .secno { color: var(--accent); margin-right: .4em; font-family: va
   padding: 1.1rem 1.4rem; margin: 2rem 0;
 }
 .glossary h3 { margin-top: .2rem; font-size: 1.05rem; }
-.glossary dl { display: grid; grid-template-columns: max-content 1fr; gap: .45rem 1.2rem; margin: 0; }
-.glossary dt { font-weight: 700; color: var(--accent); white-space: nowrap; }
+.glossary dl { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: .45rem 1.2rem; margin: 0; }
+.glossary dt { font-weight: 700; color: var(--accent); overflow-wrap: anywhere; }
 .glossary dd { margin: 0; font-size: .93rem; color: var(--ink-soft); }
 @media (max-width: 640px) {
   .glossary dl { grid-template-columns: 1fr; gap: .1rem; }
@@ -216,6 +219,17 @@ h2 .secno, h3 .secno { color: var(--accent); margin-right: .4em; font-family: va
 }
 .sim-controls label { font-size: .9rem; color: var(--ink-soft); display: flex; align-items: center; gap: .5rem; }
 .sim-controls output { font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; min-width: 4.5em; }
+@media (max-width: 640px) {
+  .sim-controls > * { min-width: 0; max-width: 100%; }
+  .sim-controls > div { width: 100%; }
+  .sim-controls label {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto;
+    width: 100%; max-width: 100%; gap: .4rem .7rem;
+  }
+  .sim-controls label > span { grid-column: 1; grid-row: 1; min-width: 0; }
+  .sim-controls label > output { grid-column: 2; grid-row: 1; min-width: 0; overflow-wrap: anywhere; }
+  .sim-controls label > input[type="range"] { grid-column: 1 / -1; grid-row: 2; width: 100%; min-width: 0; margin: .65rem 0; }
+}
 .sim-readout { font-size: 1.05rem; font-variant-numeric: tabular-nums; }
 .sim-readout b { color: var(--accent); }
 
@@ -270,6 +284,7 @@ table.compact { font-size: .87rem; }
   display: flex; align-items: center; justify-content: center;
   font-weight: 800; font-size: .95rem;
 }
+:lang(en) .steps li::before { content: counter(step); }
 
 /* ---- 测验组件(配合 quiz.js)-------------------------------- */
 .quiz {
@@ -373,6 +388,11 @@ table.compact { font-size: .87rem; }
   border: 1.5px solid color-mix(in srgb, var(--accent) 45%, var(--line));
   border-radius: 999px; padding: .15rem .6rem;
 }
+:lang(en) .lesson-list a::before { content: "Lesson " counter(lesson, decimal-leading-zero); }
+@media (max-width: 560px) {
+  .lesson-list a { flex-wrap: wrap; gap: .5rem .8rem; }
+  .lesson-list a > div { min-width: 0; flex: 1 1 12rem; }
+}
 .lesson-list .ll-title { font-weight: 700; font-size: 1rem; }
 .lesson-list .ll-sub { display: block; font-size: .86rem; color: var(--ink-soft); font-weight: 400; }
 
@@ -397,15 +417,16 @@ table.compact { font-size: .87rem; }
 .quiz .quiz-history { font-size: .82rem; color: var(--ink-faint); font-weight: 600; }
 
 /* ---- 动画 -------------------------------------------------- */
-[data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
-[data-reveal].visible { opacity: 1; transform: none; }
+.reveal-enabled [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.reveal-enabled [data-reveal].visible { opacity: 1; transform: none; }
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
 @keyframes pulse-soft { 0%,100% { opacity: 1; } 50% { opacity: .55; } }
 .anim-float { animation: floaty 3.2s ease-in-out infinite; }
 .anim-pulse { animation: pulse-soft 2.2s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
+  .reveal-enabled [data-reveal] { opacity: 1; transform: none; }
+  html { scroll-behavior: auto; }
 }
 
 /* ---- 打印 -------------------------------------------------- */
@@ -414,4 +435,5 @@ table.compact { font-size: .87rem; }
   .lesson-nav, .pager, .quiz .quiz-next, .sim-controls input { display: none !important; }
   .concept, .case, .sim, .quiz, .figure { box-shadow: none; border: 1px solid #ddd; }
   a { color: inherit; }
+  .reveal-enabled [data-reveal] { opacity: 1; transform: none; }
 }

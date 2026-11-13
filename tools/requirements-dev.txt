@@ -1,0 +1,2 @@
+# Development only. Browsing the course and running static checks need no packages.
+playwright==1.58.0

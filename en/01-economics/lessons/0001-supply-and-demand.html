@@ -44,6 +44,7 @@
   <div class="sim">
     <div class="sim-title">Simulator · Drag the price off equilibrium and watch the market respond</div>
     <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">Press and <b>drag the round handle</b> on the dashed price line up or down (mouse or finger): above the equilibrium price, the red area shows ‘surplus → downward pressure on price’; below it, the green area shows ‘shortage → upward pressure on price’; the live readout tells you how large the surplus or shortage is.</p>
+    <div class="sim-controls" id="sd-controls"></div>
     <div id="sd-chart"></div>
     <p class="sim-readout" id="sd-readout">Loading simulator…</p>
   </div>
@@ -84,7 +85,7 @@
   <div class="quiz">
     <script type="application/json">
     [
-      { "q": "A city’s fleet of shared bikes is fixed, and a rainstorm sharply raises the demand for rides. By supply–demand analysis, what most likely happens in the short run?",
+      { "q": "A city’s tea market has an upward-sloping supply curve. A popular show sharply raises demand, with other conditions unchanged. What happens to equilibrium price and quantity?",
         "options": ["Equilibrium price falls and quantity falls", "Equilibrium price falls and quantity rises", "Equilibrium price rises and quantity rises", "Equilibrium price rises and quantity falls"],
         "answer": 2,
         "explain": "A surge in demand = the demand curve shifts <b>right</b>, moving along the given supply curve, so equilibrium price and quantity rise <b>together</b>. Remember the difference between a change in demand (the whole curve shifts) and a change in quantity demanded (movement along the curve)." },
@@ -97,7 +98,7 @@
         "answer": 3,
         "explain": "Scalper prices ‘sell’ precisely because they sit closer to the <b>equilibrium price</b> — the gap between the official price and the equilibrium is the scalper’s profit margin. It has no necessary connection to elasticity." },
       { "q": "Which statement best captures ‘the price mechanism allocates resources’?",
-        "options": ["Government plans assign goods to those who need them most", "Price movements signal scarcity, guiding production and consumption to adjust on their own", "Big firms sell at uniform cost-plus prices", "Sellers set output by how much advertising they buy"],
+        "options": ["Government plans allocate goods to the people most in need", "Prices signal scarcity and guide production and consumption", "Large firms use cost-plus rules to set uniform selling prices", "Sellers use advertising budgets to choose production levels"],
         "answer": 1,
         "explain": "The heart of the price mechanism is <b>signal + incentive</b>: a rising price simultaneously tells buyers to conserve and sellers to produce more, with no central command. Planned allocation, cost-plus pricing, and advertising-driven output are not the price mechanism." }
     ]
@@ -214,9 +215,12 @@
     }
   }
 
+  var priceSlider = Viz.slider(document.getElementById("sd-controls"),
+    { label: "Price P (arrow keys supported)", min: 0.5, max: 9.5, step: 0.1, value: 8 });
+  priceSlider.onChange(update);
   Viz.draggable(svg, g, function (pt) {
     var p = Y.invert(pt.y);
-    update(Math.max(0.5, Math.min(9.5, p)));
+    priceSlider.set(Math.max(0.5, Math.min(9.5, p)));
   });
   update(8);
 })();

@@ -68,7 +68,7 @@
       <button type="button" class="chip active" id="axHealth">Axis A · Price × Healthiness</button>
       <button type="button" class="chip" id="axFashion">Axis B · Price × Fashion</button>
     </p>
-    <div class="sim-controls"><div id="sizeCtrl"></div></div>
+    <div class="sim-controls"><div id="positionCtrl"></div><div id="sizeCtrl"></div></div>
     <div class="figure-body" style="padding:.6rem 0 .2rem" id="pmWrap"></div>
     <p class="sim-readout" id="pmReadout"></p>
   </div>
@@ -102,7 +102,7 @@
   <div class="quiz"><script type="application/json">
   [
     { "q": "An electric-vehicle brand hammers one line over and over: “five minutes of charging, 300 li (about 150 km) of range”. From a positioning standpoint, this move is mainly:",
-      "options": ["Sizing the target market", "Re-choosing the segmentation variables", "Delivering a point of difference and its reason to believe", "Precisely collecting perception data"],
+      "options": ["Estimating the size of the chosen target market", "Selecting new variables for dividing the market", "Stating a difference and giving reasons to believe it", "Collecting data to map customers' brand perceptions"],
       "answer": 2,
       "explain": "Positioning means claiming a place in the target customer’s mind relative to competitors; hammering one <b>verifiable point of difference</b> (fast charging) plus its reason to believe is exactly the act of nailing a position into the mind." },
     { "q": "You split users into heavy / light / potential groups by usage occasion and purchase frequency. Which family of segmentation variables is this?",
@@ -196,9 +196,8 @@
     myGroup.appendChild(myCircle); myGroup.appendChild(t);
     chart.svg.appendChild(myGroup);
     Viz.draggable(chart.svg, myGroup, function (p) {
-      mine.x = Math.max(0.3, Math.min(9.7, chart.x.invert(p.x)));
-      mine.y = Math.max(0.3, Math.min(9.7, chart.y.invert(p.y)));
-      place();
+      xSlider.set(Math.max(0.3, Math.min(9.7, chart.x.invert(p.x))));
+      ySlider.set(Math.max(0.3, Math.min(9.7, chart.y.invert(p.y))));
     });
     place();
   }
@@ -239,6 +238,12 @@
   axB = document.getElementById("axFashion");
   axA.addEventListener("click", function () { setAxis("health", axA); });
   axB.addEventListener("click", function () { setAxis("fashion", axB); });
+
+  var positionControls = document.getElementById("positionCtrl");
+  var xSlider = Viz.slider(positionControls, { label: "Horizontal position", min: 0.3, max: 9.7, step: 0.1, value: mine.x });
+  var ySlider = Viz.slider(positionControls, { label: "Vertical position", min: 0.3, max: 9.7, step: 0.1, value: mine.y });
+  xSlider.onChange(function (v) { mine.x = v; place(); });
+  ySlider.onChange(function (v) { mine.y = v; place(); });
 
   var sizeS = Viz.slider(document.getElementById("sizeCtrl"),
     { label: "Your brand’s share of voice (bubble size, illustrative)", min: 1, max: 10, step: 1, value: 6 });

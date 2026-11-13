@@ -44,6 +44,7 @@
   <div class="sim">
     <div class="sim-title">模拟器 · 把价格拖离均衡,看市场怎么反应</div>
     <p style="font-size:.93rem;color:var(--ink-soft);margin:.2rem 0 .8rem">按住图中虚线上的圆形手柄<b>上下拖动</b>(鼠标或手指皆可):拖到均衡价之上,红色区域显示「过剩 → 降价压力」;拖到之下,绿色区域显示「短缺 → 涨价压力」;实时读数会告诉你过剩/短缺有多少。</p>
+    <div class="sim-controls" id="sd-controls"></div>
     <div id="sd-chart"></div>
     <p class="sim-readout" id="sd-readout">正在加载模拟器……</p>
   </div>
@@ -84,7 +85,7 @@
   <div class="quiz">
     <script type="application/json">
     [
-      { "q": "某城市共享单车数量不变,暴雨天出行需求大增。按供需分析,短期内最可能出现什么?",
+      { "q": "某城市奶茶市场的供给曲线向上倾斜,热门节目带动需求大增,其他条件不变。均衡价格与数量最可能如何变化?",
         "options": ["均衡价格下降,均衡数量减少", "均衡价格下降,均衡数量增加", "均衡价格上升,均衡数量增加", "均衡价格上升,均衡数量减少"],
         "answer": 2,
         "explain": "需求大增 = 需求曲线右移,沿既定供给曲线移动,均衡价格与数量<b>同时上升</b>。记住「需求变动(整线移动)」与「需求量变动(沿线上移动)」的区别。" },
@@ -214,9 +215,12 @@
     }
   }
 
+  var priceSlider = Viz.slider(document.getElementById("sd-controls"),
+    { label: "价格 P(支持方向键)", min: 0.5, max: 9.5, step: 0.1, value: 8 });
+  priceSlider.onChange(update);
   Viz.draggable(svg, g, function (pt) {
     var p = Y.invert(pt.y);
-    update(Math.max(0.5, Math.min(9.5, p)));
+    priceSlider.set(Math.max(0.5, Math.min(9.5, p)));
   });
   update(8);
 })();

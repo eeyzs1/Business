@@ -66,7 +66,7 @@
   <h2><span class="secno">5</span>案例:开一家咖啡店值不值</h2>
   <div class="case">
     <p class="case-title">一杯拿铁背后的算术题</p>
-    <p>假设你盘下一家小店(全部为<strong>示意数字</strong>):初始投入约 <strong>60 万元</strong>(装修、设备与转让押金);预期月流水约 <strong>8 万元</strong>,扣掉原料、人工、租金后净利率约 <strong>15%</strong>,即年净现金流约 <strong>14 万元</strong>;经营看 <strong>8 年</strong>;你评估自身风险后要求 <strong>8%</strong> 的回报率。把参数拨进上面的决策器,会得到:静态回本期约 4 年多,NPV 约 <strong>+20 万元</strong>,IRR 高于 8%——在假设成立时,这家店值得开。注意敏感点:净利率从 15% 掉到 10%,NPV 就可能转负。<strong>项目的生死,常常就悬在一个假设上。</strong></p>
+    <p>假设你盘下一家小店(全部为<strong>示意数字</strong>):初始投入约 <strong>60 万元</strong>(装修、设备与转让押金);预期月流水约 <strong>8 万元</strong>,假设扣除全部经营支出后,每月可留存现金约占流水的 <strong>15%</strong>,则年净现金流约 14.4 万元,为便于模拟取 <strong>14 万元</strong>(本例不另计营运资金变动与期末回收;净利润不等于现金流);经营看 <strong>8 年</strong>;你评估自身风险后要求 <strong>8%</strong> 的回报率。把参数拨进上面的决策器,会得到:静态回本期约 4 年多,NPV 约 <strong>+20 万元</strong>,IRR 高于 8%——在假设成立时,这家店值得开。注意敏感点:可留存现金占流水的比例从 15% 掉到 10%,NPV 就可能转负。<strong>项目的生死,常常就悬在一个假设上。</strong></p>
     <p class="case-learn"><b>学到什么</b>反例同样经典:2008 年星巴克(Starbucks)因扩张过快与金融危机,宣布关闭美国约 600 家表现不佳的门店。装修再心疼也是沉没成本,决策只看这些店<strong>未来</strong>的现金流——NPV 为负,就关。</p>
   </div>
 
@@ -177,13 +177,15 @@
   var sN = Viz.slider(controls, { label: "项目年限", min: 3, max: 10, step: 1, value: 8, format: function (v) { return v + " 年"; } });
   var sR = Viz.slider(controls, { label: "折现率", min: 4, max: 15, step: 0.5, value: 8, format: function (v) { return v.toFixed(1) + "%"; } });
 
-  function annuity(r, n) { return (1 - Math.pow(1 + r, -n)) / r; }
+  function annuity(r, n) { return Math.abs(r) < 1e-8 ? n : (1 - Math.pow(1 + r, -n)) / r; }
 
   function irrOf(I, C, n) {
     var f = function (r) { return C * annuity(r, n) - I; };
-    var lo = 0.0001, hi = 20;
-    if (f(lo) < 0) return null;
-    for (var k = 0; k < 200; k++) {
+    // One outlay followed by positive inflows has a unique IRR, which may be negative.
+    if (Math.abs(f(0)) < 1e-10) return 0;
+    var lo = -0.9999, hi = 1;
+    while (f(hi) > 0) hi *= 2;
+    for (var k = 0; k < 80; k++) {
       var mid = (lo + hi) / 2;
       if (f(mid) > 0) lo = mid; else hi = mid;
     }
@@ -191,9 +193,7 @@
   }
 
   function roll(el, target, fmt) {
-    var from = typeof el.__v === "number" ? el.__v : 0;
-    el.__v = target;
-    Viz.countUp(el, target, { from: from, dur: 360, format: fmt });
+    Viz.countUp(el, target, { dur: 360, format: fmt });
   }
 
   function render() {
@@ -208,31 +208,27 @@
     valEl.style.color = good ? "var(--good)" : (bad ? "var(--bad)" : "var(--ink-soft)");
     decEl.textContent = good ? "→ 投:预期创造价值" : (bad ? "→ 弃:预期毁损价值" : "→ 无差异");
     decEl.style.color = good ? "var(--good)" : (bad ? "var(--bad)" : "var(--ink-soft)");
-    if (irr !== null) {
-      irrEl.textContent = (irr * 100).toFixed(1) + "%(" + (irr > r ? "高于" : "低于") + "折现率)";
-      irrEl.style.color = irr > r ? "var(--good)" : "var(--bad)";
-    } else {
-      irrEl.textContent = "期限内收不回,不存在";
-      irrEl.style.color = "var(--bad)";
-    }
-    payEl.textContent = (I / C).toFixed(1) + " 年";
+    var equal = Math.abs(irr - r) < 1e-8;
+    irrEl.textContent = (irr * 100).toFixed(1) + "%(" + (equal ? "等于" : (irr > r ? "高于" : "低于")) + "折现率)";
+    irrEl.style.color = equal ? "var(--ink-soft)" : (irr > r ? "var(--good)" : "var(--bad)");
+    payEl.textContent = I > C * n ? "项目期限内无法回本" : (I / C).toFixed(1) + " 年";
 
     /* 每年现金流折现条形图(含第 0 年投入) */
     chartBox.innerHTML = "";
     var ax = Viz.axes(chartBox, {
       w: 640, h: 360, margin: { t: 22, r: 18, b: 46, l: 56 },
-      xDomain: [0, n + 1], yDomain: [-I * 1.12, C * 1.3],
+      xDomain: [-1, n + 1], yDomain: [-I * 1.12, C * 1.3],
       xLabel: "年", yLabel: "现金流现值(万元)",
-      xTicks: n + 1, yTicks: 5,
-      xFormat: function (v) { return String(Math.round(v)); },
+      xTicks: n + 2, yTicks: 5,
+      xFormat: function (v) { return v < 0 || v > n ? "" : String(Math.round(v)); },
       yFormat: function (v) { return Math.round(v); }
     });
     ax.plot(function (svg, x, y, m, iw, ih) {
       Viz.line(svg, [[m.l, y(0)], [m.l + iw, y(0)]], { color: "#1c1917", width: 1.5 });
-      var bw = iw / (n + 1) * 0.62;
+      var bw = iw / (n + 2) * 0.62;
       for (var k = 0; k <= n; k++) {
         var v = (k === 0) ? -I : C / Math.pow(1 + r, k);
-        var bx = m.l + iw * (k + 0.5) / (n + 1) - bw / 2;
+        var bx = x(k) - bw / 2;
         var by = Math.min(y(v), y(0));
         var bh = Math.abs(y(v) - y(0));
         svg.appendChild(Viz.svgEl("rect", {

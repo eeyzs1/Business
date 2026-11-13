@@ -9,6 +9,7 @@
   "use strict";
 
   var KEY_PREFIX = "biz-quiz:";
+  var english = /^en(?:-|$)/i.test(document.documentElement.lang);
 
   function storage() {
     try { return window.localStorage; } catch (e) { return null; }
@@ -18,12 +19,14 @@
     if (!s) return null;
     try {
       var v = JSON.parse(s.getItem(key));
-      return v && typeof v.best === "number" ? v : null;
+      return v && Number.isInteger(v.best) && Number.isInteger(v.total) &&
+        v.total > 0 && v.best >= 0 && v.best <= v.total ? v : null;
     } catch (e) { return null; }
   }
   // pathname → biz-quiz:branch/lessons/file.html(与 quiz.js 的键保持一致)
   function keyFor(pathname) {
-    var m = decodeURIComponent(pathname).match(/([^\/]+\/lessons\/[^\/]+\.html)$/i);
+    try { pathname = decodeURIComponent(pathname); } catch (e) { /* Keep malformed escapes literal. */ }
+    var m = pathname.match(/([^\/]+\/lessons\/[^\/]+\.html)$/i);
     return m ? KEY_PREFIX + m[1] : null;
   }
   function resolveUrl(href) {
@@ -34,7 +37,8 @@
     document.querySelectorAll(".lesson-list a[href]").forEach(function (a) {
       var url = resolveUrl(a.getAttribute("href"));
       if (!url) return;
-      var rec = read(keyFor(url.pathname));
+      var key = keyFor(url.pathname);
+      var rec = key ? read(key) : null;
       if (!rec) return;
       var b = document.createElement("span");
       b.className = "ll-done";
@@ -48,6 +52,13 @@
     if (!s) return;
     var keys = [];
     try { keys = Object.keys(s); } catch (e) { return; }
+    // Read each record once, rather than scanning storage for every branch card.
+    var counts = Object.create(null);
+    keys.forEach(function (key) {
+      if (key.indexOf(KEY_PREFIX) !== 0) return;
+      var match = key.slice(KEY_PREFIX.length).match(/^([^/]+)\/lessons\/[^/]+\.html$/);
+      if (match && read(key)) counts[match[1]] = (counts[match[1]] || 0) + 1;
+    });
     document.querySelectorAll(".branch-card[href]").forEach(function (card) {
       var url = resolveUrl(card.getAttribute("href"));
       if (!url) return;
@@ -55,21 +66,24 @@
       var segs = url.pathname.replace(/[^\/]*$/, "").split("/").filter(Boolean);
       var dir = segs[segs.length - 1];
       if (!dir || !/^\d\d-/.test(dir)) return;
-      var done = 0;
-      keys.forEach(function (k) {
-        if (k.indexOf(KEY_PREFIX) !== 0) return;
-        if (("/" + k.slice(KEY_PREFIX.length)).indexOf("/" + dir + "/lessons/") === -1) return;
-        if (read(k)) done++;
-      });
+      var total = Number(card.getAttribute("data-lesson-count")) || 4;
+      var done = Math.min(counts[dir] || 0, total);
       if (!done) return;
       var chip = document.createElement("div");
       chip.className = "bc-progress";
-      chip.textContent = "已学 " + done + "/4 课";
+      chip.textContent = english ? done + "/" + total + " lessons completed" : "已学 " + done + "/" + total + " 课";
       card.appendChild(chip);
     });
   }
 
-  function init() { markLessonList(); markBranchCards(); }
+  function init() {
+    document.querySelectorAll(".ll-done, .bc-progress").forEach(function (badge) { badge.remove(); });
+    markLessonList(); markBranchCards();
+  }
+  window.addEventListener("pageshow", init);
+  window.addEventListener("storage", function (event) {
+    if (event.key === null || event.key.indexOf(KEY_PREFIX) === 0) init();
+  });
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

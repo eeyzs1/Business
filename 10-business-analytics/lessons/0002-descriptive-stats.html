@@ -38,12 +38,13 @@
   <h2><span class="secno">1</span>均值 vs 中位数:谁被极端值绑架</h2>
   <div class="concept">
     <div class="concept-title">概念卡 · 均值与中位数</div>
-    <p><strong>均值(Mean)</strong>= 总和 ÷ 个数,每一个数都参与计算,所以对极端值(Outlier)极其敏感;<strong>中位数(Median)</strong>= 排序后位于正中的那个数,只看位置不看大小,所以稳健(Robust)。收入、房价、客单价这类「少数极大值拖着长尾」的<strong>右偏分布(Right-Skewed Distribution)</strong>,必然均值 &gt; 中位数——「平均工资总比你的工资高」,一半是心理作用,一半是数学必然。</p>
+    <p><strong>均值(Mean)</strong>= 总和 ÷ 个数,每一个数都参与计算,所以对极端值(Outlier)极其敏感;<strong>中位数(Median)</strong>= 排序后位于正中的那个数,只看位置不看大小,所以稳健(Robust)。收入、房价、客单价这类「少数极大值拖着长尾」的<strong>右偏分布(Right-Skewed Distribution)</strong>,通常会出现均值 &gt; 中位数。少数高收入者可以把均值拉高,但不能据此断言每个人的收入都低于均值。</p>
   </div>
 
   <div class="sim">
     <div class="sim-title">「比尔·盖茨走进酒吧」模拟器(示意)</div>
     <p style="font-size:.93rem;color:var(--ink-soft)">酒吧里坐着 9 位普通顾客(灰点),进门第 10 位是可拖动的极端顾客(蓝点)。<b>按住蓝点左右拖动</b>,看均值线(红实线)与中位数线(绿虚线)如何分道扬镳:</p>
+    <div class="sim-controls" id="bar-controls"></div>
     <div class="figure-body" style="padding:.6rem 0 .2rem" id="barWrap"></div>
     <p class="sim-readout" id="barReadout"></p>
     <p style="font-size:.83rem;color:var(--ink-faint);margin:.5rem 0 0">9 位顾客收入取 6-20 万元区间、极端顾客可拖到约 2900 万元,均为课堂示意,不代表真实收入分布。</p>
@@ -55,7 +56,7 @@
   <h2><span class="secno">3</span>合并的陷阱:辛普森悖论</h2>
   <div class="callout warn">
     <span class="callout-label">一句话预警 · 辛普森悖论(Simpson's Paradox)</span><br>
-    把分组数据合并成总量,结论可能反转:某 App 的付费转化率在 iOS 与安卓用户上分别都低于竞品,合并后反而更高(经典教学示例)。原因多为各组样本量悬殊。对策:先分组看、再合并看,两个结论打架时,信分组。
+    把分组数据合并成总量,结论可能反转:某 App 的付费转化率在 iOS 与安卓用户上分别都低于竞品,合并后反而更高(经典教学示例)。各产品的用户构成不同,会改变总量里的权重。对策:同时看分组与总量,先明确要比较整体表现还是相同条件下的表现;若要判断因果,还需检查分组变量是否为混杂因素,不能机械地只信其中一张表。
   </div>
 
   <h2><span class="secno">4</span>图表选对,结论不歪</h2>
@@ -117,7 +118,7 @@
       <dt>极端值 Outlier</dt><dd>显著偏离整体的少数观测值,能绑架均值却动不了中位数。</dd>
       <dt>标准差 Standard Deviation</dt><dd>方差的平方根,衡量数据围绕均值的离散程度,单位与原数据相同。</dd>
       <dt>右偏分布 Right Skew</dt><dd>少数极大值拖出右侧长尾的分布,此时均值大于中位数。</dd>
-      <dt>辛普森悖论 Simpson's Paradox</dt><dd>分组结论与合并结论方向相反的统计现象,多因各组样本量悬殊。</dd>
+      <dt>辛普森悖论 Simpson's Paradox</dt><dd>分组与合并后的关联方向相反的统计现象;解释时需考虑各组权重与因果机制。</dd>
       <dt>截断坐标轴 Truncated Axis</dt><dd>纵轴不从 0 开始的画法,会视觉放大微小差异,常见误导手法。</dd>
     </dl>
   </div>
@@ -218,9 +219,11 @@
     readout.innerHTML = "均值 <b>" + st.mean.toFixed(1) + " 万</b> · 中位数 <b>" + st.median.toFixed(1) +
       " 万</b> · 均值高出中位数 <b>+" + gap.toFixed(0) + "%</b><br>" + msg;
   }
+  var incomeSlider = Viz.slider(document.getElementById("bar-controls"),
+    { label: "极端顾客收入(万元)", min: 30, max: 2900, step: 5, value: bill });
+  incomeSlider.onChange(function (v) { bill = v; render(); });
   Viz.draggable(chart.svg, billDot, function (p) {
-    bill = Math.max(30, Math.min(2900, chart.x.invert(p.x)));
-    render();
+    incomeSlider.set(Math.max(30, Math.min(2900, chart.x.invert(p.x))));
   });
   render();
 
@@ -266,8 +269,9 @@
           mgStatus.textContent = "✓ " + PAIRS.filter(function (x) { return x.k === tp.k; })[0].why + " 已配对 " + matched + " / 4。";
         }
       } else {
-        b.classList.add("bad"); selBtn.classList.add("bad");
-        setTimeout(function () { b.classList.remove("bad"); selBtn.classList.remove("bad"); }, 700);
+        var wrongTask = selBtn;
+        b.classList.add("bad"); wrongTask.classList.add("bad");
+        setTimeout(function () { b.classList.remove("bad"); wrongTask.classList.remove("bad"); }, 700);
         mgStatus.textContent = "✗ 不匹配。想想这个任务的目的是趋势、对比、构成还是关系?";
       }
       selBtn = null; selKey = null;

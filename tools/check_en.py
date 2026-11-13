@@ -10,6 +10,7 @@ import json
 import re
 import sys
 from pathlib import Path
+from html_checks import check_common, quiz_errors
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -55,6 +56,7 @@ def check_html(page: Path):
     is_lesson = len(parts) == 3 and parts[1] == "lessons"
     is_branch_index = len(parts) == 2 and parts[1] == "index.html"
     branch = parts[0] if len(parts) >= 2 and re.match(r"^\d\d-", parts[0]) else None
+    markup = check_common(page, ROOT, lambda msg: err(rel, msg))
 
     if 'lang="en"' not in text:
         err(rel, "missing lang=en")
@@ -79,24 +81,10 @@ def check_html(page: Path):
             err(rel, f"body class={mb.group(1)!r} expected {expect}")
 
     ids = re.findall(r'id="([^"]+)"', text)
-    for i in sorted(set(ids)):
-        if ids.count(i) > 1:
-            err(rel, f"duplicate id: {i}")
     idset = set(ids)
-
-    for attr in ("href", "src"):
-        for url in re.findall(attr + r'="([^"]+)"', text):
-            if url.startswith(("http://", "https://", "mailto:", "data:")):
-                if attr == "src" or url.endswith((".css", ".js")):
-                    err(rel, f"external resource ({attr}): {url}")
-                continue
-            if url.startswith("#"):
-                if url[1:] and url[1:] not in idset:
-                    err(rel, f"broken in-page anchor #{url[1:]}")
-                continue
-            target = (page.parent / url.split("#")[0]).resolve()
-            if not target.exists():
-                err(rel, f"dead link {attr}={url}")
+    for _, attrs in markup.tags:
+        for attr in ("href", "src"):
+            url = attrs.get(attr) or ""
             if "/assets/" in url and attr in ("href", "src"):
                 depth_needed = "../../../" if is_lesson else ("../../" if is_branch_index else "../")
                 if not url.startswith(depth_needed + "assets/"):
@@ -133,7 +121,8 @@ def check_html(page: Path):
         try:
             data = json.loads(q)
         except ValueError as e:
-            err(rel, f"quiz JSON parse failed: {e}")
+            continue
+        if quiz_errors(data):
             continue
         if not (3 <= len(data) <= 5):
             warn(rel, f"quiz count={len(data)} (spec 3-5)")
@@ -189,6 +178,8 @@ def check_pager(page: Path, j: int, n: int, prev_name: str, next_href: str, is_l
 
 
 def main():
+    global ERRS, WARNS
+    ERRS = WARNS = 0
     print("=" * 68)
     print("en/ mirror validation")
     print("=" * 68)
@@ -213,7 +204,7 @@ def main():
     for bi, br in enumerate(BRANCHES):
         lessons = sorted((ROOT / "en" / br / "lessons").glob("*.html"))
         if len(lessons) != 4:
-            warn(f"en/{br}", f"lesson count {len(lessons)} (should be 4)")
+            err(f"en/{br}", f"lesson count {len(lessons)} (should be 4)")
         for j, lp in enumerate(lessons):
             prev_name = "../index.html" if j == 0 else lessons[j - 1].name
             if j < len(lessons) - 1:

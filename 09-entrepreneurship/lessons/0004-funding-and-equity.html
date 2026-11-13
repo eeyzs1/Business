@@ -7,8 +7,8 @@
 <link rel="stylesheet" href="../../assets/course.css">
 <link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <style>
-  .eq-wrap { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
-  @media (min-width: 720px) { .eq-wrap { grid-template-columns: 300px 1fr; align-items: start; } }
+  .eq-wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.2rem; }
+  @media (min-width: 720px) { .eq-wrap { grid-template-columns: 300px minmax(0, 1fr); align-items: start; } }
   .legend { display: grid; gap: .3rem; margin: .4rem 0 .8rem; }
   .legend .lg-row { display: flex; align-items: center; gap: .55rem; font-size: .9rem; }
   .legend .lg-swatch { width: 13px; height: 13px; border-radius: 4px; flex: none; }

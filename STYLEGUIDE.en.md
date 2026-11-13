@@ -105,6 +105,8 @@ Language toggle: every page (Chinese edition and `en/` mirror alike) must end it
 - **Options of equal length**: within a question, keep options similar in length; never leak the answer through length or formatting.
 - **Rotate answer positions**: the correct answer’s index must rotate across A/B/C/D, never cluster.
 - Every question must carry an `explain` explanation, so that a wrong answer still teaches something.
+- Quiz data must be a non-empty array. `q`, each option, and `explain` must be non-empty strings; `answer` must be a valid integer index (booleans do not count). Validators must report bad data without crashing.
+- Score feedback describes this attempt; one perfect score does not establish long-term retention.
 - Test **discrimination and application** (scenario judgment, concept distinction), never pure recall like “which year” or “who proposed it”.
 
 ## 5. Citations and Further Reading
@@ -122,6 +124,7 @@ Language toggle: every page (Chinese edition and `en/` mirror alike) must end it
 - Style fallbacks: any declaration using `color-mix()` must have an equivalent solid/rgba fallback on the previous line (browsers without color-mix support take the previous line).
 - Learning progress: `quiz.js` automatically stores each lesson’s best score in localStorage (key `biz-quiz:{branch}/lessons/{file}.html`), and index pages get badges rendered by `progress.js` — lesson pages need no extra code. Do not read or write these keys from lesson pages.
 - Print-friendly: core content must not depend on hover to be visible.
+- Provide sliders or buttons as keyboard alternatives to drag-only exercises. Shared animations respect reduced-motion preferences; body content remains visible when printing or when scripts are disabled.
 
 ## 7. Branch Guide Page (index.html) Standards
 
@@ -137,3 +140,6 @@ Language toggle: every page (Chinese edition and `en/` mirror alike) must end it
 - [ ] Quiz options equal in length, answer positions rotated, every question has an explanation
 - [ ] Case companies are real; figures marked “approximately / illustrative”
 - [ ] Further-reading books really exist
+- [ ] `python tools/check_en.py` and `python tools/audit_en.py` pass, with matching translated pages
+- [ ] `python -m unittest discover -s tools/tests -v` passes
+- [ ] After changing shared components or interactions, run `python tools/test_browser.py` (development setup is in README)

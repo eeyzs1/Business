@@ -18,12 +18,35 @@
 
   /* ---- 学习进度持久化(localStorage,可选能力,不可用时静默降级)---- */
   var KEY_PREFIX = "biz-quiz:";
+  var english = /^en(?:-|$)/i.test(document.documentElement.lang);
+  var copy = english ? {
+    next: "Next →", result: "See results →", retry: "↻ Try again",
+    score: "Score ", best: "Best ", final: "Final score: ",
+    correct: "✓ Correct.", wrong: "✗ Not quite.",
+    full: "Great recall on this attempt! Come back in a few days to check what you retain. 🎉",
+    good: "Well done! Revisit the explanations for missed questions, then try again in a few days.",
+    practice: "Mistakes show what to practise. Review the explanations, then try recalling the ideas again.",
+    recall: "✍️ <b>Retrieval practice</b>: before leaving, explain the key idea in your own words without looking at the lesson.",
+    invalid: "This quiz could not be loaded. Please check its question data.",
+    unsaved: "This attempt could not be saved in this browser.",
+    progress: "Quiz progress"
+  } : {
+    next: "下一题 →", result: "查看结果 →", retry: "↻ 再试一次",
+    score: "得分 ", best: "历史最好 ", final: "最终成绩:",
+    correct: "✓ 回答正确。", wrong: "✗ 再想想。",
+    full: "这次回忆得很准确!过几天再来测测,看看还能记住多少。🎉",
+    good: "很不错!错题的解析值得再看一遍,过两天回来重测一次(间隔复习)。",
+    practice: "错题提示了需要练习的地方。读完解析后点「再试一次」,重新回忆一遍。",
+    recall: "✍️ <b>检索练习</b>:关闭页面之前,试着不看课文,用自己的话把本课最核心的概念讲一遍。",
+    invalid: "测验暂时无法加载,请检查题目数据。",
+    unsaved: "当前浏览器无法保存本次成绩。", progress: "测验进度"
+  };
 
   function storage() {
     try { return window.localStorage; } catch (e) { return null; }
   }
   function quizKey() {
-    // 取 pathname 末三段(branch/lessons/file.html),课程库整体移动/换盘也不丢进度
+    // 取末三段,让中英页面共享键;实际保存范围仍由浏览器的来源/文件存储规则决定。
     var m = location.pathname.match(/([^\/]+\/lessons\/[^\/]+\.html)$/i);
     try {
       return KEY_PREFIX + decodeURIComponent(m ? m[1] : location.pathname);
@@ -36,13 +59,15 @@
     if (!s) return null;
     try {
       var v = JSON.parse(s.getItem(quizKey()));
-      return v && typeof v.best === "number" ? v : null;
+      return v && Number.isInteger(v.best) && Number.isInteger(v.total) &&
+        v.total > 0 && v.best >= 0 && v.best <= v.total ? v : null;
     } catch (e) { return null; }
   }
   function writeRecord(rec) {
     var s = storage();
-    if (!s) return;
-    try { s.setItem(quizKey(), JSON.stringify(rec)); } catch (e) { /* 隐私模式/配额:忽略 */ }
+    if (!s) return false;
+    try { s.setItem(quizKey(), JSON.stringify(rec)); return true; }
+    catch (e) { return false; }
   }
 
   function el(tag, cls, html) {
@@ -58,11 +83,20 @@
     var questions;
     try {
       questions = JSON.parse(dataEl.textContent);
-    } catch (e) {
-      console.error("quiz 数据解析失败", e);
+    } catch (e) { questions = null; }
+    if (!Array.isArray(questions) || !questions.length || !questions.every(function (item) {
+      return item && typeof item.q === "string" && item.q.trim() &&
+        Array.isArray(item.options) && item.options.length >= 2 &&
+        item.options.every(function (opt) { return typeof opt === "string" && opt.trim(); }) &&
+        Number.isInteger(item.answer) && item.answer >= 0 && item.answer < item.options.length &&
+        typeof item.explain === "string" && item.explain.trim();
+    })) {
+      var errorEl = el("p", "quiz-error");
+      errorEl.textContent = copy.invalid;
+      errorEl.setAttribute("role", "alert");
+      box.appendChild(errorEl);
       return;
     }
-    if (!questions.length) return;
     dataEl.remove();
 
     var total = questions.length;
@@ -71,20 +105,29 @@
     var answered = false;
 
     var bar = el("div", "quiz-bar");
+    bar.setAttribute("role", "progressbar");
+    bar.setAttribute("aria-label", copy.progress);
+    bar.setAttribute("aria-valuemin", "0");
+    bar.setAttribute("aria-valuemax", String(total));
     var barFill = el("span");
     bar.appendChild(barFill);
 
     var qEl = el("div", "quiz-q");
+    qEl.tabIndex = -1;
     var optsEl = el("div", "quiz-opts");
     var explainEl = el("div", "quiz-explain");
+    explainEl.setAttribute("role", "status");
+    explainEl.setAttribute("aria-live", "polite");
+    explainEl.setAttribute("aria-atomic", "true");
     explainEl.style.display = "none";
     var metaEl = el("div", "quiz-meta");
     var scoreEl = el("span", "quiz-score");
     var historyEl = el("span", "quiz-history");
-    var nextBtn = el("button", "quiz-next", "下一题 →");
+    var nextBtn = el("button", "quiz-next", copy.next);
     nextBtn.type = "button";
 
     var record = readRecord();
+    if (record && record.total !== total) record = null;
 
     box.appendChild(bar);
     box.appendChild(qEl);
@@ -100,11 +143,13 @@
         idx = 0; score = 0; finished = false;
         box.insertBefore(bar, box.firstChild);
         renderQuestion();
+        qEl.focus();
         return;
       }
       if (answered) {           // 习题页 → 前进或出分
         if (idx < total - 1) { idx++; renderQuestion(); }
         else renderResult();
+        qEl.focus();
       }
     });
 
@@ -117,16 +162,17 @@
       optsEl.innerHTML = "";
       explainEl.style.display = "none";
       nextBtn.disabled = true;
-      nextBtn.textContent = "下一题 →";
+      nextBtn.textContent = copy.next;
       item.options.forEach(function (opt, i) {
         var b = el("button", "quiz-opt", opt);
         b.type = "button";
         b.addEventListener("click", function () { choose(i); });
         optsEl.appendChild(b);
       });
-      scoreEl.textContent = "得分 " + score + " / " + total;
-      historyEl.textContent = record ? "历史最好 " + record.best + " / " + record.total : "";
+      scoreEl.textContent = copy.score + score + " / " + total;
+      historyEl.textContent = record ? copy.best + record.best + " / " + record.total : "";
       barFill.style.width = (idx / total * 100) + "%";
+      bar.setAttribute("aria-valuenow", String(idx));
     }
 
     function choose(i) {
@@ -142,12 +188,15 @@
       var correct = i === item.answer;
       if (correct) score++;
       explainEl.innerHTML =
-        (correct ? "<b>✓ 回答正确。</b> " : "<b>✗ 再想想。</b> ") +
+        "<b>" + (correct ? copy.correct : copy.wrong) + "</b> " +
         (item.explain || "");
       explainEl.style.display = "block";
-      scoreEl.textContent = "得分 " + score + " / " + total;
+      scoreEl.textContent = copy.score + score + " / " + total;
       nextBtn.disabled = false;
-      nextBtn.textContent = idx === total - 1 ? "查看结果 →" : "下一题 →";
+      nextBtn.textContent = idx === total - 1 ? copy.result : copy.next;
+      barFill.style.width = ((idx + 1) / total * 100) + "%";
+      bar.setAttribute("aria-valuenow", String(idx + 1));
+      nextBtn.focus();
     }
 
     function renderResult() {
@@ -158,20 +207,23 @@
       explainEl.style.display = "none";
       var pct = Math.round(score / total * 100);
       var comment;
-      if (pct === 100) comment = "满分!这些概念已经进入你的长期记忆库了。🎉";
-      else if (pct >= 70) comment = "很不错!错题的解析值得再看一遍,过两天回来重测一次(间隔复习)。";
-      else comment = "别灰心——错题正是学习发生的地方。读完解析后点「再试一次」,重新回忆一遍效果最好。";
+      if (pct === 100) comment = copy.full;
+      else if (pct >= 70) comment = copy.good;
+      else comment = copy.practice;
       scoreEl.innerHTML =
-        "最终成绩:<b>" + score + " / " + total + "</b>(" + pct + " 分)—— " + comment;
+        copy.final + "<b>" + score + " / " + total + "</b> (" + pct + "%) — " + comment;
       nextBtn.disabled = false;
-      nextBtn.textContent = "↻ 再试一次";
+      nextBtn.textContent = copy.retry;
+      // Another tab may have saved a higher score while this attempt was open.
+      var latest = readRecord();
+      var best = latest && latest.total === total ? latest.best : 0;
       record = {
-        best: Math.max(record ? record.best : 0, score),
+        best: Math.max(record ? record.best : 0, best, score),
         last: score, total: total, at: Date.now()
       };
-      writeRecord(record);
-      historyEl.textContent = "历史最好 " + record.best + " / " + record.total;
-      qEl.appendChild(el("p", "", "✍️ <b>检索练习</b>:关闭页面之前,试着不看解析,用自己的话把本课最核心的概念讲一遍——这比再看一遍课文更能巩固记忆。"));
+      var saved = writeRecord(record);
+      historyEl.textContent = saved ? copy.best + record.best + " / " + record.total : copy.unsaved;
+      qEl.appendChild(el("p", "", copy.recall));
       qEl.firstChild.style.cssText = "font-size:.92rem;color:var(--ink-soft);background:var(--paper-deep);border-radius:8px;padding:.7rem .95rem;";
     }
 

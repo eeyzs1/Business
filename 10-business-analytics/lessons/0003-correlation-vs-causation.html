@@ -235,20 +235,21 @@
     document.getElementById("rowB").textContent = nB ? "访客 " + nB.toLocaleString() + " · 转化 " + cB + " 单 · 转化率 " + pct(pB) : "尚未投放";
     document.getElementById("fillA").style.width = barW(pA) + "%";
     document.getElementById("fillB").style.width = barW(pB) + "%";
-    var d = pB - pA, z = 0;
+    var d = pB - pA, z = null;
     if (nA > 0 && nB > 0) {
       var se = Math.sqrt(pA * (1 - pA) / nA + pB * (1 - pB) / nB);
-      z = d / se;
+      if (se > 0) z = d / se;
     }
     document.getElementById("abDelta").innerHTML = nA
-      ? "Δ(B − A) = <b>" + (d >= 0 ? "+" : "") + (d * 100).toFixed(2) + " 个百分点</b> · 简化显著性 z ≈ <b>" + z.toFixed(2) + "</b>"
+      ? "Δ(B − A) = <b>" + (d >= 0 ? "+" : "") + (d * 100).toFixed(2) + " 个百分点</b> · 简化显著性 z ≈ <b>" + (z === null ? "暂不可估" : z.toFixed(2)) + "</b>"
       : "";
     var v;
     if (nA === 0) v = "还没有数据——点「投放一波」,让样本开口说话。";
-    else if (nA < 800) v = "样本尚少:当前差距<b>大概率是噪声</b>,先别下结论,继续加量。";
+    else if (z === null) v = "样本没有足够的转化变化,<b>暂不能用此近似判断差异</b>。没有检出差异不等于证明两版相同。";
+    else if (nA < 800) v = "样本尚少:<b>当前估计不稳定</b>,先别下结论,按预先约定的样本量继续实验。";
     else if (z >= 2) v = "✅ <b>差异越过简化显著线(≥2σ)</b>:目前版本 B 领先。留意:真实差距其实很小——小差异需要大样本才看得清。";
     else if (z <= -2) v = "⚠️ 目前<b>版本 A 反超</b>?多次投放中出现这种「反转」,多半是噪声与反复偷看的把戏,再投几波看看。";
-    else v = "差距仍在<b>噪声范围</b>内:继续积累样本,或接受「两者无实质差异」。";
+    else v = "目前<b>未检出显著差异</b>,不等于证明两者无实质差异。按预定样本量完成实验,再结合置信区间与业务上有意义的最小差异判断。";
     document.getElementById("abVerdict").innerHTML = v;
   }
   document.getElementById("abGo").addEventListener("click", function () {

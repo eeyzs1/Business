@@ -235,20 +235,21 @@
     document.getElementById("rowB").textContent = nB ? "Visitors " + nB.toLocaleString() + " · orders " + cB + " · conversion " + pct(pB) : "Not started yet";
     document.getElementById("fillA").style.width = barW(pA) + "%";
     document.getElementById("fillB").style.width = barW(pB) + "%";
-    var d = pB - pA, z = 0;
+    var d = pB - pA, z = null;
     if (nA > 0 && nB > 0) {
       var se = Math.sqrt(pA * (1 - pA) / nA + pB * (1 - pB) / nB);
-      z = d / se;
+      if (se > 0) z = d / se;
     }
     document.getElementById("abDelta").innerHTML = nA
-      ? "Δ(B − A) = <b>" + (d >= 0 ? "+" : "") + (d * 100).toFixed(2) + " percentage points</b> · simplified significance z ≈ <b>" + z.toFixed(2) + "</b>"
+      ? "Δ(B − A) = <b>" + (d >= 0 ? "+" : "") + (d * 100).toFixed(2) + " percentage points</b> · simplified significance z ≈ <b>" + (z === null ? "not estimable yet" : z.toFixed(2)) + "</b>"
       : "";
     var v;
     if (nA === 0) v = "No data yet — click “Send a wave” and let the sample speak.";
-    else if (nA < 800) v = "Sample still thin: the current gap is <b>most likely noise</b> — hold off on conclusions and keep adding traffic.";
+    else if (z === null) v = "There is too little conversion variation for <b>this approximation to assess the gap</b>. Failing to detect a difference does not prove the versions are equal.";
+    else if (nA < 800) v = "Sample still thin: <b>the estimate is unstable</b>. Hold off on conclusions and follow the sample size planned before the test.";
     else if (z >= 2) v = "✅ <b>The gap crosses the simplified significance line (≥2σ)</b>: version B currently leads. Note: the true difference is actually tiny — small differences need big samples to see clearly.";
     else if (z <= -2) v = "⚠️ <b>Version A pulls ahead</b>? Such “reversals” across repeated waves are mostly the work of noise and repeated peeking — send a few more waves and watch.";
-    else v = "The gap is still <b>within noise</b>: keep accumulating sample, or accept “no meaningful difference between the two”.";
+    else v = "<b>No significant difference detected yet</b> does not prove there is no meaningful difference. Finish the planned sample, then consider confidence intervals and the smallest effect that matters to the business.";
     document.getElementById("abVerdict").innerHTML = v;
   }
   document.getElementById("abGo").addEventListener("click", function () {

@@ -9,6 +9,9 @@
   var Viz = {};
 
   var SVG_NS = "http://www.w3.org/2000/svg";
+  function reducedMotion() {
+    return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
 
   /* ---- 基础:创建 SVG 元素 ---------------------------------- */
   Viz.svgEl = function (tag, attrs) {
@@ -24,8 +27,8 @@
 
   /* ---- 线性比例尺 -------------------------------------------- */
   Viz.scale = function (d0, d1, r0, r1) {
-    var f = function (x) { return r0 + (x - d0) / (d1 - d0) * (r1 - r0); };
-    f.invert = function (y) { return d0 + (y - r0) / (r1 - r0) * (d1 - d0); };
+    var f = function (x) { return d0 === d1 ? (r0 + r1) / 2 : r0 + (x - d0) / (d1 - d0) * (r1 - r0); };
+    f.invert = function (y) { return r0 === r1 ? (d0 + d1) / 2 : d0 + (y - r0) / (r1 - r0) * (d1 - d0); };
     return f;
   };
 
@@ -117,7 +120,7 @@
       cx: cx, cy: cy, r: opts.r || 6,
       fill: opts.fill || "#b45309", stroke: "#fff", "stroke-width": 2
     });
-    if (opts.pulse) {
+    if (opts.pulse && !reducedMotion()) {
       c.appendChild(Viz.svgEl("animate", {
         attributeName: "r", values: (opts.r || 6) + ";" + ((opts.r || 6) + 5) + ";" + (opts.r || 6),
         dur: "2s", repeatCount: "indefinite"
@@ -155,7 +158,7 @@
     var w = opts.w || 640, h = opts.h || 360;
     var m = Object.assign({ t: 14, r: 14, b: 40, l: 46 }, opts.margin);
     var svg = Viz.svgEl("svg", { viewBox: "0 0 " + w + " " + h, role: "img", style: "width:100%;height:auto;display:block" });
-    var max = opts.max || Math.max.apply(null, data.map(function (d) { return d.value; })) * 1.15;
+    var max = opts.max || Math.max(1, Math.max.apply(null, data.map(function (d) { return d.value; })) * 1.15);
     var iw = w - m.l - m.r, ih = h - m.t - m.b;
     var bw = iw / data.length * 0.62;
     data.forEach(function (d, i) {
@@ -166,7 +169,7 @@
         x: bx, y: by, width: bw, height: bh, rx: 6,
         fill: d.color || opts.color || "var(--accent)"
       });
-      if (opts.animate !== false) {
+      if (opts.animate !== false && !reducedMotion()) {
         rect.style.transformOrigin = bx + "px " + (m.t + ih) + "px";
         rect.style.transformBox = "fill-box";
         rect.appendChild(Viz.svgEl("animate", {
@@ -200,11 +203,11 @@
     input.step = opts.step || 1; input.value = opts.value;
     var out = document.createElement("output");
     var cbs = [];
-    var rafPending = false;
+    var rafId = null;
     function fmt(v) { return opts.format ? opts.format(v) : v; }
     function currentVal() { return parseFloat(input.value); }
     function fire() {
-      rafPending = false;
+      rafId = null;
       // 帧时刻重读输入值,保证回调永远拿到最新状态
       var v = currentVal();
       cbs.forEach(function (cb) { cb(v); });
@@ -215,8 +218,11 @@
       out.textContent = fmt(currentVal());
       var pct = (input.value - opts.min) / (opts.max - opts.min) * 100;
       input.style.setProperty("--fill", pct + "%");
-      if (immediate || typeof requestAnimationFrame !== "function") { fire(); return; }
-      if (!rafPending) { rafPending = true; requestAnimationFrame(fire); }
+      if (immediate || typeof requestAnimationFrame !== "function") {
+        if (rafId !== null) cancelAnimationFrame(rafId);
+        fire(); return;
+      }
+      if (rafId === null) rafId = requestAnimationFrame(fire);
     }
     input.addEventListener("input", function () { update(false); });
     wrap.appendChild(name); wrap.appendChild(input); wrap.appendChild(out);
@@ -233,27 +239,37 @@
   /* ---- 数字滚动动画 -------------------------------------------- */
   Viz.countUp = function (el, target, opts) {
     opts = opts || {};
-    var dur = opts.dur || 900;
+    if (el.__countUpFrame != null) cancelAnimationFrame(el.__countUpFrame);
+    var dur = opts.dur == null ? 900 : opts.dur;
     var start = null;
-    var from = opts.from || 0;
+    var from = opts.from == null ? (el.__countUpValue || 0) : opts.from;
+    var format = opts.format || function (x) { return Math.round(x).toLocaleString(); };
+    if (dur <= 0 || reducedMotion()) {
+      el.__countUpValue = target;
+      el.__countUpFrame = null;
+      el.textContent = format(target);
+      return;
+    }
     function frame(t) {
-      if (!start) start = t;
+      if (start === null) start = t;
       var p = Math.min(1, (t - start) / dur);
       var eased = 1 - Math.pow(1 - p, 3);
       var v = from + (target - from) * eased;
-      el.textContent = (opts.format || function (x) { return Math.round(x).toLocaleString(); })(v);
-      if (p < 1) requestAnimationFrame(frame);
+      el.__countUpValue = v;
+      el.textContent = format(v);
+      el.__countUpFrame = p < 1 ? requestAnimationFrame(frame) : null;
     }
-    requestAnimationFrame(frame);
+    el.__countUpFrame = requestAnimationFrame(frame);
   };
 
   /* ---- 滚动渐显 ------------------------------------------------ */
   Viz.reveal = function () {
     var els = document.querySelectorAll("[data-reveal]");
-    if (!("IntersectionObserver" in window)) {
+    if (!("IntersectionObserver" in window) || reducedMotion()) {
       els.forEach(function (e) { e.classList.add("visible"); });
       return;
     }
+    document.documentElement.classList.add("reveal-enabled");
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
         if (en.isIntersecting) { en.target.classList.add("visible"); io.unobserve(en.target); }
@@ -265,33 +281,59 @@
   /* ---- SVG 拖拽(鼠标 + 触摸)---------------------------------- */
   Viz.draggable = function (svg, targetEl, onMove) {
     var dragging = false;
+    var pointerId = null;
     function pt(evt) {
+      var touch = evt.touches ? evt.touches[0] : evt;
+      var matrix = svg.getScreenCTM();
+      if (matrix) {
+        var point = svg.createSVGPoint();
+        point.x = touch.clientX; point.y = touch.clientY;
+        return point.matrixTransform(matrix.inverse());
+      }
       var r = svg.getBoundingClientRect();
-      var cx = (evt.touches ? evt.touches[0].clientX : evt.clientX) - r.left;
-      var cy = (evt.touches ? evt.touches[0].clientY : evt.clientY) - r.top;
+      var cx = touch.clientX - r.left;
+      var cy = touch.clientY - r.top;
       // viewBox 缩放换算
       var vb = svg.viewBox.baseVal;
-      return { x: cx / r.width * vb.width, y: cy / r.height * vb.height };
+      return { x: vb.x + cx / r.width * vb.width, y: vb.y + cy / r.height * vb.height };
     }
-    function start(evt) { dragging = true; evt.preventDefault(); }
+    function start(evt) {
+      if (dragging || (evt.button != null && evt.button !== 0)) return;
+      dragging = true;
+      pointerId = evt.pointerId;
+      targetEl.style.cursor = "grabbing";
+      if (pointerId != null && targetEl.setPointerCapture) targetEl.setPointerCapture(pointerId);
+      if (evt.cancelable) evt.preventDefault();
+    }
     function move(evt) {
-      if (!dragging) return;
+      if (!dragging || (pointerId != null && evt.pointerId !== pointerId)) return;
       var p = pt(evt);
       onMove(p);
       if (evt.cancelable) evt.preventDefault();
     }
-    function end() { dragging = false; }
+    function end() { dragging = false; pointerId = null; targetEl.style.cursor = "grab"; }
     targetEl.style.cursor = "grab";
     targetEl.style.touchAction = "none";
-    targetEl.addEventListener("mousedown", start);
-    targetEl.addEventListener("touchstart", start, { passive: false });
-    svg.addEventListener("mousemove", move);
-    svg.addEventListener("touchmove", move, { passive: false });
-    window.addEventListener("mouseup", end);
-    window.addEventListener("touchend", end);
+    if ("PointerEvent" in window) {
+      targetEl.addEventListener("pointerdown", start);
+      targetEl.addEventListener("pointermove", move);
+      targetEl.addEventListener("pointerup", end);
+      targetEl.addEventListener("pointercancel", end);
+      targetEl.addEventListener("lostpointercapture", end);
+    } else {
+      targetEl.addEventListener("mousedown", start);
+      targetEl.addEventListener("touchstart", start, { passive: false });
+      window.addEventListener("mousemove", move);
+      window.addEventListener("touchmove", move, { passive: false });
+      window.addEventListener("mouseup", end);
+      window.addEventListener("touchend", end);
+      window.addEventListener("touchcancel", end);
+    }
+    window.addEventListener("blur", end);
   };
 
-  document.addEventListener("DOMContentLoaded", Viz.reveal);
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", Viz.reveal);
+  else Viz.reveal();
 
   window.Viz = Viz;
 })();
